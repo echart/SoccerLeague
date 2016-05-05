@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/login/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/login/video.css">
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
 	<!--JS-->
 	<script src="js/jquery.js"></script>
 	<script src="js/loader.js"></script>
@@ -23,12 +24,10 @@
 	<header>
 		<div class='logo'><img src='img/sl_logos/logo.branco.png'></div>
 		<ul class='menu'>
-			<li><a href='login.php' class='btn-login'>Login</a></li>
+			<li><label for='modal_login' class='btn-login'>Login</label></li>
 		</ul>
 		<div class='menu-responsive'></div>
 	</header>
-
-
 	<div class='video'>
 		<video preload='none' loop="loop" muted>
 			<source src="video/splash_home3.mp4" type="video/mp4">
@@ -39,11 +38,17 @@
 			<h1>Nós amamos futebol! <i class="football"></i><i class="heart"></i></h1>
 			<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			<!--<input type='email' name='form_clube' placeholder='Digite seu email e seja avisado quando começar'>-->
-			<a href='login.php' class='btn'>Cadastrar-se</a>
+			<label for='modal_cadastro' class='btn'>Cadastrar-se</label>
 		</div>
 		<div class='down'><img src="img/login/down.png"></div>
 	</div>
-
+	<!-- <input type="checkbox" id="modal_login">
+    <div class="modal">
+      <div class="modal-content">
+      	<h1>Cada</h1>
+      </div>
+      <label class="modal-close" for="modal_lancamento"></label>
+    </div> -->
 	<div class='description'>
 		<h1>O projeto</h1>
 		<p>
