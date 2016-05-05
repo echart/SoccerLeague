@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+body{
+	margin:0;
+	padding:0;
+	background-color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden;
+	color: #fff;
+}
+a{
+	text-decoration: none;
+	color: #333;
+	font-size: 1.8em;
+}
+div.description{
+	position: relative;
+	border-top: 5px solid #5fad56;
+	width: 100%;
+	padding: 0em 2em 4em 0em;
+	text-align: center;
+}
+div.description h1{
+	padding: 1em 5em 0em;
+	text-align: left;
+	color: #333;
+	font-size: 2.5em;
+}
+div.description h4{
+	padding: 1em 5em 0em;
+	text-align: left;
+	color: #333;
+	font-size: 1.5rem;
+}
+div.description p{
+	font-size: 1.25em;
+	padding: 0em 10em 0em;
+	text-align: justify;
+	color: #333;
+}
+@media(max-width: 900px){
+	div.description{
+		position: relative;
+		width: 90%;
+		padding: 0em 1em 0em;
+	}
+	div.description p{
+		font-size: 1.25em;
+		padding: 0em 0em;
+		margin: 0;
+		text-align: justify;
+	}
+	div.description h1{
+		padding: 0em 0em 0em;
+		text-align: left;
+	}
+	footer{
+		display: none;
+	}
+}
+
+.button{
+	padding: 1em 5em;
+	background-color: #b44230;
+	border:0px;
+	color: #fff;
+}

@@ -1,0 +1,52 @@
+div.forum{
+	margin: 0 auto;
+	width: 86.2%;
+	background-color: #b44230;
+	padding-top: 3.5px;
+}
+
+div.topics .topic{
+	width: 100%;
+	background-color: #fff;
+	height: 100px;
+	border-bottom: 2px solid #ccc;
+	color: #333;
+}
+
+div.topics .topic:hover{
+	background-color: #333;
+	color: #fff;
+	transition: 0.2s all;
+}
+div.topics{
+	width: 100%;
+}
+
+div.topics .topic title{
+	display: block;
+	text-align: left;
+	padding: 17px 100px 0;
+	font-size: 22.5px;
+}
+
+
+
+div.topics .topic .creator{
+	text-align: left;
+	padding: 0px 100px;
+	font-size: 14px;
+}
+
+div.topics .topic .clock{
+	position: relative;
+	left: 50%;
+	top: -32.5%;
+	width: 200px;
+	height: 16px;
+	background: url(../img/clock.png) no-repeat;
+	background-size: 16px 16px;
+	padding: 0px 20px;
+	font-size: 14px;
+	text-align:left;
+}
+
