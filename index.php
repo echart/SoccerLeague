@@ -48,6 +48,7 @@
 	    	<button>Realizar login</button>
 	    </div>
     </div>
+    
     <div class=' viewsign ex'>
     	<div>
 	    	<h2>Cadastrar</h2>
