@@ -101,6 +101,15 @@ div.ex div{
 	width: 80%;
 	padding: 2rem 0rem;
 }
+div.ex span.close{
+	position: absolute;
+	right: 1rem;
+	padding: 0.5rem 1rem;
+	border-radius: 50px;
+	background-color: #fff;
+	color: #333;
+	cursor: pointer;
+}
 @media(max-width: 900px){
 	div.description{
 		position: relative;

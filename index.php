@@ -41,6 +41,7 @@
 		<div class='down'><img src="img/login/down.png"></div>
 	</div>
     <div class=' viewlogin ex'>
+    	<span onclick='expandLogin()' class='close'>X</span>
     	<div>
 	    	<h2>Entrar</h2>
 	    	<input type='text' name='userlogin' placeholder='Email'>
@@ -48,8 +49,9 @@
 	    	<button>Realizar login</button>
 	    </div>
     </div>
-    
+
     <div class=' viewsign ex'>
+    	<span onclick='expandSignin()' class='close'>X</span>
     	<div>
 	    	<h2>Cadastrar</h2>
 	    	<input type='text' name='clubname' placeholder='Nome do clube'>
