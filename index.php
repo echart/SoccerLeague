@@ -23,7 +23,7 @@
 	<header>
 		<div class='logo'><img src='img/sl_logos/logo.branco.png'></div>
 		<ul class='menu'>
-			<li><label onclick='expand()' class='btn-login'>Login</label></li>
+			<li><label onclick='expandLogin()' class='btn-login'>Login</label></li>
 		</ul>
 		<div class='menu-responsive'></div>
 	</header>
@@ -36,12 +36,27 @@
 		<div class='cadastro'>
 			<h1>Nós amamos futebol! <i class="football"></i><i class="heart"></i></h1>
 			<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
-			<label onclick='expand()' class='btn'>Cadastrar-se</label>
+			<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
 		</div>
 		<div class='down'><img src="img/login/down.png"></div>
 	</div>
-    <div class='ex'>
-
+    <div class=' viewlogin ex'>
+    	<div>
+	    	<h2>Entrar</h2>
+	    	<input type='text' name='userlogin' placeholder='Email'>
+	    	<input type='text' name='userpass' placeholder='Senha'>
+	    	<button>Realizar login</button>
+	    </div>
+    </div>
+    <div class=' viewsign ex'>
+    	<div>
+	    	<h2>Cadastrar</h2>
+	    	<input type='text' name='clubname' placeholder='Nome do clube'>
+	    	<input type='text' name='userlogin' placeholder='Email'>
+	    	<input type='text' name='userpass' placeholder='Senha'>
+	    	<input type='text' name='reuserpass' placeholder='Digite novamente a Senha'>
+	    	<button>Cadastrar-se</button>
+	    </div>
     </div>
 	<div class='description'>
 		<h1>O projeto</h1>
@@ -82,8 +97,11 @@
 	       	}
         });
 
-		function expand(){
-			$('div.ex').toggleClass('expanded');
+		function expandLogin(){
+			$('div.viewlogin').toggleClass('expanded');
+		}
+		function expandSignin(){
+			$('div.viewsign').toggleClass('expanded');
 		}
 
 	</script>

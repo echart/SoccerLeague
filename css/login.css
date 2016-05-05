@@ -38,6 +38,69 @@ div.description p{
 	text-align: justify;
 	color: #333;
 }
+
+.button{
+	padding: 1em 5em;
+	background-color: #b44230;
+	border:0px;
+	color: #fff;
+}
+
+div.ex button{
+	position: relative;
+	top: 10px;
+	padding: 0.9em 0;
+	width: 105%;
+	background-color: #5fad56;
+	color: #fff;
+	font-size: 1rem;
+	border-radius: 1%;
+	font-family: 'Exo 2', sans-serif;
+	border: 0;
+	border-radius: 50px;
+}
+div.ex button:hover{
+	background: #4A7856;
+	color:#fff;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+div.ex{
+	position: fixed;
+	top: 0;
+	left: -340px;
+	height: 100vh;
+	width: 340px;
+	background: #393E41;
+	z-index: 999;
+	transition: left 1s;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 2%;
+}
+div.expanded{
+	left: 0 !important;
+	transition: left 1s;
+}
+div.ex input{
+	background-color: #fff;
+	display: block;
+	padding: 5px 7.5px;
+	margin: 0.2rem auto;
+	width: 100%;
+	font-family: 'Exo 2';
+	font-size: 1rem;
+}
+div.ex input:hover, div.ex input:focus{
+	background-color: #EAF4D3;
+}
+div.ex div{
+	text-align: center;
+	margin: 0 auto;
+	width: 80%;
+	padding: 2rem 0rem;
+}
 @media(max-width: 900px){
 	div.description{
 		position: relative;
@@ -57,27 +120,14 @@ div.description p{
 	footer{
 		display: none;
 	}
-}
-
-.button{
-	padding: 1em 5em;
-	background-color: #b44230;
-	border:0px;
-	color: #fff;
-}
-
-
-div.ex{
-	position: fixed;
-	top: 0;
-	left: -340px;
-	height: 100vh;
-	width: 340px;
-	background: #333;
-	z-index: 999;
-	transition: left 1s;
-}
-.expanded{
-	left: 0 !important;
-	transition: left 1s;
+	div.ex input{
+		width: 80%;
+	}
+	div.ex{
+		width: 100vw;
+		left: -100vw;
+	}
+	div.ex button{
+		width: 80%;
+	}
 }
