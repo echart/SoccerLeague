@@ -13,7 +13,6 @@ header div.logo img{
 	width: 15em;
 }
 header ul.menu{
-	display: none;
 	list-style: none;
 	position: absolute;
 	right: 10%;
@@ -37,9 +36,9 @@ header div.menu-responsive{
 	width: 32px;
 	height: 32px;
 	right: 10%;
-	top: 4em;
+	top: 3.5em;
 	display: none;
-	/*background: url(../../img/responsive-menu.png) no-repeat;*/
+	background: url(../../img/icons/responsive-menu.png) no-repeat;
 	background-size: 24px;
 }
 
@@ -63,7 +62,6 @@ header div.menu-responsive{
 	background: #4a7856;
 }
 header.scroll ul.menu{
-	display: block;
 	list-style: none;
 	position: absolute;
 	right: 10%;
@@ -88,8 +86,8 @@ header.scroll div.menu-responsive{
 	width: 32px;
 	height: 32px;
 	right: 10%;
-	top: 2.5em;
-	/*background: url(../../img/responsive-menu.png) no-repeat;*/
+	top: 2.15em;
+	background: url(../../img/icons/responsive-menu.png) no-repeat;
 	background-size: 24px;
 }
 
@@ -98,17 +96,21 @@ header.scroll div.logo img{
 }
 
 @media(max-width: 900px){
+
 	header ul.menu{
 		display: none;
 	}
-	header.scroll ul.menu{
-		display: none;
-	}
+
 	header div.menu-responsive{
 		display: block;
 	}
 	header div.logo img{
 		padding-top: 0.75em;
-		width: 10em;
+		width:7.5em;
+	}
+	header div.logo{
+		position: absolute;
+		top: 3em;
+		left:10%;
 	}
 }

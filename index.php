@@ -23,7 +23,7 @@
 	<header>
 		<div class='logo'><img src='img/sl_logos/logo.branco.png'></div>
 		<ul class='menu'>
-			<li><a href='login.php' class='btn-login'>Acessar</a></li>
+			<li><a href='login.php' class='btn-login'>Login</a></li>
 		</ul>
 		<div class='menu-responsive'></div>
 	</header>
@@ -39,7 +39,7 @@
 			<h1>Nós amamos futebol! <i class="football"></i><i class="heart"></i></h1>
 			<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			<!--<input type='email' name='form_clube' placeholder='Digite seu email e seja avisado quando começar'>-->
-			<a href='login.php' class='btn'>Acessar</a>
+			<a href='login.php' class='btn'>Cadastrar-se</a>
 		</div>
 		<div class='down'><img src="img/login/down.png"></div>
 	</div>

@@ -87,7 +87,7 @@ div.cadastro h1{
 	height:64px;
 	padding-left: 48px;
 	background: url(../../img/icons/emoji/heart2.png) no-repeat;
-	background-size: 40px;
+	background-size:28px;
 	background-position: center;
 }
 .football{
@@ -113,7 +113,11 @@ div.down{
 
 @media(max-width: 900px){
 	div.video h1{
-		font-size:1.6em;
+		font-size:1.2em;
+	}
+	div.video h4{
+		padding-right:1rem;
+		font-size:0.8em;
 	}
 }
 @media(max-width: 800px){
