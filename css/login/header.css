@@ -97,13 +97,13 @@ header.scroll div.logo img{
 
 @media(max-width: 900px){
 
-	header ul.menu{
-		/*display: none;*/
+	/*header ul.menu{
+		display: none;
 	}
 
 	header div.menu-responsive{
-		/*display: block;*/
-	}
+		display: block;
+	}*/
 	header div.logo img{
 		padding-top: 0.75em;
 		width:7.5em;
