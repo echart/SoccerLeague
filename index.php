@@ -81,36 +81,6 @@
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
 	</footer>
-
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-            $("#loader").fakeLoader({
-                timeToHide:1200,
-                bgColor:"#B44230",
-                spinner:"spinner7",
-            });
-            var video = document.querySelector("video");
-            video.addEventListener("ended", function(){
-			  video.play();
-			});
-    	 	if(document.body.clientWidth >= 900) {
-	            $('video').attr('autoplay', true);
-	            $('video').attr('preload', 'auto');
-
-	       	}
-        });
-
-		function expandLogin(){
-			$('div.viewsign').removeClass('expanded');
-			$('div.viewlogin').toggleClass('expanded');
-		}
-		function expandSignin(){
-			$('div.viewlogin').removeClass('expanded');
-			$('div.viewsign').toggleClass('expanded');
-		}
-
-	</script>
 	<script type="text/javascript" src='js/login/menu.js'></script>
 </body>
 </html>
