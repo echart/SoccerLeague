@@ -81,6 +81,6 @@
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
 	</footer>
-	<script type="text/javascript" src='js/login/menu.js'></script>
+	<script type="text/javascript" src='js/login/login.js'></script>
 </body>
 </html>
