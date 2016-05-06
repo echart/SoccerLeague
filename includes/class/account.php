@@ -1,5 +1,5 @@
 <?
-
+namespace classes
 class Account{
 	public $account_id;
 	protected $email;
@@ -72,7 +72,7 @@ class CreateAccount{
 		}
 	}
 }
-use Connection;
+use classes\Connection;
 $c=new Connection();
 $x=new CreateAccount($c->connect(), 'willians.fagundes@hotmail.com','senha5');
 $x->create();

@@ -1,4 +1,5 @@
 <?
+namespace classes
 /*
 ======
 connection with database class
