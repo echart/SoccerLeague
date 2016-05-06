@@ -38,20 +38,21 @@
 			<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
 		</div>
-		<div class='down'><img src="img/login/down.png"></div>
+		<div class='down'><a href='#description'><img src="img/login/down.png"></a></div>
 	</div>
     <div class=' viewlogin ex'>
-    	<span onclick='expandLogin()' class='close'>X</span>
+    	<span onclick='expandLogin()' class='close'></span>
     	<div>
 	    	<h2>Entrar</h2>
 	    	<input type='text' name='userlogin' placeholder='Email'>
 	    	<input type='text' name='userpass' placeholder='Senha'>
 	    	<button>Realizar login</button>
+	    	<span class='forget'><a href=''>Esqueci minha senha</a></span>
 	    </div>
     </div>
 
     <div class=' viewsign ex'>
-    	<span onclick='expandSignin()' class='close'>X</span>
+    	<span onclick='expandSignin()' class='close'></span>
     	<div>
 	    	<h2>Cadastrar</h2>
 	    	<input type='text' name='clubname' placeholder='Nome do clube'>
@@ -61,7 +62,7 @@
 	    	<button>Cadastrar-se</button>
 	    </div>
     </div>
-	<div class='description'>
+	<div id='description'>
 		<h1>O projeto</h1>
 		<p>
 			Há mais de cinco anos, com o começo da era dos jogos virtuais, a paixão por futebol sempre fez nascer o desejo de poder representar ligas, jogadores, partidas e etc., tudo que desde antigamente, torcedores já faziam em jogos de botões e competições entre amigos.
@@ -101,9 +102,11 @@
         });
 
 		function expandLogin(){
+			$('div.viewsign').removeClass('expanded');
 			$('div.viewlogin').toggleClass('expanded');
 		}
 		function expandSignin(){
+			$('div.viewlogin').removeClass('expanded');
 			$('div.viewsign').toggleClass('expanded');
 		}
 
