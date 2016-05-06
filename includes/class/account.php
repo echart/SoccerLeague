@@ -72,7 +72,7 @@ class CreateAccount{
 		}
 	}
 }
-require_once('connection.php');
+use Connection;
 $c=new Connection();
 $x=new CreateAccount($c->connect(), 'willians.fagundes@hotmail.com','senha5');
 $x->create();
