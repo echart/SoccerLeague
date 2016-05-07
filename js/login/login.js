@@ -167,7 +167,16 @@ function register(){
       },
       success: function(data){
         console.log(data);
-        $('.viewsign .return').html(data.return);
+        if(data.return=='empty'){
+          response='Login ou senha devem ser preenchidos';
+        }else if(data.return=='pass'){
+          response='Senha precisa ter mais de 8 caracteres';
+        }else if(data.return=='email'){
+          response='Email já cadastrado, utilize um outro email.';
+        }else if(data.return=='club'){
+          response='Oh que pena, já temos um clube com esse nome. Escolha um novo nome e começe a sua história!';
+        }
+        $('.viewsign .return').html(response);
       },
       error: function(data){
         console.log(data);
