@@ -14,9 +14,9 @@ create table account(
 	email varchar(100) not null,
 	password varchar(256) not null,
 	father int,
-		CONSTRAINT account_father_fkey FOREIGN KEY (father) REFERENCES id_account,
+		CONSTRAINT account_father_fkey FOREIGN KEY (father) REFERENCES account(id_account),
 	language int not null,
-		CONSTRAINT account_language_fkey FOREIGN KEY (language) REFERENCES language(id_language),
+		CONSTRAINT account_language_fkey FOREIGN KEY (language) REFERENCES languages(id_language),
 	slvip int,
 	timezone int
 );
@@ -32,7 +32,6 @@ create table club(
 		CONSTRAINT club_country_fkey FOREIGN KEY (id_country) REFERENCES country(id_country),
 	id_account int not null,
 		CONSTRAINT club_account_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
-		UNIQUE(id_account),
 	clubname varchar(25) not null,
 	createdate date default now()
 );
@@ -68,23 +67,23 @@ create table players(
 create table players_attr(
 	id_player_attr serial primary key,
 	id_player int not null,
-		CONSTRAINT playerattr_club_fkey FOREIGN KEY (id_player) REFERENCES player(id_player)
+		CONSTRAINT playerattr_club_fkey FOREIGN KEY (id_player) REFERENCES players(id_player)
 );
 create table players_history(
 	id_player_history serial primary key, 
 	id_player int not null,
-		CONSTRAINT playerhistory_player_fkey FOREIGN KEY (id_player) REFERENCES player(id_player),
+		CONSTRAINT playerhistory_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
 	id_season int not null,
 		CONSTRAINT playerhistory_season_fkey FOREIGN KEY (id_season) REFERENCES season(id_season),
 	id_club int not null,
 		CONSTRAINT playerhistory_club_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
 	games int DEFAULT 0,
 	goals int DEFAULT 0,
-	assists int default 0,
-	yellowcards default 0,
-	redcards default 0,
-	mvp default 0,
-	score default 0
+	assists int DEFAULT '0',
+	yellowcards int DEFAULT '0',
+	redcards int DEFAULT 0,
+	mvp int default 0,
+	score numeric(4,2) default 0
 );
 create table injury(
 	id_injury serial primary key,
@@ -95,15 +94,15 @@ create table injury(
 create table player_injury(
 	id_player_injury serial primary key,
 	id_player int not null,
-		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES player(id_player),
+		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
 	id_injury int not null, 
-		CONSTRAINT playerinjury_injury_fkey FOREIGN KEY (id_injury) REFERENCES injury(id_injury)
+		CONSTRAINT playerinjury_injury_fkey FOREIGN KEY (id_injury) REFERENCES injury(id_injury),
 	status boolean not null
 );
 create table transferlist(
 	id_transferlist serial primary key,
 	id_player int not null,
-		CONSTRAINT transferlist_player_fkey FOREIGN KEY (id_player) REFERENCES player(id_player),
+		CONSTRAINT transferlist_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
 	startDate timestamp without time zone not null,
-	endDate timestamp without time zone not null,
+	endDate timestamp without time zone not null
 );
