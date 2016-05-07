@@ -27,11 +27,11 @@ class CreateClub{
 	public $con;
 	public $club_id;
 	
-	public function __construct($con,$id,$country, $clubname){
-		$this->con=$con;
+	public function __construct($conn,$id,$c, $cl){
+		$this->con=$conn;
 		$this->id_account=$id;
-		$this->country=$country;
-		$this->clubname=$clubname;
+		$this->country=$c;
+		$this->clubname=$cl;
 	}
 
 	public function makeClub():array{
