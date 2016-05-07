@@ -12,7 +12,7 @@ try{
 		$return=array('return'=>'empty');
 		throw new Exception("error,empty email or pass", 1);
 	}else if(strlen($pass)<8){
-		$return=array('return')=>'pass');
+		$return=array('return'=>'pass');
 		throw new Exception("error, pass < 8 caracters", 1);
 	}
 }catch(Exception $e){
