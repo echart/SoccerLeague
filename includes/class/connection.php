@@ -1,10 +1,4 @@
 <?
-namespace classes
-/*
-======
-connection with database class
-======
-*/
 class Connection{
 	public $database;
 	public $host;
@@ -50,5 +44,3 @@ class Connection{
 		}
 	}
 }
-$c=new Connection();
-$c->connect();

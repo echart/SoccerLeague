@@ -42,11 +42,19 @@ class Account{
 	}
 }
 
+
+/*
+CREATE ACCOUNT CLASS
+this class should create account and return account id for create a club
+07/05/2015 - ADD checkclub name
+*/
+
 class CreateAccount{
 	private $email;
 	private $password;
 	public $father;
 	public $id_account;
+	public $club;
 
 	public $connection;
 
@@ -60,15 +68,15 @@ class CreateAccount{
 		$query=pg_query($this->connection, "SELECT * FROM account where email='".$this->email."'");
 		return pg_num_rows($query);
 	}
-
-	function create(){
-		if($this->check()>0){
-			echo 'email já existe em nossa base de dados';			
-			return false;
-		}else{
-			$query=pg_query($this->connection, "INSERT INTO account(email, password, father, language, slvip) values ('".$this->email."', '".$this->password."', ".$this->father.", '1', '15') RETURNING id_account");
-			$results=pg_fetch_array($query);
-			$this->id_account=$results['id_account'];
-		}
+	function clubname($clubname):boolean{
+		$this->club=$clubname;
+		$query=pg_query($this->connection, "SELECT * FROM club where clubname='".$this->club."'");
+		return pg_num_rows($query);
+	}
+	function create():boolean{
+		$query=pg_query($this->connection, "INSERT INTO account(email, password, father, language, slvip) values ('".$this->email."', '".$this->password."', ".$this->father.", '1', '15') RETURNING id_account");
+		$results=pg_fetch_array($query);
+		$this->id_account=$results['id_account'];
+		return true;
 	}
 }
