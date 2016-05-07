@@ -37,8 +37,8 @@ class CreateClub{
 			$query=pg_query($this->con, "INSERT INTO club (id_country, id_account, clubname) values ('".$this->country."', '".$this->id_account."', '".$this->clubname."') RETURNING id_club");
 			$results=pg_fetch_array($query);
 			$this->club_id=$results['id_club'];
-			$query=pg_query($this->con. "INSERT INTO club_info (id_club) values ('".$this->club_id."')");
-			$query=pg_query($this->con. "INSERT INTO club_fans (id_club,fans) values ('".$this->club_id."', '6000')");
+			$query=pg_query($this->con, "INSERT INTO club_info (id_club) values ('".$this->club_id."')");
+			$query=pg_query($this->con, "INSERT INTO club_fans (id_club,fans) values ('".$this->club_id."', '6000')");
 			$return=array('return', 'success');
 		}catch(Exception $e){
 			$return=array('return','error');
