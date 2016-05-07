@@ -180,7 +180,7 @@ function register(){
         }else if(data.return=='empty2'){
           response='Clube e país devem ser preenchidos';
         }else if(data.return=='success'){
-          response='Clube criado com sucesso!';
+          response='Clube criado com sucesso! Faça login para começar a administra-lo! <img src="img/icons/contract.png">';
         }
         console.log(data.responseText);
         $('.viewsign button').html('Criar clube');
