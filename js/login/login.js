@@ -166,7 +166,8 @@ function register(){
         $('.viewsign button').html('Carregando');
       },
       success: function(data){
-        $('.viewsign .return').html('Sucesso, redirecionando...');
+        console.log(data);
+        $('.viewsign .return').html(data.return);
       },
       error: function(data){
         console.log(data);
