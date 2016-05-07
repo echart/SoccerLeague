@@ -67,7 +67,7 @@ class CreateAccount{
 		$query=pg_query($this->connection, "SELECT * FROM account where email='".$this->email."'");
 		return pg_num_rows($query);
 	}
-	function clubname($clubname):boolean{
+	function clubname($clubname):int{
 		$this->club=$clubname;
 		$query=pg_query($this->connection, "SELECT * FROM club where clubname='".$this->club."'");
 		return pg_num_rows($query);
