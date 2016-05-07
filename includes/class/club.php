@@ -20,7 +20,6 @@ class Club{
 
 class CreateClub{
 	protected $account_id;
-	protected $country;
 	protected $clubname;
 	public $country;
 	public $con;
