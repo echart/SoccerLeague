@@ -182,7 +182,7 @@ function register(){
         }else if(data.return=='success'){
           response='Clube criado com sucesso!';
         }
-
+        console.log(data.responseText);
         $('.viewsign button').html('Criar clube');
         $('.viewsign .return').html(response);
       },
