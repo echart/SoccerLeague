@@ -20,7 +20,7 @@ try{
 	}else if(strlen($pass)<8){
 		$return=array('return'=>'pass');
 		throw new Exception("error, pass < 8 caracters", 1);
-	}else if($club=='' or $country==''){
+	}else if($clubname=='' or $country==''){
 		$return=array('return'=>'empty2');
 		throw new Exception("error,empty club or country", 1);
 	}
