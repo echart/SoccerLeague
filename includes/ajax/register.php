@@ -8,7 +8,7 @@ include('../class/club.php');
 $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
 $pass2=$_POST['rpassword'] ?? '';
-$club=$_POST['clubname'] ?? '';
+$clubname=$_POST['clubname'] ?? '';
 $country=$_POST['country'] ?? '';
 try{
 	if($pass!=$pass2){
@@ -36,7 +36,7 @@ try{
 	if($account->check()>0){
 		$return=array('return'=>'email');
 	}else{
-		if($account->clubname($club)>0){
+		if($account->clubname($clubname)>0){
 			$return=array('return'=>'club');
 		}else{
 			$account->create();
