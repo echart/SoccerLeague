@@ -8,7 +8,7 @@ $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
 
 try{
-	if($email=='' or $pass=''){
+	if($email=='' or $pass==''){
 		$return=array('return'=>'empty');
 		throw new Exception("error,empty email or pass", 1);
 	}else if(strlen($pass)<8){
