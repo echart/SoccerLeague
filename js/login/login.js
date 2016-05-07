@@ -181,7 +181,7 @@ function register(){
       error: function(data){
         console.log(data);
         $('.viewsign button').html('Criar clube');
-        $('.viewsign .return').html('Há algum problema com a papela, não podemos dar andamento na criação do clube');
+        $('.viewsign .return').html('Há algum problema com os papeis, não podemos dar andamento na criação do clube');
       }
   });
 }

@@ -1,5 +1,4 @@
 <?
-namespace classes;
 class Account{
 	public $account_id;
 	protected $email;
