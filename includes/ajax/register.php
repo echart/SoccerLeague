@@ -41,7 +41,7 @@ try{
 		}else{
 			$account->create();
 			$club=new CreateClub($con->connect(),$account->id_account,$country, $clubname);
-			$club->makeClub();
+			$return=$club->makeClub();
 		}
 	}
 }catch(Exception $e){
