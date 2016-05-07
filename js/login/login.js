@@ -168,18 +168,23 @@ function register(){
       success: function(data){
         console.log(data);
         if(data.return=='empty'){
-          response='Login ou senha devem ser preenchidos';
+          response='Login e senha devem ser preenchidos';
         }else if(data.return=='pass'){
           response='Senha precisa ter mais de 8 caracteres';
         }else if(data.return=='email'){
           response='Email já cadastrado, utilize um outro email.';
         }else if(data.return=='club'){
           response='Oh que pena, já temos um clube com esse nome. Escolha um novo nome e começe a sua história!';
+        }else if(data.return=='diferentpass'){
+          response='As senhas digitadas não conferem';
+        }else if(data.return=='empty2'){
+          response='Clube e país devem ser preenchidos';
         }
+
+        $('.viewsign button').html('Criar clube');
         $('.viewsign .return').html(response);
       },
       error: function(data){
-        console.log(data);
         $('.viewsign button').html('Criar clube');
         $('.viewsign .return').html('Há algum problema com os papeis, não podemos dar andamento na criação do clube');
       }
