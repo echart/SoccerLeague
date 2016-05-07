@@ -38,7 +38,8 @@ try{
 		if($x->clubname($club)>0){
 			$return=array('return'=>'club');
 		}else{
-			$x->create();		
+			$x->create();
+			$return=array('return'=>'success');		
 		}
 	}
 }catch(Exception $e){
