@@ -39,9 +39,10 @@ class CreateClub{
 			$this->club_id=$results['id_club'];
 			$query=pg_query($this->con, "INSERT INTO club_info (id_club) values ('".$this->club_id."')");
 			$query=pg_query($this->con, "INSERT INTO club_fans (id_club,fans) values ('".$this->club_id."', '6000')");
-			$return=array('return', 'success');
+			$return=array('return'=>'success');
 		}catch(Exception $e){
 			$return=array('return','error');
 		}
+		return $return;
 	}
 }
