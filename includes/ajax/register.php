@@ -6,6 +6,7 @@ include('../class/account.php');
 
 $email=$_GET['login'] ?? '';
 $pass=$_GET['password'] ?? '';
+$club=$_GET['clubname'] ?? '';
 
 try{
 	if($email=='' or $pass==''){
@@ -27,7 +28,7 @@ try{
 	if($x->check()>0){
 		$return=array('return'=>'email');
 	}else{
-		if($x->clubname()>0){
+		if($x->clubname($club)>0){
 			$return=array('return'=>'club');
 		}else{
 			$x->create();		
