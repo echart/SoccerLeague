@@ -7,6 +7,9 @@
 	<title>Soccer League - The Soccer Manager Game</title>
 	<link rel="icon" type="image/png" sizes="96x96" href="<?=$tree?>img/icon2.png">
 	<meta name="viewport" content="width=device-width"/>
+	<meta name="description" content="Soccer Management Game" />
+	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
+	<meta name="author" content="SoccerLeague" />
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/loader.css">
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/header.css">

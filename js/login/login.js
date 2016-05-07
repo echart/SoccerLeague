@@ -98,17 +98,6 @@ function menuscroll() {
 window.onload = menuscroll();
 
 
-function menuresponsive(){
-  menu=$('.menu');
-  if(menu.css('display')=='block'){
-    menu.css('display','none');
-    menu.removeClass('show-menu');
-  }else{
-    menu.css('display','block');
-    menu.addClass('show-menu');
-  }
-};
-
 
 $(function() {
     $('a[href*="#"]:not([href="#"])').click(function() {
@@ -146,3 +135,44 @@ function expandSignin(){
   $('div.viewlogin').removeClass('expanded');
   $('div.viewsign').toggleClass('expanded');
 }
+function login(){
+  $.ajax({
+      url: 'includes/ajax/login.php',
+      method: 'POST',
+      dataType: JSON,
+      data: {login: $("input[name='userlogin']").val(), password:$("input[name='userpass']").val()},
+      beforeSend: function(){
+        $('.viewlogin .return').html('');
+        $('.viewlogin button').html('Carregando');
+      },
+      success: function(data){
+        $('.viewlogin .return').html('Sucesso, redirecionando...');
+      },
+      error: function(data){
+        console.log(data);
+        $('.viewlogin button').html('Realizar login');
+        $('.viewlogin .return').html('Parece que você esqueceu o seu crachá com sua autenticação, você precisa dela pra entrar no seu clube');
+      }
+  });
+}
+function register(){
+  $.ajax({
+      url: 'includes/ajax/register.php',
+      method: 'POST',
+      dataType: 'json',
+      data: {login: $("input[name='userlogin1']").val(), password:$("input[name='userpass1']").val(), rpassword:$("input[name='reuserpass1']").val(), clubname:$("input[name='clubname']").val(), country: $('select[name="country"]').val()},
+      beforeSend: function(data){
+        $('.viewsign .return').html('');
+        $('.viewsign button').html('Carregando');
+      },
+      success: function(data){
+        $('.viewsign .return').html('Sucesso, redirecionando...');
+      },
+      error: function(data){
+        console.log(data);
+        $('.viewsign button').html('Criar clube');
+        $('.viewsign .return').html('Há algum problema com a papela, não podemos dar andamento na criação do clube');
+      }
+  });
+}
+

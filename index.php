@@ -6,6 +6,9 @@
 	<title>Soccer League - The Soccer Manager Game</title>
 	<link rel="icon" type="image/png" sizes="96x96" href="img/icon2.png">
 	<meta name="viewport" content="width=device-width"/>
+	<meta name="description" content="Soccer Management Game" />
+	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
+	<meta name="author" content="SoccerLeague" />
 	<!--CSS-->
 	<link rel="stylesheet" type="text/css" href="css/loader.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
@@ -40,26 +43,32 @@
 		</div>
 		<div class='down'><a href='#description'><img src="img/login/down.png"></a></div>
 	</div>
-    <div class=' viewlogin ex'>
+    <div class='viewlogin ex'>
     	<span onclick='expandLogin()' class='close'></span>
     	<div>
-	    	<h2>Entrar</h2>
+	    	<h4>Entrar no seu clube</h4>
 	    	<input type='text' name='userlogin' placeholder='Email'>
 	    	<input type='text' name='userpass' placeholder='Senha'>
-	    	<button>Realizar login</button>
+	    	<button onclick="login()">Realizar login</button><br>
 	    	<span class='forget'><a href=''>Esqueci minha senha</a></span>
+	    	<h5 class='return'></h5>
 	    </div>
     </div>
 
-    <div class=' viewsign ex'>
+    <div class='viewsign ex'>
     	<span onclick='expandSignin()' class='close'></span>
     	<div>
-	    	<h2>Cadastrar</h2>
+	    	<h4>Boa sorte, sua jornada rumo a glória começa aqui.</h4>
 	    	<input type='text' name='clubname' placeholder='Nome do clube'>
-	    	<input type='text' name='userlogin' placeholder='Email'>
-	    	<input type='text' name='userpass' placeholder='Senha'>
-	    	<input type='text' name='reuserpass' placeholder='Digite novamente a Senha'>
-	    	<button>Cadastrar-se</button>
+	    	<input type='text' name='userlogin1' placeholder='Email'>
+	    	<input type='password' name='userpass1' placeholder='Senha'>
+	    	<input type='password' name='reuserpass1' placeholder='Digite novamente a Senha'>
+	    	<select name='country'>
+	    		<option selected value=''>Escolha um País</option>
+	    		<option value='1'></span>Brasil</option>
+	    	</select>
+	    	<button onclick='register()'>Criar clube</button>
+	    	<h5 class='return'></h5>
 	    </div>
     </div>
 	<div id='description'>
