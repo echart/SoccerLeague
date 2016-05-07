@@ -72,10 +72,9 @@ class CreateAccount{
 		$query=pg_query($this->connection, "SELECT * FROM club where clubname='".$this->club."'");
 		return pg_num_rows($query);
 	}
-	function create():boolean{
+	function create(){
 		$query=pg_query($this->connection, "INSERT INTO account(email, password, father, language, slvip) values ('".$this->email."', '".$this->password."', ".$this->father.", '1', '15') RETURNING id_account");
 		$results=pg_fetch_array($query);
 		$this->id_account=$results['id_account'];
-		return true;
 	}
 }
