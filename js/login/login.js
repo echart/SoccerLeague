@@ -179,6 +179,8 @@ function register(){
           response='As senhas digitadas não conferem';
         }else if(data.return=='empty2'){
           response='Clube e país devem ser preenchidos';
+        }else if(data.return=='success'){
+          response='Clube criado com sucesso! Para começar a administra-lo, confirme sua conta clicando no link enviado para o seu email,';
         }
 
         $('.viewsign button').html('Criar clube');
