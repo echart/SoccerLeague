@@ -3,7 +3,6 @@
 class Club{
 	public $club_id;
 	protected $account_id;
-	protected $country;
 	protected $club_name;
 	public $country;
 	public $refeer_id;
