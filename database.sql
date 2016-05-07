@@ -33,18 +33,18 @@ create table club(
 	id_account int not null,
 		CONSTRAINT club_account_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
 		UNIQUE(id_account),
-	clubname varchar(25) not null
+	clubname varchar(25) not null,
+	createdate date default now()
 );
 
 create table club_info(
 	id_club_info serial primary key,
 	id_club int not null,
 		CONSTRAINT clubinfo_idclub_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
-	nickname varchar(25),
-	createdate date default now(),
-	manager varchar(25),
-	stadium varchar(25),
-	clubtown varchar(25)
+	nickname varchar(25) default 'null',
+	manager varchar(25)  default 'null',
+	stadium varchar(25)  default 'null',
+	city varchar(25)  default 'null'
 );
 create table club_fans(
 	id_club_fans serial primary key,

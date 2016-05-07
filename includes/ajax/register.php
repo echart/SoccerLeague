@@ -3,6 +3,7 @@ header('Content-type: application/JSON');
 
 include('../class/connection.php');
 include('../class/account.php');
+include('../class/club.php');
 
 $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
@@ -30,16 +31,17 @@ try{
 
 try{
 	$con=new Connection();
-	$x=new CreateAccount($con->connect(), $email, $pass);
+	$account=new CreateAccount($con->connect(), $email, $pass);
 
-	if($x->check()>0){
+	if($account->check()>0){
 		$return=array('return'=>'email');
 	}else{
-		if($x->clubname($club)>0){
+		if($account->clubname($club)>0){
 			$return=array('return'=>'club');
 		}else{
-			$x->create();
-			$return=array('return'=>'success');		
+			$account->create();
+			$club=new CreateClub($con->connect(),$account->id_account,$country, $clubname);
+			$club->makeClub();
 		}
 	}
 }catch(Exception $e){

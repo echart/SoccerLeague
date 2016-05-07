@@ -64,12 +64,12 @@ class CreateAccount{
 		$this->connection=$c;
 	}
 	public function check():int{
-		$query=pg_query($this->connection, "SELECT * FROM account where email='".$this->email."'");
+		$query=pg_query($this->connection, "SELECT id_account FROM account where email='".$this->email."'");
 		return pg_num_rows($query);
 	}
 	function clubname($clubname):int{
 		$this->club=$clubname;
-		$query=pg_query($this->connection, "SELECT * FROM club where clubname='".$this->club."'");
+		$query=pg_query($this->connection, "SELECT id_club FROM club where clubname='".$this->club."'");
 		return pg_num_rows($query);
 	}
 	function create(){

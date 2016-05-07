@@ -168,7 +168,7 @@ function register(){
       success: function(data){
         console.log(data);
         if(data.return=='empty'){
-          response='Login e senha devem ser preenchidos';
+          response='Eaile senha devem ser preenchidos';
         }else if(data.return=='pass'){
           response='Senha precisa ter mais de 8 caracteres';
         }else if(data.return=='email'){
@@ -180,7 +180,7 @@ function register(){
         }else if(data.return=='empty2'){
           response='Clube e país devem ser preenchidos';
         }else if(data.return=='success'){
-          response='Clube criado com sucesso! Para começar a administra-lo, confirme sua conta clicando no link enviado para o seu email,';
+          response='Clube criado com sucesso!';
         }
 
         $('.viewsign button').html('Criar clube');
