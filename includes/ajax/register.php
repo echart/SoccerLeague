@@ -4,11 +4,11 @@ header('Content-type: application/JSON');
 include('../class/connection.php');
 include('../class/account.php');
 
-$email=$_GET['login'] ?? '';
-$pass=$_GET['password'] ?? '';
-$pass2=$_GET['rpassword'] ?? '';
-$club=$_GET['clubname'] ?? '';
-$country=$_GET['country'] ?? '';
+$email=$_POST['login'] ?? '';
+$pass=$_POST['password'] ?? '';
+$pass2=$_POST['rpassword'] ?? '';
+$club=$_POST['clubname'] ?? '';
+$country=$_POST['country'] ?? '';
 try{
 	if($pass!=$pass2){
 		$return=array('return'=>'diferentpass');
