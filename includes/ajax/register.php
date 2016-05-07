@@ -4,8 +4,8 @@ header('Content-type: application/JSON');
 include('../class/connection.php');
 include('../class/account.php');
 
-$email=$_GET['userlogin1'] ?? '';
-$pass=$_GET['userpass1'] ?? '';
+$email=$_POST['userlogin1'] ?? '';
+$pass=$_POST['userpass1'] ?? '';
 
 try{
 	if($email=='' or $pass=''){
