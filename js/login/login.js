@@ -139,19 +139,23 @@ function login(){
   $.ajax({
       url: 'includes/ajax/login.php',
       method: 'POST',
-      dataType: JSON,
+      dataType: 'JSON',
       data: {login: $("input[name='userlogin']").val(), password:$("input[name='userpass']").val()},
       beforeSend: function(){
         $('.viewlogin .return').html('');
         $('.viewlogin button').html('Carregando');
       },
       success: function(data){
-        $('.viewlogin .return').html('Sucesso, redirecionando...');
+        if(data.return=='denied'){
+        $('.viewlogin .return').html('<img src="../img/icons/sheriff.png"><br><br>Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
+        }else{
+          $('.viewlogin .return').html('Sucesso, redirecionando...');
+        }
       },
       error: function(data){
         console.log(data.responseText);
         $('.viewlogin button').html('Realizar login');
-        $('.viewlogin .return').html('<img src="../img/icons/sheriff.png"><br><br>Parece que você esqueceu o seu crachá com sua autenticação, você precisa dela pra entrar no seu clube ');
+        $('.viewlogin .return').html('');
       }
   });
 }
