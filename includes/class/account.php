@@ -54,9 +54,9 @@ class CreateAccount{
 	public $father;
 	public $id_account;
 	public $club;
-	const $options = [
+	const $options = array(
 		    'cost' => 10
-		];
+		);
 	public $connection;
 
 	public function __construct($c, $e,$p,$f='NULL'){
