@@ -146,6 +146,7 @@ function login(){
         $('.viewlogin button').html('Carregando');
       },
       success: function(data){
+        $('.viewlogin button').html('Realizar login');
         if(data.return=='denied'){
         $('.viewlogin .return').html('<img src="../img/icons/sheriff.png"><br><br>Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
         }else{
