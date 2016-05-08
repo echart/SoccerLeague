@@ -15,7 +15,7 @@ class Authentication{
 		if(pg_num_rows($query)>0){
 			$data=pg_fetch_array($query);
 			$hash=$data['password'];
-			if(password_verify($this->password, $hash){
+			if(password_verify($this->password, $hash)){
 				return true;
 			}else{
 				return false;
