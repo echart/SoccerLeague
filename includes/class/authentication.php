@@ -5,27 +5,25 @@ class Authentication{
 	public $password;
 	public $session;
 	public $conn;
-	public $return;
+
 	function __construct($con,$e,$p){
 		$this->login=$e;
 		$this->password=$p;
 		$this->conn=$con;
 	}
-	public function checkAuthentication():boolean{
+	public function checkAuthentication(){
 		$query=pg_query($this->conn, "SELECT password FROM account where email ='".$this->login."'");
 		if(pg_num_rows($query)>0){
 			$data=pg_fetch_array($query);
 			$hash=$data['password'];
 			if(password_verify($this->password, $hash)){
-				$return=true;
+				return true;
 			}else{
-				$return=false;
+				return false;
 			}
 		}else{
-			$return=false;
+			return false;
 		}
-		$this->return=$return;
-		return $this->return;
 	}
 	public function login():boolean{
 		
