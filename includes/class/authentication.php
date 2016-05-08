@@ -1,6 +1,6 @@
 <?
 
-class authentication{
+class Authentication{
 	public $login;
 	public $password;
 	public $session;
@@ -10,10 +10,20 @@ class authentication{
 		$this->login=$e;
 		$this->password=$p;
 	}
-	public function checkAuthentication():void{
-		$this->conn=query($this->conn, "SELECT * FROM account where email ='".$this->login."' and password='".$this->password."'");
-		
-
+	public function checkAuthentication():boolean{
+		$query($this->conn, "SELECT password FROM account where email ='".$this->login."'");
+		if(pg_num_rows($query)>0){
+			$data=pg_fetch_array($query);
+			$hash=$data['password'];
+			if(password_verify($this->password, $hash){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+		return $return;
 	}
 	public function login():boolean{
 		

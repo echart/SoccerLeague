@@ -56,7 +56,6 @@ class CreateAccount{
 	public $club;
 	const $options = [
 		    'cost' => 10,
-		    'salt' => 'soccerleaguebechampion',
 		];
 	public $connection;
 
