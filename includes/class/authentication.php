@@ -23,7 +23,6 @@ class Authentication{
 		}else{
 			return false;
 		}
-		return $return;
 	}
 	public function login():boolean{
 		
