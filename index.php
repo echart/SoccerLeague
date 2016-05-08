@@ -48,7 +48,7 @@
     	<div>
 	    	<h4>Entrar no seu clube</h4>
 	    	<input type='text' name='userlogin' placeholder='Email'>
-	    	<input type='text' name='userpass' placeholder='Senha'>
+	    	<input type='password' name='userpass' placeholder='Senha'>
 	    	<button onclick="login()">Realizar login</button><br>
 	    	<span class='forget'><a href=''>Esqueci minha senha</a></span>
 	    	<h5 class='return'></h5>

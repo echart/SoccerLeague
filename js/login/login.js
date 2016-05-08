@@ -149,9 +149,9 @@ function login(){
         $('.viewlogin .return').html('Sucesso, redirecionando...');
       },
       error: function(data){
-        console.log(data);
+        console.log(data.responseText);
         $('.viewlogin button').html('Realizar login');
-        $('.viewlogin .return').html('Parece que você esqueceu o seu crachá com sua autenticação, você precisa dela pra entrar no seu clube');
+        $('.viewlogin .return').html('Parece que você esqueceu o seu crachá com sua autenticação, você precisa dela pra entrar no seu clube <img src="../img/icons/sheriff.png">');
       }
   });
 }
