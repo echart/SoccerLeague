@@ -55,7 +55,7 @@ class CreateAccount{
 	public $id_account;
 	public $club;
 	const $options = [
-		    'cost' => 10,
+		    'cost' => 10
 		];
 	public $connection;
 
