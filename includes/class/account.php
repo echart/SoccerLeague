@@ -54,12 +54,15 @@ class CreateAccount{
 	public $father;
 	public $id_account;
 	public $club;
-
+	const $options = [
+		    'cost' => 10,
+		    'salt' => 'soccerleaguebechampion',
+		];
 	public $connection;
 
 	public function __construct($c, $e,$p,$f='NULL'){
 		$this->email=$e;
-		$this->password=$p;
+		$this->password=password_hash($p, PASSWORD_BCRYPT, $options);;
 		$this->father=$f;
 		$this->connection=$c;
 	}
