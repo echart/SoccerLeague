@@ -151,7 +151,7 @@ function login(){
       error: function(data){
         console.log(data.responseText);
         $('.viewlogin button').html('Realizar login');
-        $('.viewlogin .return').html('Parece que você esqueceu o seu crachá com sua autenticação, você precisa dela pra entrar no seu clube <img src="../img/icons/sheriff.png">');
+        $('.viewlogin .return').html('<img src="../img/icons/sheriff.png"><br><br>Parece que você esqueceu o seu crachá com sua autenticação, você precisa dela pra entrar no seu clube ');
       }
   });
 }
@@ -180,7 +180,7 @@ function register(){
         }else if(data.return=='empty2'){
           response='Clube e país devem ser preenchidos';
         }else if(data.return=='success'){
-          response='Clube criado com sucesso! Faça login para começar a administra-lo! <br><img src="img/icons/contract.png">';
+          response='<img src="img/icons/contract.png"><br><br><br>Clube criado com sucesso! Faça login para começar a administra-lo!';
         }
         console.log(data.responseText);
         $('.viewsign button').html('Criar clube');
