@@ -61,7 +61,7 @@ class CreateAccount{
 
 	public function __construct($c, $e,$p,$f='NULL'){
 		$this->email=$e;
-		$this->password=password_hash($p, PASSWORD_BCRYPT, $this->options);
+		$this->password=password_hash($p, PASSWORD_BCRYPT, CreateAccount::options);
 		$this->father=$f;
 		$this->connection=$c;
 	}
