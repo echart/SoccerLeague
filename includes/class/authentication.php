@@ -5,7 +5,7 @@ class Authentication{
 	public $password;
 	public $session;
 	public $conn;
-
+	public $return;
 	function __construct($con,$e,$p){
 		$this->login=$e;
 		$this->password=$p;
@@ -24,7 +24,8 @@ class Authentication{
 		}else{
 			$return=false;
 		}
-		return $return;
+		$this->return=$return;
+		return $this->return;
 	}
 	public function login():boolean{
 		
