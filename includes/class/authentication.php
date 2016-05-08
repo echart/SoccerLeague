@@ -11,7 +11,7 @@ class Authentication{
 		$this->password=$p;
 	}
 	public function checkAuthentication():boolean{
-		$query=($this->conn, "SELECT password FROM account where email ='".$this->login."'");
+		$query=pg_query($this->conn, "SELECT password FROM account where email ='".$this->login."'");
 		if(pg_num_rows($query)>0){
 			$data=pg_fetch_array($query);
 			$hash=$data['password'];
