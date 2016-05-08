@@ -9,6 +9,7 @@ class Authentication{
 	function __construct($con,$e,$p){
 		$this->login=$e;
 		$this->password=$p;
+		$this->conn=$con;
 	}
 	public function checkAuthentication():boolean{
 		$query=pg_query($this->conn, "SELECT password FROM account where email ='".$this->login."'");
