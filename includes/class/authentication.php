@@ -17,13 +17,14 @@ class Authentication{
 			$data=pg_fetch_array($query);
 			$hash=$data['password'];
 			if(password_verify($this->password, $hash)){
-				return true;
+				$return=true;
 			}else{
-				return false;
+				$return=false;
 			}
 		}else{
-			return false;
+			$return=false;
 		}
+		return $return;
 	}
 	public function login():boolean{
 		
