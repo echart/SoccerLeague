@@ -171,13 +171,6 @@ div.ex span.close{
 		display: block;
 		width: 90%;
 	}
-	div.ex select{
-		width: 82.5%;
-		padding: 7.5px 5px;
-	}
-	.dd-select{
-		width: 75%;
-	}
 }
 
 
