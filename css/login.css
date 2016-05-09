@@ -189,3 +189,14 @@ div.ex span.close{
 	padding: 10px 10px;
 	font-size: 1.4rem;
 }
+div#country{
+	padding: 0;
+	font-size: 50%;
+}
+.dd-select{
+	overflow: hidden !important;
+    display: block !important;
+     padding: 0 !important;
+    font-weight: bold !important;
+    line-height: 25px !important;
+}

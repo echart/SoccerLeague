@@ -63,10 +63,7 @@
 	    	<input type='text' name='userlogin1' placeholder='Email'>
 	    	<input type='password' name='userpass1' placeholder='Senha'>
 	    	<input type='password' name='reuserpass1' placeholder='Digite novamente a Senha'>
-	    	<select name='country'>
-	    		<option selected value=''>Escolha um País</option>
-	    		<option value='1'></span>Brasil</option>
-	    	</select>
+	    	<select id='country'></select>
 	    	<button onclick='register()'>Criar clube</button>
 	    	<h5 class='return'></h5>
 	    </div>
@@ -90,6 +87,7 @@
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
 	</footer>
-	<script type="text/javascript" src='js/login/login.js'></script>
+	<script type="text/javascript" src='js/select.js'></script>
+	<script type="text/javascript" src='js/home/home.js'></script>
 </body>
 </html>

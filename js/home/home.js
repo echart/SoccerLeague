@@ -198,3 +198,23 @@ function register(){
       }
   });
 }
+
+
+var ddData = [
+    {
+        text: "Brazil",
+        value: 1,
+        selected: false,
+        description: "0 usuários ativos",
+        imageSrc: "img/icons/flags/flat/48/Brazil.png"
+    }
+];
+$('#country').ddslick({
+    data: ddData,
+    width: 285,
+    imagePosition: "left",
+    selectText: "Selecione um país para seu clube",
+    onSelected: function (data) {
+        console.log(data);
+    }
+});
