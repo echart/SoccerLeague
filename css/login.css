@@ -175,6 +175,9 @@ div.ex span.close{
 		width: 82.5%;
 		padding: 7.5px 5px;
 	}
+	.dd-select{
+		height: 260px;
+	}
 }
 
 
