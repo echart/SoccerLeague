@@ -200,17 +200,24 @@ function register(){
 }
 
 
-var ddData = [
+var countriesData = [
     {
-        text: "Brazil",
+        text: "Brasil",
         value: 1,
         selected: false,
         description: "0 usuários ativos",
-        imageSrc: "img/icons/flags/flat/48/Brazil.png"
+        imageSrc: "img/icons/flags/shiny/48/Brazil.png"
+    },
+    {
+        text: "Argentina",
+        value: 2,
+        selected: false,
+        description: "0 usuários ativos",
+        imageSrc: "img/icons/flags/shiny/48/Argentina.png"
     }
 ];
 $('#country').ddslick({
-    data: ddData,
+    data: countriesData,
     width: 285,
     imagePosition: "left",
     selectText: "Selecione um país para seu clube",
