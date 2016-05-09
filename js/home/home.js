@@ -214,6 +214,13 @@ var countriesData = [
         selected: false,
         description: "0 usuários ativos",
         imageSrc: "img/icons/flags/shiny/48/Argentina.png"
+    },
+    {
+        text: "Estados Unidos",
+        value: 2,
+        selected: false,
+        description: "0 usuários ativos",
+        imageSrc: "img/icons/flags/shiny/48/United-States.png"
     }
 ];
 $('#country').ddslick({

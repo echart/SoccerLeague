@@ -176,7 +176,7 @@ div.ex span.close{
 		padding: 7.5px 5px;
 	}
 	.dd-select{
-		height: 260px;
+		width: 75%;
 	}
 }
 
@@ -202,4 +202,7 @@ div#country{
      padding: 0 !important;
     font-weight: bold !important;
     line-height: 25px !important;
+}
+.dd-options{
+	max-height: 200px !important;
 }
