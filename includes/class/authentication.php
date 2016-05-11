@@ -2,6 +2,7 @@
 
 class Authentication{
 	public $login;
+	public $id_account;
 	public $password;
 	public $session;
 	public $conn;
@@ -10,13 +11,15 @@ class Authentication{
 		$this->login=$e;
 		$this->password=$p;
 		$this->conn=$con;
+		session_start();
 	}
 	public function checkAuthentication(){
-		$query=pg_query($this->conn, "SELECT password FROM account where email ='".$this->login."'");
+		$query=pg_query($this->conn, "SELECT password, id_account FROM account where email ='".$this->login."'");
 		if(pg_num_rows($query)>0){
 			$data=pg_fetch_array($query);
 			$hash=$data['password'];
 			if(password_verify($this->password, $hash)){
+				$this->id_account=$dados['id_account'];
 				return true;
 			}else{
 				return false;
@@ -26,7 +29,9 @@ class Authentication{
 		}
 	}
 	public function login():boolean{
-		
+		$_SESSION['SL_session']=session_id();
+		$_SESSION['SL_login']=$this->login;
+		$_SESSION['SL_account']=$this->id_account;
 	}
 	public function getAccountId():string{
 

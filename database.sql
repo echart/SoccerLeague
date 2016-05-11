@@ -6,7 +6,7 @@ create table season(
 );
 
 
-create table languages(
+create table language(
 	id_language SERIAL PRIMARY KEY,
 	lang varchar(100)
 );
@@ -25,7 +25,6 @@ create table injury(
 
 
 
-
 create table account(
 	id_account SERIAL PRIMARY KEY,
 	email varchar(100) not null,
@@ -33,7 +32,7 @@ create table account(
 	father int,
 		CONSTRAINT account_father_fkey FOREIGN KEY (father) REFERENCES account(id_account),
 	language int not null,
-		CONSTRAINT account_language_fkey FOREIGN KEY (language) REFERENCES languages(id_language),
+		CONSTRAINT account_language_fkey FOREIGN KEY (language) REFERENCES language(id_language),
 	slvip int,
 	timezone int
 );
@@ -44,12 +43,6 @@ create table session(
 	session varchar(256) int not null,
 	status varchar(1),
 	startdate timestamp default now()
-);
-create table log(
-	id_log serial primary key, 
-	id_session int not null,
-	page int not null, 
-	when timestamp not null default now()
 );
 
 
@@ -145,14 +138,14 @@ create table player_cards(
 	id_player int not null,
 		CONSTRAINT playercards_cards_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
 	cards int not null
-	/*
-		yellow card gives 1 point
-		red card gives 3 points
-		every 3 points, player will be not available for 1 game.
-		if 5 points, player will be not available for 2 games.
-		CAN BE NOT AVAILABLE FOR MORE GAMES? HOW? 
-	*/
 );
+/*
+	yellow card gives 1 point
+	red card gives 3 points
+	every 3 points, player will be not available for 1 game.
+	if 5 points, player will be not available for 2 games.
+	CAN'T BE AVAILABLE FOR MORE GAMES? HOW? 
+*/
 
 
 
