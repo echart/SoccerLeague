@@ -9,6 +9,8 @@ $user= new authentication();
 
 if($user->verifyAuthentication()==false){
 	header('location: ' . $tree . 'index.php');
+}else{
+	header('location: ' .  $tree . 'club/');
 }
 ?>
 <!DOCTYPE html>
