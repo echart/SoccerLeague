@@ -26,7 +26,7 @@ class Authentication{
 	}
 
 	public function logout(){
-		$query=pg_query("UPDATE session SET valid='false' where session='".session_id()."' and session='".$_SESSION['SL_login']."'");
+		$query=pg_query("UPDATE session SET valid='FALSE' where session='".session_id()."' and id_account='".$_SESSION['SL_account']."'");
 		//remove the session data
 		$_SESSION['SL_login']='';
 		$_SESSION['SL_account']='';
@@ -67,6 +67,7 @@ class Login{
 	}
 	public function login():bool{
 		session_start();
+		session_regenerate_id();
 		$_SESSION['SL_session']=session_id();
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
