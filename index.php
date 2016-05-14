@@ -7,7 +7,7 @@ $con=new Connection();
 
 $user= new authentication();
 
-if($user->verifyAuthentication()===false){
+if($user->verifyAuthentication()==false){
 	header('location: ' . $tree . 'index.php');
 }
 ?>
