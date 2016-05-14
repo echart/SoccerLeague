@@ -8,7 +8,7 @@ class Authentication{
 
 	public function verifyAuthentication():bool{
 		if(isset($_SESSION['SL_session'])){
-			$query=pg_query($this->conn, "SELECT valid FROM session WHERE session='"$_SESSION['SL_session']"' and valid='true'");
+			$query=pg_query($this->conn, "SELECT valid FROM session WHERE session='".$_SESSION['SL_session']."' and valid='true'");
 			if(pg_num_rows($query)>0){
 				return true;
 			}else{
