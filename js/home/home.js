@@ -165,7 +165,7 @@ function register(){
       url: 'includes/ajax/register.php',
       method: 'POST',
       dataType: 'json',
-      data: {login: $("input[name='userlogin1']").val(), password:$("input[name='userpass1']").val(), rpassword:$("input[name='reuserpass1']").val(), clubname:$("input[name='clubname']").val(), country: var ddData = $('#demoShowSelected').data('ddslick')},
+      data: {login: $("input[name='userlogin1']").val(), password:$("input[name='userpass1']").val(), rpassword:$("input[name='reuserpass1']").val(), clubname:$("input[name='clubname']").val(), country: $('#demoShowSelected').data('ddslick')},
       beforeSend: function(data){
         $('.viewsign .return').html('');
         $('.viewsign button').html('Carregando');
