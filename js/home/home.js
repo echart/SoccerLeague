@@ -151,6 +151,9 @@ function login(){
         $('.viewlogin .return').html('<img src="../img/icons/sheriff.png"><br><br>Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
         }else{
           $('.viewlogin .return').html('Sucesso, redirecionando...');
+          setTimeout(function(){
+            location.reload();
+          },1000);
         }
       },
       error: function(data){
