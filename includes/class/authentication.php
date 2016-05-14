@@ -53,6 +53,7 @@ class Login{
 		$_SESSION['SL_session']=session_id();
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
+		return true;
 	}
 	public function getAccountId():int{
 		return $this->id_account;
