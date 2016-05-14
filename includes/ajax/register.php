@@ -39,6 +39,7 @@ try{
 			$account->create();
 			$club=new CreateClub($con->connect(),$account->id_account,$country, $clubname);
 			$return=$club->create();
+	}
 }catch(Exception $e){
 	$return=array('return'=>$e->getMessage());
 }
