@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once($tree . 'includes/class/authentication.php');
 require_once($tree . 'includes/class/connection.php');
 $con=new Connection();
