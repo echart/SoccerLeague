@@ -40,8 +40,8 @@ create table session(
 	id_session serial primary key,
 	id_account int not null,
 		CONSTRAINT session_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
-	session varchar(256) int not null,
-	status varchar(1),
+	session varchar(256) not null,
+	valid boolean,
 	startdate timestamp default now()
 );
 
