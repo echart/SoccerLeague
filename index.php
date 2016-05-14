@@ -1,4 +1,5 @@
 <?
+session_start();
 $tree='';
 require_once($tree . 'includes/class/authentication.php');
 require_once($tree . 'includes/class/connection.php');

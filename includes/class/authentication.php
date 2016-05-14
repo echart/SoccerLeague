@@ -6,10 +6,6 @@ class Authentication{
 	public $password;
 	public $conn;
 
-	function __construct(){
-		session_start();
-	}
-
 	public function verifyAuthentication():bool{
 		if(isset($_SESSION['SL_session'])){
 			return true;
@@ -37,7 +33,6 @@ class Login{
 		$this->login=$e;
 		$this->password=$p;
 		$this->conn=$con;
-		session_start();
 	}
 
 	public function verifyLogin():bool{
@@ -56,6 +51,7 @@ class Login{
 		}
 	}
 	public function login():bool{
+		session_start();
 		$_SESSION['SL_session']=session_id();
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
