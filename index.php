@@ -8,7 +8,7 @@ $con=new Connection();
 $user= new authentication();
 
 if($user->verifyAuthentication()==true){
-	header('location: ' .  $_SERVER['SERVER_NAME'] . '/club/');
+	header('location: http://' . $_SERVER['SERVER_NAME'] . '/club/');
 }
 ?>
 <!DOCTYPE html>

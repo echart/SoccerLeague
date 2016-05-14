@@ -6,7 +6,7 @@ $con=new Connection();
 $user= new authentication();
 
 if($user->verifyAuthentication()==false){
-	header('location: ' .  $_SERVER['SERVER_NAME']);
+	header('location: http://' .  $_SERVER['SERVER_NAME']);
 }
 ?>
 <!DOCTYPE html>
