@@ -8,7 +8,7 @@ class Authentication{
 
 	public function verifyAuthentication():bool{
 		if(isset($_SESSION['SL_session'])){
-			$query=pg_query($this->conn, "SELECT valid FROM session WHERE session='".$_SESSION['SL_session']."' and valid='true'");
+			$query=pg_query("SELECT valid FROM session WHERE session='".$_SESSION['SL_session']."' and valid='true'");
 			if(pg_num_rows($query)>0){
 				return true;
 			}else{
@@ -24,7 +24,7 @@ class Authentication{
 	}
 
 	public function logout(){
-		$query=pg_query($this->conn, "UPDATE session SET valid='false' where session='".session_id()."' and session='".$_SESSION['SL_login']."'");
+		$query=pg_query("UPDATE session SET valid='false' where session='".session_id()."' and session='".$_SESSION['SL_login']."'");
 		//remove the session data
 		$_SESSION['SL_login']='';
 		$_SESSION['SL_account']='';
