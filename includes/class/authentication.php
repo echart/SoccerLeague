@@ -19,7 +19,14 @@ class Authentication{
 	}
 
 	public function logout(){
+		//remove the session data
+		$_SESSION['SL_login']='';
+		$_SESSION['SL_account']='';
 
+		//destroy session data
+		session_destroy();
+		//move uer back to the initial page
+		header('location http://' . $_SERVER['SERVER_NAME']);
 	}
 }
 

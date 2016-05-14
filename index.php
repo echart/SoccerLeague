@@ -1,14 +1,16 @@
 <?
 session_start();
+
 $tree='';
+
 require_once($tree . 'includes/class/authentication.php');
 require_once($tree . 'includes/class/connection.php');
 $con=new Connection();
 
-$user= new authentication();
+$user= new Authentication();
 
 if($user->verifyAuthentication()==true){
-	header('location: http://' . $_SERVER['SERVER_NAME'] . '/club/');
+	header('location: /club/');
 }
 ?>
 <!DOCTYPE html>
