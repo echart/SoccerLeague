@@ -26,7 +26,7 @@ class Authentication{
 		//destroy session data
 		session_destroy();
 		//move uer back to the initial page
-		header('location http://' . $_SERVER['SERVER_NAME']);
+		header('location: http://' . $_SERVER['SERVER_NAME']);
 	}
 }
 
