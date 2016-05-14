@@ -26,6 +26,6 @@ $submenu=new menu('club',0);
 		<li><a class='pm border' href=""><i></i><span>Mensagens</span><span class='qtd'>0</span></a></li>
 		<li><a class='pro' href=""><i></i><span>PRO</span><span class='qtd'>365 dias</span></a></li>
 		<li><a class='account border' href=""><i></i><span>Conta</span></a></li>
-		<li><a class='logoff border' href="<?=$_SERVER['SERVER_NAME'].'/logout.php'?>"><i></i><span>Sair</span></a></li>
+		<li><a class='logoff border' href="<?=$tree.'logout.php'?>"><i></i><span>Sair</span></a></li>
 	</ul>
 </div>
