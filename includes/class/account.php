@@ -62,7 +62,7 @@ class CreateAccount{
 		$this->father=$f;
 		$this->connection=$c;
 	}
-	public function __isset():boolean{
+	public function isset():boolean{
 		$query=pg_query($this->connection, "SELECT id_account FROM account where email='".$this->email."'");
 		$query2=pg_query($this->connection, "SELECT id_club FROM club where clubname='".$this->club."'");
 		if(pg_num_rows($query)>0 OR pg_num_rows($query2)>0){
@@ -71,7 +71,7 @@ class CreateAccount{
 			return false;
 		}
 	}
-	function __set():void{
+	function create():void{
 		$query=pg_query($this->connection, "INSERT INTO account(email, password, father, language, slvip) values ('".$this->email."', '".$this->password."', ".$this->father.", '1', '15') RETURNING id_account");
 		$results=pg_fetch_array($query);
 		$this->id_account=$results['id_account'];
