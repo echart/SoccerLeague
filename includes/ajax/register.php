@@ -33,16 +33,12 @@ try{
 	$con=new Connection();
 	$account=new CreateAccount($con->connect(), $email, $pass);
 
-	if($account->check()>0){
+	if($account->__isset()>0){
 		$return=array('return'=>'email');
 	}else{
-		if($account->clubname($clubname)>0){
-			$return=array('return'=>'club');
-		}else{
-			$account->create();
+			$account->__set();
 			$club=new CreateClub($con->connect(),$account->id_account,$country, $clubname);
-			$return=$club->makeClub();
-		}
+			$return=$club->__set();
 	}
 }catch(Exception $e){
 	$return=array('return'=>$e->getMessage());

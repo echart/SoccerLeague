@@ -11,7 +11,7 @@ $pass=$_POST['password'] ?? '';
 
 $con=new Connection();
 $auth=new Authentication($con->connect(), $email, $pass);
-if($auth->checkAuthentication()){
+if($auth->checkLogin()){
 	$return=array('return'=>'success');
 }else{
 	$return=array('return'=>'denied');

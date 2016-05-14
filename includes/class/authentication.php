@@ -13,7 +13,8 @@ class Authentication{
 		$this->conn=$con;
 		session_start();
 	}
-	public function checkAuthentication(){
+
+	public function verifyAuthentication(){
 		$query=pg_query($this->conn, "SELECT password, id_account FROM account where email ='".$this->login."'");
 		if(pg_num_rows($query)>0){
 			$data=pg_fetch_array($query);

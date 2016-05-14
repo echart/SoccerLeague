@@ -32,7 +32,7 @@ class CreateClub{
 		$this->clubname=$cl;
 	}
 
-	public function makeClub():array{
+	public function __set():array{
 		try{
 			$query=pg_query($this->con, "INSERT INTO club (id_country, id_account, clubname) values ('".$this->country."', '".$this->id_account."', '".$this->clubname."') RETURNING id_club");
 			$results=pg_fetch_array($query);
