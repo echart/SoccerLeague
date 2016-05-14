@@ -63,7 +63,7 @@ class Login{
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
 
-		$query=pg_query($this->conn, "INSERT INTO session (id_account,session,valid) values ('".$this->account."', '".session_id()."','true')");
+		$query=pg_query($this->conn, "INSERT INTO session (id_account,session,valid) values ('".$this->id_account."', '".session_id()."','true')");
 		return true;
 	}
 	public function getAccountId():int{
