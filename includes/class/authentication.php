@@ -6,18 +6,24 @@ class Authentication{
 	public $password;
 	public $conn;
 
-	function __construct($con,$e,$p){
-		$this->login=$e;
-		$this->password=$p;
-		$this->conn=$con;
+	function __construct(){
 		session_start();
 	}
 
-	public function verifyAuthentication(){
-	
+	public function verifyAuthentication():bool{
+		if(isset($_SESSION['SL_session'])){
+			return true;
+		}else{
+			return false;
+		}
 	}
+
 	public function getAccountId():int{
 		return $_SESSION['SL_account'];
+	}
+
+	public function logout(){
+
 	}
 }
 
@@ -34,7 +40,7 @@ class Login{
 		session_start();
 	}
 
-	public function verifyLogin(){
+	public function verifyLogin():bool{
 		$query=pg_query($this->conn, "SELECT password, id_account FROM account where email ='".$this->login."'");
 		if(pg_num_rows($query)>0){
 			$data=pg_fetch_array($query);

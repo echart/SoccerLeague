@@ -1,3 +1,15 @@
+<?
+$tree='';
+require_once($tree . 'includes/class/authentication.php');
+require_once($tree . 'includes/class/connection.php');
+$con=new Connection();
+
+$user= new authentication();
+
+if($user->verifyAuthentication()===false){
+	header('location: ' . $tree . 'index.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
