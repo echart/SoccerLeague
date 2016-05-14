@@ -62,7 +62,7 @@ class CreateAccount{
 		$this->father=$f;
 		$this->connection=$c;
 	}
-	public function isset():{
+	public function isset(){
 		$query=pg_query($this->connection, "SELECT id_account FROM account where email='".$this->email."'");
 		$query2=pg_query($this->connection, "SELECT id_club FROM club where clubname='".$this->club."'");
 		if(pg_num_rows($query)>0 OR pg_num_rows($query2)>0){
