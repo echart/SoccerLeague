@@ -6,7 +6,7 @@ $tree='';
 require_once($tree . 'includes/class/authentication.php');
 require_once($tree . 'includes/class/connection.php');
 $con=new Connection();
-$user= new Authentication();
+$user= new Authentication($con->connect());
 $user->conn=$con;
 
 
