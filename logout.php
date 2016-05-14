@@ -7,6 +7,6 @@
 
 	$con=new Connection();
 	$user= new Authentication();
-	$user->con=$con;
-	
+	$user->conn=$con;
+
 	$user->logout();
