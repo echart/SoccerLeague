@@ -49,7 +49,7 @@ class Login{
 			return false;
 		}
 	}
-	public function login():boolean{
+	public function login():bool{
 		$_SESSION['SL_session']=session_id();
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
