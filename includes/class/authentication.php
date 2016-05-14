@@ -40,7 +40,7 @@ class Login{
 			$data=pg_fetch_array($query);
 			$hash=$data['password'];
 			if(password_verify($this->password, $hash)){
-				$this->id_account=$dados['id_account'];
+				$this->id_account=$data['id_account'];
 				return true;
 			}else{
 				return false;
