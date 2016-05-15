@@ -12,13 +12,13 @@ header{
 	height: 5rem;
 	z-index: 2;
 	background-color: #5FAD56;
-	box-shadow: 0 0 2px 0 #333;
+	left: 250px;
 }
 header ul.submenu{
 	list-style: none;
 	display: block;
 	position: absolute;
-	left: 23rem;
+	left: 0rem;
 }
 header ul.submenu li{
 	float: left;
@@ -61,36 +61,28 @@ header ul.submenu li a:hover{
 	background-color: #393E41;
 	transition: 0.4s all;
 }
-header div.sl{
-	margin-top: -0.6rem;
-	padding: 1.3rem 2rem;
-	float: right;
-	color: #fff;
-	font-size: 14px;
+
+
+div.menu-sidebar div.logo{
+	width: 100%;
+	height: 5.2rem;
+	background: #333;
+	border-bottom: 1px solid #333;
 }
-header div.sl i{
-	font-style: normal;
-	font-size: 14px;
+div.menu-sidebar div.logo i{
+	position: relative;
+	left: 4.75rem;
+	top: 1.5rem;
+	width: 15rem;
+	height: 15rem;
 	display: block;
 	 -moz-box-sizing: border-box;
 	box-sizing: border-box;
-	width:15.6rem;
-	height:2.4rem;
-	float: left;
+	padding-left: 2.4rem;
+	margin-top: -0.2rem;
 	background: url(../img/sl_logos/logo.png) no-repeat;
-	background-size: 156px 24px;
+	background-size:15rem;
 }
-/*div.menu-sidebar div.logo{
-	position: absolute;
-	top: 2.2rem;
-	width: 19.5rem;
-	height: 3rem;
-	left: 5rem;
-	background: url('../img/sl_logos/logo.png') no-repeat;
-	background-size: 19.5rem 3rem;
-	z-index: 4;
-}*/
-
 div.menu-sidebar{
 	position: fixed;
 	width: 25rem;
@@ -226,6 +218,10 @@ div.menu-sidebar ul.menu a.logoff i{
 		transition: width 0.3s;
 		width: 6.5rem;
 	}
+	header{
+		transition: left 0.3s;
+		left:50px;
+	}
 }
 @media(max-width: 680px){
 	header{
@@ -268,6 +264,9 @@ div.menu-sidebar ul.menu a.logoff i{
 	}
 }
 @media(max-width: 400px){
+	header{
+		left: 0;
+	}
 	div.menu-sidebar{
 		transition: display 0.3s;
 		display: none;

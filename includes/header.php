@@ -1,10 +1,3 @@
-
-<?
-require_once('class/layout.menu.php');
-
-$submenu=new menu('club',0);
-
-?>
 <header>
 	<input type="checkbox" class="menu-mobile" id='menu-mobile'/>
 	<label class='menu-mobile' for='menu-mobile'><i></i></label>
@@ -13,6 +6,7 @@ $submenu=new menu('club',0);
 	</ul>
 </header>
 <div class='menu-sidebar'>
+	<div class='logo'><i></i></div>
 	<ul class='menu'>
 		<li><a class='home' href=''><i></i><span>Sede</span></a></li>
 		<li><a class='club border' href=""><i></i><span>Clube</span></a>
@@ -26,6 +20,6 @@ $submenu=new menu('club',0);
 		<li><a class='pm border' href=""><i></i><span>Mensagens</span><span class='qtd'>0</span></a></li>
 		<li><a class='pro' href=""><i></i><span>PRO</span><span class='qtd'>365 dias</span></a></li>
 		<li><a class='account border' href=""><i></i><span>Conta</span></a></li>
-		<li><a class='logoff border' href="<?=$tree.'logout.php'?>"><i></i><span>Sair</span></a></li>
+		<!-- <li><a class='logoff border' href="<?=$tree.'logout.php'?>"><i></i><span>Sair</span></a></li> -->
 	</ul>
 </div>

@@ -28,8 +28,12 @@ i{
 }
 div.content{
 	position: relative;
-	width: 100vw;
+	float: left;
+	width: 87.5vw;
 	height: 100vh;
+	left: 250px;
+	top:5rem;
+	padding: 1rem 3rem;
 }
 div.menu-sidebar::-webkit-scrollbar-track {
     background-color: #F4F4F4;
@@ -40,4 +44,22 @@ div.menu-sidebar::-webkit-scrollbar {
 }
 div.menu-sidebar::-webkit-scrollbar-thumb {
     background: #dad7d7;
+}
+
+
+
+@media(max-width: 900px){
+	div.content{
+		transition: left 0.3s;
+		left:50px;
+		width: 94.5vw;
+	}
+}
+@media(max-width: 400px){
+	div.content{
+		transition: left 0.3s;
+		left:0;
+		width: 100vw;
+		padding: 0;
+	}
 }
