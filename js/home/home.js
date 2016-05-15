@@ -202,30 +202,6 @@ function register(){
   });
 }
 
-
-var countriesData = [
-    {
-        text: "Brasil",
-        value: 1,
-        selected: false,
-        description: "0 usuários ativos",
-        imageSrc: "img/icons/flags/shiny/48/Brazil.png"
-    },
-    {
-        text: "Argentina",
-        value: 2,
-        selected: false,
-        description: "0 usuários ativos",
-        imageSrc: "img/icons/flags/shiny/48/Argentina.png"
-    },
-    {
-        text: "Estados Unidos",
-        value: 2,
-        selected: false,
-        description: "0 usuários ativos",
-        imageSrc: "img/icons/flags/shiny/48/United-States.png"
-    }
-];
 $('#country').ddslick({
     data: countriesData,
     width: 285,

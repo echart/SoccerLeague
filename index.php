@@ -103,6 +103,17 @@ if($user->verifyAuthentication()==true){
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
 	</footer>
+	<script type="text/javascript">
+		var countriesData = [
+	    {
+	        text: "Brasil",
+	        value: 1,
+	        selected: false,
+	        description: "0 usuários ativos",
+	        imageSrc: "img/icons/flags/shiny/48/Brazil.png"
+	    }
+	];
+	</script>
 	<script type="text/javascript" src='js/select.js'></script>
 	<script type="text/javascript" src='js/home/home.js'></script>
 </body>
