@@ -34,7 +34,8 @@ create table account(
 	language int not null,
 		CONSTRAINT account_language_fkey FOREIGN KEY (language) REFERENCES language(id_language),
 	slvip int,
-	timezone int
+	timezone int,
+	status varchar(1)
 );
 create table session(
 	id_session serial primary key,
@@ -54,7 +55,8 @@ create table club(
 	id_account int not null,
 		CONSTRAINT club_account_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
 	clubname varchar(25) not null,
-	createdate date default now()
+	createdate date default now(),
+	status varchar(25)
 );
 create table club_info(
 	id_club_info serial primary key,

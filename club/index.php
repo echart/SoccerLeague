@@ -5,7 +5,7 @@
 ?>
 	
 	<div class='content'>
-
+		dsadsdadas
 	</div>
 <?
 	require_once($tree.'includes/footer.php');
