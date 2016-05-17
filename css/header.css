@@ -66,8 +66,8 @@ header ul.submenu li a:hover{
 div.menu-sidebar div.logo{
 	width: 100%;
 	height: 5.2rem;
-	background: #333;
-	border-bottom: 1px solid #333;
+	/*background: #333;
+	border-bottom: 1px solid #333;*/
 }
 div.menu-sidebar div.logo i{
 	position: relative;
