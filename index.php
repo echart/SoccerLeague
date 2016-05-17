@@ -115,6 +115,6 @@ if($user->verifyAuthentication()==true){
 	];
 	</script>
 	<script type="text/javascript" src='js/select.js'></script>
-	<script type="text/javascript" src='js/home/home.js'></script>
+	<script type="text/javascript" src='js/home/home.min.js'></script>
 </body>
 </html>
