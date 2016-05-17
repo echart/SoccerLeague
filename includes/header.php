@@ -7,7 +7,7 @@
 	</ul>
 </header>
 <div class='menu-sidebar'>
-	<!-- <div class='logo'><i></i></div> -->
+	<div class='logo'><i></i></div>
 	<ul class='menu'>
 		<li><a class='home' href=''><i></i><span>Sede</span></a></li>
 		<li><a class='club border' href=""><i></i><span>Clube</span></a>
