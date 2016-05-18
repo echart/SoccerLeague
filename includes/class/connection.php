@@ -17,13 +17,8 @@ class Connection{
 	public function connect(){ /*open connection */
 		
 		try{
-			$c=pg_connect('host='.$this->host.' port='.$this->port.' dbname='.$this->database.' user='.$this->user.' password='.$this->password);
-			if(!$c){
-				throw new Exception("Erro ao conectar ao banco de dados", 1);
-			}else{
-				$this->con=$c;
-			}
-		}catch(Exception $e){
+			$this->con = new PDO('pgsql:dbname=sltest;host=localhost;user=postgres;password=#echart84015521');
+		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
 		return $this->con;
@@ -34,13 +29,6 @@ class Connection{
 	}
 
 	public function disconnect(){ /*close connection*/
-		try{
-			$x=pg_close($this->con);
-			if(!$x){
-				throw new Exception("Erro ao desconectar ao banco de dados", 1);
-			}
-		}catch(Exception $e){
-			echo $e->getMessage();
-		}
+		$this->con=null;
 	}
 }
