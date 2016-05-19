@@ -85,6 +85,6 @@ class CreateAccount{
 		$query->bindParam(3,$this->father);
 
 		$query->execute();
-		$this->id_account=$query->lastInsertedID();
+		$this->id_account=$query->lastInsertedId();
 	}
 }
