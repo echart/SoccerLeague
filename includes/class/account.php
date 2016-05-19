@@ -63,12 +63,12 @@ class CreateAccount{
 	}
 	public function isset():bool{
 
-		$query=Connection::connect()->prepare("SELECT id_account FROM account where email=:email");
-		$query->bindParam(':email',$this->email);
+		$query=Connection::connect()->prepare("SELECT id_account FROM account where email= ? ");
+		$query->bindParam(1,$this->email);
 		$query->execute();
 
-		$query2=Connection::connect()->query("SELECT id_club FROM club where clubname=:clubname");
-		$query2->bindParam(':clubname',$this->club);
+		$query2=Connection::connect()->query("SELECT id_club FROM club where clubname= ? ");
+		$query2->bindParam(1,$this->club);
 		$query2->execute();
 
 		if($query->rowCount()>0 OR $query2->rowCount()>0){
