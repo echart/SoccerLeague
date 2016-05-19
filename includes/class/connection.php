@@ -3,19 +3,8 @@
  * @author Willians Echart
  */
 class Connection{
-	public $database;
-	public $host;
-	public $port;
-	private $password;
-	private $user;
+	public $database='sltest';
 	public static $con;
-	public function __construct($h='localhost', $p='5432', $db='sltest', $u='postgres', $pass='#echart84015521'){
-		$this->host=$h;
-		$this->port=$p;
-		$this->database=$db;
-		$this->user=$u;
-		$this->password=$pass;
-	}
 
 	public static function connect(){ /*open connection */
 		
@@ -27,7 +16,7 @@ class Connection{
 		return Connection::$con;
 	}
 
-	public function getDatabase():string{
+	public static function getDatabase():string{
 		return $this->database;
 	}
 
