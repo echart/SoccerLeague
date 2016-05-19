@@ -20,11 +20,11 @@ class Connection{
 	public static function connect(){ /*open connection */
 		
 		try{
-			$this->con = new PDO('pgsql:dbname=sltest;host=localhost;user=postgres;password=#echart84015521');
+			Connection::$con = new PDO('pgsql:dbname=sltest;host=localhost;user=postgres;password=#echart84015521');
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
-		return $this->con;
+		return Connection::$con;
 	}
 
 	public function getDatabase():string{
