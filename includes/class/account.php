@@ -60,11 +60,11 @@ class CreateAccount{
 		$this->email=$e;
 		$this->password=password_hash($p, PASSWORD_BCRYPT, array('cost' => 10));
 		$this->father=$f;
-		$this->con=Connection::connect();
 	}
 	public function isset():bool{
-		$query=$this->con->query("SELECT id_account FROM account where email='".$this->email."'");
-		$query2= $this->con->query("SELECT id_club FROM club where clubname='".$this->club."'");
+
+		$query=Connection::connect()->query("SELECT id_account FROM account where email='".$this->email."'");
+		$query2=Connection::connect()->query("SELECT id_club FROM club where clubname='".$this->club."'");
 
 		if($query->fetchColumn()>0 OR $query2->fetchColumn()>0){
 			return true;
