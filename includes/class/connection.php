@@ -1,11 +1,14 @@
 <?
+/**
+ * @author Willians Echart
+ */
 class Connection{
 	public $database;
 	public $host;
 	public $port;
 	private $password;
 	private $user;
-	public $con;
+	public static $con;
 	public function __construct($h='localhost', $p='5432', $db='sltest', $u='postgres', $pass='#echart84015521'){
 		$this->host=$h;
 		$this->port=$p;
@@ -14,7 +17,7 @@ class Connection{
 		$this->password=$pass;
 	}
 
-	public function connect(){ /*open connection */
+	public static function connect(){ /*open connection */
 		
 		try{
 			$this->con = new PDO('pgsql:dbname=sltest;host=localhost;user=postgres;password=#echart84015521');
@@ -28,7 +31,7 @@ class Connection{
 		return $this->database;
 	}
 
-	public function disconnect(){ /*close connection*/
+	public static function disconnect(){ /*close connection*/
 		$this->con=null;
 	}
 }

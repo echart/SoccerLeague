@@ -54,26 +54,32 @@ class CreateAccount{
 	public $father;
 	public $id_account;
 	public $club;
-	public $connection;
 
-	public function __construct($c, $e,$p,$f='NULL'){
+	public function __construct($e,$p,$f='NULL'){
 		$this->email=$e;
 		$this->password=password_hash($p, PASSWORD_BCRYPT, array('cost' => 10));
 		$this->father=$f;
-		$this->connection=$c;
 	}
 	public function isset():bool{
-		$query=pg_query($this->connection, "SELECT id_account FROM account where email='".$this->email."'");
-		$query2=pg_query($this->connection, "SELECT id_club FROM club where clubname='".$this->club."'");
-		if(pg_num_rows($query)>0 OR pg_num_rows($query2)>0){
+		$query= Connection::$con->query("SELECT id_account FROM account where email='".$this->email."'")->fetchAll();
+		$query2= Connection::$con->query("SELECT id_club FROM club where clubname='".$this->club."'")->fetchAll();
+
+		if($query->fetchColumn()>0 OR $query2->fetchColumn()>0){
 			return true;
 		}else{
 			return false;
 		}
 	}
 	function create(){
-		$query=pg_query($this->connection, "INSERT INTO account(email, password, father, language, slvip) values ('".$this->email."', '".$this->password."', ".$this->father.", '1', '15') RETURNING id_account");
-		$results=pg_fetch_array($query);
-		$this->id_account=$results['id_account'];
+		$query= Connection::$con->prepare("INSERT INTO account(email, password, father, language, slvip) values ( ?, ?, ?, ?, ?) RETURNING id_account");
+
+		$query->bindParam(1,$this->email);
+		$query->bindParam(2,$this->password);
+		$query->bindParam(3,$this->father);
+		$query->bindParam(4,1)
+		$query->bindParam(5,15);
+
+		$query->execute();
+		$this->id_account=$query->lastInsertedID();
 	}
 }
