@@ -61,8 +61,8 @@ class CreateAccount{
 		$this->father=$f;
 	}
 	public function isset():bool{
-		$query= Connection::$con->query("SELECT id_account FROM account where email='".$this->email."'")->fetchAll();
-		$query2= Connection::$con->query("SELECT id_club FROM club where clubname='".$this->club."'")->fetchAll();
+		$query= Connection::$con->query("SELECT id_account FROM account where email='".$this->email."'");
+		$query2= Connection::$con->query("SELECT id_club FROM club where clubname='".$this->club."'");
 
 		if($query->fetchColumn()>0 OR $query2->fetchColumn()>0){
 			return true;
