@@ -78,13 +78,11 @@ class CreateAccount{
 		}
 	}
 	function create(){
-		$query= Connection::$con->prepare("INSERT INTO account(email, password, father, language, slvip) values ( ?, ?, ?, ?, ?) RETURNING id_account");
+		$query= Connection::$con->prepare("INSERT INTO account(email, password, father, language, slvip) values ( ?, ?, ?, 1, 15) RETURNING id_account");
 
 		$query->bindParam(1,$this->email);
 		$query->bindParam(2,$this->password);
 		$query->bindParam(3,$this->father);
-		$query->bindParam(4,1, PDO::PARAM_INT);
-		$query->bindParam(5,15, PDO::PARAM_INT);
 
 		$query->execute();
 		$this->id_account=$query->lastInsertedID();
