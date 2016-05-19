@@ -83,8 +83,8 @@ class CreateAccount{
 		$query->bindParam(1,$this->email);
 		$query->bindParam(2,$this->password);
 		$query->bindParam(3,$this->father);
-		$query->bindParam(4,'1');
-		$query->bindParam(5,'15');
+		$query->bindParam(4,1, PDO::PARAM_INT);
+		$query->bindParam(5,15, PDO::PARAM_INT);
 
 		$query->execute();
 		$this->id_account=$query->lastInsertedID();
