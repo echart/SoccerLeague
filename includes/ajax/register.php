@@ -31,13 +31,13 @@ try{
 
 try{
 	$con=new Connection();
-	$account=new CreateAccount($con->connect(), $email, $pass);
+	$account=new CreateAccount($email, $pass);
 
 	if($account->isset()>0){
 		$return=array('return'=>'email');
 	}else{
 			$account->create();
-			$club=new CreateClub($con->connect(),$account->id_account,$country, $clubname);
+			$club=new CreateClub($account->id_account,$country, $clubname);
 			$return=$club->create();
 	}
 }catch(Exception $e){

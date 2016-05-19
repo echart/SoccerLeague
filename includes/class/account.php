@@ -67,7 +67,7 @@ class CreateAccount{
 		$query->bindParam(1,$this->email);
 		$query->execute();
 
-		$query2=Connection::connect()->query("SELECT id_club FROM club where clubname= ? ");
+		$query2=Connection::connect()->prepare("SELECT id_club FROM club where clubname= ? ");
 		$query2->bindParam(1,$this->club);
 		$query2->execute();
 
