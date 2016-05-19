@@ -78,13 +78,13 @@ class CreateAccount{
 		}
 	}
 	function create(){
-		$query= Connection::$con->prepare("INSERT INTO account(email, password, father, language, slvip) values ( ?, ?, ?, 1, 15) RETURNING id_account");
+		$query= Connection::connect()->prepare("INSERT INTO account(email, password, father, language, slvip) values ( ?, ?, ?, 1, 15) RETURNING id_account");
 
 		$query->bindParam(1,$this->email);
 		$query->bindParam(2,$this->password);
 		$query->bindParam(3,$this->father);
 
 		$query->execute();
-		$this->id_account=Connection::$con->lastInsertedID();
+		$this->id_account=Connection::connect()->lastInsertedID();
 	}
 }
