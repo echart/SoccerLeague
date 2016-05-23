@@ -58,7 +58,7 @@ if($user->verifyAuthentication()==true){
 			<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
 		</div>
-		<div class='down'><a href='#description'><img src="img/login/down.png"></a></div>
+		<div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div>
 	</div>
     <div class='viewlogin ex'>
     	<span onclick='expandLogin()' class='close'></span>
@@ -111,7 +111,7 @@ if($user->verifyAuthentication()==true){
 	        value: 1,
 	        selected: false,
 	        description: "0 usuários ativos",
-	        imageSrc: "img/icons/flags/shiny/48/Brazil.png"
+	        imageSrc: "assets/img/icons/flags/shiny/48/Brazil.png"
 	    }
 	];
 	</script>
