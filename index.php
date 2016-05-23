@@ -20,28 +20,28 @@ if($user->verifyAuthentication()==true){
 	<meta charset='UTF-8'>
 	<!-- Title and Tags-->
 	<title>Soccer League - The Soccer Manager Game</title>
-	<link rel="icon" type="image/png" sizes="96x96" href="img/icon2.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/icon2.png">
 	<meta name="viewport" content="width=device-width"/>
 	<meta name="description" content="Soccer Management Game" />
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
  	<meta name="theme-color" content="‪#‎393E41">
 	<!--CSS-->
-	<link rel="stylesheet" type="text/css" href="css/loader.css">
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<link rel="stylesheet" type="text/css" href="css/login/header.css">
-	<link rel="stylesheet" type="text/css" href="css/login/footer.css">
-	<link rel="stylesheet" type="text/css" href="css/login/video.css">
-	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/loader.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/header.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/video.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 	<!--JS-->
-	<script src="js/jquery.js"></script>
-	<script src="js/loader.js"></script>
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/loader.js"></script>
 </head>
 <body>
 	<div id="loader"></div>
 
 	<header>
-		<div class='logo'><img src='img/sl_logos/logo.branco.png'></div>
+		<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>
 		<ul class='menu'>
 			<li><label onclick='expandLogin()' class='btn-login'>Login</label></li>
 		</ul>
@@ -49,8 +49,8 @@ if($user->verifyAuthentication()==true){
 	</header>
 	<div class='video'>
 		<video preload='none' loop="loop" muted>
-			<source src="video/splash_home3.mp4" type="video/mp4">
-			<img src="img/backgrounds/bg1.jpg">				
+			<source src="assets/video/splash_home3.mp4" type="video/mp4">
+			<img src="assets/img/backgrounds/bg1.jpg">				
 		</video>
 		<div class="pattern"></div>
 		<div class='cadastro'>
@@ -115,7 +115,7 @@ if($user->verifyAuthentication()==true){
 	    }
 	];
 	</script>
-	<script type="text/javascript" src='js/select.js'></script>
-	<script type="text/javascript" src='js/home/home.min.js'></script>
+	<script type="text/javascript" src='assets/js/select.js'></script>
+	<script type="text/javascript" src='assets/js/home/home.min.js'></script>
 </body>
 </html>
