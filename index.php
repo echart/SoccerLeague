@@ -25,6 +25,7 @@ if($user->verifyAuthentication()==true){
 	<meta name="description" content="Soccer Management Game" />
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
+ 	<meta name="theme-color" content="‪#‎393E41">
 	<!--CSS-->
 	<link rel="stylesheet" type="text/css" href="css/loader.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
