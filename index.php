@@ -1,14 +1,10 @@
 <?
 session_start();
+require_once('includes/functions/__autoload.php');
 
-$tree='';
-
-require_once($tree . 'includes/class/authentication.php');
-require_once($tree . 'includes/class/connection.php');
 $con=new Connection();
 $user= new Authentication($con->connect());
 $user->conn=$con;
-
 
 if($user->verifyAuthentication()==true){
 	header('location: /club/');
