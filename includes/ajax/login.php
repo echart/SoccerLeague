@@ -1,16 +1,16 @@
 <?
 header('Content-type: application/JSON');
 
-include('../class/connection.php');
-include('../class/account.php');
-include('../class/authentication.php');
-include('../class/club.php');
+include('../class/Connection.php');
+include('../class/Login.php');
+include('../class/Authentication.php');
+include('../class/Club.php');
 
 $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
 
 $con=new Connection();
-$user=new Login($con->connect(), $email, $pass);
+$user=new Login($email, $pass);
 
 if($user->verifyLogin()){
 	$user->login();
@@ -21,5 +21,5 @@ if($user->verifyLogin()){
 
 echo json_encode($return);
 
-$con->disconnect();
+Connection::disconnect();
 ?>

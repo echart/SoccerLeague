@@ -22,11 +22,9 @@ class CreateClub{
 	protected $account_id;
 	protected $clubname;
 	public $country;
-	public $con;
 	public $club_id;
 	
-	public function __construct($conn,$id,$c, $cl){
-		$this->con=$conn;
+	public function __construct($id,$c, $cl){
 		$this->id_account=$id;
 		$this->country=$c;
 		$this->clubname=$cl;

@@ -7,7 +7,7 @@ $user= new Authentication($con->connect());
 $user->conn=$con;
 
 if($user->verifyAuthentication()==true){
-	header('location: /club/');
+	header('location: /soccerleague/club/');
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +67,6 @@ if($user->verifyAuthentication()==true){
 	    	<h5 class='return'></h5>
 	    </div>
     </div>
-
     <div class='viewsign ex'>
     	<span onclick='expandSignin()' class='close'></span>
     	<div>

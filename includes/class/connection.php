@@ -1,13 +1,11 @@
 <?
 /** 
  * Connection Class
- * Connection::connect();
+ * you can use it like this Connection::connect();
  */
 class Connection{
 	public $database='sltest';
 	public static $con;
-
-	
 	/**
 	 * @return Connection
 	 */
@@ -22,10 +20,10 @@ class Connection{
 	}
 
 	public static function getDatabase():string{
-		return $this->database;
+		return Connection::$database;
 	}
 
 	public static function disconnect(){ /*close connection*/
-		$this->con=null;
+		Connection::$con=null;
 	}
 }

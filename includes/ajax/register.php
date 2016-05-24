@@ -1,9 +1,9 @@
 <?
 header('Content-type: application/JSON');
 
-include('../class/connection.php');
-include('../class/account.php');
-include('../class/club.php');
+include('../class/Connection.php');
+include('../class/CreateAccount.php');
+include('../class/Club.php');
 
 $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
@@ -32,8 +32,8 @@ try{
 try{
 	$con=new Connection();
 	$account=new CreateAccount($email, $pass);
-
-	if($account->isset()>0){
+	$account->club=$clubname;
+	if($account->isset()){
 		$return=array('return'=>'email');
 	}else{
 			$account->create();
@@ -42,6 +42,7 @@ try{
 	}
 }catch(Exception $e){
 	$return=array('return'=>$e->getMessage());
+}finally{
+	echo json_encode($return);
+	$con->disconnect();	
 }
-echo json_encode($return);
-$con->disconnect();
