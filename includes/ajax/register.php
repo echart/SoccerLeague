@@ -30,7 +30,7 @@ try{
 }
 
 try{
-	$con=new Connection();
+	$con=Connection::getInstance();
 	$account=new CreateAccount($email, $pass);
 	$account->club=$clubname;
 	if($account->isset()){

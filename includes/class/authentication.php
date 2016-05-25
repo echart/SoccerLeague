@@ -5,12 +5,13 @@ class Authentication{
 	public $id_account;
 	public $password;
 	public $conn;
-	function __construct($c){
-		$this->conn=$c;
+
+	function __construct(){
+		$this->connection=Connection::getInstance()->connect();
 	}
 	public function verifyAuthentication():bool{
 			$session=$_SESSION['SL_session'] ?? 'null';
-			$query=Connection::connect()->prepare("SELECT valid FROM session WHERE session=:session and valid='true'");
+			$query=$this->connection->prepare("SELECT valid FROM session WHERE session=:session and valid='true'");
 			$query->bindParam(':session',$session);
 			$query->execute();
 

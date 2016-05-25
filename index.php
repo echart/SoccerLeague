@@ -2,10 +2,7 @@
 session_start();
 require_once('includes/functions/__autoload.php');
 
-$con=new Connection();
-$user= new Authentication($con->connect());
-$user->conn=$con;
-
+$user= new Authentication();
 if($user->verifyAuthentication()==true){
 	header('location: /soccerleague/club/');
 }
