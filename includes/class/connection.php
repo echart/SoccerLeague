@@ -1,41 +1,51 @@
 <?
 /** 
- * Connection Class
- * you can use it like this Connection::getInstance()->connect();
+ * singleton Connection class
+ * you can use it like this
+ * $con=Connection::getInstance();
+ * $query=$con->connect(); and after this, you can use pdo methods like
+ * $query->prepare();
  */
 class Connection {
-	private $_connection;
-	private static $_instance; //The single instance
-
-	private $_host = "45.55.144.56";
-	private $_username = "postgres";
-	private $_password = "#echart84015521";
-	private $_database = "sltest";
-	/*
-	Get an instance of the Database
-	@return Instance
-	*/
+	private $connection;
+	private static $instance;
+	private $_config;
+	//method to instance or get an instance
 	public static function getInstance() {
-		if(!self::$_instance) { // If no instance then make one
-			self::$_instance = new self();
+		//if this shit does not have an instance, make one
+		if(!self::$instance) {
+			self::$instance = new self();
 		}
-		return self::$_instance;
+		//return instance
+		return self::$instance;
 	}
-	// Constructor
+	//start connection
 	private function __construct() {
 		try{
-			$this->_connection = new PDO("pgsql:dbname=".$this->_database.";host=".$this->_host.";user=".$this->_username.";password=".$this->_password);
+			//load the config file with the database,host,password and user data.
+			$this->_config=parse_ini_file('this->_config.ini');
+
+			//make the connection
+			$this->connection = new PDO("pgsql:dbname=".$this->_config['db'].";host=".$this->_config['host'].";user=".$this->_config['user'].";password=".$this->_config['pass']);
 		}catch(PDOException $e){
+			//if pdo excpetion DIE and show the error
 			die($e->getMessage());
+		}catch(Exception $e){
+			// if gets an general exception, just show and continues
+			echo $e->getMessage();
 		}
 	}
-	// Magic method clone is empty to prevent duplication of connection
-	private function __clone() { }
-	// Get mysqli connection
+	//avoid duplicate object
+	private function __clone() {}
+	//return the connection
 	public function connect() {
-		return $this->_connection;
+		return $this->connection;
 	}
+	//disconnect and  unst $instance
 	public function disconnect(){
-		$this->_connection=null;
+		//make the connection null
+		$this->connection=null;
+		//unset instance, it's necessary because if doesn't, you can't connect anymore, because you have an instance but not the connection
+		unset($instance);
 	}
 }

@@ -1,6 +1,7 @@
 <?
 session_start();
 require_once('includes/functions/__autoload.php');
+$con=Connection::getInstance();
 
 $user= new Authentication();
 if($user->verifyAuthentication()==true){
