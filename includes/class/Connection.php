@@ -23,7 +23,7 @@ class Connection {
 	private function __construct() {
 		try{
 			//load the config file with the database,host,password and user data.
-			$this->_config=parse_ini_file('this->_config.ini');
+			$this->_config=parse_ini_file('config.ini');
 
 			//make the connection
 			$this->connection = new PDO("pgsql:dbname=".$this->_config['db'].";host=".$this->_config['host'].";user=".$this->_config['user'].";password=".$this->_config['pass']);
