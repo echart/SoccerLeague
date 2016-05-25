@@ -9,7 +9,7 @@ include('../class/Club.php');
 $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
 
-$con=new Connection();
+$con=Connection::getInstance();
 $user=new Login($email, $pass);
 
 if($user->verifyLogin()){
@@ -21,5 +21,5 @@ if($user->verifyLogin()){
 
 echo json_encode($return);
 
-Connection::disconnect();
+$con->disconnect();
 ?>

@@ -19,12 +19,12 @@ class CreateAccount{
 	}
 	public function isset():bool{
 		try{
-			$query=Connection::connect()->prepare("SELECT id_account FROM account where email= ? ") or die();
-			$query->bindParam(1,$this->email);
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_account FROM account where email=:email ") or die();
+			$query->bindParam(':email',$this->email);
 			$query->execute();
 
-			$query2=Connection::connect()->prepare("SELECT id_club FROM club where clubname= ? ") or die();
-			$query2->bindParam(1,$this->club);
+			$query2=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where clubname= :clubname ") or die();
+			$query2->bindParam(':clubname',$this->club);
 			$query2->execute();
 
 			if($query->rowCount()>0 OR $query2->rowCount()>0){
@@ -38,7 +38,7 @@ class CreateAccount{
 	}
 	function create(){
 		try{
-			$query= Connection::connect()->prepare("INSERT INTO account(email, password, father, language, slvip) values ( :email, :password, :father, '1', '15')");
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, father, language, slvip) values ( :email, :password, :father, '1', '15')");
 
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
@@ -46,7 +46,7 @@ class CreateAccount{
 
 			$query->execute();
 
-			$this->id_account=Connection::connect()->lastInsertID();
+			$this->id_account=Connection::getInstance()->connect()->lastInsertID();
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
