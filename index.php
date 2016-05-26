@@ -43,7 +43,7 @@ if($user->verifyAuthentication()==true){
 		</video>
 		<div class="pattern"></div>
 		<div class='cadastro'>
-			<h1>Nós amamos futebol! <i class="football"></i><i class="heart"></i></h1>
+			<h1>Nós amamos futebol! <i class="football"></i></h1>
 			<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
 		</div>
@@ -80,6 +80,7 @@ if($user->verifyAuthentication()==true){
 			Com isso surgiu a ideia do Soccer League, que tem como principal objetivo ser um game de gerenciamento de um clube de futebol e todos seus aspectos, como estádios, categorias de base, transferências, receitas, despesas, contratos de patrocínio e etc.
 			O usuário poderá criar o seu clube, que o mesmo já virá com jogadores vinculados a ele. Assim como também o clube já estará vinculado a sua competição nacional (liga), que é dividida por divisões e grupos. Além da liga, o clube disputará a Copa Nacional. 
 			Com isso, o usuário deve escalar seu time e disputar partidas que serão geradas através de uma engine, criada a partir do zero, disputando campeonatos contra seus amigos e outros usuários na luta pelo título de campeão.
+			Você pode baixar o relatório completo do projeto clicando <a target='_blank' href='assets/downloads/soccerleague.pdf'>aqui</a>.
 		</p>
 	</div>
 	<div class='user'>
