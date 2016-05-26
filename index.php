@@ -5,7 +5,7 @@ $con=Connection::getInstance();
 
 $user= new Authentication();
 if($user->verifyAuthentication()==true){
-	header('location: /soccerleague/club/');
+	header('location: /club/');
 }
 ?>
 <!DOCTYPE html>
