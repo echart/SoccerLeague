@@ -19,7 +19,7 @@ class Club{
 }
 
 class CreateClub{
-	protected $account_id;
+	protected $id_account;
 	protected $clubname;
 	public $country;
 	public $club_id;
@@ -37,7 +37,6 @@ class CreateClub{
 			$query->bindParam(':id_account', $this->id_account);
 			$query->bindParam(':clubname', $this->clubname);
 			$query->execute();
-			
 			$this->club_id=Connection::getInstance()->connect()->lastInsertID();
 
 			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club_info (id_club) values (:id_club)");

@@ -21,19 +21,14 @@ if($user->verifyAuthentication()==true){
 	<meta name="author" content="SoccerLeague" />
  	<meta name="theme-color" content="‪#‎393E41">
 	<!--CSS-->
-	<link rel="stylesheet" type="text/css" href="assets/css/loader.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/loader.css"> -->
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/header.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/video.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
-	<!--JS-->
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/loader.js"></script>
 </head>
 <body>
-	<div id="loader"></div>
-
 	<header>
 		<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>
 		<ul class='menu'>
@@ -108,6 +103,7 @@ if($user->verifyAuthentication()==true){
 	    }
 	];
 	</script>
+	<script src="assets/js/jquery.js"></script>
 	<script type="text/javascript" src='assets/js/select.js'></script>
 	<script type="text/javascript" src='assets/js/home/home.min.js'></script>
 </body>

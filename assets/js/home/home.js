@@ -111,11 +111,11 @@ $(function() {
   });
 
 $(document).ready(function(){
-        $("#loader").fakeLoader({
-            timeToHide:1200,
-            bgColor:"#B44230",
-            spinner:"spinner7",
-        });
+        // $("#loader").fakeLoader({
+        //     timeToHide:1200,
+        //     bgColor:"#B44230",
+        //     spinner:"spinner7",
+        // });
         var video = document.querySelector("video");
         video.addEventListener("ended", function(){
     video.play();
@@ -148,7 +148,7 @@ function login(){
       success: function(data){
         $('.viewlogin button').html('Realizar login');
         if(data.return=='denied'){
-        $('.viewlogin .return').html('<img src="../img/icons/sheriff.png"><br><br>Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
+        $('.viewlogin .return').html('<br>Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
         }else{
           $('.viewlogin .return').html('Sucesso, redirecionando...');
           setTimeout(function(){

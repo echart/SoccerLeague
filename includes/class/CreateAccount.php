@@ -12,7 +12,7 @@ class CreateAccount{
 	public $id_account;
 	public $club;
 
-	public function __construct($e,$p,$f=''){
+	public function __construct($e,$p,$f=null){
 		$this->email=$e;
 		$this->password=password_hash($p, PASSWORD_BCRYPT, array('cost' => 10));
 		$this->father=$f;
@@ -38,15 +38,13 @@ class CreateAccount{
 	}
 	function create(){
 		try{
-			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, father, language, slvip) values ( :email, :password, :father, '1', '15')");
-
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, father, language, slvip) values (:email, :password, :father, '1', '15')");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
 			$query->bindParam(':father',$this->father);
 
 			$query->execute();
-
-			$this->id_account=Connection::getInstance()->connect()->lastInsertID();
+			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
