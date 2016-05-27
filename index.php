@@ -11,17 +11,16 @@ if($user->verifyAuthentication()==true){
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='UTF-8'>
-	<!-- Title and Tags-->
+	<!-- Title, tags and meta-->
 	<title>Soccer League - The Soccer Manager Game</title>
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/icon2.png">
+	<meta charset='UTF-8'>
 	<meta name="viewport" content="width=device-width"/>
 	<meta name="description" content="Soccer Management Game" />
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
  	<meta name="theme-color" content="‪#‎393E41">
-	<!--CSS-->
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/loader.css"> -->
+ 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/header.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.css">
@@ -93,6 +92,8 @@ if($user->verifyAuthentication()==true){
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
 	</footer>
+
+	<!-- JS -->
 	<script type="text/javascript">
 		var countriesData = [
 	    {
@@ -104,8 +105,8 @@ if($user->verifyAuthentication()==true){
 	    }
 	];
 	</script>
-	<script src="assets/js/jquery.js"></script>
-	<script type="text/javascript" src='assets/js/select.js'></script>
-	<script type="text/javascript" src='assets/js/home/home.min.js'></script>
+	<script async src="assets/js/jquery.js"></script>
+	<script async type="text/javascript" src='assets/js/select.js'></script>
+	<script async type="text/javascript" src='assets/js/home/home.min.js'></script>
 </body>
 </html>

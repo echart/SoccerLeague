@@ -1,18 +1,19 @@
 <?php
 
 class Login{
-	public $login;
+	private $login;
 	public $id_account;
-	public $password;
-
+	private $password;
+	private $con;
 	function __construct($e,$p){
 		$this->login=$e;
 		$this->password=$p;
+		$this->con=Connection::getInstance()->connect();
 	}
 
 	public function verifyLogin():bool{
 		
-		$query=Connection::getInstance()->connect()->prepare("SELECT password, id_account FROM account where email=:email");
+		$query=$this->con->prepare("SELECT password, id_account FROM account where email=:email");
 		$query->bindParam(':email',$this->login);
 
 		$query->execute();
@@ -42,7 +43,7 @@ class Login{
 		$_SESSION['SL_account']=$this->id_account;
 
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO session(id_account,session,valid) values (:id_account, '".session_id()."','true')");
+			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid) values (:id_account, '".session_id()."','true')");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();
 		}catch(PDOException $e){
