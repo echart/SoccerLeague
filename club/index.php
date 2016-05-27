@@ -1,8 +1,9 @@
 <?
 	$tree='../';
 
+	require_once($tree . 'includes/class/Menu.php');
+
 	require_once($tree.'includes/head.php');
-	require_once($tree.'includes/class/layout.menu.php');
 
 	$submenu=new menu('club',0);
 

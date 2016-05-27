@@ -4,7 +4,7 @@
 	require_once($tree . 'includes/class/authentication.php');
 	require_once($tree . 'includes/class/connection.php');
 
-	$con=new Connection();
+	$con=Connection::getInstance();
 	$user= new Authentication($con->connect());
 	$con->connect();
 
@@ -24,13 +24,13 @@
 	<meta name="description" content="Soccer Management Game" />
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
-	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/loader.css">
-	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/styles.css">
-	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/header.css">
-	<link rel="stylesheet" type="text/css" href="<?=$tree?>css/fonts.css">
-	<script src="<?=$tree?>js/jquery.js"></script>
-	<script src="<?=$tree?>js/loader.js"></script>
-	<script type="text/javascript" src='<?=$tree?>js/login/menu.js'></script>
+	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/loader.css">
+	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/header.css">
+	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/fonts.css">
+	<script src="<?=$tree?>assets/s/jquery.js"></script>
+	<script src="<?=$tree?>assets/js/loader.js"></script>
+	<script type="text/javascript" src='<?=$tree?>assets/js/login/menu.js'></script>
 
 </head>
 <body>
