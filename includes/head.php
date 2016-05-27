@@ -28,7 +28,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/fonts.css">
-	<script src="<?=$tree?>assets/s/jquery.js"></script>
+	<script src="<?=$tree?>assets/js/jquery.js"></script>
 	<script src="<?=$tree?>assets/js/loader.js"></script>
 	<script type="text/javascript" src='<?=$tree?>assets/js/login/menu.js'></script>
 

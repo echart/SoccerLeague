@@ -1,12 +1,17 @@
 <?
 
 class Authentication{
-	public $login;
+	private $login;
 	public $id_account;
-	public $password;
+	private $password;
+	private $con;
+
+	public function __construct(){
+		$this->con=Connection::getInstance()->connect();
+	}
 	public function verifyAuthentication():bool{
 			$session=$_SESSION['SL_session'] ?? 'null';
-			$query=Connection::getInstance()->connect()->prepare("SELECT valid FROM session WHERE session=:session and valid='true'");
+			$query=$this->con->prepare("SELECT valid FROM session WHERE session=:session and valid='true'");
 			$query->bindParam(':session',$session);
 			$query->execute();
 
@@ -19,7 +24,7 @@ class Authentication{
 	}
 	public function logout(){
 		// remove valid of the session table
-		$query=Connection::getInstance()->connect()->prepare("UPDATE session SET valid='FALSE' where session=:session and id_account=:id_account");
+		$query=$this->con->prepare("UPDATE session SET valid='FALSE' where session=:session and id_account=:id_account");
 
 		$query->bindParam(':session',session_id());
 		$query->bindParam(':id_account',$_SESSION['SL_account']);
