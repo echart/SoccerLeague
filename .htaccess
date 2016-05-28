@@ -1,8 +1,9 @@
 <IfModule mod_rewrite.c>
- 	
 	RewriteEngine On
-RewriteRule ^core\.php$ / [R=301,L]
-</IfModule>
+	RewriteRule ^index\.php$ / [R=301,L]
+	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
+	RewriteRule ^([a-z0-9-]+)/?$ core.php?q=$1 [NC]
+ </IfModule>
 
 ErrorDocument 404 /erro/404.html
 
