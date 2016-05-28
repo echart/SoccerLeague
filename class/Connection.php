@@ -29,7 +29,7 @@ class Connection {
 			$this->connection = new PDO("pgsql:dbname=".$this->_config['db'].";host=".$this->_config['host'].";user=".$this->_config['user'].";password=".$this->_config['pass']);
 		}catch(PDOException $e){
 			//if pdo excpetion DIE and show the error
-			die($e->getMessage());
+			die('Houve um erro ao se conectar com o banco de dados<br>' . $e->getMessage());
 		}catch(Exception $e){
 			// if gets an general exception, just show and continues
 			echo $e->getMessage();

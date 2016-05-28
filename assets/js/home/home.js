@@ -137,7 +137,7 @@ function expandSignin(){
 }
 function login(){
   $.ajax({
-      url: 'includes/ajax/login.php',
+      url: 'controllers/_login.php',
       method: 'POST',
       dataType: 'JSON',
       data: {login: $("input[name='userlogin']").val(), password:$("input[name='userpass']").val()},
@@ -165,7 +165,7 @@ function login(){
 }
 function register(){
   $.ajax({
-      url: 'includes/ajax/register.php',
+      url: 'controllers/_register.php',
       method: 'POST',
       dataType: 'json',
       data: {login: $("input[name='userlogin1']").val(), password:$("input[name='userpass1']").val(), rpassword:$("input[name='reuserpass1']").val(), clubname:$("input[name='clubname']").val(), country: $('#country').data('ddslick').selectedData.value},
