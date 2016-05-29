@@ -5,7 +5,7 @@ $con=Connection::getInstance();
 
 $user= new Authentication();
 if($user->verifyAuthentication()==true){
-	header('location: core.php');
+	header('location: /club/');
 }
 ?>
 <!DOCTYPE html>
@@ -26,9 +26,6 @@ if($user->verifyAuthentication()==true){
 	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/video.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
-
-	<script async src="assets/js/jquery.js"></script>
-
 </head>
 <body>
 	<header>
@@ -108,6 +105,7 @@ if($user->verifyAuthentication()==true){
 	    }
 	];
 	</script>
+	<script src="assets/js/jquery.js"></script>
 	<script type="text/javascript" src='assets/js/select.js'></script>
 	<script type="text/javascript" src='assets/js/home/home.min.js'></script>
 </body>

@@ -39,4 +39,6 @@ class Authentication{
 		//move uer back to home page
 		header('location: http://' . $_SERVER['SERVER_NAME']);
 	}
+
+	public static function getSessionData(){}
 }

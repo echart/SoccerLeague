@@ -1,18 +1,3 @@
-<?php
-	session_start();
-
-	require_once($tree . 'includes/class/authentication.php');
-	require_once($tree . 'includes/class/connection.php');
-
-	$con=Connection::getInstance();
-	$user= new Authentication($con->connect());
-	$con->connect();
-
-	if($user->verifyAuthentication()==false){
-		header('location: http://' .  $_SERVER['SERVER_NAME']);
-	}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
