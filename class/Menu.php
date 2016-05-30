@@ -9,9 +9,9 @@ class menu{
 				1=>array('href'=>'index.php','text'=>'Feed')
 		),
 		'club'=>array(
-				0=>array('href'=>'index.php','text'=>'Clube'), 
-				1=>array('href'=>'players.php','text'=>'Visão Geral'),
-				2=>array('href'=>'matches.php','text'=>'Partidas'),
+				0=>array('href'=>'/club/','text'=>'Clube'), 
+				1=>array('href'=>'/club/12/overview/','text'=>'Visão Geral'),
+				2=>array('href'=>'club/12/matches','text'=>'Partidas'),
 				3=>array('href'=>'statistics.php','text'=>'Estatísticas'),
 				4=>array('href'=>'history.php','text'=>'Histórico'),
 				5=>array('href'=>'stadium.php','text'=>'Estádio')

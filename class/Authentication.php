@@ -10,13 +10,13 @@ class Authentication{
 		$this->con=Connection::getInstance()->connect();
 	}
 	public function verifyAuthentication():bool{
-			$session=$_SESSION['SL_session'] ?? 'null';
-			$query=$this->con->prepare("SELECT valid FROM session WHERE session=:session and valid='true'");
-			$query->bindParam(':session',$session);
-			$query->execute();
+		$session=$_SESSION['SL_session'] ?? 'null';
+		$query=$this->con->prepare("SELECT valid FROM session WHERE session=:session and valid='true'");
+		$query->bindParam(':session',$session);
+		$query->execute();
 
-			if($query->rowCount()>0) return true;
-			else return false;
+		if($query->rowCount()>0) return true;
+		else return false;
 	}
 
 	public function getAccountId():int{
@@ -36,7 +36,7 @@ class Authentication{
 
 		//destroy session data
 		session_destroy();
-		//move uer back to home page
+		//move user back to home page
 		header('location: http://' . $_SERVER['SERVER_NAME']);
 	}
 
