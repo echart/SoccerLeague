@@ -41,4 +41,8 @@ class Authentication{
 	}
 
 	public static function getSessionData(){}
+
+	public static function homeRedirect(){
+		header('location: http://' .  $_SERVER['SERVER_NAME']); //if not, go to frontpage
+	}
 }

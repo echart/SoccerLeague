@@ -6,8 +6,8 @@
 		$con=Connection::getInstance();
 		$user=new Authentication();
 
-		if($user->verifyAuthentication()==false){ //before all, verify if user have needed authentication
-			header('location: http://' .  $_SERVER['SERVER_NAME']); //if not, go to frontpage
+		if($user->verifyAuthentication()===false){ //before all, verify if user have needed authentication
+			Authentication::homeRedirect();
 		}
 
 		$request = $_GET ?? array('request'=>'home');
