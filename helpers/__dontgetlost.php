@@ -17,7 +17,7 @@
 	*/
 	function __rootpath($script):string{
 		//get the current path annd count the '/' repeat
-		$i=substr_count(__dontGetLost($script), '/')-1;
+		$i=substr_count(__dontGetLost($script), '/');
 		// make the the way to the root based on the result of i
 		$__url='';
 		while($i>0){

@@ -1,5 +1,6 @@
 <?
-
+include('ContentView.php');
+include('helpers/__dontgetlost.php');
 class Handler{
 	public $request;
 	public $requestURL;
@@ -14,8 +15,18 @@ class Handler{
 		require_once('controllers/'.$this->requestURL.'.php');
 	}
 	public function loadView(){
-		//load the view
-		require_once('views/'.$this->requestURL.'.php');
+		$view = new ContentView($this->requestURL);
+		$data['tree']=__rootpath($this->requestURL);
+
+		$view->setContentHead($data);
+		$view->loadHead();
+
+		$view->setContentHeader($data);
+		$view->loadHeader();
+
+		$view->setContentView($data);
+		$view->loadView();
+
+		$view->loadFooter();
 	}
 }
-

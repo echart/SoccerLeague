@@ -4,7 +4,7 @@ require_once('helpers/__autoload.php');
 $con=Connection::getInstance();
 
 $user= new Authentication();
-if($user->verifyAuthentication()==true){
+if($user->verifyAuthentication()===true){
 	header('location: /club/');
 }
 ?>

@@ -11,11 +11,11 @@
 		}
 
 		$request = $_GET ?? array('request'=>'home');
-
 		$handler=new Handler();
 		$handler->requestURL($request);
 
 		$handler->loadController();
+		
 		$handler->loadView();
 		
 	}catch(Exception $e){
