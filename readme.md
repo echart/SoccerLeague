@@ -7,7 +7,7 @@ soccerleague is idea of a soccer management game for web, with match engine base
 More, you can create your team, manager your squad, tactics, etc... and play matches with your friends and other managers, trying get a trophy.
 
 ## About development
-I are using HTML5, Canvas, CSS3, JS(jquery too), and PHP 7.
+I am using HTML5, Canvas, CSS3, JS(jquery too), and PHP 7.
 This project looks a way to learning too. I'm learning PHP7 in the moment, and i will try put some concepts here.
 
 ##About MatchEngine
