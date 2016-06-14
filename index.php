@@ -114,8 +114,7 @@ if($user->verifyAuthentication()===true){
 	    }
 	];
 	</script>
-	<script>
-	document.write('<script src=' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>	
+	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>	
 	<script type="text/javascript" src='assets/js/select.js'></script>
 	<script type="text/javascript" src='assets/js/home/home.min.js'></script>
 </body>
