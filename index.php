@@ -59,7 +59,7 @@ if($user->verifyAuthentication()===true){
 		    	<form>
 			    	<input type='text' name='userlogin' placeholder='Email'>
 			    	<input type='password' name='userpass' placeholder='Senha'>
-			    	<button onclick="login()">Realizar login</button><br>
+			    	<button type='button' onclick="login()">Realizar login</button><br>
 			    	<span class='forget'><a href=''>Esqueci minha senha</a></span>
 		    	</form>
 		    	<h5 class='return'></h5>
@@ -75,7 +75,7 @@ if($user->verifyAuthentication()===true){
 			    	<input type='password' name='userpass1' placeholder='Senha'>
 			    	<input type='password' name='reuserpass1' placeholder='Digite novamente a Senha'>
 			    	<select id='country'></select>
-			    	<button onclick='register()'>Criar clube</button>
+			    	<button type='button' onclick='register()'>Criar clube</button>
 			    </form>
 		    	<h5 class='return'></h5>
 		    </div>
