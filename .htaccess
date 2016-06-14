@@ -26,5 +26,5 @@ ErrorDocument 404 /error/404/
 	ExpiresByType text/x-javascript "access 1 month"
 	ExpiresByType application/x-shockwave-flash "access 1 month"
 	ExpiresByType image/x-icon "access 1 year"
-	ExpiresDefault "access 2 days"
+	ExpiresDefault "access 20 days"
 </IfModule>

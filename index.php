@@ -21,12 +21,6 @@ if($user->verifyAuthentication()===true){
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
  	<meta name="theme-color" content="‪#‎393E41">
- 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/css/login.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/header.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/video.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 </head>
 <body>
 	<header>
@@ -101,7 +95,12 @@ if($user->verifyAuthentication()===true){
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
 	</footer>
-
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/login.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/header.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/video.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 	<!-- JS -->
 	<script type="text/javascript">
 		var countriesData = [
