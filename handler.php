@@ -6,7 +6,7 @@
 		$con=Connection::getInstance();
 		$user=new Authentication();
 
-		if($user->verifyAuthentication()==false){ //before all, verify if user have needed authentication
+		if($user->verifyAuthentication()===false){ //before all, verify if user have needed authentication
 			Authentication::homeRedirect();
 		}
 
