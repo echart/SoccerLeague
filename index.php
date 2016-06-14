@@ -22,10 +22,10 @@ if($user->verifyAuthentication()===true){
 	<meta name="author" content="SoccerLeague" />
  	<meta name="theme-color" content="‪#‎393E41">
  	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/header.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/video.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/header.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login/video.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 </head>
 <body>
