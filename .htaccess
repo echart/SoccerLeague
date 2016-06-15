@@ -6,10 +6,10 @@
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 	RewriteRule ^([a-z0-09-]+)/$ handler.php?request=$1 [NC,L]
 	RewriteRule ^([a-z0-09-]+)$ handler.php?request=$1 [NC,L]
-	RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=$1&id=$2
-	RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)$ handler.php?request=$1&id=$2
-	RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
-	RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
+	RewriteRule ^([a-z0-9-]+)/([0-9-]+)/$ handler.php?request=$1&id=$2
+	RewriteRule ^([a-z0-9-]+)/([0-9-]+)$ handler.php?request=$1&id=$2
+	RewriteRule ^([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
+	RewriteRule ^([a-z0-9-]+)/([0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
 
  </IfModule>
 
