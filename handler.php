@@ -15,7 +15,6 @@
 		$handler->requestURL($request);
 
 		$handler->loadController();
-		
 		$handler->loadView();
 		
 	}catch(Exception $e){
