@@ -90,8 +90,9 @@ create table club_visits(
 	when date
 );
 
-
-
+create table player_position(){
+	
+}
 create table players(
 	id_player serial primary key,
 	id_player_club int not null,
@@ -104,6 +105,12 @@ create table players(
 	height numeric(4,2) not null,
 	weight numeric(4,2) not null
 );
+create table players_gk_attr(){
+	id_player_gk_attr serial primary key,
+	id_player int not null,
+		CONSTRAINT playerattr_gk_club_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+	rec numeric(4,3) not null
+}
 create table players_attr(
 	id_player_attr serial primary key,
 	id_player int not null,
