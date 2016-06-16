@@ -23,8 +23,6 @@ create table injury(
 );
 
 
-
-
 create table account(
 	id_account SERIAL PRIMARY KEY,
 	email varchar(100) not null,
@@ -90,34 +88,31 @@ create table club_visits(
 	when date
 );
 
-create table player_position(){
-	
-}
+create table club_finances();
+create table club_stadium();
+create table club_facilities();
+
+
+create table players_position();
 create table players(
 	id_player serial primary key,
 	id_player_club int not null,
 		CONSTRAINT player_club_fkey FOREIGN KEY(id_player_club) REFERENCES club(id_club),
-	-- id_position int not null,
-	-- 	CONSTRAINT
+	-- id_player_position int not null,
+	-- 	CONSTRAINT player_position_fkey FOREIGN KEY(id_player_position) REFERENCES players_position(id_position)
 	name varchar(150) not null,
 	nickname varchar(25) not null,
 	age numeric(4,2) not null,
 	height numeric(4,2) not null,
 	weight numeric(4,2) not null
 );
-create table players_gk_attr(){
+create table players_attr();
+create table players_attr_gk(){
 	id_player_gk_attr serial primary key,
 	id_player int not null,
 		CONSTRAINT playerattr_gk_club_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
-	rec numeric(4,3) not null
 }
-create table players_attr(
-	id_player_attr serial primary key,
-	id_player int not null,
-		CONSTRAINT playerattr_club_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
-	rec numeric(4,3) not null
-
-);
+create table players_attr_line();
 create table players_history(
 	id_player_history serial primary key, 
 	id_player int not null,
@@ -134,7 +129,7 @@ create table players_history(
 	mvp int default 0,
 	score numeric(4,2) default 0
 );
-create table player_injury(
+create table players_injury(
 	id_player_injury serial primary key,
 	id_player int not null,
 		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
@@ -143,7 +138,7 @@ create table player_injury(
 	games int not null,
 	status boolean not null
 );
-create table player_cards(
+create table players_cards(
 	id_player_cards serial primary key,
 	id_player int not null,
 		CONSTRAINT playercards_cards_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
@@ -159,14 +154,10 @@ create table player_cards(
 	after every game with a red card, player will pass at a judge that will punish or not.
 */
 
-create table player_attr_training();
 create table training();
-	
-create table finances();
-create table stadium();
-create table facilities();
-
-
+create table player_attr_training();
+create table player_attr_gk_training();
+create table player_attr_line_training();
 
 create table transferlist(
 	id_transferlist serial primary key,
@@ -175,8 +166,6 @@ create table transferlist(
 	startDate timestamp without time zone not null,
 	endDate timestamp without time zone not null
 );
-
-
 
 create table competition_type();
 create table competition(
