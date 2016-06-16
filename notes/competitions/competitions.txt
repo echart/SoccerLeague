@@ -27,20 +27,18 @@ Tipos de Competições
 			- Ida e volta
 				- Gols fora 2x
 				- Gols fora 1x	
-
 Competições
 	- Nome
 	- Tipo de competição
 	- Quantidade jogos
 	- Quantidade clubes
 	- País
-
-	Ligas
+	Liga
 		- Divisão
 		- Grupo
 		- Rodada atual
 
-		Liga tabela
+		Tabela da Liga
 			- idclube
 			- colocação
 			- pontos
