@@ -1,0 +1,58 @@
+Tipos de Competições
+	- Ligas
+		- Turno
+		- Turno e returno
+	- Copas
+		- Fase de grupos
+		4 Por grupo
+		clubes/4;
+			- Avança 1
+				- Turno
+				- Turno e returno
+					- Mata a mata
+						- Ida
+						- Ida e volta
+							- Gols fora 2x
+							- Gols fora 1x
+			- Avança 2 (ou mais, se houver necessidade)
+				- Turno
+				- Turno e returno
+					- Mata a mata
+						- Ida
+						- Ida e volta
+							- Gols fora 2x
+							- Gols fora 1x
+		- Mata a mata
+			- Ida
+			- Ida e volta
+				- Gols fora 2x
+				- Gols fora 1x	
+
+Competições
+	- Nome
+	- Tipo de competição
+	- Quantidade jogos
+	- Quantidade clubes
+	- País
+
+	Ligas
+		- Divisão
+		- Grupo
+		- Rodada atual
+
+		Liga tabela
+			- idclube
+			- colocação
+			- pontos
+			- vitorias
+				- vitorias fora
+				- vitorias casa
+			- derrotas
+				- derrotas fora
+				- derrotas casa
+			- empates
+			- gols feitos
+			- gols levados
+			- cartoes
+				- amarelos
+				- vermelhoes
