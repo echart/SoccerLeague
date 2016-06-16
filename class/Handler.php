@@ -17,7 +17,7 @@ class Handler{
 	public function loadView(){
 		$view = new ContentView($this->requestURL);
 		$data['tree']=__rootpath($this->requestURL);
-
+		
 		$view->setContentHead($data);
 		$view->loadHead();
 
