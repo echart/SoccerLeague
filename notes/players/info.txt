@@ -1,4 +1,4 @@
-Player Info
+Player info
 	- Club
 	- Name
 	- Nickname
@@ -6,4 +6,4 @@ Player Info
 	- Position
 	- Height
 	- Weight
-	- 
+	- Wage
