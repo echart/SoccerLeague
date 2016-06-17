@@ -27,30 +27,28 @@ Tipos de Competições
 			- Ida e volta
 				- Gols fora 2x
 				- Gols fora 1x	
-Competições
+##Competições
 	- Nome
 	- Tipo de competição
 	- Quantidade jogos
 	- Quantidade clubes
 	- País
-	Liga
+	##- Liga
 		- Divisão
 		- Grupo
 		- Rodada atual
-
-		Tabela da Liga
+		##- Tabela da Liga
 			- idclube
 			- colocação
 			- pontos
 			- vitorias
-				- vitorias fora
-				- vitorias casa
+			- vitorias fora
+			- vitorias casa
 			- derrotas
-				- derrotas fora
-				- derrotas casa
+			- derrotas fora
+			- derrotas casa
 			- empates
 			- gols feitos
 			- gols levados
-			- cartoes
-				- amarelos
-				- vermelhoes
+			- amarelos
+			- vermelhoes
