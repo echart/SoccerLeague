@@ -8,14 +8,14 @@ this class should create account and return account id for create a club
 class CreateAccount{
 	private $email;
 	private $password;
-	public $father;
+	public $refeer;
 	public $id_account;
 	public $club;
 
 	public function __construct($e,$p,$f=null){
 		$this->email=$e;
 		$this->password=password_hash($p, PASSWORD_BCRYPT, array('cost' => 10));
-		$this->father=$f;
+		$this->refeer=$f;
 	}
 	public function isset():bool{
 		try{
@@ -38,10 +38,10 @@ class CreateAccount{
 	}
 	function create(){
 		try{
-			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, father, language, slvip) values (:email, :password, :father, '1', '15')");
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, refeer, language, slvip) values (:email, :password, :refeer, '1', '15')");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
-			$query->bindParam(':father',$this->father);
+			$query->bindParam(':refeer',$this->refeer);
 
 			$query->execute();
 			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
