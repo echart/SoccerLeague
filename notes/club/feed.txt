@@ -1,0 +1,7 @@
+Feed
+	- Venda/Compra de jogador
+	- Jogos oficiais
+	- Aniversário de criação(anual)
+	- Premiação de jogadores(inicio de temporada)
+	- Titulos
+	- Outros

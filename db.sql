@@ -16,7 +16,6 @@ create table country(
 );
 create table injuries(
 	id_injury serial primary key,
-	description varchar(100) not null,
 	min_games int not null,
 	max_games int not null
 );
@@ -26,8 +25,8 @@ create table account(
 	id_account SERIAL PRIMARY KEY,
 	email varchar(100) not null,
 	password varchar(256) not null,
-	father int,
-		CONSTRAINT account_father_fkey FOREIGN KEY (father) REFERENCES account(id_account),
+	refeer int,
+		CONSTRAINT account_refeer_fkey FOREIGN KEY (refeer) REFERENCES account(id_account),
 	language int not null,
 		CONSTRAINT account_language_fkey FOREIGN KEY (language) REFERENCES language(id_language),
 	slvip int,
@@ -53,7 +52,7 @@ create table club(
 		CONSTRAINT club_account_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
 	clubname varchar(25) not null,
 	createdate date default now(),
-	status varchar(25)
+	status varchar(1) default 'A'
 );
 create table club_info(
 	id_club_info serial primary key,
@@ -86,6 +85,7 @@ create table club_visits(
 		CONSTRAINT clubvisits_idclubvisited_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
 	when date
 );
+create table club_sponsorship
 
 create table club_finances();
 create table club_stadium();
