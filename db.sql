@@ -1,8 +1,7 @@
 create table season(
-	id_season serial primary key,
+	season serial primary key,
 	startdate date not null,
-	enddate date not null, 
-	status boolean not null
+	enddate date not null
 );
 
 
@@ -15,7 +14,7 @@ create table country(
 	country varchar(100) not null,
 	abbreviation varchar(2) not null
 );
-create table injury(
+create table injuries(
 	id_injury serial primary key,
 	description varchar(100) not null,
 	min_games int not null,
@@ -117,8 +116,8 @@ create table players_history(
 	id_player_history serial primary key, 
 	id_player int not null,
 		CONSTRAINT playerhistory_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
-	id_season int not null,
-		CONSTRAINT playerhistory_season_fkey FOREIGN KEY (id_season) REFERENCES season(id_season),
+	season int not null,
+		CONSTRAINT playerhistory_season_fkey FOREIGN KEY (season) REFERENCES season(season),
 	id_club int not null,
 		CONSTRAINT playerhistory_club_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
 	games int DEFAULT 0,
@@ -134,7 +133,7 @@ create table players_injury(
 	id_player int not null,
 		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
 	id_injury int not null, 
-		CONSTRAINT playerinjury_injury_fkey FOREIGN KEY (id_injury) REFERENCES injury(id_injury),
+		CONSTRAINT playerinjury_injury_fkey FOREIGN KEY (id_injury) REFERENCES injuries(id_injury),
 	games int not null,
 	status boolean not null
 );
@@ -167,29 +166,63 @@ create table transferlist(
 	endDate timestamp without time zone not null
 );
 
-create table competition_type();
+
+/**
+ * COMPETITIONS
+ */
+create table competition_types(
+	id_competition_type serial primary key, 
+	type varchar(1) not null,
+);
 create table competition(
 	id_competition serial primary key,
+	id_competition_type integer not null,
+		CONSTRAINT competition_idcompetitiontype_fkey FOREIGN KEY(id_player) REFERENCES competition_types(id_competition_type),
+	season integer not null,
+		CONSTRAINT competition_season_fkey FOREIGN KEY(season) REFERENCES season(season),
 	name varchar(50) not null,
-	country integer not null,
-	type integer not null
+	id_country integer null,
+		CONSTRAINT competition_country_fkey FOREIGN KEY(id_country) REFERENCES country(id_country),
+	totalclubs integer not null
 );
+
+/**
+ * LEAGUE
+ */
 create table league(
 	id_league serial PRIMARY KEY,
-	id_club integer not null,
+	id_competition integer not null,
+		CONSTRAINT league_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
 	division integer,
 	group integer,
+	totalgames integer not null,
+	turn integer not null
+);
+create table league_table(
+	id_league_table serial primary key,
+	id_league integer not null,
+		CONSTRAINT leaguetable_idleague_fkey FOREIGN KEY(id_league) REFERENCES league(id_league),
 	pts integer not null DEFAULT 0,
 	win integer not null DEFAULT 0,
+	win_home integer not null default 0,
+	win_away integer not null default 0,
 	loss integer not null DEFAULT 0,
+	loss_home integer not null default 0,
+	loss_away integer not null default 0,
 	draw integer not null DEFAULT 0,
 	goalsP integer not null DEFAULT 0,
+	goalsP_home integer not null default 0,
+	goalsP_away integer not null default 0,
 	goalsC integer not null DEFAULT 0
+	goalsC_home integer not null default 0,
+	goalsC_away integer not null default 0
 );
+
+
 create table matches(
 	id_match serial primary key,
 	id_competition integer,
-	turn integer,
+	id_turn integer,
 	home integer not null,
 	away integer not null
 );
