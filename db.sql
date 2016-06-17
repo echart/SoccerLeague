@@ -105,13 +105,56 @@ create table players(
 	height numeric(4,2) not null,
 	weight numeric(4,2) not null
 );
-create table players_attr();
+create table players_attr(
+	id_player_attr serial primary key,
+	id_player int not null,
+		CONSTRAINT playerattr_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+	stamina numeric (5,3),
+	speed numeric (5,3),
+	resistance numeric (5,3),
+	injury_propensity numeric (5,3),
+	jump numeric (5,3),
+	professionalism numeric (5,3),
+	agressive numeric (5,3),
+	adptability numeric (5,3),
+	learning numeric (5,3),
+	workate numeric (5,3),
+	concentration numeric (5,3),
+	decision numeric (5,3),
+	positioning numeric (5,3),
+	vision numeric (5,3),
+	unpredictability numeric (5,3),
+	communication numeric (5,3)
+);	
 create table players_attr_gk(){
 	id_player_gk_attr serial primary key,
 	id_player int not null,
-		CONSTRAINT playerattr_gk_club_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+		CONSTRAINT playerattrgk_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+	handling numeric (5,3),
+	aerial numeric (5,3),
+	foothability numeric (5,3),
+	oneanone numeric (5,3),
+	reflexes numeric (5,3),
+	rushingout numeric (5,3),
+	kicking numeric (5,3),
+	throwing numeric (5,3)
 }
-create table players_attr_line();
+create table players_attr_line(
+	id_player_line_attr serial primary key,
+	id_player int not null,
+		CONSTRAINT playerattrline_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player),
+	cross numeric (5,3),
+	pass numeric (5,3),
+	technical numeric (5,3),
+	ballcontrol numeric (5,3),
+	dribble numeric (5,3),
+	longshot numeric (5,3),
+	finish numeric (5,3),
+	heading numeric (5,3),
+	freekick numeric (5,3),
+	marking numeric (5,3),
+	tackling numeric (5,3)
+);
 create table players_history(
 	id_player_history serial primary key, 
 	id_player int not null,
@@ -215,7 +258,9 @@ create table league_table(
 	goalsP_away integer not null default 0,
 	goalsC integer not null DEFAULT 0
 	goalsC_home integer not null default 0,
-	goalsC_away integer not null default 0
+	goalsC_away integer not null default 0, 
+	yellowcards integer not null default 0,
+	redcards integer not null default 0
 );
 
 
