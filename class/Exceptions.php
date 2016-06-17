@@ -1,4 +1,0 @@
-<?
-class ConnectionError extends Exception{
-
-}

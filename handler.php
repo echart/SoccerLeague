@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	require_once('helpers/__autoload.php');
-
 	try{
 		$con=Connection::getInstance();
 		$user=new Authentication();
@@ -11,6 +10,7 @@
 		}
 
 		$request = $_GET ?? array('request'=>'home');
+		
 		$handler=new Handler();
 		$handler->requestURL($request);
 

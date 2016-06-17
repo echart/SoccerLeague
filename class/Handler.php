@@ -1,11 +1,10 @@
 <?
-include('ContentView.php');
 include('helpers/__dontgetlost.php');
 class Handler{
 	public $request;
 	public $requestURL;
 	public $response;
-
+	
 	function requestUrl(array $request){
 		$this->requestURL=$request['request'];
 		$this->request=$request;
@@ -15,7 +14,7 @@ class Handler{
 		require_once('controllers/'.$this->requestURL.'.php');
 	}
 	public function loadView(){
-		$view = new ContentView($this->requestURL);
+		$view = new View($this->requestURL);
 		$data['tree']=__rootpath($this->requestURL);
 		
 		$view->setContentHead($data);
