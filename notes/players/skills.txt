@@ -1,3 +1,48 @@
+- visible
+# hidden
+
+Skills
+	- Physical
+		- Stamina
+		- Speed
+		- Resistance
+		# Injury Propensity
+		- Jump
+	- Technical
+		- Crossing
+		- Pass
+		- Technical
+		- Ball Control
+		- Dribble
+		- Long shot
+		- Finish
+		- Heading
+		- Freekick
+		- Marking
+		- Tackling
+	- Psychologic
+		# Professionalism
+		# Agressive
+		# Adptability
+		# Leadership
+		# Learning
+		- Workrate
+		- Concentration
+		- Decision
+		- Positioning
+		- Vision
+		- Unpredictability
+		- Communication
+	- Goalkeeper
+		- Handling
+		- Aeria
+		- Foot Hability
+		- One a one
+		- Reflexes
+		- Rushing out
+		- Kicking
+		- Throwing
+
 - Atributos:
 	- Físico
 		Atributos relacionados a constituição fisica do jogador.

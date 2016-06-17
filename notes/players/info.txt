@@ -1,0 +1,9 @@
+Player Info
+	- Club
+	- Name
+	- Nickname
+	- Age
+	- Position
+	- Height
+	- Weight
+	- 
