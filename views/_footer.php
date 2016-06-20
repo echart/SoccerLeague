@@ -1,13 +1,6 @@
-	<script type="text/javascript">
-		$(document).ready(function(){
-            $("#loader").fakeLoader({
-                timeToHide:200,
-                bgColor:"#B44230",
-                spinner:"spinner7",
-            });
-        });
-	</script>
-	<!--JS-->
+    <!--JS-->
+    <script src="<?=$tree?>assets/js/jquery.js"></script>
+    <script type="text/javascript" src='<?=$tree?>assets/js/login/menu.js'></script>
 </body>
 </html>
-<?//$con->disconnect();?>
+<?$con->disconnect();?>

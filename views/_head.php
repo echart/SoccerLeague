@@ -15,14 +15,10 @@ extract($this->__viewData);
 	<meta name="description" content="Soccer Management Game" />
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
-	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/loader.css">
+	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<?=$tree?>assets/css/fonts.css">
-	<script src="<?=$tree?>assets/js/jquery.js"></script>
-	<script src="<?=$tree?>assets/js/loader.js"></script>
-	<script type="text/javascript" src='<?=$tree?>assets/js/login/menu.js'></script>
 
 </head>
 <body>
-	<div id="loader"></div>
