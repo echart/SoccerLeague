@@ -1,0 +1,63 @@
+- Home/Office
+	- Feed
+	- Calendário/Notas/Eventos
+- Clube
+	- Sede
+	- Visão Geral
+	- Conferências de Imprensa
+	- Estádio
+	- Partidas
+	- Estatisticas
+	- (PRO) Estatísticas Avançadas
+	- História
+- Equipe
+	- Jogadores
+	- Treinamento
+	- Comissão técnica
+- Táticas
+	- Táticas
+	- Ordens Condicionais
+	- Estilos de jogo
+	- (PRO) Analise do próximo adversário
+-  Competições
+	- Liga
+		- Tabela
+		- Prêmios
+		- Estatísticas
+		- Histórico
+		- Feed
+		- Calendário
+	- Copa
+		- Jogos
+		- Prêmios
+		- Estatisticas
+		- Histórico
+	- Liga amistosa
+		- Tabela
+		- Prêmios
+		- Estatisticas
+- Finanças
+	- Visao geral(Semana/temporada)
+	- Receitas
+	- Despesas
+		- Salarios
+		- Manutenções
+- Mercado
+	- Lista de transferencias
+	- Lista de observação
+	- Ultimas movimentações
+- Mensagens
+	- Nova Mensagem
+	- Caixa de entrada
+- Comunidade
+	- Forum
+		- Geral
+		- Ajuda
+		- OffTopic
+		- Internacional
+		- Anúncios
+	- Manual do usuário
+	- Administradores
+- PRO
+	- O que é?
+	- Comprar
