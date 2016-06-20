@@ -1,19 +1,42 @@
 - Home/Office
 	- Feed
+		Estilo twitter, você recebe notificações de até 140 caracteres das atualizações nos clubes de seus amigos(as suas também são mostradas), como nova lesão, resultado da rodada, venda ou compra de jogador e etc.
+		Você também pode escrever alguma coisa de até 140 caracteres para postar.
+		Fotos/videos não são permitidos.
 	- Calendário/Notas/Eventos
+		Estilo calendário no trello, você tem todos os próximos eventos do seu clube(jogos/final de leilão de algum jogador/datas de atualização da economia etc....), você também pode adicionar eventos(que ficaram visiveis só ao próprio manager).]
 - Clube
 	- Sede
+		Página contendo todas as informações de um clube, como nome, pais, divisão e grupo, dados de criação, técnico e nome de estádio. Feed, principais jogadores(atualmente no clube), principais trofeus
 	- Visão Geral
+		Página contendo dados basicos dos jogadores Como nome, país e skillindex além de estátisticas de média de habilidade, média de idade, habilidade total e etc...
 	- Conferências de Imprensa
+		Conferencias de imprensa são pequenos tópicos que o usuário pode criar para informar alguma coisa. (Tentar transformar em alguma coisa meio roleplay)
 	- Estádio
+		Visão do estádio e de suas instalações.
+		Se o usuário for dono do clube em questão, recebe opções para poder alterar os niveis/capacidades/valor.
 	- Partidas
-	- Estatisticas
+		Lista das partidas do clube, divididos por mês, podendo ser filtrada por competições.
+	- Estatisticas dos Jogadores
+		Estatisticas por jogador de partidas jogadas, gols, cartões, notas e etc;..
 	- (PRO) Estatísticas Avançadas
+		Gráficos e estatisticas relacionadas a comportamento da equipe nas partidas realizadas na temporada. Como média de posse de bola, escalações usadas, estilos de ataque usados, média de chutes a gol e etc....
+		E por jogador, baseando na posição que ele jogou, formação e etc...
 	- História
+		Sala de trofeus, descrição do clube, resultados do clube na liga, historico de transferencias, lendas(principais jogadores do clube, máximo 3)
 - Equipe
 	- Jogadores
+		Lista contendo todos os jogadores, suas habilidades, estatisticas de jogos. Filtro por posição e etc...
 	- Treinamento
+		- Gerenciar
+			[...]
+		- Analisar
+			Evolução dos jogadores na ultima sessão de treinamento
 	- Comissão técnica
+		- Contratar
+			- Lista com scouts/treinadores
+		- Contrados
+			Scouts, treinadores....
 - Táticas
 	- Táticas
 	- Ordens Condicionais
@@ -61,3 +84,16 @@
 - PRO
 	- O que é?
 	- Comprar
+
+
+
+/* Páginas acessadas "individualmente" */
+- Jogadores
+	- Visão Geral
+		Informações do jogador + habilidades
+	- Relatórios
+		Obter um relatório(atraves de um scout)
+		Ver relatórios
+	- Notas
+	- Transferencia
+	- Treinamento
