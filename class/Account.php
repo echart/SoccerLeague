@@ -1,42 +1,92 @@
 <?
 class Account{
-	public $account_id;
-	protected $email;
-	private $password;
-	protected $prodays;
-	private $refeer_id;
+	public static $instance;
+	public $con;
+
+	protected $_prodays;
 	public $language;
 	protected $permissions;
-	public $flag;
 
-	public function __construct($id){
-		$this->account_id=$id;
+	public $id_account;
+	protected $email;
+	private $password;
+	private $refeer;
+
+	public function __construct($id=''){
+		/* CONFIGS */
+		$this->id_account=$id;
+		$this->con=Connection::getInstance()->connect();
+
+		if($this->id_account!=''){
+			$query=$this->con->prepare("SELECT email FROM account where id_account=:id");
+			$query->bindParam(':id',$this->id_account);
+			$$query->exec();
+		}else{
+			$this->language='en_US';
+			$this->_prodays=15;
+		}
+	}
+	public static function getAccount($id){
+		return new self($id);
+	}
+	public function setRefeer($id){
+		$this->refeer=$id;
+	}
+	public function getRefeer(){
+		return $this->refeer;
 	}
 	public function setEmail($e):boolean{
+		try{
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_account FROM account where email=:email ") or die();
+			$query->bindParam(':email',$this->email);
+			$query->execute();
 
+			if($query->rowCount()>0){
+				return true;
+			}else{
+				return false;
+			}
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
 	}
 	public function getEmail():string{
 		return $this->email;
 	}
+
+	private function setProDays($days):bool{
+		$this->prodays=$days;
+	}
 	public function getProDays():int{
 
 	}
-	private function setProDays($days):boolean{
-		$this->prodays=$days;
-	}
-	public function setPassword($p):boolean{
+
+	public function setPassword($p):bool{
 		$this->password=$p;
 	}
-	private function getPassword():string{
 
-	}
-	private function getPermission():string{
+	private function create():bool{
+		try{
+			$query= $this->con->prepare("INSERT INTO account(email, password, refeer, language, slvip) values (:email, :password, :refeer, '1', '15')");
+			$query->bindParam(':email',$this->email);
+			$query->bindParam(':password',$this->password);
+			$query->bindParam(':refeer',$this->refeer);
 
+			$query->execute();
+			$this->id_account=$this->con->lastInsertID('account_id_account_seq');
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
 	}
-	private function setPermission($perm){
-		$this->permissions=$perm;
-	}
-	private function deleteAccount():boolean{
+	private function delete():bool{
+		try{
+			$query= $this->con->prepare("DELETE FROM account where id_account=:id");
+			$query->bindParam(':id',$this->id_account);
 
+			$query->execute();
+			$this->id_account=$this->con->lastInsertID('account_id_account_seq');
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
 	}
 }

@@ -62,6 +62,7 @@
 - Finanças
 	- Visao geral(Semana/temporada)
 	- Receitas
+		- Patrocinadores
 	- Despesas
 		- Salarios
 		- Manutenções
@@ -97,3 +98,5 @@
 	- Notas
 	- Transferencia
 	- Treinamento
+-MatchViewer
+	Pagina destinada a visualização da partida.

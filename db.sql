@@ -85,8 +85,7 @@ create table club_visits(
 		CONSTRAINT clubvisits_idclubvisited_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
 	when date
 );
-create table club_sponsorship
-
+create table club_sponsorship();
 create table club_finances();
 create table club_stadium();
 create table club_facilities();
