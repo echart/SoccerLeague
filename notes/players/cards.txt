@@ -1,0 +1,7 @@
+yellow card gives 1 point
+red card gives 3 points
+every 3 points, player will be not available for 1 game.
+if 5 points, player will be not available for 2 games.
+CAN'T BE AVAILABLE FOR MORE GAMES? HOW? 
+
+after every game with a red card, player will pass at a judge that will punish or not.

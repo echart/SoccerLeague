@@ -18,26 +18,41 @@ class Account{
 		$this->con=Connection::getInstance()->connect();
 
 		if($this->id_account!=''){
-			$query=$this->con->prepare("SELECT email FROM account where id_account=:id");
+			$query=$this->con->prepare("SELECT email, refeer,prodays, slvip, language FROM account where id_account=:id");
 			$query->bindParam(':id',$this->id_account);
-			$$query->exec();
+			$query->exec();
+
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$data=$query->fetch();
+
+
+			$this->email=$data->email;
+			$this->refeer=$data->refeer;
+			$this->language=$data->language;
+			$this->_prodays=$data->slvip;
 		}else{
 			$this->language='en_US';
 			$this->_prodays=15;
 		}
 	}
-	public static function getAccount($id){
-		return new self($id);
+	public static function getAccount($id=''){
+		if($id==''){
+			return new self($_SESSION['id_account']);
+		}else{
+			return new self($id);
+		}
 	}
+
 	public function setRefeer($id){
 		$this->refeer=$id;
 	}
 	public function getRefeer(){
 		return $this->refeer;
 	}
+
 	public function setEmail($e):boolean{
 		try{
-			$query=Connection::getInstance()->connect()->prepare("SELECT id_account FROM account where email=:email ") or die();
+			$query=$this->con->prepare("SELECT id_account FROM account where email=:email ") or die();
 			$query->bindParam(':email',$this->email);
 			$query->execute();
 
@@ -55,7 +70,7 @@ class Account{
 	}
 
 	private function setProDays($days):bool{
-		$this->prodays=$days;
+		$this->_prodays=$days;
 	}
 	public function getProDays():int{
 

@@ -3,14 +3,17 @@
 class Club{
 	public $id_club;
 	protected $id_account;
-	protected $club_name;
+	private $con;
+
+	protected $clubname;
+	protected $club_nickname;
 	public $country;
-	public $refeer_id;
 
 
 	public function __construct($club=''){
 		$this->club_id=$club;
-
+		$this->con=Connection::getInstance()->connect();
+		
 		if($this->id_club){
 
 		}else{
@@ -18,31 +21,41 @@ class Club{
 		}
 	}
 	public function getClub($id){
-		return new self($id);
+		if($id==''){
+			return new self($_SESSION['id_club']);
+		}else{
+			return new self($id);
+		}
 	}
 
-	public function getClubName(){
-		
+	public function setClubName($name){
+		$this->clubname=$name;
 	}
-	public function getClubCountry(){
-		
+	public function getClubName(){
+		return $this->clubname;
+	}
+	public function setCountry($country){
+		$this->country=$country;
+	}
+	public function getCountry(){
+		return $this->country;
 	}
 
 
 	public function create():bool{
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country, id_account, clubname) values (:country, :id_account,:clubname)");
+			$query=$this->con->prepare("INSERT INTO club (id_country, id_account, clubname) values (:country, :id_account,:clubname)");
 			$query->bindParam(':country', $this->country);
 			$query->bindParam(':id_account', $this->id_account);
 			$query->bindParam(':clubname', $this->clubname);
 			$query->execute();
-			$this->club_id=Connection::getInstance()->connect()->lastInsertID();
+			$this->club_id=$this->con->lastInsertID();
 
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club_info (id_club) values (:id_club)");
+			$query=$this->con->prepare("INSERT INTO club_info (id_club) values (:id_club)");
 			$query->bindParam(':id_club',$this->club_id);
 			$query->execute();
 
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club_fans (id_club,fans) values (:id_club, '6000')");
+			$query=$this->con->prepare("INSERT INTO club_fans (id_club,fans) values (:id_club, '6000')");
 			$query->bindParam(':id_club',$this->club_id);
 			$query->execute();
 
@@ -57,44 +70,5 @@ class Club{
 	}
 		public function delete():bool{
 
-	}
-}
-
-class CreateClub{
-	protected $id_account;
-	protected $clubname;
-	public $country;
-	public $club_id;
-	
-	public function __construct($id,$c, $cl){
-		$this->id_account=$id;
-		$this->country=$c;
-		$this->clubname=$cl;
-	}
-
-	public function create():array{
-		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country, id_account, clubname) values (:country, :id_account,:clubname)");
-			$query->bindParam(':country', $this->country);
-			$query->bindParam(':id_account', $this->id_account);
-			$query->bindParam(':clubname', $this->clubname);
-			$query->execute();
-			$this->club_id=Connection::getInstance()->connect()->lastInsertID();
-
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club_info (id_club) values (:id_club)");
-			$query->bindParam(':id_club',$this->club_id);
-			$query->execute();
-
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO club_fans (id_club,fans) values (:id_club, '6000')");
-			$query->bindParam(':id_club',$this->club_id);
-			$query->execute();
-
-			$return=array('return'=>'success');
-		}catch(Exception $e){
-			$return=array('return','error');
-		}catch(PDOException $e){
-			$return=array('return','error');
-		}
-		return $return;
 	}
 }
