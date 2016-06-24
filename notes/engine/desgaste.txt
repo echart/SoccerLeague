@@ -1,0 +1,16 @@
+todo jogador começa com energia 100.
+
+- Desgaste
+	(3)- Tempo
+	(2)- Distancia percorrida
+	(1)- "Número de piques"
+	(4)- Número de faltas recebidas
+- Recuperação
+	(3)- Preparador Físico
+	(2)- Tempo ocioso
+	(1)- Intervalo de jogo
+
+Energia baixa influencia em:
+	- Corridas
+	- Participação no jogo
+	- Qualidade da ação
