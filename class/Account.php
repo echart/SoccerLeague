@@ -1,24 +1,21 @@
 <?
 class Account{
 	public static $instance;
-	public $con;
 
-	protected $_prodays;
+	private $_prodays;
 	public $language;
-	protected $permissions;
+	private $permissions;
 
 	public $id_account;
-	protected $email;
+	private $email;
 	private $password;
 	private $refeer;
 
 	public function __construct($id=''){
-		/* CONFIGS */
 		$this->id_account=$id;
-		$this->con=Connection::getInstance()->connect();
 
 		if($this->id_account!=''){
-			$query=$this->con->prepare("SELECT email, refeer,prodays, slvip, language FROM account where id_account=:id");
+			$query=Connection::getInstance()->connect()->prepare("SELECT email, refeer,prodays, slvip, language FROM account where id_account=:id");
 			$query->bindParam(':id',$this->id_account);
 			$query->exec();
 
@@ -30,6 +27,7 @@ class Account{
 			$this->refeer=$data->refeer;
 			$this->language=$data->language;
 			$this->_prodays=$data->slvip;
+
 		}else{
 			$this->language='en_US';
 			$this->_prodays=15;
@@ -50,20 +48,8 @@ class Account{
 		return $this->refeer;
 	}
 
-	public function setEmail($e):boolean{
-		try{
-			$query=$this->con->prepare("SELECT id_account FROM account where email=:email ") or die();
-			$query->bindParam(':email',$this->email);
-			$query->execute();
-
-			if($query->rowCount()>0){
-				return true;
-			}else{
-				return false;
-			}
-		}catch(PDOException $e){
-			echo $e->getMessage();
-		}
+	public function setEmail($email){
+		$this->email=$email;
 	}
 	public function getEmail():string{
 		return $this->email;
@@ -73,35 +59,64 @@ class Account{
 		$this->_prodays=$days;
 	}
 	public function getProDays():int{
-
+		return $this->_prodays;
 	}
 
 	public function setPassword($p):bool{
 		$this->password=$p;
 	}
 
-	private function create():bool{
+	public function setLanguage($l):bool{
+		$this->language=$l;
+	}
+	public function getLanguage($l){
+		return $this->language;
+	}
+	private function update():bool{
 		try{
-			$query= $this->con->prepare("INSERT INTO account(email, password, refeer, language, slvip) values (:email, :password, :refeer, '1', '15')");
+			$query= Connection::getInstance()->connect()->prepare("UPDATE account SET email=:email, password=:password, refeer=:refeer, slpro=:prodays, language=:language");
+			$query->bindParam(':email',$this->email);
+			$query->bindParam(':password',$this->password);
+			$query->bindParam(':refeer',$this->refeer);
+			$query->bindParam(':language',$this->language);
+			$query->bindParam(':prodays',$this->_prodays);
+
+			if($query->execute()) return true; else return false;
+
+		}catch(PDOException $e){
+			echo $e->getMessage();
+		}
+	}
+	private function create(){
+		try{
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, refeer, language, slvip) values (:email, :password, :refeer, '1', '15')");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
 			$query->bindParam(':refeer',$this->refeer);
 
 			$query->execute();
-			$this->id_account=$this->con->lastInsertID('account_id_account_seq');
+			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
+			return $this->id_account;
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
 	}
 	private function delete():bool{
 		try{
-			$query= $this->con->prepare("DELETE FROM account where id_account=:id");
+			$query= Connection::getInstance()->connect()->prepare("DELETE FROM account where id_account=:id");
 			$query->bindParam(':id',$this->id_account);
 
 			$query->execute();
-			$this->id_account=$this->con->lastInsertID('account_id_account_seq');
+			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
 		}catch(PDOException $e){
 			echo $e->getMessage();
 		}
+	}
+	private static function validEmail($email):bool{
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_account FROM account where email=:email");
+		$query->bindParam(':email',$email);
+		$query->execute();
+
+		if($query->rowCount()>0) return false; else return true;
 	}
 }
