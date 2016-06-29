@@ -11,13 +11,11 @@ class Club{
 
 
 	public function __construct($club=''){
-		$this->club_id=$club;
+		$this->id_club=$club;
 		$this->con=Connection::getInstance()->connect();
 		
-		if($this->id_club){
-
-		}else{
-
+		if($club!=''){
+			$this->id_club=$club;
 		}
 	}
 	public function getClub($id){
@@ -49,14 +47,14 @@ class Club{
 			$query->bindParam(':id_account', $this->id_account);
 			$query->bindParam(':clubname', $this->clubname);
 			$query->execute();
-			$this->club_id=$this->con->lastInsertID();
+			$this->id_club=$this->con->lastInsertID();
 
 			$query=$this->con->prepare("INSERT INTO club_info (id_club) values (:id_club)");
-			$query->bindParam(':id_club',$this->club_id);
+			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
 
 			$query=$this->con->prepare("INSERT INTO club_fans (id_club,fans) values (:id_club, '6000')");
-			$query->bindParam(':id_club',$this->club_id);
+			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
 
 			$return=array('return'=>'success');
@@ -70,5 +68,13 @@ class Club{
 	}
 		public function delete():bool{
 
+	}
+
+	public static function validClubName($club){
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where clubname=:clubname");
+		$query->bindParam(':clubname',$club);
+		$query->execute();
+
+		if($query->rowCount()>0) return false; else return true;
 	}
 }
