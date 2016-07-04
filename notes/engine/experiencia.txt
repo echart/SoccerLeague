@@ -37,5 +37,14 @@ Ciclo do RBC no soccerleague
 	Decidir a ação e tentar recuperar, ou recuperar para decidir a ação.
 [/PROBLEMAS]
 
+
+Caso:
+	- Ação tomada
+		- Posição atual
+		- Posições dos adversários
+		- Energia
+	- Qualidade da ação realizada
+
+
 Algoritmo de similaridade
 	O algoritmo de similaridade define o quanto o problema atual(problema para a ação) é parecido com os que estão salvos na memória do jogador(em sem banco de casos).
