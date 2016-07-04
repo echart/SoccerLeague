@@ -28,7 +28,6 @@ try{
 	echo JsonOutput::error('exception',$e->getmessage());
 	exit;
 }
-
 try{
 	JsonOutput::jsonHeader();
 	$con=Connection::getInstance();
@@ -38,13 +37,11 @@ try{
 		if((Club::validClubName($clubname)===true)){
 			$account->setPassword($pass);
 			$account->setRefeer($refeer);
-
 			$club=new Club();
 			$club->id_account=$account->create();
 			$club->setClubeName($clubname);
 			$club->setCountry($country);
 			$club->create();
-
 			echo Json::success(array('clubname'=>$club->clubname));
 		}else{
 			throw new Exception("Invalid clubname", 1);

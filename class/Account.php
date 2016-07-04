@@ -113,10 +113,6 @@ class Account{
 		}
 	}
 	private static function validEmail($email):bool{
-		$query=Connection::getInstance()->connect()->prepare("SELECT id_account FROM account where email=:email");
-		$query->bindParam(':email',$email);
-		$query->execute();
-
-		if($query->rowCount()>0) return false; else return true;
+		 
 	}
 }

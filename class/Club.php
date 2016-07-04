@@ -66,13 +66,14 @@ class Club{
 		
 		return $return;
 	}
-		public function delete():bool{
+	
+	public function delete():bool{
 
 	}
 
 	public static function validClubName($club){
 		$query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where clubname=:clubname");
-		$query->bindParam(':clubname',$club);
+		$query->bindParam(':clubname',$email);
 		$query->execute();
 
 		if($query->rowCount()>0) return false; else return true;

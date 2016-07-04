@@ -173,7 +173,7 @@ create table players_attr(
 	unpredictability numeric (5,3),
 	communication numeric (5,3)
 );	
-create table players_attr_gk(){
+create table players_attr_gk(
 	id_player_gk_attr serial primary key,
 	id_player integer not null,
 		CONSTRAINT playerattrgk_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
@@ -185,7 +185,7 @@ create table players_attr_gk(){
 	rushingout numeric (5,3),
 	kicking numeric (5,3),
 	throwing numeric (5,3)
-}
+);
 create table players_attr_line(
 	id_player_line_attr serial primary key,
 	id_player integer not null,
