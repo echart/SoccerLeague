@@ -1,48 +1,3 @@
-- visible
-# hidden
-
-Skills
-	- Physical
-		- Stamina
-		- Speed
-		- Resistance
-		# Injury Propensity
-		- Jump
-	- Technical
-		- Crossing
-		- Pass
-		- Technical
-		- Ball Control
-		- Dribble
-		- Long shot
-		- Finish
-		- Heading
-		- Freekick
-		- Marking
-		- Tackling
-	- Psychologic
-		# Professionalism
-		# Agressive
-		# Adptability
-		# Leadership
-		# Learning
-		- Workrate
-		- Concentration
-		- Decision
-		- Positioning
-		- Vision
-		- Unpredictability
-		- Communication
-	- Goalkeeper
-		- Handling
-		- Aeria
-		- Foot Hability
-		- One a one
-		- Reflexes
-		- Rushing out
-		- Kicking
-		- Throwing
-
 - Atributos:
 	- Físico
 		Atributos relacionados a constituição fisica do jogador.
@@ -108,8 +63,8 @@ Skills
 		x Liderança
 			Define o quanto o jogador é um lider.
 			Influencia na escolha do capitão, sendo responsavel por "chamar a equipe para a partida e etc".
-		x Aprendizagem
-			Define quão bem um jogador aprende algo novo.
+		x Memória
+			Define quão bem um jogador aprende algo novo, ou recupera a informação de algo aprendido anteriormente.
 			Influencia na aprendizagem de uma nova posição, uma nova caracteristica e etc.
 		- Empenho
 			Define quão empenhado dentro de campo um jogador é.

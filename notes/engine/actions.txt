@@ -1,0 +1,139 @@
+{COM A BOLA}	
+	[LOOP]	
+		Dominio de bola
+		Verifica opções de decisão
+			- Passar
+			- Avançar(Depende da proximidade do marcador)
+				- Simplesmente avança
+				- Dribla
+			- Cruzar
+			- Finalizar
+		Verifica ou não no banco de casos pra ver se passou algum momento diferente, depende muito das habilidades de concentração, decisão, visão.
+		Tomada de decisão, quando o jogador escolhe com base no evento anterior a decisão que ele vai tomar
+		Ação
+			- Confronto de skills
+			- "Ação das skills na ação"
+			- Qualidade da ação
+		Ação bem sucedida?
+		Com base no algoritmo de aprendizagem salva ou não a ação no banco, e sua qualidade para posterior request
+	[/LOOP]
+{/COM A BOLA}
+{SEM A BOLA}
+	[LOOP]
+		Reposicionamento(Marcação)
+			Reposicionamento com base no adversário mais próximo
+			Reposicionamento com base na ação do adversário
+		Desarme
+			- Carrinho
+			- Desarme normal
+		Dividida
+	[/LOOP]
+{/SEM A BOLA}
+
+[ACTIONS]
+As ações do jogador dependem do tipo de jogada, e cada tipo de jogada vai necessitar de determinado conjunto de habilidades(eles tão mais ou menso definidos aqui pela importância, de cima pra baixo)
+	Com a bola
+		Recebendo a bola
+			- Dominio
+				Controle de bola
+				Concentração
+				Tecnica
+		Bola parada
+			- Chute direto(distancia)
+				Bola parada
+				Finalização
+				Tecnica
+				Chute longo
+				Força
+				Concentração
+				Visão
+			- Passe curto
+				Passe
+				Tecnica
+				Bola parada
+			- Cruzamento
+				Bola parada
+				Cruzamento
+				Tecnica
+				Força
+				Concentração
+				Visão
+				Comunicação
+				Passe
+			- Penalti
+				Bola parada
+				Concentração
+				Finalização
+				Tecnica
+		Avançar
+			- Drible
+				Drible
+				Velocidade
+				Controle de bola
+				Tecnica
+				Decisao
+			- Correr livre
+				Tecnica
+				Velocidade
+				Controle de bola
+				Visao
+				Empenho
+		Passe
+			- Longo
+				Passe
+				Tecnica
+				Cruzamento
+				Visão
+				Comunicação
+				Concentração
+				Força
+			- Curto
+				Passe
+				Tecnica
+				Visão
+				Comunicação
+				Concentração
+			- Cruzamento
+				Cruzamento
+				Tecnica
+				Visao
+				Comunicação
+				Concentração
+				Força
+				Chute longo
+		Finalização
+			- "Baixa"
+				Finalização
+				Força
+				Tecnica
+				Visão
+			- Cabeceio
+				Cabeceio
+				Salto
+				Força
+				Finalização
+				Tecnica
+			- Chute longo
+				Chute longo
+				Finalização
+				Força
+				Tecnica
+	Sem a bola
+		Re-Posicionamento
+			Ofensivo
+				Posicionamento
+				Comunicação
+				Decisao
+				Concentração
+				Empenho
+			Defensivo
+				Posicionamento
+				Marcação
+				Comunicação
+				Decisao
+				Concentração
+				Empenho
+[/ACTIONS]
+
+
+100ms por action.
