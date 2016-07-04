@@ -1,0 +1,41 @@
+A experiencia do jogador depende das coisas que ele ja fez durante uma partida(oficial). Cada ação tomada pelo jogador, pode contar para formar sua experiencia total, seus movimentos preferidos e etc.
+
+O metódo utilizado para isso é o raciocinio baseado em casos, que visa tomar uma decisão com base em decisões e resultados obtidos anteriormente.
+
+
+O raciocinio baseado em casos possui 4 elementos em seu ciclo:
+
+[CICLO]
+	- Recuperação
+	- Reutilização
+	- Revisão
+	- Retenção
+[/CICLO]
+
+Isso quer dizer que eu recupero problemas antigos, verifico qual melhor se encaixa para decisão que eu preciso tomar, reutilizo a decisão tomada no problema anterior e com base no seu resultado reviso, comparando a qualidade das duas ações e retenho o novo problema e a consequencia da ação tomada.
+
+No game, isso vai ser usado para definir quão experiente um jogador é. Jogador com melhor capacidade de decisão, concentração, aprendizagem, terão a tendencia a recuperarem e a reterem ações realizadas como experiencia para tomada de novas decisões.
+
+Isso quer dizer que os jogadores terão movimentos preferidos, saberão as ações que realizam de melhor e tenderão a pensar da melhor forma com base na quantidade de partidas jogadas. O que chamamos de experiência.
+
+
+Ciclo do RBC no soccerleague
+
+- Recuperação
+	Nem todo jogador recupera casos antigos durante uma partida, isso porque existe fatores e habilidades que irão determinar a capacidade de recuperação de uma ação anterior por parte de um jogador. Tais com
+		- Concentração
+		- Memória
+- Reutilização
+	Partimos do principio de que todo caso recuperado, na maioria das vezes, irá ser utilizado na ação que o jogador tomará. Isso quer dizer que depois de recuperado o caso provavelmente vai ser utilizado como base na próxima ação. No entando alguns fatores podem mudar isso, é o caso da imprevisibilidade.
+- Revisão
+	A partir do momento que um jogador recupera e reutiliza um caso e toma a decisão de realizar a ação X, ele gera uma consequencia Y que será, ainda não foi definido um nome, a qualidade da ação X. A qualidade da ação X depende exclusivamente dos atributos dele, dos companheiros e do adversário. Com base no caso recuperado, na ação tomada e na qualidade gerada, ele pode verificar se existia algum caso anteriormente salvo para reavaliar a sua ação.
+- Retenção
+	Com base na revisão, a retenção diz se um jogador salva aquele novo caso/ação/qualidade. Essa retenção é determinada também por as habilidades de Memória, Profissionalismo, Decisão, Concentração.
+
+
+[PROBLEMAS]
+	Decidir a ação e tentar recuperar, ou recuperar para decidir a ação.
+[/PROBLEMAS]
+
+Algoritmo de similaridade
+	O algoritmo de similaridade define o quanto o problema atual(problema para a ação) é parecido com os que estão salvos na memória do jogador(em sem banco de casos).

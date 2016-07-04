@@ -63,8 +63,8 @@
 		x Liderança
 			Define o quanto o jogador é um lider.
 			Influencia na escolha do capitão, sendo responsavel por "chamar a equipe para a partida e etc".
-		x Aprendizagem
-			Define quão bem um jogador aprende algo novo.
+		x Memória
+			Define quão bem um jogador aprende algo novo, ou recupera a informação de algo aprendido anteriormente.
 			Influencia na aprendizagem de uma nova posição, uma nova caracteristica e etc.
 		- Empenho
 			Define quão empenhado dentro de campo um jogador é.
