@@ -1,0 +1,20 @@
+Posições dos jogadores:
+
+Atacante
+Ponta
+Meia Atacante
+Meia central
+Meia lateral
+Volante
+Ala
+Lateral
+Zagueiro
+
+
+
+		  FC		
+OML	 	  OMC		OMR
+ML		  MC		MR
+DML		  DMC		DMR
+DL 		  DC 		DR
+		  GK	

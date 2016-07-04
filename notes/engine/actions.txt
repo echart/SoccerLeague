@@ -1,0 +1,23 @@
+[loop]	
+	Dominio de bola
+	Verifica opções
+	Verifica ou não no banco de casos pra ver se passou algum momento diferente
+	Tomada de decisão
+	Ação
+		- Confronto de skills
+		- "Ação das skills na ação"
+		- Qualidade da ação
+	Ação bem sucedida?
+	Com base no algoritmo de aprendizagem salva ou não a ação no banco, e sua qualidade para posterior request
+[/loop]
+
+As ações do jogador dependem do tipo de jogada
+
+ex:
+
+
+Bola parada
+	- Chute direto(distancia)
+	- Passe curto
+	- Cruzamento
+
