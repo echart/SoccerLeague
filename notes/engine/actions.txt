@@ -19,7 +19,7 @@
 	[/LOOP]
 {/COM A BOLA}
 {SEM A BOLA}
-	[LOOP]
+	[Possibilidades]
 		Reposicionamento(Marcação)
 			Reposicionamento com base no adversário mais próximo
 			Reposicionamento com base na ação do adversário
@@ -27,7 +27,7 @@
 			- Carrinho
 			- Desarme normal
 		Dividida
-	[/LOOP]
+	[/Possibilidades]
 {/SEM A BOLA}
 
 [ACTIONS]
