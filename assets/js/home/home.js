@@ -190,12 +190,12 @@ function register(){
         }else if(data.return=='success'){
           response='Clube criado com sucesso! Faça login para começar a administra-lo!';
         }
-        console.log(data.responseText);
+        console.log(data);
         $('.viewsign button').html('Criar clube');
-        $('.viewsign .return').html(response);
+        $('.viewsign .return').html();
       },
       error: function(data){
-        console.log(data.responseText);
+        console.log(data);
         $('.viewsign button').html('Criar clube');
         $('.viewsign .return').html('Há algum problema com os papeis, não podemos dar andamento na criação do clube');
       }

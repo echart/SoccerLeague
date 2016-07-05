@@ -22,7 +22,7 @@ try{
 	$error.=Validation::minLenght($clubname,8);
 	$error.=Validation::isEmpty($country);
 	if($error!=''){
-		throw new Exception("Has an error with your params", 1);	
+		throw new Exception($error, 1);	
 	}
 }catch(Exception $e){
 	echo JsonOutput::error('exception',$e->getmessage());
