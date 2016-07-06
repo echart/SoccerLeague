@@ -88,11 +88,4 @@ class Validation{
 			return false;
 		}
 	}
-	// public static function validate($){
-	// 	if(self::$validate!=null or self::$validate!=''){
-	// 		return true;
-	// 	}else{
-	// 		return false;
-	// 	}
-	// }
 }
