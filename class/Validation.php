@@ -1,7 +1,6 @@
 <?
-$formnomeclub='b';
-Validation::validate($formnomeclub)->string()->isEqual('b');
-print_r(Validation::$errorsMsg);
+namespace soccerleague\Validation;
+
 class Validation{
 	public static $errors=false;
 	public static $errorsMsg=array();

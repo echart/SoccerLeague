@@ -1,7 +1,21 @@
 <?
-class Account{
-	public static $instance;
+namespace soccerleague\AccountInterface;
 
+interface Account{
+	public function __construct();
+	public function setRefeer($id);
+	public function setEmail($email);
+	public function setProDays($pro);
+	public function setPassword($password);
+	public function setCountry($country);
+}
+
+namespace soccerleague\AccountCreate;
+use soccerleague\AccountInterface as AccountLayout;
+
+class Account implements AccountLayout{
+	public static $instance;
+	
 	private $_prodays;
 	public $language;
 	private $permissions;
