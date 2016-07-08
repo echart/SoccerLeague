@@ -4,19 +4,18 @@
 	try{
 		$con=Connection::getInstance();
 		$user=new Authentication();
-
 		if($user->verifyAuthentication()===false){ //before all, verify if user have needed authentication
 			Authentication::homeRedirect();
+			exit;
 		}
-
-		$request = $_GET ?? array('request'=>'home');
-		
 		$handler=new Handler();
-		$handler->requestURL($request);
-
+		$handler->requestURL($_GET ?? array('request'=>'home'));
 		$handler->loadController();
 		$handler->loadView();
-		
 	}catch(Exception $e){
-		echo "Error " . $e->getMessage();
+		echo "We have an error with your request: <br>" . $e->getMessage();
+	}catch(RequestException404 $e){
+		echo "404 not found" . $e->getMessage();
+	}finally{
+		$con->disconnect();
 	}

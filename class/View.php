@@ -1,10 +1,9 @@
 <?php
-
 class View{
 	public $__viewData;
 	public $__headerData;
 	public $__headData;
-	
+
 	public function __construct($request){
 		$this->request=$request;
 	}
@@ -24,10 +23,12 @@ class View{
 		$this->__viewData=$data;
 	}
 	public function loadView(){
-		include('views/'.$this->request.'.php');
+		if(file_exists('views/'.$this->request.'.php'))
+			include('views/'.$this->request.'.php');
+		else
+			include('views/404.html');
 	}
 	public function loadFooter(){
 		require_once('views/_footer.php');
 	}
 }
-
