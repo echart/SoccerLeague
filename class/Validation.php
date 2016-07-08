@@ -1,7 +1,7 @@
 <?
-$a='a';
-//Validation::validate($a)->string()->isEqual('b');
-// Validation::validate(11)->string()->isEqual(11);
+$formnomeclub='b';
+Validation::validate($formnomeclub)->string()->isEqual('b');
+print_r(Validation::$errorsMsg);
 class Validation{
 	public static $errors=false;
 	public static $errorsMsg=array();
