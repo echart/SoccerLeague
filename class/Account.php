@@ -1,21 +1,22 @@
 <?
-namespace soccerleague\AccountInterface;
-
-interface Account{
-	public function __construct();
-	public function setRefeer($id);
-	public function setEmail($email);
-	public function setProDays($pro);
-	public function setPassword($password);
-	public function setCountry($country);
-}
-
-namespace soccerleague\AccountCreate;
-use soccerleague\AccountInterface as AccountLayout;
-
-class Account implements AccountLayout{
+// namespace soccerleague\AccountInterface;
+//
+// interface Account{
+// 	public function __construct();
+// 	public function setRefeer($id);
+// 	public function setEmail($email);
+// 	public function setProDays($pro);
+// 	public function setPassword($password);
+// 	public function setCountry($country);
+// }
+//
+// namespace soccerleague\AccountCreate;
+// use soccerleague\AccountInterface as AccountLayout;
+//
+// class Account implements AccountLayout{
+class Account{
 	public static $instance;
-	
+
 	private $_prodays;
 	public $language;
 	private $permissions;
@@ -69,31 +70,29 @@ class Account implements AccountLayout{
 		return $this->email;
 	}
 
-	private function setProDays($days):bool{
+	private function setProDays($days){
 		$this->_prodays=$days;
 	}
 	public function getProDays():int{
 		return $this->_prodays;
 	}
 
-	public function setPassword($p):bool{
+	public function setPassword($p){
 		$this->password=$p;
 	}
 
-	public function setLanguage($l):bool{
+	public function setLanguage($l){
 		$this->language=$l;
 	}
 	public function getLanguage($l){
 		return $this->language;
 	}
-	private function update():bool{
+	public function update():bool{
 		try{
-			$query= Connection::getInstance()->connect()->prepare("UPDATE account SET email=:email, password=:password, refeer=:refeer, slpro=:prodays, language=:language");
+			$query= Connection::getInstance()->connect()->prepare("UPDATE account SET email=:email, password=:password where id_account=:id_account");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
-			$query->bindParam(':refeer',$this->refeer);
-			$query->bindParam(':language',$this->language);
-			$query->bindParam(':prodays',$this->_prodays);
+			$query->bindParam(':id_account',$this->id_account);
 
 			if($query->execute()) return true; else return false;
 
@@ -101,9 +100,10 @@ class Account implements AccountLayout{
 			echo $e->getMessage();
 		}
 	}
-	private function create(){
+	public function create(){
 		try{
-			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, refeer, language, slvip) values (:email, :password, :refeer, '1', '15')");
+			$this->password=password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12]);
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, refeer) values (:email, :password, :refeer)");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
 			$query->bindParam(':refeer',$this->refeer);
@@ -115,7 +115,7 @@ class Account implements AccountLayout{
 			echo $e->getMessage();
 		}
 	}
-	private function delete():bool{
+	public function delete():bool{
 		try{
 			$query= Connection::getInstance()->connect()->prepare("DELETE FROM account where id_account=:id");
 			$query->bindParam(':id',$this->id_account);
@@ -126,7 +126,14 @@ class Account implements AccountLayout{
 			echo $e->getMessage();
 		}
 	}
-	private static function validEmail($email):bool{
-		 
+ 	public function validEmail():bool{
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_account FROM account where email=:email ") or die();
+			$query->bindParam(':email',$this->email);
+			$query->execute();
+			if($query->rowCount()==0){
+				return true;
+			}else{
+				return false;
+			}
 	}
 }

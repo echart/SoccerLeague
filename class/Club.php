@@ -2,7 +2,7 @@
 
 class Club{
 	public $id_club;
-	protected $id_account;
+	public $id_account;
 	private $con;
 
 	protected $clubname;
@@ -13,7 +13,7 @@ class Club{
 	public function __construct($club=''){
 		$this->id_club=$club;
 		$this->con=Connection::getInstance()->connect();
-		
+
 		if($club!=''){
 			$this->id_club=$club;
 		}
@@ -53,7 +53,7 @@ class Club{
 			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
 
-			$query=$this->con->prepare("INSERT INTO club_fans (id_club,fans) values (:id_club, '6000')");
+			$query=$this->con->prepare("INSERT INTO club_fans (id_club) values (:id_club)");
 			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
 
@@ -63,10 +63,10 @@ class Club{
 		}catch(PDOException $e){
 			$return=array('return','error');
 		}
-		
+
 		return $return;
 	}
-	
+
 	public function delete():bool{
 
 	}

@@ -1,5 +1,4 @@
 <?
-namespace soccerleague\Validation;
 
 class Validation{
 	public static $errors=false;
@@ -60,7 +59,7 @@ class Validation{
 		return self::$instance;
 	}
 	public static function between($min,$max){
-		
+
 	}
 	public static function lenght(){
 		if(is_string(self::$validate)){

@@ -42,7 +42,7 @@ if($user->verifyAuthentication()===true){
 		<div class='video'>
 			<video preload='none' loop="loop" muted>
 				<source src="assets/video/splash_home3.mp4" type="video/mp4">
-				<img src="assets/img/backgrounds/bg1.jpg">				
+				<img src="assets/img/backgrounds/bg1.jpg">
 			</video>
 			<div class="pattern"></div>
 			<div class='cadastro'>
@@ -74,6 +74,7 @@ if($user->verifyAuthentication()===true){
 			    	<input type='text' name='userlogin1' placeholder='Email'>
 			    	<input type='password' name='userpass1' placeholder='Senha'>
 			    	<input type='password' name='reuserpass1' placeholder='Digite novamente a Senha'>
+						<input type='hidden' name='refeer' value='<?=$refeer?>'>
 			    	<select id='country'></select>
 			    	<button type='button' onclick='register()'>Criar clube</button>
 			    </form>
@@ -85,7 +86,7 @@ if($user->verifyAuthentication()===true){
 			<p>
 				Há mais de cinco anos, com o começo da era dos jogos virtuais, a paixão por futebol sempre fez nascer o desejo de poder representar ligas, jogadores, partidas e etc., tudo que desde antigamente, torcedores já faziam em jogos de botões e competições entre amigos.
 				Com isso surgiu a ideia do Soccer League, que tem como principal objetivo ser um game de gerenciamento de um clube de futebol e todos seus aspectos, como estádios, categorias de base, transferências, receitas, despesas, contratos de patrocínio e etc.
-				O usuário poderá criar o seu clube, que o mesmo já virá com jogadores vinculados a ele. Assim como também o clube já estará vinculado a sua competição nacional (liga), que é dividida por divisões e grupos. Além da liga, o clube disputará a Copa Nacional. 
+				O usuário poderá criar o seu clube, que o mesmo já virá com jogadores vinculados a ele. Assim como também o clube já estará vinculado a sua competição nacional (liga), que é dividida por divisões e grupos. Além da liga, o clube disputará a Copa Nacional.
 				Com isso, o usuário deve escalar seu time e disputar partidas que serão geradas através de uma engine, criada a partir do zero, disputando campeonatos contra seus amigos e outros usuários na luta pelo título de campeão.
 				Você pode baixar o relatório completo do projeto clicando <a target='_blank' href='assets/downloads/soccerleague.pdf'>aqui</a>.
 			</p>

@@ -7,25 +7,25 @@ require_once('../class/JsonOutput.php');
 
 
 try{
-	$refeer=$_POST['refeer'] ?? '';
+	$refeer=$_POST['refeer'] ?? null;
 	$email=$_POST['login'] ?? '';
 	$pass=$_POST['password'] ?? '';
 	$pass2=$_POST['rpassword'] ?? '';
 	$clubname=$_POST['clubname'] ?? '';
 	$country=$_POST['country'] ?? '';
 
-	$error='';
-	$error=Validation::isEqual($pass,$pass2);
-	$error.=Validation::isEmpty($email);
-	$error.=Validation::isEmpty($pass);
-	$error.=Validation::isEmpty($clubname);
-	$error.=Validation::minLenght($clubname,8);
-	$error.=Validation::isEmpty($country);
-	if($error!=''){
-		throw new Exception($error, 1);	
+	Validation::validate($pass)->isNotEmpty()->isEqual($pass2);
+	Validation::validate($email)->isNotEmpty();
+	Validation::validate($clubname)->isNotEmpty()->minLenght(8);
+	Validation::validate($country)->isNotEmpty();
+
+	if(Validation::$errorsNum>0){
+		for ($i=0; $i < Validation::$errorsNum ; $i++) {
+			throw new Exception(Validation::$errorsMsg[$i]);
+		}
 	}
 }catch(Exception $e){
-	echo JsonOutput::error('exception',$e->getmessage());
+	echo JsonOutput::error($e->getmessage(),'Houve um error com a o cadastro.');
 	exit;
 }
 try{
@@ -50,7 +50,7 @@ try{
 		throw new Exception("Invalid email", 1);
 	}
 }catch(Exception $e){
-	echo Json::error('exception',$e->getmessage());
+	echo JsonOutput::error('exception',$e->getmessage());
 }finally{
-	$con->disconnect();	
+	$con->disconnect();
 }

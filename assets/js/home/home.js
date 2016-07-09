@@ -3,7 +3,7 @@
  * class helper functions
  * from bonzo https://github.com/ded/bonzo
  * MIT license
- * 
+ *
  * classie.has( elem, 'my-class' ) -> true/false
  * classie.add( elem, 'my-new-class' )
  * classie.remove( elem, 'my-unwanted-class' )
@@ -168,31 +168,16 @@ function register(){
       url: 'controllers/_register.php',
       method: 'POST',
       dataType: 'json',
-      data: {login: $("input[name='userlogin1']").val(), password:$("input[name='userpass1']").val(), rpassword:$("input[name='reuserpass1']").val(), clubname:$("input[name='clubname']").val(), country: $('#country').data('ddslick').selectedData.value},
+      data: {refeer: $("input[name='refeer']").val(),login: $("input[name='userlogin1']").val(), password:$("input[name='userpass1']").val(), rpassword:$("input[name='reuserpass1']").val(), clubname:$("input[name='clubname']").val(), country: $('#country').data('ddslick').selectedData.value},
       beforeSend: function(data){
         $('.viewsign .return').html('');
         $('.viewsign button').html('Carregando');
       },
       success: function(data){
-        console.log(data);
-        if(data.return=='empty'){
-          response='Email e senha devem ser preenchidos';
-        }else if(data.return=='pass'){
-          response='Senha precisa ter mais de 8 caracteres';
-        }else if(data.return=='email'){
-          response='Email já cadastrado, utilize um outro email.';
-        }else if(data.return=='club'){
-          response='Oh que pena, já temos um clube com esse nome. Escolha um novo nome e começe a sua história!';
-        }else if(data.return=='diferentpass'){
-          response='As senhas digitadas não conferem';
-        }else if(data.return=='empty2'){
-          response='Clube e país devem ser preenchidos';
-        }else if(data.return=='success'){
-          response='Clube criado com sucesso! Faça login para começar a administra-lo!';
-        }
+        response=data;
         console.log(data);
         $('.viewsign button').html('Criar clube');
-        $('.viewsign .return').html();
+        $('.viewsign .return').html(response);
       },
       error: function(data){
         console.log(data);
