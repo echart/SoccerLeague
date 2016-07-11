@@ -1,4 +1,5 @@
 <?
+ini_set('error_reporting',!E_WARNING);
 extract($this->__headData);
 extract($this->__headerData);
 extract($this->__viewData);
