@@ -39,7 +39,9 @@ class Authentication{
 		//move user back to home page
 		header('location: http://' . $_SERVER['SERVER_NAME']);
 	}
-
+	public function login(){
+		
+	}
 	public static function getSessionData(){}
 
 	public static function homeRedirect(){

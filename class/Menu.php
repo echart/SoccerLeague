@@ -5,21 +5,24 @@ class menu{
 	public $principal=0;
 	public static $menu=array(
 		'home'=>array(
-				0=>array('href'=>'calendar.php?','text'=>'Calendário'), 
+				0=>array('href'=>'calendar.php?','text'=>'Calendário'),
 				1=>array('href'=>'index.php','text'=>'Feed')
 		),
 		'club'=>array(
-				0=>array('href'=>'/club/','text'=>'Clube'), 
+				0=>array('href'=>'/club/','text'=>'Clube'),
 				1=>array('href'=>'/club/12/overview/','text'=>'Visão Geral'),
 				2=>array('href'=>'club/12/matches','text'=>'Partidas'),
 				3=>array('href'=>'statistics.php','text'=>'Estatísticas'),
 				4=>array('href'=>'history.php','text'=>'Histórico'),
 				5=>array('href'=>'stadium.php','text'=>'Estádio')
+		),
+		'league'=>array(
+			0=>array('href'=>'/league/', 'text'=>'Liga')
 		)/*,
 		''=>array('submenu'=>
 			array(
-				0=>array('href'=>'','text'=>''), 
-				
+				0=>array('href'=>'','text'=>''),
+
 			)
 		)*/
 	);

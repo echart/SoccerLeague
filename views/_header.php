@@ -3,9 +3,9 @@
 	<label class='menu-mobile' for='menu-mobile'><i></i></label>
 	<label class='config' for='menu-mobile'><i></i></label>
 	<ul class='submenu'>
-		<? 
-		$submenu = new menu('club',0);
-		$submenu->display(); ?>
+		<?
+		// $submenu = new menu('club',0);
+		// $submenu->display(); ?>
 	</ul>
 </header>
 <div class='menu-sidebar'>
