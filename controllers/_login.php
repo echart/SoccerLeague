@@ -2,7 +2,6 @@
 header('Content-type: application/JSON');
 
 include('../class/Connection.php');
-include('../class/Login.php');
 include('../class/Authentication.php');
 include('../class/Club.php');
 
