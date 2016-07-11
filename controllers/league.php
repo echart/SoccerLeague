@@ -1,11 +1,10 @@
 <?
-$division = $this->requestURL['id'] ?? $_SESSION['division'];
-$group = $this->requestURL['subrequest'] ?? $_SESSION['group'];
+$division = $this->request['id'] ?? $_SESSION['division'];
+$group = $this->request['subrequest'] ?? $_SESSION['group'];
 ?>
 <div class='content'>
   <?
-  echo $division . '<br>';
-  echo $group . '<br>';
+  echo 'Divisão: ' . $division . '<br>';
+  echo 'Grupo: ' .$group . '<br>';
   ?>
 </div>
-?>

@@ -46,7 +46,7 @@ class Club{
 			$query->bindParam(':id_club', $this->id_club);
 			$query->execute();
 
-			$query=$this->con->prepare("INSERT INTO club_account (id_account,id_club) values (:id_account,:id_club)");
+			$query=$this->con->prepare("INSERT INTO club_account (id_club, id_accout) values (:id_club,:id_account)");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
@@ -84,5 +84,13 @@ class Club{
 		}else{
 			return 0;
 		}
+	}
+	public static function getClubByAccountId($id_account){
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_club from club_account where id_account=:id_account LIMIT 1");
+		$query->bindParam(':id_account', $id_account, PDO::PARAM_INT);
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_OBJ);
+		$data=$query->fetch();
+		return $data->id_club;
 	}
 }

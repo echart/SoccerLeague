@@ -2,8 +2,8 @@
 
 class Authentication{
 	private $login;
-	public $id_account;
 	private $password;
+	public $id_account;
 	private $con;
 
 	public function __construct(){
@@ -69,7 +69,9 @@ class Authentication{
 		$_SESSION['SL_session']=session_id();
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
-
+		$_SESSION['SL_club']=Club::getClubByAccountId($this->id_account);
+		$_SESSION['SL_div']=1;
+		$_SESSION['SL_group']=1;
 		try{
 			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid) values (:id_account, '".session_id()."','true')");
 			$query->bindParam(':id_account',$this->id_account);
