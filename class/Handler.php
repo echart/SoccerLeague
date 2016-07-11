@@ -11,7 +11,8 @@ class Handler{
 	}
 	public function loadController(){
 		//load the controller
-		include_once('controllers/'.$this->requestURL.'.php');
+		if(file_exists('controllers/'.$this->requestURL.'.php'))
+			include_once('controllers/'.$this->requestURL.'.php');
 	}
 	public function loadView(){
 		$view = new View($this->requestURL);
