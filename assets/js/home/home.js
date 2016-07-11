@@ -46,6 +46,9 @@ function login(){
   });
 }
 function register(){
+  if($('#country').data('ddslick').selectedData==null){
+    $('.viewsign .return').html('Ainda há dados a serem preenchidos.');
+  }
   $.ajax({
       url: 'controllers/_register.php',
       method: 'POST',
@@ -57,7 +60,7 @@ function register(){
       },
       success: function(data){
         if(typeof data.error != 'undefined'){
-          response=data.error.message;
+          response=data.error.code;
           console.log(data);
         }else{
           response='Seja bem vindo ao SoccerLeague, seu clube ' + data.data.clubname + ' foi criado com sucesso e os seus jogadores o aguardam para a primeira conversa!';
