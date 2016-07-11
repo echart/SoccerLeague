@@ -3,4 +3,4 @@
     <script type="text/javascript" src='<?=$tree?>assets/js/login/menu.js'></script>
 </body>
 </html>
-<?$con->disconnect();?>
+<? Connection::getInstance()->disconnect();?>
