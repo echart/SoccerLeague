@@ -10,9 +10,9 @@ $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
 
 $con=Connection::getInstance();
-$user=new Login($email, $pass);
+$user=new Authentication();
 
-if($user->verifyLogin()){
+if($user->verifyLogin($email,$pass)){
 	$user->login();
 	$return=array('return'=>'success');
 }else{

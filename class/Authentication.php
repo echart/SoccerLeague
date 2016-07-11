@@ -39,8 +39,47 @@ class Authentication{
 		//move user back to home page
 		header('location: http://' . $_SERVER['SERVER_NAME']);
 	}
-	public function login(){
-		
+	public function verifyLogin($email,$password):bool{
+
+		$query=$this->con->prepare("SELECT password, id_account FROM account where email=:email");
+		$query->bindParam(':email',$email);
+
+		$query->execute();
+
+		if($query->rowCount()>0){
+			$query->setFetchMode(PDO::FETCH_OBJ);
+
+			$data=$query->fetch();
+			$hash=$data->password;
+			if(password_verify($password, $hash)){
+				$this->id_account=$data->id_account;
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	public function login():bool{
+
+		session_start();
+		session_regenerate_id();
+
+		$_SESSION['SL_session']=session_id();
+		$_SESSION['SL_login']=$this->login;
+		$_SESSION['SL_account']=$this->id_account;
+
+		try{
+			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid) values (:id_account, '".session_id()."','true')");
+			$query->bindParam(':id_account',$this->id_account);
+			$query->execute();
+		}catch(PDOException $e){
+			return false;
+			exit;
+		}finally{
+			return true;
+		}
 	}
 	public static function getSessionData(){}
 
