@@ -7,6 +7,7 @@ $user= new Authentication();
 if($user->verifyAuthentication()===true){
 	header('location: /club/');
 }
+$refeer= $_GET['refeer']?? NULL;
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +51,7 @@ if($user->verifyAuthentication()===true){
 				<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 				<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
 			</div>
-			<div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div>
+			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
 		</div>
 	    <div class='viewlogin ex'>
 	    	<span onclick='expandLogin()' class='close'></span>
@@ -81,7 +82,7 @@ if($user->verifyAuthentication()===true){
 		    	<h5 class='return'></h5>
 		    </div>
 	    </div>
-		<div id='description'>
+		<!-- <div id='description'>
 			<h1>O projeto</h1>
 			<p>
 				Há mais de cinco anos, com o começo da era dos jogos virtuais, a paixão por futebol sempre fez nascer o desejo de poder representar ligas, jogadores, partidas e etc., tudo que desde antigamente, torcedores já faziam em jogos de botões e competições entre amigos.
@@ -101,7 +102,7 @@ if($user->verifyAuthentication()===true){
 			<div class='logo'><h3>SOCCER LEAGUE</h3></div>
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
-	</footer>
+	</footer> -->
 	<!-- CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/login.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/header.min.css">
