@@ -12,7 +12,7 @@
 	<div class='logo'><i></i></div>
 	<ul class='menu'>
 		<li><a class='home' href=''><i></i><span>Sede</span></a></li>
-		<li><a class='club border' href=""><i></i><span>Clube</span></a>
+		<li><a class='club border' href="club/"><i></i><span>Clube</span></a>
 		<li><a class='squad' href=""><i></i><span>Equipe</span></a></li>
 		<li><a class='tactic border' href=""><i></i><span>Táticas</span></a></li>
 		<li><a class='calendar' href=""><i></i><span>Calendário</span></a></li>
