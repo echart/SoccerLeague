@@ -7,7 +7,7 @@ require_once('../class/JsonOutput.php');
 
 
 try{
-	$refeer=$_POST['refeer'] ?? null;
+	if($_POST['refeer']!='') $refeer=$_POST['refeer'];else $refeer=NULL;
 	$email=$_POST['login'] ?? '';
 	$pass=$_POST['password'] ?? '';
 	$pass2=$_POST['rpassword'] ?? '';
@@ -25,7 +25,7 @@ try{
 		}
 	}
 }catch(Exception $e){
-	echo JsonOutput::error($e->getmessage(),'Houve um error com a o cadastro.');
+	echo JsonOutput::error($e->getmessage(),'Houve um erro com a o cadastro.');
 	exit;
 }
 try{
@@ -39,10 +39,19 @@ try{
 			$account->setRefeer($refeer);
 			$club=new Club();
 			$club->id_account=$account->create();
-			$club->setClubeName($clubname);
-			$club->setCountry($country);
-			$club->create();
-			echo Json::success(array('clubname'=>$club->clubname));
+			if($club->id_account!=""){
+				$club->setClubName($clubname);
+				$club->setCountry($country);
+				if($club->checkAvailableClub()==0){
+					//criar nova liga/grupo
+				}
+				$response=$club->create();
+				if($response==false){
+					//deletar conta;
+				}else{
+						echo JsonOutput::success(array('clubname'=>$club->getClubName()));
+				}
+			}
 		}else{
 			throw new Exception("Invalid clubname", 1);
 		}

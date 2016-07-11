@@ -16,11 +16,9 @@
 // class Account implements AccountLayout{
 class Account{
 	public static $instance;
-
 	private $_prodays;
 	public $language;
 	private $permissions;
-
 	public $id_account;
 	private $email;
 	private $password;
@@ -55,32 +53,27 @@ class Account{
 			return new self($id);
 		}
 	}
-
 	public function setRefeer($id){
 		$this->refeer=$id;
 	}
 	public function getRefeer(){
 		return $this->refeer;
 	}
-
 	public function setEmail($email){
 		$this->email=$email;
 	}
 	public function getEmail():string{
 		return $this->email;
 	}
-
 	private function setProDays($days){
 		$this->_prodays=$days;
 	}
 	public function getProDays():int{
 		return $this->_prodays;
 	}
-
 	public function setPassword($p){
 		$this->password=$p;
 	}
-
 	public function setLanguage($l){
 		$this->language=$l;
 	}
@@ -102,14 +95,19 @@ class Account{
 	}
 	public function create(){
 		try{
-			$this->password=password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 12]);
+			$this->password=password_hash($this->password, PASSWORD_BCRYPT);
 			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, refeer) values (:email, :password, :refeer)");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
 			$query->bindParam(':refeer',$this->refeer);
-
 			$query->execute();
+
 			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
+
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account_data(id_account, language, slvip, timezone, status) values (:id_account,1,15,-3,'A')");
+			$query->bindParam(':id_account',$this->id_account);
+			$query->execute();
+			
 			return $this->id_account;
 		}catch(PDOException $e){
 			echo $e->getMessage();
