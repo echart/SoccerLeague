@@ -71,16 +71,6 @@ class Authentication{
 		$_SESSION['SL_account']=$this->id_account;
 		$_SESSION['SL_club']=$id_club;
 		/**
-		 * return div and group for the session
-		 */
-		$query=$this->con->prepare("SELECT division,divgroup FROM league l inner join league_table lt using(id_league) where lt.id_club=:id_club order by lt.id_league_table desc limit 1");
-		$query->bindParam(':id_club',$id_club);
-		$query->execute();
-		$query->setFetchMode(PDO::FETCH_OBJ);
-		$data=$query->fetch();
-		$_SESSION['SL_div']=$data->division;
-		$_SESSION['SL_group']=$data->divgroup;
-		/**
 		 * insert session in db for authentication
 		 */
 		try{
