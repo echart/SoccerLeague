@@ -17,7 +17,7 @@
 	RewriteRule ^league/$ handler.php?request=$1 [NC,L]
 	RewriteRule ^league$ handler.php?request=$1 [NC,L]
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
-	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=$1&country=$1&div=$2&group=$3 [NC,L]
+	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
 
  </IfModule>
 
