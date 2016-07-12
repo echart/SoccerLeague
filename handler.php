@@ -15,8 +15,6 @@
 
 	}catch(Exception $e){
 		echo "We have an error with your request: <br>" . $e->getMessage();
-	}catch(RequestException404 $e){
-		echo "404 not found" . $e->getMessage();
 	}finally{
 		$con->disconnect();
 	}
