@@ -1,12 +1,10 @@
 <IfModule mod_rewrite.c>
-
-
 	RewriteEngine On
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
-	RewriteRule ^([a-z0-9-]+)/$ handler.php?request=$ [NC,L]
-	RewriteRule ^([a-z0-9-]+)$ handler.php?request=$ [NC,L]
+	RewriteRule ^([a-z0-9-]+)/$ handler.php?request=$1 [NC,L]
+	RewriteRule ^([a-z0-9-]+)$ handler.php?request=$1 [NC,L]
 
 	RewriteRule ^club/([0-9-]+)/$ handler.php?request=club&id=$1 [NC,L]
 	RewriteRule ^club/([0-9-]+)$ handler.php?request=club&id=$1 [NC,L]
@@ -15,8 +13,11 @@
 
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
-
  </IfModule>
+
+
+ ErrorDocument 404 /404/
+
 
 <IfModule mod_expires.c>
 	ExpiresActive On

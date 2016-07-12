@@ -12,6 +12,7 @@
 		$handler->requestURL($_GET ?? array('request'=>'home'));
 		$handler->loadController();
 		$handler->loadView();
+
 	}catch(Exception $e){
 		echo "We have an error with your request: <br>" . $e->getMessage();
 	}catch(RequestException404 $e){
