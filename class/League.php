@@ -69,9 +69,7 @@ class League{
 		if($query->rowCount()>0) return true; else return false;
 	}
 	public static function lastDivAndGroup(){
-		//select division,divgroup from league order by division,divgroup asc
-		$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league order by division,divgroup asc")->execute();
-		$query->setFetchMode(PDO::FETCH_OBJ);
+		$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league order by division,divgroup asc")->execute()->setFetchMode(PDO::FETCH_OBJ);
 		$data=$query->fetch();
 		return array($data->division,$data->divgroup);
 	}
@@ -85,5 +83,6 @@ class League{
 		}
 	}
 	public function joinClub($id_club){}
+		// TODO: make script to get all matches, computing pts and update league table
 	public function updateRound(){}
 }
