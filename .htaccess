@@ -12,7 +12,8 @@
 	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
 	RewriteRule ^club/([0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
 
-
+	RewriteRule ^logout$ handler.php?request=logout
+	RewriteRule ^logout/$ handler.php?request=logout
 
 	RewriteRule ^league/$ handler.php?request=league [NC,L]
 	RewriteRule ^league$ handler.php?request=league [NC,L]
