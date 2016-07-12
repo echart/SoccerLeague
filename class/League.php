@@ -68,6 +68,13 @@ class League{
 		$query->execute();
 		if($query->rowCount()>0) return true; else return false;
 	}
+	public static function lastDivAndGroup(){
+		//select division,divgroup from league order by division,divgroup asc
+		$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league order by division,divgroup asc")->execute();
+		$query->setFetchMode(PDO::FETCH_OBJ);
+		$data=$query->fetch();
+		return array($data->division,$data->divgroup);
+	}
 	public function nextAvailableDivAndGroup(){
 		if($this->div==1){
 			return array($this->div+1,1);
