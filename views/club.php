@@ -1,3 +1,3 @@
 	<div class='content'>
-		<h1><?print_r($_SERVER);?></h1>
+		<h1>Club</h1>
 	</div>
