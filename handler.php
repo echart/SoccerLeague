@@ -9,6 +9,7 @@
 			exit;
 		}
 		$handler=new Handler();
+		print_r($_GET);
 		$handler->requestURL($_GET ?? array('request'=>'home'));
 		$handler->loadController();
 		$handler->loadView();

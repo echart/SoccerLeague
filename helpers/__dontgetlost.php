@@ -1,6 +1,6 @@
 <?
 	/*
-		return the current path;	
+		return the current path;
 	*/
 	function __dontgetlost($script):string{
 		//get the document root and exclude it from url;

@@ -1,6 +1,6 @@
 <?
-$division = $this->request['id'] ?? $_SESSION['division'];
-$group = $this->request['subrequest'] ?? $_SESSION['group'];
+$division = $this->request['div'] ?? $_SESSION['SL_div'];
+$group = $this->request['group'] ?? $_SESSION['SL_group'];
 ?>
 <div class='content'>
   <?
