@@ -82,7 +82,10 @@ class League{
 			return array($this->div+1,1);
 		}
 	}
-	public function joinClub($id_club){}
+	public function joinClub($id_club){
+		// TODO: make script to insert a club in $this->id_league table
+	}
+	public function updateRound(){
 		// TODO: make script to get all matches, computing pts and update league table
-	public function updateRound(){}
+	}
 }
