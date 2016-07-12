@@ -5,7 +5,7 @@ $con=Connection::getInstance();
 
 $user= new Authentication();
 if($user->verifyAuthentication()===true){
-	header('location: /club/');
+	header('location: /home/');
 }
 $refeer= $_GET['refeer']?? NULL;
 ?>

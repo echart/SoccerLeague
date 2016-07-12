@@ -5,6 +5,9 @@
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
+	RewriteRule ^home/$ handler.php?request=home [NC,L]
+	RewriteRule ^home$ handler.php?request=home [NC,L]
+
 	RewriteRule ^club/$ handler.php?request=club [NC,L]
 	RewriteRule ^club$ handler.php?request=club [NC,L]
 	RewriteRule ^club/([0-9-]+)/$ handler.php?request=club&id=$1
