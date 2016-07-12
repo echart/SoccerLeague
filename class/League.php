@@ -42,4 +42,13 @@ class League{
 	}
 	public function getLeagueTable();
 	public function updateLeagueTable();
+	public static function checkIfLeagueAlreadyExists($season,$country,$div,$group){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM competition inner join league using(id_competition) where season=:season and country=:country and division:div and divgroup:group");
+		$query->bindParam(':season',$season);
+		$query->bindParam(':country',$country);
+		$query->bindParam(':div',$div);
+		$query->bindParam(':group',$group);
+		$query->execute();
+		if($query->rowCount()>0) return true; else return false;
+	}
 }
