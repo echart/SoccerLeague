@@ -5,23 +5,21 @@
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
-	RewriteRule ^club/$ handler.php?request=$1 [NC,L]
-	RewriteRule ^club$ handler.php?request=$1 [NC,L]
-	RewriteRule ^club/([0-9-]+)/$ handler.php?request=$1&id=$2
-	RewriteRule ^club/([0-9-]+)$ handler.php?request=$1&id=$2
-	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
-	RewriteRule ^club/([0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
+	RewriteRule ^club/$ handler.php?request=club [NC,L]
+	RewriteRule ^club$ handler.php?request=club [NC,L]
+	RewriteRule ^club/([0-9-]+)/$ handler.php?request=club&id=$1
+	RewriteRule ^club/([0-9-]+)$ handler.php?request=club&id=$1
+	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
+	RewriteRule ^club/([0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
 
 
 
-	RewriteRule ^league/$ handler.php?request=$1 [NC,L]
-	RewriteRule ^league$ handler.php?request=$1 [NC,L]
+	RewriteRule ^league/$ handler.php?request=league [NC,L]
+	RewriteRule ^league$ handler.php?request=league [NC,L]
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
 
  </IfModule>
-
-ErrorDocument 404 /error/404/
 
 <IfModule mod_expires.c>
 	ExpiresActive On
