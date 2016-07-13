@@ -93,4 +93,9 @@ class Club{
 		$data=$query->fetch();
 		return $data->id_club;
 	}
+	public static function createAvailableTeam($id_country);{
+		$query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country,clubname, status) values (:id_country, 'Available Team', 'P')");
+		$query->bindParam(':id_country',$id_country);
+		$query->execute();
+	}
 }

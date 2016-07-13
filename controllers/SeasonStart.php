@@ -1,5 +1,6 @@
 <?
   include('../class/Connection.php');
+  include('../class/Club.php');
   include('../class/League.php');
   /*----------
   SET COMPETITION DATA
@@ -59,9 +60,7 @@
     -------*/
     if(League::leftClubs()>0){
       for($i=0;$i<League::leftClubs();$i++){
-        $query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country,clubname, status) values (:id_country, 'Available Team', 'P')");
-        $query->bindParam(':id_country',$id_country);
-        $query->execute();
+        Club::createAvailableTeam($id_country);
       }
     }
     $groups=$clubs/$teams;
@@ -83,7 +82,11 @@
       /*-----
       add league_table
       ------*/
-      $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_table (id_league,id_club)");
+      if($season==1){
+        
+      }else{
+        # TODO: get all season data in the past, verified the positions and make new league tables;
+      }
 
     }
   }
