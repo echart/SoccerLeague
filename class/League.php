@@ -88,4 +88,10 @@ class League{
 	public function updateRound(){
 		// TODO: make script to get all matches, computing pts and update league table
 	}
+	public static function leftClubs($totalClubs){
+		if(!is_int($clubs/18)){
+			$leftClubs=intval((ceil($clubs/18)-($clubs/18))*18);
+			return $leftClubs;
+		}
+	}
 }
