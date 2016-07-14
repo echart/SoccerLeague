@@ -1,5 +1,4 @@
 <?
-include('Connection.php');
 /**
  * createLeague
  * deleteLeague
@@ -30,10 +29,11 @@ class League{
 		$data=$query->fetch();
 		$this->id_league=$data->id_league;
 	}
-	public static function createLeague($id_competition, $division, $group, $totalgames){
+	public static function createLeague($id_competition, $name,$division, $group, $totalgames){
 		try{
 			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition, division,divgroup, totalgames, round) values (:id_competition,:division,:group,:totalgames,0)");
 			$query-bindParam(':id_competition',$id_competition);
+			$query->bindParam(':name',$name);
 			$query-bindParam(':division',$division);
 			$query-bindParam(':group',$group);
 			$query-bindParam(':totalgames',$totalgames);
@@ -83,14 +83,17 @@ class League{
 		}
 	}
 	public function joinClub($id_club){
-		// TODO: make script to insert a club in $this->id_league table
+		$query=Connection::getInstance()->connect()->prepare("INSERT INTO league_table (id_league,id_club) values (:id_league, id_club)");
+		$query->bindParam(':id_league',$this->id_league);
+		$query->bindParam(':id_club',$this->id_club);
+		$query->execute;
 	}
 	public function updateRound(){
 		// TODO: make script to get all matches, computing pts and update league table
 	}
 	public static function leftClubs($totalClubs){
-		if(!is_int($clubs/18)){
-			$leftClubs=intval((ceil($clubs/18)-($clubs/18))*18);
+		if(!is_int($totalClubs/18)){
+			$leftClubs=intval((ceil($totalClubs/18)-($totalClubs/18))*18);
 			return $leftClubs;
 		}
 	}

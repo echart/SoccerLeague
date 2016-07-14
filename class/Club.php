@@ -39,14 +39,15 @@ class Club{
 		try{
 			$this->id_club=$this->checkAvailableClub();
 			if($this->id_club==0){
-					throw new PDOException("Error Processing Request", 1);
+				 Club::createAvailableTeam($this->country);
+				 $this->id_club=$this->checkAvailableClub();
 			}
 			$query=$this->con->prepare("UPDATE club SET clubname=:clubname, status='A' where id_club=:id_club");
 			$query->bindParam(':clubname', $this->clubname);
 			$query->bindParam(':id_club', $this->id_club);
 			$query->execute();
 
-			$query=$this->con->prepare("INSERT INTO club_account (id_club, id_accout) values (:id_club,:id_account)");
+			$query=$this->con->prepare("INSERT INTO club_account (id_club, id_account) values (:id_club,:id_account)");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
@@ -61,6 +62,8 @@ class Club{
 
 			return true;
 		}catch(PDOException $e){
+			throw new Exception($e->getmessage(),1);
+
 			return false;
 		}
 	}
@@ -93,7 +96,7 @@ class Club{
 		$data=$query->fetch();
 		return $data->id_club;
 	}
-	public static function createAvailableTeam($id_country);{
+	public static function createAvailableTeam($id_country){
 		$query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country,clubname, status) values (:id_country, 'Available Team', 'P')");
 		$query->bindParam(':id_country',$id_country);
 		$query->execute();
