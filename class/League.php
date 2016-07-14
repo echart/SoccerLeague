@@ -31,15 +31,16 @@ class League{
 	}
 	public static function createLeague($id_competition, $name,$division, $group, $totalgames){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition, division,divgroup, totalgames, round) values (:id_competition,:division,:group,:totalgames,0)");
-			$query-bindParam(':id_competition',$id_competition);
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition,name, division,divgroup, totalgames, round) values (:id_competition,:name,:division,:group,:totalgames,0)");
+			$query->bindParam(':id_competition',$id_competition);
 			$query->bindParam(':name',$name);
-			$query-bindParam(':division',$division);
-			$query-bindParam(':group',$group);
-			$query-bindParam(':totalgames',$totalgames);
+			$query->bindParam(':division',$division);
+			$query->bindParam(':group',$group);
+			$query->bindParam(':totalgames',$totalgames);
 			$query->execute();
 			return true;
 		}catch(PDOException $e){
+			echo $e->getmessage();
 			return false;
 		}
 	}
@@ -60,7 +61,7 @@ class League{
 	  $query->setFetchMode(PDO::FETCH_OBJ);
 	}
 	public static function checkIfLeagueAlreadyExists($season,$country,$div,$group){
-		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM competition inner join league using(id_competition) where season=:season and country=:country and division:div and divgroup:group");
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM competition inner join league using(id_competition) where season=:season and id_country=:country and division=:div and divgroup=:group");
 		$query->bindParam(':season',$season);
 		$query->bindParam(':country',$country);
 		$query->bindParam(':div',$div);
@@ -83,10 +84,10 @@ class League{
 		}
 	}
 	public function joinClub($id_club){
-		$query=Connection::getInstance()->connect()->prepare("INSERT INTO league_table (id_league,id_club) values (:id_league, id_club)");
+		$query=Connection::getInstance()->connect()->prepare("INSERT INTO league_table (id_league,id_club) values (:id_league, :id_club)");
 		$query->bindParam(':id_league',$this->id_league);
-		$query->bindParam(':id_club',$this->id_club);
-		$query->execute;
+		$query->bindParam(':id_club',$id_club);
+		$query->execute();
 	}
 	public function updateRound(){
 		// TODO: make script to get all matches, computing pts and update league table

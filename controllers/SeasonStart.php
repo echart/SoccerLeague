@@ -33,7 +33,7 @@
   /*------
   add an competition/league to all countries
   --------*/
-  foreach ($countries as $key => $id_country) {
+foreach ($countries as $key => $id_country) {
     /*----
     ADD competition
     ------*/
@@ -69,24 +69,28 @@
       /*----
       add league
       -----*/
-      if(!League::checkIfLeagueAlreadyExists($season,$country,$next[0],$next[1])){
-        $league=League::createLeague($id_competition,'Campeonato Brasileiro',$country,$division,$group);
+      $div=$next[0];
+      $group=$next[1];
+      if(!League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)){
+        $league=League::createLeague($id_competition,'Campeonato Brasileiro',$id_country,$div,$group, $total_games);
       }
-      $league=new League($season,$country,$next[0],$next[1]);
+      $league=new League($season,$id_country,$div,$group);
       $next=$league->nextAvailableDivAndGroup();
       /*-----
       add league_table
       ------*/
       if($season==1){
-        $query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where id_country:id_country");
+        $query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where id_country=:id_country");
         $query->bindParam(':id_country',$id_country);
         $query->execute();
         while($data=$query->fetch(PDO::FETCH_OBJ)){
-          $league->joinClub($data->id_club);
+          $id=intval($data->id_club);
+          $league->joinClub($id);
         }
       }else{
         # TODO: get all season data in the past, verified the positions and make new league tables;
       }
 
     }
+    echo 'Country ' . $id_country . ' added<br>';
   }
