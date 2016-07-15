@@ -3,7 +3,6 @@
 	 * GIT DEPLOYMENT SCRIPT
 	 */
 	$commands = array(
-		'cd ..',
 		'echo $PWD',
     'whoami',
     'git pull github development',
