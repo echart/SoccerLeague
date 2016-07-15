@@ -61,18 +61,26 @@ class League{
 	  $query->setFetchMode(PDO::FETCH_OBJ);
 	}
 	public static function checkIfLeagueAlreadyExists($season,$country,$div,$group){
-		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM competition inner join league using(id_competition) where season=:season and id_country=:country and division=:div and divgroup=:group");
-		$query->bindParam(':season',$season);
-		$query->bindParam(':country',$country);
-		$query->bindParam(':div',$div);
-		$query->bindParam(':group',$group);
-		$query->execute();
-		if($query->rowCount()>0) return true; else return false;
+		try{
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_league FROM competition left join league using(id_competition) where season=:season and id_country=:country and division=:div and divgroup=:group");
+			$query->bindParam(':season',$season);
+			$query->bindParam(':country',$country);
+			$query->bindParam(':div',$div);
+			$query->bindParam(':group',$group);
+			$query->execute();
+			if($query->rowCount()>0) return true; else return false;
+		}catch(PDOException $e){
+			echo $e->getmessage();
+		}
 	}
 	public static function lastDivAndGroup(){
-		$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league order by division,divgroup asc")->execute()->setFetchMode(PDO::FETCH_OBJ);
-		$data=$query->fetch();
-		return array($data->division,$data->divgroup);
+		try{
+			$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league order by division,divgroup asc")->execute()->setFetchMode(PDO::FETCH_OBJ);
+			$data=$query->fetch();
+			return array($data->division,$data->divgroup);
+		}catch(PDOException $e){
+			echo $e->getmessage();
+		}
 	}
 	public function nextAvailableDivAndGroup(){
 		if($this->div==1){
@@ -84,18 +92,26 @@ class League{
 		}
 	}
 	public function joinClub($id_club){
-		$query=Connection::getInstance()->connect()->prepare("INSERT INTO league_table (id_league,id_club) values (:id_league, :id_club)");
-		$query->bindParam(':id_league',$this->id_league);
-		$query->bindParam(':id_club',$id_club);
-		$query->execute();
+		try{
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league_table (id_league,id_club) values (:id_league, :id_club)");
+			$query->bindParam(':id_league',$this->id_league);
+			$query->bindParam(':id_club',$id_club);
+			$query->execute();
+		}catch(PDOException $e){
+			echo $e->getmessage();
+		}
 	}
 	public function updateRound(){
 		// TODO: make script to get all matches, computing pts and update league table
 	}
 	public static function leftClubs($totalClubs){
-		if(!is_int($totalClubs/18)){
-			$leftClubs=intval((ceil($totalClubs/18)-($totalClubs/18))*18);
-			return $leftClubs;
+		if($totalClubs!=0){
+			if(!is_int($totalClubs/18)){
+				$leftClubs=intval((ceil($totalClubs/18)-($totalClubs/18))*18);
+				return $leftClubs;
+			}
+		}else{
+			return 18;
 		}
 	}
 }
