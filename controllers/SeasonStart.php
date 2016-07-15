@@ -1,4 +1,4 @@
-<?php
+<?
   include('../class/Connection.php');
   include('../class/Club.php');
   include('../class/League.php');
@@ -62,10 +62,6 @@ foreach ($countries as $key => $id_country) {
         Club::createAvailableTeam($id_country);
       }
     }
-    $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club where id_country=:id_country");
-    $query->bindParam(':id_country',$id_country);
-    $query->execute();
-    $clubs=$query->rowCount();
     $groups=$clubs/$teams;
     /*------
     ADD league based in groups numbers
@@ -77,15 +73,17 @@ foreach ($countries as $key => $id_country) {
       -----*/
       $div=$next[0];
       $group=$next[1];
-      if(League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)==false){
+      $flag=false;
+      if(!League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)){
         $league=League::createLeague($id_competition,'Campeonato Brasileiro',$id_country,$div,$group, $total_games);
+        $flag=true;
       }
       $league=new League($season,$id_country,$div,$group);
       $next=$league->nextAvailableDivAndGroup();
       /*-----
       add league_table
       ------*/
-      if($season==1){
+      if($season==1 AND $flag==true){
         $query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where id_country=:id_country");
         $query->bindParam(':id_country',$id_country);
         $query->execute();
