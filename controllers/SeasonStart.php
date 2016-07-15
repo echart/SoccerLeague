@@ -1,4 +1,4 @@
-<?
+<?php
   include('../class/Connection.php');
   include('../class/Club.php');
   include('../class/League.php');
