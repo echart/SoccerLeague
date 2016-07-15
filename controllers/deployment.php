@@ -3,7 +3,9 @@
 	 * GIT DEPLOYMENT SCRIPT
 	 */
 	$commands = array(
+		'git checkout master',
 		'git pull github development',
+		'git checkout development',
 		'git status'
 		);
 	$output = '';
