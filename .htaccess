@@ -1,10 +1,12 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
+	RewriteRule ^controllers/deployment.php$ controllers/deployment.php [NC,L]
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
 	RewriteRule ^([a-z0-9-]+)/$ handler.php?request=$1 [NC,L]
 	RewriteRule ^([a-z0-9-]+)$ handler.php?request=$1 [NC,L]
+
 
 	RewriteRule ^club/([0-9-]+)/$ handler.php?request=club&id=$1 [NC,L]
 	RewriteRule ^club/([0-9-]+)$ handler.php?request=club&id=$1 [NC,L]
