@@ -62,6 +62,10 @@ foreach ($countries as $key => $id_country) {
         Club::createAvailableTeam($id_country);
       }
     }
+    $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club where id_country=:id_country");
+    $query->bindParam(':id_country',$id_country);
+    $query->execute();
+    $clubs=$query->rowCount();
     $groups=$clubs/$teams;
     /*------
     ADD league based in groups numbers
