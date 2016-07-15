@@ -5,9 +5,7 @@
 	$commands = array(
 		'apt-get update',
 		'git remote -v',
-		'git checkout master',
 		'git pull github development',
-		'git checkout development',
 		'git status'
 		);
 	$output = '';
