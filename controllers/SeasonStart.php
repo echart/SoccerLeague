@@ -73,7 +73,7 @@ foreach ($countries as $key => $id_country) {
       -----*/
       $div=$next[0];
       $group=$next[1];
-      if(!League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)){
+      if(League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)==false){
         $league=League::createLeague($id_competition,'Campeonato Brasileiro',$id_country,$div,$group, $total_games);
       }
       $league=new League($season,$id_country,$div,$group);
