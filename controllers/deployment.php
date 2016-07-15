@@ -3,8 +3,6 @@
 	 * GIT DEPLOYMENT SCRIPT
 	 */
 	$commands = array(
-		'apt-get update',
-		'git remote -v',
 		'git pull github development',
 		'git status'
 		);
