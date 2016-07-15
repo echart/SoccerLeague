@@ -6,7 +6,7 @@
 	* type ='LC' = Liberty League and Champions League
  */
 class Competition{
-	public $id_competition
+	public $id_competition;
 	public $type;
 	public $country;
 	public $name;
@@ -27,17 +27,18 @@ class Competition{
 		$this->totalclubs=$data->totalclubs;
 		$this->id_competition=$id_competition;
 	}
-	public static function createCompetition($season, $country, $type, $name, $totalclubs):bool{
+	public static function createCompetition($season, $country, $type, $totalclubs):bool{
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO competition(season, name,id_country,totalclubs) values (:season,:name,:country,:totalclubs)");
-			$query-bindParam(':season',$season);
-			$query-bindParam(':name',$name);
-			$query-bindParam(':country',$country);
-			$query-bindParam(':totalclubs',$totalclubs);
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO competition(id_competition_type,season, id_country,totalclubs) values (:id_competition_type,:season,:country,:totalclubs)");
+			$query->bindParam(':id_competition_type', $type);
+			$query->bindParam(':season',$season);
+			$query->bindParam(':country',$country);
+			$query->bindParam(':totalclubs',$totalclubs);
 
 			$query->execute();
 			return true;
 		}catch(PDOException $e){
+			echo $e->getmessage();
 			return false;
 		}
 	}
@@ -47,7 +48,7 @@ class Competition{
 			$query->bindParam(':id_competition',$id_competition);
 			$query->execute();
 			return true;
-		}catch(PDOException $e);
+		}catch(PDOException $e){
 			return false;
 		}
 	}

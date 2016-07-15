@@ -2,6 +2,7 @@
   include('../class/Connection.php');
   include('../class/Club.php');
   include('../class/League.php');
+  include('../class/Competition.php');
   /*----------
   SET COMPETITION DATA
   -----------*/
@@ -37,12 +38,13 @@ foreach ($countries as $key => $id_country) {
     /*----
     ADD competition
     ------*/
-    $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition (id_competition_type, season, id_country, totalclubs) values (:id_competition_type,:season,:id_country,:totalclubs)");
-    $query->bindParam(':id_competition_type',$id_competition_type);
-    $query->bindParam(':season',$season);
-    $query->bindParam(':id_country',$id_country);
-    $query->bindParam('totalclubs',$teams);
-    $query->execute();
+    // $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition (id_competition_type, season, id_country, totalclubs) values (:id_competition_type,:season,:id_country,:totalclubs)");
+    // $query->bindParam(':id_competition_type',$id_competition_type);
+    // $query->bindParam(':season',$season);
+    // $query->bindParam(':id_country',$id_country);
+    // $query->bindParam('totalclubs',$teams);
+    // $query->execute();
+    Competition::createCompetition($season,$id_country,$id_competition_type, $teams);
     $id_competition=Connection::getInstance()->connect()->lastInsertID('competition_id_competition_seq');
     echo 'id competição: ' . $id_competition;
     /*------
