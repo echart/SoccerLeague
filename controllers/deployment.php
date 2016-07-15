@@ -2,6 +2,7 @@
 	/**
 	 * GIT DEPLOYMENT SCRIPT
 	 */
+	 
 	$commands = array(
 		'echo $PWD',
     'whoami',
