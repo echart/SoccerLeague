@@ -44,7 +44,7 @@ foreach ($countries as $key => $id_country) {
     $query->bindParam('totalclubs',$teams);
     $query->execute();
     $id_competition=Connection::getInstance()->connect()->lastInsertID('competition_id_competition_seq');
-
+    echo 'id competição: ' . $id_competition;
     /*------
     COUNT CLUBS AND COUNT HOW MANY LEAGUES/GROUPS WE NEED TO ADD.
     ------*/
