@@ -47,7 +47,7 @@ try{
 				}
 				$response=$club->create();
 				if($response==false){
-					// TODO:deletar conta;
+					// TODO: deletar conta, já que houve erro na criação do clube
 				}else{
 						echo JsonOutput::success(array('clubname'=>$club->getClubName()));
 				}
