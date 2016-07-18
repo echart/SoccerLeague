@@ -1,5 +1,6 @@
 <?
 /**
+ * @author: echart
  * createLeague
  * deleteLeague
  * checkIfLeagueAlreadyExists

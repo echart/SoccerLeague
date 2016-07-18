@@ -43,11 +43,11 @@ try{
 				$club->setClubName($clubname);
 				$club->setCountry($country);
 				if($club->checkAvailableClub()==0){
-					//criar nova liga/grupo
+					// TODO: criar nova liga/grupo
 				}
 				$response=$club->create();
 				if($response==false){
-					//deletar conta;
+					// TODO:deletar conta;
 				}else{
 						echo JsonOutput::success(array('clubname'=>$club->getClubName()));
 				}
