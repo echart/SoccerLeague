@@ -15,19 +15,23 @@ class League{
 	public $round;
 
 	public function __construct($country, $season, $div, $group){
-		$this->country=$country;
-		$this->season=$season;
-		$this->div=$div;
-		$this->group=$group;
-		$query=Connection::getInstance()->connect()->prepare("SELECT id_league FROM competition c inner join league l using(id_competition) inner join country ccc on ccc.id_country= c.id_country where c.id_competition_type=1 and c.id_country=:country and l.division=:division and l.divgroup=:group and c.season=:season");
-	  $query->bindParam(':country',$this->country);
-	  $query->bindParam(':division',$this->div);
-	  $query->bindParam(':group',$this->group);
-		$query->bindParam(':season',$this->season);
-		$query->execute();
-		$query->setFetchMode(PDO::FETCH_OBJ);
-		$data=$query->fetch();
-		$this->id_league=$data->id_league;
+		try{
+			$this->country=$country;
+			$this->season=$season;
+			$this->div=$div;
+			$this->group=$group;
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_league FROM competition c inner join league l using(id_competition) inner join country ccc on ccc.id_country= c.id_country where c.id_competition_type=1 and c.id_country=:country and l.division=:division and l.divgroup=:group and c.season=:season");
+		  $query->bindParam(':country',$this->country);
+		  $query->bindParam(':division',$this->div);
+		  $query->bindParam(':group',$this->group);
+			$query->bindParam(':season',$this->season);
+			$query->execute();
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$data=$query->fetch();
+			$this->id_league=$data->id_league;
+		}catch(PDOException $e){
+			echo $e->getmessage();
+		}
 	}
 	public static function createLeague($id_competition, $name,$division, $group, $totalgames){
 		try{
@@ -68,7 +72,7 @@ class League{
 			$query->bindParam(':div',$div);
 			$query->bindParam(':group',$group);
 			$query->execute();
-			if($query->rowCount()>0) return true; else return false;
+			if($query->rowCount()>=1) return true; else return false;
 		}catch(PDOException $e){
 			echo $e->getmessage();
 		}
