@@ -1,5 +1,6 @@
 <?
 /**
+ * @user: echart 
  * Class to handle data and transform it in JSON
  * Ex:
  * JsonOutput::jsonHeader();
@@ -38,7 +39,7 @@ class JsonOutput{
     public static function error($code, $message){
       $data=array('code'=>$code,'message'=>$message);
       $data=array('error'=>$data);
-      return self::load($data); 
+      return self::load($data);
     }
 }
 /*
@@ -72,7 +73,3 @@ Ex:
 http://jsonapi.org/format/
 
 */
-
-
-
-

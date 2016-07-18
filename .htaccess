@@ -18,8 +18,13 @@
  </IfModule>
 
 
- ErrorDocument 404 /404/
+ <FilesMatch "\.(ini|cgi|htaccess|json)$">
+ Order Deny,Allow
+ Deny from All
+ </FilesMatch>
 
+ ErrorDocument 404 /404/
+ ErrorDocument 403 /403/
 
 <IfModule mod_expires.c>
 	ExpiresActive On
