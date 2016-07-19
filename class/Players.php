@@ -1,52 +1,71 @@
 <?
 
 class Players{
-	public $player_id;
+	public $id_player;
 	public $name;
-	public $club_id;
+	public $id_club;
 	public $nickname;
 	public $age;
 	public $height;
 	public $weight;
-	public $position;
 	private $skill_index;
 	public $wage;
 	private $rec;
-	public $strength;
+	/*Physical*/
+	public $stamina;
 	public $speed;
 	public $resistance;
+	public $jump;
+	private $injury_prop;
+	/*Psychologic*/
+	private $professionalism;
+	private $agressive;
+	private $adaptability;
+	private $leadership;
+	private $learning;
+	public $workrate;
+	public $concentration;
+	public $decision;
+	public $positioning;
+	public $vision;
+	public $unpredictability;
+	public $communication;
 
-	function Players($player=0){
+
+	function __construct($player=0){
 		$this->player_id=$player;
 	}
 
-	function private getWage(){
-		return $this->wage;
-	}
-
-	function private setWage(){
-		$this->wage=0;
-		return $this->wage;
-	}
-
-	function getPlayer(){
-
-	}
 }
 
 
 class Goalkeeper extends Players{
-
-
-	function GoalKeeper($player=0){
-		$this->id=$player;
-	}
+	public $handling
+	public $aeria;
+	public $foothability;
+	public $oneaone;
+	public $reflexes;
+	public $rushingout;
+	public $kicking;
+	public $throwing;
 }
 
-class LinePlayers extends Players{
+class Player extends Players{
+	public $crossing;
+	public $pass;
+	public $technical;
+	public $ballcontrol;
+	public $dribble;
+	public $longshot;
+	public $finish;
+	public $heading;
+	public $freekick;
+	public $marking;
+	public $tackling;
+}
 
-
-	function LinePlayers($player=0){
-		$this->id=$player;
-	}
+class PlayerFactory{
+	public static function updatePlayer();
+	public static function createGoalkeper();
+	public static function createPlayer();
 }
