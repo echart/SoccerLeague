@@ -1,6 +1,10 @@
 <?
-
+/*
+ * @author: echart
+ * @description: Player class that will be extended to Goalkeeper or Player;
+*/
 abstract Players{
+	/*info*/
 	public $id_player;
 	public $id_club;
 	public $name;
@@ -8,9 +12,9 @@ abstract Players{
 	public $age;
 	public $height;
 	public $weight;
-	public $wage;
-	private $skill_index;
-	private $rec;
+	public $wage; //
+	private $skill_index; // @param $skill_index is an attribute of player that will be calculated by the sum of all the skills(VISIBLES)
+	private $rec; // @param: $rec is an attribute of player that will be calculate by the importance of skills for each position that player have.
 	/*Physical*/
 	public $stamina;
 	public $speed;
@@ -30,7 +34,7 @@ abstract Players{
 	public $vision;
 	public $unpredictability;
 	public $communication;
-
+	/*methods*/
 	public function loadPlayer($id_player);
 	public function deletePlayer($id_player);
 
@@ -38,42 +42,3 @@ abstract Players{
 	public function skillIndex();
 	public function wage();
 }
-
-
-class Goalkeeper extends Players{
-	public $handling
-	public $aeria;
-	public $foothability;
-	public $oneaone;
-	public $reflexes;
-	public $rushingout;
-	public $kicking;
-	public $throwing;
-}
-
-class Player extends Players{
-	public $crossing;
-	public $pass;
-	public $technical;
-	public $ballcontrol;
-	public $dribble;
-	public $longshot;
-	public $finish;
-	public $heading;
-	public $freekick;
-	public $marking;
-	public $tackling;
-}
-
-class PlayerFactory{
-	public static function updatePlayer(Player $player,Array $info){
-	}
-	public static function createGoalkeper();
-		return new Goalkeeper();
-	}
-	public static function createPlayer(){
-		return new Player();
-	}
-}
-
-$player=PlayerFactory::createPlayer();
