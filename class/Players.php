@@ -1,15 +1,15 @@
 <?
 
-class Players{
+abstract Players{
 	public $id_player;
-	public $name;
 	public $id_club;
+	public $name;
 	public $nickname;
 	public $age;
 	public $height;
 	public $weight;
-	private $skill_index;
 	public $wage;
+	private $skill_index;
 	private $rec;
 	/*Physical*/
 	public $stamina;
@@ -31,11 +31,12 @@ class Players{
 	public $unpredictability;
 	public $communication;
 
+	public function loadPlayer($id_player);
+	public function deletePlayer($id_player);
 
-	function __construct($player=0){
-		$this->player_id=$player;
-	}
-
+	public function rec();
+	public function skillIndex();
+	public function wage();
 }
 
 
@@ -65,7 +66,14 @@ class Player extends Players{
 }
 
 class PlayerFactory{
-	public static function updatePlayer();
+	public static function updatePlayer(Player $player,Array $info){
+	}
 	public static function createGoalkeper();
-	public static function createPlayer();
+		return new Goalkeeper();
+	}
+	public static function createPlayer(){
+		return new Player();
+	}
 }
+
+$player=PlayerFactory::createPlayer();
