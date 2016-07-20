@@ -1,4 +1,5 @@
-"names":[
+"data":[{
+  "names":[
     {"name":"João"},
     {"name":"Ronaldo"},
     {"name":"Willians"},
@@ -22,20 +23,21 @@
     {"name":"Roberto"},
     {"name":"Ricardo"},
     {"name":"Iago"},
-    {"name":"Rafael"},
-];
-"lastnames":[
-  {"lastname":"Silva"},
-  {"lastname":"Pereira"},
-  {"lastname":"Fagundes"},
-  {"lastname":"Ferreira"},
-  {"lastname":"Campos"},
-  {"lastname":"Cardoso"},
-  {"lastname":"Cunha"},
-  {"lastname":"Figueira"},
-  {"lastname":"Pereira"},
-  {"lastname":"Santos"},
-  {"lastname":"Machado"},
-  {"lastname":"Reis"},
-  {"lastname":"Carvalho"},
-];
+    {"name":"Rafael"}
+    ],
+  "lastnames":[
+    {"lastname":"Silva"},
+    {"lastname":"Pereira"},
+    {"lastname":"Fagundes"},
+    {"lastname":"Ferreira"},
+    {"lastname":"Campos"},
+    {"lastname":"Cardoso"},
+    {"lastname":"Cunha"},
+    {"lastname":"Figueira"},
+    {"lastname":"Pereira"},
+    {"lastname":"Santos"},
+    {"lastname":"Machado"},
+    {"lastname":"Reis"},
+    {"lastname":"Carvalho"}
+  ]
+}];
