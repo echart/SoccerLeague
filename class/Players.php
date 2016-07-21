@@ -41,5 +41,19 @@ class Players{
 	//
 	// abstract public function rec();
 	// abstract public function skillIndex();
-	// public function wage();
+	public function wage(){
+		$this->wage=$this->skill_index*2.2;
+		return $this->wage;
+	}
+
+	public static function addHistory($id_player,$id_club,$season){
+		  $query=Connection::getInstance()->connect()->prepare("INSERT INTO players_history (id_player,id_club,season) values (:id_player,:id_club,:season)");
+			$query->bindParam(":id_player",$id_player);
+			$query->bindParam(":id_club",$id_club);
+			$query->bindParam(":season",$season);
+			$query->execute();
+	}
+	public static function updateHistory($id_player,$id_club,$season){
+
+	}
 }
