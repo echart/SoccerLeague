@@ -49,6 +49,7 @@ try{
 				if($response==false){
 					// TODO: deletar conta, já que houve erro na criação do clube
 				}else{
+						include('PlayerCreator.php');
 						echo JsonOutput::success(array('clubname'=>$club->getClubName()));
 				}
 			}
