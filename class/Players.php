@@ -5,6 +5,7 @@
 */
 class Players{
 	/*info*/
+	public $position;
 	public $id_player;
 	public $id_club;
 	public $name;

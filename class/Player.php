@@ -30,5 +30,8 @@ class Player extends Players{
 		$this->skill_index=$physical+$technical+$psychologic;
 		return $this->skill_index;
 	}
-	// public function wage();
+	public function wage(){
+		$this->wage=$this->skill_index*2.2;
+		return $this->wage;
+	}
 }
