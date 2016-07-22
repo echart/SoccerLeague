@@ -4,7 +4,7 @@
 	<label class='config' for='menu-mobile'><i></i></label>
 	<ul class='submenu'>
 		<?
-		 $submenu = new menu($this->data['menu'],0);
+		 $submenu = new Menu($this->data['menu'],0);
 		 $submenu->display(); ?>
 	</ul>
 </header>
