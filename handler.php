@@ -1,24 +1,22 @@
 <?php
-	session_start();
-	require_once('helpers/__autoload.php');
 	try{
+		session_start();
+		require_once('helpers/__autoload.php');
+		$request = ($_GET ?? array('request'=>'home'));
+
 		$con=Connection::getInstance();
 		$user=new Authentication();
-		if($user->verifyAuthentication()===false){ //before all, verify if user have needed authentication
+		$handler=new Handler();
+
+		if($user->verifyAuthentication()===false){
 			Authentication::homeRedirect();
-			exit;
+			exit; // if user isn't authenticated then redirect to frontpage;
 		}
-		$request = ($_GET ?? array('request'=>'home'));
-		$requestURL = $_GET['request'] ?? 'home';
-		// $handler=new Handler();
-		// $handler->requestURL($_GET ?? array('request'=>'home'));
-		// $handler->loadController();
-		// $handler->loadView();
-		require_once('views/_head.php');
-		require_once('views/_header.php');
-		require_once('controllers/'.$requestURL.'.php');
-		require_once('views/'.$requestURL.'.php');
+		$handler->parseURL($request);
+		$handler->loadController();
+		$handler->loadView();
 	}catch(Exception $e){
+		/* if Exception then show the error;*/
 		echo "We have an error with your request: <br>" . $e->getMessage();
 	}finally{
 		$con->disconnect();
