@@ -20,6 +20,7 @@ class menu{
 			0=>array('href'=>'/league/', 'text'=>'Liga'),
 			1=>array('href'=>'/cup/','text'=>'Copa'),
 			2=>array('href'=>'/friendly-league/','text'=>'Liga Amistosa'),
+			4=>array('href'=>'/international/','text'=>'Internacional'),
 			3=>array('href'=>'/national-team/','text'=>'Seleção'),
 			// 4=>array('href'=>'/quickmatch/','text'=>'Partidas rápidas'),
 			5=>array('href'=>'/ranking/','text'=>'Ranking de clubes')
@@ -27,7 +28,8 @@ class menu{
 		'players'=>array(
 			0=>array('href'=>'/players/','text'=>'Plantel'),
 			1=>array('href'=>'/tactics/','text'=>'Táticas'),
-			2=>array('href'=>'/dev/','text'=>'Categorias de Base')
+			3=>array('href'=>'/training/','text'=>'Treinamento'),
+			2=>array('href'=>'/dev/','text'=>'Categorias de Base'),
 		)/*,
 		''=>array('submenu'=>
 			array(
