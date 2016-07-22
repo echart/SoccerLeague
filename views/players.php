@@ -1,3 +1,3 @@
 <div class='content'>
-  <h1>Players</h1>
+  <h1><?=$title?></h1>
 </div>

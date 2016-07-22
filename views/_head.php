@@ -1,9 +1,6 @@
 <?
 ini_set('display_errors',0);
 error_reporting(!E_WARNING);
-extract($this->__headData);
-extract($this->__headerData);
-extract($this->__viewData);
 ?>
 <!DOCTYPE html>
 <html>
