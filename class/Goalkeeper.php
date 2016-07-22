@@ -14,14 +14,14 @@ class Goalkeeper extends Players{
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players p inner join players_attr pa using(id_player) inner join players_attr_gk pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
-		$data=$query->fetch();
+		$data=$query->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
 	public function loadPlayerInfo($id_player){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, width, leg FROM players p where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg FROM players p where id_player=:id_player");
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
-		$data=$query->fetch();
+		$data=$query->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
 	public function loadPlayerPositions(){

@@ -18,31 +18,18 @@ class Player extends Players{
 	public $marking;
 	public $tackling;
 	/*methods*/
-	public function __construct($id_player=''){
-		if($id_player!=''){
-			$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_position where id_player=:id_player and id_position=1");
-			$query->bindParam(':id_player',$id_player);
-			$query->execute();
-
-			if($query->rowCount()>0){
-				return new Goalkeeper();
-			}else{
-				return $this;
-			}
-		}
-	}
 	public function loadPlayer($id_player){
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players p inner join players_attr pa using(id_player) inner join players_attr_line pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
-		$data=$query->fetch(PDO::FETCH_OBJ);
+		$data=$query->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
 	public function loadPlayerInfo($id_player){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, width, leg FROM players p where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg FROM players p where id_player=:id_player");
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
-		$data=$query->fetch();
+		$data=$query->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
 	public function loadPlayerPositions(){

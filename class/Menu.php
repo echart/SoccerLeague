@@ -5,19 +5,29 @@ class menu{
 	public $principal=0;
 	public static $menu=array(
 		'home'=>array(
-				0=>array('href'=>'calendar.php?','text'=>'Calendário'),
-				1=>array('href'=>'index.php','text'=>'Feed')
+				0=>array('href'=>'/home/','text'=>'Visão Geral'),
+				1=>array('href'=>'/calendar/','text'=>'Calendário')
 		),
 		'club'=>array(
 				0=>array('href'=>'/club/','text'=>'Clube'),
 				1=>array('href'=>'/club/12/overview/','text'=>'Visão Geral'),
-				2=>array('href'=>'club/12/matches','text'=>'Partidas'),
-				3=>array('href'=>'statistics.php','text'=>'Estatísticas'),
-				4=>array('href'=>'history.php','text'=>'Histórico'),
-				5=>array('href'=>'stadium.php','text'=>'Estádio')
+				2=>array('href'=>'/club/12/matches/','text'=>'Partidas'),
+				3=>array('href'=>'/club/12/statistics/','text'=>'Estatísticas'),
+				4=>array('href'=>'/club/12/history/','text'=>'Histórico'),
+				5=>array('href'=>'/club/12/stadium/','text'=>'Estádio')
 		),
 		'league'=>array(
-			0=>array('href'=>'/league/', 'text'=>'Liga')
+			0=>array('href'=>'/league/', 'text'=>'Liga'),
+			1=>array('href'=>'/cup/','text'=>'Copa'),
+			2=>array('href'=>'/friendly-league/','text'=>'Liga Amistosa'),
+			3=>array('href'=>'/national-team/','text'=>'Seleção'),
+			// 4=>array('href'=>'/quickmatch/','text'=>'Partidas rápidas'),
+			5=>array('href'=>'/ranking/','text'=>'Ranking de clubes')
+		),
+		'players'=>array(
+			0=>array('href'=>'/players/','text'=>'Plantel'),
+			1=>array('href'=>'/tactics/','text'=>'Táticas'),
+			2=>array('href'=>'/dev/','text'=>'Categorias de Base')
 		)/*,
 		''=>array('submenu'=>
 			array(

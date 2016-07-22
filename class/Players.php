@@ -51,4 +51,15 @@ class Players{
 	public static function updateHistory($id_player,$id_club,$season){
 
 	}
+
+	public static function is($id_player){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_position where id_player=:id_player and id_position=1");
+		$query->bindParam(':id_player',$id_player);
+		$query->execute();
+		if($query->rowCount()>0){
+			return new Goalkeeper();
+		}else{
+			return new Player();
+		}
+	}
 }
