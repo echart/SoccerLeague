@@ -4,8 +4,8 @@
 	<label class='config' for='menu-mobile'><i></i></label>
 	<ul class='submenu'>
 		<?
-		// $submenu = new menu('club',0);
-		// $submenu->display(); ?>
+		 $submenu = new menu($this->data['menu'],0);
+		 $submenu->display(); ?>
 	</ul>
 </header>
 <div class='menu-sidebar'>
@@ -13,7 +13,7 @@
 	<ul class='menu'>
 		<li><a class='home' href='<?=$this->data['tree']?>home/'><i></i><span>Visão geral</span></a></li>
 		<li><a class='club border' href="<?=$this->data['tree']?>club/"><i></i><span>Clube</span></a>
-		<li><a class='squad' href="<?=$this->data['tree']?>/players/"><i></i><span>Equipe</span></a></li>
+		<li><a class='squad' href="<?=$this->data['tree']?>players/"><i></i><span>Equipe</span></a></li>
 		<li><a class='league border' href="<?=$this->data['tree']?>league/"><i></i><span>Competições</span></a></li>
 		<li><a class='transfer border' href=""><i></i><span>Mercado</span></a></li>
 		<li><a class='community' href=""><i></i><span>Comunidade</span></a></li>

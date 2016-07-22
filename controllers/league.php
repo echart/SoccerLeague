@@ -1,4 +1,7 @@
 <?
+$this->data['menu']='league';
+$this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
+
 $division = $this->request['div'] ?? $_SESSION['SL_div'];
 $group = $this->request['group'] ?? $_SESSION['SL_group'];
 $country = strtoupper($this->request['country']) ?? strtoupper($_SESSION['SL_country']);

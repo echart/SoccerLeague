@@ -1,4 +1,7 @@
 <?
+$this->data['menu']='club';
+$this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
+
 $club = $this->request['id'] ?? $_SESSION['SL_club'];
 
 
