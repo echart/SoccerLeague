@@ -18,11 +18,9 @@ class Player extends Players{
 	public $tackling;
 	/*methods*/
 	public function loadPlayer($id_player){
-		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players inner join players_attr using id_player inner join players_attr_line inner join id_player where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players p inner join players_attr pa using(id_player) inner join players_attr_line pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
-
-		$query->setFetchMode(PDO::FETCH_OBJ);
 		$data=$query->fetch();
 		return $data;
 	}
@@ -53,12 +51,12 @@ class Player extends Players{
 		$query->setFetchMode(PDO::FETCH_OBJ);
 		return $query;
 	}
-	public static function loadPlayerByClub($id_club){
-		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players inner join players_attr using id_player inner join players_attr_line inner join id_player where id_club=:id_club");
-		$query->bindParam(':id_club',$id_club);
-		$query->execute();
-
-		$query->setFetchMode(PDO::FETCH_OBJ);
-		return $query;
-	}
+	// public static function loadPlayerByClub($id_club){
+	// 	$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players inner join players_attr using id_player inner join players_attr_line inner join id_player where id_club=:id_club");
+	// 	$query->bindParam(':id_club',$id_club);
+	// 	$query->execute();
+	//
+	// 	$query->setFetchMode(PDO::FETCH_OBJ);
+	// 	return $query;
+	// }
 }

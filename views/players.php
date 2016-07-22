@@ -1,5 +1,13 @@
 <main>
   <div class='content'>
-    <h1><?=$this->data['title']?></h1>
+    <? if(isset($this->request['id'])){ ?>
+      <!-- view that will show player attr -->
+        <h1>
+          <?
+          print_r($this->data['player']);
+        ?></h1>
+    <?}else{?>
+      <!-- view that will show all players join at this club -->
+    <? } ?>
   </div>
 </main>

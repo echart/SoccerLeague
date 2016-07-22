@@ -1,1 +1,0 @@
-soccerleague is idea of a soccer management game for web, with match engine based on real soccer statistics and a 2D match visualyzer
