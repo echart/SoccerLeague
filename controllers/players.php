@@ -15,7 +15,7 @@ if(isset($this->request['id'])){
   $id_player=$this->request['id'];
   $player = new Player();
   $this->data['player']=$player->loadPlayer($id_player);
-  $this->data['title']='FULANO DA SILVA SAURO - SoccerLeague';
+  $this->data['title']= $this->data['player']->name . ' - SoccerLeague';
 }else{
   /**
    * LOAD ALL PLAYERSSSSS ATTR AND PASS IT TO VIEW

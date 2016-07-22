@@ -36,11 +36,6 @@ class Players{
 	public $unpredictability;
 	public $communication;
 	/*methods*/
-	// abstract public function loadPlayer($id_player);
-	// abstract public function deletePlayer($id_player);
-	//
-	// abstract public function rec();
-	// abstract public function skillIndex();
 	public function wage(){
 		$this->wage=$this->skill_index*2.2;
 		return $this->wage;
