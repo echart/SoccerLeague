@@ -47,7 +47,6 @@ class menu{
 	function display(){
 		$i=0;
 		foreach (menu::$menu[$this->principal] as $key) {
-
 			if($i==$this->selected){
 				$class='selected';
 			}else{
