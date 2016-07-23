@@ -1,40 +1,36 @@
+/**
+	HTML,BODY AND CONTENT STYLES
+*/
 body{
 	margin:0;
 	padding:0;
-	/*background-color: #EAF4D3;*/
 	background-color: #f4f4f4;
-	/*background: url('http://t.soccerleague.com.br/assets/img/backgrounds/bg4.jpg');
-	background-size: 100vw;*/
 	font-family: 'Open Sans', sans-serif;
-	font-size: 62.5%;
 	overflow-x: hidden;
 	height: 100%;
-	scrollbar-arrow-color:#000000;
-	scrollbar-3dlight-color:#000000;
-	scrollbar-highlight-color:#FF0000;
-	scrollbar-face-color:#333;
-	scrollbar-shadow-color:#0000FF;
-	scrollbar-darkshadow-color:#FFFF00;
-	scrollbar-track-color:#00FF00;
+	width: 100%;
 }
 html{
+	width: 82.5vw;
 	height: 100%;
 	font-size: 62.5%;
 	margin: 0;
 	padding: 0;
 }
-i{
-	font-style: normal;
-}
 div.content{
 	position: relative;
-	float: left;
-	width: 87.5vw;
-	height: 100vh;
-	left: 250px;
+	width: 97.5%;
+	height: 100%;
 	top:5rem;
-	padding: 1rem 3rem;
+	padding: 1rem 1rem;
+	color: #333;
+	margin-left: 250px;
+	overflow: hidden;
+  box-sizing: border-box;
 }
+/**
+	SCROLL-MENU
+*/
 div.menu-sidebar::-webkit-scrollbar-track {
     background-color: #F4F4F4;
 }
@@ -45,21 +41,98 @@ div.menu-sidebar::-webkit-scrollbar {
 div.menu-sidebar::-webkit-scrollbar-thumb {
     background: #dad7d7;
 }
-
-
-
-@media(max-width: 900px){
-	div.content{
-		transition: left 0.3s;
-		left:50px;
-		width: 94.5vw;
-	}
+/*=============================
+Heading
+==============================*/
+h1{
+	font-size: 32px;
 }
-@media(max-width: 400px){
-	div.content{
-		transition: left 0.3s;
-		left:0;
-		width: 100vw;
-		padding: 0;
-	}
+h2{
+	font-size: 26px;
+}
+h3{
+	font-size: 20px;
+}
+h4{
+	font-size: 14px;
+}
+h5{
+	font-size: 12px;
+}
+h6{
+	font-size: 10px;
+}
+/*=============================
+BUTTONS
+==============================*/
+.btn,.btn-medium,.btn-small,.btn-large{
+	color: #fff;
+	background-color: #333;
+	border: 0px;
+}
+.btn{
+	padding: 1.25rem 3rem;
+}
+.btn-large{
+	padding: 1.25rem 10rem;
+}
+.btn-medium{
+	padding: 1.25rem 5rem;
+}
+.btn-small{
+	padding: 1.25rem 1rem;
+}
+.btn-border{
+	border-radius: 3.5px;
+}
+.btn:hover,.btn-medium:hover,.btn-small:hover,.btn-large:hover{
+	background-color: #393e41;
+	transition: .7s all;
+}
+.btn:active,.btn-medium:active,.btn-small:active,.btn-large:active{
+	background-color: #fff;
+	color: #333;
+}
+/*=============================
+colors
+==============================*/
+.bg-success{
+	background-color: #5FAD56;
+}
+.bg-warning{
+	background-color: #b44230;
+}
+.bg-alert{
+	background-color: #ff9d50;
+}
+/*=============================
+Page title
+==============================*/
+
+/*=============================
+BOXES
+==============================*/
+.box{
+	width: 100%;
+	min-height: 200px;
+	margin: 2rem 0;
+}
+.box-title{
+	padding: .75rem 3rem;
+	background-color: #5FAD56;
+	font-size: 18px;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-align: center;
+}
+.box-content{
+	position: relative;
+	min-height:100px;
+	text-align: left;
+	padding: 0.5rem 3rem;
+	font-size: 12px;
+	border: 1px solid #aaa;
+	border-bottom-left-radius: 11px;
+	border-bottom-right-radius: 11px;
 }

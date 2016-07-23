@@ -1,91 +1,71 @@
-input[type='checkbox'].menu-mobile{
-	position: fixed;
-	left: -9999px;
-	top: 50%;
-	opacity: 0;
-	margin: 0;
-	padding: 0;
-}
 header{
-	position:absolute;
-	width: 100vw;
-	height: 5rem;
+	position: absolute;
+	width: 100%;
+	height: 62.5px;
 	z-index: 2;
 	background-color: #5FAD56;
-	left: 250px;
 }
 header ul.submenu{
 	list-style: none;
 	display: block;
 	position: absolute;
-	left: 0rem;
+	left: 200px;
+	top: .75rem;
 }
 header ul.submenu li{
 	float: left;
-	padding: 1rem 0.75rem;	
-}
-label.menu-mobile{
-	position: fixed;
-	top: 12.5px;
-	right: 1rem;
-	width: 2.4rem;
-	height: 2.4rem;
-	z-index:999;
-	display: none;
-}
-label.menu-mobile i{
-	font-style: normal;
-	font-size: 14px;
-	display: block;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width:2.4rem;
-	height:2.4rem;
-	float: right;
-	background: url(../img/icons/responsive-menu2.png) no-repeat;
-	background-size: 2.4rem;
+	padding: 0.5rem 0rem;
 }
 header ul.submenu li a{
-	padding: 1rem 1.5rem;
-	border-radius: 0.5rem;
+	padding: 2.25rem 4rem;
 	font-size: 1.3rem;
 	text-decoration: none;
 	color: #fff;
 }
 header ul.submenu li a.selected{
-	color: #393E41;
-	/*background-color: #fff;*/
+	color: #fff;
+	transition: 0.4s all;
+	/*border-radius: 0;*/
+	background-color: #4a7856;
+	opacity: 0.7;
 }
 header ul.submenu li a:hover{
+	opacity: 0.7;
 	color: #fff;
-	background-color: #393E41;
-	transition: 0.4s all;
+	background-color: #4A7856;
+	transition: 0.4s background-color;
+	/*border-radius: 0;*/
+}
+header nav label.options{
+	position: absolute;;
+	right: 30px;
+	top: 25px;
 }
 
 
 div.menu-sidebar div.logo{
 	width: 100%;
-	height: 5.2rem;
-	/*background: #333;
-	border-bottom: 1px solid #333;*/
+	height: 6.5rem;
+	background: #4A7856;
+	border-bottom: 1px solid #333;
 }
 div.menu-sidebar div.logo i{
 	position: relative;
-	left: 4.75rem;
+	left: 3.5rem;
 	top: 1.5rem;
-	width: 15rem;
+	width: 17.5rem;
 	height: 15rem;
 	display: block;
-	 -moz-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-left: 2.4rem;
 	margin-top: -0.2rem;
 	background: url(../img/sl_logos/logo.png) no-repeat;
-	background-size:15rem;
+	background-size: 17.5rem;
 }
 div.menu-sidebar{
 	position: fixed;
-	width: 25rem;
+	width: 250px;
 	height: 100vh;
 	z-index: 3;
 	background-color: #393e41;
@@ -95,7 +75,7 @@ div.menu-sidebar{
 
 div.menu-sidebar ul.menu{
 	position: relative;
-	top: 0;
+	top: -1px;
 	left: 0;
 	margin: 0;
 	padding: 0rem 0;
@@ -105,7 +85,7 @@ div.menu-sidebar ul.menu{
 div.menu-sidebar ul.menu li a{
 	display: block;
 	font-family: 'Exo 2';
-	padding:1.5rem 2.5rem 1.5rem;
+	padding:2rem 2.5rem 2rem;
 	color: #fff;
 	font-size: 1.4rem;
 	text-align: left;
@@ -130,7 +110,7 @@ div.menu-sidebar ul.menu li a.border{
 	border-bottom: 0.1rem solid #555;
 }
 div.menu-sidebar ul.menu li a span{
-	margin-left: 1.5rem;	
+	margin-left: 1.5rem;
 }
 div.menu-sidebar ul.menu li a i{
 	display: block;
@@ -160,7 +140,7 @@ div.menu-sidebar ul.menu a.club i{
 div.menu-sidebar ul.menu a.squad i{
 	background: url(../img/icons/squad.png) no-repeat;
 	background-size: 20px;
-} 
+}
 div.menu-sidebar ul.menu a.tactic i{
 	background: url(../img/icons/tactic.png) no-repeat;
 	background-size: 20px;
@@ -203,27 +183,32 @@ div.menu-sidebar ul.menu a.logoff i{
 }
 
 
-@media(max-width: 900px){
+/*@media(max-width: 900px){
 	div.menu-sidebar ul.menu a span{
 		display: none;
+	}
+	div.menu-sidebar div.logo i{
+		background:url(../img/sl_logos/icon.png) no-repeat;
+		background-size: 32px;
+		left: 2rem;
 	}
 	div.menu-sidebar ul.menu li a{
 		padding:1.9rem 2.5rem 3.25rem;
 	}
 	header ul.submenu{
-		left: 4rem;
+		left: 0rem;
 		transition: left 0.3s;
 	}
 	div.menu-sidebar{
 		transition: width 0.3s;
-		width: 6.5rem;
+		width: 6.75rem;
 	}
 	header{
 		transition: left 0.3s;
 		left:50px;
 	}
-}
-@media(max-width: 680px){
+}*/
+/*@media(max-width: 680px){
 	header{
 		position: fixed;
 	}
@@ -231,39 +216,8 @@ div.menu-sidebar ul.menu a.logoff i{
 		transition: display 0.3s;
 		display: none;
 	}
-	label.menu-mobile{
-		display: block;
-	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu {
-		position: absolute;
-		left: 2.5rem;
-		top: 4.5rem;
-		display: block;
-		z-index: 999;
-		width: 100vw;
-	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu li{
-		clear: both;
-		margin: 0;
-		padding: 0;
-	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu li a{
-		display: block;
-		width: 100vw;
-		padding: 2rem 2rem;
-		font-size: 1.6rem;
-		background-color: #393e41;
-		border-radius: 0;
-	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu li a:hover{
-		color: #fff;
-		background-color: #4a7856;
-	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu li a.selected{
-		color: #5fad56;
-	}
-}
-@media(max-width: 400px){
+}*/
+/*@media(max-width: 400px){
 	header{
 		left: 0;
 	}
@@ -271,20 +225,4 @@ div.menu-sidebar ul.menu a.logoff i{
 		transition: display 0.3s;
 		display: none;
 	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu{
-		position: absolute;
-		left: -4rem;
-		top: 4.5rem;
-		display: block;
-		z-index: 999;
-		width: 100vw;
-	}
-	input[type='checkbox'].menu-mobile:checked ~ ul.submenu li a{
-		display: block;
-		width: 100vw;
-		padding: 2rem 2rem;
-		font-size: 1.6rem;
-		background-color: #393e41;
-		border-radius: 0;
-	}
-}
+}*/
