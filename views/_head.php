@@ -14,6 +14,7 @@ error_reporting(E_WARNING);
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
 	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/grid.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/fonts.css">
