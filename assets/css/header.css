@@ -22,17 +22,16 @@ header ul.submenu li a{
 	text-decoration: none;
 	color: #fff;
 }
-header ul.submenu li a.selected{
+header ul.submenu li a.selected,header ul.submenu li a.selected:hover{
 	color: #4a7856;
 	transition: 0.4s all;
 	/*border-radius: 0;*/
 	background-color: #f4f4f4;
 }
 header ul.submenu li a:hover{
-	opacity: 0.7;
 	color: #fff;
 	background-color: #4A7856;
-	transition: 0.4s background-color;
+	transition: 0.4s all;
 	/*border-radius: 0;*/
 }
 header nav label.options{
