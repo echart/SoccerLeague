@@ -62,4 +62,24 @@ class Players{
 			return new Player();
 		}
 	}
+	public static function getPlayersByIdClub($id_club){
+		$arrayPlayers=array();
+		$query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_player FROM players INNER JOIN players_position using(id_player) WHERE id_player_club=:id_club and id_position!=1 ORDER BY id_player ASC");
+		$query->bindParam(":id_club",$id_club);
+		$query->execute();
+		while($data=$query->fetch(PDO::FETCH_OBJ)){
+			$arrayPlayers[]=$data->id_player;
+		}
+		return $arrayPlayers;
+	}
+	public static function getGoalkeepersByIdClub($id_club){
+		$arrayPlayers=array();
+		$query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_player FROM players INNER JOIN players_position using(id_player) WHERE id_player_club=:id_club and id_position=1 ORDER BY id_player ASC");
+		$query->bindParam(":id_club",$id_club);
+		$query->execute();
+		while($data=$query->fetch(PDO::FETCH_OBJ)){
+			$arrayPlayers[]=$data->id_player;
+		}
+		return $arrayPlayers;
+	}
 }

@@ -7,6 +7,8 @@ class Club{
 	public $clubname;
 	protected $club_nickname;
 	public $country;
+	public $createdate;
+	public $status;
 
 	public function __construct($club=''){
 		$this->id_club=$club;
@@ -14,7 +16,23 @@ class Club{
 
 		if($club!=''){
 			$this->id_club=$club;
+			$query=Connection::getInstance()->connect()->prepare("SELECT * from club where id_club=:id_club LIMIT 1");
+			$query->bindParam(':id_club', $this->id_club);
+			$query->execute();
+			$data=$query->fetch(PDO::FETCH_OBJ);
+			$this->clubname=$data->clubname;
+			$this->club_nickname=$data->nickname;
+			$this->createdate=$data->createdate;
+			$this->status=$data->status;
+			$this->country=$data->id_country;
 		}
+	}
+	public static function getClubNameById($id_club){
+		$query=Connection::getInstance()->connect()->prepare("SELECT clubname from club where id_club=:id_club LIMIT 1");
+		$query->bindParam(':id_club', $id_club);
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_OBJ);
+		return $data->clubname;
 	}
 	public function getClub($id){
 		if($id==''){
