@@ -18,7 +18,7 @@ require_once('helpers/__skill.php');
                 <th>Vel</th>
                 <th>Res</th>
                 <th>Sal</th>
-                <th>Empenho</th>
+                <th>Emp</th>
                 <th>Pos</th>
                 <th>Con</th>
                 <th>Dec</th>
@@ -48,7 +48,7 @@ require_once('helpers/__skill.php');
                   <td>Vel</td>
                   <td>Res</td>
                   <td class='border'>Sal</td>
-                  <td>Empenho</td>
+                  <td>Emp</td>
                   <td>Pos</td>
                   <td>Con</td>
                   <td>Dec</td>
