@@ -25,6 +25,16 @@ require_once('helpers/__skill.php');
                 <th>Vis</th>
                 <th>Imp</th>
                 <th>Com</th>
+                <th>Cru</th>
+                <th>Pas</th>
+                <th>Tec</th>
+                <th>B.Con</th>
+                <th>Dri</th>
+                <th>Lon</th>
+                <th>Fin</th>
+                <th>Cabeceio</th>
+                <th>Mar</th>
+                <th>Des</th>
               </tr>
             </thead>
             <tbody>
