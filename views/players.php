@@ -55,6 +55,16 @@ require_once('helpers/__skill.php');
                   <td>Vis</td>
                   <td>Imp</td>
                   <td>Com</td>
+                  <td>Cru</td>
+                  <td>Pas</td>
+                  <td>Tec</td>
+                  <td>B.Con</td>
+                  <td>Dri</td>
+                  <td>Lon</td>
+                  <td>Fin</td>
+                  <td>Cabeceio</td>
+                  <td>Mar</td>
+                  <td>Des</td>
                 </tr>
               <? } ?>
             </tbody>
