@@ -2,7 +2,7 @@ header{
 	position: absolute;
 	width: 100%;
 	height: 62.5px;
-	z-index: 2;
+	z-index: 3;
 	background-color: #5FAD56;
 }
 header ul.submenu{
@@ -34,12 +34,24 @@ header ul.submenu li a:hover{
 	transition: 0.4s all;
 	/*border-radius: 0;*/
 }
-header nav label.options{
+header nav .options{
 	position: absolute;;
 	right: 30px;
-	top: 25px;
+	top: 22.5px;
+	font-size: 13px;
+	color: #fff;
+	text-decoration: none;
 }
-
+header nav .options i{
+	position: absolute;
+	left: -27.5px;
+	top: -2.5px;
+}
+header nav .options:hover{
+	color: #333;
+	cursor: pointer;
+}
+header nav a{}
 
 div.menu-sidebar div.logo{
 	width: 100%;

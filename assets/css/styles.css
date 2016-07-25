@@ -54,8 +54,31 @@ SELECIONAR TEXTO
     background:#5FAD56;
 }*/
 /*=============================
+Links
+==============================*/
+a{
+	font-size: 14px;
+	color: #dd6e42;
+}
+/*=============================
+Aligns
+==============================*/
+.center{
+	text-align: center;
+}
+/*=============================
+Paragraphs
+==============================*/
+p{
+	padding: .5px;
+}
+/*=============================
 Heading
 ==============================*/
+.title{
+	padding-left: 20px;
+	font-family: 'Open Sans';
+}
 h1{
 	font-size: 32px;
 }
@@ -176,27 +199,45 @@ table tbody tr td.border{
 table tbody tr td.center{
 	text-align: center;
 }
+table tbody tr td.promotion{
+	background-color: #7dcd85 !important;
+}
+table tbody tr td.relegation{
+	background-color: #b44230 !important;
+}
+table tbody tr td.playoff-relegation{
+	background-color: #b57167 !important;
+}
+table tbody tr td.playoff-promotion{
+	background-color: #5fad56 !important;
+}
+table tbody tr.selected{
+	/*background-color: #d5b942 !important;
+	color: #333;*/
+	font-weight: 800;
+	font-size: 13px;
+}
 /*=============================
 BOXES
 ==============================*/
 .box{
 	width: 100%;
-	min-height: 150px;
+	min-height: 100px;
 	margin: 0.5rem 0;
 }
 .box-title{
-	padding: 1.5rem 3rem;
+	padding: .75rem 3rem;
 	background-color: #5FAD56;
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
 	text-align: left;
 	font-family: 'Open Sans';
 }
 .box-content{
 	position: relative;
-	min-height:100px;
+	min-height:20px;
 	text-align: left;
-	padding: 0.5rem;
+	/*padding: 0.5rem;*/
 	font-size: 12.5px;
 	border: 1px solid #aaa;
 }
