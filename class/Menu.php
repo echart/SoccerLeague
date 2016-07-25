@@ -5,7 +5,7 @@ class menu{
 	public $principal=0;
 	public static $menu=array(
 		'home'=>array(
-				0=>array('href'=>'/home/','text'=>'Visão Geral'),
+				0=>array('href'=>'/home/','text'=>'Home'),
 				1=>array('href'=>'/calendar/','text'=>'Calendário')
 		),
 		'club'=>array(

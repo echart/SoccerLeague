@@ -14,6 +14,7 @@ class League{
 	public $group;
 	public $totalgames;
 	public $round;
+	public $name;
 
 	public function __construct($country, $season, $div, $group){
 		try{
@@ -21,7 +22,7 @@ class League{
 			$this->season=$season;
 			$this->div=$div;
 			$this->group=$group;
-			$query=Connection::getInstance()->connect()->prepare("SELECT id_league FROM competition c inner join league l using(id_competition) inner join country ccc on ccc.id_country= c.id_country where c.id_competition_type=1 and c.id_country=:country and l.division=:division and l.divgroup=:group and c.season=:season");
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_league,name FROM competition c inner join league l using(id_competition) inner join country ccc on ccc.id_country= c.id_country where c.id_competition_type=1 and c.id_country=:country and l.division=:division and l.divgroup=:group and c.season=:season");
 		  $query->bindParam(':country',$this->country);
 		  $query->bindParam(':division',$this->div);
 		  $query->bindParam(':group',$this->group);
@@ -30,6 +31,7 @@ class League{
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$data=$query->fetch();
 			$this->id_league=$data->id_league;
+			$this->name=$data->name;
 		}catch(PDOException $e){
 			echo $e->getmessage();
 		}
@@ -59,11 +61,12 @@ class League{
 			return false;
 		}
 	}
-	public function eachRowLeagueTable(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l using(id_competition) inner join league_table lt using(id_league) inner join club cc using(id_club) inner join country ccc on ccc.id_country= c.id_country where l.id_league=:id_league");
+	public function getLeagueTable(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT l.round,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join league_table lt using(id_league) inner join club cc using(id_club) inner join country ccc on ccc.id_country= cc.id_country where l.id_league=:id_league");
 	  $query->bindParam(':id_league',$this->id_league);
 	  $query->execute();
-	  $query->setFetchMode(PDO::FETCH_OBJ);
+	  $query->setFetchMode(PDO::FETCH_ASSOC);
+		return $query;
 	}
 	public static function checkIfLeagueAlreadyExists($season,$country,$div,$group){
 		try{
