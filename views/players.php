@@ -25,6 +25,8 @@ require_once('helpers/__skill.php');
                 <th>Vis</th>
                 <th>Imp</th>
                 <th>Com</th>
+                <th>Mar</th>
+                <th>Des</th>
                 <th>Cru</th>
                 <th>Pas</th>
                 <th>Tec</th>
@@ -32,9 +34,7 @@ require_once('helpers/__skill.php');
                 <th>Dri</th>
                 <th>Lon</th>
                 <th>Fin</th>
-                <th>Cabeceio</th>
-                <th>Mar</th>
-                <th>Des</th>
+                <th>Cab</th>
               </tr>
             </thead>
             <tbody>
@@ -54,17 +54,17 @@ require_once('helpers/__skill.php');
                   <td>Dec</td>
                   <td>Vis</td>
                   <td>Imp</td>
-                  <td>Com</td>
+                  <td class='border'>Com</td>
+                  <td>Mar</td>
+                  <td class='border'>Des</td>
                   <td>Cru</td>
                   <td>Pas</td>
                   <td>Tec</td>
                   <td>B.Con</td>
-                  <td>Dri</td>
+                  <td class='border'>Dri</td>
                   <td>Lon</td>
                   <td>Fin</td>
-                  <td>Cabeceio</td>
-                  <td>Mar</td>
-                  <td>Des</td>
+                  <td>Cab</td>
                 </tr>
               <? } ?>
             </tbody>
