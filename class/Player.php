@@ -41,7 +41,6 @@ class Player extends Players{
 		// 	$positions[]['position']=$data->position;
 		// }
 		$data=$query->fetch(PDO::FETCH_OBJ);
-		echo $data->position . ' ' . $data->side;
 		$positions=$data->position . ' ' . $data->side;
 		return $positions;
 	}
