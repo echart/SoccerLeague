@@ -1,15 +1,17 @@
 <main>
   <div class='content'>
+    <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>)</h3>
     <div class='grid-65'>
       <div class='box'>
         <div class='box-title'>Classificação</div>
         <div class='box-content'>
         <table class='zebra bordered'>
-          <caption>Campeonato Brasileiro</caption>
+          <!-- <caption>Campeonato Brasileiro</caption> -->
           <thead>
             <tr>
               <th>Pos</th>
               <th>Clube</th>
+              <th>Jogos</th>
               <th>V</th>
               <th>E</th>
               <th>D</th>
@@ -20,291 +22,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
+            <?
+            for($i=0;$i<18;$i++){?>
+            <tr class='<?=$this->data['leagueTable'][$i]['class']?>'>
+              <td class='center border <?=$this->data['leagueTable'][$i]['status']?>'><?=$i+1?></td>
+              <td class='border'><a href='<?=$this->data['tree']?>club/<?=$this->data['leagueTable'][$i]['id_club']?>'><?=$this->data['leagueTable'][$i]['clubname']?></a></td>
+              <td class='center border'><?=$this->data['leagueTable'][$i]['round']?></td>
+              <td class='center'><?=$this->data['leagueTable'][$i]['win']?></td>
+              <td class='center'><?=$this->data['leagueTable'][$i]['draw']?></td>
+              <td class='center border'><?=$this->data['leagueTable'][$i]['loss']?></td>
+              <td class='center'><?=$this->data['leagueTable'][$i]['goalsp']?></td>
+              <td class='center'><?=$this->data['leagueTable'][$i]['goalsc']?></td>
+              <td class='center border'><?=$this->data['leagueTable'][$i]['goalsp']-$this->data['leagueTable'][$i]['goalsc']?></td>
+              <td class='center'><?=$this->data['leagueTable'][$i]['pts']?></td>
             </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr><tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr><tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr><tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr><tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr><tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
-            <tr>
-              <td class='border'>Pos</td>
-              <td class='border'>Clube</td>
-              <td class='center'>V</td>
-              <td class='center'>E</td>
-              <td class='center border'>D</td>
-              <td class='center'>GP</td>
-              <td class='center'>GC</td>
-              <td class='center border'>S</td>
-              <td>Pontos</td>
-            </tr>
+            <?}?>
           </tbody>
-          <tfoot>
-
-          </tfoot>
+          <tfoot></tfoot>
         </table>
       </div>
     </div>
@@ -312,7 +46,9 @@
     <div class='grid-35'>
       <div class='box'>
         <div class='box-title'>Próxima rodada</div>
-        <div class='box-content'></div>
+        <div class='box-content'>
+          <p class='center'>Ainda não há jogos a serem jogados</p>
+        </div>
       </div>
     </div>
   </div>

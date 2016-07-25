@@ -5,7 +5,7 @@
 			 $submenu = new Menu($this->data['menu'],0);
 			 $submenu->display(); ?>
 		</ul>
-		<label class='options' for='#options'>Opcões</label>
+		<a class='options' href='<?=$this->data['tree']?>account/'><i class="material-icons">account_circle</i>Opcões</a>
 	</nav>
 </header>
 <aside>
@@ -13,7 +13,7 @@
 		<div class='logo'><i></i></div>
 		<nav>
 			<ul class='menu'>
-				<li><a class='home' href='<?=$this->data['tree']?>home/'><i></i><span>Visão geral</span></a></li>
+				<li><a class='home' href='<?=$this->data['tree']?>home/'><i></i><span>Home</span></a></li>
 				<li><a class='club border' href="<?=$this->data['tree']?>club/"><i></i><span>Clube</span></a></li>
 				<li><a class='squad' href="<?=$this->data['tree']?>players/"><i></i><span>Equipe</span></a></li>
 				<li><a class='league border' href="<?=$this->data['tree']?>league/"><i></i><span>Competições</span></a></li>
