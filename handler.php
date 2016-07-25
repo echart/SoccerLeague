@@ -1,6 +1,7 @@
 <?php
 	try{
 		session_start();
+		define('SEASON',1);
 		require_once('helpers/__autoload.php');
 		$request = ($_GET ?? array('request'=>'home'));
 
