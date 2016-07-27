@@ -1,3 +1,3 @@
 	<div class='content'>
-		<h1>Club</h1>
+		<h3 class='title'><?=$this->data['clubname']?></h3>
 	</div>

@@ -41,7 +41,7 @@ Sabe o que é isso daí? Trapézio descendente é o nome disso aí. Sai de casa 
       <div class="grid-35 grid-parent">
         <div class="grid-100">
             <div class='box'>
-              <div class='box-title'>Próximo Jogo</div>
+              <div class='box-title'>Jogos</div>
               <div class='box-content'>
                 <p>div box content</p>
               </div>
@@ -49,15 +49,7 @@ Sabe o que é isso daí? Trapézio descendente é o nome disso aí. Sai de casa 
         </div>
         <div class="grid-100">
             <div class='box'>
-              <div class='box-title'>Ultimos jogos</div>
-              <div class='box-content'>
-                <p>div box content</p>
-              </div>
-            </div>
-        </div>
-        <div class="grid-100">
-            <div class='box'>
-              <div class='box-title'>Recentes</div>
+              <div class='box-title'>Mais recentes no Fórum</div>
               <div class='box-content'>
                 <p>div box content</p>
               </div>

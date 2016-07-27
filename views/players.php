@@ -4,6 +4,7 @@ require_once('helpers/__skill.php');
 <main>
   <div class='content'>
     <h3 class='title'><?=$this->data['clubname']?></h3>
+    <h6 class='title'>Equipe > Plantel</h6>
     <div class='grid-100'>
       <div class='box'>
         <div class='box-title'>Jogadores</div>
@@ -41,7 +42,7 @@ require_once('helpers/__skill.php');
               <?
               for($i=0;$i<count($this->data['playersTable']['line']);$i++){?>
                 <tr class='center'>
-                  <td class='left'><?=$this->data['playersTable']['line'][$i]['name'];?></td>
+                  <td class='padding-right left'><a href="<?=$this->data['tree']?>players/<?=$this->data['playersTable']['line'][$i]['id_player']?>"><?=$this->data['playersTable']['line'][$i]['name'];?></a></td>
                   <td class='border'><?=$this->data['playersTable']['line'][$i]['position'];?></td>
                   <td class='border'><?=$this->data['playersTable']['line'][$i]['age'];?></td>
                   <td class=''><?=__skill($this->data['playersTable']['line'][$i]['stamina']);?></td>

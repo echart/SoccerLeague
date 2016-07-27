@@ -1,6 +1,12 @@
 <main>
   <div class='content'>
-    <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>)</h3>
+    <div class='grid-65'>
+      <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>)</h3>
+    </div>
+    <div class='grid-35 padding-top right'>
+      <button class='btn bg-success letter-small'>Estatisticas</button>
+      <button class='btn bg-success letter-small'>Histórico</button>
+    </div>
     <div class='grid-65'>
       <div class='box'>
         <div class='box-title'>Classificação</div>

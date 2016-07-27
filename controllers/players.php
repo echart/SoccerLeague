@@ -1,10 +1,11 @@
 <?
 require_once('helpers/__skill.php');
 use Players as ThisPlayer;
+
 /**
  * the way to the actual "virtual" path
  */
- $this->data['menu']='players';
+$this->data['menu']='players';
 $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
 /**
  * if have id in url then show individual player page, with respective player;

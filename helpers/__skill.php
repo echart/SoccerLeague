@@ -1,5 +1,5 @@
 <?
 
 function __skill($value){
-  return intval($value);
+    return intval($value);
 }
