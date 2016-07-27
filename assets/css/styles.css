@@ -54,6 +54,21 @@ SELECIONAR TEXTO
     background:#5FAD56;
 }*/
 /*=============================
+Font-size
+==============================*/
+.letter-small{
+	font-size: 11px;
+}
+/*=============================
+Links
+==============================*/
+.padding-left{
+	padding-left: 10px;
+}
+.padding-top{
+	padding-top: 20px;
+}
+/*=============================
 Links
 ==============================*/
 a{
@@ -68,6 +83,12 @@ Aligns
 }
 .left{
 	text-align: left;
+}
+.right{
+	text-align: right;
+}
+.justify{
+	text-align: justify;
 }
 /*=============================
 Paragraphs
