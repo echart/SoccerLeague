@@ -13,7 +13,7 @@ $refeer= $_GET['refeer']?? NULL;
 <html>
 <head>
 	<!-- Title, tags and meta-->
-	<title>Soccer League - The Soccer Manager Game</title>
+	<title>Soccer League - The Soccer Management Game</title>
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/icon2.png">
 
 	<meta charset='UTF-8'>
@@ -47,7 +47,7 @@ $refeer= $_GET['refeer']?? NULL;
 			</video>
 			<div class="pattern"></div>
 			<div class='cadastro'>
-				<h1>Nós amamos futebol! <i class="football"></i></h1>
+				<h1>Nós amamos futebol<i class="football"></i></h1>
 				<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 				<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
 			</div>
@@ -123,7 +123,8 @@ $refeer= $_GET['refeer']?? NULL;
 	</script>
 	<!--<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script-->
 	<script type="text/javascript" src='assets/js/jquery.js'></script>
+	<!-- <script type="text/javascript" src='assets/js/translate.js'></script> -->
 	<script type="text/javascript" src='assets/js/select.js'></script>
-	<script type="text/javascript" src='assets/js/home/home.js'></script>
+	<script type="text/javascript" src='assets/js/home.js'></script>
 </body>
 </html>
