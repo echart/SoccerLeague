@@ -12,6 +12,15 @@ $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
  *  else show all players for club_id storage in session;
  */
 if(isset($this->request['id'])){
+  if($this->request['method']=='json'){
+    JsonOutput::jsonHeader();
+    $player = new Player();
+    $data=$player->loadPlayerInfo($this->request['id']);
+    echo JsonOutput::success($data);
+    exit;
+  }else{
+
+  }
   /**
    * LOAD ALL PLAYER ATTR AND PASS IT TO VIEW.
    */
