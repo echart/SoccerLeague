@@ -23,6 +23,13 @@ class Player extends Players{
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_ASSOC);
+		foreach ($data as $key => $value) {
+			if($key!='age'){
+				if(is_numeric($data[$key])){
+					$data[$key]=intval($value);
+				}
+			}
+		}
 		return $data;
 	}
 	public function loadPlayerInfo($id_player){

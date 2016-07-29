@@ -15,7 +15,6 @@ if(isset($this->request['id'])){
   if($this->request['method']=='json'){
     $player = new Player();
     $playerData = $player->loadPlayer($this->request['id']);
-
     JsonOutput::jsonHeader();
     echo JsonOutput::success($playerData);
     exit;
