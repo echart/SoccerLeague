@@ -43,7 +43,35 @@ require_once('helpers/__skill.php');
               </tr>
             </thead>
             <tbody>
-              <tr><td class='center' colspan="24">Carregando...</td></tr>
+              <?
+              for($i=0;$i<count($this->data['playersTable']['line']);$i++){?>
+                <tr class='center'>
+                  <td class='padding-right left'><a href="<?=$this->data['tree']?>players/<?=$this->data['playersTable']['line'][$i]['id_player']?>"><?=$this->data['playersTable']['line'][$i]['name'];?></a></td>
+                  <td class='border'><?=$this->data['playersTable']['line'][$i]['position'];?></td>
+                  <td class='border'><?=$this->data['playersTable']['line'][$i]['age'];?></td>
+                  <td class=''><?=__skill($this->data['playersTable']['line'][$i]['stamina']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['speed']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['resistance']);?></td>
+                  <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['jump']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['workrate']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['positioning']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['concentration']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['decision']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['vision']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['unpredictability']);?></td>
+                  <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['communication']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['marking']);?></td>
+                  <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['tackling']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['crossing']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['pass']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['technical']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['ballcontrol']);?></td>
+                  <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['dribble']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['longshot']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['finish']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['heading']);?></td>
+                </tr>
+              <? } ?>
             </tbody>
           </table>
         </div>

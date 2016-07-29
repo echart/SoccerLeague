@@ -13,7 +13,7 @@ $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
  */
 if(isset($this->request['id'])){
   if($this->request['method']=='json'){
-    $player = new Player();
+    $player = ThisPlayer::is($this->request['id']);
     $playerData = $player->loadPlayer($this->request['id']);
     JsonOutput::jsonHeader();
     echo JsonOutput::success($playerData);
@@ -29,27 +29,24 @@ if(isset($this->request['id'])){
   $this->data['player']=$player->loadPlayerInfo($id_player);
   $this->data['title']= $this->data['player']['name'] . ' - SoccerLeague';
 }else{
-  /**
-   * LOAD ALL PLAYERSSSSS ATTR AND PASS IT TO VIEW
-   */
   $id_club=$_SESSION['SL_account'];
   $this->data['title']='Players';
   $this->data['clubname']='Plantel de ' . Club::getClubNameById($_SESSION['SL_club']);
   /**LOAD DEPENDENCIES*/
-  $this->addJSFile('loadPlayers.js');
+  $this->addJSFile('playerSkill.js');
   $this->addCSSFile('playerspage.css');
 
   $arrayPlayers=Players::getPlayersByIdClub($_SESSION['SL_club']);
   $i=0;
-  // foreach ($arrayPlayers as $key => $id_player) {
-  //   $player = new Player();
-  //   $this->data['playersTable']['line'][$i]=$player->loadPlayer($id_player);
-  //   $this->data['playersTable']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
-  //   $i++;
-  // }
-  // $arrayPlayers=Players::getGoalkeepersByIdClub($_SESSION['SL_club']);
-  // foreach ($arrayPlayers as $key => $id_player) {
-  //   $player = new Player();
-  //   $this->data['playersTable']['gk'][]=$player->loadPlayer($id_player);
-  // }
+  foreach ($arrayPlayers as $key => $id_player) {
+    $player = new Player();
+    $this->data['playersTable']['line'][$i]=$player->loadPlayer($id_player);
+    $this->data['playersTable']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
+    $i++;
+  }
+  $arrayPlayers=Players::getGoalkeepersByIdClub($_SESSION['SL_club']);
+  foreach ($arrayPlayers as $key => $id_player) {
+    $player = new Goalkeeper();
+    $this->data['playersTable']['gk'][]=$player->loadPlayer($id_player);
+  }
 }
