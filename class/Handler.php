@@ -4,6 +4,7 @@ class Handler{
 	public $request;
 	public $requestURL;
 	public $data;
+	public $dependence=array('JS'=>array(),'CSS'=>array());
 	function parseUrl(array $request){
 		$this->requestURL=$request['request'];
 		$this->request=$request;
@@ -33,5 +34,21 @@ class Handler{
 		 * load footer
 		 */
 		require_once('views/_footer.php');
+	}
+	public function addCSSFile($name){
+		$this->dependence['CSS'][]=$name;
+	}
+	public function loadCSSfiles(){
+		foreach ($this->dependence['CSS'] as $key => $style) {
+			echo "<link rel='stylesheet' type='text/css' href='".$this->data['tree']."assets/css/".$style."'>";
+		}
+	}
+	public function addJSFile($name){
+		$this->dependence['JS'][]=$name;
+	}
+	public function loadJSFiles(){
+		foreach ($this->dependence['JS'] as $key => $script) {
+			echo "<script type='text/javascript' src='".$this->data['tree']."assets/js/".$script."'></script>";
+		}
 	}
 }
