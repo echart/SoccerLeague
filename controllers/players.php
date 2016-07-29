@@ -13,10 +13,11 @@ $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
  */
 if(isset($this->request['id'])){
   if($this->request['method']=='json'){
-    JsonOutput::jsonHeader();
     $player = new Player();
-    $data=$player->loadPlayerInfo($this->request['id']);
-    echo JsonOutput::success($data);
+    $playerData = $player->loadPlayer($this->request['id']);
+
+    JsonOutput::jsonHeader();
+    echo JsonOutput::success($playerData);
     exit;
   }else{
 
