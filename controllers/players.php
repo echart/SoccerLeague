@@ -32,7 +32,6 @@ if(isset($this->request['id'])){
 }else{
   /**
    * LOAD ALL PLAYERSSSSS ATTR AND PASS IT TO VIEW
-   * :TODO make it fast
    */
   $id_club=$_SESSION['SL_account'];
   $this->data['title']='Players';
