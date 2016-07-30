@@ -90,7 +90,7 @@ class Authentication{
 		 * insert session in db for authentication
 		 */
 		try{
-			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid) values (:id_account, '".session_id()."','true')");
+			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid,ip) values (:id_account, '".session_id()."','true','".self::ip()."')");
 			$query->bindParam(':id_account',$id_club);
 			$query->execute();
 		}catch(PDOException $e){
@@ -105,4 +105,22 @@ class Authentication{
 	public static function homeRedirect(){
 		header('location: http://' .  $_SERVER['SERVER_NAME']); //if not, go to frontpage
 	}
+	public static function ip() {
+		$ipaddress = '';
+	    if (isset($_SERVER['HTTP_CLIENT_IP']))
+	        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+	    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+	        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+	        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+	    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+	        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+	    else if(isset($_SERVER['HTTP_FORWARDED']))
+	        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+	    else if(isset($_SERVER['REMOTE_ADDR']))
+	        $ipaddress = $_SERVER['REMOTE_ADDR'];
+	    else
+	        $ipaddress = 'UNKNOWN';
+	    return $ipaddress;
+		}
 }
