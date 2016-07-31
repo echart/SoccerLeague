@@ -122,4 +122,12 @@ class League{
 			return 18;
 		}
 	}
+	public static function getLeagueById($id_league){
+		$query=Connection::getInstance()->connect()->prepare("SELECT name, division, divgroup, id_country, abbreviation from league inner join competition using(id_competition) inner join country using(id_country) where id_league=:id_league");
+		$query->bindParam(':id_league', $id_league);
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$data=$query->fetch();
+		return $data;
+	}
 }

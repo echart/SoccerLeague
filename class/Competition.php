@@ -22,7 +22,6 @@ class Competition{
 
 		$this->country=$data->country;
 		$this->type=$data->type;
-		$this->name=$data->name;
 		$this->season=$data->season;
 		$this->totalclubs=$data->totalclubs;
 		$this->id_competition=$id_competition;
@@ -56,7 +55,7 @@ class Competition{
 			$query=Connection::getInstance()->connect()->prepare("SELECT id_competition_type from competition_type where type=:type");
 			$query->bindParam(':type',$type);
 			$query->execute();
-			$query->setFetchMode(PDO::FETCH_OBJ);
+			$query->setFetchMode(PDO::FETCH_ASSOC);
 			$data=$query->fetch();
 
 			return $data->id_competition_type;

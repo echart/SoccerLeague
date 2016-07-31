@@ -119,4 +119,12 @@ class Club{
 		$query->bindParam(':id_country',$id_country);
 		$query->execute();
 	}
+	public static function getClubLeague($id_club){
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_league from competition inner join league using(id_competition) inner join league_table using(id_league) where id_club=:id_club and season=1 and id_competition_type=1");
+		$query->bindParam(':id_club', $id_club);
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_ASSOC);
+		$data=$query->fetch();
+		return $data['id_league'];
+	}
 }
