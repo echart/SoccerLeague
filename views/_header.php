@@ -5,7 +5,7 @@
 			 $submenu = new Menu($this->data['menu'],0);
 			 $submenu->display(); ?>
 		</ul>
-		<a class='options' href='<?=$this->data['tree']?>account/'><i class="material-icons">account_circle</i>Opcões</a>
+		<span alt='Soccer League Time' class='options'><strong><span id='sltime'></span></strong> - <?=date('Y-m-d')?></span>
 	</nav>
 </header>
 <aside>
@@ -20,6 +20,7 @@
 				<li><a class='transfer' href=""><i></i><span>Mercado</span></a></li>
 				<li><a class='community' href=""><i></i><span>Comunidade</span></a></li>
 				<li><a class='pro border' href=""><i></i><span>PRO</span><span class='qtd'>365 dias</span></a></li>
+				<li><a class='logoff' href="<?=$this->data['tree']?>logout/"><span>Opções</span></a></li>
 				<li><a class='logoff border' href="<?=$this->data['tree']?>logout/"><i></i><span>Sair</span></a></li>
 			</ul>
 		</nav>

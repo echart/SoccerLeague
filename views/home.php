@@ -49,7 +49,15 @@ Sabe o que é isso daí? Trapézio descendente é o nome disso aí. Sai de casa 
         </div>
         <div class="grid-100">
             <div class='box'>
-              <div class='box-title'>Mais recentes no Fórum</div>
+              <div class='box-title'>Notificações</div>
+              <div class='box-content'>
+                <p>div box content</p>
+              </div>
+            </div>
+        </div>
+        <div class="grid-100">
+            <div class='box'>
+              <div class='box-title'>Mensagens</div>
               <div class='box-content'>
                 <p>div box content</p>
               </div>
