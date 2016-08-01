@@ -22,9 +22,14 @@ if(isset($this->request['subrequest'])){
 
   }else if($this->request['subrequest']=='statistics'){
 
+  }else if($this->request['subrequest']=='edit'){
+    $this->data['title']='Editar Clube';
+    $this->requestURL='editClub.php';
   }
 }else{
   $this->addCSSfile('club.css');
+  $this->addJSfile('buddy.js');
+  
   $this->data['clubinfo']=ClubInfo::get($club);
   if((!isset($this->data['clubinfo']['logo'])) or $this->data['clubinfo']['logo']=='null'){
     $this->data['clubinfo']['logo']='default.png';
@@ -42,4 +47,20 @@ if(isset($this->request['subrequest'])){
   }
   $this->data['clubinfo']['buddies']=Buddy::howManyBuddies($club) . ' amigo(s)';
   $this->data['leagueURL']='league/'.$data['abbreviation'].'/'.$data['division'].'/'.$data['divgroup'];
+  $this->data['clubinfo']['fans']= number_format(ClubFans::howManyFans($club),0,',','.');
+  $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
+
+  if(Buddy::isPending($_SESSION['SL_club'],$club)){
+    $this->data['button']['friend']['text']='Solicitação Pendente';
+    $this->data['button']['friend']['action']='unMakeBuddy';
+  }else if(Buddy::isPending($club,$_SESSION['SL_club'])){
+    $this->data['button']['friend']['text']='Aceitar amigo';
+    $this->data['button']['friend']['action']='aproval';
+  }else if(Buddy::isMyFriend($_SESSION['SL_club'],$club)){
+    $this->data['button']['friend']['text']='Desfazer amizade';
+    $this->data['button']['friend']['action']='unbuddy';
+  }else{
+    $this->data['button']['friend']['text']='Fazer novo amigo';
+    $this->data['button']['friend']['action']='request';
+  }
 }

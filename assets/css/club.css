@@ -68,8 +68,19 @@
 .club-history{
   position: relative;
   top: -260px;
-  width: 95%;
+  width: 47.5%;
   padding: 25px;
+}
+.club-data{
+  position: absolute;;
+  top: 255px;
+  left: 570px;
+  width: 47.5%;
+  padding: 25px;
+}
+.club-data ul{
+  list-style: none;
+  font-size: 13px;
 }
 .club-history p{
   display: block;

@@ -29,11 +29,19 @@
 							<?=	$this->data['clubinfo']['history'];?>
 						</p>
 					</div>
+					<div class='club-data'>
+						<ul>
+							<li><strong>Economia:</strong> Muito boa</li>
+							<li><strong>Estádio:</strong> <?=$this->data['clubinfo']['stadium']?></li>
+							<li><strong>Torcida:</strong> <?=$this->data['clubinfo']['fansname']?></li>
+							<li><strong>Sócios:</strong> <?=$this->data['clubinfo']['fans']?></li>
+						</ul>
+					</div>
 					<div class='options right'>
 						<?
 						if($this->request['id']!=$_SESSION['SL_club']){
 						?>
-						<button class='btn btn-border letter-small'>Adicionar aos amigos</button>
+						<button class='btn btn-border letter-small' onclick="buddy(this,'<?=$this->data['button']['friend']['action'];?>','<?=$_SESSION['SL_club']?>','<?=$this->request['id']?>')"><?=$this->data['button']['friend']['text'];?></button>
 						<button class='btn btn-border letter-small'>Mensagem</button>
 						<button class='btn btn-border letter-small'>Banir</button>
 						<?}else{?>
