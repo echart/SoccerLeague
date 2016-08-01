@@ -24,12 +24,16 @@ if(isset($this->request['subrequest'])){
 
   }else if($this->request['subrequest']=='edit'){
     $this->data['title']='Editar Clube';
-    $this->requestURL='editClub.php';
+    if($_SESSION['SL_club']!=$club){
+      echo 'Esse clube não é seu';exit;
+    }
+    $this->requestURL='editclub';
+    $this->data['clubinfo']=ClubInfo::get($club);
   }
 }else{
   $this->addCSSfile('club.css');
   $this->addJSfile('buddy.js');
-  
+
   $this->data['clubinfo']=ClubInfo::get($club);
   if((!isset($this->data['clubinfo']['logo'])) or $this->data['clubinfo']['logo']=='null'){
     $this->data['clubinfo']['logo']='default.png';

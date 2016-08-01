@@ -300,10 +300,10 @@ input[type='text']:hover,input[type='password']:hover,input[type='email']:hover{
 	transition: 0.7s all;
 }
 input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
-	background-color: #5FAD56;
-	color: #fff;
-	font-size: 14px;
+	background-color: #ddd;
+	color: #000;
 	transition: 0.3s background-color;
+	border: 1px solid #ccc;
 }
 select{
 	font-family: 'Exo 2','Open Sans';
