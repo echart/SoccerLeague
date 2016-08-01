@@ -46,7 +46,7 @@
 						<button class='btn btn-border letter-small'>Mensagem</button>
 						<button class='btn btn-border letter-small'>Banir</button>
 						<?}else{?>
-							<a href='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/edit'class='btn btn-border letter-small'>Alterar informações do clube</a>
+							<button href='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/edit'class='btn btn-border letter-small'>Alterar informações do clube</button>
 						<?}?>
 					</div>
 				</div>

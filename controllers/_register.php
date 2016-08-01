@@ -60,7 +60,18 @@ try{
 				/*verify if we have available clubs for this country*/
 				if($club->checkAvailableClub()==0){
 					/* Create new league with new available clubs */
-					// TODO: criar nova liga/grupo
+					$last=League::lastDivAndGroup();
+					$league = new League($country,1,$last[0],$last[1]);
+					$available=$league->nextAvailableDivAndGroup();
+					if(!League::checkIfLeagueAlreadyExists(1,$country,$available[0],$available[1])){
+						$id_competition=Competition::getIdCompetition(Competition::getIdCompetitionType('L'),$country, 1);
+						League::createLeague($id_competition,$available[0], $available[1], 34);
+					}
+					$league = new League($country,1,$available[0],$available[1]);
+					for($i=1;$i<19;$i++){
+					 $club=Club::createAvailableTeam($country);
+					 $league->joinClub($club);
+					}
 				}
 				/* create clubs*/
 				$response=$club->create();

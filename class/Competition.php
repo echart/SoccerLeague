@@ -55,9 +55,21 @@ class Competition{
 			$query=Connection::getInstance()->connect()->prepare("SELECT id_competition_type from competition_type where type=:type");
 			$query->bindParam(':type',$type);
 			$query->execute();
-			$query->setFetchMode(PDO::FETCH_ASSOC);
+			$query->setFetchMode(PDO::FETCH_OBJ);
 			$data=$query->fetch();
 
 			return $data->id_competition_type;
+	}
+	public static function getIdCompetition($type,$country, $season){
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_competition from competition where season=:season and id_country=:country and id_type=:type");
+		$query->bindParam(':type',$type);
+		$query->bindParam(':season',$season);
+		$query->bindParam(':country',$country);
+		$query->execute();
+
+		$query->setFetchMode(PDO::FETCH_OBJ);
+		$data=$query->fetch();
+
+		return $data->id_competition;
 	}
 }

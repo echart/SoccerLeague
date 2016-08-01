@@ -5,7 +5,6 @@ class Club{
 	public $id_account;
 	private $con;
 	public $clubname;
-	protected $club_nickname;
 	public $country;
 	public $createdate;
 	public $status;
@@ -118,6 +117,7 @@ class Club{
 		$query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country,clubname, status) values (:id_country, 'Available Team', 'P')");
 		$query->bindParam(':id_country',$id_country);
 		$query->execute();
+		return Connection::getInstance()->connect()->lastInsertID('club_id_club_seq');
 	}
 	public static function getClubLeague($id_club){
 		$query=Connection::getInstance()->connect()->prepare("SELECT id_league from competition inner join league using(id_competition) inner join league_table using(id_league) where id_club=:id_club and season=1 and id_competition_type=1");

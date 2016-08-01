@@ -36,11 +36,10 @@ class League{
 			echo $e->getmessage();
 		}
 	}
-	public static function createLeague($id_competition, $name,$division, $group, $totalgames){
+	public static function createLeague($id_competition,$division, $group, $totalgames){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition,name, division,divgroup, totalgames, round) values (:id_competition,:name,:division,:group,:totalgames,0)");
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition, division,divgroup, totalgames, round) values (:id_competition,:division,:group,:totalgames,0)");
 			$query->bindParam(':id_competition',$id_competition);
-			$query->bindParam(':name',$name);
 			$query->bindParam(':division',$division);
 			$query->bindParam(':group',$group);
 			$query->bindParam(':totalgames',$totalgames);
@@ -81,9 +80,11 @@ class League{
 			echo $e->getmessage();
 		}
 	}
-	public static function lastDivAndGroup(){
+	public static function lastDivAndGroup($country){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league order by division,divgroup asc")->execute()->setFetchMode(PDO::FETCH_OBJ);
+			$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league inner join competition using(id_competition) where id_country=:id_country order by division,divgroup asc");
+			$query->bindParam(':country',$country);
+			$query->execute()->setFetchMode(PDO::FETCH_OBJ);
 			$data=$query->fetch();
 			return array($data->division,$data->divgroup);
 		}catch(PDOException $e){

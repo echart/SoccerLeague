@@ -8,7 +8,22 @@ class ClubInfo{
     $data=$query->fetch(PDO::FETCH_ASSOC);
     return $data;
   }
-  public static function set($id_club){
-    // TODO: salvar club info
+  public static function update($id_club,$manager,$nicnake,$stadium,$city,$logo,$clubcolor,$history):bool{
+		try{
+			$query=Connection::getInstance()->connect()->prepare("UPDATE club_info SET manager=:manager, nickname=:nickname, stadium=:stadium,city=:city, logo=:logo, clubcolor=:clubcolor,history=:history WHERE id_club=:id_club");
+			$query->bindParam(':manager',$manager);
+			$query->bindParam(':nickname',$nickname);
+			$query->bindParam(':stadium',$stadium);
+			$query->bindParam(':city',$city);
+			$query->bindParam(':logo',$logo);
+			$query->bindParam(':clubcolor',$clubcolor);
+			$query->bindParam(':history',$history);
+			$query->bindParam(':id_club',$id_club);
+      $query->execute();
+			return true;
+		}catch(PDOException $e){
+			echo $e->getmessage();
+			return false;
+		}
   }
 }

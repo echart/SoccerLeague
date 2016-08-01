@@ -332,6 +332,6 @@ textarea{
 	font-size: 13px;
 }
 textarea:focus{
-	background-color: #5FAD56;
-	color: #fff;
+	background-color: #ddd;
+	color: #000;
 }

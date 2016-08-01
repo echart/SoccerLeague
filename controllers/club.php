@@ -23,12 +23,20 @@ if(isset($this->request['subrequest'])){
   }else if($this->request['subrequest']=='statistics'){
 
   }else if($this->request['subrequest']=='edit'){
+    $this->addJSfile('uploadLogo.js');
     $this->data['title']='Editar Clube';
     if($_SESSION['SL_club']!=$club){
       echo 'Esse clube não é seu';exit;
     }
     $this->requestURL='editclub';
     $this->data['clubinfo']=ClubInfo::get($club);
+    $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
+  }else if($this->request['subrequest']=='save'){
+    $id_club=$club;
+    extract($_POST);
+
+    // TODO:validations
+    ClubInfo::update($id_club,$manager,$nicnake,$stadium,$city,$logo,$clubcolor,$history);
   }
 }else{
   $this->addCSSfile('club.css');
