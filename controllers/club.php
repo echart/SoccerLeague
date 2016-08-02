@@ -24,6 +24,10 @@ if(isset($this->request['subrequest'])){
 
   }else if($this->request['subrequest']=='edit'){
     $this->addJSfile('uploadLogo.js');
+    $this->addJSfile('jcrop.js');
+    $this->addCSSfile('jcrop.css');
+    $this->addCSSfile('modal.css');
+
     $this->data['title']='Editar Clube';
     if($_SESSION['SL_club']!=$club){
       echo 'Esse clube não é seu';exit;
@@ -32,11 +36,25 @@ if(isset($this->request['subrequest'])){
     $this->data['clubinfo']=ClubInfo::get($club);
     $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
   }else if($this->request['subrequest']=='save'){
+
     $id_club=$club;
     extract($_POST);
 
     // TODO:validations
     ClubInfo::update($id_club,$manager,$nicnake,$stadium,$city,$logo,$clubcolor,$history);
+    exit;
+  }else if($this->request['subrequest']=='logotemp'){
+    if(isset($_FILES['file'])){
+      $ext = strtolower(substr($_FILES['file']['name'],-4)); //Pegando extensão do arquivo
+      $new_name = date("YmdHis") . $ext; //Definindo um novo nome para o arquivo
+      $name 	= $_FILES['file']['name'];
+      $tmp_name = $_FILES['file']['tmp_name'];
+      $allowedExts = array(".jpeg", ".jpg", ".png");
+      $dir = 'assets/img/logos/temp/';
+      echo $new_name;
+      move_uploaded_file($_FILES['file']['tmp_name'], $dir.$new_name);
+      exit;
+    }
   }
 }else{
   $this->addCSSfile('club.css');
