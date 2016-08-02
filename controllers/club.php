@@ -24,10 +24,9 @@ if(isset($this->request['subrequest'])){
 
   }else if($this->request['subrequest']=='edit'){
     $this->addJSfile('uploadLogo.js');
-    $this->addJSfile('croppic.js');
+    $this->addJSfile('croppic.min.js');
     $this->addCSSfile('croppic.css');
     $this->addCSSfile('modal.css');
-
     $this->data['title']='Editar Clube';
     if($_SESSION['SL_club']!=$club){
       echo 'Esse clube não é seu';exit;
@@ -41,11 +40,12 @@ if(isset($this->request['subrequest'])){
     extract($_POST);
 
     // TODO:validations
-    ClubInfo::update($id_club,$manager,$nicnake,$stadium,$city,$logo,$clubcolor,$history);
+    ClubInfo::update($id_club,$manager,$nickname,$stadium,$city,$clubcolor,$history);
+    header('location: edit');
     exit;
   }else if($this->request['subrequest']=='logosave'){
-    $imagePath = $this->data['tree']."assets/img/logos/";
-  	$allowedExts = array("gif", "jpeg", "jpg", "png", "GIF", "JPEG", "JPG", "PNG");
+    $imagePath = "assets/img/logos/temp/";
+  	$allowedExts = array("jpeg", "jpg", "png","JPEG", "JPG", "PNG");
   	$temp = explode(".", $_FILES["img"]["name"]);
   	$extension = end($temp);
 
@@ -76,7 +76,7 @@ if(isset($this->request['subrequest'])){
   		  move_uploaded_file($filename,  $imagePath . $_FILES["img"]["name"]);
   		  $response = array(
   			"status" => 'success',
-  			"url" => $imagePath.$_FILES["img"]["name"],
+  			"url" => '../../../'.$imagePath.$_FILES["img"]["name"],
   			"width" => $width,
   			"height" => $height
   		  );
@@ -95,6 +95,7 @@ if(isset($this->request['subrequest'])){
       exit;
   }else if($this->request['subrequest']=='logotemp'){
     $imgUrl = $_POST['imgUrl'];
+    $imgUrl=str_replace('../../../','',$imgUrl);
     // original sizes
     $imgInitW = $_POST['imgInitW'];
     $imgInitH = $_POST['imgInitH'];
@@ -110,7 +111,7 @@ if(isset($this->request['subrequest'])){
     // rotation angle
     $angle = $_POST['rotation'];
     $jpeg_quality = 100;
-    $output_filename = $this->data['tree']."assets/img/logos/temp/croppedImg_".rand();
+    $output_filename = "assets/img/logos/".date('YmdHis');
     // uncomment line below to save the cropped image in the same location as the original image.
     //$output_filename = dirname($imgUrl). "/croppedImg_".rand();
     $what = getimagesize($imgUrl);
@@ -127,11 +128,11 @@ if(isset($this->request['subrequest'])){
     		error_log("jpg");
     		$type = '.jpeg';
             break;
-        case 'image/gif':
-            $img_r = imagecreatefromgif($imgUrl);
-    		$source_image = imagecreatefromgif($imgUrl);
-    		$type = '.gif';
-            break;
+        // case 'image/gif':
+        //     $img_r = imagecreatefromgif($imgUrl);
+    		// $source_image = imagecreatefromgif($imgUrl);
+    		// $type = '.gif';
+        //     break;
         default: die('image type not supported');
     }
     //Check write Access to Directory
@@ -141,31 +142,34 @@ if(isset($this->request['subrequest'])){
     	    "message" => 'Cant write cropped File'
         );
     }else{
-        // resize the original image to size of editor
-        $resizedImage = imagecreatetruecolor($imgW, $imgH);
+      // resize the original image to size of editor
+      $resizedImage = imagecreatetruecolor($imgW, $imgH);
     	imagecopyresampled($resizedImage, $source_image, 0, 0, 0, 0, $imgW, $imgH, $imgInitW, $imgInitH);
-        // rotate the rezized image
-        $rotated_image = imagerotate($resizedImage, -$angle, 0);
-        // find new width & height of rotated image
-        $rotated_width = imagesx($rotated_image);
-        $rotated_height = imagesy($rotated_image);
-        // diff between rotated & original sizes
-        $dx = $rotated_width - $imgW;
-        $dy = $rotated_height - $imgH;
-        // crop rotated image to fit into original rezized rectangle
+      // rotate the rezized image
+      $rotated_image = $angle == 0 ? $resizedImage : imagerotate($resizedImage, -$angle, 0);
+      // find new width & height of rotated image
+      $rotated_width = imagesx($rotated_image);
+      $rotated_height = imagesy($rotated_image);
+      // diff between rotated & original sizes
+      $dx = $rotated_width - $imgW;
+      $dy = $rotated_height - $imgH;
+      // crop rotated image to fit into original rezized rectangle
     	$cropped_rotated_image = imagecreatetruecolor($imgW, $imgH);
-    	imagecolortransparent($cropped_rotated_image, imagecolorallocate($cropped_rotated_image, 0, 0, 0));
+    	imagecolortransparent($cropped_rotated_image, imagecolorallocatealpha($cropped_rotated_image, 0, 0, 0,127));
     	imagecopyresampled($cropped_rotated_image, $rotated_image, 0, 0, $dx / 2, $dy / 2, $imgW, $imgH, $imgW, $imgH);
     	// crop image into selected area
     	$final_image = imagecreatetruecolor($cropW, $cropH);
-    	imagecolortransparent($final_image, imagecolorallocate($final_image, 0, 0, 0));
+      imagecolortransparent($final_image, imagecolorallocatealpha($cropped_rotated_image, 0, 0, 0,127));
     	imagecopyresampled($final_image, $cropped_rotated_image, 0, 0, $imgX1, $imgY1, $cropW, $cropH, $cropW, $cropH);
     	// finally output png image
-    	//imagepng($final_image, $output_filename.$type, $png_quality);
-    	imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
+    	imagepng($final_image, $output_filename.$type);
+    	// imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
+      $logo=$output_filename.$type;
+      $logo=str_replace('assets/img/logos/','',$logo);
+      ClubInfo::updateLogo($club,$logo);
     	$response = Array(
     	    "status" => 'success',
-    	    "url" => $output_filename.$type
+    	    "url" => '../../../'.$output_filename.$type
         );
     }
     print json_encode($response);

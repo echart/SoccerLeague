@@ -1,8 +1,8 @@
+<!--<style>.logo{background-image:url('../../../assets/img/logos/<?=$this->data['clubinfo']['logo']?>')}</style>-->
 <main>
 	<div class='content'>
     <section class='grid-95'>
-      <!-- <form action='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/save' method='POST'> -->
-			<form>
+      <form action='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/save' method='POST'>
         <h3>Editar clube</h3>
         <!-- <div class='form-field'>
           <label>Nome do clube:</label>
@@ -20,6 +20,10 @@
           <label>Estádio:</label>
           <input type="text" name="stadium"  value='<?=$this->data['clubinfo']['stadium']?>' placeholder="Nome do estádio">
         </div>
+				<div class='form-field'>
+          <label>Cidade:</label>
+          <input type="text" name="city"  value='<?=$this->data['clubinfo']['city']?>' placeholder="Cidade do clube">
+        </div>
         <div class='form-field'>
           <label>Torcida:</label>
           <input type="text" name="fansname"  value='<?=$this->data['clubinfo']['fansname']?>' placeholder="Nome da sua torcida organizada">
@@ -30,17 +34,12 @@
         </div>
 				<div class='form-field'>
           <label>História do clube:</label>
-          <textarea name="clubcolor"><?=$this->data['clubinfo']['history']?></textarea>
+          <textarea name="history"><?=$this->data['clubinfo']['history']?></textarea>
         </div>
 				<div class='form-field'>
           <label>Logo:</label>
-          <div id='logo' class='logo'>
-							
-					</div>
+          <div id='logo' class='logo'></div>
         </div>
-				<div class='form-field'><br>
-					<input type="file" id="logoupload" name="logo" />
-				</div>
         <div class='form-field right'>
           <button class='btn bg-success' type='submit'>Salvar</button>
         </div>

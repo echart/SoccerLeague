@@ -29,10 +29,12 @@ div.content{
   box-sizing: border-box;
 }
 .logo{
+	content:'Upload';
+	color: #333;
 	width: 200px;
 	height: 200px;
-	background-color: #333;
 	position: relative;
+	overflow: hidden;
 }
 /*=============================
 Scroll menu bar
