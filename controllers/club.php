@@ -24,8 +24,8 @@ if(isset($this->request['subrequest'])){
 
   }else if($this->request['subrequest']=='edit'){
     $this->addJSfile('uploadLogo.js');
-    $this->addJSfile('jcrop.js');
-    $this->addCSSfile('jcrop.css');
+    $this->addJSfile('croppic.js');
+    $this->addCSSfile('croppic.css');
     $this->addCSSfile('modal.css');
 
     $this->data['title']='Editar Clube';
@@ -43,18 +43,133 @@ if(isset($this->request['subrequest'])){
     // TODO:validations
     ClubInfo::update($id_club,$manager,$nicnake,$stadium,$city,$logo,$clubcolor,$history);
     exit;
-  }else if($this->request['subrequest']=='logotemp'){
-    if(isset($_FILES['file'])){
-      $ext = strtolower(substr($_FILES['file']['name'],-4)); //Pegando extensão do arquivo
-      $new_name = date("YmdHis") . $ext; //Definindo um novo nome para o arquivo
-      $name 	= $_FILES['file']['name'];
-      $tmp_name = $_FILES['file']['tmp_name'];
-      $allowedExts = array(".jpeg", ".jpg", ".png");
-      $dir = 'assets/img/logos/temp/';
-      echo $new_name;
-      move_uploaded_file($_FILES['file']['tmp_name'], $dir.$new_name);
+  }else if($this->request['subrequest']=='logosave'){
+    $imagePath = $this->data['tree']."assets/img/logos/";
+  	$allowedExts = array("gif", "jpeg", "jpg", "png", "GIF", "JPEG", "JPG", "PNG");
+  	$temp = explode(".", $_FILES["img"]["name"]);
+  	$extension = end($temp);
+
+  	//Check write Access to Directory
+  	if(!is_writable($imagePath)){
+  		$response = Array(
+  			"status" => 'error',
+  			"message" => 'Can`t upload File; no write Access'
+  		);
+  		print json_encode($response);
+  		exit;
+  	}
+
+  	if ( in_array($extension, $allowedExts))
+  	  {
+  	  if ($_FILES["img"]["error"] > 0)
+  		{
+  			 $response = array(
+  				"status" => 'error',
+  				"message" => 'ERROR Return Code: '. $_FILES["img"]["error"],
+  			);
+  		}
+  	  else
+  		{
+
+  	      $filename = $_FILES["img"]["tmp_name"];
+  		  list($width, $height) = getimagesize( $filename );
+  		  move_uploaded_file($filename,  $imagePath . $_FILES["img"]["name"]);
+  		  $response = array(
+  			"status" => 'success',
+  			"url" => $imagePath.$_FILES["img"]["name"],
+  			"width" => $width,
+  			"height" => $height
+  		  );
+
+  		}
+  	  }
+  	else
+  	  {
+  	   $response = array(
+  			"status" => 'error',
+  			"message" => 'something went wrong, most likely file is to large for upload. check upload_max_filesize, post_max_size and memory_limit in you php.ini',
+  		);
+  	  }
+
+  	  print json_encode($response);
       exit;
+  }else if($this->request['subrequest']=='logotemp'){
+    $imgUrl = $_POST['imgUrl'];
+    // original sizes
+    $imgInitW = $_POST['imgInitW'];
+    $imgInitH = $_POST['imgInitH'];
+    // resized sizes
+    $imgW = $_POST['imgW'];
+    $imgH = $_POST['imgH'];
+    // offsets
+    $imgY1 = $_POST['imgY1'];
+    $imgX1 = $_POST['imgX1'];
+    // crop box
+    $cropW = $_POST['cropW'];
+    $cropH = $_POST['cropH'];
+    // rotation angle
+    $angle = $_POST['rotation'];
+    $jpeg_quality = 100;
+    $output_filename = $this->data['tree']."assets/img/logos/temp/croppedImg_".rand();
+    // uncomment line below to save the cropped image in the same location as the original image.
+    //$output_filename = dirname($imgUrl). "/croppedImg_".rand();
+    $what = getimagesize($imgUrl);
+    switch(strtolower($what['mime']))
+    {
+        case 'image/png':
+            $img_r = imagecreatefrompng($imgUrl);
+    		$source_image = imagecreatefrompng($imgUrl);
+    		$type = '.png';
+            break;
+        case 'image/jpeg':
+            $img_r = imagecreatefromjpeg($imgUrl);
+    		$source_image = imagecreatefromjpeg($imgUrl);
+    		error_log("jpg");
+    		$type = '.jpeg';
+            break;
+        case 'image/gif':
+            $img_r = imagecreatefromgif($imgUrl);
+    		$source_image = imagecreatefromgif($imgUrl);
+    		$type = '.gif';
+            break;
+        default: die('image type not supported');
     }
+    //Check write Access to Directory
+    if(!is_writable(dirname($output_filename))){
+    	$response = Array(
+    	    "status" => 'error',
+    	    "message" => 'Cant write cropped File'
+        );
+    }else{
+        // resize the original image to size of editor
+        $resizedImage = imagecreatetruecolor($imgW, $imgH);
+    	imagecopyresampled($resizedImage, $source_image, 0, 0, 0, 0, $imgW, $imgH, $imgInitW, $imgInitH);
+        // rotate the rezized image
+        $rotated_image = imagerotate($resizedImage, -$angle, 0);
+        // find new width & height of rotated image
+        $rotated_width = imagesx($rotated_image);
+        $rotated_height = imagesy($rotated_image);
+        // diff between rotated & original sizes
+        $dx = $rotated_width - $imgW;
+        $dy = $rotated_height - $imgH;
+        // crop rotated image to fit into original rezized rectangle
+    	$cropped_rotated_image = imagecreatetruecolor($imgW, $imgH);
+    	imagecolortransparent($cropped_rotated_image, imagecolorallocate($cropped_rotated_image, 0, 0, 0));
+    	imagecopyresampled($cropped_rotated_image, $rotated_image, 0, 0, $dx / 2, $dy / 2, $imgW, $imgH, $imgW, $imgH);
+    	// crop image into selected area
+    	$final_image = imagecreatetruecolor($cropW, $cropH);
+    	imagecolortransparent($final_image, imagecolorallocate($final_image, 0, 0, 0));
+    	imagecopyresampled($final_image, $cropped_rotated_image, 0, 0, $imgX1, $imgY1, $cropW, $cropH, $cropW, $cropH);
+    	// finally output png image
+    	//imagepng($final_image, $output_filename.$type, $png_quality);
+    	imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
+    	$response = Array(
+    	    "status" => 'success',
+    	    "url" => $output_filename.$type
+        );
+    }
+    print json_encode($response);
+    exit;
   }
 }else{
   $this->addCSSfile('club.css');

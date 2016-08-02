@@ -1,7 +1,8 @@
 <main>
 	<div class='content'>
     <section class='grid-95'>
-      <form action='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/save' method='POST'>
+      <!-- <form action='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/save' method='POST'> -->
+			<form>
         <h3>Editar clube</h3>
         <!-- <div class='form-field'>
           <label>Nome do clube:</label>
@@ -33,22 +34,17 @@
         </div>
 				<div class='form-field'>
           <label>Logo:</label>
-          <img id='crop' src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['clubinfo']['logo']?>' width="200px" height="200px">
+          <div id='logo' class='logo'>
+							
+					</div>
         </div>
 				<div class='form-field'><br>
-					<input type="file" id="logo" name="logo" />
+					<input type="file" id="logoupload" name="logo" />
 				</div>
         <div class='form-field right'>
           <button class='btn bg-success' type='submit'>Salvar</button>
         </div>
-				<label class='modal-trigger' for='modal_crop'>dsasd</label>
-				<input type="checkbox" id="modal_crop" />
-				<div class="modal">
-				  <div class="modal-content">
-				    <img id='logotemp' src="" height="500px">
-				  </div>
-				  <label class="modal-close" for="modal_crop"></label>
-				</div>
     </section>
   </div>
 </main>
+<!-- http://www.croppic.net/ -->
