@@ -14,7 +14,7 @@
 .modal-content {
   padding: 10px;
   max-width: 90%;
-  min-width: 200px;
+  min-width: 800px;
   max-height: 90%;
   overflow: auto;
   position: absolute;
