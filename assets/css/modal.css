@@ -10,12 +10,12 @@
   -webkit-transition: all 0.5s 0.5s ease-in-out;
   transition: all 0.5s 0.5s ease-in-out;
 }
- 
+
 .modal-content {
   padding: 10px;
-  max-width: 600px;
+  max-width: 90%;
   min-width: 200px;
-  max-height: 85%;
+  max-height: 90%;
   overflow: auto;
   position: absolute;
   top: 5%;
@@ -31,13 +31,13 @@
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
- 
+
 .modal-content img {
   display: block;
   width: 100%;
   margin: 10px 0 0;
 }
- 
+
 .modal-content p {
   padding-top: 10px;
   text-align: justify;
@@ -50,7 +50,7 @@
   left: 0;
   background-color: rgba(0,0,0,0.5);
 }
- 
+
 .modal-close:after {
   content: "X";
   float: right;
@@ -72,7 +72,7 @@ input[id*="modal_"] {
   top: 50%;
   opacity: 0;
 }
- 
+
 input[id*="modal_"]:checked + div.modal {
   opacity: 1;
   visibility: visible;
@@ -80,7 +80,7 @@ input[id*="modal_"]:checked + div.modal {
   -ms-transition-delay: 0s;
   transition-delay: 0s;
 }
- 
+
 input[id*="modal_"]:checked + div.modal .modal-content {
   opacity: 1;
   -webkit-transform: translate(-50%, 0);
