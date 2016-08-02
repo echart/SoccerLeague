@@ -1,21 +1,3 @@
-// $('#logoupload').change(function(e){
-//   // var formData = new FormData();
-//   // formData.append('file', $('input[type=file]')[0].files[0]);
-//   // $.ajax({
-//   //   url: "../../../club/1/logotemp/",
-//   //   type: "POST",
-//   //   data:  formData,
-//   //   contentType: false,
-//   //   cache: false,
-//   //   processData:false,
-//   //   success: function(data){
-//   //
-//   //   },
-//   //   error: function(data){console.log(data);}
-//   // });
-//
-// });
-
 $(document).ready(function(){
   var croppicContaineroutputMinimal = {
 				uploadUrl:'logosave',

@@ -94,6 +94,7 @@ if(isset($this->request['subrequest'])){
   	  print json_encode($response);
       exit;
   }else if($this->request['subrequest']=='logotemp'){
+    header('Content-Type: image/png');
     $imgUrl = $_POST['imgUrl'];
     $imgUrl=str_replace('../../../','',$imgUrl);
     // original sizes
@@ -111,7 +112,7 @@ if(isset($this->request['subrequest'])){
     // rotation angle
     $angle = $_POST['rotation'];
     $jpeg_quality = 100;
-    $output_filename = "assets/img/logos/".date('YmdHis');
+    $output_filename = "assets/img/logos/".$club;
     // uncomment line below to save the cropped image in the same location as the original image.
     //$output_filename = dirname($imgUrl). "/croppedImg_".rand();
     $what = getimagesize($imgUrl);
@@ -159,10 +160,10 @@ if(isset($this->request['subrequest'])){
     	imagecopyresampled($cropped_rotated_image, $rotated_image, 0, 0, $dx / 2, $dy / 2, $imgW, $imgH, $imgW, $imgH);
     	// crop image into selected area
     	$final_image = imagecreatetruecolor($cropW, $cropH);
-      imagecolortransparent($final_image, imagecolorallocatealpha($cropped_rotated_image, 0, 0, 0,127));
+      imagecolortransparent($final_image, imagecolorallocatealpha($final_image, 0, 0, 0,127));
     	imagecopyresampled($final_image, $cropped_rotated_image, 0, 0, $imgX1, $imgY1, $cropW, $cropH, $cropW, $cropH);
     	// finally output png image
-    	imagepng($final_image, $output_filename.$type);
+    	imagepng($final_image, $output_filename.$type,0);
     	// imagejpeg($final_image, $output_filename.$type, $jpeg_quality);
       $logo=$output_filename.$type;
       $logo=str_replace('assets/img/logos/','',$logo);

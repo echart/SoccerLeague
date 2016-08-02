@@ -1,4 +1,4 @@
-<!--<style>.logo{background-image:url('../../../assets/img/logos/<?=$this->data['clubinfo']['logo']?>')}</style>-->
+<style>.logo{background-image:url('../../../assets/img/logos/<?=$this->data['clubinfo']['logo']?>')}</style>
 <main>
 	<div class='content'>
     <section class='grid-95'>
@@ -37,7 +37,7 @@
           <textarea name="history"><?=$this->data['clubinfo']['history']?></textarea>
         </div>
 				<div class='form-field'>
-          <label>Logo:</label>
+          <label>Logo: <small>(for better quality, try use 200x200 image)</small></label>
           <div id='logo' class='logo'></div>
         </div>
         <div class='form-field right'>
