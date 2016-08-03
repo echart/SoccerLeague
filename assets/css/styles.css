@@ -31,8 +31,8 @@ div.content{
 .logo{
 	content:'Upload';
 	color: #333;
-	width: 220px;
-	height: 220px;
+	width: 200px;
+	height: 200px;
 	position: relative;
 	overflow: hidden;
 }
@@ -274,7 +274,7 @@ BOXES
 	text-align: left;
 	/*padding: 0.5rem;*/
 	font-size: 12.5px;
-	border: 1px solid #aaa;
+	border: 1px solid #ddd;
 }
 
 /*=============================

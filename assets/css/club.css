@@ -1,6 +1,6 @@
 .club-box{
   width: 100%;
-  max-height: 380px;
+  max-height: 440px;
   border: 1px solid #ddd;
   background-color: #fff;
 }
@@ -9,7 +9,7 @@
   width: 380px;
   height: 50px;
   z-index: 4;
-  right: 20px;
+  right: 30px;
   top: 180px;
 }
 .club-color{
@@ -73,7 +73,7 @@
 }
 .club-data{
   position: absolute;;
-  top: 255px;
+  top: 250px;
   left: 570px;
   width: 47.5%;
   padding: 25px;

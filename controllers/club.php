@@ -112,7 +112,7 @@ if(isset($this->request['subrequest'])){
     // rotation angle
     $angle = $_POST['rotation'];
     $jpeg_quality = 100;
-    $output_filename = "assets/img/logos/".$club;
+    $output_filename = "assets/img/logos/".date('YmdHis');
     // uncomment line below to save the cropped image in the same location as the original image.
     //$output_filename = dirname($imgUrl). "/croppedImg_".rand();
     $what = getimagesize($imgUrl);
@@ -179,7 +179,15 @@ if(isset($this->request['subrequest'])){
 }else{
   $this->addCSSfile('club.css');
   $this->addJSfile('buddy.js');
-
+  /**
+   * ADD VISIT AT DATABASE
+   */
+   if($club!=$_SESSION['SL_club']){
+     Visits::addVisit($_SESSION['SL_club'],$club,'C');
+   }
+  /**
+   * GET CLUB INFO
+   */
   $this->data['clubinfo']=ClubInfo::get($club);
   if((!isset($this->data['clubinfo']['logo'])) or $this->data['clubinfo']['logo']=='null'){
     $this->data['clubinfo']['logo']='default.png';
@@ -200,6 +208,10 @@ if(isset($this->request['subrequest'])){
   $this->data['clubinfo']['fans']= number_format(ClubFans::howManyFans($club),0,',','.');
   $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
 
+  /**
+   * BUDDY BUTTON
+   * MAKE THE ACTION AND TEXT FOR BUDDY BUTTON;
+   */
   if(Buddy::isPending($_SESSION['SL_club'],$club)){
     $this->data['button']['friend']['text']='Solicitação Pendente';
     $this->data['button']['friend']['action']='unMakeBuddy';

@@ -12,7 +12,7 @@ $(document).ready(function(){
 				onImgDrag: function(){ console.log('onImgDrag') },
 				onImgZoom: function(){ console.log('onImgZoom') },
 				onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-				onAfterImgCrop:function(){ },
+				onAfterImgCrop:function(data){ console.log(data)},
 				onReset:function(){ console.log('onReset') },
 				onError:function(errormessage){ console.log('onError:'+errormessage) }
 		}
