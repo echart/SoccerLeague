@@ -3,7 +3,7 @@ $this->data['menu']='club';
 $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
 $club = $this->request['id'] ?? $_SESSION['SL_club'];
 /**
- * IF ID ISNT SET IN URL, SET.
+ * IF ID ISNT SET IN URL, SET WITH club session.
  */
 if(!isset($this->request['id']))
   header('location: http://'.$_SERVER['SERVER_NAME'].'/club/'.$club);
@@ -11,7 +11,7 @@ if(!isset($this->request['id']))
 $this->data['title']=Club::getClubNameById($club);
 $this->data['clubname']=Club::getClubNameById($club);
 /**
- * based on subrequest url make the order.
+ * based on subrequest url to make the order.
  */
 if(isset($this->request['subrequest'])){
   if($this->request['subrequest']=='overview'){
