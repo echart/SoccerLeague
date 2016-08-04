@@ -11,9 +11,9 @@ class Visits{
   public static function addVisit($visitor,$visited,$type):bool{
     try{
       $query=Connection::getInstance()->connect()->prepare("INSERT INTO visits(id_visitor,id_visited,visit_type) values (:id_visitor,:id_visited,:visit_type)");
-      $query->bindParam(':id_visitor',$id_visitor);
-      $query->bindParam(':id_visited',$id_visited);
-      $query->bindParam(':visit_type',$visit_type);
+      $query->bindParam(':id_visitor',$visitor);
+      $query->bindParam(':id_visited',$visited);
+      $query->bindParam(':visit_type',$type);
       $query->execute();
       return true;
     }catch(PDOException $e){
@@ -28,11 +28,14 @@ class Visits{
       $query->bindParam(':type',$type);
       $query->execute();
       $i=0;
-      while($data=$query->fetch(PDO::FETCH_ASSOC)){
-        $data['visitors'][$i]=$data;
-        $i++;
+      $visitors;
+      if($query->rowCount()>0){
+        while($data=$query->fetch(PDO::FETCH_ASSOC)){
+          $visitors[$i]=$data['id_visitor'];
+          $i++;
+        }
+        return $visitors;
       }
-      return $data;
     }catch(PDOException $e){
       echo $e->getmessage();
     }

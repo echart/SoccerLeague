@@ -209,6 +209,19 @@ if(isset($this->request['subrequest'])){
   $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
 
   /**
+   * GET VISITS
+   */
+   if(Visits::howManyClubsVisitMe($club,'C')>0){
+      $visitors=Visits::getLastVisitors($club,'C');
+      foreach ($visitors as $key => $value){
+        $this->data['visitors'][$key]['clubname']=Club::getClubNameById($value);
+        $this->data['visitors'][$key]['id']=$value;
+      }
+    }else{
+      $this->data['visitors'][0]['clubname']='Nenhuma visita recente';
+      $this->data['visitors'][0]['id']=$club;
+    }
+  /**
    * BUDDY BUTTON
    * MAKE THE ACTION AND TEXT FOR BUDDY BUTTON;
    */

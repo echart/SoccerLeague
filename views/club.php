@@ -45,7 +45,7 @@
 					<button class='btn btn-border letter-small'>Mensagem</button>
 					<button class='btn btn-border letter-small'>Banir</button>
 					<?}else{?>
-						<button href='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/edit'class='btn btn-border letter-small'>Alterar informações do clube</button>
+						<button onclick='window.location.href="<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/edit"' class='btn btn-border letter-small'>Alterar informações do clube</button>
 					<?}?>
 				</div>
 			</div>
@@ -75,9 +75,13 @@
 				<div class='box'>
 					<div class='box-title color'>Visitas Recentes</div>
 					<div class='box-content'>
-						- Willians Echart
-						- Grêmio
-						- Teste
+						<ul class='recent-visits'>
+							<?
+							foreach ($this->data['visitors'] as $key) {
+								echo "<li><a href='".$key['id']."'>".$key['clubname']."</a></li>";
+							}
+							?>
+						</ul>
 					</div>
 				</div>
 	    </div>

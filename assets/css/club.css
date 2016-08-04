@@ -94,3 +94,11 @@
   font-size: 14px;
   padding-top: 50px;
 }
+ul.recent-visits{
+  list-style: none;
+  padding: 0px 32.5px;
+}
+ul.recent-visits li{
+  font-size: 13px;
+  color: #393e41;
+}
