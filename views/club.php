@@ -78,7 +78,7 @@
 						<ul class='recent-visits'>
 							<?
 							foreach ($this->data['visitors'] as $key) {
-								echo "<li><a href='".$key['id']."'>".$key['clubname']."</a></li>";
+								echo "<li>".$key."</li>";
 							}
 							?>
 						</ul>
