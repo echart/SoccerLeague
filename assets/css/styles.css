@@ -235,16 +235,16 @@ table tbody tr td.center{
 	text-align: center;
 }
 table tbody tr td.promotion{
-	background-color: #7dcd85 !important;
+	background-color: #16C716 !important;
 }
 table tbody tr td.relegation{
-	background-color: #b44230 !important;
+	background-color: #AA0000 !important;
 }
 table tbody tr td.playoff-relegation{
-	background-color: #b57167 !important;
+	background-color: #F91B1B !important;
 }
 table tbody tr td.playoff-promotion{
-	background-color: #5fad56 !important;
+	background-color: #008800 !important;
 }
 table tbody tr.selected{
 	/*background-color: #d5b942 !important;

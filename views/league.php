@@ -1,5 +1,5 @@
 <main>
-  <div class='content'>
+  <div class='content grid-container'>
     <div class='grid-65'>
       <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>)</h3>
     </div>
