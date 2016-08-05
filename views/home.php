@@ -22,7 +22,7 @@
               <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
               <div class='tweet2'>
                 <div class='tweet-info'>E.C Grêmio Universidad <span class='club-user'>@ecgremiouniversidad</span> - <span class='date'>3h</span></div>
-                <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+                <div class='tweet-text'>@soccerleague is the new soccer management game <?=$this->data['tweet']?></div>
               </div>
             </div>
             <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
