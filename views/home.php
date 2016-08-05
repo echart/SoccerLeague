@@ -1,39 +1,80 @@
 <main>
   <div class="content grid-container">
-    <h3 class='title'>Home</h3>
+    <h3 class='title'>Feed de Notícias</h3>
     <div class='grid-65'>
       <div class='box'>
-        <div class='box-title'>Feed de notícias</div>
-        <div class='box-content'>
-          <p>Aqui é Body Builder Ipsum PORRA! Ó o homem ali porra!, é 13 porra! Que não vai dá rapaiz, não vai dá essa porra. É 13 porra! É verão o ano todo vem cumpadi. Sai de casa comi pra caralho porra. Boraaa, Hora do Show Porra.
+        <div class='box-content write'>
+          <div class='form-field'>
+            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
+            <textarea id='newtweet' name='tweet' placeholder="Write Something..."></textarea>
+            <div class='tweet-options'>
+              <button type='button' class='btn-tweet btn bg-alert white-text'>Tweet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='box'>
+        <div class='box-content write'>
+          <div class='tweet'>
+            <div class='tweet-content'>
+              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
+              <div class='club-name'>@ecgremiouniversidad</div>
+              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+            </div>
+            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
+            <div class='tweet-options'>
+              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
+            </div>
+          </div>
 
-            Tá comigo porra. Boraaa, Hora do Show Porra. Bora caralho, você quer ver essa porra velho. É esse que a gente quer, é ele que nóis vamo buscar. Aqui é bodybuilder porra! Negativa Bambam negativa.
+          <div class='tweet'>
+            <div class='tweet-content'>
+              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
+              <div class='club-name'>@ecgremiouniversidad</div>
+              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+            </div>
+            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
+            <div class='tweet-options'>
+              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
+            </div>
+          </div>
 
-            Ó o homem ali porra!, é 13 porra! Negativa Bambam negativa. É verão o ano todo vem cumpadi. Ele tá olhando pra gente. Aqui nóis constrói fibra, não é água com músculo. Bora caralho, você quer ver essa porra velho.
+          <div class='tweet'>
+            <div class='tweet-content'>
+              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
+              <div class='club-name'>@ecgremiouniversidad</div>
+              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+            </div>
+            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
+            <div class='tweet-options'>
+              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
+            </div>
+          </div>
 
-            Aqui é bodybuilder porra! Ó o homem ali porra!, é 13 porra! Que não vai dá rapaiz, não vai dá essa porra. É 37 anos caralho! Aqui nóis constrói fibra, não é água com músculo. Vem porra!
+          <div class='tweet'>
+            <div class='tweet-content'>
+              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
+              <div class='club-name'>@ecgremiouniversidad</div>
+              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+            </div>
+            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
+            <div class='tweet-options'>
+              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
+            </div>
+          </div>
 
-            É nóis caraio é trapezera buscando caraio! Boraaa, Hora do Show Porra. Negativa Bambam negativa. Vai subir árvore é o caralho porra! AHHHHHHHHHHHHHHHHHHHHHH..., porra! Vamo monstro!
-
-            Eita porra!, tá saindo da jaula o monstro! É verão o ano todo vem cumpadi. É esse que a gente quer, é ele que nóis vamo buscar. Birl! Eu quero esse 13 daqui a pouquinho aí. Tá comigo porra.
-
-            Não vai dá não. Tá comigo porra. Vamo monstro! É verão o ano todo vem cumpadi. Ajuda o maluco que tá doente. Vai subir árvore é o caralho porra!
-
-            Boraaa, Hora do Show Porra. Vamo monstro! É 37 anos caralho! Ele tá olhando pra gente. Bora caralho, você quer ver essa porra velho. Aqui nóis constrói fibra, não é água com músculo.
-
-            Ajuda o maluco que tá doente. É nóis caraio é trapezera buscando caraio! Aqui é bodybuilder porra! Bora caralho, você quer ver essa porra velho. Que não vai dá rapaiz, não vai dá essa porra. É 37 anos caralho!
-
-            É esse que a gente quer, é ele que nóis vamo buscar. Vem porra! Não vai dá não. Negativa Bambam negativa. Ajuda o maluco que tá doente. Sabe o que é isso daí? Trapézio descendente é o nome disso aí.
-
-            Sai filho da puta! Eita porra!, tá saindo da jaula o monstro! É nóis caraio é trapezera buscando caraio! Que não vai dá rapaiz, não vai dá essa porra. Aqui nóis constrói fibra, não é água com músculo. Negativa Bambam negativa.
-
-            É 37 anos caralho! Que não vai dá rapaiz, não vai dá essa porra. Aqui é bodybuilder porra! Birl! É 13 porra! Vem porra!
-
-            Ó o homem ali porra!, é 13 porra! Sai de casa comi pra caralho porra. Vo derrubar tudo essas árvore do parque ibirapuera. Vamo monstro! Não vai dá não. Sabe o que é isso daí? Trapézio descendente é o nome disso aí.
-
-            Bora caralho, você quer ver essa porra velho. AHHHHHHHHHHHHHHHHHHHHHH..., porra! Vai subir árvore é o caralho porra! Sai filho da puta! Sai de casa comi pra caralho porra. Eu quero esse 13 daqui a pouquinho aí.
-
-            Sabe o que é isso daí? Trapézio descendente é o nome disso aí. Sai de casa comi pra caralho porra. É 13 porra! É 37 anos caralho! Negativa Bambam negativa. Ajuda o maluco que tá doente.</p>
         </div>
       </div>
     </div>
@@ -65,3 +106,5 @@
     </div>
   </div>
 </main>
+
+<!--https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details-->

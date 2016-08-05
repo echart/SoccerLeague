@@ -1,0 +1,68 @@
+
+.tweet-options{
+  position: relative;
+  width: 96%;
+  background-color: #eee;
+  height: 50px;
+}
+.tweet{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.tweet-content{
+  font-family: 'Open Sans';
+  position: relative;
+  width: 93%;
+  padding: 10px;
+  min-height: 75px;
+  max-height: 500px;
+  background-color:#fff;
+}
+.tweet-content .club-logo{
+  float: left;
+  position: relative;
+  width: 75px;
+  height: 75px;
+}
+.tweet-content .club-name{
+  font-size: 14px;
+  padding-left: 10px;
+  float: left;
+  position: relative;
+  font-weight: 700;
+}
+.tweet-content .tweet-text{
+  font-size: 13px;
+  padding-left: 10px;
+  width: 80%;
+  float: left;
+  position: relative;
+  color: #808080;
+}
+.tweet .tweet-options{
+  /*display: none;*/
+}
+.btn-tweet span{
+  display: block;
+  box-sizing: border-box;
+  width:2rem;
+  height:2rem;
+  padding-left: 2rem;
+  float: left;
+}
+.btn-tweet span.reply{
+  background: url(../img/icons/forward-arrow.png) no-repeat;
+	background-size: 20px;
+}
+.btn-tweet span.like{
+  background: url(../img/icons/like.png) no-repeat;
+	background-size: 20px;
+}
+.btn-tweet span.retweet{
+  background: url(../img/icons/retweet.png) no-repeat;
+	background-size: 20px;
+}
+.btn-tweet span.delete{
+  background: url(../img/icons/delete.png) no-repeat;
+	background-size: 20px;
+}

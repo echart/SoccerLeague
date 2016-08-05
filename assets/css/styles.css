@@ -170,6 +170,12 @@ BUTTONS
 /*=============================
 colors
 ==============================*/
+.no-hover:hover{
+	background-color: rgba(0,0,0,0);
+}
+.no-bg{
+		background-color: rgba(0,0,0,0);
+}
 .bg-success{
 	background-color: #5FAD56;
 }
@@ -178,6 +184,12 @@ colors
 }
 .bg-alert{
 	background-color: #ff9d50;
+}
+.black-text{
+	color: #333;
+}
+.white-text{
+	color: #f4f4f4;
 }
 /*=============================
 Tables
