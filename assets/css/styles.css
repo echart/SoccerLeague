@@ -139,21 +139,27 @@ BUTTONS
 	color: #fff;
 	background-color: #393e41;
 	border: 0px;
+	cursor:pointer;
 }
 .btn{
 	padding: 1.25rem 3rem;
+	cursor:pointer;
 }
 .btn-large{
 	padding: 1.25rem 10rem;
+	cursor:pointer;
 }
 .btn-medium{
 	padding: 1.25rem 5rem;
+	cursor:pointer;
 }
 .btn-small{
 	padding: 1.25rem 1rem;
+	cursor:pointer;
 }
 .btn-border{
 	border-radius: 3.5px;
+	cursor:pointer;
 }
 .btn:hover,.btn-medium:hover,.btn-small:hover,.btn-large:hover{
 	background-color: #393e41;

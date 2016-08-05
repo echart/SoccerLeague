@@ -15,11 +15,15 @@
       </div>
       <div class='box'>
         <div class='box-content write'>
+
+
           <div class='tweet'>
             <div class='tweet-content'>
               <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
-              <div class='club-name'>@ecgremiouniversidad</div>
-              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+              <div class='tweet2'>
+                <div class='tweet-info'>E.C Grêmio Universidad <span class='club-user'>@ecgremiouniversidad</span> - <span class='date'>3h</span></div>
+                <div class='tweet-text'>@soccerleague is the new soccer management game</div>
+              </div>
             </div>
             <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
             <div class='tweet-options'>
@@ -30,50 +34,7 @@
             </div>
           </div>
 
-          <div class='tweet'>
-            <div class='tweet-content'>
-              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
-              <div class='club-name'>@ecgremiouniversidad</div>
-              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
-            </div>
-            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
-            <div class='tweet-options'>
-              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
-            </div>
-          </div>
 
-          <div class='tweet'>
-            <div class='tweet-content'>
-              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
-              <div class='club-name'>@ecgremiouniversidad</div>
-              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
-            </div>
-            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
-            <div class='tweet-options'>
-              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
-            </div>
-          </div>
-
-          <div class='tweet'>
-            <div class='tweet-content'>
-              <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
-              <div class='club-name'>@ecgremiouniversidad</div>
-              <div class='tweet-text'>@soccerleague is the new soccer management game</div>
-            </div>
-            <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
-            <div class='tweet-options'>
-              <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='like'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='retweet'></span></button>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='delete'></span></button>
-            </div>
-          </div>
 
         </div>
       </div>
