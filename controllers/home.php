@@ -6,6 +6,7 @@ $this->data['title']='Home - Soccer League Beta';
 
 $this->addCSSFile('home.css');
 $this->addCSSFile('tweet.css');
+$this->addJSFile('tweet.js');
 
 $feed = new Feed($_SESSION['SL_club']);
 $feed->__getLastTweets(50);

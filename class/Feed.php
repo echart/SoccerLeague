@@ -12,7 +12,7 @@ class Feed{
     $query->execute();
     $i=0;
     while($data=$query->fetch(PDO::FETCH_ASSOC)){
-      $this->tweet[$i]=$data;
+      $this->tweet[$i]=$data['id_tweet'];
       $i++;
     }
     return $this->tweet;
