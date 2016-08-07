@@ -25,6 +25,12 @@
    likes integer default 0,
    tags text[]
  );
+ crete table tweetLikes(
+  id_like serial primary key,
+  id_tweet integer not null,
+    foreign key(id_tweet) references tweet(id_tweet),
+  id_club foreign key(id_club) references club(id_club)
+ )
 */
 class Tweet{
   public static function __gettweet($id_tweet){

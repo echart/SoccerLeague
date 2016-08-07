@@ -18,7 +18,7 @@ class Feed{
     return $this->tweet;
   }
   public function __getLastTweets($qtd=20){
-    $query=Connection::getInstance()->connect()->prepare("select * from tweet where id_club=:id_club or id_club in (SELECT id_club FROM buddies where buddy1=:id_club or buddy2=:id_club) order by tweetdate desc limit :qtd");
+    $query=Connection::getInstance()->connect()->prepare("select * from tweet where id_club=:id_club or id_club in (SELECT buddy1 FROM buddies where buddy2=:id_club)  or id_club in (SELECT buddy2 FROM buddies where buddy1=:id_club)order by tweetdate desc limit :qtd");
     $query->bindParam(':qtd',$qtd);
     $query->bindParam(':id_club',$this->id_club);
     $query->execute();

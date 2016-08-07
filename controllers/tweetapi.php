@@ -27,6 +27,13 @@ if(isset($this->request['compose'])){
             }
             $this->data['tweets'][$i]['tweetdate']=$tweet['tweetdate'];
             $this->data['tweets'][$i]['retweet']=$tweet['retweet'];
+            if($tweet['retweet']!='' and $tweet['retweet']!=null and $tweet['retweet']!='null'){
+              $rt=Tweet::__gettweet($tweet['retweet']);
+              $this->data['tweets'][$i]['retweeted_clubid']=$rt['id_club'];
+              $this->data['tweets'][$i]['retweeted_club']=Club::getClubNameById($rt['id_club']);
+              $t=Tweet::__gettweetcontent($tweet['retweet']);
+              $this->data['tweets'][$i]['retweet_content']=$t['tweet'];
+            }
             $this->data['tweets'][$i]['reply_to']=$tweet['reply_to'];
             $this->data['tweets'][$i]['type']=$tweetContent['type'];
             $this->data['tweets'][$i]['tweet']=$tweetContent['tweet'];
@@ -56,6 +63,11 @@ if(isset($this->request['compose'])){
           $this->data['tweets'][$i]['clubname']=Club::getClubNameById($tweet['id_club']);
           $this->data['tweets'][$i]['tweetdate']=$tweet['tweetdate'];
           $this->data['tweets'][$i]['retweet']=$tweet['retweet'];
+          if($tweet['retweet']!='' and $tweet['retweet']!=null and $tweet['retweet']!='null'){
+            $rt=Tweet::__gettweet($tweet['retweet']);
+            $this->data['tweet'][$i]['retweeted_clubid']=$rt['id_club'];
+            $this->data['tweet'][$i]['retweeted_club']=Club::getClubNameById($rt['id_club']);
+          }
           $this->data['tweets'][$i]['reply_to']=$tweet['reply_to'];
           $this->data['tweets'][$i]['type']=$tweetContent['type'];
           $this->data['tweets'][$i]['tweet']=$tweetContent['tweet'];
@@ -70,22 +82,27 @@ if(isset($this->request['compose'])){
     $i=0;
     $tweet=Tweet::__gettweet($this->request['id']);
     $tweetContent=Tweet::__gettweetcontent($this->request['id']);
-    $this->data[$i]['id_tweet']=$tweet['id_tweet'];
-    $this->data[$i]['id_club']=$tweet['id_club'];
+    $this->data['id_tweet']=$tweet['id_tweet'];
+    $this->data['id_club']=$tweet['id_club'];
     $club=ClubInfo::get($tweet['id_club']);
     if(!isset($club['logo']) or $club['logo']=='null'){
-      $this->data['tweets'][$i]['club_logo']='default.png';
+      $this->data['club_logo']='default.png';
     }else{
-      $this->data['tweets'][$i]['club_logo']=$club['logo'];
+      $this->data['club_logo']=$club['logo'];
     }
-    $this->data['tweets'][$i]['clubname']=Club::getClubNameById($tweet['id_club']);
-    $this->data[$i]['tweetdate']=$tweet['tweetdate'];
-    $this->data[$i]['retweet']=$tweet['retweet'];
-    $this->data[$i]['reply_to']=$tweet['reply_to'];
-    $this->data[$i]['type']=$tweetContent['type'];
-    $this->data[$i]['tweet']=$tweetContent['tweet'];
-    $this->data[$i]['likes']=$tweetContent['likes'];
-    $this->data[$i]['tags']=$tweetContent['tags'];
+    $this->data['clubname']=Club::getClubNameById($tweet['id_club']);
+    $this->data['tweetdate']=$tweet['tweetdate'];
+    $this->data['retweet']=$tweet['retweet'];
+    if($tweet['retweet']!='' and $tweet['retweet']!=null and $tweet['retweet']!='null'){
+      $rt=Tweet::__gettweet($tweet['retweet']);
+      $this->data['retweeted_clubid']=$rt['id_club'];
+      $this->data['retweeted_club']=Club::getClubNameById($rt['id_club']);
+    }
+    $this->data['reply_to']=$tweet['reply_to'];
+    $this->data['type']=$tweetContent['type'];
+    $this->data['tweet']=$tweetContent['tweet'];
+    $this->data['likes']=$tweetContent['likes'];
+    $this->data['tags']=$tweetContent['tags'];
     echo JsonOutput::success($this->data);
   }
 }

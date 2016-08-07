@@ -9,7 +9,7 @@
 }
 .tweet{
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 .tweet-content{
   font-family: 'Open Sans';
@@ -17,7 +17,7 @@
   width: 93%;
   padding: 10px;
   min-height: 75px;
-  max-height: 500px;
+  max-height: 600px;
   background-color:#fff;
   cursor: pointer;
 }
@@ -48,10 +48,30 @@
   font-weight: 400;
 }
 .tweet-content .tweet-text{
+  position: relative;
   font-size: 13px;
   padding-left: 10px;
   padding-top: 2.5px;
   color: #808080;
+}
+.tweet-stats{
+  position: relative;
+  top: -4px;
+  left: -50px;
+}
+.tweet-stats ul{
+  position: relative;
+  bottom: 0;
+  list-style: none;
+}
+.tweet-stats ul li{
+  float: left;
+  padding: 0 20px;
+}
+.tweet-stats ul li span{
+  float: left;
+  padding: 0 5px;
+  background-size: 14px !important;
 }
 .tweet:hover > .tweet-options{
   display: block;
@@ -59,24 +79,36 @@
 .btn-tweet span{
   display: block;
   box-sizing: border-box;
-  width:2rem;
-  height:2rem;
+  width:20px;
+  height:20px;
   padding-left: 2rem;
   float: left;
 }
-.btn-tweet span.reply{
+.icon{
+  display: block;
+  box-sizing: border-box;
+  width:14px;
+  height:14px;
+  padding-left: 2rem;
+  float: left;
+}
+span.reply{
   background: url(../img/icons/forward-arrow.png) no-repeat;
 	background-size: 20px;
 }
-.btn-tweet span.like{
+span.like{
   background: url(../img/icons/like.png) no-repeat;
 	background-size: 20px;
 }
-.btn-tweet span.retweet{
+span.retweet{
   background: url(../img/icons/retweet.png) no-repeat;
 	background-size: 20px;
 }
-.btn-tweet span.delete{
+span.retweet2{
+  background: url(../img/icons/retweet2.png) no-repeat;
+	background-size: 20px;
+}
+span.delete{
   background: url(../img/icons/delete.png) no-repeat;
 	background-size: 20px;
 }
