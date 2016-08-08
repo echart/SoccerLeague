@@ -16,7 +16,7 @@
       <div class='box'>
         <div class='box-content feed write'>
           <div class='tweet'>
-            <p class='center loading bg-alert'>Carregando feed....</p>
+            <p class='center loading bg-alert'>Carregando tweets....</p>
           </div>
 
           <!-- <div class='tweet'>
@@ -78,16 +78,37 @@
 	  <div class="modal-content">
       <div class='tweet'>
         <div class='tweet-content'>
-          <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='100px' height='100px'></div>
+          <div class='club-logo'><img src='' width='150px' height='150px'></div>
           <div class='tweet2'>
-            <div class='tweet-info'>E.C Grêmio Universidad - <span class='date'>3h</span></div>
-            <div class='tweet-text'>Aqui é Body Builder Ipsum PORRA! É 13 porra! Não vai dá não. É nóis caraio é trapezera buscando caraio! Negativa Bambam negativa. Que não va</div>
+            <div class='tweet-info'><span class='date'>3h</span></div>
+            <div class='tweet-text'></div>
           </div>
         </div>
         <div class='tweet-options'>
-          <button type='button' class='btn-tweet btn no-bg no-hover black-text'>20<span class='reply'></span></button>
-          <button type='button' class='btn-tweet btn no-bg no-hover black-text'>12<span class='like'></span></button>
-          <button type='button' class='btn-tweet btn no-bg no-hover black-text'>1<span class='retweet'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='like'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='retweet'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='delete'></span></button>
+        </div>
+      </div>
+      <div class='replytt'>
+        <div class='form-field'>
+          <input type='text' name='tweet' placeholder='Escreva uma resposta'>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='icon arrow'</button>
+        </div>
+      </div>
+      <div class='replyt'>
+        <div class='tweet-content'>
+          <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='75px' height='75px'></div>
+          <div class='tweet2'>
+            <div class='tweet-info'><span class='date'>3h</span></div>
+            <div class='tweet-text'></div>
+          </div>
+        </div>
+        <div class='tweet-options'>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='reply'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='like'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='retweet'></span></button>
           <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='delete'></span></button>
         </div>
       </div>

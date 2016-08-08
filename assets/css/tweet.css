@@ -121,8 +121,64 @@ span.delete{
 
 
 .modal-tweet .tweet{
+  min-height: 200px;
   text-align: left;
 }
-.modal-tweet .tweet-options{
-  display: block;
+.modal-tweet .tweet .tweet-options{
+  background: rgba(0,0,0,0);
+    position: relative;
+    top: 20px;
+    display: block;
+}
+.modal-tweet .tweet .club-logo{
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ddd;
+}
+.modal-tweet .tweet .tweet-content{
+  font-family: 'Open Sans';
+  position: relative;
+  width: 97.5%;
+  padding: 10px;
+  min-height: 75px;
+  max-height: 600px;
+  background-color:#fff;
+  cursor: pointer;
+}
+
+.modal-tweet .tweet .tweet2{
+  position: relative;
+  float: left;
+  width: 75%;
+}
+
+.modal-tweet .replyt{
+  text-align: left;
+  background-color: #f4f4f4;
+}
+.modal-tweet .replyt .club-logo{
+  padding-left: 20px;
+}
+.modal-tweet .replyt .tweet-content .tweet2{
+  background-color: #f4f4f4;
+  width: 80%;
+}
+.modal-tweet .replyt .tweet-options{
+  background: #f4f4f4;
+  width: 100%;
+}
+.modal-tweet .replyt .tweet-content{
+  background: #f4f4f4;
+}
+.modal-tweet .replytt{
+  width: 100%;
+}
+.modal-tweet .replytt input{
+  width: 85%;
+}
+.modal-tweet .replytt button{
+  float: right;
+}
+.modal-tweet .replytt .btn-tweet{
+  height: auto;
 }
