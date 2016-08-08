@@ -6,9 +6,9 @@
         <div class='box-content write'>
           <div class='form-field'>
             <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
-            <textarea id='newtweet' name='tweet' placeholder="Write Something..."></textarea>
+            <textarea id='newtweet' name='tweet' placeholder="Escreva alguma coisa..."></textarea>
             <div class='tweet-options'>
-              <button type='button' class='btn-tweet btn bg-alert white-text'>Tweet</button>
+              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='icon arrow'></span></button>
             </div>
           </div>
         </div>
@@ -76,7 +76,21 @@
 	<input type="checkbox" id="modal_tweet" />
 	<div class="modal modal-tweet">
 	  <div class="modal-content">
-
+      <div class='tweet'>
+        <div class='tweet-content'>
+          <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/1.jpeg' width='100px' height='100px'></div>
+          <div class='tweet2'>
+            <div class='tweet-info'>E.C Grêmio Universidad - <span class='date'>3h</span></div>
+            <div class='tweet-text'>Aqui é Body Builder Ipsum PORRA! É 13 porra! Não vai dá não. É nóis caraio é trapezera buscando caraio! Negativa Bambam negativa. Que não va</div>
+          </div>
+        </div>
+        <div class='tweet-options'>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'>20<span class='reply'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'>12<span class='like'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'>1<span class='retweet'></span></button>
+          <button type='button' class='btn-tweet btn no-bg no-hover black-text'><span class='delete'></span></button>
+        </div>
+      </div>
 	  </div>
 	  <label class="modal-close" for="modal_tweet"></label>
 	</div>
