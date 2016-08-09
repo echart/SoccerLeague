@@ -16,6 +16,23 @@ function loadtweets(id_club){
 function tweetaction(action,tweet){
   var url='../api/tweet/'+tweet+'/'+action;
   $.ajax({
+    url: url,
+    dataType: 'json',
+    success:function(retorno){
+      console.log('retorno');
+      if(action=='like'){
+        if(retorno.data.action=='liked'){
+          $('button span.like').addClass('like2');
+          $('button span.like').removeClass('like');
+        }else{
+
+        }
+      }
+    },
+    error:function(data){
+      console.log('error');
+      console.log(data);
+    }
   });
 }
 

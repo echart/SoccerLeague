@@ -29,8 +29,18 @@ if(isset($this->request['tweet'])){
         is like compose, but not.
         make a new tweet, with reply event.
       */
+      exit;
     break;
     case 'like':
+      JsonOutput::jsonHeader();
+      if(Tweet::liked($_SESSION['SL_club'],$this->request['id'])){
+        Tweet::__deslike($this->request['id'],$_SESSION['SL_club']);
+        JsonOutput::success(array('action'=>'deslike'));
+      }else{
+        Tweet::__like($this->request['id'],$_SESSION['SL_club']);
+        JsonOutput::success(array('action'=>'like'));
+      }
+      exit;
       /*
         when you like a tweet
         need to get tweet id, sum+1 in tweets like and added you clubid at likesTweetts table in database
@@ -109,18 +119,33 @@ if(isset($this->request['tweet'])){
               $this->data['tweets']['retweeted_club']='';
               $rtclass='retweet';
             }
+
+            if(Tweet::liked($tweet['id_club'],$tweet['id_tweet'])){
+              $likeclass='like2';
+            }else{
+              $likeclass='like';
+            }
+
+            $datatime1 = new DateTime($tweet['tweetdate']);
+            $datatime2 = new DateTime(date('Y/m/d H:i:s'));
+
+            $data1  = $datatime1->format('Y-m-d H:i:s');
+            $data2  = $datatime2->format('Y-m-d H:i:s');
+
+            $diff = $datatime1->diff($datatime2);
+            $horas = $diff->h + ($diff->days * 24);
             ?>
             <div class='tweet'>
               <div class='tweet-content'>
                 <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['tweets']['club_logo']?>' width='75px' height='75px'></div>
                 <div class='tweet2'>
-                  <div class='tweet-info'><?=$this->data['tweets']['clubname']?>  <?=$this->data['tweets']['retweeted_club']?> - <span class='date'>3h</span> </div>
+                  <div class='tweet-info'><?=$this->data['tweets']['clubname']?>  <?=$this->data['tweets']['retweeted_club']?> - <span class='date'><?=$horas?>h</span> </div>
                   <div class='tweet-text'><?=$this->data['tweets']['content']?></div>
                 </div>
               </div>
               <div class='tweet-options'>
                 <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='reply'></span></button>
-                <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <?=Tweet::__countLikes($id_tweet);?> <span class='like'></span></button>
+                <button onclick="tweetaction(<?=$tweet['id_tweet']?>,'like')" type='button' class='btn-tweet btn no-bg no-hover black-text'> <?=Tweet::__countLikes($id_tweet);?> <span class='<?=$likeclass?>'></span></button>
                 <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <?=Tweet::__countRetweets($id_tweet);?> <span class='<?=$rtclass?>'></span></button>
                 <?if($this->data['tweets']['retweeted_club']='' AND $this->data['id_club']==$_SESSION['SL_club']){?><button type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='delete'></span></button><?}?>
               </div>

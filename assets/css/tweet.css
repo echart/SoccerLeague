@@ -104,6 +104,10 @@ span.like{
   background: url(../img/icons/like.png) no-repeat;
 	background-size: 20px;
 }
+span.like2{
+  background: url(../img/icons/like2.png) no-repeat;
+	background-size: 20px;
+}
 span.retweet{
   background: url(../img/icons/retweet.png) no-repeat;
 	background-size: 20px;
@@ -116,6 +120,23 @@ span.delete{
   background: url(../img/icons/delete.png) no-repeat;
 	background-size: 20px;
 }
+/*[id='toggle-heart'] {
+  position: absolute;
+  left: -100vw;
+}
+[id='toggle-heart']:checked + label {
+      color: #e2264d;
+      animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+  }
+
+[for='toggle-heart'] {
+    align-self: center;
+    color: #aab8c2;
+    font-size: 2em;
+    cursor: pointer;
+}
+*/
+
 
 
 

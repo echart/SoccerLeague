@@ -102,14 +102,13 @@ class Tweet{
     }catch(PDOException $e){echo $e->getmessage(); return false;}
   }
   public static function __like($id_tweet,$id_club){
-    $likes=self::__countLikes($id_tweet)+1;
-
-    $query=Connection::getInstance()->connect()->prepare("UPDATE tweetContent set likes=:likes where id_tweet=:id_tweet");
-    $query->bindParam(':id_tweet',$id_tweet);
-    $query->bindParam(':likes',$likes);
-    $query->execute();
-
     $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetLikes(id_tweet,id_club) values (:id_tweet,:id_club)");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->bindParam(':id_club',$id_club);
+    $query->execute();
+  }
+  public static function __deslike($id_tweet,$id_club){
+    $query=Connection::getInstance()->connect()->prepare("DELETE FROM tweetLikes where id_tweet=:id_tweet and id_club=:id_club");
     $query->bindParam(':id_tweet',$id_tweet);
     $query->bindParam(':id_club',$id_club);
     $query->execute();
