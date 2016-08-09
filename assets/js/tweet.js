@@ -19,12 +19,14 @@ function tweetaction(action,tweet){
     url: url,
     success:function(retorno){
       console.log('retorno');
+      console.log(retorno);
       if(action=='like'){
         if(retorno.data.action=='liked'){
           $('button span.like').addClass('like2');
           $('button span.like').removeClass('like');
         }else{
-
+          $('button span.like2').addClass('like');
+          $('button span.like2').removeClass('like2');
         }
       }
     },
