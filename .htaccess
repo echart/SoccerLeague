@@ -19,11 +19,11 @@
 	RewriteRule ^api/players/([0-9-]+)$ handler.php?request=players&id=$1&method=json [NC,L]
 	RewriteRule ^api/players/([0-9-]+)/$ handler.php?request=players&id=$1&method=json [NC,L]
 
-	RewriteRule ^api/tweets/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=tweetapi&type=user&id=$1&method=$2 [NC,L]
-	RewriteRule ^api/tweets/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=tweetapi&type=user&id=$1&method=$2 [NC,L]
+	RewriteRule ^api/tweets/([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=tweetapi&type=user&id=$2&method=$1&page=$3 [NC,L]
+	RewriteRule ^api/tweets/([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=tweetapi&type=user&id=$2&method=$1&page=$3 [NC,L]
 
-	RewriteRule ^api/tweet/([0-9-]+)$ handler.php?request=tweetapi&id=$1&method=json [NC,L]
-	RewriteRule ^api/tweet/([0-9-]+)/$ handler.php?request=tweetapi&id=$1&method=json [NC,L]
+	RewriteRule ^api/tweet/([a-z0-9-]+)/([0-9-]+)/$ handler.php?request=tweetapi&tweet&id=$2&method=$1 [NC,L]
+	RewriteRule ^api/tweet/([a-z0-9-]+)/([0-9-]+)$ handler.php?request=tweetapi&tweet&id=$2&method=$1 [NC,L]
 
 	RewriteRule ^tweet/([0-9-]+)/$ handler.php?request=tweet&id=$1[NC,L]
 	RewriteRule ^tweet/([0-9-]+)$ handler.php?request=tweet&id=$1[NC,L]

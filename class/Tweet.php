@@ -101,27 +101,32 @@ class Tweet{
       return true;
     }catch(PDOException $e){echo $e->getmessage(); return false;}
   }
-  public static function __like($id_tweet){
+  public static function __like($id_tweet,$id_club){
     $likes=self::__countLikes($id_tweet)+1;
 
     $query=Connection::getInstance()->connect()->prepare("UPDATE tweetContent set likes=:likes where id_tweet=:id_tweet");
     $query->bindParam(':id_tweet',$id_tweet);
     $query->bindParam(':likes',$likes);
     $query->execute();
+
+    $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetLikes(id_tweet,id_club) values (:id_tweet,:id_club)");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->bindParam(':id_club',$likes);
+    $query->execute();
   }
   public static function __countLikes($id_tweet){
-    $query=Connection::getInstance()->connect()->prepare("SELECT likes FROM tweetContent where id_tweet=:id_tweet");
-    $query->bindParam(':id_tweet',$id_tweet);
-    $query->execute();
-
-    $data=$query->fetch(PDO::FETCH_ASSOC);
-    return $data['likes'];
-  }
-  public static function __countRetweets($id_tweet){
-    $query=Connection::getInstance()->connect()->prepare("SELECT retweet from tweet where id_tweet=:id_tweet");
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet FROM tweetLikes where id_tweet=:id_tweet");
     $query->bindParam(':id_tweet',$id_tweet);
     $query->execute();
 
     return $query->rowCount();
+  }
+  public static function __countRetweets($id_tweet){
+    $query=Connection::getInstance()->connect()->prepare("SELECT count(id_tweet) as x from tweet where retweet=:id_tweet");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->execute();
+    $data=$query->fetch(PDO::FETCH_ASSOC);
+
+    return $data['x'];
   }
 }
