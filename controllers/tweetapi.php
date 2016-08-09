@@ -35,10 +35,10 @@ if(isset($this->request['tweet'])){
       JsonOutput::jsonHeader();
       if(Tweet::liked($_SESSION['SL_club'],$this->request['id'])){
         Tweet::__deslike($this->request['id'],$_SESSION['SL_club']);
-        JsonOutput::success(array('action'=>'deslike'));
+        echo JsonOutput::success(array('action'=>'deslike'));
       }else{
         Tweet::__like($this->request['id'],$_SESSION['SL_club']);
-        JsonOutput::success(array('action'=>'like'));
+        echo JsonOutput::success(array('action'=>'like'));
       }
       exit;
       /*

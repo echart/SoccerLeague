@@ -17,7 +17,6 @@ function tweetaction(action,tweet){
   var url='../api/tweet/'+tweet+'/'+action;
   $.ajax({
     url: url,
-    dataType: 'json',
     success:function(retorno){
       console.log('retorno');
       if(action=='like'){
