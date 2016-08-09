@@ -111,7 +111,7 @@ class Tweet{
 
     $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetLikes(id_tweet,id_club) values (:id_tweet,:id_club)");
     $query->bindParam(':id_tweet',$id_tweet);
-    $query->bindParam(':id_club',$likes);
+    $query->bindParam(':id_club',$id_club);
     $query->execute();
   }
   public static function __countLikes($id_tweet){
@@ -126,6 +126,20 @@ class Tweet{
     $query->bindParam(':id_tweet',$id_tweet);
     $query->execute();
     $data=$query->fetch(PDO::FETCH_ASSOC);
+
+    return $data['x'];
+  }
+
+  public static function liked($id_club,$id_tweet){
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet from tweetLikes where id_tweet=:id_tweet and id_club=:id_club");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->bindParam(':id_club',$id_club);
+    $query->execute();
+    if($query->rowCount()>0){
+      return true;
+    }else {
+      return false;
+    }
 
     return $data['x'];
   }
