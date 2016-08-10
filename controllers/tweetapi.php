@@ -1,5 +1,4 @@
 <?
-$this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
 
 /*
 Tweets controller base on this rewrites
@@ -72,7 +71,6 @@ if(isset($this->request['tweet'])){
       $this->data['reply_to']=$tweet['reply_to'];
       $this->data['type']=$tweetContent['type'];
       $this->data['tweet']=$tweetContent['tweet'];
-      $this->data['likes']=$tweetContent['likes'];
       $this->data['tags']=$tweetContent['tags'];
       echo JsonOutput::success($this->data);
       exit;
@@ -84,6 +82,7 @@ if(isset($this->request['tweet'])){
 }else{
   switch ($this->request['method']) {
     case 'all':
+        $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
         $page=$this->request['page']-1;
 
         if($this->request['id']!=$_SESSION['SL_club']){

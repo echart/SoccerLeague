@@ -31,6 +31,7 @@
 				<div class='club-data'>
 
 					<ul>
+						<li><strong>ID Clube:</strong> <?=$this->request['id']?></li>
 						<li><strong>Economia:</strong> Muito boa</li>
 						<li><strong>Estádio:</strong> <?=$this->data['clubinfo']['stadium']?></li>
 						<li><strong>Torcida:</strong> <?=$this->data['clubinfo']['fansname']?></li>
