@@ -15,6 +15,8 @@ class Handler{
 	public function loadController(){
 		if(file_exists('controllers/'.$this->requestURL.'.php'))
 			include_once('controllers/'.$this->requestURL.'.php');
+		else
+			include_once('controllers/404.php');
 	}
 	public function loadView(){
 		/**
@@ -25,11 +27,10 @@ class Handler{
 		/**
 		 * load requested view, if cant load then load 404 page.
 		 */
-		if(file_exists('views/'.$this->requestURL.'.php')){
-			include('views/'.$this->requestURL.'.php');
-		}else{
-			include('views/404.html');
-		}
+		if(file_exists('views/'.$this->requestURL.'.php'))
+			include_once('views/'.$this->requestURL.'.php');
+		else
+			include_once('views/404.html');
 		/**
 		 * load footer
 		 */

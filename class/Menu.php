@@ -47,14 +47,16 @@ class menu{
 
 	function display(){
 		$i=0;
-		foreach (menu::$menu[$this->principal] as $key) {
-			if($i==$this->selected){
-				$class='selected';
-			}else{
-				$class='';
+		if(isset($this->principal)){
+			foreach (menu::$menu[$this->principal] as $key) {
+				if($i==$this->selected){
+					$class='selected';
+				}else{
+					$class='';
+				}
+				echo "<li><a href='".$key['href']."' class='".$class."'>".$key['text']."</a></li>";
+				$i++;
 			}
-			echo "<li><a href='".$key['href']."' class='".$class."'>".$key['text']."</a></li>";
-			$i++;
 		}
 	}
 }
