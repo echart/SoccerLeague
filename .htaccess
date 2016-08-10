@@ -25,6 +25,9 @@
 	RewriteRule ^api/tweet/([a-z0-9-]+)/([0-9-]+)/$ handler.php?request=tweetapi&tweet&id=$2&method=$1 [NC,L]
 	RewriteRule ^api/tweet/([a-z0-9-]+)/([0-9-]+)$ handler.php?request=tweetapi&tweet&id=$2&method=$1 [NC,L]
 
+	RewriteRule ^api/tweet/([a-z0-9-]+)/$ handler.php?request=tweetapi&tweet&method=$1 [NC,L]
+	RewriteRule ^api/tweet/([a-z0-9-]+)$ handler.php?request=tweetapi&tweet&method=$1 [NC,L]
+
 	RewriteRule ^tweet/([0-9-]+)/$ handler.php?request=tweet&id=$1[NC,L]
 	RewriteRule ^tweet/([0-9-]+)$ handler.php?request=tweet&id=$1[NC,L]
 

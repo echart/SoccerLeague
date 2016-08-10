@@ -92,6 +92,10 @@
   padding-left: 2rem;
   float: left;
 }
+span.load{
+  background: url(../img/icons/loading.png) no-repeat;
+  background-size: 20px;
+}
 span.reply{
   background: url(../img/icons/forward-arrow.png) no-repeat;
 	background-size: 20px;

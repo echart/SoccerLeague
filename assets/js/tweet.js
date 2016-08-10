@@ -12,12 +12,13 @@ function loadtweets(id_club){
   $('.feed').load(url);
   page++;
 }
-
+z='';
 function tweetaction(action,tweet){
   var url='../api/tweet/'+tweet+'/'+action;
   $.ajax({
     url: url,
     success:function(retorno){
+      z=retorno;
       console.log('retorno');
       console.log(retorno);
       if(action=='like'){
@@ -56,8 +57,26 @@ function opentweet(id_tweet,page){
 
 }
 
-function composeTweet(id_club){
+function composeTweet(id){
+  url='../api/tweet/compose/';
   $.ajax({
-
+    url:url,
+    method: 'POST',
+    data: {tweet: $('#newtweet').val()},
+    beforeSend: function(){
+      $('span.arrow').addClass('load');
+      $('span.load').removeClass('arrow');
+    },
+    success: function(data){
+      console.log(data);
+      $('span.load').addClass('arrow');
+      $('span.arrow').removeClass('load');
+    },
+    error: function(data){
+      console.log('error');
+      console.log(data);
+      $('span.load').addClass('arrow');
+      $('span.arrow').removeClass('load');
+    }
   });
 }

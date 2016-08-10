@@ -8,7 +8,7 @@
             <!-- <input id='newtweet' type="text" name="tweet" placeholder="Write Something"> -->
             <textarea id='newtweet' name='tweet' placeholder="Escreva alguma coisa..."></textarea>
             <div class='tweet-options'>
-              <button type='button' class='btn-tweet btn no-bg no-hover white-text'><span class='icon arrow'></span></button>
+              <button type='button' onclick='composeTweet()' class='btn-tweet btn no-bg no-hover white-text'><span class='icon arrow'></span></button>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 <?
+$this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
 
 /*
 Tweets controller base on this rewrites
@@ -10,18 +11,30 @@ if(isset($this->request['tweet'])){
       /*
         when you need to compose a new tweet
       */
+      $type = $_POST['type'] ?? 'C';
+      $tweet = $_POST['tweet'];
+      $reply_to=$_POST['reply_to'] ?? '';
+      $tags='';
+      // $tags=Tweet::extractTAG($tweet);
+      if($tweet!=''){
+        Tweet::__tweet($_SESSION['SL_club'],$type,$tweet,$tags,$reply_to);
+        echo JsonOutput::success(array('success'=>'composed'));
+      }else{
+        echo JsonOutput::error('error',"can't compose a tweet");
+      }
+      exit;
     break;
     case 'delete':
+      /*
+      when you need to delete a tweet
+      */
       JsonOutput::jsonHeader();
       // TODO: verificar se o tweed é do clube
       if(Tweet::__deletetweet($this->request['id'])==true){
-        JsonOutput::success(array('success'=>'deleted'));
+        echo JsonOutput::success(array('success'=>'deleted'));
       }else{
-        JsonOutput::error('error',"can't delete this tweed");
+        echo JsonOutput::error('error',"can't delete this tweed");
       }
-      /*
-        when you need to delete a tweet
-      */
     break;
     case 'reply':
       /*
@@ -31,6 +44,9 @@ if(isset($this->request['tweet'])){
       exit;
     break;
     case 'like':
+      /*
+      when you like a tweet
+      */
       JsonOutput::jsonHeader();
       if(Tweet::liked($_SESSION['SL_club'],$this->request['id'])){
         Tweet::__deslike($this->request['id'],$_SESSION['SL_club']);
@@ -40,13 +56,11 @@ if(isset($this->request['tweet'])){
         echo JsonOutput::success(array('action'=>'like'));
       }
       exit;
-      /*
-        when you like a tweet
-        need to get tweet id, sum+1 in tweets like and added you clubid at likesTweetts table in database
-      */
     break;
     case 'retweet':
-
+      /*
+      when you retweet or "desretweet" a tweet :B
+      */
     break;
     case 'get':
       JsonOutput::jsonHeader();
@@ -71,6 +85,7 @@ if(isset($this->request['tweet'])){
       $this->data['reply_to']=$tweet['reply_to'];
       $this->data['type']=$tweetContent['type'];
       $this->data['tweet']=$tweetContent['tweet'];
+      $this->data['likes']=$tweetContent['likes'];
       $this->data['tags']=$tweetContent['tags'];
       echo JsonOutput::success($this->data);
       exit;
@@ -82,7 +97,6 @@ if(isset($this->request['tweet'])){
 }else{
   switch ($this->request['method']) {
     case 'all':
-        $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
         $page=$this->request['page']-1;
 
         if($this->request['id']!=$_SESSION['SL_club']){
