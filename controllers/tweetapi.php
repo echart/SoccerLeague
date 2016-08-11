@@ -32,19 +32,16 @@ if(isset($this->request['tweet'])){
       when you need to delete a tweet
       */
       JsonOutput::jsonHeader();
-      // TODO: verificar se o tweed é do clube
-      if(Tweet::__deletetweet($this->request['id'])==true){
-        echo JsonOutput::success(array('success'=>'deleted'));
+      if(Tweet::tweetIsMine($this->request['id'])){
+        if(Tweet::__deletetweet($this->request['id'])==true){
+          echo JsonOutput::success(array('success'=>'deleted'));
+        }else{
+          echo JsonOutput::error('error',"can't delete this tweet");
+        }
       }else{
-        echo JsonOutput::error('error',"can't delete this tweed");
+        echo JsonOutput::error('error',"can't delete this tweet");
       }
     break;
-    case 'reply':
-      /*
-        is like compose, but not.
-        make a new tweet, with reply event.
-      */
-      exit;
     break;
     case 'like':
       /*
@@ -64,8 +61,17 @@ if(isset($this->request['tweet'])){
       /*
       when you retweet or "desretweet" a tweet :B
       */
+      JsonOutput::jsonHeader();
+      if(Tweet::__unretweet($this->request['id'],$_SESSION['SL_club'])==true){
+        echo JsonOutput::success(array('success'=>'deleted'));
+      }else{
+        echo JsonOutput::error('error',"can't delete this tweed");
+      }
     break;
     case 'get':
+      /*
+      return a tweet with theyr replys and all the info.
+      */
       JsonOutput::jsonHeader();
       $tweet=Tweet::__gettweet($this->request['id']);
       $tweetContent=Tweet::__gettweetcontent($this->request['id']);
@@ -92,9 +98,6 @@ if(isset($this->request['tweet'])){
       $this->data['tags']=$tweetContent['tags'];
       echo JsonOutput::success($this->data);
       exit;
-      /*
-        return a tweet with theyr replys and all the info.
-      */
     break;
   }
 }else{
