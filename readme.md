@@ -1,30 +1,22 @@
-http://soccerleague.com.br
-
-## What is soccerleague?
-
-soccerleague is idea of a soccer management game for web, with match engine based on real soccer statistics and a 2D match visualyzer using HTML5/CANVAS
-
-More, you can create your team, manager your squad, tactics, etc... and play matches with your friends and other managers, trying get a trophy.
-
-## About development
-I am using HTML5, Canvas, CSS3, JS(jquery too), and PHP 7.
-This project looks a way to learning too. I'm learning PHP7 in the moment, and i will try put some concepts here.
-
-##About MatchEngine
-The match engine isn't being development yet. But i planed use real soccer statistics based in articles and books, like:
-
-Reep, C., and B. Benjamin. Skill and Chance in Association Football: Journal of    the    Royal    Statistical    Society. 1968,    p.581–585.    Available in: <http://doi.org/10.2307/2343726>
-
-Trying make the more realistics as possible.
+![#Soccerleague](http://t.soccerleague.com.br/assets/img/sl_logos/logo.escuro.png)
 
 
-## About MatchVisualyzer
-I planed use canvas to do that. So, with engine generating a second to second match, i can do like FM 2008, with the match in 2D.
+**Soccer League** é a ideia de um **jogo de gerenciamento de um clube de futebol para web**, com uma *match engine* baseada em estatísticas reais do futebol, e um visualizador de partidas em 2D, como os antigos tempos de *Football Manager 2008*.
 
-## About updates
-I'm working in this now, but i expect launch SoccerLeague in end of 2016, the match engine will not lauch here, but the rest of the website will be.
+[Acesse o beta em t.soccerleague.com.br](http://t.soccerleague.com.br)
+
+E este projeto é utilizado como trabalho de conclusão do Curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação, Ciência e Tecnologia Sul-Riograndense.
+
+## O game
+O game consiste em criar um clube de futebol que será atribuido a liga nacional do país escolhido, assim você disputa com dezenas de outros técnicos pelo acesso a liga principal e o titulo nacional. Ao longo dessa jornada, o técnico tem muitas outras competições, amistosos e etc. e para atingir o principal objetivo deve escalar, gerenciar estádio, gerenciar economia, vender ou contratar jogadores, e etc.
 
 
 
-http://soccerleague.com.br
-teste in http://t.soccerleague.com.br
+## Desenvolvimento
+#### Tecnologias
+* PHP 7
+* HTML5
+* CSS3
+* Canvas
+* Javascript(+ jquery)
+* Banco de dados PostgreSQL
