@@ -13,12 +13,15 @@ if(isset($this->request['tweet'])){
       */
       $type = $_POST['type'] ?? 'C';
       $tweet = $_POST['tweet'];
-      $reply_to=$_POST['reply_to'] ?? '';
-      $tags='';
+      $reply_to=$_POST['reply_to'] ?? NULL;
+      $tags='{}';
       // $tags=Tweet::extractTAG($tweet);
       if($tweet!=''){
-        Tweet::__tweet($_SESSION['SL_club'],$type,$tweet,$tags,$reply_to);
-        echo JsonOutput::success(array('success'=>'composed'));
+        if(Tweet::__tweet($_SESSION['SL_club'],$type,$tweet,$tags,$reply_to)==true){
+          echo JsonOutput::success(array('success'=>'composed'));
+        }else{
+          echo JsonOutput::error('error',"can't compose a tweet");
+        }
       }else{
         echo JsonOutput::error('error',"can't compose a tweet");
       }

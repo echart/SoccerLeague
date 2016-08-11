@@ -61,20 +61,25 @@ class Tweet{
   TAGS SHOULD BE USED LIKE THIS
   '{{"meeting", "lunch"}, {"training", "presentation"}}'
   */
-  public static function __tweet($id_club,$type,$tweet,$tags,$reply_to=''):bool{
+  public static function __tweet($id_club,$type,$tweet,$tags,$reply_to='NULL'):bool{
     try{
-      $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweet(id_club) values (:id_club)");
+      $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweet(id_club,reply_to) values (:id_club,:reply_to)");
       $query->bindParam(':id_club',$id_club);
-      $query->execute();
-      $id_tweet=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
-
-      $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetContent(id_tweet,tweet,type,tags) values (:id_club,:tweet,:type,:tags,:reply_to)");
-      $query->bindParam(':id_tweet',$id_tweet);
-      $query->bindParam(':type',$type);
-      $query->bindParam(':tweet',$tweet);
-      $query->bindParam(':tags',$tags);
       $query->bindParam(':reply_to',$reply_to);
       $query->execute();
+      $id_tweet=Connection::getInstance()->connect()->lastInsertID('tweet_id_tweet_seq');
+      try{
+        $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetContent(id_tweet,tweet,type,tags) values (:id_tweet,:tweet,:type,:tags)");
+        $query->bindParam(':id_tweet',$id_tweet);
+        $query->bindParam(':type',$type);
+        $query->bindParam(':tweet',$tweet);
+        $query->bindParam(':tags',$tags);
+        $query->execute();
+      }catch(PDOException $e){
+        $query=Connection::getInstance()->connect()->prepare("DELETE FROM tweet where id_tweet=:id_tweet");
+        $query->bindParam(':id_tweet',$id_tweet);
+        $query->execute();
+      }
       return true;
     }catch(PDOException $e){
       echo $e->getmessage();
