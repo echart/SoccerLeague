@@ -1,4 +1,5 @@
-# Soccer League<!-- ![#Soccerleague](http://t.soccerleague.com.br/assets/img/sl_logos/logo.escuro.png) -->
+# Soccer League
+[#Soccerleague](http://t.soccerleague.com.br/assets/img/icon2.png)
 
 
 **Soccer League** é a ideia de um **jogo de gerenciamento de um clube de futebol para web**, com uma *match engine* baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de *Football Manager 2008*.

@@ -70,7 +70,7 @@
     + Cota de televisionamento
 
      O valor da cota de televisionamento é pago em 12 parcelas ao longo da temporada. A cota de televisionamento é paga em um valor fixo por divisão, somada a um bônus pela colocação da temporada anterior.
-     
+
 
     **Bônus por divisão**
 
@@ -126,6 +126,8 @@
    + i = taxa de juros
    + Mr = Montante resultante
 
-          Mr = C + (C*i);
+            Mr = C + (C*i);
 
 #### 10. Mercado de transferências
+ + Leilão
+ + Pré-contrato
