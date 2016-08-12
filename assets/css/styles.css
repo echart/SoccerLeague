@@ -315,7 +315,7 @@ div.form-field label{
 	width: 100%;
 }
 input[type='text'],input[type='password'],input[type='email']{
-	width: 100%;
+	width: 90%;
 	border: 1px solid #ccc;
 	padding: 12.5px 15px;
 	color: #393e41;
