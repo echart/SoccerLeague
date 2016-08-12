@@ -1,33 +1,65 @@
-page=0;
+page=1;
 $(document).ready(function(){
-  $(window).scroll(function(){
-    if($(window).scrollTop() + $(window).height() == $(document).height()) {
-      loadtweets(id_club);
-    }
-  });
-  loadtweets(id_club);
+  // $(window).scroll(function(){
+  //   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+  //     loadtweets(page);
+  //     page++;
+  //   }
+  // });
+  loadtweets();
 });
-function loadtweets(id_club){
+function loadtweets(){
   var url='../api/tweets/all/'+id_club+'/'+page;
-  $('.feed').load(url);
-  page++;
-}
-z='';
-function tweetaction(action,tweet){
-  var url='../api/tweet/'+tweet+'/'+action;
   $.ajax({
     url: url,
-    success:function(retorno){
-      z=retorno;
-      console.log('retorno');
-      console.log(retorno);
+    beforeSend: function(){
+      $('.tweet:last-child').html('');
+      $('.feed').append("<div class='tweet'>"+
+        "<p class='center loading bg-alert white-text'>Carregando tweets....</p>"+
+      "</div>")
+    },
+    success: function data(response){
+      $('.tweet:last-child').html('');
+      $('.feed').append(response);
+    }
+  });
+  page++;
+  // $('.feed:last-child').load(url);
+}
+z='';
+function tweetaction(tweet,action){
+  var url='../api/tweet/'+action+'/'+tweet;
+  console.log(action);
+  $.ajax({
+    url: url,
+    beforeSend: function(){
       if(action=='like'){
-        if(retorno.data.action=='liked'){
-          $('button span.like').addClass('like2');
-          $('button span.like').removeClass('like');
+        if($('[tweetid='+tweet+'] .tweet-options button.like span').hasClass('like')==true){
+          $('[tweetid='+tweet+'] .tweet-options button.like span').addClass('like2');
+          $('[tweetid='+tweet+'] .tweet-options button.like span').removeClass('like');
+          var x = parseInt($('[tweetid='+tweet+'] .tweet-options button.like i').html());
+          $('[tweetid='+tweet+'] .tweet-options button.like i').html(x+1);
         }else{
-          $('button span.like2').addClass('like');
-          $('button span.like2').removeClass('like2');
+          $('[tweetid='+tweet+'] .tweet-options button.like span').removeClass('like2');
+          $('[tweetid='+tweet+'] .tweet-options button.like span').addClass('like');
+          var x = parseInt($('[tweetid='+tweet+'] .tweet-options button.like i').html());
+          $('[tweetid='+tweet+'] .tweet-options button.like i').html(x-1);
+        }
+      }else if(action=='delete'){
+        $('[tweetid='+tweet+']').empty();
+      }else if(action=='retweet'){
+        if($('[tweetid='+tweet+'] .tweet-options button.retweet span').hasClass('retweet')==true){
+          $('[tweetid='+tweet+'] .tweet-options button.retweet span').addClass('retweet2');
+          $('[tweetid='+tweet+'] .tweet-options button.retweet span').removeClass('retweet');
+          var x = parseInt($('[tweetid='+tweet+'] .tweet-options button.like i').html());
+          $('[tweetid='+tweet+'] .tweet-options button.retweet i').html(x);
+        }else{
+          $('[tweetid='+tweet+'] .tweet-options button.retweet span').removeClass('retweet2');
+          $('[tweetid='+tweet+'] .tweet-options button.retweet span').addClass('retweet');
+          $('[retweetid='+tweet+'] .tweet-options button.retweet span').removeClass('retweet2');
+          $('[retweetid='+tweet+'] .tweet-options button.retweet span').addClass('retweet');
+          var x = parseInt($('[retweetid='+tweet+'] .tweet-options button.retweet i').html());
+          $('[retweetid='+tweet+'] .tweet-options button.retweet i').html(x-2);
         }
       }
     },
@@ -71,6 +103,9 @@ function composeTweet(id){
       console.log(data);
       $('span.load').addClass('arrow');
       $('span.arrow').removeClass('load');
+      loadtweets();
+      $('#newtweet').val('');
+      $('#newtweet').blur();
     },
     error: function(data){
       console.log('error');
@@ -79,4 +114,9 @@ function composeTweet(id){
       $('span.arrow').removeClass('load');
     }
   });
+}
+function deletetweet(id_tweet){
+  if(confirm('Delete?')){
+    tweetaction(id_tweet,'delete');
+  }
 }

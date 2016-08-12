@@ -191,6 +191,9 @@ colors
 .bg-alert{
 	background-color: #ff9d50;
 }
+.bg-white{
+	background-color: #fff;
+}
 .black-text{
 	color: #333;
 }

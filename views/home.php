@@ -1,6 +1,6 @@
 <main>
   <div class="content grid-container">
-    <h3 class='title'>Feed de Notícias</h3>
+    <h3 class='title'>Feed de notícias</h3>
     <div class='grid-65'>
       <div class='box'>
         <div class='box-content write'>
@@ -15,9 +15,7 @@
       </div>
       <div class='box'>
         <div class='box-content feed write'>
-          <div class='tweet'>
-            <p class='center loading bg-alert'>Carregando tweets....</p>
-          </div>
+
 
         </div>
       </div>
@@ -27,7 +25,7 @@
           <div class='box'>
             <div class='box-title'>Jogos</div>
             <div class='box-content'>
-              <p>div box content</p>
+              <p>Nenhum jogo a ser disputado</p>
             </div>
           </div>
       </div>
@@ -35,7 +33,7 @@
           <div class='box'>
             <div class='box-title'>Notificações</div>
             <div class='box-content'>
-              <p>div box content</p>
+              <p>Nenhuma notificação</p>
             </div>
           </div>
       </div>
@@ -43,7 +41,7 @@
           <div class='box'>
             <div class='box-title'>Mensagens</div>
             <div class='box-content'>
-              <p>div box content</p>
+              <p>Nenhuma mensagem</p>
             </div>
           </div>
       </div>

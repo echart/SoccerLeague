@@ -41,6 +41,7 @@ if(isset($this->request['tweet'])){
       }else{
         echo JsonOutput::error('error',"can't delete this tweet");
       }
+      exit;
     break;
     break;
     case 'like':
@@ -62,11 +63,20 @@ if(isset($this->request['tweet'])){
       when you retweet or "desretweet" a tweet :B
       */
       JsonOutput::jsonHeader();
-      if(Tweet::__unretweet($this->request['id'],$_SESSION['SL_club'])==true){
-        echo JsonOutput::success(array('success'=>'deleted'));
+      if(Tweet::tweetIsMine($this->request['id'])==true){
+        if(Tweet::__unretweet($this->request['id'],$_SESSION['SL_club'])==true){
+          echo JsonOutput::success(array('success'=>'deleted'));
+        }else{
+          echo JsonOutput::error('error',"can't unretweet this tweet");
+        }
       }else{
-        echo JsonOutput::error('error',"can't delete this tweed");
+        if(Tweet::__retweet($this->request['id'],$_SESSION['SL_club'])==true){
+          echo JsonOutput::success(array('success'=>'retweeted'));
+        }else{
+          echo JsonOutput::error('error',"can't retweet this tweet");
+        }
       }
+      exit;
     break;
     case 'get':
       /*
@@ -109,7 +119,7 @@ if(isset($this->request['tweet'])){
           echo JsonOutput::error('error','This is not your club');
         }else{
           $feed = new Feed($this->request['id']);
-          $feed->__getLastTweets(50,$page);
+          $feed->__getLastTweets(5,$page);
           foreach ($feed->tweet as $key => $id_tweet) {
             $tweet=Tweet::__gettweet($id_tweet);
             $tweetContent=Tweet::__gettweetcontent($id_tweet);
@@ -127,7 +137,7 @@ if(isset($this->request['tweet'])){
               $this->data['tweets']['retweeted_club']="<span class='action'>retweetd </span>" . Club::getClubNameById($rt['id_club']);
               $t=Tweet::__gettweetcontent($tweet['retweet']);
               $this->data['tweets']['content']=$t['tweet'];
-              if($tweet['id_club']==$_SESSION['SL_club']){
+              if(Tweet::retweeted($rt['id_tweet'])){
                 $rtclass='retweet2';
               }else{
                 $rtclass='retweet';
@@ -136,7 +146,11 @@ if(isset($this->request['tweet'])){
               $this->data['tweets']['content']=$tweetContent['tweet'];
               $this->data['tweets']['retweeted_clubid']='';
               $this->data['tweets']['retweeted_club']='';
-              $rtclass='retweet';
+              if(Tweet::retweeted($tweet['id_tweet'])){
+                $rtclass='retweet2';
+              }else{
+                $rtclass='retweet';
+              }
             }
 
             if(Tweet::liked($tweet['id_club'],$tweet['id_tweet'])){
@@ -154,7 +168,7 @@ if(isset($this->request['tweet'])){
             $diff = $datatime1->diff($datatime2);
             $horas = $diff->h + ($diff->days * 24);
             ?>
-            <div class='tweet'>
+            <div class='tweet'  tweetid='<?=$id_tweet?>' retweetid='<?=$tweet['retweet']?>'>
               <div class='tweet-content'>
                 <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['tweets']['club_logo']?>' width='75px' height='75px'></div>
                 <div class='tweet2'>
@@ -164,14 +178,27 @@ if(isset($this->request['tweet'])){
               </div>
               <div class='tweet-options'>
                 <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='reply'></span></button>
-                <button onclick="tweetaction(<?=$tweet['id_tweet']?>,'like')" type='button' class='btn-tweet btn no-bg no-hover black-text'> <?=Tweet::__countLikes($id_tweet);?> <span class='<?=$likeclass?>'></span></button>
-                <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <?=Tweet::__countRetweets($id_tweet);?> <span class='<?=$rtclass?>'></span></button>
-                <?if($this->data['tweets']['retweeted_club']='' AND $this->data['id_club']==$_SESSION['SL_club']){?><button type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='delete'></span></button><?}?>
+                <button onclick="tweetaction(<?=$tweet['id_tweet']?>,'like')" type='button' class='like btn-tweet btn no-bg no-hover black-text'> <i><?=Tweet::__countLikes($id_tweet);?></i> <span class='<?=$likeclass?>'></span></button>
+                <?if((Tweet::tweetIsMine($tweet['id_tweet'])==true and $rtclass=='retweet2') or (Tweet::tweetIsMine($tweet['id_tweet'])!=true)){?><button onclick="tweetaction(<?=$tweet['id_tweet']?>,'retweet')" type='button' class='retweet btn-tweet btn no-bg no-hover black-text'> <i><?=Tweet::__countRetweets($id_tweet);?></i> <span class='<?=$rtclass?>'></span></button><?}?>
+                <?if(Tweet::tweetIsMine($tweet['id_tweet'])==true and $this->data['tweets']['retweeted_clubid']==''){?><button onclick="deletetweet(<?=$tweet['id_tweet']?>)" type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='delete'></span></button><?}?>
               </div>
             </div>
             <?
           }
+          if(count($feed->tweet)==0){ ?>
+            <div class='tweet'>
+              <p class='center loading bg-white black-text'>Não há mais nada a carregar.</p>
+            </div>
+          <?
+          }else{
+          ?>
 
+          <div class='tweet' onclick="loadtweets()">
+            <p class='center loading bg-white black-text'>Carregar mais</p>
+          </div>
+
+          <?
+          }
         }
         exit;
       break;

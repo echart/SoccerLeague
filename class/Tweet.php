@@ -113,6 +113,12 @@ class Tweet{
   }
   public static function __deletetweet($id_tweet):bool{
     try{
+      $query=Connection::getInstance()->connect()->prepare("DELETE FROM tweetLikes where id_tweet=:id_tweet");
+      $query->bindParam(':id_tweet',$id_tweet);
+      $query->execute();
+      $query=Connection::getInstance()->connect()->prepare("DELETE FROM tweetContent where id_tweet=:id_tweet");
+      $query->bindParam(':id_tweet',$id_tweet);
+      $query->execute();
       $query=Connection::getInstance()->connect()->prepare("DELETE FROM tweet where id_tweet=:id_tweet");
       $query->bindParam(':id_tweet',$id_tweet);
       $query->execute();
@@ -157,12 +163,22 @@ class Tweet{
     }else {
       return false;
     }
-
-    return $data['x'];
   }
 
   public static function tweetIsMine($id_tweet){
     $query=Connection::getInstance()->connect()->prepare("SELECT id_club from tweet where id_tweet=:id_tweet and id_club=:id_club");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->bindParam(':id_club',$_SESSION['SL_club']);
+    $query->execute();
+    if($query->rowCount()>0){
+      return true;
+    }else {
+      return false;
+    }
+  }
+
+  public static function retweeted($id_tweet){
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet from tweet where retweet=:id_tweet and id_club=:id_club");
     $query->bindParam(':id_tweet',$id_tweet);
     $query->bindParam(':id_club',$_SESSION['SL_club']);
     $query->execute();

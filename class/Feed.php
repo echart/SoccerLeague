@@ -6,6 +6,7 @@ class Feed{
     $this->id_club=$id_club;
   }
   public function __getLastTweetsByClub($qtd=20, $page=0){
+    $offset=$page*$qtd;
     $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet FROM tweet where id_club=:id_club order by tweetdate desc limit :qtd offset :offset1");
     $query->bindParam(':qtd',$qtd);
     $query->bindParam(':offset1',$offset);
@@ -19,6 +20,7 @@ class Feed{
     return $this->tweet;
   }
   public function __getLastTweets($qtd=20,$page=0){
+    $offset=$page*$qtd;
     $query=Connection::getInstance()->connect()->prepare("select * from tweet where id_club=:id_club or id_club in (SELECT buddy1 FROM buddies where buddy2=:id_club)  or id_club in (SELECT buddy2 FROM buddies where buddy1=:id_club) order by tweetdate desc limit :qtd offset :offset1");
     $query->bindParam(':qtd',$qtd);
     $query->bindParam(':offset1',$offset);
