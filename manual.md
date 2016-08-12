@@ -70,9 +70,9 @@
     + Cota de televisionamento
 
      O valor da cota de televisionamento é pago em 12 parcelas ao longo da temporada. A cota de televisionamento é paga em um valor fixo por divisão, somada a um bônus pela colocação da temporada anterior.
+     
 
-
-            **Bônus por divisão**
+    **Bônus por divisão**
 
     | Divisão | Bonus      |
     |---------|------------|
@@ -105,6 +105,7 @@
           Salário = SLSkill * 2.24
 
         Eles são pagos a cada semana atualização da economia.
+        .
     + Manutenção
     + Custos de Construção
   + Juros
