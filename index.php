@@ -82,14 +82,13 @@ $refeer= $_GET['refeer']?? NULL;
 		    	<h5 class='return'></h5>
 		    </div>
 	    </div>
-		<!-- <div id='description'>
+		<div id='description'>
 			<h1>O projeto</h1>
 			<p>
-				Há mais de cinco anos, com o começo da era dos jogos virtuais, a paixão por futebol sempre fez nascer o desejo de poder representar ligas, jogadores, partidas e etc., tudo que desde antigamente, torcedores já faziam em jogos de botões e competições entre amigos.
-				Com isso surgiu a ideia do Soccer League, que tem como principal objetivo ser um game de gerenciamento de um clube de futebol e todos seus aspectos, como estádios, categorias de base, transferências, receitas, despesas, contratos de patrocínio e etc.
-				O usuário poderá criar o seu clube, que o mesmo já virá com jogadores vinculados a ele. Assim como também o clube já estará vinculado a sua competição nacional (liga), que é dividida por divisões e grupos. Além da liga, o clube disputará a Copa Nacional.
-				Com isso, o usuário deve escalar seu time e disputar partidas que serão geradas através de uma engine, criada a partir do zero, disputando campeonatos contra seus amigos e outros usuários na luta pelo título de campeão.
-				Você pode baixar o relatório completo do projeto clicando <a target='_blank' href='assets/downloads/soccerleague.pdf'>aqui</a>.
+				Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
+			</p>
+			<p>
+				E este projeto é utilizado como trabalho de conclusão do Curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação, Ciência e Tecnologia Sul-Riograndense.
 			</p>
 		</div>
 		<div class='user'>
@@ -102,7 +101,7 @@ $refeer= $_GET['refeer']?? NULL;
 			<div class='logo'><h3>SOCCER LEAGUE</h3></div>
 			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
 		</div>
-	</footer> -->
+	</footer>
 	<!-- CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/login.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/login/header.min.css">
