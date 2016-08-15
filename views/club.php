@@ -5,7 +5,7 @@
 			<div class='club-box'>
 				<div class='club-color color'>
 				</div>
-				<div class='club-logo'>
+				<div class='clublogo'>
 					<img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['clubinfo']['logo']?>' width="200px" height="200px">
 				</div>
 				<div class='club-name'>
@@ -66,7 +66,7 @@
 				<div class='box-title color'>
 					Feed
 				</div>
-				<div class='box-content trophies'>
+				<div class='box-content feed'>
 					Nenhum feed
 				</div>
 			</div>
@@ -95,3 +95,6 @@
 	  </div>
 	</div>
 </main>
+<script>
+	id_club= <?=$this->request['id'];?>;
+</script>

@@ -188,4 +188,12 @@ class Tweet{
       return false;
     }
   }
+  public static function retweetGetId($id_tweet){
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet from tweet where retweet=:id_tweet and id_club=:id_club");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->bindParam(':id_club',$_SESSION['SL_club']);
+    $query->execute();
+    $data=$query->fetch(PDO::FETCH_ASSOC);
+    return $data['id_tweet'];
+  }
 }

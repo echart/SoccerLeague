@@ -4,7 +4,8 @@ require_once('../class/Connection.php');
 require_once('../class/Account.php');
 require_once('../class/Club.php');
 require_once('../class/JsonOutput.php');
-
+require_once('../class/League.php');
+require_once('../class/Competition.php');
 
 try{
 	/**
@@ -60,7 +61,7 @@ try{
 				/*verify if we have available clubs for this country*/
 				if($club->checkAvailableClub()==0){
 					/* Create new league with new available clubs */
-					$last=League::lastDivAndGroup();
+					$last=League::lastDivAndGroup($country);
 					$league = new League($country,1,$last[0],$last[1]);
 					$available=$league->nextAvailableDivAndGroup();
 					if(!League::checkIfLeagueAlreadyExists(1,$country,$available[0],$available[1])){

@@ -15,13 +15,27 @@ $this->data['clubname']=Club::getClubNameById($club);
  */
 if(isset($this->request['subrequest'])){
   if($this->request['subrequest']=='overview'){
-
+    $this->data['menu']='club';
+    $this->data['submenu']=1;
+    $this->requestURL='club_overview';
+    $arrayPlayers=Players::getPlayersByIdClub($this->request['id']);
+    $i=0;
+    if(count($arrayPlayers)!=0){
+      foreach ($arrayPlayers as $key => $id_player) {
+        $player = new Player();
+        $this->data['overview']['line'][$i]=$player->loadPlayer($id_player);
+        $this->data['overview']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
+        $i++;
+      }
+    }
   }else if($this->request['subrequest']=='history'){
 
   }else if($this->request['subrequest']=='matches'){
 
   }else if($this->request['subrequest']=='statistics'){
 
+  }else if($this->request['subrequest']=='stadium'){
+    $this->requestURL='club_stadium';
   }else if($this->request['subrequest']=='edit'){
     $this->addJSfile('uploadLogo.js');
     $this->addJSfile('croppic.min.js');
@@ -179,6 +193,8 @@ if(isset($this->request['subrequest'])){
 }else{
   $this->addCSSfile('club.css');
   $this->addJSfile('buddy.js');
+  $this->addJSfile('tweetClub.js');
+  $this->addCSSfile('tweet.css');
   /**
    * ADD VISIT AT DATABASE
    */

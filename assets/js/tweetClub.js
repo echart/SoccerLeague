@@ -9,7 +9,7 @@ $(document).ready(function(){
   loadtweets();
 });
 function loadtweets(){
-  var url='../api/tweets/all/'+id_club+'/'+page;
+  var url='../api/tweets/user/'+id_club+'/'+page;
   $.ajax({
     url: url,
     beforeSend: function(){
@@ -94,34 +94,6 @@ function opentweet(id_tweet,page){
     }
   });
 
-}
-
-function composeTweet(id){
-  url='../api/tweet/compose/';
-  $.ajax({
-    url:url,
-    method: 'POST',
-    data: {tweet: $('#newtweet').val()},
-    beforeSend: function(){
-      $('span.arrow').addClass('load');
-      $('span.load').removeClass('arrow');
-    },
-    success: function(data){
-      console.log(data);
-      $('span.load').addClass('arrow');
-      $('span.arrow').removeClass('load');
-      page=1;
-      loadtweets();
-      $('#newtweet').val('');
-      $('#newtweet').blur();
-    },
-    error: function(data){
-      console.log('error');
-      console.log(data);
-      $('span.load').addClass('arrow');
-      $('span.arrow').removeClass('load');
-    }
-  });
 }
 function deletetweet(id_tweet){
   if(confirm('Delete?')){

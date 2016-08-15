@@ -28,7 +28,7 @@ class Competition{
 	}
 	public static function createCompetition($season, $country, $type, $totalclubs):bool{
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO competition(id_competition_type,season, id_country,totalclubs) values (:id_competition_type,:season,:country,:totalclubs)");
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO competition(id_competition_typecom,season, id_country,totalclubs) values (:id_competition_type,:season,:country,:totalclubs)");
 			$query->bindParam(':id_competition_type', $type);
 			$query->bindParam(':season',$season);
 			$query->bindParam(':country',$country);
@@ -52,7 +52,7 @@ class Competition{
 		}
 	}
 	public static function getIdCompetitionType($type){
-			$query=Connection::getInstance()->connect()->prepare("SELECT id_competition_type from competition_type where type=:type");
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_competition_type from competition_types where type=:type");
 			$query->bindParam(':type',$type);
 			$query->execute();
 			$query->setFetchMode(PDO::FETCH_OBJ);
@@ -61,7 +61,7 @@ class Competition{
 			return $data->id_competition_type;
 	}
 	public static function getIdCompetition($type,$country, $season){
-		$query=Connection::getInstance()->connect()->prepare("SELECT id_competition from competition where season=:season and id_country=:country and id_type=:type");
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_competition from competition where season=:season and id_country=:country and id_competition_type=:type");
 		$query->bindParam(':type',$type);
 		$query->bindParam(':season',$season);
 		$query->bindParam(':country',$country);
