@@ -64,7 +64,7 @@ class Players{
 	}
 	public static function getPlayersByIdClub($id_club){
 		$arrayPlayers=array();
-		$query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_player FROM players INNER JOIN players_position using(id_player) WHERE id_player_club=:id_club and id_position!=1 ORDER BY id_player ASC");
+		$query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_player,id_position FROM players INNER JOIN players_position using(id_player) inner join positions using(id_position) WHERE id_player_club=:id_club and id_position!=1 ORDER BY id_position ASC ");
 		$query->bindParam(":id_club",$id_club);
 		$query->execute();
 		while($data=$query->fetch(PDO::FETCH_OBJ)){
@@ -74,7 +74,7 @@ class Players{
 	}
 	public static function getGoalkeepersByIdClub($id_club){
 		$arrayPlayers=array();
-		$query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_player FROM players INNER JOIN players_position using(id_player) WHERE id_player_club=:id_club and id_position=1 ORDER BY id_player ASC");
+		$query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_player,id_position FROM players INNER JOIN players_position using(id_player) inner join positions using(id_position) WHERE id_player_club=:id_club and id_position=1 ORDER BY id_position ASC");
 		$query->bindParam(":id_club",$id_club);
 		$query->execute();
 		while($data=$query->fetch(PDO::FETCH_OBJ)){

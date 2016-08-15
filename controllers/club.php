@@ -23,12 +23,15 @@ if(isset($this->request['subrequest'])){
     if(count($arrayPlayers)!=0){
       foreach ($arrayPlayers as $key => $id_player) {
         $player = new Player();
-        $this->data['overview']['line'][$i]=$player->loadPlayer($id_player);
+        $this->data['overview']['line'][$i]=$player->loadPlayerInfo($id_player);
+        $this->data['overview']['line'][$i]['skill_index']=$player->skillIndex();
         $this->data['overview']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
         $i++;
       }
     }
   }else if($this->request['subrequest']=='history'){
+
+  }else if($this->request['subrequest']=='friends'){
 
   }else if($this->request['subrequest']=='matches'){
 
@@ -245,7 +248,7 @@ if(isset($this->request['subrequest'])){
   }else if(Buddy::isPending($club,$_SESSION['SL_club'])){
     $this->data['button']['friend']['text']='Aceitar amigo';
     $this->data['button']['friend']['action']='aproval';
-  }else if(Buddy::isMyFriend($_SESSION['SL_club'],$club)){
+  }else if(Buddy::isMyFriend($_SESSION['SL_club'],$club) or Buddy::isMyFriend($club,$_SESSION['SL_club'])){
     $this->data['button']['friend']['text']='Desfazer amizade';
     $this->data['button']['friend']['action']='unbuddy';
   }else{

@@ -1,5 +1,5 @@
 <?
-require_once('../helpers/__skill.php');
+require_once('helpers/__skill.php');
 use Players as ThisPlayer;
 
 /**

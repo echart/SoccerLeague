@@ -1,0 +1,6 @@
+<?
+
+class ProDays{
+  public $prodays;
+
+}

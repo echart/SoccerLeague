@@ -37,6 +37,15 @@ div.content{
 	overflow: hidden;
 }
 /*=============================
+Markers
+==============================*/
+span.pro-marker{
+	border-radius: 2.5px;
+  background-color: #D5B942;
+  color: #393e41;
+  padding: 1px 5px;
+}
+/*=============================
 Scroll menu bar
 ==============================*/
 div.menu-sidebar::-webkit-scrollbar-track {

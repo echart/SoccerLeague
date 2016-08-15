@@ -43,7 +43,7 @@ $menu=array('home'=>array(
 				echo "<li><a href='".$key['href']."' class='".$class."'>".$key['text']."</a></li>";
 				$i++;
 			}
-
+			$account = Account::getAccount($_SESSION['SL_account']);
 			?>
 		</ul>
 		<span alt='Soccer League Time' class='options'><strong><span id='sltime'></span></strong> - <?=date('Y-m-d')?></span>
@@ -60,7 +60,7 @@ $menu=array('home'=>array(
 				<li><a class='league border' href="<?=$this->data['tree']?>league/"><i></i><span>Competições</span></a></li>
 				<li><a class='transfer' href=""><i></i><span>Mercado</span></a></li>
 				<li><a class='community' href=""><i></i><span>Comunidade</span></a></li>
-				<li><a class='pro border' href=""><i></i><span>PRO</span><span class='qtd'>365 dias</span></a></li>
+				<li><a class='pro border' href=""><i></i><span>PRO</span><span class='qtd'><?=$account->getProDays();?> dias</span></a></li>
 				<li><a class='logoff' href="<?=$this->data['tree']?>logout/"><span>Opções</span></a></li>
 				<li><a class='logoff border' href="<?=$this->data['tree']?>logout/"><i></i><span>Sair</span></a></li>
 			</ul>

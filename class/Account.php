@@ -28,9 +28,9 @@ class Account{
 		$this->id_account=$id;
 
 		if($this->id_account!=''){
-			$query=Connection::getInstance()->connect()->prepare("SELECT email, refeer,prodays, slvip, language FROM account where id_account=:id");
+			$query=Connection::getInstance()->connect()->prepare("SELECT email, refeer, slvip, language FROM account inner join account_data using(id_account) where id_account=:id");
 			$query->bindParam(':id',$this->id_account);
-			$query->exec();
+			$query->execute();
 
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$data=$query->fetch();
@@ -107,7 +107,7 @@ class Account{
 			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account_data(id_account, language, slvip, timezone, status) values (:id_account,1,15,-3,'A')");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();
-			
+
 			return $this->id_account;
 		}catch(PDOException $e){
 			echo $e->getMessage();

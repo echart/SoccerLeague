@@ -1,5 +1,5 @@
 <?
-/** 
+/**
  * singleton Connection class
  * you can use it like this
  * $con=Connection::getInstance();
