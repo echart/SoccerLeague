@@ -1,6 +1,4 @@
 <?
-include_once('Player.php');
-include_once('Goalkeeper.php');
 
 class PlayerFactory{
 	public static $odds=array(1=>15.1,2=>10.1,3=>8.5);

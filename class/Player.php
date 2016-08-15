@@ -1,6 +1,5 @@
 <?
-require_once('Players.php');
-require_once('Goalkeeper.php');
+require_once('../class/Players.php');
 /*
  * @author: echart
  */

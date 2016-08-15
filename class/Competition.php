@@ -28,7 +28,7 @@ class Competition{
 	}
 	public static function createCompetition($season, $country, $type, $totalclubs):bool{
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO competition(id_competition_typecom,season, id_country,totalclubs) values (:id_competition_type,:season,:country,:totalclubs)");
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO competition(id_competition_type,season, id_country,totalclubs) values (:id_competition_type,:season,:country,:totalclubs)");
 			$query->bindParam(':id_competition_type', $type);
 			$query->bindParam(':season',$season);
 			$query->bindParam(':country',$country);

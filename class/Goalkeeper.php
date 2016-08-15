@@ -1,6 +1,4 @@
 <?
-include_once('Players.php');
-include_once('Player.php');
 class Goalkeeper extends Players{
 	public $handling;
 	public $aerial;
