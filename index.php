@@ -22,108 +22,123 @@ $refeer= $_GET['refeer']?? NULL;
 	<meta name="keywords" content="soccer, management, football, league, game, soccergame, soccerleague" />
 	<meta name="author" content="SoccerLeague" />
  	<meta name="theme-color" content="‪#‎393E41">
- 	<style>
- 		div#description h1,div#description h4{padding:1em 5em 0;text-align:left;color:#333}body{margin:0;padding:0;background-color:#fff;font-family:'Open Sans',sans-serif;overflow-x:hidden;color:#fff}a{text-decoration:none;color:#333;font-size:1.8em}div#description{position:relative;border-top:5px solid #5fad56;width:100%;padding:0 2em 4em 0;text-align:center}div#description h1{font-size:2.5em}div#description h4{font-size:1.5rem}div#description p{font-size:1.25em;padding:0 10em;text-align:justify;color:#333}.button{padding:1em 5em;background-color:#b44230;border:0;color:#fff}div.ex span.forget a{display:block;width:100%;margin-top:30px;font-size:.75rem;color:#fff;text-align:right}div.ex,div.ex div{text-align:center}div.ex button{position:relative;top:10px;padding:.9em 0;width:105%;background-color:#5fad56;color:#fff;font-size:1rem;font-family:'Exo 2',sans-serif;border:0;border-radius:2.5px}div.ex button:hover{background:#4A7856;color:#fff;transition:all .5s;cursor:pointer}div.ex{position:fixed;top:0;left:-340px;height:100vh;width:340px;background:#393E41;z-index:999;transition:left 1s;margin:0 auto;padding-top:2%}div.ex select,div.ex select option{padding:7.5px 5px}div.expanded{left:0!important;transition:left 1s}div.ex select{width:105%}div.ex input{background-color:#fff;display:block;padding:7.5px;margin:.5rem auto;width:100%;font-family:'Exo 2';font-size:1rem}div.ex input:focus,div.ex input:hover{background-color:#EAF4D3}div.ex div{margin:0 auto;width:80%;padding:2rem 0}div.ex span.close{cursor:pointer;position:absolute;right:.75rem;padding:.5rem 1rem;display:block;-moz-box-sizing:border-box;box-sizing:border-box;width:1.2rem;height:1.2rem;background:url(assets/img/icons/close.png) no-repeat;background-size:1.2rem}.flag-br{display:block;-moz-box-sizing:border-box;box-sizing:border-box;width:24px;height:24px;background:url(assets/img/icons/flag/br.png) no-repeat;background-size:24px}@media(max-width:900px){div#description{position:relative;width:90%;padding:0 1em}div#description p{font-size:1.25em;padding:0;margin:0;text-align:justify}div#description h1{padding:0;text-align:left}footer{display:none}div.ex input{width:80%}div.ex{width:100vw;left:-100vw}div.ex button{width:82.5%}div.ex span.forget a{display:block;width:90%}}.error,.success{font-family:'Exo 2';padding:10px}.error{color:#EA4335}.success{color:#34A853;font-size:1.4rem}div#country{padding:0;font-size:50%}.dd-select{overflow:hidden!important;display:block!important;padding:0!important;font-weight:700!important;line-height:25px!important}.dd-options{max-height:200px!important}
- 		footer,footer div.rodape{width:100%;height:90px}footer{background-color:#222;position:relative;text-align:center}footer div.rodape div.logo{position:absolute;top:1em;left:7.5em}footer div.rodape div.logo img{width:200px}footer div.rodape div.logo h3{font-size:1.2em;color:#fff}footer div.rodape div.menu{position:absolute;top:2.25em;right:7.5em;color:#888}
- 		header{width:100%;height:10em;z-index:998;position:absolute}header div.logo{position:absolute;top:3em;left:10%}header div.logo img{width:15em}header ul.menu{list-style:none;position:absolute;right:10%;top:50px}header ul.menu li{float:left;padding:0 1em;color:#fff}input[type=text],input[type=password]{width:220px;height:32.5px;background-color:#e9e7d6;border-radius:1px;border:0;padding-left:5px}header div.menu-responsive{position:absolute;width:32px;height:32px;right:10%;top:3.5em;display:none;background:url(assets/img/icons/responsive-menu.png) no-repeat;background-size:24px}.btn-login{margin-top:1rem;border:1px solid #fff;border-radius:5px;padding:.75em 1.5em}.btn-login:hover{cursor:pointer;background-color:rgba(255,255,255,.2);transition:.3s all;color:#fff}.scroll{transition:.3s all;height:6em;position:fixed;background:#4a7856}header.scroll ul.menu{list-style:none;position:absolute;right:10%;top:20px}header.scroll div.logo img{width:12.5em;padding-top:0}header.scroll div.logo{position:absolute;top:1.5em;left:10%}a.scroll{background-color:#fff!important;color:#b44230}header.scroll div.menu-responsive{position:absolute;width:32px;height:32px;right:10%;top:2.15em;background:url(assets/img/icons/responsive-menu.png) no-repeat;background-size:24px}@media(max-width:900px){header div.logo img,header.scroll div.logo img{padding-top:.75em;width:7.5em}header div.logo{position:absolute;top:3em;left:10%}}
- 		.btn,div.video{position:relative}div.video img{box-sizing:border-box;width:100%;float:left}.btn{top:30px;padding:.75em 3.5em;background-color:#5fad56;color:#fff;font-size:1.4rem;font-family:'Exo 2',sans-serif;border:0;border-radius:50px}div.video div.pattern,video{right:0;top:0;min-width:100%;min-height:100%}.btn:hover{background:#393e41;color:#fff;transition:all .5s;cursor:pointer}header a{text-decoration:none;color:#fff;font-size:1em}header a:hover{color:#ccc;transition:.5s all}div.video{background-color:333;overflow:hidden;height:100vh;width:100vw;background:url(assets/img/backgrounds/bg1.jpg) center center/cover no-repeat}div.cadastro,div.down,video{position:absolute}div.video h1{font-size:4rem;padding:0;margin:0}div.video h3{font-size:1rem}div.video div.pattern{opacity:.75;filter:"alpha(opacity=40)";background:url(assets/img/login/subtle_carbon.png);position:absolute;z-index:2}video{display:block;width:auto;height:auto;z-index:1}div.cadastro{z-index:3;width:100%;top:17em;left:50%;transform:translateX(-50%);text-align:center;padding:0 1em}.football,.heart{width:64px;height:64px;padding-left:48px}div.cadastro h1{color:#fff}.heart{background:url(assets/img/icons/emoji/heart2.png) center no-repeat;background-size:28px}.football{background:url(assets/img/icons/emoji/football.png) center no-repeat;background-size:40px}div.down{bottom:10px;z-index:2;width:35px;height:35px;left:50%;margin-left:-17.5px}@media(max-width:900px){div.video h1{font-size:1.2em}div.video h4{padding-right:1rem;font-size:.8em}}@media(max-width:800px){video{display:none}}
-	</style>
+
 </head>
 <body>
 	<header>
-		<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>
-		<nav>
-			<ul class='menu'>
-				<li><label onclick='expandLogin()' class='btn-login'>Login</label></li>
-			</ul>
-			<div class='menu-responsive'></div>
-		</nav>
+		<figure class='logo'>
+			<img src='assets/img/sl_logos/logo.branco.png'>
+		</figure>
+		<div class='form-login'>
+			<form>
+				<input type="text" name="login" placeholder='Email'>
+				<input type="password" name="password" placeholder='Password'>
+				<button class='btn bg-white black-text' type="button">Entrar</button>
+			</form>
+		</div>
 	</header>
 	<main>
-		<div class='video'>
-			<video preload='none' loop="loop" muted>
-				<source src="assets/video/splash_home3.mp4" type="video/mp4">
-				<img src="assets/img/backgrounds/bg1.jpg">
-			</video>
-			<div class="pattern"></div>
-			<div class='cadastro'>
-				<h1>Nós amamos futebol<i class="football"></i></h1>
-				<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
-				<label onclick='expandSignin()' class='btn'>Cadastrar-se</label>
+		<div class='container grid-container'>
+			<div class='side grid-35'>
+				<figure>
+					<img src='assets/img/icon2.png'>
+				</figure>
+				<h2>Nós amamos futebol!</h2>
+				<p>
+					Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
+				</p>
+				<h6 class= 'title alert-text'>Soccer League é otimizado para: resoluções de 1368x1080, Google Chrome, e necessita obter sua localização.</text>
 			</div>
-			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
-		</div>
-	    <div class='viewlogin ex'>
-	    	<span onclick='expandLogin()' class='close'></span>
-	    	<div>
-		    	<h4>Entrar no seu clube</h4>
-		    	<form>
-			    	<input type='text' name='userlogin' placeholder='Email'>
-			    	<input type='password' name='userpass' placeholder='Senha'>
-			    	<button type='button' onclick="login()">Realizar login</button><br>
-			    	<span class='forget'><a href=''>Esqueci minha senha</a></span>
-		    	</form>
-		    	<h5 class='return'></h5>
-		    </div>
-	    </div>
-	    <div class='viewsign ex'>
-	    	<span onclick='expandSignin()' class='close'></span>
-	    	<div>
-		    	<h4>Boa sorte, sua jornada rumo a glória começa aqui.</h4>
-		    	<form>
-			    	<input type='text' name='clubname' placeholder='Nome do clube'>
-			    	<input type='text' name='userlogin1' placeholder='Email'>
-			    	<input type='password' name='userpass1' placeholder='Senha'>
-			    	<input type='password' name='reuserpass1' placeholder='Digite novamente a Senha'>
-						<input type='hidden' name='refeer' value='<?=$refeer?>'>
-			    	<select id='country'></select>
-			    	<button type='button' onclick='register()'>Criar clube</button>
-			    </form>
-		    	<h5 class='return'></h5>
-		    </div>
-	    </div>
-		<div id='description'>
-			<h1>O projeto</h1>
-			<p>
-				Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
-			</p>
-			<p>
-				E este projeto é utilizado como trabalho de conclusão do Curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação, Ciência e Tecnologia Sul-Riograndense.
-			</p>
-		</div>
-		<div class='user'>
-			<div class='login'></div>
-			<div class='cadastro'></div>
-		</div>
+			<div class='grid-65 side bg-white'>
+				<div class='club'>
+					<h2 class='title'>Crie seu clube!</h2>
+					<div class='form-field'>
+						<label>Defina a sede</label>
+						<div id='map'></div>
+					</div>
+					<br>
+					<div class='form-field'>
+						<input type='text' name='clubname' placeholder="Escolha um nome do clube"></input>
+					</div>
+					<div class='form-field'>
+						<button type="button" class='btn bg-success black-text'>Continuar</button>
+					</div>
+				</div>
+				<!-- <div class='account'>
+					<h2 class='title'>Crie sua conta!</h2>
+					<div class='form-field'>
+						<label>Digite seu email:</label>
+						<input type='text' name='clubname' placeholder="Digite seu Email"></input>
+					</div>
+					<div class='form-field'>
+						<label>Digite uma senha</label>
+						<input type='text' name='clubname' placeholder="Digite sua Senha"></input>
+					</div>
+					<div class='form-field'>
+						<label>Repita a senha</label>
+						<input type='text' name='clubname' placeholder="Repita a senha"></input>
+					</div>
+					<div class='form-field'>
+						<button type="button" class='btn bg-success black-text'>Cadastrar</button>
+				</div> -->
+			</div>
 	</main>
-	<footer>
-		<div class='rodape'>
-			<div class='logo'><h3>SOCCER LEAGUE</h3></div>
-			<div class='menu'>©2016 soccerleague.br - Todos os direitos reservados</div>
-		</div>
-	</footer>
+
 	<!-- CSS -->
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/login.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/header.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/footer.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/login/video.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+	<link href="assets/css/login.css" rel='stylesheet'>
+	<link href="assets/css/grid.css" rel='stylesheet'>
 	<!-- JS -->
-	<script type="text/javascript">
-		var countriesData = [
-	    {
-	        text: "Brasil",
-	        value: 1,
-	        selected: false,
-	        description: "0 usuários ativos",
-	        imageSrc: "assets/img/icons/flags/shiny/48/Brazil.png"
+	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>
+	<script>
+	function initMap() {
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 15,
+	    center: {lat: -28.643387, lng: 153.612224},
+	    mapTypeControl: true,
+	    mapTypeControlOptions: {
+	        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+	        position: google.maps.ControlPosition.TOP_CENTER
+	    },
+	    zoomControl: true,
+	    zoomControlOptions: {
+	        position: google.maps.ControlPosition.LEFT_CENTER
+	    },
+	    scaleControl: true,
+	    streetViewControl: true,
+	    streetViewControlOptions: {
+	        position: google.maps.ControlPosition.LEFT_TOP
 	    }
-	];
+	  });
+  var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Você está aqui.');
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+}
+
 	</script>
-	<!--<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script-->
-	<script type="text/javascript" src='assets/js/jquery.js'></script>
-	<!-- <script type="text/javascript" src='assets/js/translate.js'></script> -->
-	<script type="text/javascript" src='assets/js/select.js'></script>
-	<script type="text/javascript" src='assets/js/home.js'></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4&callback=initMap" async defer></script>
 </body>
 </html>
