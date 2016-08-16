@@ -1,5 +1,4 @@
 <?
-require_once('../class/Players.php');
 /*
  * @author: echart
  */

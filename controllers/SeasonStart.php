@@ -46,7 +46,6 @@ foreach ($countries as $key => $id_country) {
     // $query->execute();
     Competition::createCompetition($season,$id_country,$id_competition_type, $teams);
     $id_competition=Connection::getInstance()->connect()->lastInsertID('competition_id_competition_seq');
-    echo 'id competição: ' . $id_competition;
     /*------
     COUNT CLUBS AND COUNT HOW MANY LEAGUES/GROUPS WE NEED TO ADD.
     ------*/
@@ -62,6 +61,10 @@ foreach ($countries as $key => $id_country) {
         Club::createAvailableTeam($id_country);
       }
     }
+    $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club where id_country=:id_country");
+    $query->bindParam(':id_country',$id_country);
+    $query->execute();
+    $clubs=$query->rowCount();
     $groups=$clubs/$teams;
     /*------
     ADD league based in groups numbers
@@ -74,9 +77,10 @@ foreach ($countries as $key => $id_country) {
       $div=$next[0];
       $group=$next[1];
       // $flag=false;
-      // if(!League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)){
-        $league=League::createLeague($id_competition,'Campeonato Brasileiro',$div,$group, $total_games);
-        $flag=true;
+      $league=false;
+        // if(!League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)){
+      $league=League::createLeague($id_competition,'Campeonato Brasileiro',$div,$group, $total_games);
+      $flag=true;
       // }
       $league=new League($season,$id_country,$div,$group);
       $next=$league->nextAvailableDivAndGroup();
@@ -96,5 +100,5 @@ foreach ($countries as $key => $id_country) {
       }
 
     }
-    echo 'Country ' . $id_country . ' added<br>';
+    echo 'Country id ' . $id_country . ' added! Go play :D<br>';
   }

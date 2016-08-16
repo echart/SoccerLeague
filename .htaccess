@@ -40,7 +40,10 @@
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
  </IfModule>
-
+ <IfModule mod_speling.c>
+ CheckSpelling On
+ CheckCaseOnly On
+ </IfModule>
 
  <FilesMatch "\.(ini|cgi|htaccess|json)$">
  Order Deny,Allow

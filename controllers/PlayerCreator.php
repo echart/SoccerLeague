@@ -1,5 +1,6 @@
 <?php
   require_once('../class/Connection.php');
+  require_once('../class/Players.php');
   require_once('../class/Player.php');
   require_once('../class/Goalkeeper.php');
   require_once('../class/PlayerFactory.php');
