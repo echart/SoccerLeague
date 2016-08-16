@@ -1,148 +1,149 @@
 body{
 	margin:0;
 	padding:0;
-	background-color: #5fad56 !important;
 	font-family: 'Open Sans', sans-serif;
 	overflow-x: hidden;
 	color: #393e41;
+	z-index: 10;
 }
 header{
-	position: relative;
-	margin-left: 3vw;
-}
-header figure.logo img{
-	width: 250px;
-}
-header div.form-login{
-	max-width: 500px;
+	width: 100%;
+	height: 10em;
+	z-index: 998;
 	position: absolute;
-	top: 1vw;
-	right: 6vw;
 }
-div.grid-container{
-	padding: 0 !important;
+header div.logo{
+	position: absolute;
+	top: 3em;
+	left:10%;
 }
-div.container{
-	margin-top: 2.5vh;
-	width: 90vw;
-	height: 80vh;
-	background-color: #393e41;
+header div.logo img{
+	width: 15em;
 }
-div.container div.side{
-	margin: 0;
-	height: 100%;
-}
-div.container div.side h2{
-	color: #fff;
-	text-align: center;
-}
-div.container div.side p{
-	font-family: 'Exo 2';
-	padding: 0px 15px;
-	text-align: justify;
-	color: #fff !important;
-}
-div.container div.side figure{
-	text-align: center;
-}
-div.container div.side .title,div.container div.side div.form-field{
-	padding-left: 20px;
-	color: #333;
-	text-align: left;
-}
-#map{
-	position: relative;
-	width: 92.5%;
-	height: 250px;
-	background: #333;
-	margin-bottom: 5px;
-}
-/*==========formfield=============*/
-div.form-field{
-	width: 100%;
-	white-space: normal;
-	max-height:280px;
-	margin: 15px 0;
-	font-size: 12px;
-}
-div.form-field label{
-	color:#393e41;
-	font-size: 14px;
-	font-weight: 800px;
-	display: block;
-	height: 20px;
-	width: 100%;
-}
-div.form-login input{
-	width: 150px !important;
-	padding: 7.5px 15px !important;
 
+
+/*=================================
+VIDEO
+===================================*/
+div.video img{
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
 }
-/*========================FORM====================*/
-input[type='text'],input[type='password'],input[type='email']{
-	width: 87.5%;
-	border: 1px solid #ccc;
-	padding: 12.5px 15px;
-	color: #393e41;
-	font-family: 'Exo 2','Open Sans';
+div.video{
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: url('../img/backgrounds/bg1.jpg') no-repeat center center/cover;
 }
-input[type='text']:hover,input[type='password']:hover,input[type='email']:hover{
-	background-color: #e4e4e4;
-	transition: 0.7s all;
+div.video h3{
+	font-size:4rem;
+	padding: 0;
+	margin: 0;
 }
-input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
-	background-color: #ddd;
-	color: #000;
-	transition: 0.3s background-color;
-	border: 1px solid #ccc;
+div.video h4{
+	font-size: 1rem;
 }
-/*=============================
-BUTTONS
-==============================*/
-.btn{
-	padding: 0.45rem 1.5rem;
-	cursor:pointer;
+div.video div.pattern {
+    opacity: 0.75;
+	filter: "alpha(opacity=40)";
+	background: url('../img/login/subtle_carbon.png');
+	position: absolute;
+	right: 0;
+	top: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: 2;
+}
+video{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: 1;
+}
+div.cadastro{
+	z-index:3;
+	width: 100%;
+	position: absolute;
+	top: 17em;
+	left: 50%;
+	transform:translateX(-50%);
+	text-align: center;
+	padding: 0px 1em;
+}
+div.cadastro h3,div.cadastro h4{
 	color: #fff;
-	background-color: #5fad56;
-	border: 0px;
-	cursor:pointer;
 }
-.btn:hover{
-	background-color: #333;
-	color: #fff;
-	transition: .7s all;
+
+.heart{
+	width:64px;
+	height:64px;
+	padding-left: 48px;
+	background: url(../img/icons/emoji/heart2.png) no-repeat;
+	background-size:28px;
+	background-position: center;
 }
-.btn:active{
-	background-color: #fff;
-	color: #333;
+.football{
+	width:64px;
+	height:64px;
+	padding-left: 48px;
+	background: url(../img/icons/emoji/football.png) no-repeat;
+	background-size: 40px;
+	background-position: center;
 }
-/*=============================
-colors
-==============================*/
-.no-hover:hover{
-	background-color: rgba(0,0,0,0);
+/*=================================
+Options
+===================================*/
+div.options{
+	z-index: 9999;
+	position: absolute;
+	bottom: 0;
+	background-color: #222;
+	width: 100vw;
+	height: 100px
 }
-.no-bg{
-		background-color: rgba(0,0,0,0);
-}
-.bg-success{
-	background-color: #5fad56;
-}
-.bg-warning{
-	background-color: #b44230;
-}
-.bg-alert{
-	background-color: #ff9d50;
-}
-.bg-white{
-	background-color: #fff;
-}
-.black-text{
-	color: #333;
-}
-.white-text{
+div.options .btn-login{
+	position: absolute;
+	right: 0;
+	width: 200px;
+	height: 100%;
+	background-color: #5FAD56;
 	color: #f4f4f4;
+	border: 0;
+	font-size: 18px;
+	text-align: center;
 }
-.alert-text{
-	color: #ff9d50 !important;
+div.options .btn-login:hover{
+	color: #333;
+	cursor: pointer;
+}
+div.options nav{
+	position: absolute;
+	padding-top: 25px;
+}
+div.options nav ul{
+	font-family: 'Exo 2';
+	list-style: none;
+}
+div.options nav ul li{
+	float: left;
+}
+div.options nav ul li a{
+	padding: 10px 20px;
+	color: #7F7E7E;
+	text-decoration: none;
+}
+div.options nav ul li a.signup{
+	background-color: #333;
+	color: #7F7E7E;
+	border-radius: 2.5px;
+}
+div.options nav ul li a:hover{
+	color: #fff;
 }
