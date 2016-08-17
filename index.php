@@ -27,7 +27,23 @@ $refeer= $_GET['refeer']?? NULL;
 <body>
 	<main>
 		<div class='login'>
-dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			<div>
+				<h1>Entrar</h1>
+				<div class='form-field'>
+					<label for='login-input'>Email:</label>
+					<input id='login-input' type='text' placeholder='Digite seu email'>
+				</div>
+				<div class='form-field'>
+					<label for='login-input'>Senha:</label>
+					<input id='login-input' type='password' placeholder='Digite sua senha'>
+				</div>
+				<div class='form-field'>
+					<button type='button'>Login</button>
+				</div>
+				<div class='form-field right'>
+					<a href=''>Esqueceu a senha?</a>
+				</div>
+			</div>
 		</div>
 		<header>
 			<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>

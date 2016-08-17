@@ -3,7 +3,8 @@ body{
 	padding:0;
 	font-family: 'Open Sans', sans-serif;
 	overflow-x: hidden;
-	color: #393e41;
+	background-color: #393e41;
+	color: #f4f4f4;
 	z-index: 10;
 	height: 100vh;
 	overflow-y: hidden;
@@ -40,11 +41,13 @@ div.video{
     background: url('../img/backgrounds/bg1.jpg') no-repeat center center/cover;
 }
 div.video h3{
+	font-weight: 300;
 	font-size:4rem;
 	padding: 0;
 	margin: 0;
 }
 div.video h4{
+	font-weight: 300;
 	font-size: 1rem;
 }
 div.video div.pattern {
@@ -153,11 +156,92 @@ header nav ul li a:hover{
 	color: #fff;
 }
 
-
+/*=============================
+form
+==============================*/
+.right{
+	text-align: right;
+}
+div.form-field{
+	width: 100%;
+	max-height:200px;
+	margin: 15px 0;
+	font-size: 12px;
+}
+div.form-field label{
+	color:#393e41;
+	display: block;
+	height: 20px;
+	width: 100%;
+	margin-left: 10px;
+}
+div.form-field button{
+	margin: 0 auto;
+	background-color: #5fad56;
+	color:#fff;
+	display: block;
+	height: 50px;
+	width: 95%;
+	border: 0;
+	font-size: 14px;
+}
+div.form-field button:hover{
+	color: #333;
+	cursor: pointer;
+}
+input[type='text'],input[type='password'],input[type='email']{
+	width: 87.5%;
+	border: 1px solid #ccc;
+	padding: 12.5px 15px;
+	color: #393e41;
+	font-family: 'Exo 2','Open Sans';
+	margin: 0 10px;
+}
+input[type='text']:hover,input[type='password']:hover,input[type='email']:hover{
+	background-color: #e4e4e4;
+	transition: 0.7s all;
+}
+input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
+	background-color: #ddd;
+	color: #000;
+	transition: 0.3s background-color;
+	border: 1px solid #ccc;
+}
+select{
+	font-family: 'Exo 2','Open Sans';
+	padding: 0px 15px;
+	width: 102.5%;
+	border: 1px solid #ccc;
+	color: #393e41;
+	font-size: 14px;
+	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+}
+option{
+	padding: 12.5px 15px;
+	width: 100%;
+	color: #393e41;
+}
+textarea{
+	font-family: 'Exo 2','Open Sans';
+	color: #393e41;
+	padding: 10px;
+	border: 1px solid #ccc;
+	width: 102.5%;
+	resize: vertical;
+	font-size: 13px;
+}
+textarea:focus{
+	background-color: #ddd;
+	color: #000;
+}
 /*==========================
 DIV LOGIN
 ============================*/
 div.login{
+	width: 100vw;
 	height: 0;
 	overflow: hidden;
 
@@ -165,4 +249,25 @@ div.login{
 	-webkit-transition: height 0.8s;
 	-moz-transition: height 0.8s;
 	transition: height 0.8s;
+	color: #333;
+}
+ @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+ div.login div:first-child{
+	margin: 0 auto;
+	margin-top: 75px;
+	width: 400px;
+	height: 400px;
+	background-color: #f4f4f4;
+	border-radius: 3.5px;
+}
+div.login div:first-child h1{
+  font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	padding: 20px;
+	text-align: center;
+}
+div.login div:first-child div.form-field a{
+	margin-right: 10px;
+	color: #333;
+	text-decoration: none;
 }
