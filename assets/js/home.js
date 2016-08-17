@@ -8,14 +8,28 @@ $(document).ready(function(){
     $('video').attr('preload', 'auto');
   }
 });
+function callLogin(){
+  if($('.login').css('height')=='0px'){
+    $('.login').css('height','88.75vh');
+    $('.signup').css('height','0px');
+    $('.btn-login').html('Fechar');
+    $('a.signup').html('Cadastrar')
 
-function expandLogin(){
-  $('div.viewsign').removeClass('expanded');
-  $('div.viewlogin').toggleClass('expanded');
+  }else{
+    $('.login').css('height','0px');
+    $('.btn-login').html('Entrar');
+  }
 }
-function expandSignin(){
-  $('div.viewlogin').removeClass('expanded');
-  $('div.viewsign').toggleClass('expanded');
+function callSignup(){
+  if($('.signup').css('height')=='0px'){
+    $('.login').css('height','0px');
+    $('.signup').css('height','88.75vh');
+    $('.btn-login').html('Entrar');
+    $('a.signup').html('Fechar')
+  }else{
+    $('.signup').css('height','0px');
+    $('a.signup').html('Cadastrar')
+  }
 }
 function login(){
   $.ajax({
@@ -76,13 +90,38 @@ function register(){
       }
   });
 }
+function initialize() {
 
-$('#country').ddslick({
-    data: countriesData,
-    width: 285,
-    imagePosition: "left",
-    selectText: "Selecione um país para seu clube",
-    onSelected: function (data) {
-        console.log(data);
+  var styleArray = [
+    {
+      featureType: 'all',
+      stylers: [
+        { saturation: -80 }
+      ]
+    },{
+      featureType: 'road.arterial',
+      elementType: 'geometry',
+      stylers: [
+        { hue: '#00ffee' },
+        { saturation: 50 }
+      ]
+    },{
+      featureType: 'poi.business',
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'off' }
+      ]
     }
-});
+  ];
+
+  var mapOptions = {
+    zoom: 12,
+    center: new google.maps.LatLng(40.6743890, -73.9455),
+    styles: styleArray
+  };
+
+  var map = new google.maps.Map(document.getElementById('map'),
+    mapOptions);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);

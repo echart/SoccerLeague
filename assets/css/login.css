@@ -76,7 +76,7 @@ div.cadastro{
 	z-index:3;
 	width: 100%;
 	position: absolute;
-	top: 17em;
+	top: 15em;
 	left: 50%;
 	transform:translateX(-50%);
 	text-align: left;
@@ -208,9 +208,10 @@ input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
 	border: 1px solid #ccc;
 }
 select{
+	margin-left: 10px;
 	font-family: 'Exo 2','Open Sans';
 	padding: 0px 15px;
-	width: 102.5%;
+	width: 95%;
 	border: 1px solid #ccc;
 	color: #393e41;
 	font-size: 14px;
@@ -223,6 +224,7 @@ option{
 	padding: 12.5px 15px;
 	width: 100%;
 	color: #393e41;
+	border: 0;
 }
 textarea{
 	font-family: 'Exo 2','Open Sans';
@@ -241,6 +243,7 @@ textarea:focus{
 DIV LOGIN
 ============================*/
 div.login{
+	z-index: 2;
 	width: 100vw;
 	height: 0;
 	overflow: hidden;
@@ -251,23 +254,50 @@ div.login{
 	transition: height 0.8s;
 	color: #333;
 }
- @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
- div.login div:first-child{
+ div.login div.form{
 	margin: 0 auto;
 	margin-top: 75px;
 	width: 400px;
-	height: 400px;
+	max-height: 400px;
 	background-color: #f4f4f4;
 	border-radius: 3.5px;
+	padding: 0 20px 20px;
 }
-div.login div:first-child h1{
+div.login div.form h1{
   font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	padding: 20px;
 	text-align: center;
 }
-div.login div:first-child div.form-field a{
+div.login div.form div.form-field a{
 	margin-right: 10px;
 	color: #333;
 	text-decoration: none;
+}
+/*=============================
+signup
+================================*/
+div.signup{
+	background-color: #f7f7f7;
+	z-index: 3;
+	width: 100vw;
+	height: 0;
+	overflow: hidden;
+
+	/* Set our transitions up. */
+	-webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+	color: #333;
+}
+div.signup .grid-65{
+	padding: 0;
+}
+div.signup #map{
+	width: 100%;
+	height: 88.75vh;
+	background-color: #393e41;
+}
+div.signup h1{
+	margin-left: 7.5px;
 }

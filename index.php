@@ -26,23 +26,62 @@ $refeer= $_GET['refeer']?? NULL;
 </head>
 <body>
 	<main>
+		<div class='signup'>
+			<div class='grid-35'>
+				<h1>Crie uma equipe!</h1>
+				<form>
+					<div class='form-field'>
+						<label for='login-input'>Nome do clube:</label>
+						<input id='login-input' type='text' name='userpass' placeholder='Digite seu email'>
+					</div>
+					<div class='form-field'>
+						<label for='login-input'>Email:</label>
+						<input id='login-input' type='text' name='userpass' placeholder='Digite seu email'>
+					</div>
+					<div class='form-field'>
+						<label for='login-input'>Senha:</label>
+						<input id='login-input' name='userpass' type='password' placeholder='Digite sua senha'>
+					</div>
+					<div class='form-field'>
+						<label for='login-input'>Repetir senha:</label>
+						<input id='login-input' name='userpass' type='password' placeholder='Digite sua senha'>
+					</div>
+					<div class='form-field'>
+						<label for='login-input'>Selecione um país:</label>
+						<select class="" name="">
+							<option>Selecione um país</option>
+							<option value='1'>Brasil (Campeonato Brasileiro)</option>
+						</select>
+					</div>
+					<div class='form-field'>
+						<button type='button' >Cadastrar</button>
+					</div>
+				</form>
+			</div>
+			<div class='grid-65'>
+				<div id='map'></div>
+			</div>
+
+		</div>
 		<div class='login'>
-			<div>
+			<div class='form'>
 				<h1>Entrar</h1>
-				<div class='form-field'>
-					<label for='login-input'>Email:</label>
-					<input id='login-input' type='text' placeholder='Digite seu email'>
-				</div>
-				<div class='form-field'>
-					<label for='login-input'>Senha:</label>
-					<input id='login-input' type='password' placeholder='Digite sua senha'>
-				</div>
-				<div class='form-field'>
-					<button type='button'>Login</button>
-				</div>
-				<div class='form-field right'>
-					<a href=''>Esqueceu a senha?</a>
-				</div>
+				<form>
+					<div class='form-field'>
+						<label for='login-input'>Email:</label>
+						<input id='login-input' type='text' name='userpass' placeholder='Digite seu email'>
+					</div>
+					<div class='form-field'>
+						<label for='login-input'>Senha:</label>
+						<input id='login-input' name='userpass' type='password' placeholder='Digite sua senha'>
+					</div>
+					<div class='form-field'>
+						<button type='button' >Login</button>
+					</div>
+					<div class='form-field right'>
+						<a href=''>Esqueceu a senha?</a>
+					</div>
+				</form>
 			</div>
 		</div>
 		<header>
@@ -51,7 +90,7 @@ $refeer= $_GET['refeer']?? NULL;
 				<ul>
 					<li><a href=''>O que é?</a></li>
 					<li><a href=''>Regras</a></li>
-					<li><a href='' class='signup'>Cadastrar</a></li>
+					<li><a href='#'  onclick='callSignup()' class='signup'>Cadastrar</a></li>
 				</ul>
 			</nav>
 			<button onclick='callLogin()' class='btn-login'>Entrar</button>
@@ -62,7 +101,7 @@ $refeer= $_GET['refeer']?? NULL;
 			</video>
 			<div class="pattern"></div>
 			<div class='cadastro'>
-				<h3>Nós amamos futebol! <i class="football"></i></h3>
+				<h3>Nós amamos futebol! <i class="football"></i><i class="heart"></i></h3>
 				<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			</div>
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
@@ -74,28 +113,7 @@ $refeer= $_GET['refeer']?? NULL;
 	<link href="assets/css/grid.css" rel='stylesheet'>
 	<!-- JS -->
 	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>
-	<script>
-	$(document).ready(function(){
-		var video = document.querySelector("video");
-		video.addEventListener("ended", function(){
-			video.play();
-		});
-		if(document.body.clientWidth >= 900) {
-			$('video').attr('autoplay', true);
-			$('video').attr('preload', 'auto');
-		}
-	});
-
-	function callLogin(){
-		if($('.login').css('height')=='0px'){
-			$('.login').css('height','88.75vh');
-			$('.btn-login').html('Fechar');
-		}else{
-			$('.login').css('height','0px');
-			$('.btn-login').html('Entrar');
-		}
-	}
-	</script>
-
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4&signed_in=true"></script>
+	<script src='assets/js/home.js'></script>
 </body>
 </html>
