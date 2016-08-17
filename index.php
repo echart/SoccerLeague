@@ -29,22 +29,22 @@ $refeer= $_GET['refeer']?? NULL;
 		<div class='signup'>
 			<div class='grid-35'>
 				<h1>Crie uma equipe!</h1>
-				<form>
+				<form method='POST'>
 					<div class='form-field'>
 						<label for='login-input'>Nome do clube:</label>
-						<input id='login-input' type='text' name='userpass' placeholder='Digite seu email'>
+						<input type='text' name='userpass1' placeholder='Digite seu email'>
 					</div>
 					<div class='form-field'>
 						<label for='login-input'>Email:</label>
-						<input id='login-input' type='text' name='userpass' placeholder='Digite seu email'>
+						<input type='text' name='userpass1' placeholder='Digite seu email'>
 					</div>
 					<div class='form-field'>
 						<label for='login-input'>Senha:</label>
-						<input id='login-input' name='userpass' type='password' placeholder='Digite sua senha'>
+						<input name='userpass1' type='password' placeholder='Digite sua senha'>
 					</div>
 					<div class='form-field'>
 						<label for='login-input'>Repetir senha:</label>
-						<input id='login-input' name='userpass' type='password' placeholder='Digite sua senha'>
+						<input name='userpass1' type='password' placeholder='Digite sua senha'>
 					</div>
 					<div class='form-field'>
 						<label for='login-input'>Selecione um país:</label>
@@ -59,7 +59,7 @@ $refeer= $_GET['refeer']?? NULL;
 				</form>
 			</div>
 			<div class='grid-65'>
-				<div id='map'></div>
+				<div id='map'>loading map....</div>
 			</div>
 
 		</div>
@@ -69,14 +69,14 @@ $refeer= $_GET['refeer']?? NULL;
 				<form>
 					<div class='form-field'>
 						<label for='login-input'>Email:</label>
-						<input id='login-input' type='text' name='userpass' placeholder='Digite seu email'>
+						<input id='login-input' type='text' name='userlogin' placeholder='Digite seu email'>
 					</div>
 					<div class='form-field'>
-						<label for='login-input'>Senha:</label>
-						<input id='login-input' name='userpass' type='password' placeholder='Digite sua senha'>
+						<label for='pass-input'>Senha:</label>
+						<input id='pass-input' name='userpass' type='password' placeholder='Digite sua senha'>
 					</div>
 					<div class='form-field'>
-						<button type='button' >Login</button>
+						<button type='button' onclick='login()' >Login</button>
 					</div>
 					<div class='form-field right'>
 						<a href=''>Esqueceu a senha?</a>
@@ -105,6 +105,12 @@ $refeer= $_GET['refeer']?? NULL;
 				<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			</div>
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
+		</div>
+		<div class='bg-warning alert-bottom'>
+				<p>Jogo otimizado para resolução 1366x768. </p>
+		</div>
+		<div class='alert-top'>
+				<p>Erro ao realizar o login.</p>
 		</div>
 	</main>
 

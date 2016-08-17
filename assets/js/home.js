@@ -35,27 +35,41 @@ function login(){
   $.ajax({
       url: 'controllers/_login.php',
       method: 'POST',
-      dataType: 'JSON',
-      data: {login: $("input[name='userlogin']").val(), password:$("input[name='userpass']").val()},
-      beforeSend: function(){
-        $('.viewlogin .return').html('');
-        $('.viewlogin button').html('Carregando');
+      dataType: 'json',
+      data: {login: $("#login-input").val(), password:$("#pass-input").val()},
+      beforeSend: function(data){
+        $('.alert-top').removeClass('bg-warning white-text');
+        $('.alert-top').addClass('bg-white black-text');
+        console.log('carregando');
+        $('.alert-top').addClass('visible');
+        $('.alert-top p').html('Carregando');
       },
       success: function(data){
+        $('.alert-top').addClass('visible');
         $('.viewlogin button').html('Realizar login');
-        if(data.return=='denied'){
-        $('.viewlogin .return').html('<br>Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
-        }else{
-          $('.viewlogin .return').html('Sucesso, redirecionando...');
-          setTimeout(function(){
-            location.reload();
-          },1000);
+        console.log(data);
+
+        if(data.error!='undefined'){
+          $('.alert-top').removeClass('bg-white black-text');
+          $('.alert-top').addClass('bg-warning white-text');
+          $('.alert-top p').html('Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
+        }else if(data.success){
+          $('.alert-top').removeClass('bg-white black-text');
+          $('.alert-top').removeClass('bg-warning white-text');
+          $('.alert-top').addClass('bg-success white-text');
+          $('.alert-top p').html('Login realizado, redirecionando....');
+          // setTimeout(function(){
+          //   location.reload();
+          // },1000);
         }
       },
       error: function(data){
-        console.log(data.responseText);
-        $('.viewlogin button').html('Realizar login');
-        $('.viewlogin .return').html('');
+        console.log(data);
+        $('.alert-top').removeClass('bg-white black-text');
+        $('.alert-top').addClass('bg-warning white-text');
+
+        console.log('erro');
+        $('.alert-top p').html('Ocorreu um problema :( sorry)');
       }
   });
 }
