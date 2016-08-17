@@ -5,20 +5,22 @@ body{
 	overflow-x: hidden;
 	color: #393e41;
 	z-index: 10;
+	height: 100vh;
+	overflow-y: hidden;
 }
 header{
-	width: 100%;
+	width: 500px;
 	height: 10em;
-	z-index: 998;
+	z-index: 998999;
 	position: absolute;
 }
 header div.logo{
 	position: absolute;
-	top: 3em;
-	left:10%;
+	top: 1em;
+	left:5%;
 }
 header div.logo img{
-	width: 15em;
+	width: 12.5em;
 }
 
 
@@ -74,11 +76,12 @@ div.cadastro{
 	top: 17em;
 	left: 50%;
 	transform:translateX(-50%);
-	text-align: center;
+	text-align: left;
 	padding: 0px 1em;
 }
 div.cadastro h3,div.cadastro h4{
 	color: #fff;
+	padding-left: 150px;
 }
 
 .heart{
@@ -100,15 +103,15 @@ div.cadastro h3,div.cadastro h4{
 /*=================================
 Options
 ===================================*/
-div.options{
+header{
 	z-index: 9999;
-	position: absolute;
-	bottom: 0;
+	position: relative;
+	top: 0;
 	background-color: #222;
 	width: 100vw;
-	height: 100px
+	height: 5.5vw;
 }
-div.options .btn-login{
+header .btn-login{
 	position: absolute;
 	right: 0;
 	width: 200px;
@@ -119,31 +122,47 @@ div.options .btn-login{
 	font-size: 18px;
 	text-align: center;
 }
-div.options .btn-login:hover{
+header .btn-login:hover{
 	color: #333;
 	cursor: pointer;
 }
-div.options nav{
+header nav{
 	position: absolute;
-	padding-top: 25px;
+	right: 220px;
+	padding-top: 12.5px;
 }
-div.options nav ul{
+header nav ul{
 	font-family: 'Exo 2';
 	list-style: none;
 }
-div.options nav ul li{
+header nav ul li{
 	float: left;
 }
-div.options nav ul li a{
+header nav ul li a{
 	padding: 10px 20px;
 	color: #7F7E7E;
 	text-decoration: none;
+	margin: 5px;
 }
-div.options nav ul li a.signup{
+header nav ul li a.signup{
 	background-color: #333;
 	color: #7F7E7E;
 	border-radius: 2.5px;
 }
-div.options nav ul li a:hover{
+header nav ul li a:hover{
 	color: #fff;
+}
+
+
+/*==========================
+DIV LOGIN
+============================*/
+div.login{
+	height: 0;
+	overflow: hidden;
+
+	/* Set our transitions up. */
+	-webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
 }

@@ -25,16 +25,21 @@ $refeer= $_GET['refeer']?? NULL;
 
 </head>
 <body>
-	<header>
-		<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>
-		<!-- <nav>
-			<ul class='menu'>
-				<li><label onclick='expandLogin()' class='btn-login'>Login</label></li>
-			</ul>
-			<div class='menu-responsive'></div>
-		</nav> -->
-	</header>
 	<main>
+		<div class='login'>
+dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</div>
+		<header>
+			<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>
+			<nav>
+				<ul>
+					<li><a href=''>O que é?</a></li>
+					<li><a href=''>Regras</a></li>
+					<li><a href='' class='signup'>Cadastrar</a></li>
+				</ul>
+			</nav>
+			<button onclick='callLogin()' class='btn-login'>Entrar</button>
+		</header>
 		<div class='video'>
 			<video preload='none' loop="loop" muted>
 				<source src="assets/video/splash_home2.mp4" type="video/mp4">
@@ -45,15 +50,6 @@ $refeer= $_GET['refeer']?? NULL;
 				<h4>e nós vamos fazer o melhor jogo de gerenciamento de futebol, com você! Crie um clube e ajude no desenvolvimento.</h4>
 			</div>
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
-		</div>
-		<div class='options'>
-			<nav>
-				<ul>
-					<li><a href=''>Regras</a></li>
-					<li><a href='' class='signup'>Cadastrar</a></li>
-				</ul>
-			</nav>
-			<button class='btn-login'>Entrar</button>
 		</div>
 	</main>
 
@@ -73,6 +69,16 @@ $refeer= $_GET['refeer']?? NULL;
 			$('video').attr('preload', 'auto');
 		}
 	});
+
+	function callLogin(){
+		if($('.login').css('height')=='0px'){
+			$('.login').css('height','88.75vh');
+			$('.btn-login').html('Fechar');
+		}else{
+			$('.login').css('height','0px');
+			$('.btn-login').html('Entrar');
+		}
+	}
 	</script>
 
 </body>
