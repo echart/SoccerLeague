@@ -8,13 +8,12 @@ JsonOutput::jsonHeader();
 $email=$_POST['login'] ?? '';
 $pass=$_POST['password'] ?? '';
 
-echo 'ndskal: '.$email.$pass;
 $con=Connection::getInstance();
 $user=new Authentication();
 
 if($user->verifyLogin($email,$pass)){
 	$user->login();
-	echo JsonOutput::success(array('success','logged'));
+	echo JsonOutput::success(array('success'=>'logged'));
 }else{
 	echo JsonOutput::error('error','denied');
 }

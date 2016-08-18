@@ -19,6 +19,9 @@
 	RewriteRule ^api/players/([0-9-]+)$ handler.php?request=players&id=$1&method=json [NC,L]
 	RewriteRule ^api/players/([0-9-]+)/$ handler.php?request=players&id=$1&method=json [NC,L]
 
+	RewriteRule ^api/location/([a-z0-9-]+)$ handler.php?request=location&method=$1 [NC,L]
+	RewriteRule ^api/location/([a-z0-9-]+)/$ handler.php?request=location&method=$1 [NC,L]
+
 	RewriteRule ^api/tweets/([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=tweetapi&type=user&id=$2&method=$1&page=$3 [NC,L]
 	RewriteRule ^api/tweets/([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=tweetapi&type=user&id=$2&method=$1&page=$3 [NC,L]
 

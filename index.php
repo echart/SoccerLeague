@@ -29,29 +29,20 @@ $refeer= $_GET['refeer']?? NULL;
 		<div class='signup'>
 			<div class='grid-35'>
 				<h1>Crie uma equipe!</h1>
+				<h5>Escolha a localização do seu clube no mapa ao lado! A localização definirá que campeonatos seu clube irá jogar.</h5>
 				<form method='POST'>
 					<div class='form-field'>
-						<label for='login-input'>Nome do clube:</label>
-						<input type='text' name='userpass1' placeholder='Digite seu email'>
+						<label for='clubname'>Nome do clube:</label>
+						<input type='text' name='clubname' placeholder='Escolha um nome para seu clube'>
+						<input type='hidden' name='refeer' value='<?=$_GET['refeer'] ?? '';?>'>
 					</div>
 					<div class='form-field'>
-						<label for='login-input'>Email:</label>
-						<input type='text' name='userpass1' placeholder='Digite seu email'>
+						<label for='email'>Email:</label>
+						<input id='email' type='text' name='login' placeholder='Digite seu email'>
 					</div>
 					<div class='form-field'>
-						<label for='login-input'>Senha:</label>
-						<input name='userpass1' type='password' placeholder='Digite sua senha'>
-					</div>
-					<div class='form-field'>
-						<label for='login-input'>Repetir senha:</label>
-						<input name='userpass1' type='password' placeholder='Digite sua senha'>
-					</div>
-					<div class='form-field'>
-						<label for='login-input'>Selecione um país:</label>
-						<select class="" name="">
-							<option>Selecione um país</option>
-							<option value='1'>Brasil (Campeonato Brasileiro)</option>
-						</select>
+						<label for='userpass1'>Senha:</label>
+						<input name='userpass1' id='userpass1' type='password' placeholder='Digite sua senha'>
 					</div>
 					<div class='form-field'>
 						<button type='button' >Cadastrar</button>
@@ -107,7 +98,7 @@ $refeer= $_GET['refeer']?? NULL;
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
 		</div>
 		<div class='bg-warning alert-bottom'>
-				<p>Jogo otimizado para resolução 1366x768. </p>
+				<p>Jogo otimizado para resolução 1366x768, e localização compartilhada. </p>
 		</div>
 		<div class='alert-top'>
 				<p>Erro ao realizar o login.</p>

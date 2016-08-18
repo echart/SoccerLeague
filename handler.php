@@ -8,10 +8,11 @@
 		$con=Connection::getInstance();
 		$user=new Authentication();
 		$handler=new Handler();
-
-		if($user->verifyAuthentication()===false){
-			Authentication::homeRedirect();
-			exit; // if user isn't authenticated then redirect to frontpage;
+		if($request['request']!='location'){
+			if($user->verifyAuthentication()===false){
+				Authentication::homeRedirect();
+				exit; // if user isn't authenticated then redirect to frontpage;
+			}
 		}
 		$handler->parseURL($request);
 		$handler->loadController();
