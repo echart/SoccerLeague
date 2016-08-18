@@ -52,7 +52,16 @@ $refeer= $_GET['refeer']?? NULL;
 			<div class='grid-65'>
 				<div id='map'>loading map....</div>
 			</div>
-
+			<div class='infobox-wrapper'>
+				<div id='infowindow'>
+					<div class='logo'>
+						<img src='http://t.soccerleague.com.br/assets/img/logos/default.png' width="50px" height="50px">
+					</div>
+					<div class='description'>
+						<h3>Grêmio FBPA <small>[Willians Echart]</small></h3>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class='login'>
 			<div class='form'>
@@ -111,6 +120,7 @@ $refeer= $_GET['refeer']?? NULL;
 	<!-- JS -->
 	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4&signed_in=true"></script>
+	<script type="text/javascript" src="//rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
 	<script src='assets/js/home.js'></script>
 </body>
 </html>

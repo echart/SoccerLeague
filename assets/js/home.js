@@ -79,9 +79,6 @@ function login(){
   });
 }
 function register(){
-  if($('#country').data('ddslick').selectedData==null){
-    $('.viewsign .return').html('Ainda há dados a serem preenchidos.');
-  }
   $.post({
       url: 'controllers/_register.php',
       type: 'POST',
@@ -110,7 +107,9 @@ function register(){
   });
 }
 var map;
+var infobox;
 var clubMarker=null;
+var markers=[];
 var image = {
   url: 'assets/img/icons/football.png',
   // This marker is 20 pixels wide by 32 pixels high.
@@ -122,7 +121,7 @@ var image = {
 };
 function initialize() {
   var mapOptions = {
-    zoom: 12,
+    zoom: 15,
     center: new google.maps.LatLng(-16.00357573, -47.85644531),
     styles: [
       {
@@ -147,32 +146,38 @@ function initialize() {
     ]
   };
 
-  map = new google.maps.Map(document.getElementById('map'),
-    mapOptions);
-    var infoWindow = new google.maps.InfoWindow({map: map});
-    var geocoder = new google.maps.Geocoder;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        loadAllMarkers();
-        geocodeLatLng(geocoder,pos);
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibita maior interação entre os usuários, campeonatos regionais e etc...');
-        addMarker(pos,true);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    }
-
-    map.addListener('click', function(event) {
-      geocodeLatLng(geocoder,event.latLng);
-      addMarker(event.latLng, false);
+  map = new google.maps.Map(document.getElementById('map'),mapOptions);
+  var infoWindow = new google.maps.InfoWindow({map: map});
+  var geocoder = new google.maps.Geocoder;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      loadAllMarkers();
+      geocodeLatLng(geocoder,pos);
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibita maior interação entre os usuários, campeonatos regionais e etc...');
+      addMarker(pos,true);
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
     });
+  }
 
+  map.addListener('click', function(event) {
+    geocodeLatLng(geocoder,event.latLng);
+    addMarker(event.latLng, false);
+  });
+  infobox = new InfoBox({
+       content: document.getElementById("infowindow"),
+       disableAutoPan: false,
+       maxWidth: 310,
+       pixelOffset: new google.maps.Size(-140, 0),
+       zIndex:10,
+      closeBoxMargin: "12px 4px 2px 2px",
+  });
 }
 
 /*
@@ -193,6 +198,7 @@ function addMarker(location,flag) {
     map: map,
     icon: image
   });
+
   if(clubMarker!=null){
     clubMarker.setMap(null);
   }
@@ -218,14 +224,26 @@ load all markers
 */
 function loadAllMarkers(){
   $.getJSON("api/location/all",function(response){
-    console.log(response.data.length);
+    console.log(response.data);
     for(var i=0;i<response.data.length;i++){
       var pos={lat:Number(response.data[i].latitude),lng:Number(response.data[i].longitude)}
       console.log(pos);
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
-        icon: image
+        icon: image,
+        id: response.data[i].id_club
+      });
+      markers[i]=marker;
+      google.maps.event.addListener(markers[i], 'click', function() {
+        infobox.open(map, this);
+        console.log(this.id);
+        $.getJSON("club/"+this.id+"/api",function(response){
+          console.log(response);
+          $('#infowindow .description').html("<h3>"+response.data.name+" <small>["+response.data.manager+"]</small></h3>");
+          $('#infowindow .logo img').attr('src','assets/img/logos/'+response.data.logo);
+        });
+        map.panTo(pos);
       });
     }
   });

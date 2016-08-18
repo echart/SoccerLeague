@@ -8,7 +8,7 @@
 		$con=Connection::getInstance();
 		$user=new Authentication();
 		$handler=new Handler();
-		if($request['request']!='location'){
+		if($request['request']!='location' && $request['subrequest']!='api'){
 			if($user->verifyAuthentication()===false){
 				Authentication::homeRedirect();
 				exit; // if user isn't authenticated then redirect to frontpage;

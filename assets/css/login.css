@@ -23,6 +23,44 @@ header div.logo{
 header div.logo img{
 	width: 12.5em;
 }
+.infobox-wrapper {
+    display:block;
+}
+#infowindow{
+	position: relative;
+	width: 250px;
+	height: 50px;
+	/*background: rgba(0,0,0,1);*/
+	z-index: -1;
+}
+#infowindow .logo{
+	width: 50px;
+	height: 50px;
+	border-radius: 100px;
+	float: left;
+	overflow: hidden;
+	z-index: 3;
+}
+#infowindow .description{
+	/*position: absolute;
+	right: 0;*/
+	max-width: 300px;
+	height: 47.5px;
+	background-color: #5FAD56;
+	margin: 20px 15px;
+	 z-index: -1;
+	color: #fff;
+	font-size: 12px;
+	padding-top: 2.5px;
+	padding-left: 40px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+#infowindow .description p{
+	margin: 2px;
+}
 /*=============================
 colors
 ==============================*/

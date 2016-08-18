@@ -29,6 +29,14 @@ if(isset($this->request['subrequest'])){
         $i++;
       }
     }
+  }else if($this->request['subrequest']=='api'){
+    $this->data['api']['name']=Club::getClubNameById($club);
+    $info=ClubInfo::get($this->request['id']);
+    $this->data['api']['manager']=$info['manager'];
+    $this->data['api']['logo']=$info['logo'];
+    JsonOutput::jsonHeader();
+    echo JsonOutput::success($this->data['api']);
+    exit;
   }else if($this->request['subrequest']=='history'){
 
   }else if($this->request['subrequest']=='friends'){
