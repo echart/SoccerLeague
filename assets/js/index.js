@@ -210,10 +210,9 @@ load all markers
 */
 function loadAllMarkers(){
   $.getJSON("api/location/all",function(response){
-    console.table(response.data);
+    // console.table(response.data);
     for(var i=0;i<response.data.length;i++){
       var pos={lat:Number(response.data[i].latitude),lng:Number(response.data[i].longitude)}
-      // console.log(response.data[i]);
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
@@ -225,13 +224,9 @@ function loadAllMarkers(){
       });
       markers[i]=marker;
       google.maps.event.addListener(marker, 'click', function() {
-        if(this.logo==null){this.logo='default.png';}
-        if(this.manager==null){this.manager='';}
-        var logo = document.getElementById('infowindow').children[0];
-        var description = document.getElementById('infowindow').children[1];
-        console.log(description);
-        logo.innerHTML= "<img width='50px' height='50px' src='assets/img/logos/"+this.logo+"'>";
-        description.innerHTML="<h3>"+this.clubname+" <small>[ "+this.manager+" ]</small></h3>";
+        if(this.logo=='null') this.logo='default.png';
+        infobox.content_.children[0].innerHTML="<img width='50px' height='50px' src='assets/img/logos/"+this.logo+"'>";
+        infobox.content_.children[1].innerHTML="<h3>"+this.clubname+" <small>[ "+this.manager+" ]</small></h3>";
         infobox.open(map, this);
         map.panTo(pos);
       });
