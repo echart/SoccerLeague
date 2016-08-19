@@ -98,30 +98,38 @@ function opentweet(id_tweet,page){
 
 function composeTweet(id){
   url='../api/tweet/compose/';
-  $.ajax({
-    url:url,
-    method: 'POST',
-    data: {tweet: $('#newtweet').val()},
-    beforeSend: function(){
-      $('span.arrow').addClass('load');
-      $('span.load').removeClass('arrow');
-    },
-    success: function(data){
-      console.log(data);
-      $('span.load').addClass('arrow');
-      $('span.arrow').removeClass('load');
-      page=1;
-      loadtweets();
-      $('#newtweet').val('');
-      $('#newtweet').blur();
-    },
-    error: function(data){
-      console.log('error');
-      console.log(data);
-      $('span.load').addClass('arrow');
-      $('span.arrow').removeClass('load');
-    }
-  });
+  if($('#newtweet').val()==''){
+    $('span.arrow').addClass('load');
+    $('span.load').removeClass('arrow');
+    newAlert('info','Você deve escrever alguma coisa para dizer aos seus amiguinhos :D',5000,'top');
+    $('span.load').addClass('arrow');
+    $('span.arrow').removeClass('load');
+  }else{
+    $.ajax({
+      url:url,
+      method: 'POST',
+      data: {tweet: $('#newtweet').val()},
+      beforeSend: function(){
+        $('span.arrow').addClass('load');
+        $('span.load').removeClass('arrow');
+      },
+      success: function(data){
+        console.log(data);
+        $('span.load').addClass('arrow');
+        $('span.arrow').removeClass('load');
+        page=1;
+        loadtweets();
+        $('#newtweet').val('');
+        $('#newtweet').blur();
+      },
+      error: function(data){
+        console.log('error');
+        console.log(data);
+        $('span.load').addClass('arrow');
+        $('span.arrow').removeClass('load');
+      }
+    });
+  }
 }
 function deletetweet(id_tweet){
   if(confirm('Delete?')){
