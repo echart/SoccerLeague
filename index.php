@@ -35,6 +35,7 @@ $refeer= $_GET['refeer']?? NULL;
 						<label for='clubname'>Nome do clube:</label>
 						<input type='text' name='clubname' placeholder='Escolha um nome para seu clube'>
 						<input type='hidden' name='refeer' value='<?=$_GET['refeer'] ?? '';?>'>
+						<input type='hidden' name='country' value=''>
 					</div>
 					<div class='form-field'>
 						<label for='email'>Email:</label>
@@ -45,7 +46,7 @@ $refeer= $_GET['refeer']?? NULL;
 						<input name='userpass1' id='userpass1' type='password' placeholder='Digite sua senha'>
 					</div>
 					<div class='form-field'>
-						<button type='button' >Cadastrar</button>
+						<button type='button' onclick='register()'>Cadastrar</button>
 					</div>
 				</form>
 			</div>
@@ -55,7 +56,7 @@ $refeer= $_GET['refeer']?? NULL;
 			<div class='infobox-wrapper'>
 				<div id='infowindow'>
 					<div class='logo'>
-						<img src='http://t.soccerleague.com.br/assets/img/logos/default.png' width="50px" height="50px">
+						<img src='' width="50px" height="50px">
 					</div>
 					<div class='description'>
 						<h3>Grêmio FBPA <small>[Willians Echart]</small></h3>
@@ -106,12 +107,10 @@ $refeer= $_GET['refeer']?? NULL;
 			</div>
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
 		</div>
-		<div class='bg-warning alert-bottom'>
+		<div class='alert visible alert-bottom alert-warning'>
 				<p>Jogo otimizado para resolução 1366x768, e localização compartilhada. </p>
 		</div>
-		<div class='alert-top'>
-				<p>Erro ao realizar o login.</p>
-		</div>
+		<div id='alert' class='alert'></div>
 	</main>
 
 	<!-- CSS -->
@@ -121,6 +120,7 @@ $refeer= $_GET['refeer']?? NULL;
 	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4&signed_in=true"></script>
 	<script type="text/javascript" src="//rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
-	<script src='assets/js/home.js'></script>
+	<script src='assets/js/alert.js'></script>
+	<script src='assets/js/index.js'></script>
 </body>
 </html>

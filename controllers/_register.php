@@ -6,7 +6,7 @@ require_once('../class/Club.php');
 require_once('../class/JsonOutput.php');
 require_once('../class/League.php');
 require_once('../class/Competition.php');
-
+require_once('../helpers/__country.php');
 try{
 	/**
 	 * DATA VALIDATION
@@ -18,11 +18,10 @@ try{
 	if($_POST['refeer']!='') $refeer=$_POST['refeer'];else $refeer=NULL;
 	$email=$_POST['login'] ?? '';
 	$pass=$_POST['password'] ?? '';
-	$pass2=$_POST['rpassword'] ?? '';
 	$clubname=$_POST['clubname'] ?? '';
 	$country=$_POST['country'] ?? '';
 
-	Validation::validate($pass)->isNotEmpty()->isEqual($pass2);
+	Validation::validate($pass)->isNotEmpty();
 	Validation::validate($email)->isNotEmpty();
 	Validation::validate($clubname)->isNotEmpty()->minLenght(8);
 	Validation::validate($country)->isNotEmpty();
@@ -42,6 +41,7 @@ try{
 	JsonOutput::jsonHeader();
 	$con=Connection::getInstance();
 	$account=new Account();
+	$country=getCountryID(strtolower($country));
 	/* set email */
 	$account->setEmail($email);
 	/* verify if email already exists in database*/

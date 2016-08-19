@@ -38,30 +38,18 @@ function login(){
       dataType: 'json',
       data: {login: $("#login-input").val(), password:$("#pass-input").val()},
       beforeSend: function(data){
-        $('.alert-top').removeClass('bg-warning white-text');
-        $('.alert-top').addClass('bg-white black-text');
         console.log('carregando');
-        $('.alert-top').addClass('visible');
-        $('.alert-top p').html('Carregando');
+        newAlert('info','Carregando...',2000,'top');
       },
       success: function(data){
-        $('.alert-top').addClass('visible');
-        $('.viewlogin button').html('Realizar login');
-        console.log(data);
-
         if(typeof data.error != 'undefined'){
           if(data.error.message=='denied'){
-            $('.alert-top').removeClass('bg-white black-text');
-            $('.alert-top').addClass('bg-warning white-text');
-            $('.alert-top p').html('Parece que os dados apresentados não conferem, você não pode entrar no seu clube');
+            newAlert('warning','Parece que os dados apresentados não conferem, você não pode entrar no seu clube',10000,'top');
           }
         }
         if(typeof data.data.success != 'undefined'){
           if(data.data.success=='logged'){
-            $('.alert-top').removeClass('bg-white black-text');
-            $('.alert-top').removeClass('bg-warning white-text');
-            $('.alert-top').addClass('bg-success white-text');
-            $('.alert-top p').html('Login realizado, redirecionando....');
+            newAlert('success','Login realizado, redirecionando....',2000,'top');
             setTimeout(function(){
               location.reload();
             },1000);
@@ -69,42 +57,40 @@ function login(){
         }
       },
       error: function(data){
-        console.log(data);
-        $('.alert-top').removeClass('bg-white black-text');
-        $('.alert-top').addClass('bg-warning white-text');
-
-        console.log('erro');
-        $('.alert-top p').html('Ocorreu um problema :( sorry)');
+        newAlert('warning','Ocorreu um problema :( sorry)',10000,'top');
       }
   });
 }
 function register(){
-  $.post({
+  var country=$("input[name='country']").val();
+  var login=$("input[name='login']").val();
+  var password=$("input[name='userpass1']").val();
+  var clubname=$("input[name='clubname']").val();
+  if(country=='' || login=='' || password=='' || clubname==''){
+    newAlert('danger','Preencha todos os campos antes de avançar',2000,'top');
+  }else{
+    $.ajax({
       url: 'controllers/_register.php',
       type: 'POST',
       dataType: 'json',
-      data: {refeer: $("input[name='refeer']").val(),login: $("input[name='login']").val(), password:$("input[name='userpass1']").val(),clubname:$("input[name='clubname']").val()},
+      data: {country: $("input[name='country']").val(),refeer: $("input[name='refeer']").val(),login: $("input[name='login']").val(), password:$("input[name='userpass1']").val(),clubname:$("input[name='clubname']").val()},
       beforeSend: function(data){
-        $('.viewsign .return').html('');
-        $('.viewsign button').html('Carregando');
+        newAlert('info','Carregando...',2000,'top');
       },
       success: function(data){
+        console.log(data);
         if(typeof data.error != 'undefined'){
-          response=data.error.code;
-          console.log(data);
+          newAlert('warning','Houve um erro ao tentar cadastrar, verifique os dados e tente novamente.',2000,'top');
         }else{
-          response='Seja bem vindo ao SoccerLeague, seu clube ' + data.data.clubname + ' foi criado com sucesso e os seus jogadores o aguardam para a primeira conversa!';
-          console.log(data);
+          newAlert('success','Seja bem vindo ao SoccerLeague, seu clube ' + data.data.clubname + ' foi criado com sucesso e os seus jogadores o aguardam para a primeira conversa!',20000,'top');
         }
-        $('.viewsign button').html('Criar clube');
-        $('.viewsign .return').html(response);
       },
       error: function(data){
         console.log(data);
-        $('.viewsign button').html('Criar clube');
-        $('.viewsign .return').html('Estamos enfrentando um problema com o cadastro, tente novamente daqui a pouco!');
+        newAlert('warning','O servidor está com um pouco de dificuldade pra lidar com novos cadastros. Tente mais tarde.',2000,'top');
       }
-  });
+    });
+  }
 }
 var map;
 var infobox;
@@ -213,7 +199,7 @@ function geocodeLatLng(geocoder, pos) {
   geocoder.geocode({'location': latlng}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       if (results[1]) {
-        console.log(results[results.length-1].address_components[0].short_name);
+        $("input[name='country']").val(results[results.length-1].address_components[0].short_name);
       }
     }
   });
@@ -224,30 +210,33 @@ load all markers
 */
 function loadAllMarkers(){
   $.getJSON("api/location/all",function(response){
-    console.log(response.data);
+    console.table(response.data);
     for(var i=0;i<response.data.length;i++){
       var pos={lat:Number(response.data[i].latitude),lng:Number(response.data[i].longitude)}
-      console.log(pos);
+      // console.log(response.data[i]);
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
         icon: image,
-        id: response.data[i].id_club
+        id: response.data[i].id_club,
+        clubname: response.data[i].clubname,
+        manager: response.data[i].manager,
+        logo: response.data[i].logo
       });
       markers[i]=marker;
-      google.maps.event.addListener(markers[i], 'click', function() {
+      google.maps.event.addListener(marker, 'click', function() {
+        if(this.logo==null){this.logo='default.png';}
+        if(this.manager==null){this.manager='';}
+        var logo = document.getElementById('infowindow').children[0];
+        var description = document.getElementById('infowindow').children[1];
+        console.log(description);
+        logo.innerHTML= "<img width='50px' height='50px' src='assets/img/logos/"+this.logo+"'>";
+        description.innerHTML="<h3>"+this.clubname+" <small>[ "+this.manager+" ]</small></h3>";
         infobox.open(map, this);
-        console.log(this.id);
-        $.getJSON("club/"+this.id+"/api",function(response){
-          console.log(response);
-          $('#infowindow .description').html("<h3>"+response.data.name+" <small>["+response.data.manager+"]</small></h3>");
-          $('#infowindow .logo img').attr('src','assets/img/logos/'+response.data.logo);
-        });
         map.panTo(pos);
       });
     }
   });
 }
-
 /* initialize map*/
 google.maps.event.addDomListener(window, 'load', initialize);

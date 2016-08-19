@@ -37,6 +37,50 @@ div.content{
 	overflow: hidden;
 }
 /*=============================
+Alerts
+==============================*/
+.visible{
+	display: block !important;
+}
+.alert{
+	z-index: 9;
+	display: none;
+	width: 100vw;
+	padding: 10px;
+	font-family: 'Exo 2';
+}
+.alert p{
+	text-align: center;
+}
+.alert-bottom{
+	position: absolute;
+	bottom: 0px;
+}
+.alert-top{
+	position: absolute;
+	top: 0;
+}
+.alert-info{
+	background-color: #f4f4f4;
+	color: #393e41;
+}
+.alert-warning{
+	background-color: #b44230;
+	color: #fff;
+}
+.alert-success{
+	background-color: #5fad56;
+	color: #fff;
+}
+.alert-danger{
+	background-color: #FF9200;
+	color: #393e41;
+}
+.alert-dark{
+	background-color: #393e41;
+	color: #f4f4f4;
+}
+/*=============================
 Markers
 ==============================*/
 span.pro-marker{
