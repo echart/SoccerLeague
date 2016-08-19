@@ -66,30 +66,34 @@ function register(){
   var login=$("input[name='login']").val();
   var password=$("input[name='userpass1']").val();
   var clubname=$("input[name='clubname']").val();
-  if(country=='' || login=='' || password=='' || clubname==''){
-    newAlert('danger','Preencha todos os campos antes de avançar',2000,'top');
+  if(country=='BR'){
+    newAlert('danger','Por enquanto, contamos apenas com a possibilidade de escolha dentro do Brasil',10000,'top');
   }else{
-    $.ajax({
-      url: 'controllers/_register.php',
-      type: 'POST',
-      dataType: 'json',
-      data: {country: $("input[name='country']").val(),refeer: $("input[name='refeer']").val(),login: $("input[name='login']").val(), password:$("input[name='userpass1']").val(),clubname:$("input[name='clubname']").val()},
-      beforeSend: function(data){
-        newAlert('info','Carregando...',2000,'top');
-      },
-      success: function(data){
-        console.log(data);
-        if(typeof data.error != 'undefined'){
-          newAlert('warning','Houve um erro ao tentar cadastrar, verifique os dados e tente novamente.',2000,'top');
-        }else{
-          newAlert('success','Seja bem vindo ao SoccerLeague, seu clube ' + data.data.clubname + ' foi criado com sucesso e os seus jogadores o aguardam para a primeira conversa!',20000,'top');
+    if(country=='' || login=='' || password=='' || clubname==''){
+      newAlert('danger','Preencha todos os campos antes de avançar',2000,'top');
+    }else{
+      $.ajax({
+        url: 'controllers/_register.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {country: $("input[name='country']").val(),refeer: $("input[name='refeer']").val(),login: $("input[name='login']").val(), password:$("input[name='userpass1']").val(),clubname:$("input[name='clubname']").val()},
+        beforeSend: function(data){
+          newAlert('info','Carregando...',2000,'top');
+        },
+        success: function(data){
+          console.log(data);
+          if(typeof data.error != 'undefined'){
+            newAlert('warning','Houve um erro ao tentar cadastrar, verifique os dados e tente novamente.',2000,'top');
+          }else{
+            newAlert('success','Seja bem vindo ao SoccerLeague, seu clube ' + data.data.clubname + ' foi criado com sucesso e os seus jogadores o aguardam para a primeira conversa!',20000,'top');
+          }
+        },
+        error: function(data){
+          console.log(data);
+          newAlert('warning','O servidor está com um pouco de dificuldade pra lidar com novos cadastros. Tente mais tarde.',2000,'top');
         }
-      },
-      error: function(data){
-        console.log(data);
-        newAlert('warning','O servidor está com um pouco de dificuldade pra lidar com novos cadastros. Tente mais tarde.',2000,'top');
-      }
-    });
+      });
+    }
   }
 }
 var map;
@@ -199,6 +203,9 @@ function geocodeLatLng(geocoder, pos) {
   geocoder.geocode({'location': latlng}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       if (results[1]) {
+        if(results[results.length-1].address_components[0].short_name!='BR'){
+          newAlert('danger','Por enquanto, contamos apenas com a possibilidade de escolha dentro do Brasil',10000,'top');
+        }
         $("input[name='country']").val(results[results.length-1].address_components[0].short_name);
       }
     }
