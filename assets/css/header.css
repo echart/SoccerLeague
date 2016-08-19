@@ -5,6 +5,9 @@ header{
 	z-index: 3;
 	background-color: #5FAD56;
 }
+header nav ul.small{
+	left: 20px !important;
+}
 header ul.submenu{
 	list-style: none;
 	display: block;
@@ -53,6 +56,20 @@ header nav .options:hover{
 }
 header nav a{}
 
+aside div.small{
+	width: 65px !important;
+	transition: 0.5s width;
+}
+aside div.small div.logo{
+	height: 60px !important;
+	background-color: #393e41 !important;
+}
+aside div.small div.logo i{
+	background-image: url(../img/icon2.png) !important;
+	background-size: 50px !important;
+	left: 7.5px !important;
+	top: 7.5px !important;
+}
 div.menu-sidebar div.logo{
 	width: 100%;
 	height: 6.5rem;
@@ -189,6 +206,10 @@ div.menu-sidebar ul.menu a.account i{
 }
 div.menu-sidebar ul.menu a.logoff i{
 	background: url(../img/icons/logoff.png) no-repeat;
+	background-size: 20px;
+}
+div.menu-sidebar ul.menu a.setting i{
+	background: url(../img/icons/settings.png) no-repeat;
 	background-size: 20px;
 }
 

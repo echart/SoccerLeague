@@ -28,6 +28,8 @@ if(isset($this->request['id'])){
   $this->data['player']=$player->loadPlayerInfo($id_player);
   $this->data['title']= $this->data['player']['name'] . ' - SoccerLeague';
 }else{
+  $this->addJSFile('playerPageWidth.js');
+  $this->addCSSFile('players.css');
   $id_club=$_SESSION['SL_account'];
   $this->data['title']='Players';
   $this->data['clubname']='Plantel de ' . Club::getClubNameById($_SESSION['SL_club']);
