@@ -61,7 +61,7 @@ $menu=array('home'=>array(
 				<li><a class='transfer' href=""><i></i><span>Mercado</span></a></li>
 				<li><a class='community' href=""><i></i><span>Comunidade</span></a></li>
 				<li><a class='pro border' href=""><i></i><span>PRO</span><span class='qtd'><?=$account->getProDays();?> dias</span></a></li>
-				<li><a class='logoff' href="<?=$this->data['tree']?>logout/"><span>Opções</span></a></li>
+				<li><a class='setting' href="<?=$this->data['tree']?>logout/"><i></i><span>Opções</span></a></li>
 				<li><a class='logoff border' href="<?=$this->data['tree']?>logout/"><i></i><span>Sair</span></a></li>
 			</ul>
 		</nav>

@@ -26,3 +26,4 @@ error_reporting(E_WARNING);
 	</script>
 </head>
 <body>
+<div id='alert' class='alert'></div>
