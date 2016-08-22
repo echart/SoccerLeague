@@ -23,12 +23,12 @@ class Account{
 	private $email;
 	private $password;
 	private $refeer;
-
+	public $timezone;
 	public function __construct($id=''){
 		$this->id_account=$id;
 
 		if($this->id_account!=''){
-			$query=Connection::getInstance()->connect()->prepare("SELECT email, refeer, slvip, language FROM account inner join account_data using(id_account) where id_account=:id");
+			$query=Connection::getInstance()->connect()->prepare("SELECT email, refeer, slvip, language,password,timezone FROM account inner join account_data using(id_account) where id_account=:id");
 			$query->bindParam(':id',$this->id_account);
 			$query->execute();
 
@@ -40,6 +40,8 @@ class Account{
 			$this->refeer=$data->refeer;
 			$this->language=$data->language;
 			$this->_prodays=$data->slvip;
+			$this->password=$data->password;
+			$this->timezone=$data->timezone;
 
 		}else{
 			$this->language='en_US';
@@ -72,7 +74,10 @@ class Account{
 		return $this->_prodays;
 	}
 	public function setPassword($p){
-		$this->password=$p;
+		$this->password=password_hash($p, PASSWORD_BCRYPT, array('cost' => 10));
+	}
+	public function setTimezone($t){
+		$this->timezone=$t;
 	}
 	public function setLanguage($l){
 		$this->language=$l;
@@ -87,7 +92,13 @@ class Account{
 			$query->bindParam(':password',$this->password);
 			$query->bindParam(':id_account',$this->id_account);
 
-			if($query->execute()) return true; else return false;
+			$query2= Connection::getInstance()->connect()->prepare("UPDATE account_data SET language=:language,timezone=:timezone where id_account=:id_account");
+			$query2->bindParam(':language',$this->language);
+			$query2->bindParam(':timezone',$this->timezone);
+			$query2->bindParam(':id_account',$this->id_account);
+
+
+			if($query->execute() and $query2->execute()) return true; else return false;
 
 		}catch(PDOException $e){
 			echo $e->getMessage();
