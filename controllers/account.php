@@ -2,6 +2,10 @@
 $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
 $this->data['title']='Opções';
 $this->data['menu']='options';
+$this->data['submenu']=0;
+$this->admin = new Admin($_SESSION['SL_account']);
+$this->isAdmin=$this->admin->isAdmin();
+
 if(isset($this->request['subrequest'])){
   switch ($this->request['subrequest']) {
     case 'save':

@@ -3,6 +3,8 @@ require_once('helpers/__country.php');
 require_once('helpers/__league.php');
 $this->data['menu']='league';
 $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
+$this->admin = new Admin($_SESSION['SL_account']);
+$this->isAdmin=$this->admin->isAdmin();
 
 $division = $this->request['div'] ?? $_SESSION['SL_div'];
 $group = $this->request['group'] ?? $_SESSION['SL_group'];
