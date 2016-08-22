@@ -4,7 +4,6 @@
 		define('SEASON',1);
 		require_once('helpers/__autoload.php');
 		$request = ($_GET ?? array('request'=>'home'));
-
 		$con=Connection::getInstance();
 		$user=new Authentication();
 		$handler=new Handler();

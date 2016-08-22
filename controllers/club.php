@@ -2,6 +2,8 @@
 $this->data['menu']='club';
 $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
 $club = $this->request['id'] ?? $_SESSION['SL_club'];
+$this->admin = new Admin($_SESSION['SL_account']);
+$this->isAdmin=$this->admin->isAdmin();
 /**
  * IF ID ISNT SET IN URL, SET WITH club session.
  */
@@ -215,7 +217,9 @@ if(isset($this->request['subrequest'])){
   /**
    * GET CLUB INFO
    */
+  $last = new Club($this->request['id']);
   $this->data['clubinfo']=ClubInfo::get($club);
+  $this->data['clubinfo']['lastlogin']=$last->lastlogin();
   if((!isset($this->data['clubinfo']['logo'])) or $this->data['clubinfo']['logo']=='null'){
     $this->data['clubinfo']['logo']='default.png';
   }
@@ -251,16 +255,26 @@ if(isset($this->request['subrequest'])){
    * MAKE THE ACTION AND TEXT FOR BUDDY BUTTON;
    */
   if(Buddy::isPending($_SESSION['SL_club'],$club)){
-    $this->data['button']['friend']['text']='Solicitação Pendente';
-    $this->data['button']['friend']['action']='unMakeBuddy';
+    $button['friend']['text']='Solicitação Pendente';
+    $button['friend']['action']='unMakeBuddy';
   }else if(Buddy::isPending($club,$_SESSION['SL_club'])){
-    $this->data['button']['friend']['text']='Aceitar amigo';
-    $this->data['button']['friend']['action']='aproval';
+    $button['friend']['text']='Aceitar amigo';
+    $button['friend']['action']='aproval';
   }else if(Buddy::isMyFriend($_SESSION['SL_club'],$club) or Buddy::isMyFriend($club,$_SESSION['SL_club'])){
-    $this->data['button']['friend']['text']='Desfazer amizade';
-    $this->data['button']['friend']['action']='unbuddy';
+    $button['friend']['text']='Desfazer amizade';
+    $button['friend']['action']='unbuddy';
   }else{
-    $this->data['button']['friend']['text']='Fazer novo amigo';
-    $this->data['button']['friend']['action']='request';
+    $button['friend']['text']='Fazer novo amigo';
+    $button['friend']['action']='request';
   }
+  if($this->request['id']!=$_SESSION['SL_club']){
+    $this->data['button'][]="<button class='btn btn-border letter-small' onclick=\"buddy(this,'".$button['friend']['action']."','".$_SESSION['SL_club']."','".$this->request['id']."')\">".$button['friend']['text']."</button>";
+    $this->data['button'][]="<button class='btn btn-border letter-small'>Mensagem</button>";
+  }else{
+    $this->data['button'][]="<button onclick='window.location.href=\"".$this->data['tree']."club/".$_SESSION['SL_club']."/edit\"' class='btn btn-border letter-small'>Alterar informações do clube</button>";
+  }
+  if($this->isAdmin==true){
+    $this->data['button'][]="<button class='btn btn-border letter-small'>Banir</button>";
+  }
+
 }

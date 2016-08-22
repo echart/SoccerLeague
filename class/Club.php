@@ -15,16 +15,23 @@ class Club{
 
 		if($club!=''){
 			$this->id_club=$club;
-			$query=Connection::getInstance()->connect()->prepare("SELECT * from club where id_club=:id_club LIMIT 1");
+			$query=Connection::getInstance()->connect()->prepare("SELECT * from club inner join club_account using (id_club) where id_club=:id_club LIMIT 1");
 			$query->bindParam(':id_club', $this->id_club);
 			$query->execute();
 			$data=$query->fetch(PDO::FETCH_OBJ);
 			$this->clubname=$data->clubname;
-			$this->club_nickname=$data->nickname;
 			$this->createdate=$data->createdate;
 			$this->status=$data->status;
 			$this->country=$data->id_country;
+			$this->id_account=$data->id_account;
 		}
+	}
+	public function lastLogin(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT startdate from session where id_account=:id_account ORDER BY id_session DESC LIMIT 1");
+		$query->bindParam(':id_account', $this->id_account);
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_ASSOC);
+		return $data['startdate'];
 	}
 	public static function getClubNameById($id_club){
 		$query=Connection::getInstance()->connect()->prepare("SELECT clubname from club where id_club=:id_club LIMIT 1");

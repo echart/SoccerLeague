@@ -36,18 +36,15 @@
 						<li><strong>Estádio:</strong> <?=$this->data['clubinfo']['stadium']?></li>
 						<li><strong>Torcida:</strong> <?=$this->data['clubinfo']['fansname']?></li>
 						<li><strong>Sócios:</strong> <?=$this->data['clubinfo']['fans']?></li>
+						<li><strong>Último login:</strong> <?=$this->data['clubinfo']['lastlogin']?></li>
 					</ul>
 				</div>
 				<div class='options right'>
 					<?
-					if($this->request['id']!=$_SESSION['SL_club']){
+					foreach ($this->data['button'] as $key => $value) {
+						echo $value . ' ';
+					}
 					?>
-					<button class='btn btn-border letter-small' onclick="buddy(this,'<?=$this->data['button']['friend']['action'];?>','<?=$_SESSION['SL_club']?>','<?=$this->request['id']?>')"><?=$this->data['button']['friend']['text'];?></button>
-					<button class='btn btn-border letter-small'>Mensagem</button>
-					<button class='btn btn-border letter-small'>Banir</button>
-					<?}else{?>
-						<button onclick='window.location.href="<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/edit"' class='btn btn-border letter-small'>Alterar informações do clube</button>
-					<?}?>
 				</div>
 			</div>
 		</div>

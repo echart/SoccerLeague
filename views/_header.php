@@ -70,7 +70,9 @@ $menu=array('home'=>array(
 				<!-- <li><a class='community' href=""><i></i><span>Comunidade</span></a></li> -->
 				<li><a class='pro border' href=""><i></i><span>PRO</span><span class='qtd'><?=$account->getProDays();?> dias</span></a></li>
 				<li><a class='<? echo($this->data['menu']=='options') ? 'selected' : '' ?> setting' href="<?=$this->data['tree']?>account/"><i></i><span>Opções</span></a></li>
-				<!-- <li><a class='<? echo($this->data['menu']=='admin') ? 'selected' : '' ?> admin' href='<?=$this->data['tree']?>admin/'><i></i><span>Administrar</span></a></li> -->
+				<? if($this->isAdmin==true){?>
+					<li><a class='<? echo($this->data['menu']=='admin') ? 'selected' : '' ?> admin' href='<?=$this->data['tree']?>admin/'><i></i><span>Administrar</span></a></li>
+				<?}?>
 				<li><a class='logoff border' href="<?=$this->data['tree']?>logout/"><i></i><span>Sair</span></a></li>
 			</ul>
 		</nav>
