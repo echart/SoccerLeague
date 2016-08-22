@@ -1,6 +1,7 @@
 <?
 $this->data['menu']='club';
 $this->data['tree']=__rootpath($_SERVER['REDIRECT_URL']);
+include('helpers/__country.php');
 $club = $this->request['id'] ?? $_SESSION['SL_club'];
 $this->admin = new Admin($_SESSION['SL_account']);
 $this->isAdmin=$this->admin->isAdmin();
@@ -238,6 +239,7 @@ if(isset($this->request['subrequest'])){
   $this->data['leagueURL']='league/'.$data['abbreviation'].'/'.$data['division'].'/'.$data['divgroup'];
   $this->data['clubinfo']['fans']= number_format(ClubFans::howManyFans($club),0,',','.');
   $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
+  $this->data['clubinfo']['country']=flag(getCountryByID(Club::getClubCountryById($this->request['id'])));
 
   /**
    * GET VISITS

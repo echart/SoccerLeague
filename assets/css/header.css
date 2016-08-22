@@ -48,7 +48,6 @@ header nav .options{
 header nav .options i{
 	position: absolute;
 	left: -27.5px;
-	top: -2.5px;
 }
 header nav .options:hover{
 	color: #333;

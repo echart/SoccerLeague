@@ -40,6 +40,13 @@ class Club{
 		$data=$query->fetch(PDO::FETCH_OBJ);
 		return $data->clubname;
 	}
+	public static function getClubCountryById($id_club){
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_country from club where id_club=:id_club LIMIT 1");
+		$query->bindParam(':id_club', $id_club);
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_ASSOC);
+		return $data['id_country'];
+	}
 	public function getClub($id){
 		if($id==''){
 			return new self($_SESSION['id_club']);

@@ -8,7 +8,7 @@
 				<div class='clublogo'>
 					<img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['clubinfo']['logo']?>' width="200px" height="200px">
 				</div>
-				<div class='club-name'>
+				<div class='club-name'><i class='icon <?=$this->data['clubinfo']['country'];?>'></i> 
 					<?=$this->data['clubname']?>
 					<span class='nickname'>[<?=$this->data['clubinfo']['nickname']?>]</span>
 				</div>

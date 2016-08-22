@@ -84,14 +84,6 @@
   padding: 0 12.5px;
   float: left;
 }
-.icon{
-  display: block;
-  box-sizing: border-box;
-  width:14px;
-  height:14px;
-  padding-left: 2rem;
-  float: left;
-}
 span.load{
   background: url(../img/icons/loading.png) no-repeat;
   background-size: 20px;

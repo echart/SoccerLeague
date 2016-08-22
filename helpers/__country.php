@@ -13,3 +13,13 @@ function getCountryID($country){
     return 0;
   }
 }
+function getCountryByID($country){
+  $query=Connection::getInstance()->connect()->prepare("SELECT abbreviation FROM country where id_country=:country");
+  $query->bindParam(':country',$country);
+  $query->execute();
+  $data=$query->fetch(PDO::FETCH_ASSOC);
+  return $data['abbreviation'];
+}
+function flag($country){
+  return 'flag-'.$country;
+}

@@ -32,5 +32,6 @@ while($data=$query->fetch()){
     $this->data['leagueTable'][$i]['class']='';
   }
   $this->data['leagueTable'][$i]['status']=__leagueStatus($division,$i+1);
+  $this->data['leagueTable'][$i]['country']=flag(getCountryByID(Club::getClubCountryById($data['id_club'])));
   $i++;
 }

@@ -18,6 +18,7 @@ error_reporting(E_WARNING);
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/icons.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<?
 
@@ -25,8 +26,8 @@ error_reporting(E_WARNING);
 	$account=Account::getAccount($_SESSION['SL_account']);
 	?>
 	<script>
-	var digital = new Date();
-	digital.setHours(<?php echo Timezone::setTimezone(Timezone::getTimezone($account->timezone)); ?>);
+		var digital = new Date();
+		digital.setHours(<?php echo Timezone::setTimezone(Timezone::getTimezone($account->timezone)); ?>);
 	</script>
 </head>
 <body>
