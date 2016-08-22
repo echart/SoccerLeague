@@ -6,7 +6,7 @@ header{
 	background-color: #5FAD56;
 }
 header nav ul.small{
-	left: 20px !important;
+	left: 24px !important;
 }
 header ul.submenu{
 	list-style: none;
@@ -158,61 +158,64 @@ div.menu-sidebar ul.menu a span.qtd{
 
 div.menu-sidebar ul.menu a.home i{
 	background: url(../img/icons/home.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.club i{
 	background: url(../img/icons/logo.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.squad i{
 	background: url(../img/icons/squad.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.tactic i{
 	background: url(../img/icons/tactic.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.calendar i{
 	background: url(../img/icons/calendar.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.league i{
-	background: url(../img/icons/league.png) no-repeat;
-	background-size: 20px;
+	background: url(../img/icons/trophy.png) no-repeat;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.finance i{
 	background: url(../img/icons/finance.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.transfer i{
-	background: url(../img/icons/transfer.png) no-repeat;
-	background-size: 20px;
+	background: url(../img/icons/price-tag.png) no-repeat;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.community i{
 	background: url(../img/icons/community2.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.pro i{
-	background: url(../img/icons/pro.png) no-repeat;
-	background-size: 20px;
+	background: url(../img/icons/coins.png) no-repeat;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.pm i{
 	background: url(../img/icons/msg.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.account i{
 	background: url(../img/icons/user.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.logoff i{
-	background: url(../img/icons/logoff.png) no-repeat;
-	background-size: 20px;
+	background: url(../img/icons/exit.png) no-repeat;
+	background-size: 24px;
 }
 div.menu-sidebar ul.menu a.setting i{
 	background: url(../img/icons/settings.png) no-repeat;
-	background-size: 20px;
+	background-size: 24px;
 }
-
+div.menu-sidebar ul.menu a.admin i{
+	background: url(../img/icons/admin.png) no-repeat;
+	background-size: 24px;
+}
 
 /*@media(max-width: 900px){
 	div.menu-sidebar ul.menu a span{

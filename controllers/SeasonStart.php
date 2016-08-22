@@ -9,6 +9,10 @@
   $id_competition_type=1;
   $teams=18;
   $total_games=($teams*2)-2;
+  $league_startday='2016-08-24';
+echo date('Y-m-d',strtotime("+8 days",strtotime($league_startday)));
+exit;
+  $league_startday2=3;
   /*-------
   GET SEASON AND + 1(NEXT);
   ---------*/
@@ -95,6 +99,33 @@ foreach ($countries as $key => $id_country) {
           $id=intval($data->id_club);
           $league->joinClub($id);
         }
+        $leaguetable=$league->getLeagueTable();
+        $teams=array();
+        //get all club ia a league group
+        while($data=$league->fetch()){
+          $teams[]=$league['id_club'];
+        }
+        $fixture = new Fixture();
+        $firstHalf=$fixture->firsthalf($teams);
+        $secondHalf=$fixture->secondHalf($firstHalf);
+        $i=$league_startday2;
+        for($i=0;$i<90;$i++){
+          $date=date('Y-m-d',strtotime("+"+$i+" days",strtotime($league_startday)));
+          if(date('w',strtotime($league_startday))==3 or date('w',strtotime($league_startday))==5 or date('w',strtotime($league_startday))==0){
+            foreach($firstHalf as $round){
+              //insert match in league calendar
+              $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_matches (round,id_league,match_day) values (:round,:id_league,:match_day)");
+              $query->bindParam(":round",$round+1);
+              $query->bindParam(":id_league",$league->id_league);
+              $query->bindParam(":match_day",$match_day);
+              $query->execute();
+
+              //save the match
+
+            }
+          }
+        }
+
       }else{
         # TODO: get all season data in the past, verified the positions and make new league tables;
       }

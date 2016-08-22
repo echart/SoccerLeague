@@ -8,9 +8,9 @@ class ClubInfo{
     $data=$query->fetch(PDO::FETCH_ASSOC);
     return $data;
   }
-  public static function update($id_club,$manager,$nickname,$stadium,$city,$clubcolor,$history):bool{
+  public static function update($id_club,$manager,$nickname,$stadium,$clubcolor,$history):bool{
 		try{
-			$query=Connection::getInstance()->connect()->prepare("UPDATE club_info SET manager=:manager, nickname=:nickname, stadium=:stadium,city=:city,clubcolor=:clubcolor,history=:history WHERE id_club=:id_club");
+			$query=Connection::getInstance()->connect()->prepare("UPDATE club_info SET manager=:manager, nickname=:nickname, stadium=:stadium,clubcolor=:clubcolor,history=:history WHERE id_club=:id_club");
 			$query->bindParam(':manager',$manager);
 			$query->bindParam(':nickname',$nickname);
 			$query->bindParam(':stadium',$stadium);

@@ -20,7 +20,6 @@ html{
 div.content{
 	position: relative;
 	width: 97.5%;
-	height: 100%;
 	top:5rem;
 	padding: 2rem 0rem;
 	color: #333;
@@ -125,7 +124,7 @@ Font-size
 Links
 ==============================*/
 .padding-left{
-	padding-left: 10px;
+	padding-left: 10px !important;
 }
 .padding-top{
 	padding-top: 20px;
@@ -336,7 +335,7 @@ BOXES
 	margin: 0.5rem 0;
 }
 .box-title{
-	padding: .75rem 3rem;
+	padding: 1rem 3rem;
 	background-color: #5FAD56;
 	font-size: 16px;
 	color: #fff;
@@ -347,7 +346,7 @@ BOXES
 	position: relative;
 	min-height:20px;
 	text-align: left;
-	/*padding: 0.5rem;*/
+	padding: 0px;
 	font-size: 12.5px;
 	border: 1px solid #ddd;
 }
@@ -395,7 +394,7 @@ input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
 select{
 	font-family: 'Exo 2','Open Sans';
 	padding: 0px 15px;
-	width: 102.5%;
+	width: 93%;
 	border: 1px solid #ccc;
 	color: #393e41;
 	font-size: 14px;
@@ -414,7 +413,7 @@ textarea{
 	color: #393e41;
 	padding: 10px;
 	border: 1px solid #ccc;
-	width: 102.5%;
+	width: 93%;
 	resize: vertical;
 	font-size: 13px;
 }

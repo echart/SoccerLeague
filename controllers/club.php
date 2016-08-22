@@ -65,8 +65,8 @@ if(isset($this->request['subrequest'])){
     extract($_POST);
 
     // TODO:validations
-    ClubInfo::update($id_club,$manager,$nickname,$stadium,$city,$clubcolor,$history);
-    header('location: edit');
+    ClubInfo::update($id_club,$manager,$nickname,$stadium,$clubcolor,$history);
+    header('location: edit/saved');
     exit;
   }else if($this->request['subrequest']=='logosave'){
     $imagePath = "assets/img/logos/temp/";

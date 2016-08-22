@@ -19,10 +19,14 @@ error_reporting(E_WARNING);
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/fonts.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<? $this->loadCSSFiles(); ?>
+	<?
+
+	$this->loadCSSFiles();
+	$account=Account::getAccount($_SESSION['SL_account']);
+	?>
 	<script>
 	var digital = new Date();
-	digital.setHours(<?php echo date("H,i,s"); ?>);
+	digital.setHours(<?php echo Timezone::setTimezone(Timezone::getTimezone($account->timezone)); ?>);
 	</script>
 </head>
 <body>

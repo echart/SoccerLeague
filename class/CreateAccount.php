@@ -14,7 +14,7 @@ class CreateAccount{
 
 	public function __construct($e,$p,$f=null){
 		$this->email=$e;
-		$this->password=password_hash($p, PASSWORD_BCRYPT, array('cost' => 10));
+		$this->
 		$this->refeer=$f;
 	}
 	public function isset():bool{

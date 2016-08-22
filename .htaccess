@@ -7,6 +7,9 @@
 	RewriteRule ^api/location/([a-z0-9-]+)$ controllers/location.php?method=$1 [NC,L]
 	RewriteRule ^api/location/([a-z0-9-]+)/$ controllers/location.php?method=$1 [NC,L]
 
+	RewriteRule ^tabela/$ tabela.php [NC,L]
+	RewriteRule ^tabela$ tabela.php [NC,L]
+
 	RewriteRule ^([a-z0-9-]+)/$ handler.php?request=$1 [NC,L]
 	RewriteRule ^([a-z0-9-]+)$ handler.php?request=$1 [NC,L]
 
@@ -14,6 +17,11 @@
 	RewriteRule ^club/([0-9-]+)$ handler.php?request=club&id=$1 [NC,L]
 	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
 	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
+	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=club&id=$1&subrequest=$2&action=$3 [NC,L]
+	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)$ handler.php?request=club&id=$1&subrequest=$2&action=$3 [NC,L]
+
+	RewriteRule ^account/([a-z0-9-]+)/$ handler.php?request=account&subrequest=$1 [NC,L]
+	RewriteRule ^account/([a-z0-9-]+)$ handler.php?request=account&subrequest=$1 [NC,L]
 
 	RewriteRule ^players/([0-9-]+)/$ handler.php?request=players&id=$1 [NC,L]
 	RewriteRule ^players/([0-9-]+)$ handler.php?request=players&id=$1 [NC,L]

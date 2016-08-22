@@ -18,7 +18,7 @@ function loadtweets(){
       }
       $('.tweet:last-child').html('');
       $('.feed').append("<div class='tweet'>"+
-        "<p class='center loading bg-alert white-text'>Carregando tweets....</p>"+
+        "<p class='center loading'>Carregando tweets....</p>"+
       "</div>")
     },
     success: function data(response){
