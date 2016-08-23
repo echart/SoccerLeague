@@ -39,6 +39,9 @@ $leagueFixture = new LeagueFixture($league->id_league);
 $leagueFixture->getNextLeagueDay();
 $leagueMatches=$leagueFixture->getFixtures();
 
-foreach ($leagueMatches as $match => $id_match) {
-  # code...
+foreach ($leagueMatches as $id_match) {
+  echo var_dump($id_match) . '<br>';
+  $match = new MatchReport($id_match[0]);
+  $this->data['matches'][$id_match]=$match->teams();
 }
+// print_r($this->data['matches']);
