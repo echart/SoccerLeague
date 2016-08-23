@@ -66,7 +66,7 @@ function register(){
   var login=$("input[name='login']").val();
   var password=$("input[name='userpass1']").val();
   var clubname=$("input[name='clubname']").val();
-  if(country=='BR'){
+  if(country!='BR'){
     newAlert('danger','Por enquanto, contamos apenas com a possibilidade de escolha dentro do Brasil',10000,'top');
   }else{
     if(country=='' || login=='' || password=='' || clubname==''){
