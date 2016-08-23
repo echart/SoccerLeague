@@ -35,3 +35,7 @@ while($data=$query->fetch()){
   $this->data['leagueTable'][$i]['country']=flag(getCountryByID(Club::getClubCountryById($data['id_club'])));
   $i++;
 }
+$leagueFixture = new LeagueFixture($league->id_league);
+$leagueFixture->getNextLeagueDay();
+$leagueFixture->getFixtures();
+print_r($leagueFixture->matches);

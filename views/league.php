@@ -53,7 +53,7 @@
       <div class='box'>
         <div class='box-title'>Próxima rodada</div>
         <div class='box-content'>
-          <p class='center'>Ainda não há jogos a serem jogados</p>
+          <p class='center no-padding'>Ainda não há jogos a serem jogados</p>
         </div>
       </div>
     </div>
