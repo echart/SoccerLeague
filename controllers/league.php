@@ -38,10 +38,11 @@ while($data=$query->fetch()){
 $leagueFixture = new LeagueFixture($league->id_league);
 $leagueFixture->getNextLeagueDay();
 $leagueMatches=$leagueFixture->getFixtures();
-
+$this->data['round']=$leagueFixture->next_round;
 foreach ($leagueMatches as $id_match) {
-  echo var_dump($id_match) . '<br>';
-  $match = new MatchReport($id_match[0]);
+  $match = new MatchReport($id_match);
   $this->data['matches'][$id_match]=$match->teams();
+  $this->data['matches'][$id_match]['homeTeam']=Club::getClubNameById($this->data['matches'][$id_match]['home']);
+  $this->data['matches'][$id_match]['awayTeam']=Club::getClubNameById($this->data['matches'][$id_match]['away']);
 }
 // print_r($this->data['matches']);

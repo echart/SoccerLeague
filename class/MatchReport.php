@@ -13,10 +13,11 @@ class MatchReport{
     $query->execute();
     $data=$query->fetch(PDO::FETCH_ASSOC);
 
+    $teams['home']=$data['home'];
+    $teams['away']=$data['away'];
     $this->teams[]['home']=$data['home'];
     $this->teams[]['away']=$data['away'];
-
-    return $this->teams;
+    return $teams;
   }
 
   public function jsonReport(){

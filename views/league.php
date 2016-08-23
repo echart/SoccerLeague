@@ -53,7 +53,16 @@
       <div class='box'>
         <div class='box-title'>Próxima rodada</div>
         <div class='box-content'>
-          <p class='center no-padding'>Ainda não há jogos a serem jogados</p>
+          <ul class='list'>
+            <h4 class='no-padding'>Rodada 1:</h4>
+            <?
+            foreach ($this->data['matches'] as $id_match) {
+            ?>
+              <li><a href='<?=$this->data['tree']?>club/<?=$id_match['home']?>'><?=$id_match['homeTeam']?></a> vs <a href='<?=$this->data['tree']?>club/<?=$id_match['away']?>'><?=$id_match['awayTeam']?></a></li>
+            <?
+            }
+            ?>
+          </ul>
         </div>
       </div>
     </div>
