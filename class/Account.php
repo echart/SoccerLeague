@@ -106,7 +106,6 @@ class Account{
 	}
 	public function create(){
 		try{
-			$this->password=password_hash($this->password, PASSWORD_BCRYPT);
 			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account(email, password, refeer) values (:email, :password, :refeer)");
 			$query->bindParam(':email',$this->email);
 			$query->bindParam(':password',$this->password);
