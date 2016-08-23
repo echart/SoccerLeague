@@ -17,6 +17,8 @@ Icons
 .clock{
 	background: url(../img/icons/clock2.png) no-repeat;
 	background-size: 24px;
+	margin-top: -2px;
+	margin-right: 5px;
 }
 .flag-br{
 	background: url(../img/icons/flags/br.png) no-repeat;
