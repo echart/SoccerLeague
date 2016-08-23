@@ -8,7 +8,7 @@
 				<div class='clublogo'>
 					<img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['clubinfo']['logo']?>' width="200px" height="200px">
 				</div>
-				<div class='club-name'><i class='icon <?=$this->data['clubinfo']['country'];?>'></i> 
+				<div class='club-name'>
 					<?=$this->data['clubname']?>
 					<span class='nickname'>[<?=$this->data['clubinfo']['nickname']?>]</span>
 				</div>
@@ -17,7 +17,7 @@
 				</div>
 				<div class='club-stats'>
 					<ul>
-						<li><a href='<?=$this->data['tree']?><?=$this->data['leagueURL'];?>'><?=$this->data['clubinfo']['league']?></a></li>
+						<li><a href='<?=$this->data['tree']?><?=$this->data['leagueURL'];?>'> <?=$this->data['clubinfo']['league']?></a><i class='icon <?=$this->data['clubinfo']['country'];?>'></i></li>
 						<li>Média de rec.</li>
 						<li><?=$this->data['clubinfo']['buddies']?></li>
 					</ul>

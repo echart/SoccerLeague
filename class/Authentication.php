@@ -91,7 +91,7 @@ class Authentication{
 		 */
 		try{
 			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid,ip) values (:id_account, '".session_id()."','true','".self::ip()."')");
-			$query->bindParam(':id_account',$id_club);
+			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();
 		}catch(PDOException $e){
 			return false;

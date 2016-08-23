@@ -54,7 +54,7 @@ $menu=array('home'=>array(
 			$account = Account::getAccount($_SESSION['SL_account']);
 			?>
 		</ul>
-		<span alt='Soccer League Time' class='options'><i class='icon clock'></i><?=date('Y-m-d')?> - <strong><span id='sltime'></span></strong></span>
+		<span alt='Soccer League Time' class='options'><span class='icon clock'></span><?=date('Y-m-d')?> - <strong><span id='sltime'></span></strong></span>
 	</nav>
 </header>
 <aside>
