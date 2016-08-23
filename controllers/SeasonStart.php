@@ -3,6 +3,7 @@
   include('../class/Club.php');
   include('../class/League.php');
   include('../class/Competition.php');
+  include('../class/GenerateFixture.php');
   /*----------
   SET COMPETITION DATA
   -----------*/
@@ -10,8 +11,8 @@
   $teams=18;
   $total_games=($teams*2)-2;
   $league_startday='2016-08-24';
-echo date('Y-m-d',strtotime("+0 days",strtotime($league_startday)));
-exit;
+// echo date('Y-m-d',strtotime("+0 days",strtotime($league_startday)));
+// exit;
   $league_startday2=3;
   /*-------
   GET SEASON AND + 1(NEXT);
@@ -102,27 +103,108 @@ foreach ($countries as $key => $id_country) {
         $leaguetable=$league->getLeagueTable();
         $teams=array();
         //get all club ia a league group
-        while($data=$league->fetch()){
-          $teams[]=$league['id_club'];
+        while($data=$leaguetable->fetch()){
+          $teams[]=$data['id_club'];
         }
-        $fixture = new Fixture();
+        $fixture = new GenerateFixture();
         $firstHalf=$fixture->firsthalf($teams);
         $secondHalf=$fixture->secondHalf($firstHalf);
-        $i=$league_startday2;
-        $date=date('Y-m-d',strtotime("+"+$i+" days",strtotime($league_startday)));
-        foreach($firstHalf as $round){
-          for($i=0;$i<7;$i++){
-            $league_startday=date('Y-m-d',strtotime("+".$i." days",strtotime($league_startday)));
-            if(date('w',strtotime($league_startday))==3 or date('w',strtotime($league_startday))==5 or date('w',strtotime($league_startday))==0){
-              //insert match in league calendar
-              $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_matches (round,id_league,match_day) values (:round,:id_league,:match_day)");
-              $query->bindParam(":round",$round+1);
-              $query->bindParam(":id_league",$league->id_league);
-              $query->bindParam(":match_day",$match_day);
+        $z=0;
+        $i=0;
+        foreach($firstHalf as $key => $games){
+          $round=$key+1;
+          $league_startday=date('Y-m-d',strtotime("+".$i." days",strtotime($league_startday)));
+          $w=date('w',strtotime($league_startday));
+          switch ($w) {
+            case 3:
+              $i=2;
+              break;
+            case '5':
+              $i=2;
+              break;
+            case '0':
+              $i=3;
+              break;
+          }
+          if(date('w',strtotime($league_startday))==3 or date('w',strtotime($league_startday))==5 or date('w',strtotime($league_startday))==0){
+            echo ($league_startday ."<Br>");
+            //save date at calendar with competitiontype
+            $query=Connection::getInstance()->connect()->prepare("INSERT INTO calendar (season,id_competition_type,matchday) values (:season,:id_competition_type,:matchday)");
+            $query->bindParam(":season",$season);
+            $query->bindParam(":id_competition_type",$id_competition_type);
+            $query->bindParam(":matchday",$league_startday);
+            $query->execute();
+            $id_calendar=Connection::getInstance()->connect()->lastInsertID('calendar_id_calendar_seq');
+            //save at league calendar the id_calendar and the number of the round that will be played at this day
+            $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_calendar (id_calendar,id_league,round) values (:id_calendar,:id_league,:round)");
+            $query->bindParam(":id_calendar",$id_calendar);
+            $query->bindParam(":id_league",$league->id_league);
+            $query->bindParam(":round",$round);
+            $query->execute();
+            $id_round=Connection::getInstance()->connect()->lastInsertID('league_calendar_id_round_seq');
+            //create matches an save it in league_calendar_matches that will save all the matchs for each league_calendar
+            foreach ($games as $arrayTeams) {
+              $teams=GenerateFixture::eachTeam($arrayTeams);
+              $query=Connection::getInstance()->connect()->prepare("INSERT INTO matches (id_competition_type,matchday,home,away) values (:id_competition_type,:matchday,:home,:away)");
+              $query->bindParam(":id_competition_type",$id_competition_type);
+              $query->bindParam(":matchday",$league_startday);
+              $query->bindParam(":home",$teams[0]);
+              $query->bindParam(":away",$teams[1]);
               $query->execute();
-              $i=7;
-              # TODO: pegar ultimo id_league_match inserido
-              # TODO: pegar todos os rounds e gravar todas as partidas usando o id_league_match
+              $id_match=Connection::getInstance()->connect()->lastInsertID('matches_id_match_seq');
+              $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_calendar_matches (id_round,id_match) values(:round,:match)");
+              $query->bindParam(":round",$id_round);
+              $query->bindParam(":match",$id_match);
+              $query->execute();
+            }
+          }
+        }
+        $i=2;
+        foreach($secondHalf as $key => $games){
+          $round=$key+1;
+          $league_startday=date('Y-m-d',strtotime("+".$i." days",strtotime($league_startday)));
+          $w=date('w',strtotime($league_startday));
+          switch ($w) {
+            case 3:
+              $i=2;
+              break;
+            case '5':
+              $i=2;
+              break;
+            case '0':
+              $i=3;
+              break;
+          }
+          if(date('w',strtotime($league_startday))==3 or date('w',strtotime($league_startday))==5 or date('w',strtotime($league_startday))==0){
+            echo ($league_startday ."<Br>");
+            //save date at calendar with competitiontype
+            $query=Connection::getInstance()->connect()->prepare("INSERT INTO calendar (season,id_competition_type,matchday) values (:season,:id_competition_type,:matchday)");
+            $query->bindParam(":season",$season);
+            $query->bindParam(":id_competition_type",$id_competition_type);
+            $query->bindParam(":matchday",$league_startday);
+            $query->execute();
+            $id_calendar=Connection::getInstance()->connect()->lastInsertID('calendar_id_calendar_seq');
+            //save at league calendar the id_calendar and the number of the round that will be played at this day
+            $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_calendar (id_calendar,id_league,round) values (:id_calendar,:id_league,:round)");
+            $query->bindParam(":id_calendar",$id_calendar);
+            $query->bindParam(":id_league",$league->id_league);
+            $query->bindParam(":round",$round);
+            $query->execute();
+            $id_round=Connection::getInstance()->connect()->lastInsertID('league_calendar_id_round_seq');
+            //create matches an save it in league_calendar_matches that will save all the matchs for each league_calendar
+            foreach ($games as $arrayTeams) {
+              $teams=GenerateFixture::eachTeam($arrayTeams);
+              $query=Connection::getInstance()->connect()->prepare("INSERT INTO matches (id_competition_type,matchday,home,away) values (:id_competition_type,:matchday,:home,:away)");
+              $query->bindParam(":id_competition_type",$id_competition_type);
+              $query->bindParam(":matchday",$league_startday);
+              $query->bindParam(":home",$teams[0]);
+              $query->bindParam(":away",$teams[1]);
+              $query->execute();
+              $id_match=Connection::getInstance()->connect()->lastInsertID('matches_id_match_seq');
+              $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_calendar_matches (id_round,id_match) values(:round,:match)");
+              $query->bindParam(":round",$id_round);
+              $query->bindParam(":match",$id_match);
+              $query->execute();
             }
           }
         }

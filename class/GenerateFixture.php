@@ -93,9 +93,9 @@ class GenerateFixture{
       return $components[1] . " v " . $components[0];
   }
 
-  public function eachTeam($round){
+  public static function eachTeam($round){
     $components = explode(' v ', (string)$round);
-    print_r($components);
+    return $components;
   }
   public function team_name($num, $names) {
       $i = $num - 1;
