@@ -37,5 +37,8 @@ while($data=$query->fetch()){
 }
 $leagueFixture = new LeagueFixture($league->id_league);
 $leagueFixture->getNextLeagueDay();
-$leagueFixture->getFixtures();
-print_r($leagueFixture->matches);
+$leagueMatches=$leagueFixture->getFixtures();
+
+foreach ($leagueMatches as $match => $id_match) {
+  # code...
+}

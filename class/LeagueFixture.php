@@ -19,13 +19,13 @@ class LeagueFixture{
     $query->execute();
 
     $data=$query->fetch(PDO::FETCH_ASSOC);
-    $next_calendar=$data['id_calendar'];
-    $next_date=$data['matchday'];
+    $this->next_calendar=$data['id_calendar'];
+    $this->next_date=$data['matchday'];
   }
   public function getFixtures(){
     $query=Connection::getInstance()->connect()->prepare("SELECT id_round, round FROM league_calendar where id_calendar=:id_calendar and id_league=:id_league");
-    $query->bindParam(':id_calendar',$id_calendar);
-    $query->bindParam(':id_league',$id_league);
+    $query->bindParam(':id_calendar',$this->next_calendar);
+    $query->bindParam(':id_league',$this->id_league);
     $query->execute();
     $data=$query->fetch(PDO::FETCH_ASSOC);
     $this->next_round=$data['round'];

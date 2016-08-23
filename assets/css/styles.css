@@ -123,6 +123,9 @@ Font-size
 /*=============================
 Links
 ==============================*/
+.no-padding{
+	padding: 0 !important;
+}
 .padding-left{
 	padding-left: 10px !important;
 }
