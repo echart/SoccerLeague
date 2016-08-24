@@ -90,6 +90,11 @@ class Authentication{
 		 * insert session in db for authentication
 		 */
 		try{
+			# disable all session before insert a new session(this delete the possibility that two people logged in same club in same time)
+			$query=$this->con->prepare("UPDATE session SET valid='false' where id_account=:id_account");
+			$query->bindParam(':id_account',$this->id_account);
+			$query->execute();
+			# insert a new valid session id in database
 			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid,ip) values (:id_account, '".session_id()."','true','".self::ip()."')");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();

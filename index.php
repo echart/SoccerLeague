@@ -36,6 +36,8 @@ $refeer= $_GET['refeer']?? NULL;
 						<input type='text' name='clubname' placeholder='Escolha um nome para seu clube'>
 						<input type='hidden' name='refeer' value='<?=$_GET['refeer'] ?? '';?>'>
 						<input type='hidden' name='country' value=''>
+						<input type='hidden' name='lat' value=''>
+						<input type='hidden' name='lng' value=''>
 					</div>
 					<div class='form-field'>
 						<label for='email'>Email:</label>

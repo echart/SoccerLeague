@@ -7,6 +7,7 @@ require_once('../class/JsonOutput.php');
 require_once('../class/League.php');
 require_once('../class/Competition.php');
 require_once('../helpers/__country.php');
+require_once('../class/Location.php');
 try{
 	/**
 	 * DATA VALIDATION
@@ -15,16 +16,19 @@ try{
 	 * country must be not blank
 	 * clubname must be not blank and with minlenght 8
 	 */
-	if($_POST['refeer']!='') $refeer=$_POST['refeer'];else $refeer=NULL;
+	if(isset($_POST['refeer'])!='') $refeer=$_POST['refeer'];else $refeer=NULL;
 	$email=$_POST['login'] ?? '';
 	$pass=$_POST['password'] ?? '';
 	$clubname=$_POST['clubname'] ?? '';
 	$country=$_POST['country'] ?? '';
-
+	$lng=$_POST['lng'] ?? '';
+	$lat=$_POST['lat'] ?? '';
 	Validation::validate($pass)->isNotEmpty();
 	Validation::validate($email)->isNotEmpty();
 	Validation::validate($clubname)->isNotEmpty()->minLenght(8);
 	Validation::validate($country)->isNotEmpty();
+	Validation::validate($lat)->isNotEmpty();
+	Validation::validate($lng)->isNotEmpty();
 	/**
 	 * If any rules break, get errors and throw exception
 	 */
@@ -83,6 +87,8 @@ try{
 					$account->delete();
 					throw new Exception("We have an error :( #sad", 1);
 				}else{
+						/* INSERT CLUB LOCATION */
+						Location::insertLocation($club->id_club,$lat,$lng);
 						/* create players for this club */
 						$id_club=$club->id_club;
 						include('PlayerCreator.php');

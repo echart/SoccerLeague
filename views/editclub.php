@@ -3,7 +3,7 @@
 	<div class='content'>
 		<div class='box grid-95'>
 			<div class='box-title'>Editar clube</div>
-			<div class='box-content'>
+			<div class='box-content padding-left'>
 				<form action='<?=$this->data['tree']?>club/<?=$_SESSION['SL_club']?>/save' method='POST'>
 					<div class='form-field'>
 						<label>Apelido:</label>

@@ -26,7 +26,7 @@ if($query->rowCount()>0){
         $query->execute();
 
         while($matches=$query->fetch(PDO::FETCH_ASSOC)){
-          
+
         }
       }
       break;

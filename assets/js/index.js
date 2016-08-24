@@ -76,7 +76,7 @@ function register(){
         url: 'controllers/_register.php',
         type: 'POST',
         dataType: 'json',
-        data: {country: $("input[name='country']").val(),refeer: $("input[name='refeer']").val(),login: $("input[name='login']").val(), password:$("input[name='userpass1']").val(),clubname:$("input[name='clubname']").val()},
+        data: {lng:$("input[name='lng']").val(),lat:$("input[name='lat']").val(), country: $("input[name='country']").val(),refeer: $("input[name='refeer']").val(),login: $("input[name='login']").val(), password:$("input[name='userpass1']").val(),clubname:$("input[name='clubname']").val()},
         beforeSend: function(data){
           newAlert('info','Carregando...',2000,'top');
         },
@@ -207,6 +207,8 @@ function geocodeLatLng(geocoder, pos) {
           newAlert('danger','Por enquanto, contamos apenas com a possibilidade de escolha dentro do Brasil',10000,'top');
         }
         $("input[name='country']").val(results[results.length-1].address_components[0].short_name);
+        $("input[name='lat']").val(pos.lat);
+        $("input[name='lng']").val(pos.lng);
       }
     }
   });
