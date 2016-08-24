@@ -14,7 +14,6 @@ class ClubInfo{
 			$query->bindParam(':manager',$manager);
 			$query->bindParam(':nickname',$nickname);
 			$query->bindParam(':stadium',$stadium);
-			$query->bindParam(':city',$city);
 			$query->bindParam(':clubcolor',$clubcolor);
 			$query->bindParam(':history',$history);
 			$query->bindParam(':id_club',$id_club);

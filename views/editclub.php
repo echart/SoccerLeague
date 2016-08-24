@@ -18,10 +18,6 @@
 						<input type="text" name="stadium"  value='<?=$this->data['clubinfo']['stadium']?>' placeholder="Nome do estádio">
 					</div>
 					<div class='form-field'>
-						<label>Cidade:</label>
-						<input type="text" name="city"  value='<?=$this->data['clubinfo']['city']?>' placeholder="Cidade do clube">
-					</div>
-					<div class='form-field'>
 						<label>Torcida:</label>
 						<input type="text" name="fansname"  value='<?=$this->data['clubinfo']['fansname']?>' placeholder="Nome da sua torcida organizada">
 					</div>
