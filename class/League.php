@@ -62,7 +62,7 @@ class League{
 		}
 	}
 	public function getLeagueTable(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT l.round,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join league_table lt using(id_league) inner join club cc using(id_club) inner join country ccc on ccc.id_country= cc.id_country where l.id_league=:id_league");
+		$query=Connection::getInstance()->connect()->prepare("SELECT lt.position,l.round,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join league_table lt using(id_league) inner join club cc using(id_club) inner join country ccc on ccc.id_country= cc.id_country where l.id_league=:id_league order by lt.position asc");
 	  $query->bindParam(':id_league',$this->id_league);
 	  $query->execute();
 	  $query->setFetchMode(PDO::FETCH_ASSOC);

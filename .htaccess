@@ -1,11 +1,14 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteRule ^controllers/deployment.php$ controllers/deployment.php [NC,L]
+	RewriteRule ^controllers/MatchTemporaly.php$ controllers/MatchTemporaly.php [NC,L]
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
 	RewriteRule ^api/location/([a-z0-9-]+)$ controllers/location.php?method=$1 [NC,L]
 	RewriteRule ^api/location/([a-z0-9-]+)/$ controllers/location.php?method=$1 [NC,L]
+
+
 
 	RewriteRule ^tabela/$ tabela.php [NC,L]
 	RewriteRule ^tabela$ tabela.php [NC,L]
