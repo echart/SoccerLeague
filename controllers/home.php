@@ -11,3 +11,10 @@ $this->addCSSFile('home.css');
 $this->addCSSFile('modal.css');
 $this->addCSSFile('tweet.css');
 $this->addJSFile('tweet.js');
+
+
+$this->data['nextMatch']=LeagueFixture::getNextClubFixture($_SESSION['SL_club']);
+$this->data['nextMatch']['homeTeam']=Club::getClubNameById($this->data['nextMatch']['home']);
+$this->data['nextMatch']['awayTeam']=Club::getClubNameById($this->data['nextMatch']['away']);
+$this->data['nextMatch']['homeLogo']=ClubInfo::getClubLogo($this->data['nextMatch']['home']);
+$this->data['nextMatch']['awayLogo']=ClubInfo::getClubLogo($this->data['nextMatch']['away']);

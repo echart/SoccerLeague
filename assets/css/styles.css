@@ -89,6 +89,41 @@ span.pro-marker{
   color: #393e41;
   padding: 1px 5px;
 }
+span.helper{
+	display: block;
+	border-radius: 2.5px;
+  background-color: #D5B942;
+  color: #393e41;
+  padding: 5px 7.5px;
+}
+span.def{
+  margin: 0 auto;
+	padding: 5px 0px;
+	width: 50px;
+  background-color: #4285F4;
+  color: #fff;
+}
+span.mid{
+  margin: 0 auto;
+	padding: 5px 0px;
+	width: 50px;
+  background-color: #FBBC05;
+  color: #393e41;
+}
+span.atk{
+  margin: 0 auto;
+	padding: 5px 0px;
+	width: 50px;
+  background-color: #EA4335;
+  color: #f4f4f4;
+}
+span.gk{
+  margin: 0 auto;
+	padding: 5px 0px;
+	width: 50px;
+  background-color: #34A853;
+  color: #393e41;
+}
 /*=============================
 Scroll menu bar
 ==============================*/

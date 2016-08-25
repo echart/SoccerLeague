@@ -19,10 +19,10 @@ require_once('helpers/__skill.php');
                 <th>Nome</th>
                 <th>Posição</th>
                 <th>Idade</th>
-                <th>For</th>
+                <!-- <th>For</th>
                 <th>Vel</th>
                 <th>Res</th>
-                <th>Sal</th>
+                <th>Sal</th> -->
                 <th>Emp</th>
                 <th>Pos</th>
                 <th>Con</th>
@@ -30,7 +30,7 @@ require_once('helpers/__skill.php');
                 <th>Vis</th>
                 <th>Imp</th>
                 <th>Com</th>
-                <th>Mar</th>
+                <!-- <th>Mar</th>
                 <th>Des</th>
                 <th>Cru</th>
                 <th>Pas</th>
@@ -39,7 +39,7 @@ require_once('helpers/__skill.php');
                 <th>Dri</th>
                 <th>Lon</th>
                 <th>Fin</th>
-                <th>Cab</th>
+                <th>Cab</th> -->
               </tr>
             </thead>
             <tbody>
@@ -47,12 +47,12 @@ require_once('helpers/__skill.php');
               for($i=0;$i<count($this->data['playersTable']['line']);$i++){?>
                 <tr class='center'>
                   <td class='padding-right left'><a href="<?=$this->data['tree']?>players/<?=$this->data['playersTable']['line'][$i]['id_player']?>"><?=$this->data['playersTable']['line'][$i]['name'];?></a></td>
-                  <td class='border'><?=$this->data['playersTable']['line'][$i]['position'];?></td>
+                  <td class='border'><span class='helper def'><?=$this->data['playersTable']['line'][$i]['position'];?></span></td>
                   <td class='border'><?=$this->data['playersTable']['line'][$i]['age'];?></td>
-                  <td class=''><?=__skill($this->data['playersTable']['line'][$i]['stamina']);?></td>
+                  <!-- <td class=''><?=__skill($this->data['playersTable']['line'][$i]['stamina']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['speed']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['resistance']);?></td>
-                  <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['jump']);?></td>
+                  <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['jump']);?></td> -->
                   <td><?=__skill($this->data['playersTable']['line'][$i]['workrate']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['positioning']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['concentration']);?></td>
@@ -60,7 +60,7 @@ require_once('helpers/__skill.php');
                   <td><?=__skill($this->data['playersTable']['line'][$i]['vision']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['unpredictability']);?></td>
                   <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['communication']);?></td>
-                  <td><?=__skill($this->data['playersTable']['line'][$i]['marking']);?></td>
+                  <!-- <td><?=__skill($this->data['playersTable']['line'][$i]['marking']);?></td>
                   <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['tackling']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['crossing']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['pass']);?></td>
@@ -69,7 +69,7 @@ require_once('helpers/__skill.php');
                   <td class='border'><?=__skill($this->data['playersTable']['line'][$i]['dribble']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['longshot']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['finish']);?></td>
-                  <td><?=__skill($this->data['playersTable']['line'][$i]['heading']);?></td>
+                  <td><?=__skill($this->data['playersTable']['line'][$i]['heading']);?></td> -->
                 </tr>
               <? } ?>
             </tbody>

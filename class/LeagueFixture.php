@@ -38,4 +38,11 @@ class LeagueFixture{
     }
     return $this->matches;
   }
+
+  public static function getNextClubFixture($id_club){
+    $query = Connection::getInstance()->connect()->prepare("SELECT * FROM calendar inner join league_calendar using (id_calendar) inner join league_calendar_matches using(id_round) inner join matches using(id_match) where calendar.matchday>now() and (home=:id_club or away=:id_club) limit 1");
+    $query->bindParam(":id_club",$id_club);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC);
+  }
 }

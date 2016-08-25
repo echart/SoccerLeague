@@ -62,6 +62,11 @@
 
 #### 8. Instalações
   + Estádio
+    + Ingresso
+
+     O custo de construção do estádio varia conforme a capacidade atual do estádio.
+
+
   + Desenvolvimento de juniores
   + Centro de Treinamento
 
@@ -105,7 +110,6 @@
           Salário = SLSkill * 2.24
 
         Eles são pagos a cada semana atualização da economia.
-        .
     + Manutenção
     + Custos de Construção
   + Juros

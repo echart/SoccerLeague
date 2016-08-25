@@ -53,16 +53,27 @@
       <div class='box'>
         <div class='box-title'>Próxima rodada</div>
         <div class='box-content no-padding'>
-          <ul class='list no-padding center'>
-            <h4>Rodada <?=$this->data['round']?>:</h4>
-            <?
-            foreach ($this->data['matches'] as $id_match) {
-            ?>
-              <li><a href='<?=$this->data['tree']?>club/<?=$id_match['home']?>'><?=$id_match['homeTeam']?></a> vs <a href='<?=$this->data['tree']?>club/<?=$id_match['away']?>'><?=$id_match['awayTeam']?></a></li>
-            <?
-            }
-            ?>
-          </ul>
+          <table class='zebra center bordered'>
+            <thead>
+              <tr>
+                <th colspan="4">Rodada <?=$this->data['round']?></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?
+              foreach ($this->data['matches'] as $id_match) {
+              ?>
+              <tr>
+                <td><a href='<?=$this->data['tree']?>club/<?=$id_match['home']?>'><?=$id_match['homeTeam']?></a></td>
+                <td>vs</td>
+                <td><a href='<?=$this->data['tree']?>club/<?=$id_match['away']?>'><?=$id_match['awayTeam']?></a></td>
+                <td><img src='<?=$this->data['tree']?>assets/img/icons/tv.png' width="20px"></td>
+              </tr>
+              <?
+              }
+              ?>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

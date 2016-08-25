@@ -36,4 +36,15 @@ class ClubInfo{
 			return false;
 		}
   }
+
+  public static function getClubLogo($id_club){
+    $query=Connection::getInstance()->connect()->prepare("SELECT logo from club_info where id_club=:id_club LIMIT 1");
+    $query->bindParam(':id_club', $id_club);
+    $query->execute();
+    $data=$query->fetch(PDO::FETCH_ASSOC);
+    if($data['logo']==''){
+      $data['logo']='default.png';
+    }
+    return $data['logo'];
+  }
 }

@@ -36,20 +36,20 @@
             <div class='box-title'>Próxima rodada</div>
             <div class='box-content'>
               <div class='next-match'>
-                <img src='<?=$this->data['tree']?>assets/img/logos/20160803113206.png'>
+                <img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['nextMatch']['homeLogo']?>'>
                 <span>x</span>
-                <img src='<?=$this->data['tree']?>assets/img/logos/20160815171243.png'>
+                <img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['nextMatch']['awayLogo']?>'>
               </div>
               <div class='next-match-stats'>
                 <div class='names'>
-                  <span><a class='black-text'>Grêmio F.B.P.A</a></span>
-                  <span><a class='black-text'>S.C Internacional</a></span>
+                  <span><a href='<?=$this->data['tree']?>club/<?=$this->data['nextMatch']['home']?>' class='black-text'><?=$this->data['nextMatch']['homeTeam'];?></a></span>
+                  <span><a href='<?=$this->data['tree']?>club/<?=$this->data['nextMatch']['away']?>' class='black-text'><?=$this->data['nextMatch']['awayTeam'];?></a></span>
                 </div>
                 <div class='date'>
-                  <span>Série D Grupo 12, 26. Agosto 20:00 </span>
+                  <span>Hora da partida</span>
                 </div>
                 <div class='match'>
-                  <a class='#'>Assistir partida</a>
+                  <a class='#'></a>
                 </div>
               </div>
             </div>
