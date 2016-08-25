@@ -44,3 +44,40 @@
   padding: 20px 0px;
   font-size: 15px;
 }
+
+.next-match{
+  text-align: center;
+  line-height: 100px;
+}
+.next-match span{
+  margin: 0px 20px 0px 20px;
+  font-size: 18px;
+}
+.next-match img{
+  border-radius: 50px;
+  vertical-align: middle;
+  width: 80px;
+}
+.next-match-stats{
+  margin: 5px 10px 10px;
+  display: block;
+  text-align: center;
+}
+.next-match-stats .names{
+  padding: 5px;
+  /*background-color: #5FAD56;*/
+  height: 20px;
+}
+.next-match-stats .names span{
+  width: 50%;
+  float: left;
+  font-size: 14px;
+}
+.next-match-stats .date{
+  padding: 5px;
+  background-color: #f7f7f7;
+  height: 20px;
+}
+.next-match-stats .match{
+  padding: 5px;
+}

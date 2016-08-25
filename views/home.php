@@ -1,3 +1,13 @@
+<style>
+.hometeam{
+  background-color: #333;
+  background-size: 100px;
+}
+.awayteam{
+  background-color: #333;
+  background-size: 100px;
+}
+</style>
 <main>
   <div class="content grid-container">
     <h3 class='title'>Feed de notícias</h3>
@@ -23,11 +33,34 @@
     <div class="grid-35 grid-parent">
       <div class="grid-100">
           <div class='box'>
-            <div class='box-title'>Jogos</div>
+            <div class='box-title'>Próxima rodada</div>
             <div class='box-content'>
-              <p>Nenhum jogo a ser disputado</p>
+              <div class='next-match'>
+                <img src='<?=$this->data['tree']?>assets/img/logos/20160803113206.png'>
+                <span>x</span>
+                <img src='<?=$this->data['tree']?>assets/img/logos/20160815171243.png'>
+              </div>
+              <div class='next-match-stats'>
+                <div class='names'>
+                  <span><a class='black-text'>Grêmio F.B.P.A</a></span>
+                  <span><a class='black-text'>S.C Internacional</a></span>
+                </div>
+                <div class='date'>
+                  <span>Série D Grupo 12, 26. Agosto 20:00 </span>
+                </div>
+                <div class='match'>
+                  <a class='#'>Assistir partida</a>
+                </div>
+              </div>
             </div>
           </div>
+      </div>
+      <div class="grid-100">
+        <div class='box'>
+          <div class='box-title'>Partidas anteriores</div>
+          <div class='box-content'>
+          </div>
+        </div>
       </div>
       <div class="grid-100">
           <div class='box'>
@@ -37,14 +70,14 @@
             </div>
           </div>
       </div>
-      <div class="grid-100">
+      <!-- <div class="grid-100">
           <div class='box'>
             <div class='box-title'>Mensagens</div>
             <div class='box-content'>
               <p>Nenhuma mensagem</p>
             </div>
           </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <label class='modal-trigger' for='modal_tweet'>tweet</label>

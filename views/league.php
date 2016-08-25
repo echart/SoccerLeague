@@ -52,9 +52,9 @@
     <div class='grid-35'>
       <div class='box'>
         <div class='box-title'>Próxima rodada</div>
-        <div class='box-content'>
-          <ul class='list'>
-            <h4 class='no-padding'>Rodada 1:</h4>
+        <div class='box-content no-padding'>
+          <ul class='list no-padding center'>
+            <h4>Rodada <?=$this->data['round']?>:</h4>
             <?
             foreach ($this->data['matches'] as $id_match) {
             ?>
