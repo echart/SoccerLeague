@@ -47,7 +47,7 @@ require_once('helpers/__skill.php');
               for($i=0;$i<count($this->data['playersTable']['line']);$i++){?>
                 <tr class='center'>
                   <td class='padding-right left'><a href="<?=$this->data['tree']?>players/<?=$this->data['playersTable']['line'][$i]['id_player']?>"><?=$this->data['playersTable']['line'][$i]['name'];?></a></td>
-                  <td class='border'><span class='helper def'><?=$this->data['playersTable']['line'][$i]['position'];?></span></td>
+                  <td class='border'><span class='helper atk'><?=$this->data['playersTable']['line'][$i]['position'];?></span></td>
                   <td class='border'><?=$this->data['playersTable']['line'][$i]['age'];?></td>
                   <!-- <td class=''><?=__skill($this->data['playersTable']['line'][$i]['stamina']);?></td>
                   <td><?=__skill($this->data['playersTable']['line'][$i]['speed']);?></td>

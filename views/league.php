@@ -4,7 +4,7 @@
       <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>) <i class='padding-top icon <?=$this->data['leagueTable'][0]['country']?>'></i></h3>
     </div>
     <div class='grid-35 padding-top right'>
-      <button class='btn bg-success letter-small'>Estatisticas</button>
+      <button class='btn bg-success letter-small'>Calendário</button>
       <button class='btn bg-success letter-small'>Histórico</button>
     </div>
     <div class='grid-65'>
