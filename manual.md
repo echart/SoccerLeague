@@ -64,9 +64,16 @@
   + Estádio
     + Ingresso
 
-     O custo de construção do estádio varia conforme a capacidade atual do estádio.
+      O valor do ingresso é fixo de
 
+          30 reais por assento
 
+    O va
+    + Construção por assento
+
+    + Manutenção por assento
+
+    + Tempo de construção
   + Desenvolvimento de juniores
   + Centro de Treinamento
 
