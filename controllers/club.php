@@ -34,6 +34,19 @@ if(isset($this->request['subrequest'])){
         $i++;
       }
     }
+
+    $arrayPlayers=Players::getGoalkeepersByIdClub($this->request['id']);
+    $i=0;
+    if(count($arrayPlayers)!=0){
+      foreach ($arrayPlayers as $key => $id_player) {
+        $player = new Goalkeeper();
+        $this->data['overview']['gk'][$i]=$player->loadPlayerInfo($id_player);
+        $this->data['overview']['gk'][$i]['skill_index']=$player->skillIndex();
+        $this->data['overview']['gk'][$i]['position']=$player->loadPlayerPositions($id_player);
+        $this->data['overview']['gk'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
+        $i++;
+      }
+    }
   }else if($this->request['subrequest']=='api'){
     $this->data['api']['name']=Club::getClubNameById($club);
     $info=ClubInfo::get($this->request['id']);

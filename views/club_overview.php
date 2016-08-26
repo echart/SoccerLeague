@@ -18,9 +18,12 @@
             </thead>
             <tbody>
               <?
-              if(count($this->data['overview']['line'])==0){
+              if(count($this->data['overview']['line'])==0 AND count($this->data['overview']['gk'])==0){
                 echo '<tr><td colspan="6">Nenhum jogador</td>';
               }else{
+                foreach ($this->data['overview']['gk'] as $key) {
+                  echo '<tr class="center"><td class="left">'.$key['name'].'</td><td><span class="helper '.$key['area'].'">'.$key['position'].'</span></td><td>'.$key['age'].'</td><td>'.$key['rec'].'</td><td>'.$key['skill_index'].'</td>';
+                }
                 foreach ($this->data['overview']['line'] as $key) {
                   echo '<tr class="center"><td class="left">'.$key['name'].'</td><td><span class="helper '.$key['area'].'">'.$key['position'].'</span></td><td>'.$key['age'].'</td><td>'.$key['rec'].'</td><td>'.$key['skill_index'].'</td>';
                 }
