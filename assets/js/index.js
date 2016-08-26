@@ -152,7 +152,16 @@ function initialize() {
       addMarker(pos,true);
       map.setCenter(pos);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      var pos = {
+        lat: -31.769234899999994,
+        lng: -52.3391811
+      };
+      loadAllMarkers();
+      geocodeLatLng(geocoder,pos);
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibita maior interação entre os usuários, campeonatos regionais e etc...');
+      addMarker(pos,true);
+      map.setCenter(pos);
     });
   }
 
