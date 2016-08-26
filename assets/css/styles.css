@@ -95,6 +95,7 @@ span.helper{
   background-color: #D5B942;
   color: #393e41;
   padding: 5px 7.5px;
+	text-align: center;
 }
 span.def{
   margin: 0 auto;
@@ -175,7 +176,9 @@ Links
 ==============================*/
 a{
 	font-size: 14px;
-	color: #dd6e42;
+	/*color: #dd6e42;*/
+	/*color:#ea4335;*/
+	color: #333;
 	cursor: pointer;
 }
 /*=============================
@@ -438,7 +441,7 @@ input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
 }
 select{
 	font-family: 'Exo 2','Open Sans';
-	padding: 10px 15px;
+	padding: 0px 15px;
 	width: 93%;
 	border: 1px solid #ccc;
 	color: #393e41;
@@ -447,6 +450,8 @@ select{
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
+	-webkit-padding-before: 10px;
+	-webkit-padding-after: 10px;
 }
 option{
 	padding: 12.5px 15px;

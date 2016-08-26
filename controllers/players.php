@@ -31,26 +31,31 @@ if(isset($this->request['id'])){
   $this->data['player']=$player->loadPlayerInfo($id_player);
   $this->data['title']= $this->data['player']['name'] . ' - SoccerLeague';
 }else{
-  $this->addJSFile('playerPageWidth.js');
-  $this->addCSSFile('players.css');
   $id_club=$_SESSION['SL_account'];
   $this->data['title']='Players';
   $this->data['clubname']='Plantel de ' . Club::getClubNameById($_SESSION['SL_club']);
   /**LOAD DEPENDENCIES*/
+  include('helpers/__position.php');
   $this->addJSFile('playerSkill.js');
+  $this->addJSFile('playersTable.js');
   $this->addCSSFile('playerspage.css');
-
   $arrayPlayers=Players::getPlayersByIdClub($_SESSION['SL_club']);
   $i=0;
   foreach ($arrayPlayers as $key => $id_player) {
     $player = new Player();
     $this->data['playersTable']['line'][$i]=$player->loadPlayer($id_player);
+    $this->data['playersTable']['line'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
     $this->data['playersTable']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
     $i++;
   }
   $arrayPlayers=Players::getGoalkeepersByIdClub($_SESSION['SL_club']);
+  $i=0;
   foreach ($arrayPlayers as $key => $id_player) {
     $player = new Goalkeeper();
-    $this->data['playersTable']['gk'][]=$player->loadPlayer($id_player);
+    $this->data['playersTable']['gk'][$i]=$player->loadPlayer($id_player);
+    $this->data['playersTable']['gk'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
+    $this->data['playersTable']['gk'][$i]['position']=$player->loadPlayerPositions($id_player);
+
+    $i++;
   }
 }

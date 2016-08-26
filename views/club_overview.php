@@ -8,12 +8,12 @@
           <table class='players zebra bordered'>
             <thead>
               <tr>
-                <th class='left'></th>
+                <!-- <th class='left'></th> -->
                 <th class='left'>Nome</th>
-                <th class='left'>Posição</th>
-                <th class='left'>Idade</th>
-                <th class='left'>REC</th>
-                <th class='left'>SI</th>
+                <th class='center'>Posição</th>
+                <th class='center'>Idade</th>
+                <th class='center'>REC</th>
+                <th class='center'>SI</th>
               </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
                 echo '<tr><td colspan="6">Nenhum jogador</td>';
               }else{
                 foreach ($this->data['overview']['line'] as $key) {
-                  echo '<tr><td>#</td><td>'.$key['name'].'</td><td>'.$key['position'].'</td><td>'.$key['age'].'</td><td>'.$key['rec'].'</td><td>'.$key['skill_index'].'</td>';
+                  echo '<tr class="center"><td class="left">'.$key['name'].'</td><td><span class="helper '.$key['area'].'">'.$key['position'].'</span></td><td>'.$key['age'].'</td><td>'.$key['rec'].'</td><td>'.$key['skill_index'].'</td>';
                 }
               }
               ?>

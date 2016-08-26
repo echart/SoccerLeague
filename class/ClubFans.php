@@ -16,4 +16,10 @@ class ClubFans{
     $data=$query->fetch(PDO::FETCH_ASSOC);
     return $data['fansname'];
   }
+  public static function updateFansName($id_club,$fans){
+    $query=Connection::getInstance()->connect()->prepare("UPDATE club_fans set fansname=:fans where id_club=:id_club");
+    $query->bindParam(':id_club', $id_club);
+    $query->bindParam(':fans',$fans);
+    $query->execute();
+  }
 }

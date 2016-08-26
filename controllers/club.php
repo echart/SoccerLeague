@@ -18,6 +18,7 @@ $this->data['clubname']=Club::getClubNameById($club);
  */
 if(isset($this->request['subrequest'])){
   if($this->request['subrequest']=='overview'){
+    include('helpers/__position.php');
     $this->data['menu']='club';
     $this->data['submenu']=1;
     $this->requestURL='club_overview';
@@ -29,6 +30,7 @@ if(isset($this->request['subrequest'])){
         $this->data['overview']['line'][$i]=$player->loadPlayerInfo($id_player);
         $this->data['overview']['line'][$i]['skill_index']=$player->skillIndex();
         $this->data['overview']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
+        $this->data['overview']['line'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
         $i++;
       }
     }
@@ -68,6 +70,7 @@ if(isset($this->request['subrequest'])){
     extract($_POST);
 
     // TODO:validations
+    ClubFans::updateFansName($id_club,$fansname);
     ClubInfo::update($id_club,$manager,$nickname,$stadium,$clubcolor,$history);
     header('location: edit/saved');
     exit;

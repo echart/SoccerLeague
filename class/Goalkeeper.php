@@ -22,15 +22,17 @@ class Goalkeeper extends Players{
 		$data=$query->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
-	public function loadPlayerPositions(){
+	public function loadPlayerPositions($id_player){
 		$positions=array();
-		$query=Connection::getInstance()->connect()->prepare("SELECT side,position FROM positions inner join players_positions using(id_position) where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT side,position FROM positions inner join players_position using(id_position) where id_player=:id_player");
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
-		while($data = $query->fetch(PDO::FETCH_OBJ)){
-			$positions[]['side']=$data->side;
-			$positions[]['position']=$data->position;
-		}
+		// while($data = $query->fetch(PDO::FETCH_OBJ)){
+		// 	$positions[]['side']=$data->side;
+		// 	$positions[]['position']=$data->position;
+		// }
+		$data=$query->fetch(PDO::FETCH_ASSOC);
+		$positions=$data['position'];
 		return $positions;
 	}
 	public function loadPlayerSkills(){
