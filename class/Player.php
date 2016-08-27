@@ -15,11 +15,13 @@ class Player extends Players{
 	public $freekick;
 	public $marking;
 	public $tackling;
+	public function __construct($id_player){
+		parent::__construct($id_player);
+	}
 	/*methods*/
-	public function loadPlayer($id_player){
-		$this->id_player=$id_player;
+	public function loadPlayer(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players p inner join players_attr pa using(id_player) inner join players_attr_line pal using(id_player) where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
+		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_ASSOC);
 		foreach ($data as $key => $value) {
@@ -31,16 +33,16 @@ class Player extends Players{
 		}
 		return $data;
 	}
-	public function loadPlayerInfo($id_player){
+	public function loadPlayerInfo(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg FROM players p where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
+		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
-	public function loadPlayerPositions($id_player){
+	public function loadPlayerPositions(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT side,position FROM positions inner join players_position using(id_position) where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
+		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		// while($data = $query->fetch(PDO::FETCH_OBJ)){
 		// 	$positions[]['side']=$data->side;
@@ -150,9 +152,9 @@ class Player extends Players{
 		$query->setFetchMode(PDO::FETCH_OBJ);
 		return $query;
 	}
-	public function deletePlayer($id_player){
+	public function deletePlayer(){
 		$query=Connection::getInstance()->connect()->prepare("DELETE CASCADE FROM players where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
+		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 	}
 }

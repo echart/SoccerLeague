@@ -42,10 +42,10 @@ if(isset($this->request['id'])){
   $arrayPlayers=Players::getPlayersByIdClub($_SESSION['SL_club']);
   $i=0;
   foreach ($arrayPlayers as $key => $id_player) {
-    $player = new Player();
-    $this->data['playersTable']['line'][$i]=$player->loadPlayer($id_player);
-    $this->data['playersTable']['line'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
-    $this->data['playersTable']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
+    $player = new Player($id_player);
+    $this->data['playersTable']['line'][$i]=$player->loadPlayer();
+    $this->data['playersTable']['line'][$i]['area']=__fieldArea($player->loadPlayerPositions());
+    $this->data['playersTable']['line'][$i]['position']=$player->loadPlayerPositions();
     $this->data['playersTable']['line'][$i]['REC']=$player->rec();
     $this->data['playersTable']['line'][$i]['SI']=$player->skillIndex();
     $i++;
@@ -53,13 +53,12 @@ if(isset($this->request['id'])){
   $arrayPlayers=Players::getGoalkeepersByIdClub($_SESSION['SL_club']);
   $i=0;
   foreach ($arrayPlayers as $key => $id_player) {
-    $player = new Goalkeeper();
-    $this->data['playersTable']['gk'][$i]=$player->loadPlayer($id_player);
-    $this->data['playersTable']['gk'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
-    $this->data['playersTable']['gk'][$i]['position']=$player->loadPlayerPositions($id_player);
+    $player = new Goalkeeper($id_player);
+    $this->data['playersTable']['gk'][$i]=$player->loadPlayer();
+    $this->data['playersTable']['gk'][$i]['area']=__fieldArea($player->loadPlayerPositions());
+    $this->data['playersTable']['gk'][$i]['position']=$player->loadPlayerPositions();
     $this->data['playersTable']['gk'][$i]['REC']=$player->rec();
     $this->data['playersTable']['gk'][$i]['SI']=$player->skillIndex();
-
     $i++;
   }
 }

@@ -7,8 +7,8 @@
   z-index: 10;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: all 0.5s 0.5s ease-in-out;
-  transition: all 0.5s 0.5s ease-in-out;
+  /*-webkit-transition: all 0s 0s ease-in-out;
+  transition: all 0.0s 0.0s ease-in-out;*/
 }
 
 .modal-content {

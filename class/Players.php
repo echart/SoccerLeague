@@ -35,6 +35,9 @@ class Players{
 	public $vision;
 	public $unpredictability;
 	public $communication;
+	public function __construct($id_player){
+		$this->id_player=$id_player;
+	}
 	/*methods*/
 	public function wage(){
 		$this->wage=$this->skill_index*2.2;

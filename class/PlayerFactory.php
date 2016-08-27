@@ -28,7 +28,7 @@ class PlayerFactory{
     $player->positioning=random($indice,20.0);
     $player->vision=random($indice,20.0);
     $player->unpredictability=random($indice,20.0);
-
+		$player->communication=random($indice,20.0);
 		$player->handling=random($indice,20.0);
 		$player->aerial=random($indice,20.0);
 		$player->foothability=random($indice,20.0);

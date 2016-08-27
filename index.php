@@ -87,20 +87,44 @@ $refeer= $_GET['refeer']?? NULL;
 				</form>
 			</div>
 		</div>
+    <div class='about'>
+      <img src='assets/img/sl_logos/logo.branco.png'>
+      <p>
+        Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
+      </p>
+      <p>
+        O game consiste em criar um clube de futebol que será atribuido a liga nacional do país escolhido, assim você disputa com dezenas de outros técnicos pelo acesso a liga principal e o titulo nacional. Ao longo dessa jornada, o técnico tem muitas outras competições, amistosos e etc. e para atingir o principal objetivo deve escalar, gerenciar estádio, gerenciar economia, vender ou contratar jogadores, e etc.
+      </p>
+      <p>
+        E este projeto é utilizado como trabalho de conclusão do Curso de Tecnologia em Sistemas para Internet do Instituto Federal de Educação, Ciência e Tecnologia Sul-Riograndense.
+      </p>
+    </div>
+    <div class='rules'>
+      <h1>Manual de boa convivência do game: <i class="heart"></i><i class="football"></i></h1>
+      <h3>É estritamente proibido:</h3>
+      <p>+ Em qualquer que seja o meio(Mensagens, Tweets, Fórum) é estritamente proibido fazer uso de palavras, termos ou qualquer outra forma de expressão, que seja de carater ofensivo, ilegal ou racista. Também não é permitido o envio de SPAM através dos nossos canais de comunicação entre usuários.</p>
+
+      <p>+ Trapacear de qualquer forma.</p>
+      <p>+ Tentar arruinar o jogo de alguém de alguma forma</p>
+      <p>+ Obter ou manipular dados de qualquer parte do site, de forma não autorizada, assim também como automatizar partes do game.</p>
+      <p>+ <b>Possuir mais de um login/conta/clube</b> é totalmente proibido. Assim também como controlar conta de amigo/parente. Cada clube/conta/login é de uso pessoal e instransferível.</p>
+      <p>+ Agir contra a lógica de qualquer clube no futebol, isto inclui, vender todos os jogadores, arruinar a economia do clube e etc..</p>
+      <button class='btn btn-signup' onclick='call("signup")'>Jogar</button>
+    </div>
 		<header>
 			<div class='logo'><img src='assets/img/sl_logos/logo.branco.png'></div>
 			<nav>
 				<ul>
-					<li><a href=''>O que é?</a></li>
-					<li><a href=''>Regras</a></li>
-					<li><a href='#'  onclick='callSignup()' class='signup'>Cadastrar</a></li>
+					<li><a href='#' onclick='call("about")' class='btn-about'>Sobre</a></li>
+					<li><a href='#' onclick='call("rules")' class='btn-rules'>Regras</a></li>
+					<li><a href='#' onclick='call("signup")' class='btn-signup'>Cadastrar</a></li>
 				</ul>
 			</nav>
-			<button onclick='callLogin()' class='btn-login'>Entrar</button>
+			<button onclick='call("login")' class='btn-login'>Entrar</button>
 		</header>
 		<div class='video'>
 			<video preload='none' loop="loop" muted>
-				<source src="assets/video/splash_home2.mp4" type="video/mp4">
+				<source src="assets/video/splash_home3.mp4" type="video/mp4">
 			</video>
 			<div class="pattern"></div>
 			<div class='cadastro'>
@@ -109,7 +133,7 @@ $refeer= $_GET['refeer']?? NULL;
 			</div>
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
 		</div>
-		<div class='alert visible alert-bottom alert-warning'>
+		<div class='alert visible alert-bottom alert-info'>
 				<p>Jogo otimizado para resolução 1366x768, e localização compartilhada. </p>
 		</div>
 		<div id='alert' class='alert'></div>

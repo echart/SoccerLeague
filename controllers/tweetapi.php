@@ -181,12 +181,12 @@ if(isset($this->request['tweet'])){
               <div class='tweet-content'>
                 <div class='club-logo'><img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['tweets']['club_logo']?>' width='75px' height='75px'></div>
                 <div class='tweet2'>
-                  <div class='tweet-info'><?=$this->data['tweets']['clubname']?>  <?=$this->data['tweets']['retweeted_club']?> - <span class='date'><?=$horas?>h</span> </div>
+                  <div class='tweet-info'><a href='<?=$this->data['tree']?>club/<?=$tweet['id_club']?>'><?=$this->data['tweets']['clubname']?> </a> <?=$this->data['tweets']['retweeted_club']?> - <span class='date'><?=$horas?>h</span> </div>
                   <div class='tweet-text'><?=$this->data['tweets']['content']?></div>
                 </div>
               </div>
               <div class='tweet-options'>
-                <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='reply'></span></button>
+                <!-- <button type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='reply'></span></button> -->
                 <button onclick="tweetaction(<?=$tweet['id_tweet']?>,'like')" type='button' class='like btn-tweet btn no-bg no-hover black-text'> <i><?=Tweet::__countLikes($id_tweet);?></i> <span class='<?=$likeclass?>'></span></button>
                 <?if((Tweet::tweetIsMine($tweet['id_tweet'])==true and $rtclass=='retweet2') or (Tweet::tweetIsMine($tweet['id_tweet'])!=true)){?><button onclick="tweetaction(<?=$tweet['id_tweet']?>,'retweet')" type='button' class='retweet btn-tweet btn no-bg no-hover black-text'> <i><?=Tweet::__countRetweets($id_tweet);?></i> <span class='<?=$rtclass?>'></span></button><?}?>
                 <?if(Tweet::tweetIsMine($tweet['id_tweet'])==true and $this->data['tweets']['retweeted_clubid']==''){?><button onclick="deletetweet(<?=$tweet['id_tweet']?>)" type='button' class='btn-tweet btn no-bg no-hover black-text'> <span class='delete'></span></button><?}?>

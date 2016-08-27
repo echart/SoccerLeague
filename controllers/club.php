@@ -19,31 +19,50 @@ $this->data['clubname']=Club::getClubNameById($club);
 if(isset($this->request['subrequest'])){
   if($this->request['subrequest']=='overview'){
     include('helpers/__position.php');
+    $this->addJSFile('playerSkill.js');
+
     $this->data['menu']='club';
     $this->data['submenu']=1;
     $this->requestURL='club_overview';
     $arrayPlayers=Players::getPlayersByIdClub($this->request['id']);
     $i=0;
+    $this->data['overview']['stats']['SI']=0;
+    $this->data['overview']['stats']['REC']=0;
+    $this->data['overview']['stats']['age']=0;
+    $this->data['overview']['stats']['players']=0;
     if(count($arrayPlayers)!=0){
       foreach ($arrayPlayers as $key => $id_player) {
-        $player = new Player();
-        $this->data['overview']['line'][$i]=$player->loadPlayerInfo($id_player);
+        $player = new Player($id_player);
+        $this->data['overview']['line'][$i]=$player->loadPlayerInfo();
         $this->data['overview']['line'][$i]['skill_index']=$player->skillIndex();
-        $this->data['overview']['line'][$i]['position']=$player->loadPlayerPositions($id_player);
-        $this->data['overview']['line'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
+        $this->data['overview']['line'][$i]['position']=$player->loadPlayerPositions();
+        $this->data['overview']['line'][$i]['REC']=$player->rec();
+        $this->data['overview']['line'][$i]['SI']=$player->skillIndex();
+        $this->data['overview']['line'][$i]['area']=__fieldArea($player->loadPlayerPositions());
+        $this->data['overview']['stats']['SI']+=$this->data['overview']['line'][$i]['SI'];
+        $this->data['overview']['stats']['REC']+=$this->data['overview']['line'][$i]['REC'];
+        $this->data['overview']['stats']['age']+=$this->data['overview']['line'][$i]['age'];
+        $this->data['overview']['stats']['players']+=1;
         $i++;
       }
     }
+
 
     $arrayPlayers=Players::getGoalkeepersByIdClub($this->request['id']);
     $i=0;
     if(count($arrayPlayers)!=0){
       foreach ($arrayPlayers as $key => $id_player) {
-        $player = new Goalkeeper();
-        $this->data['overview']['gk'][$i]=$player->loadPlayerInfo($id_player);
+        $player = new Goalkeeper($id_player);
+        $this->data['overview']['gk'][$i]=$player->loadPlayerInfo();
         $this->data['overview']['gk'][$i]['skill_index']=$player->skillIndex();
-        $this->data['overview']['gk'][$i]['position']=$player->loadPlayerPositions($id_player);
-        $this->data['overview']['gk'][$i]['area']=__fieldArea($player->loadPlayerPositions($id_player));
+        $this->data['overview']['gk'][$i]['position']=$player->loadPlayerPositions();
+        $this->data['overview']['gk'][$i]['REC']=$player->rec();
+        $this->data['overview']['gk'][$i]['SI']=$player->skillIndex();
+        $this->data['overview']['gk'][$i]['area']=__fieldArea($player->loadPlayerPositions());
+        $this->data['overview']['stats']['SI']+=$this->data['overview']['line'][$i]['SI'];
+        $this->data['overview']['stats']['REC']+=$this->data['overview']['line'][$i]['REC'];
+        $this->data['overview']['stats']['age']+=$this->data['overview']['line'][$i]['age'];
+        $this->data['overview']['stats']['players']+=1;
         $i++;
       }
     }

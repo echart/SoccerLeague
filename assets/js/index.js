@@ -8,27 +8,22 @@ $(document).ready(function(){
     $('video').attr('preload', 'auto');
   }
 });
-function callLogin(){
-  if($('.login').css('height')=='0px'){
-    $('.login').css('height','88.75vh');
-    $('.signup').css('height','0px');
-    $('.btn-login').html('Fechar');
-    $('a.signup').html('Cadastrar')
-
-  }else{
-    $('.login').css('height','0px');
-    $('.btn-login').html('Entrar');
-  }
-}
-function callSignup(){
-  if($('.signup').css('height')=='0px'){
-    $('.login').css('height','0px');
-    $('.signup').css('height','88.75vh');
-    $('.btn-login').html('Entrar');
-    $('a.signup').html('Fechar')
-  }else{
-    $('.signup').css('height','0px');
-    $('a.signup').html('Cadastrar')
+function call(param){
+  var array=['login','signup','rules','about'];
+  var arrayBtn=['Entrar','Cadastrar','Regras','Sobre'];
+  for(var i=0;i<array.length;i++){
+    $('.btn-'+array[i]).html(arrayBtn[i]);
+    if(array[i]==param){
+      if($('.'+param).css('height')=='0px'){
+        $('.'+param).css('height','88.75vh');
+        $('.btn-'+param).html('Fechar');
+      }else{
+        $('.'+param).css('height','0px');
+        $('.btn-'+param).html(arrayBtn[i]);
+      }
+    }else{
+      $('.'+array[i]).css('height','0px');
+    }
   }
 }
 function login(){

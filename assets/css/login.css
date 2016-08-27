@@ -10,10 +10,13 @@ body{
 	overflow-y: hidden;
 }
 header{
-	width: 500px;
-	height: 10em;
-	z-index: 998999;
-	position: absolute;
+	width: 100vw;
+	height: 5.5vw;
+	z-index: 9;
+	position: relative;
+	background-color: #222;
+	z-index: 9;
+	top: 0;
 }
 header div.logo{
 	position: absolute;
@@ -145,7 +148,7 @@ div.video{
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-    background: url('../img/backgrounds/bg1.jpg') no-repeat center center/cover;
+    background: url('../img/backgrounds/bg2.jpg') no-repeat center center/cover;
 }
 div.video h3{
 	font-weight: 300;
@@ -158,7 +161,7 @@ div.video h4{
 	font-size: 1rem;
 }
 div.video div.pattern {
-    opacity: 0.75;
+    opacity: 0.5;
 	filter: "alpha(opacity=40)";
 	background: url('../img/login/subtle_carbon.png');
 	position: absolute;
@@ -183,7 +186,7 @@ div.cadastro{
 	z-index:2;
 	width: 100%;
 	position: absolute;
-	top: 15em;
+	top: 12.5em;
 	left: 50%;
 	transform:translateX(-50%);
 	text-align: left;
@@ -213,14 +216,6 @@ div.cadastro h3,div.cadastro h4{
 /*=================================
 Options
 ===================================*/
-header{
-	z-index: 9999;
-	position: relative;
-	top: 0;
-	background-color: #222;
-	width: 100vw;
-	height: 5.5vw;
-}
 header .btn-login{
 	position: absolute;
 	right: 0;
@@ -248,18 +243,18 @@ header nav ul{
 header nav ul li{
 	float: left;
 }
-header nav ul li a{
+header nav ul li a, header nav ul li label{
 	padding: 10px 20px;
 	color: #7F7E7E;
 	text-decoration: none;
 	margin: 5px;
 }
-header nav ul li a.signup{
+header nav ul li a.btn-signup{
 	background-color: #333;
 	color: #7F7E7E;
 	border-radius: 2.5px;
 }
-header nav ul li a:hover{
+header nav ul li a:hover,header nav ul li label:hover{
 	color: #fff;
 }
 
@@ -346,6 +341,76 @@ textarea:focus{
 	background-color: #ddd;
 	color: #000;
 }
+/*==========================
+DIV rules
+============================*/
+div.rules{
+	z-index: 2;
+	width: 100vw;
+	height: 0;
+	overflow: hidden;
+
+	/* Set our transitions up. */
+	-webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+	color: #f4f4f4;
+	background-color: #333;
+	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+}
+div.rules h1{
+	color: #7dcd85;
+}
+div.rules p{
+	font-family: 'Exo 2', sans-serif;
+	margin: 0 auto;
+	width: 50%;
+	text-align: left;
+	font-size: 14px;
+	padding-top: 5px;
+}
+div.rules .btn{
+	margin-top: 40px;
+	width: 50%;
+	height: 50px;
+	background-color: #7dcd85;
+	color: #fff;
+	border: 0;
+	font-size: 18px;
+}
+/*==========================
+DIV about
+============================*/
+div.about{
+	z-index: 2;
+	width: 100vw;
+	height: 0;
+	overflow: hidden;
+	color: #fff;
+	background-color: #4a7856;
+	text-align: center;
+
+	/* Set our transitions up. */
+	-webkit-transition: height 0.8s;
+	-moz-transition: height 0.8s;
+	transition: height 0.8s;
+}
+div.about img{
+	margin-top: 40px;
+}
+div.about p{
+	font-family: 'Exo 2', sans-serif;
+	margin: 0 auto;
+	width: 50%;
+	text-align: justify;
+	font-size: 16px;
+	padding-top: 20px;
+}
+div.about h3{
+	margin: 20px 0 10px 0;
+}
+
 /*==========================
 DIV LOGIN
 ============================*/
