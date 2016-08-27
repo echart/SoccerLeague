@@ -7,10 +7,11 @@ require_once('helpers/__skill.php');
       <h3 class='title'><?=$this->data['clubname']?></h3>
     </div>
     <div class='grid-35 padding-top right'>
-      Mostrar atributos:
+      Mostrar:
       <select name='visible-attr'>
+        <option selected value='gen'>Geral</option>
         <option value='phi'>Físicos</option>
-        <option selected value='psi'>Psicológicos</option>
+        <option value='psi'>Psicológicos</option>
         <option value='tec'>Técnicos</option>
       </select>
     </div>
@@ -23,7 +24,9 @@ require_once('helpers/__skill.php');
               <tr>
                 <th>Nome</th>
                 <th>Posição</th>
-                <th>Idade</th>
+                <th class='gen'>Idade</th>
+                <th class='gen' width='120px'>REC</th>
+                <th class='gen'>SI</th>
                 <th class='phi'>For</th>
                 <th class='phi'>Vel</th>
                 <th class='phi'>Res</th>
@@ -51,7 +54,9 @@ require_once('helpers/__skill.php');
                 <tr class='center'>
                   <td class='padding-right left'><a href="<?=$this->data['tree']?>players/<?=$this->data['playersTable']['gk'][$i]['id_player']?>"><?=$this->data['playersTable']['gk'][$i]['name'];?></a></td>
                   <td class='border'><span class='helper <?=$this->data['playersTable']['gk'][$i]['area']?>'><?=$this->data['playersTable']['gk'][$i]['position'];?></span></td>
-                  <td class='border'><?=$this->data['playersTable']['gk'][$i]['age'];?></td>
+                  <td class='gen border'><?=$this->data['playersTable']['gk'][$i]['age'];?></td>
+                  <td class='gen border'>rec[<?=$this->data['playersTable']['gk'][$i]['REC'];?>]</td>
+                  <td class='gen border'><?=$this->data['playersTable']['gk'][$i]['SI'];?></td>
                   <td class='phi'><?=__skill($this->data['playersTable']['gk'][$i]['stamina']);?></td>
                   <td class='phi'><?=__skill($this->data['playersTable']['gk'][$i]['speed']);?></td>
                   <td class='phi'><?=__skill($this->data['playersTable']['gk'][$i]['resistance']);?></td>
@@ -85,7 +90,9 @@ require_once('helpers/__skill.php');
               <tr>
                 <th>Nome</th>
                 <th>Posição</th>
-                <th>Idade</th>
+                <th class='gen'>Idade</th>
+                <th class='gen' width='120px'>REC</th>
+                <th class='gen'>SI</th>
                 <th class='phi'>For</th>
                 <th class='phi'>Vel</th>
                 <th class='phi'>Res</th>
@@ -107,6 +114,7 @@ require_once('helpers/__skill.php');
                 <th class='tec'>Lon</th>
                 <th class='tec'>Fin</th>
                 <th class='tec'>Cab</th>
+                <th class='tec'>B.Par</th>
               </tr>
             </thead>
             <tbody>
@@ -115,7 +123,9 @@ require_once('helpers/__skill.php');
                 <tr class='center'>
                   <td class='padding-right left'><a href="<?=$this->data['tree']?>players/<?=$this->data['playersTable']['line'][$i]['id_player']?>"><?=$this->data['playersTable']['line'][$i]['name'];?></a></td>
                   <td class='border'><span class='helper <?=$this->data['playersTable']['line'][$i]['area']?>'><?=$this->data['playersTable']['line'][$i]['position'];?></span></td>
-                  <td class='border'><?=$this->data['playersTable']['line'][$i]['age'];?></td>
+                  <td class='gen border'><?=$this->data['playersTable']['line'][$i]['age'];?></td>
+                  <td class='gen border'>rec[<?=$this->data['playersTable']['line'][$i]['REC'];?>]</td>
+                  <td class='gen border'><?=$this->data['playersTable']['line'][$i]['SI'];?></td>
                   <td class='phi'><?=__skill($this->data['playersTable']['line'][$i]['stamina']);?></td>
                   <td class='phi'><?=__skill($this->data['playersTable']['line'][$i]['speed']);?></td>
                   <td class='phi'><?=__skill($this->data['playersTable']['line'][$i]['resistance']);?></td>
@@ -137,6 +147,8 @@ require_once('helpers/__skill.php');
                   <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['longshot']);?></td>
                   <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['finish']);?></td>
                   <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['heading']);?></td>
+                  <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['freekick']);?></td>
+
                 </tr>
               <? } ?>
             </tbody>

@@ -278,16 +278,19 @@ colors
 		background-color: rgba(0,0,0,0);
 }
 .bg-success{
-	background-color: #5FAD56;
+	background-color: #5FAD56 !important;
 }
 .bg-warning{
-	background-color: #b44230;
+	background-color: #b44230 !important;
 }
 .bg-alert{
-	background-color: #ff9d50;
+	background-color: #ff9d50 !important;
 }
 .bg-white{
-	background-color: #fff;
+	background-color: #fff !important;
+}
+.bg-dark{
+	background-color: #333 !important;
 }
 .black-text{
 	color: #333;
