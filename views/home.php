@@ -34,7 +34,7 @@
       <div class="grid-100">
           <div class='box'>
             <div class='box-title'>Próxima rodada</div>
-            <div class='box-content'>
+            <div class='box-content bg-white'>
               <div class='next-match'>
                 <img src='<?=$this->data['tree']?>assets/img/logos/<?=$this->data['nextMatch']['homeLogo']?>'>
                 <span>x</span>
@@ -46,7 +46,8 @@
                   <span><a href='<?=$this->data['tree']?>club/<?=$this->data['nextMatch']['away']?>' class='black-text'><?=$this->data['nextMatch']['awayTeam'];?></a></span>
                 </div>
                 <div class='date'>
-                  <span>Hora da partida</span>
+                  <span> <?=$this->data['nextMatch']['round']?> rodada, <?=$this->data['nextMatch']['leagueInfo']['name']?></span><br>
+                  <span><?=$this->data['nextMatch']['matchday']?></span>
                 </div>
                 <div class='match'>
                   <a class='#'></a>
@@ -58,14 +59,14 @@
       <div class="grid-100">
         <div class='box'>
           <div class='box-title'>Partidas anteriores</div>
-          <div class='box-content'>
+          <div class='box-content bg-white'>
           </div>
         </div>
       </div>
       <div class="grid-100">
           <div class='box'>
             <div class='box-title'>Notificações</div>
-            <div class='box-content'>
+            <div class='box-content bg-white'>
               <p>Nenhuma notificação</p>
             </div>
           </div>
