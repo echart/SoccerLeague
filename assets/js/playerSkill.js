@@ -40,6 +40,13 @@ $(document).ready(function(){
         "<img src='http://t.soccerleague.com.br/assets/img/halfstar.png' width='16px'>"+
         "<img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'></span>");
         break;
+      case 'rec[5.0]':
+      $(this).html("<span class='helper bg-dark'><img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'></span>");
+      break;
     }
   })
 });

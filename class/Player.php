@@ -88,9 +88,9 @@ class Player extends Players{
 		$this->loadPlayerSkills();
 		$skills=array($this->stamina,$this->speed,$this->resistance,$this->jump,$this->workrate,$this->positioning,$this->concentration,$this->decision,$this->vision,$this->unpredictability,$this->communication,$this->marking,$this->tackling,$this->crossing,$this->pass,$this->technical,$this->ballcontrol,$this->dribble,$this->longshot,$this->finish,$this->heading,$this->freekick);
 	# 										  		[sta,spe,res,jum,Emp,Pos,Con,Dec,Vis,Imp,Com,Mar,Des,Cru,Pas,Tec,B.Con,Dri,Lon,Fin,Cab,b.par]
-	 	$position['D C']  =	array(	1,	2,	2,	2,	2,	1,	2,	3,  3,  3,  1,  1,  1,  3,  2,   2,  3,   3,  3,  3,  1,  3);
-	 	$position['D L']  =	array(	2,	1,	2,	2,	2,	2,	2,	3,  3,  3,  2,  1,  1,  2,  2,   2,  2,   3,  3,  3,  2,  3);
-	 	$position['D R']  =	array(	2,	1,	2,	2,	2,	2,	2,	3,  3,  3,  2,  1,  1,  2,  2,   2,  2,   3,  3,  3,  2,  3);
+	 	$position['D C']  =	array(	1,	2,	2,	2,	2,	1,	2,	3,  3,  3,  1,  1,  1,  3,  3,   3,  3,   3,  3,  3,  1,  3);
+	 	$position['D L']  =	array(	2,	1,	2,	2,	2,	2,	2,	3,  3,  3,  2,  1,  1,  2,  3,   3,  3,   3,  3,  3,  2,  3);
+	 	$position['D R']  =	array(	2,	1,	2,	2,	2,	2,	2,	3,  3,  3,  2,  1,  1,  2,  3,   3,  3,   3,  3,  3,  2,  3);
 		$position['DM C'] = array(	1,	2,	2,	3,	2,	1,	2,	3,  3,  3,  2,  1,  1,  3,  2,   2,  2,   3,  3,  3,  2,  3);
 		$position['DM L'] =	array(	2,	1,	2,	2,	2,	2,	2,	3,  3,  3,  2,  1,  1,  2,  2,   2,  2,   3,  3,  3,  3,  3);
 		$position['DM R'] =	array(	2,	1,	2,	2,	2,	2,	2,	3,  3,  3,  2,  1,  1,  2,  2,   2,  2,   3,  3,  3,  3,  3);
@@ -102,9 +102,9 @@ class Player extends Players{
 		$position['OM C'] =	array(	2,	2,	2,	3,	2,	1,	2,	1,  1,  1,  2,  3,  3,  2,  1,   1,  1,   2,  2,  2,  3,  3);
 		$position['F C']  =	array(	1,	2,	2,	2,	1,	1,	2,	2,  2,  1,  3,  3,  3,  3,  2,   2,  1,   2,  2,  1,  1,  3);
 
-		$weights['D C']  =	array(70,28,2);
-	 	$weights['D L']  =	array(60,34,6);
-	 	$weights['D R']  =	array(60,34,6);
+		$weights['D C']  =	array(65,33,2);
+	 	$weights['D L']  =	array(80,14,6);
+	 	$weights['D R']  =	array(80,14,6);
 		$weights['DM C'] = 	array(90,10,0);
 		$weights['DM L'] =	array(50,40,10);
 		$weights['DM R'] =	array(50,40,10);
