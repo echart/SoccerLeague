@@ -24,7 +24,7 @@ require_once('helpers/__skill.php');
             <div class='player-info'>
               <table class=''>
                 <tr><td width='50px'>Clube:</td><td><a href='<?=$this->data['tree']?>club/<?=$this->data['player']['id_player_club']?>'><?=$this->data['player']['club']?></a></td></tr>
-                <tr><td width='50px'>País:</td><td>Brasil</td></tr>
+                <tr><td width='50px'>Salário:</td><td>$<?=number_format($this->data['player']['SI']*2.24,3,'.',',')?></td></tr>
                 <tr><td width='50px'>Idade</td><td><?=$this->data['player']['age']?></td></tr>
                 <tr><td width='50px'>Peso/Altura:</td><td><?=$this->data['player']['weight']."kg/".$this->data['player']['height'].'cm'?></td></tr>
                 <tr><td width='50px'>SI:</td><td><?=$this->data['player']['SI']?></td></tr>
