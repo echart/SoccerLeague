@@ -24,6 +24,7 @@ if(isset($this->request['id'])){
     require_once('helpers/__position.php');
     require_once('helpers/__country.php');
     $this->addCSSFile('player.css');
+    $this->addJSFile('playerSkill.js');
     /**
     * LOAD ALL PLAYER ATTR AND PASS IT TO VIEW.
     */
@@ -32,7 +33,7 @@ if(isset($this->request['id'])){
     $this->data['player']=$player->loadPlayer($id_player);
     $this->data['player']['area']=__fieldArea($player->loadPlayerPositions());
     $this->data['player']['position']=$player->loadPlayerPositions();
-    $this->data['player']['REC']=$player->rec();
+    $this->data['player']['REC']="rec[".$player->rec()."]";
     $this->data['player']['SI']=$player->skillIndex();
     $this->data['player']['nickname']='"'.$this->data['player']['nickname'].'"';
     $this->data['title']= $this->data['player']['name'] . ' - SoccerLeague';

@@ -1,6 +1,6 @@
 <?
 ini_set('display_errors',0);
-error_reporting(E_WARNING);
+error_reporting(!E_ALL);
 ?>
 <!DOCTYPE html>
 <html>

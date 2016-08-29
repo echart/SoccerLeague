@@ -7,7 +7,7 @@
 }
 .player-name .positions{
   float: left;
-  padding-top: 30px;
+  padding-top: 25px;
   padding-left: 20px;
 }
 .title{
@@ -36,9 +36,15 @@ span.nickname{
 .player-info table tr{
   background-color: #fff;
 }
+.player-info table tr td{
+  padding: 8.5px 10px;
+}
 .player-info table tr td a{
   font-size: 12px;
 }
 .player-info table tr:hover{
   background-color: #fff !important;
+}
+span.helper{
+  max-width: 90px;
 }

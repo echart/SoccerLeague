@@ -100,3 +100,38 @@ function deletetweet(id_tweet){
     tweetaction(id_tweet,'delete');
   }
 }
+
+$('.club-stats ul li').each(function(){
+  switch($(this).html()){
+    case 'rec[4.5]':
+    case 'rec[4.6]':
+    case 'rec[4.7]':
+    case 'rec[4.8]':
+    case 'rec[4.9]':
+      $(this).html("<span class='helper bg-dark'><img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+      "<img src='http://t.soccerleague.com.br/assets/img/halfstar.png' width='16px'></span>");
+      break;
+
+    case 'rec[4.4]':
+    case 'rec[4.3]':
+    case 'rec[4.2]':
+    case 'rec[4.1]':
+    case 'rec[4.0]':
+    $(this).html("<span class='helper bg-dark'><img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/goldstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'></span>");
+    break;
+    case 'rec[nan]':
+    $(this).html("<span class='helper bg-dark'><img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'>"+
+    "<img src='http://t.soccerleague.com.br/assets/img/blankstar.png' width='16px'></span>");
+    break;
+  }
+})

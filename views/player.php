@@ -7,7 +7,7 @@ require_once('helpers/__skill.php');
       <div class='player-name'>
         <h3 class='no-padding title'><!--<i class='padding-top flag icon </i>--><?=$this->data['player']['name'];?> <span class='nickname'><?=$this->data['player']['nickname'];?></span></h3>
         <div class='positions'>
-          DC
+          <span class='helper <?=$this->data['player']['area']?>'><?=$this->data['player']['position'];?></span>
         </div>
       </div>
     </div>
