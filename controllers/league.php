@@ -50,7 +50,7 @@ if(isset($this->request['request']) AND !isset($this->request['subrequest'])){
 }else{
   switch ($this->request['subrequest']) {
     case 'calendar':
-      $this->addJSFile('leaguecalendar.js');
+      $this->addJSFile('leagueCalendar.js');
       $league =  new League(getCountryID($country), SEASON, $division, $group);
 
       $this->data['leagueName']=$league->name;
