@@ -1,9 +1,9 @@
 <?
 include('helpers/__dontgetlost.php');
 class Handler{
-	public $request;
-	public $requestURL;
-	public $data;
+	public $request; /* data from here will contain the controller/view "caller" and will all the other data in the URL, like method, subrequest and this stuff*/
+	public $requestURL; /*this will call the controller and view*/
+	public $data; /*the will pass the data from the Controller to view*/
 	public $dependence=array('JS'=>array(),'CSS'=>array());
 	function parseUrl(array $request){
 		$this->requestURL=$request['request'];

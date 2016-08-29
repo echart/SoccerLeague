@@ -1,7 +1,3 @@
-<?
-ini_set('display_errors',0);
-error_reporting(!E_ALL);
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +17,9 @@ error_reporting(!E_ALL);
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/icons.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<?
-
+	/*load css files*/
 	$this->loadCSSFiles();
+	/*starts account to get the timezone choosed by user*/
 	$account=Account::getAccount($_SESSION['SL_account']);
 	?>
 	<script>
@@ -31,4 +28,5 @@ error_reporting(!E_ALL);
 	</script>
 </head>
 <body>
+<!-- div that will receive and display alerts to users-->
 <div id='alert' class='alert'></div>

@@ -24,10 +24,9 @@ class Connection {
 		try{
 			//load the config file with the database,host,password and user data.
 			$this->_config=parse_ini_file('_config.ini');
-
 			//make the connection
 			$this->connection = new PDO("pgsql:dbname=".$this->_config['db'].";host=".$this->_config['host'].";user=".$this->_config['user'].";password=".$this->_config['pass']);
-			$this->connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+			$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		}catch(PDOException $e){
 			//if pdo excpetion DIE and show the error
