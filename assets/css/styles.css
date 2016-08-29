@@ -41,6 +41,9 @@ Alerts
 .visible{
 	display: block !important;
 }
+.visible-table{
+	display: table-header-group !important;
+}
 .alert{
 	z-index: 999;
 	display: none;
@@ -176,9 +179,12 @@ Links
 ==============================*/
 a{
 	font-size: 14px;
+	color: #333;
+	text-decoration: none;
+}
+a:hover{
 	color: #dd6e42;
-	/*color:#ea4335;*/
-	/*color: #333;*/
+	text-decoration: none;
 	cursor: pointer;
 }
 /*=============================
@@ -208,6 +214,7 @@ Heading
 .title{
 	padding-left: 20px;
 	font-family: 'Open Sans';
+	font-weight: 300;
 }
 h1{
 	font-size: 32px;
@@ -307,7 +314,10 @@ table{
 	position: relative;
 	width: 100%;
 	font-size: 13px;
-	font-family: 'Exo 2', 'Open Sans';
+	/*font-family: 'Exo 2', 'Open Sans';*/
+}
+table.noborder{
+	border-collapse: separate;
 }
 table caption{
 	width: 100%;
@@ -352,24 +362,6 @@ table tbody tr td.border{
 }
 table tbody tr td.center{
 	text-align: center;
-}
-table tbody tr td.promotion{
-	background-color: #16C716 !important;
-}
-table tbody tr td.relegation{
-	background-color: #AA0000 !important;
-}
-table tbody tr td.playoff-relegation{
-	background-color: #F91B1B !important;
-}
-table tbody tr td.playoff-promotion{
-	background-color: #008800 !important;
-}
-table tbody tr.selected{
-	/*background-color: #d5b942 !important;
-	color: #333;*/
-	font-weight: 800;
-	font-size: 13px;
 }
 /*=============================
 lists

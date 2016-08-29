@@ -148,7 +148,6 @@ require_once('helpers/__skill.php');
                   <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['finish']);?></td>
                   <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['heading']);?></td>
                   <td class='tec'><?=__skill($this->data['playersTable']['line'][$i]['freekick']);?></td>
-
                 </tr>
               <? } ?>
             </tbody>

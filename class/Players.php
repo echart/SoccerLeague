@@ -60,9 +60,9 @@ class Players{
 		$query->bindParam(':id_player',$id_player);
 		$query->execute();
 		if($query->rowCount()>0){
-			return new Goalkeeper();
+			return new Goalkeeper($id_player);
 		}else{
-			return new Player();
+			return new Player($id_player);
 		}
 	}
 	public static function getPlayersByIdClub($id_club){

@@ -23,6 +23,7 @@
                 echo '<tr><td colspan="6">Nenhum jogador</td>';
               }else{
                 foreach ($this->data['overview']['gk'] as $key) {
+                  
                   echo '<tr class="center"><td class="left"><a href="'.$this->data['tree'].'players/'.$key['id_player'].'">'.$key['name'].'</a></td><td><span class="helper '.$key['area'].'">'.$key['position'].'</span></td><td>'.$key['age'].'</td><td>rec['.$key['REC'].']</td><td>'.$key['SI'].'</td>';
                 }
                 foreach ($this->data['overview']['line'] as $key) {

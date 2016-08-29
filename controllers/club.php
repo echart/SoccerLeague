@@ -34,6 +34,7 @@ if(isset($this->request['subrequest'])){
       foreach ($arrayPlayers as $key => $id_player) {
         $player = new Player($id_player);
         $this->data['overview']['line'][$i]=$player->loadPlayerInfo();
+        $this->data['overview']['line'][$i]['id_player']=$id_player;
         $this->data['overview']['line'][$i]['skill_index']=$player->skillIndex();
         $this->data['overview']['line'][$i]['position']=$player->loadPlayerPositions();
         $this->data['overview']['line'][$i]['REC']=$player->rec();
@@ -54,6 +55,7 @@ if(isset($this->request['subrequest'])){
       foreach ($arrayPlayers as $key => $id_player) {
         $player = new Goalkeeper($id_player);
         $this->data['overview']['gk'][$i]=$player->loadPlayerInfo();
+        $this->data['overview']['gk'][$i]['id_player']=$id_player;
         $this->data['overview']['gk'][$i]['skill_index']=$player->skillIndex();
         $this->data['overview']['gk'][$i]['position']=$player->loadPlayerPositions();
         $this->data['overview']['gk'][$i]['REC']=$player->rec();
@@ -275,7 +277,7 @@ if(isset($this->request['subrequest'])){
   $this->data['clubinfo']['fans']= number_format(ClubFans::howManyFans($club),0,',','.');
   $this->data['clubinfo']['fansname']=ClubFans::getFansName($club);
   $this->data['clubinfo']['country']=flag(getCountryByID(Club::getClubCountryById($this->request['id'])));
-
+  $this->data['clubinfo']['averageREC']="rec[".Club::averageREC($this->request['id'])."]";
   /**
    * GET VISITS
    */

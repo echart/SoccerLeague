@@ -1,0 +1,44 @@
+.player-name{
+  width: 100%;
+  padding: 2.5px 30px;
+  background-color: #fff;
+  position: relative;
+  height: 67.5px;
+}
+.player-name .positions{
+  float: left;
+  padding-top: 30px;
+  padding-left: 20px;
+}
+.title{
+  float: left;
+}
+span.nickname{
+  font-size: 14px;
+  font-style: italic;
+}
+.player{
+  position: relative;
+  height: 222px;
+}
+.player-pic{
+  width: 128px;
+  float: left;
+  margin: 40px 10px 0 30px;
+  background-color: #eaf4d3;
+}
+
+.player-info{
+  margin: 5px 0 0 10px;;
+  width: 50%;
+  float: left;
+}
+.player-info table tr{
+  background-color: #fff;
+}
+.player-info table tr td a{
+  font-size: 12px;
+}
+.player-info table tr:hover{
+  background-color: #fff !important;
+}

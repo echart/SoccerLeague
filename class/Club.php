@@ -145,4 +145,36 @@ class Club{
 		$data=$query->fetch();
 		return $data['id_league'];
 	}
+	public static function averageREC($id_club){
+		$arrayPlayers=Players::getPlayersByIdClub($id_club);
+    $i=0;
+		$data['overview']['stats']['players']=0;
+    $data['overview']['stats']['REC']=0;
+    if(count($arrayPlayers)!=0){
+      foreach ($arrayPlayers as $key => $id_player) {
+        $player = new Player($id_player);
+				$player->loadPlayerPositions();
+        $data['overview']['line'][$i]['REC']=$player->rec();
+        $data['overview']['stats']['REC']+=$data['overview']['line'][$i]['REC'];
+        $data['overview']['stats']['players']+=1;
+        $i++;
+      }
+    }
+
+
+    $arrayPlayers=Players::getGoalkeepersByIdClub($id_club);
+    $i=0;
+    if(count($arrayPlayers)!=0){
+      foreach ($arrayPlayers as $key => $id_player) {
+        $player = new Goalkeeper($id_player);
+				$player->loadPlayerPositions();
+        $data['overview']['gk'][$i]['REC']=$player->rec();
+        $data['overview']['stats']['REC']+=$data['overview']['line'][$i]['REC'];
+        $data['overview']['stats']['players']+=1;
+        $i++;
+      }
+    }
+		$averageREC=number_format($data['overview']['stats']['REC']/$data['overview']['stats']['players'],1);
+		return $averageREC;
+	}
 }

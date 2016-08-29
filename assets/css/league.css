@@ -1,0 +1,54 @@
+table.zebra tbody tr:nth-child(2n+1) {
+	background-color:#fff;
+}
+table tbody tr td.promotion{
+	color: #4392f1 !important;
+}
+table tbody tr td.relegation{
+	color: #AA0000 !important;
+}
+table tbody tr td.playoff-relegation{
+	color: #F91B1B !important;
+}
+table tbody tr td.playoff-promotion{
+	color: #c2aff0 !important;
+}
+table tbody tr{
+	height: 45px;
+	background-color:#fff;
+}
+table tbody tr td a{
+	padding: 0 10px;
+	font-size: 14px;
+	color: #333;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+table tbody tr td a:hover{
+	color: #dd6e42;
+	text-decoration: none;
+	cursor: pointer;
+}
+table tbody tr td{
+	padding: 10px 5px;
+	font-size: 14px;
+}
+table.league-table tr td:first-child{
+	font-size: 18px;
+}
+table tbody tr.selected{
+	background-color: #e4e4e4 !important;
+	color: #333;
+	font-weight: 800;
+	font-size: 13px;
+}
+table tbody tr td.border{
+	border-right: 1px solid #e4e4e4;
+}
+.flag{
+	margin: 2.5px 5px;
+}
+
+.options a{
+	margin: 2.5px;
+}

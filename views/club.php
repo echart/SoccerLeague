@@ -18,7 +18,7 @@
 				<div class='club-stats'>
 					<ul>
 						<li><a href='<?=$this->data['tree']?><?=$this->data['leagueURL'];?>'> <?=$this->data['clubinfo']['league']?></a><i class='icon <?=$this->data['clubinfo']['country'];?>'></i></li>
-						<li>Média de rec.</li>
+						<li><?=$this->data['clubinfo']['averageREC'];?></li>
 						<li><?=$this->data['clubinfo']['buddies']?></li>
 					</ul>
 				</div>

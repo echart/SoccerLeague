@@ -1,21 +1,21 @@
 <main>
   <div class='content grid-container'>
     <div class='grid-65'>
-      <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>) <i class='padding-top icon <?=$this->data['leagueTable'][0]['country']?>'></i></h3>
+      <h3 class='title'><?=$this->data['leagueName']?> - (<?=$this->data['division'];?>.<?=$this->data['group'];?>) <i class='padding-top flag icon <?=$this->data['leagueTable'][0]['country']?>'></i></h3>
     </div>
-    <div class='grid-35 padding-top right'>
-      <button class='btn bg-success letter-small'>Calendário</button>
-      <button class='btn bg-success letter-small'>Histórico</button>
+    <div class='grid-35 padding-top right options'>
+      <a href='/league/<?=$this->request['country']?>/<?=$this->request['div']?>/<?=$this->request['group']?>/calendar' class='btn bg-success letter-small'>Calendário</a>
+      <a href='calendar' class='btn bg-success letter-small'>Histórico</a>
     </div>
-    <div class='grid-65'>
+    <div class='grid-70'>
       <div class='box'>
         <div class='box-title'>Classificação</div>
         <div class='box-content'>
-        <table class='zebra bordered'>
+        <table class='zebra noborder league-table'>
           <!-- <caption>Campeonato Brasileiro</caption> -->
           <thead>
             <tr>
-              <th>Pos</th>
+              <th></th>
               <th>Clube</th>
               <th>Jogos</th>
               <th>V</th>
@@ -31,9 +31,9 @@
             <?
             for($i=0;$i<18;$i++){?>
             <tr class='<?=$this->data['leagueTable'][$i]['class']?>'>
-              <td class='center border <?=$this->data['leagueTable'][$i]['status']?>'><?=$i+1?></td>
+              <td class='center <?=$this->data['leagueTable'][$i]['status']?>'><?=$i+1?></td>
               <td class='border'> <a href='<?=$this->data['tree']?>club/<?=$this->data['leagueTable'][$i]['id_club']?>'><?=$this->data['leagueTable'][$i]['clubname']?></a></td>
-              <td class='center border'><?=$this->data['leagueTable'][$i]['round']?></td>
+              <td class='center'><?=$this->data['leagueTable'][$i]['round']?></td>
               <td class='center'><?=$this->data['leagueTable'][$i]['win']?></td>
               <td class='center'><?=$this->data['leagueTable'][$i]['draw']?></td>
               <td class='center border'><?=$this->data['leagueTable'][$i]['loss']?></td>
@@ -49,7 +49,7 @@
       </div>
     </div>
     </div>
-    <div class='grid-35'>
+    <div class='grid-30'>
       <div class='box'>
         <div class='box-title'>Próxima rodada</div>
         <div class='box-content no-padding'>

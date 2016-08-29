@@ -133,9 +133,9 @@ $refeer= $_GET['refeer']?? NULL;
 			</div>
 			<!-- <div class='down'><a href='#description'><img src="assets/img/login/down.png"></a></div> -->
 		</div>
-		<div class='alert visible alert-bottom alert-info'>
+		<!-- <div class='alert visible alert-bottom alert-info'>
 				<p>Jogo otimizado para resolução 1366x768, e localização compartilhada. </p>
-		</div>
+		</div> -->
 		<div id='alert' class='alert'></div>
 	</main>
 

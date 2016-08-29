@@ -6,6 +6,7 @@ $(document).ready(function(){
   if(document.body.clientWidth >= 900) {
     $('video').attr('autoplay', true);
     $('video').attr('preload', 'auto');
+    newAlert('info','Jogo otimizado para resolução 1366x768, e localização compartilhada.',10000,'bottom');
   }
 });
 function call(param){

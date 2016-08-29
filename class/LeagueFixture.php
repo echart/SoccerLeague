@@ -9,9 +9,21 @@ class LeagueFixture{
   public $next_round;
   public $matches=array();
 
-  public function __construct($id_league){
+  public function __construct($id_league, $date=''){
     $this->id_league=$id_league;
-    $this->date=date('Y-m-d');
+    if($date==''){
+      $date=date('Y-m-d');
+    }
+    $this->date=$date;
+  }
+  public static function getMatchDays(){
+    $query=Connection::getInstance()->connect()->prepare("SELECT matchday from calendar");
+    $query->execute();
+    $data=array();
+    while($lista=$query->fetch(PDO::FETCH_ASSOC)){
+      $data[]=$lista['matchday'];
+    }
+    return $data;
   }
   public function getNextLeagueDay(){
     $query=Connection::getInstance()->connect()->prepare("SELECT id_calendar,matchday FROM calendar where matchday>=:matchday and id_competition_type=1 LIMIT 1");
