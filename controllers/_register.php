@@ -16,11 +16,11 @@ try{
 	 * country must be not blank
 	 * clubname must be not blank and with minlenght 8
 	 */
+	if(isset($_POST['refeer']) and $_POST['refeer']!='') $refeer=$_POST['refeer'];else $refeer=NULL;
 	$email=$_POST['login'] ?? '';
 	$pass=$_POST['password'] ?? '';
 	$clubname=$_POST['clubname'] ?? '';
 	$country=$_POST['country'] ?? '';
-	$refeer=$_POST['refeer'] ?? null;
 	$lng=$_POST['lng'] ?? '';
 	$lat=$_POST['lat'] ?? '';
 	Validation::validate($pass)->isNotEmpty();

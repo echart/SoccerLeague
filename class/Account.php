@@ -113,7 +113,6 @@ class Account{
 			$query->execute();
 
 			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
-
 			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account_data(id_account, language, slvip, timezone, status) values (:id_account,1,15,1,'A')");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();

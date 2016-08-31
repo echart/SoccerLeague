@@ -11,7 +11,7 @@ class PlayerFactory{
 	}
 	public static function createGoalkeper($indice,$id_club){
 		$indice=self::$odds[$indice];
-		$player = new Goalkeeper();
+		$player = new Goalkeeper(0);
     $player->stamina=random($indice,20.0);
     $player->speed = random($indice,20.0);
     $player->jump=random($indice,20.0);
@@ -54,7 +54,7 @@ class PlayerFactory{
 	}
 	public static function createPlayer($indice,$id_club){
 		$indice=self::$odds[$indice];
-		$player = new Player();
+		$player = new Player(0);
     $player->stamina=random($indice,20.0);
     $player->speed = random($indice,20.0);
     $player->jump=random($indice,20.0);
