@@ -59,6 +59,11 @@
  CheckSpelling On
  CheckCaseOnly On
  </IfModule>
+ # Work around annoying fcgid limitations
+<IfModule mod_fcgid.c>
+  # 20MB should be enough
+  MaxRequestLen 20000000
+</IfModule>
 
  <FilesMatch "\.(ini|cgi|htaccess|json)$">
  Order Deny,Allow
