@@ -42,7 +42,7 @@ class ClubInfo{
     $query->bindParam(':id_club', $id_club);
     $query->execute();
     $data=$query->fetch(PDO::FETCH_ASSOC);
-    if($data['logo']==''){
+    if($data['logo']=='' or $data['logo']=='null'){
       $data['logo']='default.png';
     }
     return $data['logo'];
