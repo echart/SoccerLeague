@@ -9,7 +9,7 @@ $query->bindParam(":day",$day);
 $query->bindValue(":id_competition_type",1);
 $query->execute();
 
-if($query->rowCount()>0 and date('H')=='17'){
+if($query->rowCount()>0){
   $data=$query->fetch(PDO::FETCH_ASSOC);
   $id_competition_type=$data['id_competition_type'];
   $id_calendar=$data['id_calendar'];
