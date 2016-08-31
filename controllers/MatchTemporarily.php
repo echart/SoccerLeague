@@ -3,7 +3,7 @@
 require_once('../class/Connection.php');
 require_once('../class/LeagueTable.php');
 $day='2016-08-24';
-$day=date('Y-m-d');
+// $day=date('Y-m-d');
 $query = Connection::getInstance()->connect()->prepare("SELECT id_calendar,c.id_competition_type FROM league_calendar inner join league using(id_league) inner join competition c using(id_competition) inner join calendar using(id_calendar) where c.id_competition_type=:id_competition_type and matchday=:day");
 $query->bindParam(":day",$day);
 $query->bindValue(":id_competition_type",1);

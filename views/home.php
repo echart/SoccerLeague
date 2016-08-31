@@ -60,6 +60,7 @@
         <div class='box'>
           <div class='box-title'>Partidas anteriores</div>
           <div class='box-content bg-white'>
+            <p>Buscando partidas anteriores</p>
           </div>
         </div>
       </div>
