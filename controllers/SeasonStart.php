@@ -4,7 +4,7 @@
   include('../class/League.php');
   include('../class/Competition.php');
   include('../class/GenerateFixture.php');
-  exit;
+  
   /*----------
   SET COMPETITION DATA
   -----------*/
