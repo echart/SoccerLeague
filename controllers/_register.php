@@ -20,7 +20,7 @@ try{
 	$pass=$_POST['password'] ?? '';
 	$clubname=$_POST['clubname'] ?? '';
 	$country=$_POST['country'] ?? '';
-	$refeer=$_POST['refeer'] ?? 'NULL';
+	$refeer=$_POST['refeer'] ?? null;
 	$lng=$_POST['lng'] ?? '';
 	$lat=$_POST['lat'] ?? '';
 	Validation::validate($pass)->isNotEmpty();
