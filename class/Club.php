@@ -87,9 +87,9 @@ class Club{
 			$query->bindParam(':id_club',$this->id_club);
 			$query->execute();
 
-			$query=$this->con->prepare("INSERT INTO club_info (id_club) values (:id_club)");
-			$query->bindParam(':id_club',$this->id_club);
-			$query->execute();
+			// $query=$this->con->prepare("INSERT INTO club_info (id_club) values (:id_club)");
+			// $query->bindParam(':id_club',$this->id_club);
+			// $query->execute();
 
 			$query=$this->con->prepare("INSERT INTO club_fans (id_club) values (:id_club)");
 			$query->bindParam(':id_club',$this->id_club);
