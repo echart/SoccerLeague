@@ -1,13 +1,3 @@
-<style>
-.hometeam{
-  background-color: #333;
-  background-size: 100px;
-}
-.awayteam{
-  background-color: #333;
-  background-size: 100px;
-}
-</style>
 <main>
   <div class="content grid-container">
     <h3 class='title'>Feed de notícias</h3>

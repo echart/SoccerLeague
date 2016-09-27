@@ -1,14 +1,11 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteRule ^controllers/deployment.php$ controllers/deployment.php [NC,L]
-	RewriteRule ^controllers/MatchTemporaly.php$ controllers/MatchTemporaly.php [NC,L]
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
 	RewriteRule ^api/location/([a-z0-9-]+)$ controllers/location.php?method=$1 [NC,L]
 	RewriteRule ^api/location/([a-z0-9-]+)/$ controllers/location.php?method=$1 [NC,L]
-
-
 
 	RewriteRule ^tabela/$ tabela.php [NC,L]
 	RewriteRule ^tabela$ tabela.php [NC,L]
@@ -52,18 +49,11 @@
 
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
 	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
-	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3&subrequest=$4 [NC,L]
-	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3&subrequest=$4 [NC,L]
  </IfModule>
  <IfModule mod_speling.c>
  CheckSpelling On
  CheckCaseOnly On
  </IfModule>
- # Work around annoying fcgid limitations
-<IfModule mod_fcgid.c>
-  # 20MB should be enough
-  MaxRequestLen 20000000
-</IfModule>
 
  <FilesMatch "\.(ini|cgi|htaccess|json)$">
  Order Deny,Allow
