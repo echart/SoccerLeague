@@ -1,7 +1,7 @@
 header{
 	position: absolute;
 	width: 100%;
-	height: 62.5px;
+	height: 60px;
 	z-index: 3;
 	background-color: #5FAD56;
 }
@@ -13,7 +13,7 @@ header ul.submenu{
 	display: block;
 	position: absolute;
 	left: 210px;
-	top: .75rem;
+	top: .1rem;
 }
 header ul.submenu li{
 	float: left;

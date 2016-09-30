@@ -11,11 +11,11 @@
 	<meta name="author" content="SoccerLeague" />
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/grid.css">
+	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/header.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->data['tree']?>assets/css/icons.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<?
 	/*load css files*/
 	$this->loadCSSFiles();
