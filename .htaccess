@@ -4,6 +4,9 @@
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
+	RewriteRule ^$ /index [R=301,L]
+	RewriteRule ^/index$ handler.php?request=index [NC,L]
+
 	RewriteRule ^api/location/([a-z0-9-]+)$ controllers/location.php?method=$1 [NC,L]
 	RewriteRule ^api/location/([a-z0-9-]+)/$ controllers/location.php?method=$1 [NC,L]
 

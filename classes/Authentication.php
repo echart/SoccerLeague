@@ -3,7 +3,6 @@
 class Authentication{
 	private $login;
 	private $password;
-	public $id_account;
 	private $con;
 
 	public function __construct(){
@@ -17,10 +16,6 @@ class Authentication{
 
 		if($query->rowCount()>0) return true;
 		else return false;
-	}
-
-	public function getAccountId():int{
-		return $_SESSION['SL_account'];
 	}
 	public function logout(){
 		// remove valid of the session table
@@ -105,25 +100,4 @@ class Authentication{
 			return true;
 		}
 	}
-	public static function homeRedirect(){
-		header('location: http://' .  $_SERVER['SERVER_NAME']); //if not, go to frontpage
-	}
-	public static function ip() {
-		$ipaddress = '';
-	    if (isset($_SERVER['HTTP_CLIENT_IP']))
-	        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-	    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-	        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	    else if(isset($_SERVER['HTTP_X_FORWARDED']))
-	        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-	    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-	        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-	    else if(isset($_SERVER['HTTP_FORWARDED']))
-	        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-	    else if(isset($_SERVER['REMOTE_ADDR']))
-	        $ipaddress = $_SERVER['REMOTE_ADDR'];
-	    else
-	        $ipaddress = 'UNKNOWN';
-	    return $ipaddress;
-		}
 }

@@ -18,12 +18,15 @@ class Handler{
 		else
 			include_once('controllers/404.php');
 	}
-	public function loadView(){
+	public function loadView($flag=true){
+    // flag @Param = if flag is true, load head+header+footer
 		/**
 		 * load head and header with menu
 		 */
-		require_once('views/_head.php');
-		require_once('views/_header.php');
+    if($flag==true){
+  		require_once('views/_head.php');
+  		require_once('views/_header.php');
+    }
 		/**
 		 * load requested view, if cant load then load 404 page.
 		 */
@@ -34,7 +37,9 @@ class Handler{
 		/**
 		 * load footer
 		 */
-		require_once('views/_footer.php');
+    if($flag==true){
+      require_once('views/_footer.php');
+    }
 	}
 	public function addCSSFile($name){
 		$this->dependence['CSS'][]=$name;

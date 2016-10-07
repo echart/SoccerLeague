@@ -1,6 +1,0 @@
-<?
-
-class ProDays{
-  public $prodays;
-
-}
