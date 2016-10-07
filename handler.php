@@ -4,6 +4,7 @@
 		session_start();
 		/* load autoloader */
 		require_once('helpers/__autoload.php');
+		//debug
 		App::display_errors(true);
 		/* start connection and authentication class*/
 		$con=Connection::getInstance();
@@ -18,8 +19,10 @@
 		}
 		/* parse URL and load the page*/
 		$handler->parseURL($request);
+
 		$handler->loadController();
 		$handler->loadView();
+
 	}catch(Exception $e){
 		echo "We have an error with your request: <br>" . $e->getMessage();
 	}finally{
