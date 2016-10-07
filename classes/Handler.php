@@ -3,8 +3,18 @@ include('helpers/__dontgetlost.php');
 class Handler{
 	public $request; /* data from here will contain the controller/view "caller" and will all the other data in the URL, like method, subrequest and this stuff*/
 	public $requestURL; /*this will call the controller and view*/
+
+	//page data
 	public $data; /*the will pass the data from the Controller to view*/
+	public $tree; //virtual path
+	public $title; //page title
+	public $menu; //menu selected
+	public $submenu; //submenu selected
+
+	public $permissions;
+
 	public $dependence=array('JS'=>array(),'CSS'=>array());
+
 	function parseUrl(array $request){
 		$this->requestURL=$request['request'];
 		$this->request=$request;

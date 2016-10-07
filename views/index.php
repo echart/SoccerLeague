@@ -3,7 +3,7 @@
 <head>
 	<!-- Title, tags and meta-->
 	<title>Soccer League - The Soccer Management Game</title>
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/icon2.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="<?=$this->tree?>assets/img/icon2.png">
 
 	<meta charset='UTF-8'>
 	<meta name="viewport" content="width=device-width"/>
@@ -77,7 +77,7 @@
 			</div>
 		</div>
     <div class='about'>
-      <img src='assets/img/sl_logos/logo.branco.png'>
+      <img src='<?=$this->tree?>assets/img/logo.branco.png'>
       <p>
         Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
       </p>
@@ -113,7 +113,7 @@
 		</header>
 		<div class='video'>
 			<video preload='none' loop="loop" muted>
-				<source src="assets/video/splash_home3.mp4" type="video/mp4">
+				<source src="<?=$this->tree?>assets/video/splash_home3.mp4" type="video/mp4">
 			</video>
 			<div class="pattern"></div>
 			<div class='cadastro'>
@@ -129,13 +129,11 @@
 	</main>
 
 	<!-- CSS -->
-	<link href="assets/css/login.css" rel='stylesheet'>
-	<link href="assets/css/grid.css" rel='stylesheet'>
+	<link href="<?=$this->tree?>assets/css/login.css" rel='stylesheet'>
+	<link href="<?=$this->tree?>assets/css/grid.css" rel='stylesheet'>
 	<!-- JS -->
-	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>
+	<script src='<?=$this->tree?>assets/js/jquery.js'></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4&signed_in=true"></script>
 	<script type="text/javascript" src="//rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
-	<script src='assets/js/alert.js'></script>
-	<script src='assets/js/index.js'></script>
 </body>
 </html>

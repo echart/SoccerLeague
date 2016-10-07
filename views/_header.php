@@ -40,9 +40,9 @@ $menu=array('home'=>array(
 		<ul class='submenu'>
 			<?
 			$i=0;
-			if(isset($this->data['menu'])){
-				foreach ($menu[$this->data['menu']] as $key) {
-					if($i==$this->data['submenu']){
+			if(isset($this->menu)){
+				foreach ($menu[$this->menu] as $key) {
+					if($i==$this->submenu){
 						$class='selected';
 					}else{
 						$class='';
@@ -62,18 +62,18 @@ $menu=array('home'=>array(
 		<div class='logo'><i></i></div>
 		<nav>
 			<ul class='menu'>
-				<li><a class='<? echo($this->data['menu']=='home') ? 'selected' : '' ?> home' href='<?=$this->data['tree']?>home/'><i></i><span>Home</span></a></li>
-				<li><a class='<? echo($this->data['menu']=='club') ? 'selected' : '' ?> club border' href="<?=$this->data['tree']?>club/"><i></i><span>Clube</span></a></li>
-				<li><a class='<? echo($this->data['menu']=='players') ? 'selected' : '' ?> squad' href="<?=$this->data['tree']?>players/"><i></i><span>Equipe</span></a></li>
-				<li><a class='<? echo($this->data['menu']=='league') ? 'selected' : '' ?> league border' href="<?=$this->data['tree']?>league/"><i></i><span>Competições</span></a></li>
+				<li><a class='<? echo($this->menu=='home') ? 'selected' : '' ?> home' href='<?=$this->tree?>home/'><i></i><span>Home</span></a></li>
+				<li><a class='<? echo($this->menu=='club') ? 'selected' : '' ?> club border' href="<?=$this->tree?>club/"><i></i><span>Clube</span></a></li>
+				<li><a class='<? echo($this->menu=='players') ? 'selected' : '' ?> squad' href="<?=$this->tree?>players/"><i></i><span>Equipe</span></a></li>
+				<li><a class='<? echo($this->menu=='league') ? 'selected' : '' ?> league border' href="<?=$this->tree?>league/"><i></i><span>Competições</span></a></li>
 				<li><a class='transfer' href=""><i></i><span>Mercado</span></a></li>
 				<!-- <li><a class='community' href=""><i></i><span>Comunidade</span></a></li> -->
 				<li><a class='pro border' href=""><i></i><span>PRO</span><span class='qtd'><?=$account->getProDays();?> dias</span></a></li>
-				<li><a class='<? echo($this->data['menu']=='options') ? 'selected' : '' ?> setting' href="<?=$this->data['tree']?>account/"><i></i><span>Opções</span></a></li>
+				<li><a class='<? echo($this->menu=='options') ? 'selected' : '' ?> setting' href="<?=$this->tree?>account/"><i></i><span>Opções</span></a></li>
 				<? if($this->isAdmin==true){?>
-					<li><a class='<? echo($this->data['menu']=='admin') ? 'selected' : '' ?> admin' href='<?=$this->data['tree']?>admin/'><i></i><span>Administrar</span></a></li>
+					<li><a class='<? echo($this->menu=='admin') ? 'selected' : '' ?> admin' href='<?=$this->tree?>admin/'><i></i><span>Administrar</span></a></li>
 				<?}?>
-				<li><a class='logoff border' href="<?=$this->data['tree']?>logout/"><i></i><span>Sair</span></a></li>
+				<li><a class='logoff border' href="<?=$this->tree?>logout/"><i></i><span>Sair</span></a></li>
 			</ul>
 		</nav>
 	</div>
