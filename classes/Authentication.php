@@ -6,6 +6,7 @@ class Authentication{
 	private $con;
 
 	public function __construct(){
+		session_start();
 		$this->con=Connection::getInstance()->connect();
 	}
 	public function verifyAuthentication():bool{

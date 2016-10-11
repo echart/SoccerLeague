@@ -1,6 +1,6 @@
 <?
 /**
- * @user: echart 
+ * @user: echart
  * Class to handle data and transform it in JSON
  * Ex:
  * JsonOutput::jsonHeader();
@@ -42,34 +42,3 @@ class JsonOutput{
       return self::load($data);
     }
 }
-/*
-following the model bellow:
-
-A JSON object MUST be at the root of every JSON API request and response containing data. This object defines a document’s “top level”.
-
-A document MUST contain at least one of the following top-level members:
-
-data: the document’s “primary data”
-errors: an array of error objects
-meta: a meta object that contains non-standard meta-information.
-The members data and errors MUST NOT coexist in the same document.
-
-Ex:
-
-{
-  "data": {
-    "id": 1001,
-    "name": "Wing"
-  }
-}
-
-{
-  "error": {
-    "code": 404,
-    "message": "ID not found"
-  }
-}
-
-http://jsonapi.org/format/
-
-*/

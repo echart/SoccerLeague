@@ -1,7 +1,6 @@
 <?php
 	try{
 		/*start session and define paramters*/
-		session_start();
 		/* load autoloader */
 		require_once('helpers/__autoload.php');
 		//debug
