@@ -18,23 +18,6 @@ class Authentication{
 		if($query->rowCount()>0) return true;
 		else return false;
 	}
-	public function logout(){
-		// remove valid of the session table
-		$query=$this->con->prepare("UPDATE session SET valid='FALSE' where session=:session and id_account=:id_account");
-
-		$query->bindParam(':session',session_id());
-		$query->bindParam(':id_account',$_SESSION['SL_account']);
-
-		$query->execute();
-		//remove the session data
-		$_SESSION['SL_login']='';
-		$_SESSION['SL_account']='';
-
-		//destroy session data
-		session_destroy();
-		//move user back to home page
-		header('location: http://' . $_SERVER['SERVER_NAME']);
-	}
 	public function verifyLogin($email,$password):bool{
 
 		$query=$this->con->prepare("SELECT password, id_account FROM account where email=:email");
@@ -100,5 +83,22 @@ class Authentication{
 		}finally{
 			return true;
 		}
+	}
+	public function logout(){
+		// remove valid of the session table
+		$query=$this->con->prepare("UPDATE session SET valid='FALSE' where session=:session and id_account=:id_account");
+
+		$query->bindParam(':session',session_id());
+		$query->bindParam(':id_account',$_SESSION['SL_account']);
+
+		$query->execute();
+		//remove the session data
+		$_SESSION['SL_login']='';
+		$_SESSION['SL_account']='';
+
+		//destroy session data
+		session_destroy();
+		//move user back to home page
+		header('location: http://' . $_SERVER['SERVER_NAME']);
 	}
 }
