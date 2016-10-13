@@ -14,7 +14,7 @@
 		$handler = new Handler();
 		/* check if user is logged*/
 		if($user->verifyAuthentication()==false){
-			App::redirect();
+			$request = App::redirect('index');
 		}
 		/* parse URL and load the page*/
 		$handler->parseURL($request);

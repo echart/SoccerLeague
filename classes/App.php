@@ -2,7 +2,8 @@
 
 class App{
   public static function redirect($redirect='index'){
-    $request['request']=$redirect;
+    header('location: index');
+    // return $request;
   }
 
   public static function display_errors($flag=true){
