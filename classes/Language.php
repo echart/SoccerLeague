@@ -1,10 +1,13 @@
 <?
 
 class Language{
-  private $lang;
 
-  public function __construct($lang='BR'){
-    $this->lang=$lang;
+  public static function setLanguage($lang='pt_br'){
+    // TODO: save language in database and set language session
+  }
+
+  public static function getLanguage(){
+    // TODO: select language at db
   }
 
   public static function getLanguages(){

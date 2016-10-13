@@ -1,8 +1,8 @@
 <?
 
 class App{
-  public static function redirect(){
-    $request['request']='index';
+  public static function redirect($redirect='index'){
+    $request['request']=$redirect;
   }
 
   public static function display_errors($flag=true){
