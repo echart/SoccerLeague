@@ -6,7 +6,7 @@ class Account{
 	private $password;
 	private $refeer;
 
-	public function __construct(int $id_account=0){
+	public function __construct($id_account=''){
 		$this->id_account=$id_account;
 	}
 	/** get and set */

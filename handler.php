@@ -9,11 +9,11 @@
 		$con=Connection::getInstance();
 		$user = new Authentication();
 		/*get URL*/
-		$request = ($_GET ?? array('request'=>'home'));
+		$request = ($_GET ?? array('request'=>'index'));
 		/* starts to handle the url*/
 		$handler = new Handler();
 		/* check if user is logged*/
-		if($user->verifyAuthentication()===false){
+		if($user->verifyAuthentication()==false){
 			App::redirect();
 		}
 		/* parse URL and load the page*/
