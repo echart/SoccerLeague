@@ -19,6 +19,6 @@ class ClubInfo{
 
   }
   public function __update(){
-    
+
   }
 }
