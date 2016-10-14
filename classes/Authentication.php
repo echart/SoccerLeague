@@ -19,7 +19,6 @@ class Authentication{
 		else return false;
 	}
 	public function verifyLogin($email,$password):bool{
-
 		$query=$this->con->prepare("SELECT password, id_account FROM account where email=:email");
 		$query->bindParam(':email',$email);
 
@@ -100,5 +99,23 @@ class Authentication{
 		session_destroy();
 		//move user back to home page
 		header('location: http://' . $_SERVER['SERVER_NAME']);
+	}
+	public static function ip() {
+		$ipaddress = '';
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
 	}
 }
