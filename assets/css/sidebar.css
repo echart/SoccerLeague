@@ -1,0 +1,114 @@
+.sidebar{
+  height: 100vh;
+  background-color: #393E41;
+  overflow-y: auto;
+}
+.sidebar div.sl-logo{
+  position: relative;
+  display: block;
+  height: 65px;
+  background-color: #4A7856;
+  /*background-color: #26292B;*/
+}
+.sidebar div.sl-logo i{
+  position: relative;
+  left: 50px;
+  top: 15px;
+  width: 175px;
+  height: 55px;
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 14px;
+  margin-top: -2px;
+  background: url(../img/logo.png) no-repeat;
+  background-size: 175px;
+}
+.sidebar nav section{
+  display: block;
+  text-align: left;
+  color: #fff;
+}
+.sidebar nav section div{
+  padding: 20px 25px 20px;
+}
+.sidebar nav section div:hover{
+  background-color: #5FAD56;
+  transition: 0.3s all;
+}
+.sidebar nav section div i{
+  display: block;
+  width: 20px;
+  height: 24px;
+  padding-left: 24px;
+  margin-top: -2.4px;
+  float: left;
+}
+.sidebar nav section div span{
+  font-family: 'Exo 2';
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 30px;
+}
+.sidebar nav section ul.open{
+  max-height: 500px;
+  transition: 0.5s all;
+}
+.sidebar nav section ul{
+  position: relative;
+  display: block;
+  max-height: 0;
+  transition: 0.2s max-height;
+  overflow: hidden;
+  clear: both;
+  list-style: none;
+  width: 100%;
+  background-color: #26292B;
+}
+.sidebar nav section ul li a{
+  display: block;
+  padding: 15px 25px 15px 80px;
+  text-decoration: none;
+  font-family: 'Exo 2';
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+}
+.sidebar nav section ul li a:hover{
+  color: #5FAD56;
+  transition: 0.3s all;
+}
+/*.sidebar nav section ul li.selected{
+  background-color: #5FAD56;
+  color: #fff;
+}*/
+
+/* icons */
+.sidebar nav section div i.home{
+  background: url(../img/icons/home.png) no-repeat;
+  background-size: 24px;
+}
+.sidebar nav section div i.club{
+  background: url(../img/icons/club.png) no-repeat;
+  background-size: 24px;
+}
+.sidebar nav section div i.squad{
+  background: url(../img/icons/squad.png) no-repeat;
+  background-size: 24px;
+}
+.sidebar nav section div i.league{
+  background: url(../img/icons/league.png) no-repeat;
+  background-size: 24px;
+}
+
+/* scroll sidebar */
+.sidebar::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}

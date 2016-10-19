@@ -3,16 +3,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body{
   background-color: #f7f7f7;
 }
-.sidebar{
-  height: 100vh;
-  background-color: #393E41;
-}
-
 .box {
   background: #D5B942;
   font-family: "Futura", sans-serif;
@@ -22,4 +18,11 @@ body{
 }
 .box--new {
   background: #5FAD56;
+}
+
+
+.header{
+  background: #fff;
+  border-bottom: 1px solid #ebebeb;
+  height: 60px;
 }
