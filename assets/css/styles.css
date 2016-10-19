@@ -1,29 +1,25 @@
-*,
-*:after,
-*:before {
+/** LEMONADE **/
+* {
   margin: 0;
   padding: 0;
-  /* Removes padding behaviour on widths */
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Attribute selector */
-[class*='bit-'] {
-  float: left;
-  padding: 10px;
+body{
+  background-color: #f7f7f7;
+}
+.sidebar{
+  height: 100vh;
+  background-color: #393E41;
 }
 
-/* Floats last ".bit-" to the right */
-[class*='bit-']:last-of-type {
-  padding-right: 10px;
-  float: right;
+.box {
+  background: #D5B942;
+  font-family: "Futura", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 0;
 }
-
-/* Clearfix */
-.frame:after {
-  content: "";
-  display: table;
-  clear: both;
+.box--new {
+  background: #5FAD56;
 }

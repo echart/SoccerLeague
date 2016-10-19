@@ -1,4 +1,5 @@
-<div class="frame">
-  <div class="bit-25">a</div>
-<div class="bit-75">x</div>
+<div class="grid-80 header">
+  <div class="grid-1">
+      <div class="box box--new">content</div>
+  </div>
 </div>
