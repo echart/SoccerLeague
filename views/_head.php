@@ -15,7 +15,7 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/grid.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/sidebar.css">
-	<!-- <link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/semantic/dist/semantic.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/styles.css">
 	<!-- <link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/header.css">-->
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/fonts.css">

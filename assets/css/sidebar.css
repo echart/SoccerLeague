@@ -26,79 +26,68 @@
 }
 .sidebar nav section{
   display: block;
+  width: 100%;
   text-align: left;
   color: #fff;
 }
-.sidebar nav section div{
-  padding: 20px 25px 20px;
+.sidebar nav section div.menu-item{
+  z-index: -1;
+  height: 60px;
+  width: 100%;
 }
-.sidebar nav section div:hover{
-  background-color: #5FAD56;
-  transition: 0.3s all;
+.sidebar nav section div.menu-item:hover{
+    background-color: #5fad56;
 }
-.sidebar nav section div i{
+.sidebar nav section div.menu-item div{
   display: block;
-  width: 20px;
-  height: 24px;
-  padding-left: 24px;
-  margin-top: -2.4px;
+  width: 25%;
+  height: 60px;
+  background: #4a7856;
   float: left;
 }
-.sidebar nav section div span{
-  font-family: 'Exo 2';
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 30px;
-}
-.sidebar nav section ul.open{
-  max-height: 500px;
-  transition: 0.5s all;
-}
-.sidebar nav section ul{
-  position: relative;
+.sidebar nav section div.menu-item div i{
   display: block;
-  max-height: 0;
-  transition: 0.2s max-height;
-  overflow: hidden;
-  clear: both;
-  list-style: none;
+  height: 60px;
   width: 100%;
-  background-color: #26292B;
 }
-.sidebar nav section ul li a{
+.sidebar nav section div.menu-item span{
   display: block;
-  padding: 15px 25px 15px 80px;
-  text-decoration: none;
+  width: 75%;
+  height: 60px;
+  float: left;
+  padding: 20px 20px;
+  font-size: 15px;
   font-family: 'Exo 2';
-  font-size: 14px;
   font-weight: 300;
-  color: #fff;
 }
-.sidebar nav section ul li a:hover{
-  color: #5FAD56;
-  transition: 0.3s all;
-}
-/*.sidebar nav section ul li.selected{
-  background-color: #5FAD56;
-  color: #fff;
-}*/
 
+.sidebar nav section ul{
+  display: none;
+}
 /* icons */
 .sidebar nav section div i.home{
   background: url(../img/icons/home.png) no-repeat;
   background-size: 24px;
+  background-position-x: 22px;
+  background-position-y: 17.5px;
 }
 .sidebar nav section div i.club{
   background: url(../img/icons/club.png) no-repeat;
   background-size: 24px;
+  background-position-x: 22px;
+  background-position-y: 17.5px;
 }
 .sidebar nav section div i.squad{
   background: url(../img/icons/squad.png) no-repeat;
   background-size: 24px;
+  background-position-x: 22px;
+  background-position-y: 17.5px;
 }
 .sidebar nav section div i.league{
   background: url(../img/icons/league.png) no-repeat;
   background-size: 24px;
+  background-position-x: 22px;
+  background-position-y: 17.5px;
 }
 
 /* scroll sidebar */
