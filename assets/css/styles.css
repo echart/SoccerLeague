@@ -9,6 +9,18 @@
 body{
   background-color: #f7f7f7;
 }
+
+/* scrollbars */
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
 .box {
   background: #D5B942;
   font-family: "Futura", sans-serif;
@@ -18,11 +30,4 @@ body{
 }
 .box--new {
   background: #5FAD56;
-}
-
-
-.header{
-  background: #fff;
-  border-bottom: 1px solid #ebebeb;
-  height: 60px;
 }

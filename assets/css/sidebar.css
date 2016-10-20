@@ -1,103 +1,37 @@
+header{
+  height: 60px;
+  background-color: #26292B;
+  /*background-color: #fff;*/
+  /*border-bottom: 1px solid #ebebeb;*/
+  z-index: 9;
+}
+
+header div.SL-logo{
+    height: 59.5px;
+    /*background-color: #4A7856;*/
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Exo 2';
+    padding-top: 20px;
+    font-weight: 300;
+}
+header div.SL-logo i{
+  position: relative;
+  left: 17.5%;
+  width: 175px;
+  height: 60px;
+  display: block;
+  margin-top: -7px;
+  background: url(../img/logo.png) no-repeat;
+  background-size: 100%;
+}
 .sidebar{
   height: 100vh;
   background-color: #393E41;
-  overflow-y: auto;
 }
-.sidebar div.sl-logo{
-  position: relative;
-  display: block;
-  height: 65px;
-  background-color: #4A7856;
-  /*background-color: #26292B;*/
-}
-.sidebar div.sl-logo i{
-  position: relative;
-  left: 50px;
-  top: 15px;
-  width: 175px;
-  height: 55px;
-  display: block;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-left: 14px;
-  margin-top: -2px;
-  background: url(../img/logo.png) no-repeat;
-  background-size: 175px;
-}
-.sidebar nav section{
-  display: block;
-  width: 100%;
-  text-align: left;
-  color: #fff;
-}
-.sidebar nav section div.menu-item{
-  z-index: -1;
-  height: 60px;
-  width: 100%;
-}
-.sidebar nav section div.menu-item:hover{
-    background-color: #5fad56;
-}
-.sidebar nav section div.menu-item div{
-  display: block;
-  width: 25%;
-  height: 60px;
-  background: #4a7856;
-  float: left;
-}
-.sidebar nav section div.menu-item div i{
-  display: block;
-  height: 60px;
-  width: 100%;
-}
-.sidebar nav section div.menu-item span{
-  display: block;
-  width: 75%;
-  height: 60px;
-  float: left;
-  padding: 20px 20px;
-  font-size: 15px;
-  font-family: 'Exo 2';
-  font-weight: 300;
-}
-
-.sidebar nav section ul{
-  display: none;
-}
-/* icons */
-.sidebar nav section div i.home{
-  background: url(../img/icons/home.png) no-repeat;
-  background-size: 24px;
-  background-position-x: 22px;
-  background-position-y: 17.5px;
-}
-.sidebar nav section div i.club{
-  background: url(../img/icons/club.png) no-repeat;
-  background-size: 24px;
-  background-position-x: 22px;
-  background-position-y: 17.5px;
-}
-.sidebar nav section div i.squad{
-  background: url(../img/icons/squad.png) no-repeat;
-  background-size: 24px;
-  background-position-x: 22px;
-  background-position-y: 17.5px;
-}
-.sidebar nav section div i.league{
-  background: url(../img/icons/league.png) no-repeat;
-  background-size: 24px;
-  background-position-x: 22px;
-  background-position-y: 17.5px;
-}
-
-/* scroll sidebar */
-.sidebar::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
-}
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-    background: #F4F4F4;
-}
-.sidebar::-webkit-scrollbar-thumb {
-    background: #dad7d7;
+@media (max-width: 30em) {
+  .sidebar{
+    display: none;
+  }
 }
