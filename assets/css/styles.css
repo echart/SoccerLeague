@@ -31,3 +31,18 @@ body{
 .box--new {
   background: #5FAD56;
 }
+.content{
+  padding: 10px;
+}
+/** MOBILE */
+@media (max-width: 30em) {
+  .content{
+    padding: 0;
+  }
+}
+
+@media (min-width: 30em) and (max-width: 50em) {
+  .content{
+    padding: 5px;
+  }
+}

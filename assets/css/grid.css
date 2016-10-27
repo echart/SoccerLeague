@@ -89,9 +89,9 @@
   .grid-11,
   .grid-12,
   .grid-20,
-  .grid-25,
+  .grid-80,
   .grid-75,
-  .grid-80{
+  .grid-25{
     width: 100%;
   }
 }
