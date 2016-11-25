@@ -1,0 +1,36 @@
+.nav{
+  height: 65px;
+  background-color: #5fad56;
+  color: #fff;
+}
+.nav .logo{
+  text-align: center;
+  height: 54px;
+  text-align: center;
+  padding-top: 15px;
+  position: relative;
+  width: 175px;
+  display:inline-block;
+  margin-top: 12px;
+  margin-left: 20px;
+  background: url(../img/logo.png) no-repeat;
+  background-size: 100%;
+}
+.nav ul{
+  list-style: none;
+  margin-top: 22px;
+  float: right;
+}
+.nav ul li{
+  float: left;
+  margin-right: 20px;
+}
+.nav ul li a{
+  padding: 0 5px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.nav ul li a:hover{
+  color: #333;
+}
