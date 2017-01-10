@@ -113,7 +113,7 @@ header{
     overflow: hidden;
   }
   .sidebar{
-    display: none;
+    display: block;
     height: 100vh;
     overflow-y: auto;
     background-color: #26292B;

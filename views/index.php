@@ -1,8 +1,4 @@
-<div class="content grid-80">
-  <div class="grid-75">
-      <div class="box box--new">.grid-75</div>
-  </div>
-  <div class="grid-25">
-      <div class="box">.grid-25</div>
-  </div>
+<div class="grid-80 content">
+  <div class="bit-25">a</div>
+  <div class="bit-75">x</div>
 </div>
