@@ -73,7 +73,7 @@ class Authentication{
 			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();
 			# insert a new valid session id in database
-			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid,ip) values (:id_account, '".session_id()."','true','".self::ip()."')");
+			$query=$this->con->prepare("INSERT INTO session(id_account,session,valid,ip) values (:id_account, '".session_id()."','true','".self::userip()."')");
 			$query->bindParam(':id_account',$this->id_account);
 			$query->execute();
 		}catch(PDOException $e){
@@ -100,7 +100,7 @@ class Authentication{
 		//move user back to home page
 		header('location:'.App::$url);
 	}
-	public static function ip() {
+	public static function userip() {
 		$ipaddress = '';
     if (isset($_SERVER['HTTP_CLIENT_IP']))
         $ipaddress = $_SERVER['HTTP_CLIENT_IP'];

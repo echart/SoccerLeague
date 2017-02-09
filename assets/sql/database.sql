@@ -1,10 +1,13 @@
+create database soccerleague;
+
+
 create table season(
 	season serial primary key,
 	startdate date not null,
 	enddate date not null
 );
 /**
- * TABELAS DE CONFIGURAﾃ�ﾃグ
+ * TABELAS DE CONFIGURAﾃ?ﾃグ
  */
  create table visits(
     id_visit serial primary key,
@@ -35,48 +38,48 @@ create table timezone(
 /**
  * fim
  */
-/**
- * TABELAS DE CONTA
- */
-create table account(
-	id_account SERIAL PRIMARY KEY,
-	email varchar(100) not null,
-	password varchar(256) not null,
-	refeer integer,
-		CONSTRAINT account_refeer_fkey FOREIGN KEY (refeer) REFERENCES account(id_account)
-);
-create table account_data(
-	id_account_data SERIAL PRIMARY KEY,
-	id_account integer not null,
-		CONSTRAINT accountdata_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
-	id_language integer not null,
-		CONSTRAINT account_language_fkey FOREIGN KEY (id_language) REFERENCES language(id_language),
-	id_timezone integer not null,
-		FOREIGN KEY (id_timezone) REFERENCES timezone(id_timezone),
-	slvip integer DEFAULT 14
-);
-create table account_permission(
-  id_account_permission SERIAL PRIMARY KEY,
-  id_account integer not null,
-    CONSTRAINT FOREIGN KEY (id_account) REFERENCES account(id_account),
-  permission char(2) not null, -- 'FT','GT','MT','LT','GOD'
-    CONSTRAINT CHECK (permission = ANY (ARRAY['FT'::bpchar,'GT'::bpchar,'MT'::bpchar,'LT'::bpchar,'GOD'::bpchar]))
-);
-/**
- * fim
- */
-/**
- * TABELAS DE SESSﾃグ E LOGIN
- */
-create table session(
-	id_session serial primary key,
-	id_account integer not null,
-		CONSTRAINT session_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
-	session varchar(256) not null,
-	valid boolean,
-	startdate timestamp default now(),
-	ip varchar(100)
-);
+ /**
+  * TABELAS DE CONTA
+  */
+ create table account(
+ 	id_account SERIAL PRIMARY KEY,
+ 	email varchar(100) not null,
+ 	password varchar(256) not null,
+ 	refeer integer,
+ 		CONSTRAINT account_refeer_fkey FOREIGN KEY (refeer) REFERENCES account(id_account)
+ );
+ create table account_data(
+ 	id_account_data SERIAL PRIMARY KEY,
+ 	id_account integer not null,
+ 		CONSTRAINT accountdata_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
+ 	id_language integer not null,
+ 		CONSTRAINT account_language_fkey FOREIGN KEY (id_language) REFERENCES language(id_language),
+ 	id_timezone integer not null,
+ 		FOREIGN KEY (id_timezone) REFERENCES timezone(id_timezone),
+ 	slvip integer DEFAULT 14
+ );
+ create table account_permission(
+   id_account_permission SERIAL PRIMARY KEY,
+   id_account integer not null,
+     FOREIGN KEY (id_account) REFERENCES account(id_account),
+   permission char(2) not null, -- 'FT','GT','MT','LT','GOD'
+     CHECK (permission = ANY (ARRAY['FT'::bpchar,'GT'::bpchar,'MT'::bpchar,'LT'::bpchar,'GOD'::bpchar]))
+ );
+ /**
+  * fim
+  */
+ /**
+  * TABELAS DE SESSﾃグ E LOGIN
+  */
+ create table session(
+ 	id_session serial primary key,
+ 	id_account integer not null,
+ 		CONSTRAINT session_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
+ 	session varchar(256) not null,
+ 	valid boolean,
+ 	startdate timestamp default now(),
+ 	ip varchar(100)
+ );
 /**
  * fim
  */
