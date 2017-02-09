@@ -14,8 +14,10 @@ class Permission{
       if(in_array($permission, $this->userpermissions))
         $i++;
     }
-    if($i==0)
-        echo 'not autorized';
-    //App::redirect();
+    if($i==0){
+        header('HTTP/1.0 403 Forbidden');
+        header('location: /403/');exit;
+        exit;
+    }
   }
 }

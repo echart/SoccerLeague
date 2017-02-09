@@ -70,6 +70,12 @@
 .grid-75 {
   width: 75%;
 }
+.grid-70 {
+  width: 70%;
+}
+.grid-30 {
+  width: 30%;
+}
 
 /* mobile */
 @media (max-width: 30em) {
@@ -91,7 +97,9 @@
   .grid-20,
   .grid-80,
   .grid-75,
-  .grid-25{
+  .grid-25,
+  .grid-70,
+  .grid-30{
     width: 100%;
   }
 }

@@ -23,10 +23,11 @@ class Handler{
 	 * load controller
 	 */
 	public function loadController(){
-		if(file_exists('controllers/'.$this->requestURL.'.php'))
+		if(file_exists('controllers/'.$this->requestURL.'.php')){
 			include_once('controllers/'.$this->requestURL.'.php');
-		else
-			header("HTTP/1.0 404 Not Found");
+		}else{
+			header("HTTP/1.0 404 Not Found");header('location: /404/');exit;
+		}
 			//include_once('controllers/404.php');
 	}
 	public function loadView($flag=true){
@@ -41,10 +42,11 @@ class Handler{
 		/**
 		 * load requested view, if cant load then load 404 page.
 		 */
-		if(file_exists('views/'.$this->requestURL.'.php'))
+		if(file_exists('views/'.$this->requestURL.'.php')){
 			include_once('views/'.$this->requestURL.'.php');
-		else
-			header("HTTP/1.0 404 Not Found");
+		}else{
+			header("HTTP/1.0 404 Not Found");header('location: /404/');exit;
+		}
 			//include_once('views/404.html');
 		/**
 		 * load footer

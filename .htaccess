@@ -20,8 +20,8 @@
  Deny from All
  </FilesMatch>
 
- ErrorDocument 404 /404/
  ErrorDocument 403 /403/
+ ErrorDocument 404 /404/
 
 <IfModule mod_expires.c>
 	ExpiresActive On
