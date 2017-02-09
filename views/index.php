@@ -77,8 +77,8 @@
       top: 700px;
       left: 40px;
     }
-    .link{
-      color: #ccc !important;
+    .ui.link.list .item, .ui.link.list .item a:not(.ui), .ui.link.list a.item{
+      color: #aaa !important;
     }
   </style>
 </head>
@@ -98,13 +98,13 @@
         </div>
         <div class="ui horizontal bulleted link list">
           <a class="item">
-            Terms and Conditions
+            Idioma
           </a>
           <a class="item">
-            Privacy Policy
+            Politica de privacidade
           </a>
           <a class="item">
-            Contact Us
+            Regras do jogo
           </a>
         </div>
       </div>
