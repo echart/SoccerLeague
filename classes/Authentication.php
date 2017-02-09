@@ -98,7 +98,7 @@ class Authentication{
 		//destroy session data
 		session_destroy();
 		//move user back to home page
-		header('location: http://' . $_SERVER['SERVER_NAME']);
+		header('location:'.App::$url);
 	}
 	public static function ip() {
 		$ipaddress = '';
