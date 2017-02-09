@@ -1,9 +1,11 @@
 <?
 
 class App{
+  public $url = 'http:://localhost:8080/'; //app url ending with a bar
+
   public static function redirect($from, $to='index'){
     if($from != $to){
-      header('location: http://' .  $_SERVER['SERVER_NAME'].'/'.$to); //if not, go to frontpage
+      header('location:'. App::$url.$to); //if not, go to frontpage
     }
     $request=array('request'=>$to);
     return $request;

@@ -18,10 +18,8 @@
 		}
 		/* parse URL and load the page*/
 		$handler->parseURL($request);
-
 		$handler->loadController();
 		$handler->loadView();
-
 	}catch(Exception $e){
 		echo "We have an error with your request: <br>" . $e->getMessage();
 	}finally{
