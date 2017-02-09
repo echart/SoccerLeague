@@ -26,7 +26,8 @@ class Handler{
 		if(file_exists('controllers/'.$this->requestURL.'.php'))
 			include_once('controllers/'.$this->requestURL.'.php');
 		else
-			include_once('controllers/404.php');
+			header("HTTP/1.0 404 Not Found");
+			//include_once('controllers/404.php');
 	}
 	public function loadView($flag=true){
     // flag @Param = if flag is true, load head+header+footer
@@ -43,7 +44,8 @@ class Handler{
 		if(file_exists('views/'.$this->requestURL.'.php'))
 			include_once('views/'.$this->requestURL.'.php');
 		else
-			include_once('views/404.html');
+			header("HTTP/1.0 404 Not Found");
+			//include_once('views/404.html');
 		/**
 		 * load footer
 		 */
