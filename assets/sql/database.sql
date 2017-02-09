@@ -59,7 +59,8 @@ create table account_permission(
   id_account_permission SERIAL PRIMARY KEY,
   id_account integer not null,
     CONSTRAINT FOREIGN KEY (id_account) REFERENCES account(id_account),
-  permission char(2) not null -- 'FT','GT','MT','LT'
+  permission char(2) not null, -- 'FT','GT','MT','LT','GOD'
+    CONSTRAINT CHECK (permission = ANY (ARRAY['FT'::bpchar,'GT'::bpchar,'MT'::bpchar,'LT'::bpchar,'GOD'::bpchar]))
 );
 /**
  * fim
