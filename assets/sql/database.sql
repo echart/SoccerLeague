@@ -15,7 +15,7 @@ create table season(
 create table language(
 	id_language SERIAL PRIMARY KEY,
 	lang varchar(100),
-	laguage varchar(100
+	laguage varchar(100)
 );
 create table country(
 	id_country serial primary key,
