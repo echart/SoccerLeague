@@ -28,47 +28,85 @@
       background-color: #393E41;
       color: #fff;
       height: 100vh;
-      padding: 250px 40px;
+    }
+    .left .content{
+      position: relative;
+      top: 240px;
+      left: 40px;
+      width: 90%;
+    }
+    .left .logo{
+      position: relative;
+      top: 40px;
+      left: 40px;
     }
     .right{
       background-color: #5FAD56;
       height: 100vh;
     }
-    h1{
+    h1.title{
       font-size: 50px !important;
       font-weight: 300 !important;
       padding: 0px !important;
     }
-    h5{
+    h5.subtitle{
       font-size: 28px !important;
       font-weight: 300 !important;
-      margin-top: -20px !important;
+      margin-top: -15px !important;
       padding-bottom: 5px !important;
       color: #ccc !important;
     }
-    p{
+    p.description{
       font-size: 14px !important;
       font-weight: 400 !important;
       color: #ccc !important;
+      padding-bottom: 5px !important;
     }
     button.join{
       font-family: 'Open Sans', sans-serif !important;
       background-color: #5FAD56 !important;
       padding: 20 50px !important;
+      font-weight: 400 !important;
+      color: #fff !important;
+    }
+    button.join:hover{
+      background-color: #4A7856 !important;
+    }
+    .list{
+      position: absolute;
+      top: 700px;
+      left: 40px;
+    }
+    .link{
+      color: #ccc !important;
     }
   </style>
 </head>
   <body>
     <main>
       <div class='grid-60 left'>
-        <h1>Soccer League</h1>
-        <h5>A Soccer Management Game for Web</h5>
-        <p>
-          Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
-        </p>
-        <button class="large ui button join">
-          Crie seu time!
-        </button>
+        <div class='logo'>SOCCERLEAGUE</div>
+        <div class='content'>
+          <h1 class='title'>Soccer League</h1>
+          <h5 class='subtitle'>Um jogo de gerenciamento de futebol para Web</h5>
+          <p class='description'>
+            Soccer League é a ideia de um jogo de gerenciamento de um clube de futebol para web, com uma match engine baseada em estatísticas reais do futebol com o uso de técnicas de inteligência artificial, e um visualizador de partidas em 2D, como os antigos tempos de Football Manager 2008.
+          </p>
+          <button class="large ui button join">
+            Crie seu time!
+          </button>
+        </div>
+        <div class="ui horizontal bulleted link list">
+          <a class="item">
+            Terms and Conditions
+          </a>
+          <a class="item">
+            Privacy Policy
+          </a>
+          <a class="item">
+            Contact Us
+          </a>
+        </div>
       </div>
       <div class='grid-40 right'>
         b
