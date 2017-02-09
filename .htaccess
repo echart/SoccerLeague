@@ -1,6 +1,5 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteRule ^controllers/deployment.php$ controllers/deployment.php [NC,L]
 	RewriteRule ^index\.php$ / [R=301,L]
 	RewriteRule ^(.*)/index\.php$ /$1/ [R=301,L]
 
@@ -10,42 +9,6 @@
   RewriteRule ^([a-z0-9-]+)/$ handler.php?request=$1 [NC,L]
 	RewriteRule ^([a-z0-9-]+)$ handler.php?request=$1 [NC,L]
 
-	RewriteRule ^club/([0-9-]+)/$ handler.php?request=club&id=$1 [NC,L]
-	RewriteRule ^club/([0-9-]+)$ handler.php?request=club&id=$1 [NC,L]
-	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
-	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=club&id=$1&subrequest=$2 [NC,L]
-	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=club&id=$1&subrequest=$2&action=$3 [NC,L]
-	RewriteRule ^club/([0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)$ handler.php?request=club&id=$1&subrequest=$2&action=$3 [NC,L]
-
-	RewriteRule ^account/([a-z0-9-]+)/$ handler.php?request=account&subrequest=$1 [NC,L]
-	RewriteRule ^account/([a-z0-9-]+)$ handler.php?request=account&subrequest=$1 [NC,L]
-
-	RewriteRule ^players/([0-9-]+)/$ handler.php?request=players&id=$1 [NC,L]
-	RewriteRule ^players/([0-9-]+)$ handler.php?request=players&id=$1 [NC,L]
-
-	RewriteRule ^api/players/([0-9-]+)$ handler.php?request=players&id=$1&method=json [NC,L]
-	RewriteRule ^api/players/([0-9-]+)/$ handler.php?request=players&id=$1&method=json [NC,L]
-
-	RewriteRule ^api/tweets/([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=tweetapi&type=user&id=$2&method=$1&page=$3 [NC,L]
-	RewriteRule ^api/tweets/([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=tweetapi&type=user&id=$2&method=$1&page=$3 [NC,L]
-
-	RewriteRule ^api/tweet/([a-z0-9-]+)/([0-9-]+)/$ handler.php?request=tweetapi&tweet&id=$2&method=$1 [NC,L]
-	RewriteRule ^api/tweet/([a-z0-9-]+)/([0-9-]+)$ handler.php?request=tweetapi&tweet&id=$2&method=$1 [NC,L]
-
-	RewriteRule ^api/tweet/([a-z0-9-]+)/$ handler.php?request=tweetapi&tweet&method=$1 [NC,L]
-	RewriteRule ^api/tweet/([a-z0-9-]+)$ handler.php?request=tweetapi&tweet&method=$1 [NC,L]
-
-	RewriteRule ^tweet/([0-9-]+)/$ handler.php?request=tweet&id=$1[NC,L]
-	RewriteRule ^tweet/([0-9-]+)$ handler.php?request=tweet&id=$1[NC,L]
-
-	RewriteRule ^tweet/user/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=tweet&type=user&id=$1[NC,L]
-	RewriteRule ^tweet/user/([a-z0-9-]+)/([a-z0-9-]+)$ handler.php?request=tweet&type=user&id=$1[NC,L]
-
-	RewriteRule ^buddy/([0-9-]+)/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=buddy&id=$1&id2=$2&action=$3 [NC,L]
-	RewriteRule ^buddy/([0-9-]+)/([0-9-]+)/([a-z0-9-]+)/$ handler.php?request=buddy&id=$1&id2=$2&action=$3 [NC,L]
-
-	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
-	RewriteRule ^league/([a-z0-9-]+)/([a-z0-9z0-9-]+)/([a-z0-9z0-9-]+)$ handler.php?request=league&country=$1&div=$2&group=$3 [NC,L]
  </IfModule>
  <IfModule mod_speling.c>
  CheckSpelling On
