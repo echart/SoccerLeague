@@ -22,6 +22,10 @@
         background-color: #333;
         padding: 20px;
       }
+      #map{
+        height: 400px;
+        margin: 20px;
+      }
     </style>
   </head>
   <body>
@@ -48,6 +52,8 @@
       </form>
     </main>
   </body>
+  <script type="text/javascript" src='<?=$this->tree?>/assets/js/jquery.js'></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4"></script>
 	<script type="text/javascript" src="//rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
+  <script type="text/javascript" src='<?=$this->tree?>/assets/js/maps.js'></script>
 </html>
