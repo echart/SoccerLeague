@@ -61,4 +61,13 @@ class Account{
 
 		if($query->execute()) return true; else return false;
 	}
+	public function __loadData(){
+		//TODO: load data from account data table
+	}
+	public function __createData(){
+		//TODO:	create data to account data table
+	}
+	public function __updateData(){
+		//TODO: update data from account data table
+	}
 }

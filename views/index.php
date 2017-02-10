@@ -13,7 +13,7 @@
  	<meta name="theme-color" content="‪#‎393E41">
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="<?=$this->path?>/assets/semantic/dist/semantic.min.css">
-<link rel="stylesheet" type="text/css" href="<?=$this->path?>/assets/semantic/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="<?=$this->path?>/assets/semantic/dist/semantic.min.css">
   <link rel="stylesheet" href="<?=$this->path?>/assets/css/grid.css">
   <link rel="stylesheet" href="<?=$this->path?>/assets/css/fonts.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">

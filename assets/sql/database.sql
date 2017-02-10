@@ -7,7 +7,7 @@ create table season(
 	enddate date not null
 );
 /**
- * TABELAS DE CONFIGURA�?ÃO
+ * TABELAS DE CONFIGURA�?ÃO
  */
  create table visits(
     id_visit serial primary key,
