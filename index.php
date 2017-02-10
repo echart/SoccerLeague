@@ -1,5 +1,4 @@
 <?
-session_start();
 require_once('helpers/__autoload.php');
 $con=Connection::getInstance();
 
@@ -144,7 +143,7 @@ $refeer= $_GET['refeer']?? NULL;
 	<link href="assets/css/grid.css" rel='stylesheet'>
 	<!-- JS -->
 	<script>document.write('<script src=assets/js/' +('__proto__' in {} ? 'zepto' : 'jquery') +'.js><\/script>')</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4&signed_in=true"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4"></script>
 	<script type="text/javascript" src="//rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
 	<script src='assets/js/alert.js'></script>
 	<script src='assets/js/index.js'></script>
