@@ -13,9 +13,9 @@
 		/* starts to handle the url*/
 		$handler = new Handler();
 		/* check if user is logged*/
-		// if($user->verifyAuthentication()==false){
-		// 	App::redirect($request['request']);
-		// }
+		if($user->verifyAuthentication()==false){
+			App::redirect($request['request']);
+		}
 		/* parse URL and load the page*/
 		$handler->parseURL($request);
 		$handler->loadController();
