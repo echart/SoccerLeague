@@ -3,8 +3,8 @@ create database soccerleague;
 
 create table season(
 	season serial primary key,
-	startdate date not null,
-	enddate date not null
+	startseason date not null,
+	endseason date not null
 );
 /**
  * TABELAS DE CONFIGURA�?ÃO
@@ -14,13 +14,13 @@ create table season(
     id_visitor int not null,
     id_visited int not null,
     visit_type char(1)
-    );
-create table language(
+);
+create table languages(
 	id_language SERIAL PRIMARY KEY,
-	lang varchar(100),
+	lang varchar(5),
 	laguage varchar(100)
 );
-create table country(
+create table countries(
 	id_country serial primary key,
 	country varchar(100) not null,
 	abbreviation varchar(2) not null,
@@ -31,7 +31,7 @@ create table injuries(
 	min_games integer not null,
 	max_games integer not null
 );
-create table timezone(
+create table timezones(
 	id_timezone serial primary key,
 	timezone varchar(100)
 );
@@ -98,7 +98,7 @@ create table club(
 	clubname varchar(25) not null default 'Available Team',
 	created date default now(),
 	status varchar(1) default 'P',
-    CHECK (status='P' OR status='A' OR status='I' OR status='B'), -- pending,aproved, inactived, banned
+		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])) -- pending, approved, inactived, banned
   location json -- '{"latitude": 0, "longitude": 0 , "changes" : 0}'
 );
 create table club_info(
@@ -123,10 +123,12 @@ create table club_fans(
 
 create table buddies(
 	id_friendship serial primary key,
-	buddy1 integer not null,
+	buddyA integer not null,
 		CONSTRAINT clubfriends_friendone FOREIGN KEY (buddy1) REFERENCES club(id_club),
-	buddy2 integer not null,
+	buddyB integer not null,
 		CONSTRAINT clubfriends_friendone FOREIGN KEY (buddy2) REFERENCES club(id_club),
+	status char(1) not null,
+		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar]))
 	when date
 );
 create table club_visits(
