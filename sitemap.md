@@ -7,11 +7,11 @@ Home
     Mensagens
 Clube
     sede
-    visão geral
-      finanças
-    partidas
-    estatísticas
-    historico
+        visão geral
+        partidas
+        estatísticas
+        historico
+    finanças
     estádio
 Equipe
     elenco
