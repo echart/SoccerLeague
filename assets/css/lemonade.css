@@ -5,11 +5,13 @@
 
 .frame {
   margin: 0 auto;
-  max-width: 100%; }
-  .frame:after {
-    content: "";
-    display: table;
-    clear: both; }
+  max-width: 100%;
+}
+.frame:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 [class*='bit-'] {
   float: left;
@@ -107,5 +109,6 @@
   font-size: 14px;
   text-align: center;
   padding: 20px 0; }
-  .box--new {
-    background: #87D37C; }
+.box--new {
+  background: #87D37C;
+}

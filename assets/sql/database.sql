@@ -430,7 +430,7 @@ create table tweet(
    likes integer default 0,
    tags text[]
  );
- crete table tweetLikes(
+ create table tweetLikes(
   id_like serial primary key,
   id_tweet integer not null,
     foreign key(id_tweet) references tweet(id_tweet),
