@@ -72,6 +72,7 @@ class Account{
 		//TODO: update data from account data table
 	}
 }
+
 // class Account{
 // 	public static $instance;
 // 	private $_prodays;
