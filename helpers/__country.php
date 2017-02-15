@@ -2,7 +2,7 @@
 
 function getCountryID($country){
   $country=strtolower($country);
-  $query=Connection::getInstance()->connect()->prepare("SELECT id_country FROM country where abbreviation=:country");
+  $query=Connection::getInstance()->connect()->prepare("SELECT id_country FROM countries where abbreviation=:country");
   $query->bindParam(':country',$country);
   $query->execute();
   if($query->rowCount()>0){
@@ -14,7 +14,7 @@ function getCountryID($country){
   }
 }
 function getCountryByID($country){
-  $query=Connection::getInstance()->connect()->prepare("SELECT abbreviation FROM country where id_country=:country");
+  $query=Connection::getInstance()->connect()->prepare("SELECT abbreviation FROM countries where id_country=:country");
   $query->bindParam(':country',$country);
   $query->execute();
   $data=$query->fetch(PDO::FETCH_ASSOC);
