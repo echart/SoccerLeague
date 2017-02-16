@@ -9,24 +9,47 @@
 body{
 	background-color: #f4f4f4;
 	font-family: 'Open Sans', sans-serif;
+  color: #26292B;
   font-size: 14px;
+  overflow-x: hidden;
+}
+/**
+  SOCCERLEAGUELOGO
+**/
+.soccerleague{
+  margin: 10px ;
+  height: 50px;
+  background-image: url(../img/logo.png) !important;
+  background-repeat: no-repeat;
+	background-size: contain;
+  /*background-color: #5FAD56;*/
+}
+/**
+  CONTENT
+**/
+.content{
+  padding: 10px;
 }
 /**
   HEADER
 **/
 header{
+  position: relative;
   height: 70px;
   background-color: #fff;
-  /*border-bottom: 1px solid #e5e5e5;*/
+  border-bottom: 1px solid #ebebeb;
   z-index: 1;
 }
-.soccerleague{
-  margin: 10px;
-  height: 50px;
-  background-image: url(../img/logo.png) !important;
-  background-repeat: no-repeat;
-	background-size: contain;
+.menu-mobile{
   position: relative;
+  left: 15px;
+  top: 25px;
+  height: 18px;
+  width: 18px;
+  background-image: url(../img/icons/menu.png) !important;
+  background-repeat: no-repeat;
+	background-size: 18px;
+  cursor: pointer;
 }
 /**
   NAVIGATION
@@ -34,6 +57,33 @@ header{
 .navbar{
   height: 100vh;
   background-color: #393E41;
-  border-right: 1px solid #e5e5e5;
+  border-right: 1px solid #ebebeb;
   z-index: 2;
+}
+nav ul li{
+  font-size: 16px;
+  font-weight: 300;
+}
+nav ul li a{
+  display: block;
+  color: #fafafa;
+  text-decoration: none;
+  padding: 15px 10px 32.5px;
+  /*border-bottom: 1px solid #ebebeb;*/
+}
+nav ul li i{
+  width: 40px;
+  height: 40px;
+  background-color: #5FAD56;
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+nav ul li span{
+  position: relative;
+  top: 7.5px;
+}
+nav ul li a:hover{
+  background-color: #26292B;
+  cursor: pointer;
 }
