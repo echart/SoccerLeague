@@ -60,10 +60,6 @@ header{
   border-right: 1px solid #ebebeb;
   z-index: 2;
 }
-nav ul li{
-  font-size: 16px;
-  font-weight: 300;
-}
 nav ul li a{
   display: block;
   color: #fafafa;
@@ -82,8 +78,11 @@ nav ul li i{
 nav ul li span{
   position: relative;
   top: 7.5px;
+  font-size: 14px;
+  font-weight: 300;
 }
 nav ul li a:hover{
+  transition: 0.5s all;
   background-color: #26292B;
   cursor: pointer;
 }
