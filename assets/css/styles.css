@@ -10,25 +10,28 @@ body{
 	background-color: #f4f4f4;
 	font-family: 'Open Sans', sans-serif;
   color: #26292B;
-  font-size: 14px;
+  font-size: 12px;
   overflow-x: hidden;
 }
 /**
   SOCCERLEAGUELOGO
 **/
-.soccerleague{
+/*.soccerleague{
   margin: 10px ;
   height: 50px;
   background-image: url(../img/logo.png) !important;
   background-repeat: no-repeat;
 	background-size: contain;
-  /*background-color: #5FAD56;*/
-}
+}*/
 /**
   CONTENT
 **/
 .content{
   padding: 10px;
+}
+h1.page-title{
+  font-weight: 300;
+  padding-left: 5px;
 }
 /**
   HEADER
@@ -43,46 +46,130 @@ header{
 .menu-mobile{
   position: relative;
   left: 15px;
-  top: 25px;
-  height: 18px;
-  width: 18px;
-  background-image: url(../img/icons/menu.png) !important;
-  background-repeat: no-repeat;
-	background-size: 18px;
-  cursor: pointer;
+  top: 27.5px;
+  width: 100px;
+  display: inline-block;
+}
+.menu-mobile:hover{
+  cursor: pointer;;
+}
+.menu-mobile div{
+  width: 20px;
+  height: 1px;
+  background-color: black;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+/*rotate bar*/
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 0px) ;
+    transform: rotate(-45deg) translate(-9px, 0px) ;
+}
+/*mid bar puf*/
+.change .bar2 {
+    opacity: 0;
+}
+/*rotate bar*/
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, 0px) ;
+    transform: rotate(45deg) translate(-8px, 0px) ;
 }
 /**
   NAVIGATION
 **/
 .navbar{
+  position: relative;
+  left:0;
   height: 100vh;
   background-color: #393E41;
   border-right: 1px solid #ebebeb;
   z-index: 2;
+  transition: 0.4s;
+}
+.navbar.navbar-hidden{
+  transition: 0.4s all;
+  position: relative;
+  left: -16.66667% !important;
 }
 nav ul li a{
   display: block;
   color: #fafafa;
   text-decoration: none;
-  padding: 15px 10px 32.5px;
+  padding: 15px 10px 25px;
   /*border-bottom: 1px solid #ebebeb;*/
 }
 nav ul li i{
-  width: 40px;
-  height: 40px;
-  background-color: #5FAD56;
+  width: 24px;
+  height: 24px;
   display: block;
   float: left;
   margin-right: 10px;
+  background-size: 24px;
+  background-repeat: no-repeat;
 }
 nav ul li span{
   position: relative;
-  top: 7.5px;
-  font-size: 14px;
+  top: 5px;
+  font-size: 13px;
   font-weight: 300;
+  padding-left: 5px;
 }
 nav ul li a:hover{
   transition: 0.5s all;
   background-color: #26292B;
   cursor: pointer;
+}
+/** nav icons */
+nav ul li i.home{
+  background-image: url(../img/icons/home.png) !important;
+}
+nav ul li i.club{
+  background-image: url(../img/icons/club.png) !important;
+}
+nav ul li i.squad{
+  background-image: url(../img/icons/squad.png) !important;
+}
+nav ul li i.league{
+  background-image: url(../img/icons/world-cup.png) !important;
+}
+nav ul li i.market{
+  background-image: url(../img/icons/money.png) !important;
+}
+nav ul li i.world{
+  background-image: url(../img/icons/world.png) !important;
+}
+nav ul li i.slpro{
+  background-image: url(../img/icons/coins.png) !important;
+}
+nav ul li i.exit{
+  background-image: url(../img/icons/exit.png) !important;
+}
+/*=============================
+BOXES
+==============================*/
+.box{
+	min-height: 100px;
+	padding: 10px 5px;
+}
+.box-title{
+	background-color: #5FAD56;
+  border: 1px solid #ebebeb;
+  color: #fcfcfc;
+	font-size: 16px;
+  font-weight: 300;
+	text-align: left;
+  padding: 16px 30px;
+}
+.box-content{
+	position: relative;
+	min-height:20px;
+	text-align: left;
+	padding: 0px;
+	font-size: 12px;
+	border: 1px solid #DBDBDC;
+  border-top: 0px;
+}
+
+.box-content > p{
+	padding: 10px 30px;
 }
