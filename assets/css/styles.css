@@ -46,7 +46,7 @@ header{
 .menu-mobile{
   position: relative;
   left: 15px;
-  top: 27.5px;
+  top: 25px;
   width: 100px;
   display: inline-block;
 }
@@ -95,7 +95,7 @@ nav ul li a{
   display: block;
   color: #fafafa;
   text-decoration: none;
-  padding: 15px 10px 25px;
+  padding: 15px 18px 25px;
   /*border-bottom: 1px solid #ebebeb;*/
 }
 nav ul li i{
