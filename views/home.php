@@ -9,17 +9,17 @@
   			<p>teste content</p>
   		</div>
   	</div>
-    <div class='bit-2 box'>
+    <div class='bit-4 box'>
   		<div class='box-title color'>
-  			center
+  			right
   		</div>
   		<div class='box-content trophies'>
   			<p>teste content</p>
   		</div>
   	</div>
-    <div class='bit-4 box'>
+    <div class='bit-2 box'>
   		<div class='box-title color'>
-  			right
+  			center
   		</div>
   		<div class='box-content trophies'>
   			<p>teste content</p>
