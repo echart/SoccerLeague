@@ -61,13 +61,13 @@
 .bit-75 {
   width: 75%; }
 .bit-80{
-  width: 83.33333%;
+  width: 80%;
 }
 .hide-on-large{
   display: none;
 }
 
-@media (max-width: 30em) {
+@media (max-width: 360px) {
   .bit-1 {
     width: 100%; }
   .bit-2 {
@@ -102,7 +102,7 @@
   }
 }
 
-@media (min-width: 30em) and (max-width: 50em) {
+@media (min-width: 360px) and (max-width: 600px) {
   .bit-4, .bit-6, .bit-8, .bit-10, .bit-12 {
     width: 50%;
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media (min-width: 50em) and (max-width: 68.75em) {
+@media (min-width: 600px) and (max-width: 825px) {
   .bit-2, .bit-7 {
     width: 100%;
   }

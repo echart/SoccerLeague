@@ -27,7 +27,15 @@ body{
   CONTENT
 **/
 .content{
+  float: left;
+  width: 83.33333%;
   padding: 10px;
+}
+.hidden{
+  display: none;
+}
+.right{
+  float: right;
 }
 h1.page-title{
   font-weight: 300;
@@ -38,7 +46,9 @@ h1.page-title{
 **/
 header{
   position: relative;
+  width: 83.33333%;
   height: 70px;
+  float: left;
   background-color: #fff;
   border-bottom: 1px solid #ebebeb;
   z-index: 1;
@@ -48,7 +58,8 @@ header{
   left: 15px;
   top: 25px;
   width: 100px;
-  display: inline-block;
+  display: none;
+  z-index: 3;
 }
 .menu-mobile:hover{
   cursor: pointer;;
@@ -84,12 +95,13 @@ header{
   background-color: #393E41;
   border-right: 1px solid #ebebeb;
   z-index: 2;
+  opacity: 1;
   transition: 0.4s;
 }
-.navbar.navbar-hidden{
-  transition: 0.4s all;
-  position: relative;
-  left: -16.66667% !important;
+.navbar.navbar-open{
+  opacity: 1;
+  transition: 0.5s all;
+  display: block;
 }
 nav ul li a{
   display: block;

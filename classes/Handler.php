@@ -60,7 +60,7 @@ class Handler{
 	}
 	public function loadCSSfiles(){
 		foreach ($this->dependence['CSS'] as $key => $style) {
-			echo "<link rel='stylesheet' type='text/css' href='".$this->data['tree']."assets/css/".$style."'>";
+			echo "<link rel='stylesheet' type='text/css' href='".$this->tree."assets/css/".$style."'>";
 		}
 	}
 	public function addJSFile($name){
@@ -68,7 +68,7 @@ class Handler{
 	}
 	public function loadJSFiles(){
 		foreach ($this->dependence['JS'] as $key => $script) {
-			echo "<script type='text/javascript' src='".$this->data['tree']."assets/js/".$script."'></script>";
+			echo "<script type='text/javascript' src='".$this->tree."assets/js/".$script."'></script>";
 		}
 	}
 }

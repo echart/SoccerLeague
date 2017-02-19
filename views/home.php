@@ -1,4 +1,4 @@
-<div class='content bit-80'>
+<div class='content'>
   <h1 class='page-title'>Home</h1>
   <div class='byte'>
     <div class='bit-4 box'>
@@ -9,7 +9,7 @@
   			<p>teste content</p>
   		</div>
   	</div>
-    <div class='bit-4 box'>
+    <div class='bit-4 box right'>
   		<div class='box-title color'>
   			right
   		</div>

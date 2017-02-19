@@ -1,5 +1,5 @@
 <!--navigation -->
-<div class='navbar bit-6 hide-on-small hide-on-medium'>
+<div class='navbar bit-6'>
 	<div class='soccerleague'></div>
 	<nav>
 		<ul>
@@ -15,12 +15,10 @@
 	</nav>
 </div>
 <!--header-->
-<div class='bit-80'>
-	<header>
-		<div class='menu-mobile change'>
-			<div class='bar1'></div>
-			<div class='bar2'></div>
-			<div class='bar3'></div>
-		</div>
-	</header>
-</div>
+<header>
+	<div class='menu-mobile'>
+		<div class='bar1'></div>
+		<div class='bar2'></div>
+		<div class='bar3'></div>
+	</div>
+</header>

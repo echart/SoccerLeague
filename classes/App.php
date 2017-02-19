@@ -13,7 +13,7 @@ class App{
     error_reporting($e);
   }
   public static function url(){
-    $_config=parse_ini_file('_config.ini');
+    $_config = parse_ini_file('_config.ini');
     return $_config['url'];
   }
 }
