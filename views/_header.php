@@ -10,6 +10,7 @@
 			<li><a href=''><i class='market'></i><span>Mercado</span></a></li>
 			<li><a href=''><i class='world'></i><span>Comunidade</span></a></li>
 			<li><a href=''><i class='slpro'></i><span>PRO</span></a></li>
+			<li><a href=''><i class='admin'></i><span>Administrador</span></a></li>
 			<li><a href=''><i class='exit'></i><span>Sair</span></a></li>
 		</ul>
 	</nav>

@@ -39,7 +39,11 @@ body{
 }
 h1.page-title{
   font-weight: 300;
-  padding-left: 5px;
+  padding: 10px 20px;
+  background: #5fad56;
+  border-radius: 5px;
+  color: #fff;
+  margin: 0px 5px;
 }
 /**
   HEADER
@@ -91,7 +95,6 @@ header{
 .navbar{
   position: relative;
   left:0;
-  height: 100vh;
   background-color: #393E41;
   border-right: 1px solid #ebebeb;
   z-index: 2;
@@ -156,6 +159,9 @@ nav ul li i.slpro{
 nav ul li i.exit{
   background-image: url(../img/icons/exit.png) !important;
 }
+nav ul li i.admin{
+  background-image: url(../img/icons/admin.png) !important;
+}
 /*=============================
 BOXES
 ==============================*/
@@ -164,7 +170,7 @@ BOXES
 	padding: 10px 5px;
 }
 .box-title{
-	background-color: #fff;
+	background-color: #fefefc;
   border: 1px solid #ebebeb;
   color: #333;
 	font-size: 16px;
@@ -178,8 +184,9 @@ BOXES
 	text-align: left;
 	padding: 0px;
 	font-size: 12px;
-	border: 1px solid #DBDBDC;
+	border: 1px solid #ebebeb;
   border-top: 0px;
+  background-color: #fefefc;
 }
 
 .box-content > p{

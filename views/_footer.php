@@ -8,6 +8,9 @@
         $('.navbar').toggleClass('navbar-open');
         $('.content').toggleClass('hidden');
       })
+      $(document).ready(function(){
+        $('.navbar').height($(document).height());
+      })
     </script>
     <? $this->loadJSFiles(); ?>
 </body>
