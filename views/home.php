@@ -1,7 +1,7 @@
 <div class='content'>
   <h1 class='page-title'>Home</h1>
   <div class='byte'>
-    <div class='bit-4 box'>
+    <div class='bit-70 box'>
   		<div class='box-title color'>
   			left
   		</div>
@@ -9,7 +9,7 @@
   			<p>teste content</p>
   		</div>
   	</div>
-    <div class='bit-4 box right'>
+    <div class='bit-30 box right'>
   		<div class='box-title color'>
   			right
   		</div>
