@@ -3,8 +3,8 @@
 	<div class='soccerleague'></div>
 	<nav>
 		<ul>
-			<li><a href=''><i class='home'></i><span>Home</span></a></li>
-			<li><a href=''><i class='club'></i><span>Clube</span></a></li>
+			<li><a href='home'><i class='home'></i><span>Home</span></a></li>
+			<li><a href='club'><i class='club'></i><span>Clube</span></a></li>
 			<li><a href=''><i class='squad'></i><span>Equipe</span></a></li>
 			<li><a href=''><i class='league'></i><span>Competições</span></a></li>
 			<li><a href=''><i class='market'></i><span>Mercado</span></a></li>

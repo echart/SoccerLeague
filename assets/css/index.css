@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+	background-color: #f4f4f4;
+	font-family: 'Open Sans', sans-serif;
+  color: #26292B;
+  font-size: 14px;
+  overflow-x: hidden;
+}
+main{
+  height: 100vh;
+  width: 100vw;
+}
