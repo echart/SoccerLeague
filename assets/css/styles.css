@@ -28,6 +28,8 @@ body{
 **/
 .content{
   float: left;
+  position: relative;
+  left: 16.66667%;
   width: 83.33333%;
   padding: 10px;
 }
@@ -50,6 +52,7 @@ h1.page-title{
 **/
 header{
   position: relative;
+  left: 16.66667%;
   width: 83.33333%;
   height: 70px;
   float: left;
@@ -93,7 +96,8 @@ header{
   NAVIGATION
 **/
 .navbar{
-  position: relative;
+  position: fixed;
+  height: 100vh;
   left:0;
   background-color: #393E41;
   border-right: 1px solid #ebebeb;

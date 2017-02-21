@@ -21,9 +21,11 @@ LOWER THAN 825PX
 ==========================*/
 @media (max-width:825px){
   .content{
+    left: 0;
     width: 100%;
   }
   header{
+    left: 0;
     float: unset;
     width: 100%;
   }
