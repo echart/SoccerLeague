@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/lemonade.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/responsive.css">
 	<? $this->loadCSSFiles(); ?>
 </head>

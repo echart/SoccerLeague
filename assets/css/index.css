@@ -4,13 +4,39 @@
   box-sizing: border-box;
 }
 body{
-	background-color: #f4f4f4;
+	background-color: #26292B;
 	font-family: 'Open Sans', sans-serif;
   color: #26292B;
   font-size: 14px;
   overflow-x: hidden;
 }
 main{
+  padding-top: 50px;
   height: 100vh;
   width: 100vw;
+}
+.box-content{
+  padding: 20px;
+  background-color: ;
+}
+.byte{
+  max-width: 600px;
+}
+
+input{
+  margin: 2px;
+}
+.box-title{
+  border: 0;
+}
+.logo figure{
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+h3{
+  font-weight: 300;
+  color: #fcfcfc;
+  text-align: center;
+  padding-bottom: 20px;
 }

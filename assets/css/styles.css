@@ -47,125 +47,6 @@ h1.page-title{
   color: #fff;
   margin: 0px 5px;
 }
-/**
-  HEADER
-**/
-header{
-  position: relative;
-  left: 16.66667%;
-  width: 83.33333%;
-  height: 70px;
-  float: left;
-  background-color: #fff;
-  border-bottom: 1px solid #ebebeb;
-  z-index: 1;
-}
-.menu-mobile{
-  position: relative;
-  left: 15px;
-  top: 25px;
-  width: 100px;
-  display: none;
-  z-index: 3;
-}
-.menu-mobile:hover{
-  cursor: pointer;;
-}
-.menu-mobile div{
-  width: 20px;
-  height: 1px;
-  background-color: #26292B;
-  margin: 5px 0;
-  transition: 0.4s;
-}
-/*rotate bar*/
-.change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 0px) ;
-    transform: rotate(-45deg) translate(-9px, 0px) ;
-}
-/*mid bar puf*/
-.change .bar2 {
-    opacity: 0;
-}
-/*rotate bar*/
-.change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, 0px) ;
-    transform: rotate(45deg) translate(-8px, 0px) ;
-}
-/**
-  NAVIGATION
-**/
-.navbar{
-  position: fixed;
-  height: 100vh;
-  left:0;
-  background-color: #393E41;
-  border-right: 1px solid #ebebeb;
-  z-index: 2;
-  opacity: 1;
-  transition: 0.4s;
-}
-.navbar.navbar-open{
-  opacity: 1;
-  transition: 0.5s all;
-  display: block;
-}
-nav ul li a{
-  display: block;
-  color: #fafafa;
-  text-decoration: none;
-  padding: 15px 18px 25px;
-  /*border-bottom: 1px solid #ebebeb;*/
-}
-nav ul li i{
-  width: 24px;
-  height: 24px;
-  display: block;
-  float: left;
-  margin-right: 10px;
-  background-size: 24px;
-  background-repeat: no-repeat;
-}
-nav ul li span{
-  position: relative;
-  top: 5px;
-  font-size: 13px;
-  font-weight: 300;
-  padding-left: 5px;
-}
-nav ul li a:hover{
-  transition: 0.5s all;
-  background-color: #26292B;
-  cursor: pointer;
-}
-/** nav icons */
-nav ul li i.home{
-  background-image: url(../img/icons/home.png) !important;
-}
-nav ul li i.club{
-  background-image: url(../img/icons/club.png) !important;
-}
-nav ul li i.squad{
-  background-image: url(../img/icons/squad.png) !important;
-}
-nav ul li i.league{
-  background-image: url(../img/icons/world-cup.png) !important;
-}
-nav ul li i.market{
-  background-image: url(../img/icons/money.png) !important;
-}
-nav ul li i.world{
-  background-image: url(../img/icons/world.png) !important;
-}
-nav ul li i.slpro{
-  background-image: url(../img/icons/coins.png) !important;
-}
-nav ul li i.exit{
-  background-image: url(../img/icons/exit.png) !important;
-}
-nav ul li i.admin{
-  background-image: url(../img/icons/admin.png) !important;
-}
 /*=============================
 BOXES
 ==============================*/
@@ -194,4 +75,115 @@ BOXES
 
 .box-content > p{
 	padding: 10px 30px;
+}
+
+/*=============================
+form
+==============================*/
+div.form-field{
+	width: 100%;
+	white-space: normal;
+	max-height:200px;
+	margin: 15px 0;
+	font-family: 'Open Sans';
+	font-size: 12px;
+}
+div.form-field label{
+	color:#393e41;
+	font-size: 13px;
+	font-weight: 800;
+	display: block;
+	height: 20px;
+	width: 100%;
+}
+input[type='text'],input[type='password'],input[type='email']{
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 12.5px 15px;
+	color: #393e41;
+	font-family: 'Exo 2','Open Sans';
+}
+input[type='text']:hover,input[type='password']:hover,input[type='email']:hover{
+	background-color: #e4e4e4;
+	transition: 0.7s all;
+}
+input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
+	background-color: #ddd;
+	color: #000;
+	transition: 0.3s background-color;
+	border: 1px solid #ccc;
+}
+select{
+  margin-left: 2px;
+	font-family: 'Exo 2','Open Sans';
+	padding: 0px 15px;
+	width: 100%;
+	border: 1px solid #ccc;
+	color: #393e41;
+	font-size: 14px;
+	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+	-webkit-padding-before: 10px;
+	-webkit-padding-after: 10px;
+}
+option{
+	padding: 12.5px 15px;
+	width: 100%;
+	color: #393e41;
+}
+textarea{
+	font-family: 'Exo 2','Open Sans';
+	color: #393e41;
+	padding: 10px;
+	border: 1px solid #ccc;
+	width: 100%;
+	resize: vertical;
+	font-size: 13px;
+}
+textarea:focus{
+	background-color: #ddd;
+	color: #000;
+}
+/*=============================
+BUTTONS
+==============================*/
+.btn,.btn-medium,.btn-small,.btn-large{
+	color: #fff;
+	background-color: #393e41;
+	border: 0px;
+	cursor:pointer;
+}
+.btn{
+	padding: 1.25rem 3rem;
+	cursor:pointer;
+}
+.btn-large{
+	padding: 1.25rem 10rem;
+	cursor:pointer;
+}
+.btn-medium{
+	padding: 1.25rem 5rem;
+	cursor:pointer;
+}
+.btn-small{
+	padding: 1.25rem 1rem;
+	cursor:pointer;
+}
+.btn-border{
+	border-radius: 3.5px;
+	cursor:pointer;
+}
+.btn:hover,.btn-medium:hover,.btn-small:hover,.btn-large:hover{
+	background-color: #393e41;
+	transition: .7s all;
+}
+.btn:active,.btn-medium:active,.btn-small:active,.btn-large:active{
+	background-color: #fff;
+	color: #333;
+}
+.btn-disabled{
+	background-color: #ccc !important;
+	color: #333 !important;
 }
