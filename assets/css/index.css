@@ -40,3 +40,11 @@ h3{
   text-align: center;
   padding-bottom: 20px;
 }
+button{
+  background-color: #5FAD56;
+  width: 100%;
+  margin-left: 2px;
+  padding: 15px 0px;
+  border: 0px;
+  color: #fff;
+}
