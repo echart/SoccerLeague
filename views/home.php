@@ -13,8 +13,10 @@
   		<div class='box-title color'>
   			Calendário
   		</div>
-  		<div class='box-content trophies'>
-  			<p>eventos</p>
+  		<div class='box-content'>
+  			<div class='bit-1 next-game'>
+          <h3>Próximo jogo:</h3>
+        </div>
   		</div>
   	</div>
   </div>
