@@ -11,6 +11,39 @@ header{
   border-bottom: 1px solid #ebebeb;
   z-index: 1;
 }
+header .nav{
+  margin-top: -50px;
+  margin-right: 0px;
+}
+.nav ul{
+  list-style: none;
+  padding: 25px;
+}
+.nav ul li{
+  float: left;
+  padding: 0px 7px;
+}
+.nav ul li i{
+  float: left;
+  display: block;
+  width: 20px;
+  height: 25px;
+  background-repeat: no-repeat;
+	background-size: contain;
+}
+.nav ul li i.notification{
+  background-image: url(../img/icons/notification.png) !important;
+}
+.nav ul li i.club{
+  background-image: url(../img/icons/club.png) !important;
+}
+.nav ul li i.arrow{
+  background-image: url(../img/icons/arrow-down.png) !important;
+  width: 10px;
+  height: 15px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
 .menu-mobile{
   float: left;
   position: relative;

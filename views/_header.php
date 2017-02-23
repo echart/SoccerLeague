@@ -22,7 +22,11 @@
 		<div class='bar2'></div>
 		<div class='bar3'></div>
 	</div>
-	<div class='soccerleague'>
-
+	<div class='soccerleague'></div>
+	<div class='nav right'>
+		<ul>
+			<li><i class='club'></i><i class='arrow'></i></li>
+			<li><i class='notification'></i></li>
+		</ul>
 	</div>
 </header>
