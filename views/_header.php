@@ -1,6 +1,6 @@
 <!--navigation -->
 <div class='navbar bit-6'>
-	<div class='soccerleague'></div>
+	<!-- <div class='soccerleague'></div> -->
 	<nav>
 		<ul>
 			<li><a href='home'><i class='home'></i><span>Home</span></a></li>
@@ -21,5 +21,8 @@
 		<div class='bar1'></div>
 		<div class='bar2'></div>
 		<div class='bar3'></div>
+	</div>
+	<div class='soccerleague'>
+
 	</div>
 </header>

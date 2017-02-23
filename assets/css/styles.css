@@ -16,13 +16,16 @@ body{
 /**
   SOCCERLEAGUELOGO
 **/
-/*.soccerleague{
-  margin: 10px ;
+.soccerleague{
+  position: relative;
+  display: block;
+  left: 10px;
+  top: 10px;
   height: 50px;
-  background-image: url(../img/logo.png) !important;
+  background-image: url(../img/logo.left.png) !important;
   background-repeat: no-repeat;
 	background-size: contain;
-}*/
+}
 /**
   CONTENT
 **/

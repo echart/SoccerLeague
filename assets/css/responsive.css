@@ -32,6 +32,10 @@ LOWER THAN 825PX
   .menu-mobile{
     display: block;
   }
+  .soccerleague{
+    left: 50px;
+    background-image: url(../img/icon.png) !important;
+  }
   .navbar{
     /*background-color: #fff;*/
     position: fixed;
