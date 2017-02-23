@@ -5,7 +5,7 @@
 		/* load autoloader */
 		require_once('helpers/__autoload.php');
 		//debug
-		App::display_errors(false);
+		App::display_errors(true);
 		/* start connection and authentication class*/
 		$con=Connection::getInstance();
 		$user = new Authentication();

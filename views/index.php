@@ -35,10 +35,10 @@ $refeer= $_GET['refeer']?? NULL;
 					<div class='box-title'>Login</div>
 					<div class='box-content'>
 						<form action='/login' method='POST'>
+							<p><?=$_SESSION['errors_login']?></p>
 							<input type='text' name='email' placeholder='Email'>
 							<input type='password' name='password' placeholder='password'>
 							<button type="submit">Login</button>
-							<p><?=$_SESSION['errors_login']?></p>
 						</form>
 					</div>
 				</div>
@@ -49,9 +49,9 @@ $refeer= $_GET['refeer']?? NULL;
 							<input type='text' name='email' placeholder='Email'>
 							<input type='password' name='password' placeholder='password'>
 							<input type='text' name='clubname' placeholder='Clubname'>
-							<select name='country'>
+							<!-- <select name='country'>
 								<option value='br'>Brasil</option>
-							</select>
+							</select> -->
 							<input type='hidden' name='refeer' value='<?=$refeer?>'>
 							<button type="submit">Criar clube</button>
 						</form>
