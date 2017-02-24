@@ -16,6 +16,10 @@ body{
 a{
   color: #DD6E42;
 }
+a:hover{
+  color: #26292B;
+}
+
 /**
   SOCCERLEAGUELOGO
 **/
@@ -29,6 +33,16 @@ a{
   background-image: url(../img/logo.left.png) !important;
   background-repeat: no-repeat;
 	background-size: contain;
+}
+a.buy-pro{
+  color: #333;
+  background: #D5B942;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+a.buy-pro:hover{
+  background-color: #C2A93C;
 }
 /**
   CONTENT

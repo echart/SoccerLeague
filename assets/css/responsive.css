@@ -83,6 +83,13 @@ LOWER THAN 825PX
     background-repeat: no-repeat;
     background-position: center;
   }
+  .nav ul li{
+    display: none;
+  }
+  .nav ul li.more{
+    display: block;
+  }
+
 }
 /**
 ==========================

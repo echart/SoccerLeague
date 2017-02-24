@@ -16,6 +16,17 @@
   		<div class='box-content'>
   			<div class='bit-1 next-game'>
           <h3>Próximo jogo:</h3>
+          <div class='match'>
+            <div class='home'>
+              <img src='<?=$this->tree?>assets/img/icon.png'>
+              <p><a href='#'>E.C Grêmio Universidad</a></p>
+            </div>
+              <span>vs</span>
+            <div class='away'>
+              <img src='<?=$this->tree?>assets/img/icon.png'>
+              <p><a href='#'>S.C Internacional</a></p>
+            </div>
+          </div>
         </div>
   		</div>
   	</div>

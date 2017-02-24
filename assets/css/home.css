@@ -5,3 +5,26 @@
 .next-game{
   text-align: center;
 }
+
+.next-game .match{
+  height: 120px;
+  padding: 20px;
+}
+.next-game .match .home{
+  width: 45%;
+  float: left;
+}
+.next-game .match .away{
+  width: 45%;
+  float: right;
+}
+.next-game .match span{
+  font-size: 28px;
+  font-weight: 300;
+}
+.home img, .away img{
+    width: 65px;
+}
+.home a, .away a{
+  font-size: 16px;
+}

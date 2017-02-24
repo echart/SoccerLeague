@@ -27,8 +27,8 @@ header .nav{
   padding: 25px 15px;
   height: 70px;
 }
-.nav ul li:hover{
-  background: #ebebeb;
+.nav ul li.more{
+  display: none;
 }
 .nav ul li i{
   float: left;
@@ -44,12 +44,24 @@ header .nav{
 .nav ul li i.club{
   background-image: url(../img/icons/club.png) !important;
 }
+.nav ul li i.settings{
+  background-image: url(../img/icons/settings.png) !important;
+}
+.nav ul li i.more{
+  background-image: url(../img/icons/more.png) !important;
+}
 .nav ul li i.arrow{
   background-image: url(../img/icons/arrow-down.png) !important;
   width: 10px;
   height: 15px;
   margin-top: 5px;
   margin-left: 5px;
+}
+.nav ul li i.buy-pro{
+  display: block;
+  background-image: url(../img/icons/coins.png) !important;
+  position: absolute;
+  left: 25px;
 }
 .menu-mobile{
   float: left;
@@ -61,7 +73,7 @@ header .nav{
   z-index: 3;
 }
 .menu-mobile:hover{
-  cursor: pointer;;
+  cursor: pointer;
 }
 .menu-mobile div{
   width: 20px;
@@ -129,6 +141,7 @@ nav ul li a:hover{
   transition: 0.5s all;
   background-color: #26292B;
   cursor: pointer;
+  color: #fff;
 }
 /** nav icons */
 nav ul li i.home{
