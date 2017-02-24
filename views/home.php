@@ -26,6 +26,10 @@
               <img src='<?=$this->tree?>assets/img/icon.png'>
               <p><a href='#'>S.C Internacional</a></p>
             </div>
+            <div class='match-stats'>
+              <p>Dia 3 de Fevereiro, às 20h.</p>
+              <a href=''>Ver partida</a>
+            </div>
           </div>
         </div>
   		</div>

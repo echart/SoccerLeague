@@ -1,14 +1,15 @@
+/*==========
+next match
+==========*/
 .next-game{
   padding: 10px;
   float: none;
-}
-.next-game{
   text-align: center;
 }
-
 .next-game .match{
-  height: 120px;
+  margin: 10px;
   padding: 20px;
+  border: 1px dashed #666E7A;
 }
 .next-game .match .home{
   width: 45%;
@@ -26,5 +27,17 @@
     width: 65px;
 }
 .home a, .away a{
-  font-size: 16px;
+  font-size: 14px;
+}
+.next-game .match .match-stats{
+  width: 100%;
+  display: inline-block;
+  padding-top: 20px;
+}
+.match-stats p{
+  font-size: 12px;
+}
+.match-stats a{
+  display: block;
+  font-size: 14px;
 }
