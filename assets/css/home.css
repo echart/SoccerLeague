@@ -9,15 +9,18 @@ next match
 .next-game .match{
   margin: 10px;
   padding: 20px;
-  border: 1px dashed #666E7A;
 }
 .next-game .match .home{
   width: 45%;
   float: left;
+  border-left: 1px dashed #5FAD56;
+  padding: 20px;
 }
 .next-game .match .away{
   width: 45%;
   float: right;
+  border-right: 1px dashed #5FAD56;
+  padding: 20px;
 }
 .next-game .match span{
   font-size: 28px;
@@ -40,4 +43,5 @@ next match
 .match-stats a{
   display: block;
   font-size: 14px;
+  padding-top: 15px;
 }

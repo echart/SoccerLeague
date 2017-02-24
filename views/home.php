@@ -11,11 +11,10 @@
   	</div>
     <div class='bit-2 box right'>
   		<div class='box-title color'>
-  			Calendário
+  			Próximo Jogo
   		</div>
   		<div class='box-content'>
   			<div class='bit-1 next-game'>
-          <h3>Próximo jogo:</h3>
           <div class='match'>
             <div class='home'>
               <img src='<?=$this->tree?>assets/img/icon.png'>

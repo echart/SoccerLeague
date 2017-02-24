@@ -26,7 +26,7 @@
 	<div class='nav right'>
 		<ul>
 			<li><a class='buy-pro' href='<?=$this->tree?>buy-pro'>Compre PRO</a></li>
-			<!-- <li><a href='#'><i class='club'></i><i class='arrow'></i></a></li> -->
+			<li><a href='#'><img src="<?=$this->tree?>assets/img/icon.png" width='25px'></a></li>
 			<li><a href='#'><i class='notification'></i></a></li>
 			<li><a href='#'><a href='<?=$this->tree?>account'><i class='settings'></i></a></li>
 			<li class='more'><i class='more'></i></li>

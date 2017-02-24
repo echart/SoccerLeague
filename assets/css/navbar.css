@@ -38,6 +38,9 @@ header .nav{
   background-repeat: no-repeat;
 	background-size: contain;
 }
+.nav ul li a img{
+  margin-top: -2px;
+}
 .nav ul li i.notification{
   background-image: url(../img/icons/notification.png) !important;
 }

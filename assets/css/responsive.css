@@ -44,7 +44,7 @@ LOWER THAN 825PX
     height: 100%;
     opacity: 0;
     display: none;
-    top: 75px;
+    top: 70px;
     transition: 0.5s all;
   }
   nav ul li{

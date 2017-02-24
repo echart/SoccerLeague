@@ -307,7 +307,7 @@ create table competition_statistics(
 	id_competition integer not null,
 		CONSTRAINT competitionsstatistics_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
 	id_club integer not null,
-		CONSTRAINT competitionsstatistics_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club),
+		CONSTRAINT competitionsstatistics_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club)
 );
 create table competition_statistics_players(
 	id_competition_statistics_player serial primary key,
