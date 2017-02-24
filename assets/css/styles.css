@@ -24,6 +24,7 @@ a{
   display: block;
   left: 10px;
   top: 10px;
+  width: 200px;
   height: 50px;
   background-image: url(../img/logo.left.png) !important;
   background-repeat: no-repeat;

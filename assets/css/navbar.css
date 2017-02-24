@@ -16,12 +16,19 @@ header .nav{
   margin-right: 0px;
 }
 .nav ul{
+  position: relative;
   list-style: none;
-  padding: 25px;
+  /* padding: 25px; */
+  top: 0;
+  right: 15px;
 }
 .nav ul li{
   float: left;
-  padding: 0px 7px;
+  padding: 25px 15px;
+  height: 70px;
+}
+.nav ul li:hover{
+  background: #ebebeb;
 }
 .nav ul li i{
   float: left;
