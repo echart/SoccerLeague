@@ -7,7 +7,7 @@ create table season(
 	endseason date not null
 );
 /**
- * TABELAS DE CONFIGURA�?ÃO
+ * TABELAS DE CONFIGURAÇÃO
  */
  create table visits(
     id_visit serial primary key,
@@ -53,9 +53,9 @@ create table timezones(
  	id_account integer not null,
  		CONSTRAINT accountdata_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
  	id_language integer not null,
- 		CONSTRAINT account_language_fkey FOREIGN KEY (id_language) REFERENCES language(id_language),
+ 		CONSTRAINT account_language_fkey FOREIGN KEY (id_language) REFERENCES languages(id_language),
  	id_timezone integer not null,
- 		FOREIGN KEY (id_timezone) REFERENCES timezone(id_timezone),
+ 		FOREIGN KEY (id_timezone) REFERENCES timezones(id_timezone),
  	slvip integer DEFAULT 14
  );
  create table account_permission(
@@ -92,13 +92,13 @@ create table timezones(
 create table club(
 	id_club serial primary key,
 	id_country integer not null,
-		CONSTRAINT club_country_fkey FOREIGN KEY (id_country) REFERENCES country(id_country),
+		CONSTRAINT club_country_fkey FOREIGN KEY (id_country) REFERENCES countries(id_country),
   id_account integer not null,
     FOREIGN KEY (id_account) REFERENCES account(id_account),
 	clubname varchar(25) not null default 'Available Team',
 	created date default now(),
 	status varchar(1) default 'P',
-		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])) -- pending, approved, inactived, banned
+		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])), -- pending, approved, inactived, banned
   location json -- '{"latitude": 0, "longitude": 0 , "changes" : 0}'
 );
 create table club_info(

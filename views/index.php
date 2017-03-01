@@ -45,7 +45,7 @@ $refeer= $_GET['refeer']?? NULL;
 				<div class="box" id='signup'>
 					<div class='box-title'>Cadastro</div>
 					<div class='box-content'>
-						<form action='/signup' method='POST'>
+						<form action='/signup/country' method='POST'>
 							<input type='text' name='email' placeholder='Email'>
 							<input type='password' name='password' placeholder='password'>
 							<input type='text' name='clubname' placeholder='Clubname'>
