@@ -13,9 +13,11 @@
 		$request = $_GET ?? array('request'=>'index');
 		/* starts to handle the url*/
 		$handler = new Handler();
+    $handler->post=$_POST;
+    $handler->get=$_GET;
 		/* check if user is logged*/
 		if($user->verifyAuthentication()==false){
-			$doNotLogged = array('index','signup','login');
+			$doNotLogged = array('index','signup','login'); //page that user can access if not logged
 			if(!in_array($request['request'],$doNotLogged))
 				App::redirect($request['request'],'index');
 		}
