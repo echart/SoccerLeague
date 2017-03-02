@@ -6,13 +6,13 @@ include('../class/Club.php');
 include('../class/JsonOutput.php');
 
 JsonOutput::jsonHeader();
-$email=$_POST['email'] ?? '';
-$pass=$_POST['password'] ?? '';
+$email = $this->post['email'] ?? '';
+$pass  = $this->post['password'] ?? '';
 
 $con=Connection::getInstance();
 $user=new Authentication();
 
-if($user->verifyLogin($email,$pass)){
+if($user->verifyLogin($this->email,$pass)){
 	$user->login();
 	App::redirect('login','home');
 }else{

@@ -113,7 +113,7 @@
           loadAllMarkers();
           geocodeLatLng(geocoder,pos);
           infoWindow.setPosition(pos);
-          infoWindow.setContent('<p>Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibita maior interação entre os usuários, campeonatos regionais e etc...</p>');
+          infoWindow.setContent('<p>Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibilita maior interação entre os usuários, campeonatos regionais e etc...</p>');
           map.setCenter(pos);
           addMarker(pos,true);
         }, function() {
@@ -124,7 +124,7 @@
           loadAllMarkers();
           geocodeLatLng(geocoder,pos);
           infoWindow.setPosition(pos);
-          infoWindow.setContent('Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibita maior interação entre os usuários, campeonatos regionais e etc...');
+          infoWindow.setContent('Sua localização atual é esta! A localização de outros clubes é indicada através de uma bola de futebol! Você pode mover o seu clube para qualquer lugar do mapa, mas tenha sabedoria ao escolher. <h3>O país escolhido representa a liga nacional pelo qual seu clube jogará!</h3> E você não terá possibilidade de mudança. Além disso, a escolha de localidade possibilita maior interação entre os usuários, campeonatos regionais e etc...');
           addMarker(pos,true);
           map.setCenter(pos);
         });
