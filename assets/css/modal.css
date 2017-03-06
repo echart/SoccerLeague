@@ -63,9 +63,9 @@
 .modal-close:after {
   content: "";
   float: right;
-  margin: 5px 5px 0 0;
-  width: 30px;
-  height: 30px;
+  margin: 0px 5px 0 0;
+  width: 24px;
+  height: 24px;
   position: relative;
   z-index: 3;
   text-align: center;

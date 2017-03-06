@@ -1,12 +1,11 @@
 <?
-<?
 class Club{
   public $id_club;
   public $id_account;
   public $id_country;
-  public $clubname = 'Pending Aproval';
-  public $create = date('Y-m-d');
-  public $status = 'P';
+  public $clubname;
+  public $create;
+  public $status;
   public $location;
   public function __construct($id_account=''){
     $this->id_account;

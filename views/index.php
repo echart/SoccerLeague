@@ -21,7 +21,9 @@ $refeer= $_GET['refeer']?? NULL;
 </head>
 <body>
 	<div class='pattern'></div>
-
+	<div class='errors <? if(!isset($_SESSION['E_LOGIN']) or $_SESSION['E_LOGIN']=='') echo "hidden";?>'>
+		<p><?=$_SESSION['E_LOGIN'];?></p>
+	</div>
 	<header>
 		<figure class='logo'>
 			<img src="<?=$this->tree?>assets/img/logo.png" width="200px">
@@ -47,7 +49,7 @@ $refeer= $_GET['refeer']?? NULL;
 		    <h3>Acessar clube</h3>
 				<form action='/login' method='POST'>
 					<label for='login'>Email:</label>
-					<input type="text" name="login"id='login' placeholder="Email">
+					<input type="text" name="email" id='login' placeholder="Email">
 					<label for='password'>Password:</label>
 					<input type="password" name="password" id='password' placeholder="Password">
 					<button type="submit" name="button">Acessar</button>
@@ -79,6 +81,9 @@ $refeer= $_GET['refeer']?? NULL;
 	  </div>
 		<div class='modal-pattern'></div>
 	</div>
+	<?
+	$_SESSION['E_LOGIN']='';
+	?>
 	<!-- JS -->
 	<script src='<?=$this->tree?>assets/js/jquery.js'></script>
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4"></script> -->
