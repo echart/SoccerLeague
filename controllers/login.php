@@ -3,9 +3,7 @@
 include('../class/Connection.php');
 include('../class/Authentication.php');
 include('../class/Club.php');
-include('../class/JsonOutput.php');
 
-JsonOutput::jsonHeader();
 $email = $this->post['email'] ?? '';
 $pass  = $this->post['password'] ?? '';
 

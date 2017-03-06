@@ -16,53 +16,69 @@ $refeer= $_GET['refeer']?? NULL;
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/lemonade.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/modal.css">
 	<? $this->loadCSSFiles(); ?>
 </head>
 <body>
-	<header>
+	<div class='pattern'></div>
 
+	<header>
+		<figure class='logo'>
+			<img src="<?=$this->tree?>assets/img/logo.png" width="200px">
+		</figure>
 	</header>
+
 	<main>
 		<div class='byte'>
 			<div class='bit-1 logo'>
-				<figure>
-					<img src="<?=$this->tree?>assets/img/logo.png">
-				</figure>
-				<h3>Soccer League é um jogo de gerenciamento de futebol em fase de testes(beta). Crie seu clube e colabore no desenvolvimento</h3>
-			</div>
-			<div class='bit-1'>
-				<div class="box" id='home'>
-					<div class='box-title'>Login</div>
-					<div class='box-content'>
-						<form action='/login' method='POST'>
-							<p><?=$_SESSION['errors_login']?></p>
-							<input type='text' name='email' placeholder='Email'>
-							<input type='password' name='password' placeholder='password'>
-							<button type="submit">Login</button>
-						</form>
-					</div>
-				</div>
-				<div class="box" id='signup'>
-					<div class='box-title'>Cadastro</div>
-					<div class='box-content'>
-						<form action='/signup/country' method='POST'>
-							<input type='text' name='email' placeholder='Email'>
-							<input type='password' name='password' placeholder='password'>
-							<input type='text' name='clubname' placeholder='Clubname'>
-							<!-- <select name='country'>
-								<option value='br'>Brasil</option>
-							</select> -->
-							<input type='hidden' name='refeer' value='<?=$refeer?>'>
-							<button type="submit">Criar clube</button>
-						</form>
-					</div>
+				<h1>É hora de criar seu clube e ser campeão.</h1>
+				<p>Soccerleague é um game simulador de gerenciamento de futebol, estamos em desenvolvimento mas gostariamos muito da sua participação. Crie seu clube, contrate jogadores, escale seu time, participe de competições vencendo seus amigos e outros técnicos. Seja campeão e ajude-nos a desenvolver!</p>
+				<div class='buttons'>
+					<label class='btn1' for="modal_signup">Criar clube</label>
+					<label class='btn1' for="modal_login">Acessar clube</label>
 				</div>
 			</div>
 		</div>
 	</main>
-	<?
-		$_SESSION['errors_login']='';
-	?>
+	<input type="checkbox" id="modal_login" />
+	<div class="modal">
+	  <div class="modal-content">
+			<div class='form'>
+		    <h3>Acessar clube</h3>
+				<form action='/login' method='POST'>
+					<label for='login'>Email:</label>
+					<input type="text" name="login"id='login' placeholder="Email">
+					<label for='password'>Password:</label>
+					<input type="password" name="password" id='password' placeholder="Password">
+					<button type="submit" name="button">Acessar</button>
+					<a href='#' class='forgot-password'>Esqueceu sua senha?</a>
+				</form>
+			</div>
+			<label class="modal-close" for="modal_login"></label>
+	  </div>
+		<div class='modal-pattern'></div>
+	</div>
+	<input type="checkbox" id="modal_signup" />
+	<div class="modal">
+	  <div class="modal-content">
+			<div class='form'>
+		    <h3>Criar clube:</h3>
+				<form action='/signup' method='POST'>
+					<label for='login'>Email:</label>
+					<input type="text" name="login"id='login' placeholder="Email">
+					<label for='password'>Password:</label>
+					<input type="password" name="password" id='password' placeholder="Password">
+					<label for='password'>País:</label>
+					<select name='country'>
+						<option value="1">Brasil</option>
+					</select>
+					<button type="submit" name="button">Cadastrar</button>
+				</form>
+			</div>
+			<label class="modal-close" for="modal_signup"></label>
+	  </div>
+		<div class='modal-pattern'></div>
+	</div>
 	<!-- JS -->
 	<script src='<?=$this->tree?>assets/js/jquery.js'></script>
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4"></script> -->

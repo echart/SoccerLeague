@@ -22,7 +22,7 @@
   left: 50%;
   z-index: 2;
   opacity: 0;
-  border-radius: 3px;
+  border-radius: 2px;
   background: #fff;
   text-align: center;
   -webkit-transform: translate(-50%, 0);
@@ -46,13 +46,22 @@
   position: absolute;
   top: 0;
   right: 0;
+  /*bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);*/
+  transition: 0.4s all;
+}
+.modal-pattern{
+  position: absolute;
+  top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
   background-color: rgba(0,0,0,0.5);
+  transition: 0.4s all;
 }
-
 .modal-close:after {
-  content: "X";
+  content: "";
   float: right;
   margin: 5px 5px 0 0;
   width: 30px;
@@ -62,9 +71,12 @@
   text-align: center;
   line-height: 30px;
   cursor: pointer;
-  background-color: rgba(255,255,255,0.8);
+  background: #fff;
+  background-image: url(../img/icons/cancel.png) !important;
+  background-repeat: no-repeat;
+	background-size: contain;
   border-radius: 20px;
-  box-shadow: 0 0 3px #000;
+  /*box-shadow: 0 0 3px #000;*/
 }
 input[id*="modal_"] {
   position: fixed;

@@ -56,8 +56,8 @@
     var infobox;
     var clubMarker=null;
     var markers=[];
-    var marker = {
-      url: 'assets/img/icons/football.png',
+    var image = {
+      url: 'assets/img/icons/pin.png',
       // This marker is 20 pixels wide by 32 pixels high.
       size: new google.maps.Size(32,32),
       // The origin for this image is (0, 0).
@@ -66,7 +66,7 @@
       anchor: new google.maps.Point(0, 32)
     };
     var you = {
-      url: 'assets/img/icons/marker.png',
+      url: 'assets/img/icons/flag.png',
       // This marker is 20 pixels wide by 32 pixels high.
       size: new google.maps.Size(32,32),
       // The origin for this image is (0, 0).

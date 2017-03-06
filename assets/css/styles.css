@@ -123,16 +123,17 @@ input[type='text'],input[type='password'],input[type='email']{
 	padding: 12.5px 15px;
 	color: #393e41;
 	font-family: 'Exo 2','Open Sans';
+  border-radius: 3px;
 }
 input[type='text']:hover,input[type='password']:hover,input[type='email']:hover{
-	background-color: #e4e4e4;
+	background-color: #e6e6e6;
 	transition: 0.7s all;
 }
 input[type='text']:focus,input[type='password']:focus,input[type='email']:focus{
-	background-color: #ddd;
+	background-color: #e6e6e6;
 	color: #000;
 	transition: 0.3s background-color;
-	border: 1px solid #ccc;
+	border: 1px solid #cfcfcf;
 }
 select{
   margin-left: 2px;
