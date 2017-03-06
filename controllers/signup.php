@@ -1,7 +1,7 @@
 <?
+error_reporting(E_ALL);
 try{
-  if(isset($_POST['refeer']) and $_POST['refeer']!='') $refeer=$_POST['refeer'];else $refeer=NULL;
-  $email=$_POST['login'] ?? '';
+  $email=$_POST['email'] ?? '';
   $pass=$_POST['password'] ?? '';
   $clubname=$_POST['clubname'] ?? '';
   $country=$_POST['country'] ?? '';
@@ -12,10 +12,21 @@ try{
   /**
    * If any rules break, get errors and throw exception
    */
-   if($email=='')
-      throw new Exception('sdasdasd');
-
+   if(Validation::$errorsNum>0){
+     for ($i=0; $i < Validation::$errorsNum ; $i++) {
+       throw new Exception(Validation::$errorsMsg[$i]);
+     }
+   }
 }catch(Exception $e){
+  if(Validation::$errorsNum>0){
+    for ($i=0; $i < Validation::$errorsNum ; $i++) {
+    echo Validation::$errorsMsg[$i];
+    }
+  }
+  exit;
   $_SESSION['errors_signup']='Por favor, preencha corretamente todos os dados :)';
 	App::redirect('signup','index');
+}finally{
+  echo 'olar';
 }
+exit;

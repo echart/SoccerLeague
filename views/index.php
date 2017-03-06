@@ -47,7 +47,7 @@ $refeer= $_GET['refeer']?? NULL;
 	  <div class="modal-content">
 			<div class='form'>
 		    <h3>Acessar clube</h3>
-				<form action='/login' method='POST'>
+				<form action='/login' method='POST' autocomplete="off">
 					<label for='login'>Email:</label>
 					<input type="text" name="email" id='login' placeholder="Email">
 					<label for='password'>Password:</label>
@@ -65,11 +65,13 @@ $refeer= $_GET['refeer']?? NULL;
 	  <div class="modal-content">
 			<div class='form'>
 		    <h3>Criar clube:</h3>
-				<form action='/signup' method='POST'>
+				<form action='/signup' method='POST' autocomplete="off">
 					<label for='login'>Email:</label>
-					<input type="text" name="login"id='login' placeholder="Email">
+					<input type="text" name="email" id='login' placeholder="Email">
 					<label for='password'>Password:</label>
 					<input type="password" name="password" id='password' placeholder="Password">
+					<label for='clubname'>Nome do Clube:</label>
+					<input type="text" name="clubname" id='clubname' placeholder="Nome do Clube">
 					<label for='password'>País:</label>
 					<select name='country'>
 						<option value="1">Brasil</option>
