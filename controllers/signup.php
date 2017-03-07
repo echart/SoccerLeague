@@ -18,15 +18,10 @@ try{
      }
    }
 }catch(Exception $e){
-  if(Validation::$errorsNum>0){
-    for ($i=0; $i < Validation::$errorsNum ; $i++) {
-    echo Validation::$errorsMsg[$i];
-    }
-  }
-  exit;
   $_SESSION['errors_signup']='Por favor, preencha corretamente todos os dados :)';
 	App::redirect('signup','index');
 }finally{
   echo 'olar';
+  $account=new Account();
+  exit;
 }
-exit;

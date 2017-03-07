@@ -72,8 +72,8 @@ $refeer= $_GET['refeer']?? NULL;
 					<input type="password" name="password" id='password' placeholder="Password">
 					<label for='clubname'>Nome do Clube:</label>
 					<input type="text" name="clubname" id='clubname' placeholder="Nome do Clube">
-					<label for='password'>País:</label>
-					<select name='country'>
+					<label for="country">País:</label>
+					<select id="country" name='country'>
 						<option value="1">Brasil</option>
 					</select>
 					<button type="submit" name="button">Cadastrar</button>
