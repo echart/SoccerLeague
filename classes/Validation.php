@@ -1,89 +1,60 @@
 <?
 
 class Validation{
-	public static $errors=false;
-	public static $errorsMsg=array();
-	public static $errorsNum=0;
-	public static $validate;
-	private static $instance;
+	public $form;
+	public $rules;
+	public $rulesValid = array('required','unique','in','maxsize','minsize','integer','isnull','string');
 
-	private function __construct() {
+	public function __construct($form){
+		$this->form   = $form;
+		$this->errors =  array('length'=> 0);
 		return $this;
 	}
-	//avoid duplicate object
-	private function __clone() {}
-	public static function validate($value){
-		self::$validate=$value;
-		if(!self::$instance) {
-			self::$instance = new self();
-			self::$errors=false;
-			self::$errorsMsg=array();
-			self::$errorsNum;
-		}
-		return self::$instance;
+	public function addRules($rules){
+		$this->rules = $rules;
+		return $this;
 	}
-	public static function addError($msg){
-		self::$errors=true;
-		self::$errorsMsg[]=$msg;
-		self::$errorsNum++;
-	}
-	public static function numeric(){
-		if(!is_numeric(self::$validate)){
-			self::addError("This is not a numeric");
-		}
-		return self::$instance;
-	}
-
-	public static function string(){
-		if(!is_string(self::$validate)){
-			self::addError("This is not a string");
-		}
-		return self::$instance;
-	}
-	public static function isEqual($b){
-		if(self::$validate!=$b){
-			 self::addError("They aren't equal");
-		}
-		return self::$instance;
-	}
-	public static function isEmpty(){
-		if(self::$validate!='' or self::$validate!=null){
-			 self::addError("This is not empty!");
-		}
-		return self::$instance;
-	}
-	public static function isNotEmpty(){
-		if(self::$validate=='' or self::$validate==null){
-			 self::addError("This is empty!");
-		}
-		return self::$instance;
-	}
-	public static function between($min,$max){
-
-	}
-	public static function lenght(){
-		if(is_string(self::$validate)){
-            return strlen(self::$validate);
-        }
-        if(is_array(self::$validate)){
-            return count(self::$validate);
-        }
-        if(is_int(self::$validate)){
-            return strlen((string)self::$validate);
-        }
-	}
-	public static function minLenght($min){
-		if(Validation::lenght(self::$validate)>$min){
-			return true;
-		}else{
-			return false;
+	public function validate(){
+		foreach ($this->rules as $name => $rule) {
+			// name = $this->post[NAME];
+			// rules = 'required';
+			if(strpos($rule,'|')!=false){
+				$rul = explode('|',$rule); //$rul[0] = 'required|in:users';
+				print_r($rul);
+				foreach ($rul as $eachRule) {
+					if(strpos($eachRule,':')!=false){
+						$ruleValue = explode(':',$eachRule);
+						$r = $eachRule;
+						$n = $name;
+					}else{
+						$n = $name;
+						$r = $rul;
+					}
+				}
+			}else{
+				$n = $name;
+				$r = $rule;
+			}
 		}
 	}
-	public static function maxLenght($max){
-		if(Validation::lenght(self::$validate)<$max){
-			return true;
-		}else{
-			return false;
+	public function required($name){
+		if(is_null($this->form[$name]) === true OR $this->form[$name] === '' OR empty($this->form[$name]) === true){
+			$this->errors['length']++;
+			$this->errors['errors']["$name"] = 'required';
 		}
 	}
+	public function unique($name){}
+	public function in($name){}
+	public function maxsize($name){}
+	public function minsize($name){}
+	public function integer($name){}
+	public function isnull($name){}
+	public function string($name){}
 }
+
+$validation = new Validation($_GET);
+$rules = [
+	'user' => 'required'
+	,'email' => 'in:users|required|maxsize:8'
+];
+$validation->addRules($rules)->validate();

@@ -1,10 +1,10 @@
 <?
 error_reporting(E_ALL);
 try{
-  $email=$_POST['email'] ?? '';
-  $pass=$_POST['password'] ?? '';
-  $clubname=$_POST['clubname'] ?? '';
-  $country=$_POST['country'] ?? '';
+  $email=$this->post['email'] ?? '';
+  $pass=$this->post['password'] ?? '';
+  $clubname=$this->post['clubname'] ?? '';
+  $country=$this->post['country'] ?? '';
   Validation::validate($pass)->isNotEmpty();
   Validation::validate($email)->isNotEmpty();
   Validation::validate($clubname)->isNotEmpty()->minLenght(8);
