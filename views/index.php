@@ -83,6 +83,7 @@ if($_SESSION['E_LOGIN'] != ''){
 					<select id="country" name='country'>
 						<option value="1">Brasil</option>
 					</select>
+					<input type='hidden' name='refeer' value='<?=$this->get['refeer']??""?>'>
 					<button type="submit" name="button">Cadastrar</button>
 				</form>
 			</div>
