@@ -1,5 +1,4 @@
 <?
-require_once('Connection.php');
 
 class Validation{
 	public $form;
@@ -58,7 +57,6 @@ class Validation{
 			$this->errors['errors'][$this->name][] = 'required';
 		}
 	}
-	public function unique(){}
 	public function in(){
 		/*
 			$this->val must be equal nametable
@@ -74,8 +72,18 @@ class Validation{
 			$this->errors['errors'][$this->name][] = 'in';
 		}
 	}
-	public function maxsize(){}
-	public function minsize(){}
+	public function maxsize(){
+		if(strlen($this->form[$this->name])>$this->val){
+			$this->errors['length']++;
+			$this->errors['errors'][$this->name][] = 'maxsize';
+		}
+	}
+	public function minsize(){
+		if(strlen($this->form[$this->name])<$this->val){
+			$this->errors['length']++;
+			$this->errors['errors'][$this->name][] = 'minsize';
+		}
+	}
 	public function integer(){}
 	public function isnull(){}
 	public function string(){}
@@ -90,9 +98,3 @@ class Validation{
 		return $this->errors;
 	}
 }
-$validation = new Validation($_GET);
-$rules = [
-	'user' => 'required',
-	'email' => 'in:account|email|required',
-];
-print_r($validation->addRules($rules)->validate()->geterrors());

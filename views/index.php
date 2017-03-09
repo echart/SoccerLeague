@@ -1,5 +1,12 @@
 <?
-$refeer= $_GET['refeer']?? NULL;
+$refeer= $_GET['refeer'] ?? NULL;
+if($_SESSION['E_LOGIN'] != ''){
+	$errors = $_SESSION['E_LOGIN'];
+}else if($_SESSION['E_SIGNUP'] != ''){
+	$errors = $_SESSION['E_SIGNUP'];
+}else{
+	$errors='';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,8 +28,8 @@ $refeer= $_GET['refeer']?? NULL;
 </head>
 <body>
 	<div class='pattern'></div>
-	<div class='errors <? if(!isset($_SESSION['E_LOGIN']) or $_SESSION['E_LOGIN']=='') echo "hidden";?>'>
-		<p><?=$_SESSION['E_LOGIN'];?></p>
+	<div class='errors <? if($errors=='') echo "hidden";?>'>
+		<p><?=$errors?></p>
 	</div>
 	<header>
 		<figure class='logo'>
@@ -48,7 +55,7 @@ $refeer= $_GET['refeer']?? NULL;
 			<div class='form'>
 		    <h3>Acessar clube</h3>
 				<form action='/login' method='POST' autocomplete="off">
-					<label for='login'>Email:</label>
+					<label for='email'>Email:</label>
 					<input type="text" name="email" id='login' placeholder="Email">
 					<label for='password'>Password:</label>
 					<input type="password" name="password" id='password' placeholder="Password">
@@ -66,7 +73,7 @@ $refeer= $_GET['refeer']?? NULL;
 			<div class='form'>
 		    <h3>Criar clube:</h3>
 				<form action='/signup' method='POST' autocomplete="off">
-					<label for='login'>Email:</label>
+					<label for='email'>Email:</label>
 					<input type="text" name="email" id='login' placeholder="Email">
 					<label for='password'>Password:</label>
 					<input type="password" name="password" id='password' placeholder="Password">
@@ -85,6 +92,7 @@ $refeer= $_GET['refeer']?? NULL;
 	</div>
 	<?
 	$_SESSION['E_LOGIN']='';
+	$_SESSION['E_SIGNUP'] = '';
 	?>
 	<!-- JS -->
 	<script src='<?=$this->tree?>assets/js/jquery.js'></script>

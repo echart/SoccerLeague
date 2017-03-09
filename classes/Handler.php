@@ -14,7 +14,7 @@ class Handler{
 	public $permissions;
 
 	public $dependence=array('JS'=>array(),'CSS'=>array());
-	
+
 	function parseUrl(array $request){
 		$this->requestURL=$request['request'];
 		$this->request=$request;
