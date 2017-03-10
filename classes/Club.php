@@ -13,14 +13,39 @@ class Club{
   public function __load(){
     // TODO: load club
   }
-  public function __save(){
-    $query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country,clubname, status) values (:id_country, :clubname, :status)");
-		$query->bindParam(':id_country',$this->id_country);
-    $query->bindParam(':clubname',$this->clubname);
-    $query-bindParam(':status',$this->status);
+  public function __create(){
+    $this->id_club=$this->checkAvailableClub();
+    $query=Connection::getInstance()->connect()->prepare("UPDATE club SET clubname=:clubname, status='A' where id_club=:id_club");
+    $query->bindParam(':clubname', $this->clubname);
+    $query->bindParam(':id_club', $this->id_club);
+    $query->execute();
+  }
+  public static function __createAvailableTeam($id_country){
+    $query=Connection::getInstance()->connect()->prepare("INSERT INTO club (id_country) values (:id_country)");
+		$query->bindParam(':id_country',$id_country);
 		$query->execute();
 		return Connection::getInstance()->connect()->lastInsertID('club_id_club_seq');
   }
+  public function checkAvailableClub(){
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_club from club where status='P' and id_country=:country LIMIT 1");
+		$query->bindParam(':country', $this->id_country);
+		$query->execute();
+		if($query->rowCount()>0){
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$data=$query->fetch();
+			$this->id_club=$data->id_club;
+			return $this->id_club;
+		}else{
+			return 0;
+		}
+  }
+  public static function validClubName($club){
+		$query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club where clubname=:clubname");
+		$query->bindParam(':clubname',$club);
+		$query->execute();
+
+		if($query->rowCount()>0) return false; else return true;
+	}
 }
 // class Club{
 // 	public $id_club;

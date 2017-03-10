@@ -1,4 +1,5 @@
 <?
+
 $user=new Authentication();
 if($user->verifyLogin($this->post['email'],$this->post['password'])){
 	$user->login();
