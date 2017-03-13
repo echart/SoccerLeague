@@ -15,11 +15,21 @@ class Club{
   }
   public function __create(){
     try{
-      $query=Connection::getInstance()->connect()->prepare("UPDATE club SET clubname=:clubname, status='A', createdate = date('Y-m-d') where id_club=:id_club");
+      $date = date('Y-m-d');
+      $query=Connection::getInstance()->connect()->prepare("UPDATE club SET clubname=:clubname, status='A', createdate = '$date' where id_club=:id_club");
       $query->bindParam(':clubname', $this->clubname);
       $query->bindParam(':id_club', $this->id_club);
       $query->execute();
+
+      $query=Connection::getInstance()->connect()->prepare("INSERT INTO club_account(id_club,id_account) values (:id_club,:id_account)");
+      $query->bindParam(':id_account', $this->id_account);
+      $query->bindParam(':id_club', $this->id_club);
+      $query->execute();
+
       return true;
+    }catch(Exception $e){
+      echo $e->getMessage();
+      return false;
     }
   }
   public static function __createAvailableTeam($id_country){

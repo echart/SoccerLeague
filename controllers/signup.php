@@ -1,4 +1,5 @@
 <?
+  error_reporting(E_ALL);
   $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
 
   $validation = new Validation($this->post);
@@ -42,6 +43,7 @@
       $club->clubname    = $this->post['clubname'];
 
       if($club->checkAvailableClub()==0){
+        echo 'mkldasmklsda';
         /* Create new league with new available clubs */
         $last=League::lastDivAndGroup($club->id_country);
         $league = new League($club->id_country,1,$last[0],$last[1]);
@@ -56,19 +58,21 @@
          $league->joinClub($clubA);
         }
         $club->checkAvailableClub();
-        if($club->__create()==false){
+        $fin = $club->__create();
+        if($fin==false){
           $account->delete();
         }
       }else{
+        echo 'tem club disponivel';
         $club->checkAvailableClub();
-        if($club->__create()==false){
+        $fin = $club->__create();
+        if($fin==false){
           $account->__delete();
         }
       }
     }catch(Exception $e){
         $account->__delete();
     }
-    echo $club->id_club;
   }
   exit;
     // $mail = new Mail();
