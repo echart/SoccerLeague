@@ -300,28 +300,29 @@ create table watchlist(
  		CONSTRAINT competition_season_fkey FOREIGN KEY(season) REFERENCES season(season),
  	id_country integer null,
  		CONSTRAINT competition_country_fkey FOREIGN KEY(id_country) REFERENCES country(id_country),
- 	totalclubs integer not null
+	round integer not null,
+	maxrounds integer not null
  );
-create table competition_statistics(
-	id_competition_statistics serial primary key,
-	id_competition integer not null,
-		CONSTRAINT competitionsstatistics_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
-	id_club integer not null,
-		CONSTRAINT competitionsstatistics_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club)
-);
-create table competition_statistics_players(
-	id_competition_statistics_player serial primary key,
-	id_competition integer not null,
-		CONSTRAINT competitionsstatisticsplayers_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
-	id_player integer not null,
-		CONSTRAINT competitionstatisticsplayers_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player),
-	mvp integer not null default 0,
-	goals integer not null default 0,
-	assists integer not null default 0,
-	yellowcards integer not null default 0,
-	redcards integer not null default 0,
-	score numeric(4,2) not null default 0.0
-);
+-- create table competition_statistics(
+-- 	id_competition_statistics serial primary key,
+-- 	id_competition integer not null,
+-- 		CONSTRAINT competitionsstatistics_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
+-- 	id_club integer not null,
+-- 		CONSTRAINT competitionsstatistics_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club)
+-- );
+-- create table competition_statistics_players(
+-- 	id_competition_statistics_player serial primary key,
+-- 	id_competition integer not null,
+-- 		CONSTRAINT competitionsstatisticsplayers_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
+-- 	id_player integer not null,
+-- 		CONSTRAINT competitionstatisticsplayers_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player),
+-- 	mvp integer not null default 0,
+-- 	goals integer not null default 0,
+-- 	assists integer not null default 0,
+-- 	yellowcards integer not null default 0,
+-- 	redcards integer not null default 0,
+-- 	score numeric(4,2) not null default 0.0
+-- );
 /**
  * fim
  */
@@ -335,8 +336,7 @@ create table competition_statistics_players(
   name varchar(100) not null,
  	division integer,
  	divgroup integer,
- 	totalgames integer not null,
- 	round integer not null
+	totalclubs integer not null
  );
  create table league_table(
  	id_league_table serial primary key,
