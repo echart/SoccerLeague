@@ -83,7 +83,7 @@ class League{
 	}
 	public static function lastDivAndGroup($country){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("select division,divgroup from league inner join competition using(id_competition) where id_country=:id_country order by division,divgroup asc");
+			$query=Connection::getInstance()->connect()->prepare("SELECT division,divgroup from league inner join competition using(id_competition) where id_country=:id_country order by division,divgroup asc");
 			$query->bindParam(':id_country',$country);
 			$query->execute();
 			$data=$query->fetch(PDO::FETCH_OBJ);

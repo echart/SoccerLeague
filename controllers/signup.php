@@ -5,7 +5,7 @@
   $rules = [
   	'email' => 'in:account|required|email',
     'password' => 'required|minsize:8',
-    'clubname' => 'required|minsize:8',
+    'clubname' => 'required|minsize:8|notin:club',
     'country' => 'required'
   ];
 
@@ -26,46 +26,51 @@
     App::redirect('signup','index');
 
   }else{
-    if(!Club::validClubName($this->post['clubname'])){
-      $_SESSION['E_SIGNUP'] = 'sda';
-      App::redirect('signup','index');
-    }
-    $account=new Account();
+      $account=new Account();
 
-    $account->setEmail($this->post['email']);
-    $account->setPassword($this->post['password']);
-    $refeer = ($this->post['refeer']!='') ? $this->post['refeer'] : NULL;
-    $account->setRefeer($refeer);
+      $account->setEmail($this->post['email']);
+      $account->setPassword($this->post['password']);
+      $refeer = ($this->post['refeer']!='') ? $this->post['refeer'] : NULL;
+      $account->setRefeer($refeer);
 
-    $account->__create();
+      $account->__create();
 
-    $club = new Club($account->id_account);
+    try{
+      $club = new Club($account->id_account);
 
-    $club->id_country  = $this->post['country'];
-    $club->clubname    = $this->post['clubname'];
+      $club->id_country  = $this->post['country'];
+      $club->clubname    = $this->post['clubname'];
 
-    if($club->checkAvailableClub()==0){
-      /* Create new league with new available clubs */
-      $last=League::lastDivAndGroup($country);
-      $league = new League($country,1,$last[0],$last[1]);
-      $available=$league->nextAvailableDivAndGroup();
-      if(!League::checkIfLeagueAlreadyExists(1,$country,$available[0],$available[1])){
-        $id_competition=Competition::getIdCompetition(Competition::getIdCompetitionType('L'),$country, 1);
-        League::createLeague($id_competition,$available[0], $available[1], 34);
+      if($club->checkAvailableClub()==0){
+        /* Create new league with new available clubs */
+        $last=League::lastDivAndGroup($club->id_country);
+        $league = new League($club->id_country,1,$last[0],$last[1]);
+        $available=$league->nextAvailableDivAndGroup();
+        if(!League::checkIfLeagueAlreadyExists(1,$club->id_country,$available[0],$available[1])){
+          $id_competition=Competition::getIdCompetition(Competition::getIdCompetitionType('L'),$club->id_country, 1);
+          League::createLeague($id_competition,$available[0] . ' division', $available[0], $available[1], 34);
+        }
+        $league = new League($club->id_country,1,$available[0],$available[1]);
+        for($i=1;$i<19;$i++){
+         $clubA=Club::__createAvailableTeam($club->id_country);
+         $league->joinClub($clubA);
+        }
+        $club->checkAvailableClub();
+        if($club->__create()==false){
+          $account->delete();
+        }
+      }else{
+        $club->checkAvailableClub();
+        if($club->__create()==false){
+          $account->__delete();
+        }
       }
-      $league = new League($country,1,$available[0],$available[1]);
-      for($i=1;$i<19;$i++){
-       $club=Club::createAvailableTeam($country);
-       $league->joinClub($club);
-      }
+    }catch(Exception $e){
+        $account->__delete();
     }
-    if($club->create()==false){
-      $account->delete();
-    }else{
-      echo $club->id_club;
-    }
-    exit;
-
+    echo $club->id_club;
+  }
+  exit;
     // $mail = new Mail();
     // $mail->open();
     // $mail->setFrom('willians.echart@gmail.com','Willians Echart');
@@ -73,5 +78,3 @@
     // $mail->body('teste');
     // $mail->addAddress('willians.echart@pelotas.rs.gov.br');
     // $mail->_send();
-  }
-  exit;

@@ -15,8 +15,8 @@ class Mail{
     // $this->mail->Timeout = 200;
     $this->mail->SMTPDebug =1;
     $this->mail->SMTPAuth = true;
-    $this->mail->SMTPSecure = 'ssl';
-    $this->mail->Host = '64.233.168.108';
+    $this->mail->SMTPSecure = 'tls';
+    $this->mail->Host = 'smtp.gmail.com';
     $this->mail->Port = 587;
     $this->mail->Username = $this->config['user'];
     $this->mail->Password = $this->config['password'];
