@@ -91,8 +91,6 @@
   $mail->body('Bem vindo ao Soccer League','Seja bem vindo ao Soccer League, esperamos que você tenha muitas conquistas com o <b>'.$this->post['clubname'].'</b>. Agora, seus jogadores o esperam! Vá para o seu clube', 'Acessar seu clube', 'http://localhost/');
   $mail->addAddress($this->post['email']);
   $mail->_send();
-  echo $mail->errors();
-  exit;
 
   $_SESSION['success'] = 'dsadsa';
   App::redirect('signup','index');
