@@ -93,6 +93,5 @@
   $mail->_send();
 
   $_SESSION['SUCCESS'] = 'Seja bem vindo ao Soccer League, faça login para começar sua jornada.';
-  echo $_SESSION['SUCCESS'];
   App::redirect('signup','index');
   exit;

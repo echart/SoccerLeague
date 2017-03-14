@@ -98,8 +98,7 @@ create table club(
 	clubname varchar(25) not null default 'Available Team',
 	created date default now(),
 	status varchar(1) default 'P',
-		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])), -- pending, approved, inactived, banned
-  location json -- '{"latitude": 0, "longitude": 0 , "changes" : 0}'
+		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])) -- pending, approved, inactived, banned
 );
 create table club_info(
 	id_club_info serial primary key,
@@ -112,13 +111,15 @@ create table club_info(
   logo varchar(200) default 'null',
   primaryColor varchar(7) default 'null',
   secondaryColor varchar(7) default 'null',
-  history varchar(300) default 'null'
+  history varchar(300) default 'null',
+	location json -- '{"latitude": 0, "longitude": 0 , "changes" : 0}'
 );
-create table club_fans(
+create table club_supporters(
 	id_club_fans serial primary key,
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
-	fans integer not null default 6000
+	supporters integer not null default 6000
+	cardholder integer not null default 300
 );
 
 create table buddies(
@@ -333,7 +334,6 @@ create table watchlist(
  	id_league serial PRIMARY KEY,
  	id_competition integer not null,
  		CONSTRAINT league_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
-  name varchar(100) not null,
  	division integer,
  	divgroup integer,
 	totalclubs integer not null
@@ -378,7 +378,7 @@ create table watchlist(
  );
 
  create table league_calendar(
- 		id_round serial primary key,
+ 		id_league_calendar serial primary key,
  		id_calendar integer not null,
  			FOREIGN KEY(id_calendar) references calendar(id_calendar),
  		id_league integer not null,
@@ -394,19 +394,19 @@ create table watchlist(
  	home integer not null,
  	away integer not null
  );
- create table league_calendar_matches(
- 		id_round_matches serial primary key,
- 		id_round integer not null,
- 			foreign key(id_round) references league_calendar(id_round),
- 		id_match integer not null,
- 			foreign key(id_match) references matches(id_match)
- );
  create table matches_stats(
  	id_match_stats serial primary key,
  	id_match integer not null,
  		FOREIGN KEY(id_match) references matches(id_match),
  	homegoals integer not null,
  	awaygoals integer not null
+ );
+ create table league_calendar_matches(
+ 		id_round_matches serial primary key,
+ 		id_round integer not null,
+ 			foreign key(id_round) references league_calendar(id_round),
+ 		id_match integer not null,
+ 			foreign key(id_match) references matches(id_match)
  );
 /**
  * fim
