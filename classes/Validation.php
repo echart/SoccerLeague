@@ -93,7 +93,6 @@ class Validation{
 			$this->errors['errors'][$this->name][] = 'email';
 		}
 	}
-	public function notin(){}
 	public function geterrors(){
 		return $this->errors;
 	}

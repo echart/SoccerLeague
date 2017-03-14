@@ -1,12 +1,19 @@
 <?
   error_reporting(E_ALL);
   $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
-
+  print_r($this->post);
+  $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LdHyhgUAAAAAFOfFtYxtON6sUWdwdmZOIzvR79S&response=".$this->post['g-recaptcha-response']."&remoteip=".$_SERVER['REMOTE_ADDR']);
+  $obj = json_decode($response);
+  if($obj->success != true){
+    $_SESSION['E_SIGNUP'] = "Please, robots are not welcome.";
+    App::redirect('signup','index');
+    exit;
+  }
   $validation = new Validation($this->post);
   $rules = [
   	'email' => 'in:account|required|email',
     'password' => 'required|minsize:8',
-    'clubname' => 'required|minsize:8|notin:club',
+    'clubname' => 'required|minsize:8|in:club',
     'country' => 'required'
   ];
 
@@ -43,7 +50,6 @@
       $club->clubname    = $this->post['clubname'];
 
       if($club->checkAvailableClub()==0){
-        echo 'mkldasmklsda';
         /* Create new league with new available clubs */
         $last=League::lastDivAndGroup($club->id_country);
         $league = new League($club->id_country,1,$last[0],$last[1]);
@@ -59,26 +65,35 @@
         }
         $club->checkAvailableClub();
         $fin = $club->__create();
-        if($fin==false){
+        if($fin===false){
           $account->delete();
         }
       }else{
-        echo 'tem club disponivel';
         $club->checkAvailableClub();
         $fin = $club->__create();
-        if($fin==false){
+        if($fin===false){
           $account->__delete();
+          App::redirect('signup','index');
+          exit;
         }
       }
     }catch(Exception $e){
         $account->__delete();
+        App::redirect('signup','index');
+        exit;
     }
   }
+  $mail = new Mail();
+  $mail->open();
+  $mail->setFrom('team.slccerleague@gmail.com','Soccer League');
+  $mail->subject('Bem vindo ao Soccer League');
+
+  $mail->body('Bem vindo ao Soccer League','Seja bem vindo ao Soccer League, esperamos que você tenha muitas conquistas com o <b>'.$this->post['clubname'].'</b>. Agora, seus jogadores o esperam! Vá para o seu clube', 'Acessar seu clube', 'http://localhost/');
+  $mail->addAddress($this->post['email']);
+  $mail->_send();
+  echo $mail->errors();
   exit;
-    // $mail = new Mail();
-    // $mail->open();
-    // $mail->setFrom('willians.echart@gmail.com','Willians Echart');
-    // $mail->subject('Teste');
-    // $mail->body('teste');
-    // $mail->addAddress('willians.echart@pelotas.rs.gov.br');
-    // $mail->_send();
+
+  $_SESSION['success'] = 'dsadsa';
+  App::redirect('signup','index');
+  exit;

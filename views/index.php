@@ -84,6 +84,7 @@ if($_SESSION['E_LOGIN'] != ''){
 						<option value="1">Brasil</option>
 					</select>
 					<input type='hidden' name='refeer' value='<?=$this->get['refeer']??""?>'>
+					<div class="g-recaptcha" data-sitekey="6LdHyhgUAAAAAKvFi_j6tqyWcGLHKOvjCtj8j2Lm"></div>
 					<button type="submit" name="button">Cadastrar</button>
 				</form>
 			</div>
@@ -97,6 +98,7 @@ if($_SESSION['E_LOGIN'] != ''){
 	?>
 	<!-- JS -->
 	<script src='<?=$this->tree?>assets/js/jquery.js'></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSf5Vam_PKKaynrG_8KNm2EisbK9f9mz4"></script> -->
 	<!-- <script type="text/javascript" src="//rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script> -->
 </body>

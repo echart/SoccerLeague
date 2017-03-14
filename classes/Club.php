@@ -8,7 +8,7 @@ class Club{
   public $status;
   public $location;
   public function __construct($id_account=''){
-    $this->id_account;
+    $this->id_account=$id_account;
   }
   public function __load(){
     // TODO: load club
