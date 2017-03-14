@@ -7,6 +7,7 @@ if($_SESSION['E_LOGIN'] != ''){
 }else{
 	$errors='';
 }
+$success = ($_SESSION['SUCCESS']!='') ? $_SESSION['SUCCESS'] : '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,6 +31,9 @@ if($_SESSION['E_LOGIN'] != ''){
 	<div class='pattern'></div>
 	<div class='errors <? if($errors=='') echo "hidden";?>'>
 		<p><?=$errors?></p>
+	</div>
+	<div class='success <? if($success=='') echo "hidden";?>'>
+		<p><?=$success?></p>
 	</div>
 	<header>
 		<figure class='logo'>
@@ -93,8 +97,9 @@ if($_SESSION['E_LOGIN'] != ''){
 		<div class='modal-pattern'></div>
 	</div>
 	<?
-	$_SESSION['E_LOGIN']='';
+	$_SESSION['E_LOGIN']  ='';
 	$_SESSION['E_SIGNUP'] = '';
+	$_SESSION['SUCCESS']  = '';
 	?>
 	<!-- JS -->
 	<script src='<?=$this->tree?>assets/js/jquery.js'></script>

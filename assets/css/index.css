@@ -108,7 +108,7 @@ div.buttons{
   text-align: right;
   margin: 5px 0;
 }
-.errors{
+.errors, .success{
   z-index: 3;
   position: absolute;
   top: 0;
@@ -116,10 +116,13 @@ div.buttons{
   background-color: #B44230;
   padding: 0;
 }
-.errors p{
+.errors p, .success p{
   margin: 0 auto;
   font-weight: 300;
   padding: 10px;
+}
+.success{
+  background-color: #5fad56;
 }
 button{
   margin-right: 40px;

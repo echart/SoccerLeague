@@ -92,6 +92,7 @@
   $mail->addAddress($this->post['email']);
   $mail->_send();
 
-  $_SESSION['success'] = 'dsadsa';
+  $_SESSION['SUCCESS'] = 'Seja bem vindo ao Soccer League, faça login para começar sua jornada.';
+  echo $_SESSION['SUCCESS'];
   App::redirect('signup','index');
   exit;
