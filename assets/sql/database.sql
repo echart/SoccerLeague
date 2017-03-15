@@ -140,9 +140,56 @@ create table club_visits(
 		CONSTRAINT clubvisits_idclubvisited_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
 	visitdate date
 );
-create table club_sponsorship();
-create table club_finances();
-create table club_stadium();
+-- create table sponsors(
+--
+-- );
+-- create table club_sponsorship();
+-- create table club_sponsorship_stadium(
+-- 	id_club_sponsorship_stadium serial primary key,
+-- 	id_sponsor integer
+-- );
+create table club_finances(
+	id_club_finances serial primary key,
+	id_club integer not null,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	money number(17,2) not null default '30000000,00',
+	tv number(17,2) not null default 0,
+	sells number(17,2) not null default 0,
+	sponsor number(17,2) not null default 0,
+	wage number(17,2) not null default 0,
+	constructions number(17,2) not null default 0,
+	interests number(17,2) not null default 0
+);
+create table club_finances_weekly(
+	id_club_finances_weekly serial primary key,
+	id_club integer not null,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	money number(17,2) not null default '30000000,00',
+	tv number(17,2) not null default 0,
+	sells number(17,2) not null default 0,
+	sponsor number(17,2) not null default 0,
+	wage number(17,2) not null default 0,
+	constructions number(17,2) not null default 0,
+	interests number(17,2) not null default 0
+);
+create table club_finances_season(
+	id_club_finances_season serial primary key,
+	id_club integer not null,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	money number(17,2) not null default '30000000,00',
+	tv number(17,2) not null default 0,
+	sells number(17,2) not null default 0,
+	sponsor number(17,2) not null default 0,
+	wage number(17,2) not null default 0,
+	constructions number(17,2) not null default 0,
+	interests number(17,2) not null default 0
+);
+create table club_stadium(
+	id_club_stadium serial primary key,
+	id_club integer not null,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	capacity integer not null defaul 6000
+);
 create table club_facilities();
 create table club_history();
 create table club_trophies();
