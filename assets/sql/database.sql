@@ -140,21 +140,34 @@ create table club_visits(
 		CONSTRAINT clubvisits_idclubvisited_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
 	visitdate date
 );
--- create table sponsors(
---
--- );
--- create table club_sponsorship();
--- create table club_sponsorship_stadium(
--- 	id_club_sponsorship_stadium serial primary key,
--- 	id_sponsor integer
--- );
+create table sponsors(
+	id_sponsor serial primary key,
+	sponsorname varchar(200)
+);
+create table club_sponsorship(
+	id_club_sponsorship serial primary key,
+	id_sponsor integer,
+		FOREIGN KEY id_sponsor REFERENCES sponsors(id_sponsor),
+	type varchar(2),
+		CHECK (type = ANY (ARRAY['M'::bpchar,'S'::bpchar,'E'::bpchar, 'N'::bpchar])) -- MASTER, STADIUM, Equipment, stadium Naming rights
+	weeks integer not null,
+	money number(17,2)
+);
+create table club_sponsorship_stadium(
+	id_club_sponsorship_stadium serial primary key,
+	id_club_sponsorship integer,
+		FOREIGN KEY id_sponsor REFERENCES sponsors(id_sponsor),
+	sector varchar(1) not null
+);
 create table club_finances(
 	id_club_finances serial primary key,
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
 	money number(17,2) not null default '30000000,00',
+	tickets number(17,2) not null default 0,
 	tv number(17,2) not null default 0,
-	sells number(17,2) not null default 0,
+	merchandise number(17,2) not null default 0,
+	food number(17,2) not null default 0,
 	sponsor number(17,2) not null default 0,
 	wage number(17,2) not null default 0,
 	constructions number(17,2) not null default 0,
@@ -164,9 +177,12 @@ create table club_finances_weekly(
 	id_club_finances_weekly serial primary key,
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	week integer not null,
 	money number(17,2) not null default '30000000,00',
+	tickets number(17,2) not null default 0,
 	tv number(17,2) not null default 0,
-	sells number(17,2) not null default 0,
+	merchandise number(17,2) not null default 0,
+	food number(17,2) not null default 0,
 	sponsor number(17,2) not null default 0,
 	wage number(17,2) not null default 0,
 	constructions number(17,2) not null default 0,
@@ -176,9 +192,13 @@ create table club_finances_season(
 	id_club_finances_season serial primary key,
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	season integer not null,
+		FOREIGN KEY(season) REFERENCES season(season),
 	money number(17,2) not null default '30000000,00',
+	tickets number(17,2) not null default 0,
 	tv number(17,2) not null default 0,
-	sells number(17,2) not null default 0,
+	merchandise number(17,2) not null default 0,
+	food number(17,2) not null default 0,
 	sponsor number(17,2) not null default 0,
 	wage number(17,2) not null default 0,
 	constructions number(17,2) not null default 0,
@@ -188,11 +208,37 @@ create table club_stadium(
 	id_club_stadium serial primary key,
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
-	capacity integer not null defaul 6000
+	capacity integer not null defaul 6000,
+	seated integer not null default 0,
+	pitchcover integer not null default 0,
+	draining integer not null default 0,
+	sprinklers integer not null default 0,
+	heating integer not null default 0,
+	floodlights integer not null default 0
 );
-create table club_facilities();
-create table club_history();
-create table club_trophies();
+create table club_facilities(
+	id_club_facilities serial primary key,
+	id_club integer not null,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	marketing integer not null default 0,
+	medicalcenter integer not null default 0,
+	physio integer not null default 0,
+	traininggrounds integer not null default 0,
+	youthacademy integer not null default 0,
+	toilets integer not null default 0,
+	parking integer not null default 0,
+	hotdogs integer not null default 0,
+	restaurant integer not null default 0,
+	merchandisestore integer not null default 0
+);
+-- create table club_history();
+create table club_trophies(
+	id_club_trophies serial primary key,
+	id_club integer,
+		FOREIGN KEY id_club references club(id_club),
+	id_competition integer,
+		FOREIGN KEY id_competition references competition(id_competition)
+);
 /**
  * fim
  */
@@ -294,12 +340,6 @@ create table players_injury(
 	games integer not null,
 	status boolean not null
 );
-create table players_cards(
-	id_player_cards serial primary key,
-	id_player integer not null,
-		CONSTRAINT playercards_cards_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
-	cards integer not null
-);
 /**
  * fim
  */
@@ -333,24 +373,114 @@ create table watchlist(
 /**
  * fim
  */
-/**
- * COMPETITIONS
- */
- create table competition_types(
- 	id_competition_type serial primary key,
- 	type varchar(1) not null
+ create table competition_type(
+   id_competition_type serial primary key,
+   type varchar(2) not null,
+   CHECK (type = ANY (ARRAY['L'::bpchar,'C'::bpchar,'T'::bpchar, 'F'::bpchar, 'FL'::bpchar, 'P'::bpchar])) -- p = playoffs, fl= friendly league
  );
+
  create table competition(
- 	id_competition serial primary key,
- 	id_competition_type integer not null,
- 		CONSTRAINT competition_idcompetitiontype_fkey FOREIGN KEY(id_competition_type) REFERENCES competition_types(id_competition_type),
- 	season integer not null,
+   id_competition serial primary key,
+   id_competition_type integer not null,
+     CONSTRAINT competition_idcompetitiontype_fkey FOREIGN KEY(id_competition_type) REFERENCES competition_types(id_competition_type),
+   season integer not null,
  		CONSTRAINT competition_season_fkey FOREIGN KEY(season) REFERENCES season(season),
- 	id_country integer null,
- 		CONSTRAINT competition_country_fkey FOREIGN KEY(id_country) REFERENCES country(id_country),
-	round integer not null,
-	maxrounds integer not null
+   teams integer not null,
+   games integer not null,
+   gamesplayed integer not null default 0,
+   homeaway bool not null
+ )
+ create table cup(
+   id_cup serial primary key,
+   id_competition integer not null,
+     FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
+   awaygoal bool not null
+ )
+ create table league(
+   id_league serial PRIMARY KEY,
+   id_competition integer not null,
+     CONSTRAINT league_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
+   division integer,
+   divgroup varchar(1)
+ )
+ create table league_table(
+  id_league_table serial primary key,
+  id_league integer not null,
+    CONSTRAINT leaguetable_idleague_fkey FOREIGN KEY(id_league) REFERENCES league(id_league),
+  id_club integer not null,
+    CONSTRAINT leaguetable_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club),
+  position integer,
+  pts integer not null DEFAULT 0,
+  win integer not null DEFAULT 0,
+  win_home integer not null default 0,
+  win_away integer not null default 0,
+  loss integer not null DEFAULT 0,
+  loss_home integer not null default 0,
+  loss_away integer not null default 0,
+  draw integer not null DEFAULT 0,
+  goalsP integer not null DEFAULT 0,
+  goalsP_home integer not null default 0,
+  goalsP_away integer not null default 0,
+  goalsC integer not null DEFAULT 0,
+  goalsC_home integer not null default 0,
+  goalsC_away integer not null default 0,
+  yellowcards integer not null default 0,
+  redcards integer not null default 0
  );
+ create table calendar(
+  id_calendar serial primary key,
+  season integer,
+    FOREIGN key(season) references season(season),
+  day date not null,
+  id_competition_type integer not null,
+   FOREIGN KEY(id_competition_type) references competition_types(id_competition_type),
+ );
+ create table calendar_matches(
+   id_calendar_matches serial primary key,
+   id_competition integer not null,
+     FOREIGN KEY id_competition REFERENCES competition(id_competition),
+   id_match integer,
+     FOREIGN key id_match references match(id_match)
+ );
+ create table match(
+  id_match serial primary key,
+  type varchar(1),
+   CHECK (match_type = ANY (ARRAY['L'::bpchar,'C'::bpchar,'T'::bpchar, 'F'::bpchar])),
+  day date,
+  hour varchar(5),
+  id_weather integer,
+   FOREIGN KEY id_weather REFERENCES weather_types(id_weather),
+  pitch integer,
+  home integer not null,
+    FOREIGN KEY home REFERENCES club(id_club),
+  away integer not null,
+    FOREIGN KEY away REFERENCES club(id_club),
+	attendance integer,
+ )
+ create table match_stats(
+  id_match_stats serial primary key,
+  id_match integer not null,
+    FOREIGN KEY(id_match) references matches(id_match),
+  homegoals integer not null,
+  awaygoals integer not null,
+	homepossession integer not null,
+	homefaults integer,
+	homesetpieces integer,
+	homecorners integer,
+	homeshots integer,
+	homeshotsontarget integer,
+	homeyellowcards integer,
+	homeredcards integer,
+	awaypossession integer not null,
+	awayfaults integer,
+	awaysetpieces integer,
+	awaycorners integer,
+	awayshots integer,
+	awayshotsontarget integer,
+	awayyellowcards integer,
+	awayredcards integer
+ );
+ create table match_stats_players();
 -- create table competition_statistics(
 -- 	id_competition_statistics serial primary key,
 -- 	id_competition integer not null,
@@ -371,93 +501,6 @@ create table watchlist(
 -- 	redcards integer not null default 0,
 -- 	score numeric(4,2) not null default 0.0
 -- );
-/**
- * fim
- */
-/**
- * LEAGUE
- */
- create table league(
- 	id_league serial PRIMARY KEY,
- 	id_competition integer not null,
- 		CONSTRAINT league_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
- 	division integer,
- 	divgroup integer,
-	totalclubs integer not null
- );
- create table league_table(
- 	id_league_table serial primary key,
- 	id_league integer not null,
- 		CONSTRAINT leaguetable_idleague_fkey FOREIGN KEY(id_league) REFERENCES league(id_league),
- 	id_club integer not null,
- 		CONSTRAINT leaguetable_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club),
-  position integer,
- 	pts integer not null DEFAULT 0,
- 	win integer not null DEFAULT 0,
- 	win_home integer not null default 0,
- 	win_away integer not null default 0,
- 	loss integer not null DEFAULT 0,
- 	loss_home integer not null default 0,
- 	loss_away integer not null default 0,
- 	draw integer not null DEFAULT 0,
- 	goalsP integer not null DEFAULT 0,
- 	goalsP_home integer not null default 0,
- 	goalsP_away integer not null default 0,
- 	goalsC integer not null DEFAULT 0,
- 	goalsC_home integer not null default 0,
- 	goalsC_away integer not null default 0,
- 	yellowcards integer not null default 0,
- 	redcards integer not null default 0
- );
-/**
- * fim
- */
-/**
- * MATCHES
- */
- create table calendar(
- 	id_calendar serial primary key,
- 	season integer,
- 		FOREIGN key(season) references season(season),
- 	id_competition_type integer not null,
- 		FOREIGN KEY(id_competition_type) references competition_types(id_competition_type),
- 	matchday date
- );
-
- create table league_calendar(
- 		id_league_calendar serial primary key,
- 		id_calendar integer not null,
- 			FOREIGN KEY(id_calendar) references calendar(id_calendar),
- 		id_league integer not null,
- 			FOREIGN KEY(id_league) references league(id_league),
- 		round integer not null
- );
-
- create table matches(
- 	id_match serial primary key,
- 	id_competition_type integer,
- 		FOREIGN KEY(id_competition_type) references competition_types(id_competition_type),
- 	matchday date,
- 	home integer not null,
- 	away integer not null
- );
- create table matches_stats(
- 	id_match_stats serial primary key,
- 	id_match integer not null,
- 		FOREIGN KEY(id_match) references matches(id_match),
- 	homegoals integer not null,
- 	awaygoals integer not null
- );
- create table league_calendar_matches(
- 		id_round_matches serial primary key,
- 		id_round integer not null,
- 			foreign key(id_round) references league_calendar(id_round),
- 		id_match integer not null,
- 			foreign key(id_match) references matches(id_match)
- );
-/**
- * fim
- */
  /**Feed**/
 create table tweet(
    id_tweet serial primary key,
