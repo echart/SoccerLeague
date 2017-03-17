@@ -5,10 +5,10 @@
   $id_competition_type=1;
   $teams=18;
   $total_games=($teams*2)-2;
-  $league_startday='2017-03-17';
+  $league_startday='2017-03-19';
 // echo date('Y-m-d',strtotime("+0 days",strtotime($league_startday)));
 // exit;
-  $league_startday2=2;
+  $league_startday2=3;
   /*-------
   GET SEASON AND + 1(NEXT);
   ---------*/
