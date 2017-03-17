@@ -73,25 +73,25 @@
         $fin = $club->__create();
         if($fin===false){
           $account->__delete();
-          App::redirect('signup','index');
+          //App::redirect('signup','index');
           exit;
         }
       }
     }catch(Exception $e){
         $account->__delete();
-        App::redirect('signup','index');
+        //App::redirect('signup','index');
         exit;
     }
   }
-  $mail = new Mail();
-  $mail->open();
-  $mail->setFrom('team.slccerleague@gmail.com','Soccer League');
-  $mail->subject('Bem vindo ao Soccer League');
-
-  $mail->body('Bem vindo ao Soccer League','Seja bem vindo ao Soccer League, esperamos que você tenha muitas conquistas com o <b>'.$this->post['clubname'].'</b>. Agora, seus jogadores o esperam! Vá para o seu clube', 'Acessar seu clube', 'http://localhost/');
-  $mail->addAddress($this->post['email']);
-  $mail->_send();
-
-  $_SESSION['SUCCESS'] = 'Seja bem vindo ao Soccer League, faça login para começar sua jornada.';
-  App::redirect('signup','index');
+  // $mail = new Mail();
+  // $mail->open();
+  // $mail->setFrom('team.slccerleague@gmail.com','Soccer League');
+  // $mail->subject('Bem vindo ao Soccer League');
+  //
+  // $mail->body('Bem vindo ao Soccer League','Seja bem vindo ao Soccer League, esperamos que você tenha muitas conquistas com o <b>'.$this->post['clubname'].'</b>. Agora, seus jogadores o esperam! Vá para o seu clube', 'Acessar seu clube', 'http://localhost/');
+  // $mail->addAddress($this->post['email']);
+  // $mail->_send();
+  //
+  // $_SESSION['SUCCESS'] = 'Seja bem vindo ao Soccer League, faça login para começar sua jornada.';
+  // App::redirect('signup','index');
   exit;

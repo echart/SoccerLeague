@@ -17,7 +17,7 @@
     $handler->get=$_GET;
 		/* check if user is logged*/
 		if($user->verifyAuthentication()==false){
-			$doNotLogged = array('index','signup','login'); //page that user can access if not logged
+			$doNotLogged = array('index','signup','login','SeasonStart'); //page that user can access if not logged
 			if(!in_array($request['request'],$doNotLogged))
 				App::redirect($request['request'],'index');
 		}

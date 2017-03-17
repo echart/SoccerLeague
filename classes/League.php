@@ -10,48 +10,51 @@
  */
 class League{
 	public $id_league;
+	public $id_competition;
 	public $division;
 	public $group;
-	public $totalgames;
-	public $round;
 	public $name;
 
-	public function __construct($country, $season, $div, $group){
+	public function __construct($id_competition='',$div='', $group=''){
+		$this->id_competition = $id_competition;
+		$this->div = $div;
+		$this->group = $group;
+	}
+	public function __load(){
 		try{
-			$this->country=$country;
-			$this->season=$season;
-			$this->div=$div;
-			$this->group=$group;
-			$query=Connection::getInstance()->connect()->prepare("SELECT id_league,name FROM competition c inner join league l using(id_competition) inner join country ccc on ccc.id_country= c.id_country where c.id_competition_type=1 and c.id_country=:country and l.division=:division and l.divgroup=:group and c.season=:season");
-		  $query->bindParam(':country',$this->country);
-		  $query->bindParam(':division',$this->div);
-		  $query->bindParam(':group',$this->group);
-			$query->bindParam(':season',$this->season);
+
+			$query = Connection::getInstance()->connect()->prepare("SELECT * FROM league where id_league=:id_league");
+			$query->bindParam(':id_league',$id_league);
 			$query->execute();
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$data=$query->fetch();
+
 			$this->id_league=$data->id_league;
-			$this->name=$data->name;
+			$this->id_competition = $data->id_competition;
+			$this->name=$data->leaguename;
+			$this->division = $data->division;
+			$this->group = $data->divgroup;
+
 		}catch(PDOException $e){
 			echo $e->getmessage();
 		}
 	}
-	public static function createLeague($id_competition,$name,$division, $group, $totalgames){
+	public function __create($id_competition, $name, $division, $group){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition, name,division,divgroup, totalgames, round) values (:id_competition,:name,:division,:group,:totalgames,0)");
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO league (id_competition, leaguename,division,divgroup) values (:id_competition,:name,:division,:group)");
 			$query->bindParam(':id_competition',$id_competition);
 			$query->bindParam(':name',$name);
 			$query->bindParam(':division',$division);
 			$query->bindParam(':group',$group);
-			$query->bindParam(':totalgames',$totalgames);
 			$query->execute();
+			$this->id_league = Connection::getInstance()->connect()->lastInsertID('league_id_league_seq');
 			return true;
 		}catch(PDOException $e){
 			echo $e->getmessage();
 			return false;
 		}
 	}
-	public function deleteLeague($id_league):bool{
+	public function __delete($id_league):bool{
 		try{
 			$query=Connection::getInstance()->connect()->prepare("DELETE FROM league where id_league:id_league");
 			$query->bindParam(':id_league',$id_league);
@@ -62,7 +65,7 @@ class League{
 		}
 	}
 	public function getLeagueTable(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT lt.position,l.round,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join league_table lt using(id_league) inner join club cc using(id_club) inner join country ccc on ccc.id_country= cc.id_country where l.id_league=:id_league order by lt.position asc");
+		$query=Connection::getInstance()->connect()->prepare("SELECT lt.position,c.gamesplayed,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join competition c using(id_competition) inner join league_table lt using(id_league) inner join club cc using(id_club) inner join countries ccc on ccc.id_country= cc.id_country where l.id_league=:id_league order by lt.position asc");
 	  $query->bindParam(':id_league',$this->id_league);
 	  $query->execute();
 	  $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -70,7 +73,7 @@ class League{
 	}
 	public static function checkIfLeagueAlreadyExists($season,$country,$div,$group){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("SELECT id_league FROM competition left join league using(id_competition) where season=:season and id_country=:country and division=:div and divgroup=:group");
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_league FROM competition c left join league using(id_competition) where season=:season and id_country=:country and division=:div and divgroup=:group and official=true ");
 			$query->bindParam(':season',$season);
 			$query->bindParam(':country',$country);
 			$query->bindParam(':div',$div);
@@ -83,10 +86,11 @@ class League{
 	}
 	public static function lastDivAndGroup($country){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("SELECT division,divgroup from league inner join competition using(id_competition) where id_country=:id_country order by division,divgroup asc");
-			$query->bindParam(':id_country',$country);
+			$query=Connection::getInstance()->connect()->prepare("SELECT division,divgroup from league inner join competition using(id_competition) where id_competition=:id_competition order by division,divgroup asc");
+			$query->bindParam(':id_competition',$id_competition);
 			$query->execute();
 			$data=$query->fetch(PDO::FETCH_OBJ);
+
 			return array($data->division,$data->divgroup);
 		}catch(PDOException $e){
 			echo $e->getmessage();
@@ -111,9 +115,6 @@ class League{
 			echo $e->getmessage();
 		}
 	}
-	public function updateRound(){
-		// TODO: make script to get all matches, computing pts and update league table
-	}
 	public static function leftClubs($totalClubs){
 		if($totalClubs!=0){
 			if(!is_int($totalClubs/18)){
@@ -123,13 +124,5 @@ class League{
 		}else{
 			return 18;
 		}
-	}
-	public static function getLeagueById($id_league){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name, division, divgroup, id_country, abbreviation from league inner join competition using(id_competition) inner join country using(id_country) where id_league=:id_league");
-		$query->bindParam(':id_league', $id_league);
-		$query->execute();
-		$query->setFetchMode(PDO::FETCH_ASSOC);
-		$data=$query->fetch();
-		return $data;
 	}
 }
