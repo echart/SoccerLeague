@@ -211,6 +211,19 @@ create table club_stadium(
 	heating integer not null default 0,
 	floodlights integer not null default 0
 );
+-- create table facilities(
+-- 	id_facilities serial primary key,
+-- 	facilitie varchar(100),
+-- 	maxlevel intenger,
+-- 	money_per_level_week numeric(17,2),
+-- 	cost_per_level_week numeric(17,2)
+-- );
+-- create table club_facilities(
+-- 	id_club_facilities serial primary key,
+-- 	id_club integer not null REFERENCES club(id_club),
+-- 	id_facilities integer not null references facilities(id_facilities),
+-- 	level intenger not null default 0
+-- );
 create table club_facilities(
 	id_club_facilities serial primary key,
 	id_club integer not null,
@@ -552,3 +565,10 @@ create table tweet(
   id_club integer,
   foreign key(id_club) references club(id_club)
  );
+
+
+/*
+insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
+insert into competition_type(type) values ('l')
+insert into countries (country,abbreviation) values ('Brazil','br');
+*/
