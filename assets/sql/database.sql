@@ -347,7 +347,7 @@ create table players_history(
 	yellowcards int DEFAULT 0,
 	redcards int DEFAULT 0,
 	mvp int default 0,
-	score numeric(4,2) default 0 -- nota média
+	rating numeric(4,2) default 0 -- nota média
 );
 create table players_injury(
 	id_player_injury serial primary key,
@@ -457,21 +457,13 @@ create table watchlist(
   yellowcards integer not null default 0,
   redcards integer not null default 0
  );
- create table calendar(
-  id_calendar serial primary key,
-  season integer,
-    FOREIGN key(season) references season(season),
-  day date not null,
-  id_competition_type integer not null,
-   FOREIGN KEY(id_competition_type) references competition_type(id_competition_type)
- );
  create table weather_types(
 	id_weather serial primary key,
 	weather varchar(100),
 	weather_icon varchar(100),
 	condition integer
  );
- create table match(
+ create table matches(
   id_match serial primary key,
   type varchar(1),
    CHECK (type = ANY (ARRAY['L'::bpchar,'C'::bpchar,'T'::bpchar, 'F'::bpchar])),
@@ -488,17 +480,17 @@ create table watchlist(
     FOREIGN KEY (away) REFERENCES club(id_club),
 	attendance integer
 );
- create table calendar_matches(
-   id_calendar_matches serial primary key,
+ create table competition_calendar(
+   id_match_calendar serial primary key,
    id_competition integer not null,
      FOREIGN KEY (id_competition) REFERENCES competition(id_competition),
    id_match integer,
-     FOREIGN key (id_match) references match(id_match)
+     FOREIGN key (id_match) references matches(id_match)
  );
- create table match_stats(
+ create table matches_stats(
   id_match_stats serial primary key,
   id_match integer not null,
-    FOREIGN KEY(id_match) references match(id_match),
+    FOREIGN KEY(id_match) references matches(id_match),
   homegoals integer not null,
   awaygoals integer not null,
 	homepossession integer not null,
@@ -507,18 +499,57 @@ create table watchlist(
 	homecorners integer,
 	homeshots integer,
 	homeshotsontarget integer,
+	homeshotsonpost integer,
+	homeshotsoutbox integer,
+	homespasses integer,
+	homepassessuccess integer
 	homeyellowcards integer,
 	homeredcards integer,
+	homepenalty integer,
+	homepenaltysuccess integer,
 	awaypossession integer not null,
 	awayfaults integer,
 	awaysetpieces integer,
 	awaycorners integer,
 	awayshots integer,
 	awayshotsontarget integer,
+	awayshotsonpost integer,
+	awayshotsoutbox integer,
 	awayyellowcards integer,
-	awayredcards integer
+	awayredcards integer,
+	awaypasses integer,
+	awaypassessuccess integer
+	awaypenalty integer,
+	awaypenaltysuccess integer,
  );
- create table match_stats_players();
+ create table matches_stats_players(
+	 id_match_stats_players serial primary key,
+	 id_player integer references players(id_player),
+	 goals integer,
+	 assists integer,
+	 rating numeric(4,2),
+	 mvp boolean,
+	 yellowcards integer,
+	 redcards integer,
+	 passing integer,
+	 passing_success integer,
+	 crosses integer,
+	 crosses_success integer,
+	 faults integer,
+	 shots integer,
+	 shotsontarget integer,
+	 shotsonpost integer,
+	 shotsoutbox integer,
+	 dribbles integer,
+	 dribbles_success integer,
+	 badcontrol integer,
+	 aerials integer,
+	 aerialswon integer,
+	 offsides integer,
+	 tackles integer,
+	 interceptions integer,
+	 owngoals integer
+ );
 -- create table competition_statistics(
 -- 	id_competition_statistics serial primary key,
 -- 	id_competition integer not null,
