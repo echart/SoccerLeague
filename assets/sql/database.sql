@@ -84,12 +84,16 @@ create table club(
 	id_club serial primary key,
 	id_country integer not null,
 		CONSTRAINT club_country_fkey FOREIGN KEY (id_country) REFERENCES countries(id_country),
-  id_account integer not null,
-    FOREIGN KEY (id_account) REFERENCES account(id_account),
 	clubname varchar(25) not null default 'Available Team',
 	created date default now(),
 	status varchar(1) default 'P',
 		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])) -- pending, approved, inactived, banned
+);
+create table club_account(
+	id_club_account serial primary key,
+	id_account integer not null,
+		FOREIGN KEY (id_account) REFERENCES account(id_account),
+	id_club integer REFERENCES club(id_club)
 );
 create table club_info(
 	id_club_info serial primary key,
@@ -386,10 +390,11 @@ create table watchlist(
      CONSTRAINT competition_idcompetitiontype_fkey FOREIGN KEY(id_competition_type) REFERENCES competition_type(id_competition_type),
    season integer not null,
  		CONSTRAINT competition_season_fkey FOREIGN KEY(season) REFERENCES season(season),
+   id_country integer,
    teams integer not null,
    games integer not null,
    gamesplayed integer not null default 0,
-   homeaway bool not null
+	 official boolean
  );
  create table club_trophies(
 	id_club_trophies serial primary key,
@@ -403,12 +408,15 @@ create table watchlist(
    id_cup serial primary key,
    id_competition integer not null,
      FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
+	 cupname varchar(100) not null,
+   homeaway bool not null,
    awaygoal bool not null
  );
  create table league(
    id_league serial PRIMARY KEY,
    id_competition integer not null,
      CONSTRAINT league_idcompetition_fkey FOREIGN KEY(id_competition) REFERENCES competition(id_competition),
+	 leaguename varchar(100) not null,
    division integer,
    divgroup varchar(1)
  );
