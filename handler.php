@@ -20,6 +20,9 @@
 			$doNotLogged = array('index','signup','login','SeasonStart'); //page that user can access if not logged
 			if(!in_array($request['request'],$doNotLogged))
 				App::redirect($request['request'],'index');
+		}else{
+			if($request['request']=='index')
+				App::redirect($request['request'],'home');
 		}
 		/* parse URL and load the page*/
 		$handler->parseURL($request);
@@ -27,6 +30,7 @@
 		$handler->loadView();
 	}catch(Exception $e){
 		echo "We have an error with your request: <br>" . $e->getMessage();
+		echo $e->getFile()." line ".$e->getLine()."<br>";
 	}finally{
 		/* close the connection*/
 		$con->disconnect();
