@@ -69,4 +69,13 @@ class Competition{
 
 			return $data->id_competition_type;
 	}
+	public static function getIdCompetition($country){
+			$query=Connection::getInstance()->connect()->prepare("SELECT id_competition from competition where id_country=:id_country and official=true");
+			$query->bindParam(':id_country',$country);
+			$query->execute();
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$data=$query->fetch();
+
+			return $data->id_competition;
+	}
 }

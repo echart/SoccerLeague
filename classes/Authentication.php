@@ -58,7 +58,7 @@ class Authentication{
 		$_SESSION['SL_div']=$data->division;
 		$_SESSION['SL_group']=$data->divgroup;
 
-		$query=$this->con->prepare("SELECT abbreviation from country inner join club using(id_country) where id_club=:id_club");
+		$query=$this->con->prepare("SELECT abbreviation from countries inner join club using(id_country) where id_club=:id_club");
 		$query->bindParam(':id_club',$id_club);
 		$query->execute();
 		$query->setFetchMode(PDO::FETCH_OBJ);

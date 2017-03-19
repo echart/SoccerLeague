@@ -16,7 +16,7 @@ class Club{
   public function __create(){
     try{
       $date = date('Y-m-d');
-      $query=Connection::getInstance()->connect()->prepare("UPDATE club SET clubname=:clubname, status='A', createdate = '$date' where id_club=:id_club");
+      $query=Connection::getInstance()->connect()->prepare("UPDATE club SET clubname=:clubname, status='A', created = '$date' where id_club=:id_club");
       $query->bindParam(':clubname', $this->clubname);
       $query->bindParam(':id_club', $this->id_club);
       $query->execute();

@@ -56,9 +56,10 @@
         $available=$league->nextAvailableDivAndGroup();
         if(!League::checkIfLeagueAlreadyExists(1,$club->id_country,$available[0],$available[1])){
           $id_competition=Competition::getIdCompetition(Competition::getIdCompetitionType('L'),$club->id_country, 1);
-          League::createLeague($id_competition,$available[0] . ' division', $available[0], $available[1], 34);
+          $league->create($id_competition,$available[0] . ' division', $available[0], $available[1], 34);
         }
         $league = new League($club->id_country,1,$available[0],$available[1]);
+        $league->__loadIDleague();
         for($i=1;$i<19;$i++){
          $clubA=Club::__createAvailableTeam($club->id_country);
          $league->joinClub($clubA);
@@ -83,15 +84,28 @@
         exit;
     }
   }
-  // $mail = new Mail();
-  // $mail->open();
-  // $mail->setFrom('team.slccerleague@gmail.com','Soccer League');
-  // $mail->subject('Bem vindo ao Soccer League');
-  //
-  // $mail->body('Bem vindo ao Soccer League','Seja bem vindo ao Soccer League, esperamos que você tenha muitas conquistas com o <b>'.$this->post['clubname'].'</b>. Agora, seus jogadores o esperam! Vá para o seu clube', 'Acessar seu clube', 'http://localhost/');
-  // $mail->addAddress($this->post['email']);
-  // $mail->_send();
-  //
-  // $_SESSION['SUCCESS'] = 'Seja bem vindo ao Soccer League, faça login para começar sua jornada.';
-  // App::redirect('signup','index');
+  set_time_limit(0); //don't stop the connection! just don't.
+  //Goalkeepers
+  for ($i=0; $i < 3; $i++) {
+    $indice=1;
+    $player = PlayerFactory::createGoalkeper($indice,$club->id_club);
+    PlayerFactory::savedGoalkeeper($player);
+  }
+  // Lineplayers
+  for ($i=0; $i <32 ; $i++) {
+    $indice=1;
+    $player = PlayerFactory::createPlayer($indice,$club->id_club);
+    PlayerFactory::savePlayer($player);
+  }
+  $mail = new Mail();
+  $mail->open();
+  $mail->setFrom('team.soccerleague@gmail.com','Soccer League');
+  $mail->subject('Bem vindo ao Soccer League');
+
+  $mail->body('Bem vindo ao Soccer League','Seja bem vindo ao Soccer League, esperamos que você tenha muitas conquistas com o <b>'.$this->post['clubname'].'</b>. Agora, seus jogadores o esperam! Vá para o seu clube', 'Acessar seu clube', 'http://localhost/');
+  $mail->addAddress($this->post['email']);
+  $mail->_send();
+
+  $_SESSION['SUCCESS'] = 'Seja bem vindo ao Soccer League, faça login para começar sua jornada.';
+  App::redirect('signup','index');
   exit;

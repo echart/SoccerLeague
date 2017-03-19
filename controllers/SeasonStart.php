@@ -1,26 +1,20 @@
 <?
+  if((!isset($_GET['hash'])) and $_GET['hash']!="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e")
+  exit;
+  error_reporting(E_ALL);
+  ini_set('display_errors',1);
+  $this->tree = __rootpath($_SERVER['REDIRECT_URL']);
   /*----------
   SET COMPETITION DATA
   -----------*/
-  $id_competition_type=1;
+  $id_competition_type=Competition::getIdCompetitionType('L');
   $teams=18;
   $total_games=($teams*2)-2;
   $league_startday='2017-03-19';
-// echo date('Y-m-d',strtotime("+0 days",strtotime($league_startday)));
-// exit;
   $league_startday2=3;
   /*-------
   GET SEASON AND + 1(NEXT);
   ---------*/
-  // $query=Connection::getInstance()->connect()->query("SELECT season FROM season");
-  // $query->execute();
-  // if($query->rowCount()==0){
-  //   $season=1;
-  //   $query->execute();
-  // }else{
-  //   $data=$query->fetch(PDO::FETCH_OBJ);
-  //   $season=$data->season+1;
-  // }
   $season=1;
   /*-----
   GET ALL COUNTRIES
@@ -38,14 +32,9 @@ foreach ($countries as $key => $id_country) {
     /*----
     ADD competition
     ------*/
-    // $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition (id_competition_type, season, id_country, totalclubs) values (:id_competition_type,:season,:id_country,:totalclubs)");
-    // $query->bindParam(':id_competition_type',$id_competition_type);
-    // $query->bindParam(':season',$season);
-    // $query->bindParam(':id_country',$id_country);
-    // $query->bindParam('totalclubs',$teams);
-    // $query->execute();
+    $official_competition = true;
     $competition = new Competition();
-    $competition->__create($season,$id_country,Competition::getIdCompetitionType('L'),$teams,$total_games,true);
+    $competition->__create($season,$id_country,Competition::getIdCompetitionType('L'),$teams,$total_games,$official_competition);
     /*------
     COUNT CLUBS AND COUNT HOW MANY LEAGUES/GROUPS WE NEED TO ADD.
     ------*/
@@ -54,13 +43,16 @@ foreach ($countries as $key => $id_country) {
     $query->execute();
     $clubs=$query->rowCount();
     /*------
-    IF WE DONT HAVE 18 CLUBS FOR A GROUP, CREATE MORE AVAILABLE teams
+    IF WE DON'T HAVE 18 CLUBS FOR A GROUP, CREATE MORE AVAILABLE teams
     -------*/
     if(League::leftClubs($clubs)>0){
       for($i=0;$i<League::leftClubs($clubs);$i++){
         Club::__createAvailableTeam($id_country);
       }
     }
+    /*------
+    RECOUNT CLUBS AND COUNT HOW MANY LEAGUES/GROUPS WE HAVE NOW.
+    ------*/
     $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club where id_country=:id_country");
     $query->bindParam(':id_country',$id_country);
     $query->execute();
@@ -69,7 +61,7 @@ foreach ($countries as $key => $id_country) {
     /*------
     ADD league based in groups numbers
     --------*/
-    $next=array(1,1);
+    $next=array(1,1); //first (league, group) to be added
     for($i=1;$i<=$groups;$i++){
       /*----
       add league
@@ -78,11 +70,18 @@ foreach ($countries as $key => $id_country) {
       $group=$next[1];
       // $flag=false;
       $league=false;
-        // if(!League::checkIfLeagueAlreadyExists($season,$id_country,$div,$group)){
+
+      // get country name to put it on league_table
+      $query=Connection::getInstance()->connect()->prepare("SELECT abbreviation FROM countries where id_country=:id_country");
+      $query->bindParam(':id_country',$id_country);
+      $query->execute();
+      $data=$query->fetch(PDO::FETCH_OBJ);
+      $data = file_get_contents($tree.'assets/data/leaguenames/'.strtolower($data->abbreviation).'.json');
+      $data = json_decode($data,true);
+      //create league
       $league = new League();
-      $league->__create($competition->id_competition, 'Brazil League', $div,$group);
+      $league->__create($competition->id_competition, $data['data'][0][$div], $div, $group);
       $flag=true;
-      // }
       $next=$league->nextAvailableDivAndGroup();
       /*-----
       add league_table
@@ -124,13 +123,26 @@ foreach ($countries as $key => $id_country) {
           if(date('w',strtotime($league_startday))==3 or date('w',strtotime($league_startday))==5 or date('w',strtotime($league_startday))==0){
             echo ($league_startday ."<Br>");
             //save date at calendar with competitiontype
-            $query=Connection::getInstance()->connect()->prepare("INSERT INTO calendar (season,id_competition_type,day) values (:season,:id_competition_type,:matchday)");
-            $query->bindParam(":season",$season);
-            $query->bindParam(":id_competition_type",$id_competition_type);
-            $query->bindParam(":matchday",$league_startday);
-            $query->execute();
-            $id_calendar=Connection::getInstance()->connect()->lastInsertID('calendar_id_calendar_seq');
-            //save at league calendar the id_calendar and the number of the round that will be played at this day
+
+            foreach ($games as $arrayTeams) {
+             $teams=GenerateFixture::eachTeam($arrayTeams);
+             $query=Connection::getInstance()->connect()->prepare("SELECT id_club_stadium FROM club_stadium where id_club=:id_club");
+             $query->bindParam(':id_club',$teams[0]);
+             $query->execute();
+             $data=$query->fetch(PDO::FETCH_OBJ);
+             $query=Connection::getInstance()->connect()->prepare("INSERT INTO matches (type,id_location,day,hour,home,away) values ('L',:id_stadium,:matchday,'17:00',:home,:away)");
+             $query->bindParam(":matchday",$league_startday);
+              $query->bindParam(":id_stadium",$data->id_club_stadium);
+             $query->bindParam(":home",$teams[0]);
+             $query->bindParam(":away",$teams[1]);
+             $query->execute();
+             $id_match = Connection::getInstance()->connect()->lastInsertID('matches_id_match_seq');
+             $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition_calendar (id_competition,id_match,day, hour) values (:id_competition,:id_match,:matchday, '17:00')");
+             $query->bindParam(":id_competition",$competition->id_competition);
+             $query->bindParam(":matchday",$league_startday);
+              $query->bindParam(":id_match",$id_match);
+             $query->execute();
+           }
           }
         }
         $i=2;
@@ -152,15 +164,29 @@ foreach ($countries as $key => $id_country) {
           if(date('w',strtotime($league_startday))==3 or date('w',strtotime($league_startday))==5 or date('w',strtotime($league_startday))==0){
             echo ($league_startday ."<Br>");
             //save date at calendar with competitiontype
-            $query=Connection::getInstance()->connect()->prepare("INSERT INTO calendar (season,id_competition_type,day) values (:season,:id_competition_type,:matchday)");
-            $query->bindParam(":season",$season);
-            $query->bindParam(":id_competition_type",$id_competition_type);
-            $query->bindParam(":matchday",$league_startday);
-            $query->execute();
-            $id_calendar=Connection::getInstance()->connect()->lastInsertID('calendar_id_calendar_seq');
+
+            foreach ($games as $arrayTeams) {
+             $teams=GenerateFixture::eachTeam($arrayTeams);
+             $query=Connection::getInstance()->connect()->prepare("SELECT id_club_stadium FROM club_stadium where id_club=:id_club");
+             $query->bindParam(':id_club',$teams[0]);
+             $query->execute();
+             $data=$query->fetch(PDO::FETCH_OBJ);
+             $query=Connection::getInstance()->connect()->prepare("INSERT INTO matches (type,id_location,day,hour,home,away) values ('L',:id_stadium,:matchday,'17:00',:home,:away)");
+             $query->bindParam(":matchday",$league_startday);
+            $query->bindParam(":id_stadium",$data->id_club_stadium);
+             $query->bindParam(":home",$teams[0]);
+             $query->bindParam(":away",$teams[1]);
+             $query->execute();
+             $id_match = Connection::getInstance()->connect()->lastInsertID('matches_id_match_seq');
+             $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition_calendar (id_competition,id_match,day, hour) values (:id_competition,:id_match,:matchday, '17:00')");
+             $query->bindParam(":id_competition",$competition->id_competition);
+             $query->bindParam(":matchday",$league_startday);
+              $query->bindParam(":id_match",$id_match);
+             $query->execute();
+           }
           }
         }
-      }else{
+        }else{
         # TODO: get all season data in the past, verified the positions and make new league tables;
       }
 
