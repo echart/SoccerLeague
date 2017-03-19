@@ -84,7 +84,7 @@ create table club(
 	id_club serial primary key,
 	id_country integer not null,
 		CONSTRAINT club_country_fkey FOREIGN KEY (id_country) REFERENCES countries(id_country),
-	clubname varchar(25) not null default 'Available Team',
+	clubname varchar(60) not null default 'Available Team',
 	created date default now(),
 	status varchar(1) default 'P',
 		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])) -- pending, approved, inactived, banned
@@ -246,13 +246,18 @@ create table club_facilities(
 /**
  * PLAYERS
  */
+
  create table positions(
 	 	id_position serial primary key,
-		position varchar(1),
-			CHECK (position = ANY (ARRAY['D'::bpchar,'DM'::bpchar, 'M'::bpchar,'OM'::bpchar, 'F'::bpchar])),
+		position varchar(2),
+			CHECK (position = ANY (ARRAY['GK'::bpchar,'D'::bpchar,'DM'::bpchar, 'M'::bpchar,'OM'::bpchar, 'F'::bpchar])),
 		side varchar(1),
 			CHECK (side = ANY (ARRAY['L'::bpchar,'R'::bpchar,'C'::bpchar]))
+		-- deffense_disposition integer,
+		-- midfielder_disposition integer,
+		-- attack_disposition integer
  );
+
 create table players(
 	id_player serial primary key,
 	id_player_club integer not null,
@@ -262,8 +267,8 @@ create table players(
 	name varchar(150) not null,
 	nickname varchar(25) not null,
 	age numeric(4,2) not null,
-	height numeric(4,2) not null,
-	weight numeric(4,2) not null,
+	height integer not null,
+	weight integer not null,
 	leg varchar(1) not null
 );
 create table players_appearance(
@@ -277,7 +282,7 @@ create table players_appearance(
 	bear integer
 );
 create table players_position(
-	id_player_position serial not null,
+	id_player_position serial primary key not null,
 	id_player integer not null,
 		CONSTRAINT playersposition_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player),
 	id_position integer not null,
@@ -296,7 +301,7 @@ create table players_attr(
 	agressive numeric (5,3),
 	adptability numeric (5,3),
 	learning numeric (5,3),
-	workate numeric (5,3),
+	workrate numeric (5,3),
 	concentration numeric (5,3),
 	decision numeric (5,3),
 	positioning numeric (5,3),
@@ -480,13 +485,15 @@ create table watchlist(
     FOREIGN KEY (away) REFERENCES club(id_club),
 	attendance integer
 );
- create table competition_calendar(
-   id_match_calendar serial primary key,
-   id_competition integer not null,
-     FOREIGN KEY (id_competition) REFERENCES competition(id_competition),
-   id_match integer,
-     FOREIGN key (id_match) references matches(id_match)
- );
+create table competition_calendar(
+ id_match_calendar serial primary key,
+ id_competition integer not null,
+   FOREIGN KEY (id_competition) REFERENCES competition(id_competition),
+ id_match integer,
+   FOREIGN key (id_match) references matches(id_match),
+ day date,
+ hour varchar(5)
+);
  create table matches_stats(
   id_match_stats serial primary key,
   id_match integer not null,
@@ -502,7 +509,7 @@ create table watchlist(
 	homeshotsonpost integer,
 	homeshotsoutbox integer,
 	homespasses integer,
-	homepassessuccess integer
+	homepassessuccess integer,
 	homeyellowcards integer,
 	homeredcards integer,
 	homepenalty integer,
@@ -518,9 +525,9 @@ create table watchlist(
 	awayyellowcards integer,
 	awayredcards integer,
 	awaypasses integer,
-	awaypassessuccess integer
+	awaypassessuccess integer,
 	awaypenalty integer,
-	awaypenaltysuccess integer,
+	awaypenaltysuccess integer
  );
  create table matches_stats_players(
 	 id_match_stats_players serial primary key,
@@ -548,7 +555,9 @@ create table watchlist(
 	 offsides integer,
 	 tackles integer,
 	 interceptions integer,
-	 owngoals integer
+	 owngoals integer,
+	 saves integer,
+	 conceded integer
  );
 -- create table competition_statistics(
 -- 	id_competition_statistics serial primary key,
@@ -598,8 +607,20 @@ create table tweet(
  );
 
 
-/*
+
 insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
-insert into competition_type(type) values ('l')
+insert into competition_type(type) values ('L');
 insert into countries (country,abbreviation) values ('Brazil','br');
-*/
+insert into positions (position,side) values('D','C');
+insert into positions (position,side) values('D','L');
+insert into positions (position,side) values('D','R');
+insert into positions (position,side) values('DM','C');
+insert into positions (position,side) values('DM','L');
+insert into positions (position,side) values('DM','R');
+insert into positions (position,side) values('M','C');
+insert into positions (position,side) values('M','L');
+insert into positions (position,side) values('M','R');
+insert into positions (position,side) values('OM','C');
+insert into positions (position,side) values('OM','L');
+insert into positions (position,side) values('OM','R');
+insert into positions (position,side) values('F','C');
