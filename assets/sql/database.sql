@@ -41,9 +41,9 @@ create table timezones(
  );
  create table account_data(
  	id_account_data SERIAL PRIMARY KEY,
- 	id_account integer not null,
+ 	id_account integer not null default 1,
  		CONSTRAINT accountdata_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
- 	id_language integer not null,
+ 	id_language integer not null default,
  		CONSTRAINT account_language_fkey FOREIGN KEY (id_language) REFERENCES languages(id_language),
  	id_timezone integer not null,
  		FOREIGN KEY (id_timezone) REFERENCES timezones(id_timezone),

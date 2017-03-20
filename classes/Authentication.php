@@ -31,6 +31,7 @@ class Authentication{
 			$hash=$data->password;
 			if(password_verify($password, $hash)){
 				$this->id_account=$data->id_account;
+				$this->login=$email;
 				return true;
 			}else{
 				return false;
@@ -64,6 +65,15 @@ class Authentication{
 		$query->setFetchMode(PDO::FETCH_OBJ);
 		$data=$query->fetch();
 		$_SESSION['SL_country']=$data->abbreviation;
+
+		$query=$this->con->prepare("SELECT id_timezone,id_language, slvip from account_data where id_account = :id_account");
+		$query->bindParam(':id_account',$this->id_account);
+		$query->execute();
+		$query->setFetchMode(PDO::FETCH_OBJ);
+		$data=$query->fetch();
+		$_SESSION['id_timezone']=$data->id_timezone;
+		$_SESSION['id_timezone']=$data->id_language;
+		$_SESSION['id_timezone']=$data->slvip;
 		/**
 		 * insert session in db for authentication
 		 */
@@ -98,7 +108,7 @@ class Authentication{
 		//destroy session data
 		session_destroy();
 		//move user back to home page
-		header('location:'.App::$url);
+		header('location:'.App::url());
 	}
 	public static function userip() {
 		$ipaddress = '';

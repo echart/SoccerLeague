@@ -64,9 +64,10 @@ h1.page-title{
   font-weight: 300;
   padding: 10px 20px;
   background: #5fad56;
-  border-radius: 5px;
+  border-radius: 2.5px;
   color: #fff;
   margin: 0px 5px;
+  font-size: 18px;
 }
 /*=============================
 BOXES
@@ -92,6 +93,7 @@ BOXES
 	border: 1px solid #ddd;
   border-top: 0px;
   background-color: #fefefc;
+  width: 100%;
 }
 
 .box-content > p{
@@ -209,4 +211,64 @@ BUTTONS
 .btn-disabled{
 	background-color: #ccc !important;
 	color: #333 !important;
+}
+/*=============================
+Tables
+==============================*/
+table{
+	border-spacing: 0px;
+  border-collapse: collapse;
+	position: relative;
+	width: 100%;
+	font-size: 14px;
+	/*font-family: 'Exo 2', 'Open Sans';*/
+}
+table.noborder{
+	border-collapse: separate;
+}
+table caption{
+	width: 100%;
+	padding: 1rem 0;
+	background-color: #5FAD56;
+	color: #fff;
+	font-size: 14px;
+}
+table thead{
+	border-bottom: 1px solid #fff;
+	background-color: #fff;
+}
+table thead th{
+	text-align: center;
+	color: #393e41;
+	/*background-color: #393e41;*/
+  border-bottom: 2px solid #ccc;
+	padding: 10px;
+	font-size: 13px;
+}
+table tbody tr{
+	color: #000;
+	font-size: 13px;
+}
+table tbody tr:hover{
+	color: #333;
+	background-color: #ccc !Important;
+	transition: 0.7s all;
+}
+table.zebra tbody tr:nth-child(2n+1) {
+	background-color:#e4e4e4;
+}
+table.bordered tbody tr{
+	border-bottom: 1px solid #ccc;
+}
+table tbody tr td{
+  border: 1px solid #dbdbdb;
+border-width: 0 0 1px;
+padding: 10px 20px;
+vertical-align: top;
+}
+table tbody tr td.border{
+	border-right: 1px solid #fff;
+}
+table tbody tr td.center{
+	text-align: center;
 }

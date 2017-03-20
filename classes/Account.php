@@ -53,6 +53,10 @@ class Account{
 			$query->bindParam(':refeer',$this->refeer);
 			$query->execute();
 			$this->id_account=Connection::getInstance()->connect()->lastInsertID('account_id_account_seq');
+
+			$query= Connection::getInstance()->connect()->prepare("INSERT INTO account_data(id_account) values (:id_account)");
+			$query->bindParam(':id_account',$this->id_account);
+			$query->execute();
 			return $this->id_account;
 		}catch(PDOException $e){
 			return $e->getMessage();

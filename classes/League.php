@@ -17,14 +17,14 @@ class League{
 
 	public function __construct($id_competition='',$div='', $group=''){
 		$this->id_competition = $id_competition;
-		$this->div = $div;
+		$this->division = $div;
 		$this->group = $group;
 	}
 	public function __load(){
 		try{
 
 			$query = Connection::getInstance()->connect()->prepare("SELECT * FROM league where id_league=:id_league");
-			$query->bindParam(':id_league',$id_league);
+			$query->bindParam(':id_league',$this->id_league);
 			$query->execute();
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$data=$query->fetch();
@@ -42,7 +42,7 @@ class League{
 	public function __loadIDleague(){
 			try{
 
-				$query = Connection::getInstance()->connect()->prepare("SELECT id_league FROM league inner join competition where id_competition=:id_competition and division=:div and divgroup=:group");
+				$query = Connection::getInstance()->connect()->prepare("SELECT id_league FROM league inner join competition using(id_competition) where id_competition=:id_competition and division=:division and divgroup=:divgroup");
 				$query->bindParam(':id_competition',$this->id_competition);
 				$query->bindParam(':division',$this->division);
 				$query->bindParam(':divgroup',$this->group);
