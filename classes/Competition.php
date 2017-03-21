@@ -29,7 +29,6 @@ class Competition{
 		$this->type=$data->type;
 		$this->season=$data->season;
 		$this->totalclubs=$data->totalclubs;
-		$this->id_competition=$id_competition;
 		$this->gamesplayed = $data->gamesplayed;
 		$this->official = $data->official;
 	}

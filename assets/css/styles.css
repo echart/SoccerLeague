@@ -215,60 +215,84 @@ BUTTONS
 /*=============================
 Tables
 ==============================*/
-table{
-	border-spacing: 0px;
+table {
   border-collapse: collapse;
-	position: relative;
-	width: 100%;
-	font-size: 14px;
-	/*font-family: 'Exo 2', 'Open Sans';*/
+  border-spacing: 0;
+  width: 100%;
 }
-table.noborder{
-	border-collapse: separate;
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
 }
-table caption{
-	width: 100%;
-	padding: 1rem 0;
-	background-color: #5FAD56;
-	color: #fff;
-	font-size: 14px;
+table th {
+  color: #363636;
 }
-table thead{
-	border-bottom: 1px solid #fff;
-	background-color: #fff;
+table:not(:last-child) {
+  margin-bottom: 1em;
 }
-table thead th{
-	text-align: center;
-	color: #393e41;
-	/*background-color: #393e41;*/
-  border-bottom: 2px solid #ccc;
-	padding: 10px;
-	font-size: 13px;
-}
-table tbody tr{
-	color: #000;
-	font-size: 13px;
-}
-table tbody tr:hover{
-	color: #333;
-	background-color: #ccc !Important;
-	transition: 0.7s all;
-}
-table.zebra tbody tr:nth-child(2n+1) {
-	background-color:#e4e4e4;
-}
-table.bordered tbody tr{
-	border-bottom: 1px solid #ccc;
-}
-table tbody tr td{
+table td, table th{
   border: 1px solid #dbdbdb;
-border-width: 0 0 1px;
-padding: 10px 20px;
-vertical-align: top;
+  border-width: 0 0 1px;
+  padding: 10px 20px;
+  vertical-align: top;
 }
-table tbody tr td.border{
-	border-right: 1px solid #fff;
+table tr:hover {
+  background-color: whitesmoke;
 }
-table tbody tr td.center{
-	text-align: center;
+thead td, table thead th {
+  border-width: 0 0 2px;
+  color: #363636;
+}
+
+tfoot td, table tfoot th {
+  border-width: 2px 0 0;
+  color: #363636;
+}
+.table {
+  background-color: white;
+  color: #363636;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.table td.is-narrow,
+.table th.is-narrow {
+  white-space: nowrap;
+  width: 1%;
+}
+.table tr:hover {
+  background-color: #fafafa;
+}
+
+.table thead td,
+.table thead th {
+  border-width: 0 0 2px;
+  color: #7a7a7a;
+}
+
+.table tfoot td,
+.table tfoot th {
+  border-width: 2px 0 0;
+  color: #7a7a7a;
+}
+.table.is-bordered td,
+.table.is-bordered th {
+  border-width: 1px;
+}
+.table.is-narrow td,
+.table.is-narrow th {
+  padding: 0.25em 0.5em;
+}
+.table.is-striped tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+.table.is-striped tbody tr:nth-child(even):hover {
+  background-color: whitesmoke;
+}
+table a{
+  font-size: 14px;
+  text-decoration: none;
+  color: #4285f4;
 }

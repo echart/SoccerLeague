@@ -4,14 +4,23 @@ class Club{
   public $id_account;
   public $id_country;
   public $clubname;
-  public $create;
+  public $created;
   public $status;
   public $location;
-  public function __construct($id_account=''){
-    $this->id_account=$id_account;
+  public function __construct($id_club=''){
+    $this->id_club = $id_club;
   }
   public function __load(){
-    // TODO: load club
+    $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club inner join club_account using(id_club) where id_club=:id_club");
+		$query->bindParam(':id_club', $this->id_club);
+		$query->execute();
+    $data=$query->fetch(PDO::FETCH_ASSOC);
+
+    $this->id_account = $data['id_account'];
+    $this->id_country = $data['id_country'];
+    $this->clubname = $data['clubname'];
+    $this->created = $data['created'];
+    $this->status = $data['status'];
   }
   public function __create(){
     try{

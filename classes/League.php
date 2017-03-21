@@ -79,11 +79,12 @@ class League{
 			return false;
 		}
 	}
-	public function getLeagueTable(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT lt.position,c.gamesplayed,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join competition c using(id_competition) inner join league_table lt using(id_league) inner join club cc using(id_club) inner join countries ccc on ccc.id_country= cc.id_country where l.id_league=:id_league order by lt.position asc");
+	public function __loadtable(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT c.gamesplayed,lt.id_club,cc.clubname,lt.pts, lt.win,lt.loss, lt.draw, lt.goalsp, lt.goalsc FROM league l  inner join competition c using(id_competition) inner join league_table lt using(id_league) inner join club cc using(id_club) inner join countries ccc on ccc.id_country= cc.id_country where l.id_league=:id_league order by pts desc, win desc, goalsp desc, goalsc asc, loss asc");
 	  $query->bindParam(':id_league',$this->id_league);
 	  $query->execute();
 	  $query->setFetchMode(PDO::FETCH_ASSOC);
+
 		return $query;
 	}
 	public static function checkIfLeagueAlreadyExists($season,$country,$div,$group){

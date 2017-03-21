@@ -444,7 +444,6 @@ create table watchlist(
     CONSTRAINT leaguetable_idleague_fkey FOREIGN KEY(id_league) REFERENCES league(id_league),
   id_club integer not null,
     CONSTRAINT leaguetable_idclub_fkey FOREIGN KEY(id_club) REFERENCES club(id_club),
-  position integer,
   pts integer not null DEFAULT 0,
   win integer not null DEFAULT 0,
   win_home integer not null default 0,
@@ -461,6 +460,12 @@ create table watchlist(
   goalsC_away integer not null default 0,
   yellowcards integer not null default 0,
   redcards integer not null default 0
+ );
+ create table league_table_positions(
+	 id_league_table_positions serial primary key,
+	 id_league_table integer references(league_table),
+	 gamesplayed integer not null,
+	 position integer not null
  );
  create table weather_types(
 	id_weather serial primary key,
