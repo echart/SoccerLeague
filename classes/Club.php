@@ -11,7 +11,7 @@ class Club{
     $this->id_club = $id_club;
   }
   public function __load(){
-    $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club inner join club_account using(id_club) where id_club=:id_club");
+    $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club left join club_account using(id_club) where id_club=:id_club");
 		$query->bindParam(':id_club', $this->id_club);
 		$query->execute();
     $data=$query->fetch(PDO::FETCH_ASSOC);
