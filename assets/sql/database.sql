@@ -43,7 +43,7 @@ create table timezones(
  	id_account_data SERIAL PRIMARY KEY,
  	id_account integer not null default 1,
  		CONSTRAINT accountdata_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
- 	id_language integer not null default,
+ 	id_language integer not null default 1,
  		CONSTRAINT account_language_fkey FOREIGN KEY (id_language) REFERENCES languages(id_language),
  	id_timezone integer not null,
  		FOREIGN KEY (id_timezone) REFERENCES timezones(id_timezone),
@@ -68,7 +68,7 @@ create table timezones(
  		CONSTRAINT session_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
  	session varchar(256) not null,
  	valid boolean,
- 	startdate timestamp now(),
+ 	startdate timestamp default now(),
  	ip varchar(100)
  );
 /**
@@ -463,7 +463,8 @@ create table watchlist(
  );
  create table league_table_positions(
 	 id_league_table_positions serial primary key,
-	 id_league_table integer references(league_table),
+	 id_league_table integer,
+		foreign key (id_league_table) references league_table(id_league_table),
 	 gamesplayed integer not null,
 	 position integer not null
  );

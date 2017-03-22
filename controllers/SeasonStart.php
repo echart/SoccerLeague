@@ -1,6 +1,5 @@
 <?
-  if((!isset($_GET['hash'])) and $_GET['hash']!="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e")
-  exit;
+
   error_reporting(E_ALL);
   ini_set('display_errors',1);
   $this->tree = __rootpath($_SERVER['REDIRECT_URL']);
@@ -94,7 +93,7 @@ foreach ($countries as $key => $id_country) {
           $id=intval($data->id_club);
           $league->joinClub($id);
         }
-        $leaguetable=$league->getLeagueTable();
+        $leaguetable=$league->__loadtable();
         $teams=array();
         //get all club ia a league group
         while($data=$leaguetable->fetch()){
@@ -137,8 +136,8 @@ foreach ($countries as $key => $id_country) {
              $query->bindParam(":away",$teams[1]);
              $query->execute();
              $id_match = Connection::getInstance()->connect()->lastInsertID('matches_id_match_seq');
-             $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition_calendar (id_competition,id_match,day, hour) values (:id_competition,:id_match,:matchday, '17:00')");
-             $query->bindParam(":id_competition",$competition->id_competition);
+             $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_calendar (id_league,id_match,day, hour) values (:id_league,:id_match,:matchday, '17:00')");
+             $query->bindParam(":id_league",$league->id_league);
              $query->bindParam(":matchday",$league_startday);
               $query->bindParam(":id_match",$id_match);
              $query->execute();
@@ -178,8 +177,8 @@ foreach ($countries as $key => $id_country) {
              $query->bindParam(":away",$teams[1]);
              $query->execute();
              $id_match = Connection::getInstance()->connect()->lastInsertID('matches_id_match_seq');
-             $query=Connection::getInstance()->connect()->prepare("INSERT INTO competition_calendar (id_competition,id_match,day, hour) values (:id_competition,:id_match,:matchday, '17:00')");
-             $query->bindParam(":id_competition",$competition->id_competition);
+             $query=Connection::getInstance()->connect()->prepare("INSERT INTO league_calendar (id_league,id_match,day, hour) values (:id_league,:id_match,:matchday, '17:00')");
+             $query->bindParam(":id_league",$league->id_league);
              $query->bindParam(":matchday",$league_startday);
               $query->bindParam(":id_match",$id_match);
              $query->execute();

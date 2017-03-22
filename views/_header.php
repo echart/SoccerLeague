@@ -42,4 +42,5 @@
 		}
 		?>
 	</ul>
+	<div class='submenu-mobile'></div>
 </header>

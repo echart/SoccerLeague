@@ -34,6 +34,20 @@ header ul.submenu li a.selected{
   border-radius: 2.5px;
   color: #fff;
 }
+header ul.submenu li.mobile{
+  display: none;
+}
+div.submenu-mobile{
+  position: absolute;
+  right: 20px;
+  top:22.5px;
+  width: 24px;
+  height: 24px;
+  display: block;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-image: url(../img/icons/world-cup.png) !important;
+}
 /* menu mobile */
 .menu-mobile{
   float: left;

@@ -10,6 +10,7 @@
     exit;
   }
   $validation = new Validation($this->post);
+  // var_dump($validation->geterrors());
   $rules = [
   	'email' => 'in:account|required|email',
     'password' => 'required|minsize:8',
@@ -44,8 +45,9 @@
       $account->__create();
 
     try{
-      $club = new Club($account->id_account);
 
+      $club = new Club();
+      $club->id_account  = $account->id_account;
       $club->id_country  = $this->post['country'];
       $club->clubname    = $this->post['clubname'];
 

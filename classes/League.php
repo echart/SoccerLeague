@@ -113,12 +113,12 @@ class League{
 		}
 	}
 	public function nextAvailableDivAndGroup(){
-		if($this->div==1){
-			return array($this->div+1,1);
-		}else if($this->group<(($this->div-1)*2)){
-			return array($this->div,$this->group+1);
-		}else if($this->group==(($this->div-1)*2)){
-			return array($this->div+1,1);
+		if($this->division==1){
+			return array($this->division+1,1);
+		}else if($this->group<(($this->division-1)*2)){
+			return array($this->division,$this->group+1);
+		}else if($this->group==(($this->division-1)*2)){
+			return array($this->division+1,1);
 		}
 	}
 	public function joinClub($id_club){
