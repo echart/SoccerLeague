@@ -68,7 +68,7 @@ create table timezones(
  		CONSTRAINT session_idaccount_fkey FOREIGN KEY (id_account) REFERENCES account(id_account),
  	session varchar(256) not null,
  	valid boolean,
- 	startdate timestamp default now(),
+ 	startdate timestamp now(),
  	ip varchar(100)
  );
 /**

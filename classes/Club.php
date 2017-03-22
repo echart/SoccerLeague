@@ -68,7 +68,7 @@ class Club{
 		if($query->rowCount()>0) return false; else return true;
 	}
 	public function lastLogin(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT startdate from session where id_account=:id_account ORDER BY id_session DESC LIMIT 1");
+		$query=Connection::getInstance()->connect()->prepare("SELECT CAST(startdate AS DATE) from session where id_account=:id_account ORDER BY id_session DESC LIMIT 1");
 		$query->bindParam(':id_account', $this->id_account);
 		$query->execute();
 		if($query->rowCount()>0){

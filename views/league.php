@@ -63,12 +63,15 @@
   	</div>
     <div class='bit-30 box right'>
   		<div class='box-title color'>
-  			Rodada anterior
+  			Opções
   		</div>
   		<div class='box-content'>
-  			<div class='bit-1 last-games'>
-
-        </div>
+          <ul class='subnav'>
+            <li><a class='selected' href="<?=$this->tree?>league">Tabela</a></li>
+            <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/team-of-the-round">Time da rodada</a></li>
+            <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/calendar">Rodadas</a></li>
+            <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/statistics">Estatísticas</a></li>
+          </ul>
   		</div>
   	</div>
     <div class='bit-30 box right'>
@@ -76,9 +79,46 @@
   			Próxima rodada
   		</div>
   		<div class='box-content'>
-  			<div class='bit-1 next-games'>
-
-        </div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+              <tr>
+                <td>Grêmio - Internacional</td>
+                <td>Match</td>
+              </tr>
+            </tbody>
+          </table>
   		</div>
   	</div>
   </div>

@@ -55,15 +55,6 @@
 .tooltip-content a {
 	color: #32434f;
 }
-.tooltip-content h3 img{
-	  position: relative;
-	  top:20px;
-	  margin-right: 15px;
-}
-.tooltip-content h3{
-	top: -20px;
-	position: relative;
-}
 
 .tooltip-text {
 	opacity: 0;

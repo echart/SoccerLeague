@@ -18,6 +18,6 @@ $query->execute();
 $query->setFetchMode(PDO::FETCH_OBJ);
 $x=$query->fetch();
 
-$lastlogin = $club->lastlogin()==false ? '...' : $club->lastlogin();
+$lastlogin = $club->lastlogin()==false ? '...' : __date($club->lastlogin());
 $data = array('data'=>array('leaguename'=>$x->leaguename,'clubname'=>$club->clubname,'created'=>__date($club->created),'status'=>$club->status,'country'=>$club->id_country, 'lastlogin'=>$lastlogin));
 echo JsonOutput::load($data);

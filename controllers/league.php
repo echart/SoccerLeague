@@ -1,6 +1,7 @@
 <?php
 require_once('helpers/__country.php');
-$this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+$this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
+$this->menu    = 'league';
 
 $request = $this->get['subrequest'] ?? '';
 
@@ -20,6 +21,8 @@ switch ($subrequest) {
     if(!League::checkIfLeagueAlreadyExists(Season::getSeason(),getCountryID($country),$division,$group)){
       $this->data['league']['nonexists']=true;
     }else{
+      $this->submenu = 'league';
+      
       $competition = new Competition(Competition::getIdCompetition(getCountryID($country)));
       $competition->__load();
 
@@ -33,12 +36,15 @@ switch ($subrequest) {
       $this->data['league']['table']=array();
       $this->data['league']['div']=$division;
       $this->data['league']['group']=$group;
+      $this->data['league']['countryabbr'] = strtolower($country);
       $i=0;
       while($data=$table->fetch()){
         $data['played']=$competition->gamesplayed;
         $this->data['league']['table'][$i]=$data;
         $i++;
       }
+
+
 
       $this->addCSSFile('league.css');
       $this->addCSSFile('tooltip.css');
