@@ -490,10 +490,10 @@ create table watchlist(
     FOREIGN KEY (away) REFERENCES club(id_club),
 	attendance integer
 );
-create table competition_calendar(
+create table league_calendar(
  id_match_calendar serial primary key,
- id_competition integer not null,
-   FOREIGN KEY (id_competition) REFERENCES competition(id_competition),
+ id_league integer not null,
+   FOREIGN KEY (id_league) REFERENCES league(id_league),
  id_match integer,
    FOREIGN key (id_match) references matches(id_match),
  day date,
