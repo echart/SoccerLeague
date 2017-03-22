@@ -22,7 +22,7 @@ switch ($subrequest) {
       $this->data['league']['nonexists']=true;
     }else{
       $this->submenu = 'league';
-      
+
       $competition = new Competition(Competition::getIdCompetition(getCountryID($country)));
       $competition->__load();
 
@@ -43,6 +43,23 @@ switch ($subrequest) {
         $this->data['league']['table'][$i]=$data;
         $i++;
       }
+
+      $LeagueFixture = new LeagueFixture($league->id_league);
+      $x = $LeagueFixture->__nextMatches();
+      $i=0;
+      while($data=$x->fetch()){
+        $this->data['league']['next-matches'][$i]=$data;
+        $query=Connection::getInstance()->connect()->prepare("SELECT home,away from matches where id_match=:id_match");
+    		$query->bindParam(':id_match', $data['id_match']);
+    		$query->execute();
+    		$match=$query->fetch(PDO::FETCH_OBJ);
+        $this->data['league']['next-matches'][$i]['home'] = Club::getClubNameById($match->home);
+        $this->data['league']['next-matches'][$i]['homeID'] = $match->home;
+        $this->data['league']['next-matches'][$i]['away'] = Club::getClubNameById($match->away);
+        $this->data['league']['next-matches'][$i]['awayID'] = $match->away;
+        $i++;
+      }
+      // $this->data['league']['next-matches'] = $
 
 
 

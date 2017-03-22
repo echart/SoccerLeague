@@ -3,15 +3,15 @@
 	<!-- <div class='soccerleague'></div> -->
 	<nav>
 		<ul>
-			<li><a href='<?=$this->tree?>home'><i class='home'></i><span>Home</span></a></li>
-			<li><a href='<?=$this->tree?>club'><i class='club'></i><span>Clube</span></a></li>
-			<li><a href='<?=$this->tree?>players'><i class='squad'></i><span>Equipe</span></a></li>
-			<li><a href='<?=$this->tree?>league'><i class='league'></i><span>Competições</span></a></li>
-			<li><a href='<?=$this->tree?>transfers'><i class='market'></i><span>Mercado</span></a></li>
-			<li><a href='<?=$this->tree?>forum'><i class='world'></i><span>Comunidade</span></a></li>
-			<li><a href='<?=$this->tree?>buy-pro'><i class='slpro'></i><span>PRO</span></a></li>
-			<li><a href='<?=$this->tree?>admin'><i class='admin'></i><span>Administrador</span></a></li>
-			<li><a href='<?=$this->tree?>logout'><i class='exit'></i><span>Sair</span></a></li>
+			<li><a <?=($this->menu=='home') ? "class='selected'" : '';?> href='<?=$this->tree?>home'><i class='home'></i><span>Home</span></a></li>
+			<li><a <?=($this->menu=='club') ? "class='selected'" : '';?> href='<?=$this->tree?>club'><i class='club'></i><span>Clube</span></a></li>
+			<li><a <?=($this->menu=='squad') ? "class='selected'" : '';?> href='<?=$this->tree?>players'><i class='squad'></i><span>Equipe</span></a></li>
+			<li><a <?=($this->menu=='league') ? "class='selected'" : '';?> href='<?=$this->tree?>league'><i class='league'></i><span>Competições</span></a></li>
+			<li><a <?=($this->menu=='transfers') ? "class='selected'" : '';?> href='<?=$this->tree?>transfers'><i class='market'></i><span>Mercado</span></a></li>
+			<li><a <?=($this->menu=='forum') ? "class='selected'" : '';?> href='<?=$this->tree?>forum'><i class='world'></i><span>Comunidade</span></a></li>
+			<li><a <?=($this->menu=='buy-pro') ? "class='selected'" : '';?> href='<?=$this->tree?>buy-pro'><i class='slpro'></i><span>PRO</span></a></li>
+			<li><a <?=($this->menu=='admin') ? "class='selected'" : '';?> href='<?=$this->tree?>admin'><i class='admin'></i><span>Administrador</span></a></li>
+			<li><a <?=($this->menu=='logout') ? "class='selected'" : '';?> href='<?=$this->tree?>logout'><i class='exit'></i><span>Sair</span></a></li>
 		</ul>
 	</nav>
 </div>

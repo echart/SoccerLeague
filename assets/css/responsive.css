@@ -89,7 +89,12 @@ LOWER THAN 825PX
   .nav ul li.more{
     display: block;
   }
-
+  div.submenu-mobile{
+    display: block;
+  }
+  ul.submenu{
+    display: none;
+  }
 }
 /**
 ==========================

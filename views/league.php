@@ -8,7 +8,7 @@
     <h1 class='page-title'><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/Brazil.png' width="30px"><?=$this->title?> (<?=$this->data['league']['div']?>.<?=$this->data['league']['group']?>)</h1>
   <? } ?>
   <div class='byte'>
-    <div class='bit-70 box'>
+    <div class='bit-70 box right'>
   		<div class='box-title color'>
   			Classificação
   		</div>
@@ -41,7 +41,7 @@
               <td><?=$i+1?></td>
               <td></a>
                 <span class="tooltip tooltip-effect-1" club='<?=$leaguerow['id_club']?>'>
-                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$leaguerow['id_club']?>'><?=$leaguerow['clubname']?></span>
+                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$leaguerow['id_club']?>'><?=$leaguerow['clubname']?></a></span>
                     <span class="tooltip-content clearfix">
                         <span class="tooltip-text">Carregando...</span>
                     </span>
@@ -61,7 +61,7 @@
         </table>
   		</div>
   	</div>
-    <div class='bit-30 box right'>
+    <div class='bit-30 box left'>
   		<div class='box-title color'>
   			Opções
   		</div>
@@ -74,49 +74,34 @@
           </ul>
   		</div>
   	</div>
-    <div class='bit-30 box right'>
+    <div class='bit-30 box left'>
   		<div class='box-title color'>
   			Próxima rodada
   		</div>
   		<div class='box-content'>
           <table>
             <tbody>
+              <?php foreach ($this->data['league']['next-matches'] as $item){ ?>
               <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
+                <td style='text-align:center'>
+                  <span class="tooltip tooltip-effect-1" club='<?=$item['homeID']?>'>
+                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$item['homeID']?>'><?=$item['home']?></a></span>
+                    <span class="tooltip-content clearfix">
+                        <span class="tooltip-text">Carregando...</span>
+                    </span>
+                  </span>
+                </td>
+                <td style='text-align:center'><a href='<?=$this->tree?>match/<?=$item['id_match']?>'>Ver</a></td>
+                <td style='text-align:center'>
+                  <span class="tooltip tooltip-effect-1" club='<?=$item['awayID']?>'>
+                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$item['awayID']?>'><?=$item['away']?></a></span>
+                    <span class="tooltip-content clearfix">
+                        <span class="tooltip-text">Carregando...</span>
+                    </span>
+                  </span>
+                </td>
               </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
-              <tr>
-                <td>Grêmio - Internacional</td>
-                <td>Match</td>
-              </tr>
+              <? } ?>
             </tbody>
           </table>
   		</div>

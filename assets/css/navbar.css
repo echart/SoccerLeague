@@ -38,15 +38,15 @@ header ul.submenu li.mobile{
   display: none;
 }
 div.submenu-mobile{
+  display: none;
   position: absolute;
   right: 20px;
   top:22.5px;
   width: 24px;
   height: 24px;
-  display: block;
   background-size: 24px;
   background-repeat: no-repeat;
-  background-image: url(../img/icons/world-cup.png) !important;
+  background-image: url(../img/icons/more.png) !important;
 }
 /* menu mobile */
 .menu-mobile{
@@ -106,6 +106,9 @@ nav ul li a{
   text-decoration: none;
   padding: 15px 18px 25px;
   /*border-bottom: 1px solid #ebebeb;*/
+}
+nav ul li a.selected{
+  background-color: #4B4F52;
 }
 nav ul li i{
   width: 24px;
