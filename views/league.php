@@ -83,22 +83,11 @@
             <tbody>
               <?php foreach ($this->data['league']['next-matches'] as $item){ ?>
               <tr>
-                <td style='text-align:center'>
-                  <span class="tooltip tooltip-effect-1" club='<?=$item['homeID']?>'>
-                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$item['homeID']?>'><?=$item['home']?></a></span>
-                    <span class="tooltip-content clearfix">
-                        <span class="tooltip-text">Carregando...</span>
-                    </span>
-                  </span>
+                <td>
+                  <?=substr($item['home'],0,15)?> - <?=substr($item['away'],0,15)?>
                 </td>
-                <td style='text-align:center'><a href='<?=$this->tree?>match/<?=$item['id_match']?>'>Ver</a></td>
-                <td style='text-align:center'>
-                  <span class="tooltip tooltip-effect-1" club='<?=$item['awayID']?>'>
-                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$item['awayID']?>'><?=$item['away']?></a></span>
-                    <span class="tooltip-content clearfix">
-                        <span class="tooltip-text">Carregando...</span>
-                    </span>
-                  </span>
+                <td>
+                  <a href="<?=$this->tree?>matches/<?=$item['id_match']?>">Ver partida</a>
                 </td>
               </tr>
               <? } ?>
