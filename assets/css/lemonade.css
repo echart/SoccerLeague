@@ -95,7 +95,7 @@
     width: 100%; }
   .hide-on-small{
     display: none; }
-  .bit-80, .bit-75, .bit-25, .bit-70, .bit-30{
+  .bit-80, .bit-75, .bit-25, .bit-70, .bit-30, .bit-60,.bit-40{
     width: 100%;
   }
 
@@ -111,7 +111,7 @@
   .bit-1, .bit-2, .bit-3, .bit-5, .bit-7, .bit-9, .bit-11 {
     width: 100%;
   }
-  .bit-80, .bit-75, .bit-25, .bit-70, .bit-30{
+  .bit-80, .bit-75, .bit-25, .bit-70, .bit-30, .bit-60,.bit-40{
     width: 100%;
   }
   .hide-on-medium{
@@ -132,7 +132,7 @@
   .hide-on-large{
     display: block;
   }
-  .bit-80, .bit-75, .bit-25, .bit-70, .bit-30{
+  .bit-80, .bit-75, .bit-25, .bit-70, .bit-30, .bit-60,.bit-40{
     width: 100%;
   }
 }

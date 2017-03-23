@@ -15,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/tooltip.css">
 	<? $this->loadCSSFiles(); ?>
 </head>
 <body>

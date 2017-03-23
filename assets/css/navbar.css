@@ -183,3 +183,8 @@ nav ul li i.admin{
 .subnav a.selected{
   color: #5fad56;
 }
+.subnav span{
+  position: relative;
+  top: -10px;
+  left: 20px;
+}

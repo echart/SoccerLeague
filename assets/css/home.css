@@ -8,29 +8,35 @@ next match
 }
 .next-game .match{
   margin: 10px;
-  padding: 20px;
+  padding: 20px 10px 0px;
 }
 .next-game .match .home{
   width: 45%;
   float: left;
-  border-left: 1px dashed #5FAD56;
   padding: 20px;
+}
+.home p{
+  margin-top: 10px;
 }
 .next-game .match .away{
   width: 45%;
   float: right;
-  border-right: 1px dashed #5FAD56;
   padding: 20px;
 }
-.next-game .match span{
+.away p{
+  margin-top: 10px;
+}
+.next-game .match > span{
   font-size: 28px;
   font-weight: 300;
 }
-.home img, .away img{
+.home > img, .away > img{
     width: 65px;
 }
 .home a, .away a{
   font-size: 14px;
+  text-decoration: none;
+  color: #4285f4;
 }
 .next-game .match .match-stats{
   width: 100%;
