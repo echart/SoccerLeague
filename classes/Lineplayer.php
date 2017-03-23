@@ -24,6 +24,11 @@ class Lineplayer extends Player{
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_OBJ);
+		$this->injury_prop=$data->injury_propensity;
+		$this->professionalism=$data->professionalism;
+		$this->agressive=$data->agressive;
+		$this->adaptability=$data->adaptability;
+		$this->leadership = $data->leadership;
 		$this->stamina=$data->stamina;
 		$this->speed=$data->speed;
 		$this->resistance=$data->resistance;

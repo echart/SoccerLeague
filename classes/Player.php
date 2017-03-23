@@ -27,7 +27,6 @@ class Player{
 	public $agressive;
 	public $adaptability;
 	public $leadership;
-	public $learning;
 	public $workrate;
 	public $concentration;
 	public $decision;
@@ -45,7 +44,7 @@ class Player{
 	}
 
 	public function __loadinfo(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg FROM players p where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg, id_player_club FROM players p where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 
 		$query->execute();
@@ -57,6 +56,7 @@ class Player{
 		$this->height = $data->height;
 		$this->weight = $data->weight;
 		$this->wage = $data->leg;
+		$this->id_club = $data->id_player_club;
 	}
 
 	public static function addHistory($id_player,$id_club,$season){

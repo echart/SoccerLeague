@@ -25,7 +25,9 @@
     {"name":"Iago"},
     {"name":"Rafael"},
     {"name":"Pedro"},
-    {"name":"Cassiano"}
+    {"name":"Cassiano"},
+    {"name":"Alex"},
+    {"name":"Ivan"}
     ],
   "lastnames":[
     {"lastname":"Silva"},
@@ -49,6 +51,7 @@
     {"lastname":"Almeida"},
     {"lastname":"Torres"},
     {"lastname":"Marques"},
-    {"lastname":"Barros"}
+    {"lastname":"Barros"},
+    {"lastname":"Ortiz"}
   ]
 }]}

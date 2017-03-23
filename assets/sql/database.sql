@@ -5,7 +5,7 @@ create table season(
 	endseason date not null
 );
 /**
- * TABELAS DE CONFIGURAÇÃO
+ * TABELAS DE CONFIGURA�?ÃO
  */
 create table languages(
 	id_language SERIAL PRIMARY KEY,
@@ -299,8 +299,8 @@ create table players_attr(
 	jump numeric (5,3),
 	professionalism numeric (5,3),
 	agressive numeric (5,3),
-	adptability numeric (5,3),
-	learning numeric (5,3),
+	adaptability numeric (5,3),
+	leadership numeric (5,3),
 	workrate numeric (5,3),
 	concentration numeric (5,3),
 	decision numeric (5,3),
