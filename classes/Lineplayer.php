@@ -16,6 +16,9 @@ class Lineplayer extends Player{
 	public $marking;
 	public $tackling;
 	/*methods*/
+	public function __construct($id_player){
+		parent::__construct($id_player);
+	}
 	public function __loadskills(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_attr pa inner join players_attr_line pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
@@ -43,13 +46,6 @@ class Lineplayer extends Player{
 		$this->finish=$data->finish;
 		$this->heading=$data->heading;
 		$this->freekick=$data->freekick;
-	}
-	public function __loadinfo(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg FROM players p where id_player=:id_player");
-		$query->bindParam(':id_player',$this->id_player);
-		$query->execute();
-		$data=$query->fetch(PDO::FETCH_ASSOC);
-		return $data;
 	}
 	public function __loadpositions(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT side,position FROM positions inner join players_position using(id_position) where id_player=:id_player");
@@ -124,14 +120,6 @@ class Lineplayer extends Player{
 	}
 	public static function addHistory($id_player,$id_club,$season){
 		parent::addHistory($id_player,$id_club,$season);
-	}
-	public static function __loadhistory($id_player){
-		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_history where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
-		$query->execute();
-
-		$query->setFetchMode(PDO::FETCH_OBJ);
-		return $query;
 	}
 	public function __delete(){
 		$query=Connection::getInstance()->connect()->prepare("DELETE CASCADE FROM players where id_player=:id_player");

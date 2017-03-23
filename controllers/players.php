@@ -7,7 +7,6 @@ $this->menu    = 'squad';
 if(isset($this->request['id'])){
 
   $player = Player::__this($this->get['id']);
-  $player->__load();
   $player->__loadinfo();
   $player->__loadskills();
   $player->__loadhistory();
@@ -15,6 +14,8 @@ if(isset($this->request['id'])){
 
   $this->addCSSFile('player.css');
   $this->requestURL='player';
+  var_dump($player);
+  exit;
 }else{
 
 }

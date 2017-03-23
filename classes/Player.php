@@ -49,7 +49,7 @@ class Player{
 		$query->bindParam(':id_player',$this->id_player);
 
 		$query->execute();
-		$data=$query->fetch(PDO::FETCH_ASSOC);
+		$data=$query->fetch(PDO::FETCH_OBJ);
 
 		$this->name = $data->name;
 		$this->nickname = $data->nickname;
@@ -76,5 +76,13 @@ class Player{
 		}else{
 			return new Lineplayer($id_player);
 		}
+	}
+	public function __loadhistory($id_player){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_history where id_player=:id_player");
+		$query->bindParam(':id_player',$id_player);
+		$query->execute();
+
+		$query->setFetchMode(PDO::FETCH_OBJ);
+		return $query;
 	}
 }
