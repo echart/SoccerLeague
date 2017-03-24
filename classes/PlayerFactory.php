@@ -22,7 +22,7 @@ class PlayerFactory{
     $player->agressive=PlayerFactory::random($indice,20.0);
     $player->adaptability=PlayerFactory::random($indice,20.0);
     $player->leadership=PlayerFactory::random($indice,20.0);
-    $player->learning=PlayerFactory::random($indice,20.0);
+    $player->leadership=PlayerFactory::random($indice,20.0);
     $player->workrate=PlayerFactory::random($indice,20.0);
     $player->concentration=PlayerFactory::random($indice,20.0);
     $player->decision=PlayerFactory::random($indice,20.0);
@@ -76,7 +76,7 @@ class PlayerFactory{
     $player->agressive=PlayerFactory::random($indice,20.0);
     $player->adaptability=PlayerFactory::random($indice,20.0);
     $player->leadership=PlayerFactory::random($indice,20.0);
-    $player->learning=PlayerFactory::random($indice,20.0);
+    $player->leadership=PlayerFactory::random($indice,20.0);
     $player->workrate=PlayerFactory::random($indice,20.0);
     $player->concentration=PlayerFactory::random($indice,20.0);
     $player->decision=PlayerFactory::random($indice,20.0);
@@ -168,7 +168,7 @@ class PlayerFactory{
 			$query->execute();
 
 
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players_attr(id_player, stamina, speed, resistance, injury_propensity, jump, professionalism, agressive, adptability, learning, workrate, concentration, decision, positioning, vision, unpredictability, communication) values (:id_player,:stamina,:speed,:resistance,:injury_propensity,:jump,:professionalism,:agressive,:adaptability,:learning,:workrate,:concentration,:decision,:positioning,:vision,:unpredictability,:communication)");
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players_attr(id_player, stamina, speed, resistance, injury_propensity, jump, professionalism, agressive, adaptability, leadership, workrate, concentration, decision, positioning, vision, unpredictability, communication) values (:id_player,:stamina,:speed,:resistance,:injury_propensity,:jump,:professionalism,:agressive,:adaptability,:leadership,:workrate,:concentration,:decision,:positioning,:vision,:unpredictability,:communication)");
 			$query->bindParam(":id_player",$id_player);
 			$query->bindParam(":stamina",$player->stamina);
 			$query->bindParam(":speed",$player->speed);
@@ -178,7 +178,7 @@ class PlayerFactory{
 			$query->bindParam(":professionalism",$player->professionalism);
 			$query->bindParam(":agressive",$player->agressive);
 			$query->bindParam(":adaptability",$player->adaptability);
-			$query->bindParam(":learning",$player->learning);
+			$query->bindParam(":leadership",$player->leadership);
 			$query->bindParam(":workrate",$player->workrate);
 			$query->bindParam(":concentration",$player->concentration);
 			$query->bindParam(":decision",$player->decision);
@@ -257,7 +257,7 @@ class PlayerFactory{
 			$query->bindParam(":bear",$player->bear);
 			$query->execute();
 
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players_attr(id_player, stamina, speed, resistance, injury_propensity, jump, professionalism, agressive, adptability, learning, workrate, concentration, decision, positioning, vision, unpredictability, communication) values (:id_player,:stamina,:speed,:resistance,:injury_propensity,:jump,:professionalism,:agressive,:adaptability,:learning,:workrate,:concentration,:decision,:positioning,:vision,:unpredictability,:communication)");
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players_attr(id_player, stamina, speed, resistance, injury_propensity, jump, professionalism, agressive, adaptability, leadership, workrate, concentration, decision, positioning, vision, unpredictability, communication) values (:id_player,:stamina,:speed,:resistance,:injury_propensity,:jump,:professionalism,:agressive,:adaptability,:leadership,:workrate,:concentration,:decision,:positioning,:vision,:unpredictability,:communication)");
 
 			$query->bindParam(":id_player",$id_player);
 			$query->bindParam(":stamina",$player->stamina);
@@ -268,7 +268,7 @@ class PlayerFactory{
 			$query->bindParam(":professionalism",$player->professionalism);
 			$query->bindParam(":agressive",$player->agressive);
 			$query->bindParam(":adaptability",$player->adaptability);
-			$query->bindParam(":learning",$player->learning);
+			$query->bindParam(":leadership",$player->leadership);
 			$query->bindParam(":workrate",$player->workrate);
 			$query->bindParam(":concentration",$player->concentration);
 			$query->bindParam(":decision",$player->decision);

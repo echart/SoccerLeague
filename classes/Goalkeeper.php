@@ -16,10 +16,15 @@ class Goalkeeper extends Player{
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_OBJ);
+		$this->agressive=$data->agressive;
+		$this->professionalism=$data->professionalism;
+		$this->injury_prop=$data->injury_propensity;
 		$this->stamina=$data->stamina;
 		$this->speed=$data->speed;
 		$this->resistance=$data->resistance;
 		$this->jump=$data->jump;
+		$this->adaptability = $data->adaptability;
+		$this->leadership = $data->leadership;
 		$this->workrate=$data->workrate;
 		$this->positioning=$data->positioning;
 		$this->concentration=$data->concentration;
@@ -35,13 +40,6 @@ class Goalkeeper extends Player{
 		$this->rushingout=$data->rushingout;
 		$this->kicking=$data->kicking;
 		$this->throwing=$data->throwing;
-	}
-	public function __loadinfo(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg FROM players p where id_player=:id_player");
-		$query->bindParam(':id_player',$this->id_player);
-		$query->execute();
-		$data=$query->fetch(PDO::FETCH_ASSOC);
-		return $data;
 	}
 	public function __loadpositions(){
 		$positions=array();
@@ -91,14 +89,6 @@ class Goalkeeper extends Player{
 	}
 	public static function addHistory($id_player,$id_club,$season){
 		parent::addHistory($id_player,$id_club,$season);
-	}
-	public static function __loadhistory($id_player){
-		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_history where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
-		$query->execute();
-
-		$query->setFetchMode(PDO::FETCH_OBJ);
-		return $query;
 	}
 	public function __delete(){
 		$query=Connection::getInstance()->connect()->prepare("DELETE CASCADE FROM players where id_player=:id_player");

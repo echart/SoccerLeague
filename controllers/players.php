@@ -15,8 +15,8 @@ if(isset($this->request['id'])){
 
   $this->addCSSFile('player.css');
   $this->requestURL='player';
-  // var_dump($player);
-  // exit;
+  var_dump($player);
+  exit;
 }else{
   $this->title = "Elenco";
   $this->menu  = "squad";

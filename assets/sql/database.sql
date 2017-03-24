@@ -617,6 +617,7 @@ create table tweet(
 insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
 insert into competition_type(type) values ('L');
 insert into countries (country,abbreviation) values ('Brazil','br');
+insert into positions (position,side) values('GK','C');
 insert into positions (position,side) values('D','C');
 insert into positions (position,side) values('D','L');
 insert into positions (position,side) values('D','R');
