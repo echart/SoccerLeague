@@ -11,7 +11,7 @@ class Goalkeeper extends Player{
 	public function __construct($id_player){
 		parent::__construct($id_player);
 	}
-	public function __loadskills(){
+	public function __loadskills(){,0147
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_attr pa inner join players_attr_gk pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
