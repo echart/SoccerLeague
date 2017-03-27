@@ -8,8 +8,13 @@ class Player{
 	public $position;
 	public $id_player;
 	public $id_club;
+	public $id_country;
 	public $name;
 	public $nickname;
+	public $bear;
+	public $hair;
+	public $body;
+	public $eyes;
 	public $age;
 	public $height;
 	public $weight;
@@ -44,7 +49,7 @@ class Player{
 	}
 
 	public function __loadinfo(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg, id_player_club FROM players p where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg, id_player_club, id_country FROM players p where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 
 		$query->execute();
@@ -55,8 +60,21 @@ class Player{
 		$this->age = $data->age;
 		$this->height = $data->height;
 		$this->weight = $data->weight;
-		$this->wage = $data->leg;
 		$this->id_club = $data->id_player_club;
+		$this->id_country = $data->id_country;
+	}
+
+	public function __loadappearance(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_appearance p where id_player=:id_player");
+		$query->bindParam(':id_player',$this->id_player);
+
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_OBJ);
+
+		$this->hair = $data->hair;
+		$this->body = $data->body;
+		$this->bear = $data->bear;
+		$this->eyes = $data->eyes;
 	}
 
 	public static function addHistory($id_player,$id_club,$season){
@@ -77,9 +95,9 @@ class Player{
 			return new Lineplayer($id_player);
 		}
 	}
-	public function __loadhistory($id_player){
+	public function __loadhistory(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_history where id_player=:id_player");
-		$query->bindParam(':id_player',$id_player);
+		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 
 		$query->setFetchMode(PDO::FETCH_OBJ);

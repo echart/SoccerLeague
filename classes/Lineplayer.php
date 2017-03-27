@@ -24,6 +24,39 @@ class Lineplayer extends Player{
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_OBJ);
+		$this->injury_prop=intval($data->injury_propensity);
+		$this->professionalism=intval($data->professionalism);
+		$this->agressive=intval($data->agressive);
+		$this->adaptability=intval($data->adaptability);
+		$this->leadership =intval( $data->leadership);
+		$this->stamina=intval($data->stamina);
+		$this->speed=intval($data->speed);
+		$this->resistance=intval($data->resistance);
+		$this->jump=intval($data->jump);
+		$this->workrate=intval($data->workrate);
+		$this->positioning=intval($data->positioning);
+		$this->concentration=intval($data->concentration);
+		$this->decision=intval($data->decision);
+		$this->vision=intval($data->vision);
+		$this->unpredictability=intval($data->unpredictability);
+		$this->communication=intval($data->communication);
+		$this->marking=intval($data->marking);
+		$this->tackling=intval($data->tackling);
+		$this->crossing=intval($data->crossing);
+		$this->pass=intval($data->pass);
+		$this->technical=intval($data->technical);
+		$this->ballcontrol=intval($data->ballcontrol);
+		$this->dribble=intval($data->dribble);
+		$this->longshot=intval($data->longshot);
+		$this->finish=intval($data->finish);
+		$this->heading=intval($data->heading);
+		$this->freekick=intval($data->freekick);
+	}
+	public function __loadskillsDecimals(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_attr pa inner join players_attr_line pal using(id_player) where id_player=:id_player");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_OBJ);
 		$this->injury_prop=$data->injury_propensity;
 		$this->professionalism=$data->professionalism;
 		$this->agressive=$data->agressive;
@@ -56,9 +89,11 @@ class Lineplayer extends Player{
 		$query=Connection::getInstance()->connect()->prepare("SELECT side,position FROM positions inner join players_position using(id_position) where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
+		$i=0;
 		while($data = $query->fetch(PDO::FETCH_OBJ)){
-			$positions[]['side']=$data->side;
-			$positions[]['position']=$data->position;
+			$positions[$i]['side']=$data->side;
+			$positions[$i]['position']=$data->position;
+			$i++;
 		}
 		$this->position=$positions;
 		return $positions;
@@ -115,12 +150,20 @@ class Lineplayer extends Player{
 		return number_format($totSkill,1);
 	}
 
-	public function skillIndex(){
+	public function physical(){
 		$physical=$this->stamina+$this->speed+$this->resistance+$this->jump;
+		return $physical;
+	}
+	public function psychologic(){
 		$psychologic=$this->workrate+$this->concentration+$this->decision+$this->positioning+$this->vision+$this->unpredictability+$this->communication;
+		return $psychologic;
+	}
+	public function technical(){
 		$technical=$this->crossing+$this->pass+$this->technical+$this->ballcontrol+$this->dribble+$this->longshot+$this->finish+$this->heading+$this->freekick+$this->marking+$this->tackling;
-
-		$this->skill_index=$physical+$technical+$psychologic;
+		return $technical;
+	}
+	public function skillIndex(){
+		$this->skill_index=$this->physical() + $this->technical() + $this->psychologic();
 		return $this->skill_index;
 	}
 	public static function addHistory($id_player,$id_club,$season){

@@ -5,7 +5,7 @@
   <?
   exit;
   }else{ ?>
-    <h1 class='page-title'><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/Brazil.png' width="30px"><?=$this->title?> (<?=$this->data['league']['div']?>.<?=$this->data['league']['group']?>)</h1>
+    <h1 class='page-title'><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/<?=$this->data['league']['country']?>.png' width="30px"><?=$this->title?> (<?=$this->data['league']['div']?>.<?=$this->data['league']['group']?>)</h1>
   <? } ?>
   <div class='byte'>
     <div class='bit-70 box right'>

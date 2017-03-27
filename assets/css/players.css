@@ -1,0 +1,17 @@
+div.form-field{
+  width: 49.5%;
+  display: inline-table;
+  height: 50px;
+  padding: 10px;
+}
+@media (max-width:825px){
+  div.form-field{
+    width: 100%;
+  }
+}
+div.form-field:first-child label{
+  margin: 10px;
+}
+div.form-field input{
+  margin-left: 10px;
+}

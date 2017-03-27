@@ -14,12 +14,50 @@ body{
   overflow-x: hidden;
 }
 a{
+  font-size: 13px;
+  text-decoration: none;
   color: #4285f4;
 }
 a:hover{
   color: #26292B;
+  transition: 0.3s all;
 }
 
+/**
+POSITIONS BY COLOR
+*/
+span.position-D{
+  margin: 0 auto;
+	padding: 5px 7.5px;
+  border-radius:2.5px;
+	width: 50px;
+  background-color: #4285F4;
+  color: #fff;
+}
+span.position-DM, span.position-M, span.position-OM{
+  margin: 0 auto;
+  padding: 5px 7.5px;
+  border-radius:2.5px;
+	width: 50px;
+  background-color: #FBBC05;
+  color: #393e41;
+}
+span.position-F{
+  margin: 0 auto;
+  padding: 5px 7.5px;
+  border-radius:2.5px;
+	width: 50px;
+  background-color: #EA4335;
+  color: #f4f4f4;
+}
+span.position-GK{
+  margin: 0 auto;
+  padding: 5px 7.5px;
+  border-radius:2.5px;
+	width: 50px;
+  background-color: #34A853;
+  color: #f4f4f4;
+}
 /**
   SOCCERLEAGUELOGO
 **/
@@ -107,7 +145,6 @@ div.form-field{
 	width: 100%;
 	white-space: normal;
 	max-height:200px;
-	margin: 15px 0;
 	font-family: 'Open Sans';
 	font-size: 12px;
 }
@@ -179,21 +216,25 @@ BUTTONS
 	background-color: #393e41;
 	border: 0px;
 	cursor:pointer;
+  border-radius: 2.5px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 .btn{
-	padding: 1.25rem 3rem;
+	padding: 10px 20px;
 	cursor:pointer;
 }
 .btn-large{
-	padding: 1.25rem 10rem;
+	padding: 12px 50px;
 	cursor:pointer;
+  font-size: 15px;
 }
 .btn-medium{
-	padding: 1.25rem 5rem;
+	padding: 10px 30px;
 	cursor:pointer;
 }
 .btn-small{
-	padding: 1.25rem 1rem;
+	padding: 5px;
 	cursor:pointer;
 }
 .btn-border{
@@ -201,8 +242,8 @@ BUTTONS
 	cursor:pointer;
 }
 .btn:hover,.btn-medium:hover,.btn-small:hover,.btn-large:hover{
-	background-color: #393e41;
-	transition: .7s all;
+  opacity: 0.8;
+  transition: 0.3s all;
 }
 .btn:active,.btn-medium:active,.btn-small:active,.btn-large:active{
 	background-color: #fff;
@@ -211,6 +252,30 @@ BUTTONS
 .btn-disabled{
 	background-color: #ccc !important;
 	color: #333 !important;
+}
+.btn-success{
+  background-color: #5fad56;
+  color: #fff;
+}
+.btn-danger{
+  background-color: #ea4335;
+  color: #fff;
+}
+.btn-light{
+  background-color: #ddd;
+  color: #333;
+}
+.btn-warning{
+  background-color:#d5b942;
+  color: #fff;
+}
+.btn-full{
+  width: 100%;
+}
+.btn img{
+  position: relative;
+  top: 2.5px;
+  margin-right: 5px;
 }
 /*=============================
 Tables
@@ -254,7 +319,6 @@ tfoot td, table tfoot th {
 .table {
   background-color: white;
   color: #363636;
-  margin-bottom: 1.5rem;
   width: 100%;
 }
 .table td.is-narrow,

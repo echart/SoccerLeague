@@ -37,6 +37,8 @@ switch ($subrequest) {
       $this->data['league']['div']=$division;
       $this->data['league']['group']=$group;
       $this->data['league']['countryabbr'] = strtolower($country);
+      $c = getCountryByID(getCountryID($country));
+      $this->data['league']['country'] = $c['country'];
       $i=0;
       while($data=$table->fetch()){
         $data['played']=$competition->gamesplayed;

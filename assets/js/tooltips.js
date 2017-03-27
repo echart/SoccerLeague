@@ -15,3 +15,25 @@ $('.tooltip[club]').hover(function(){
     },
   })
 });
+
+$('.tooltip[player]').hover(function(){
+  var id = $(this).attr('player');
+  $.ajax({
+    data: {id_player:id},
+    url: 'http://localhost/helpers/ajax/tooltip.player.php',
+    dataType: 'json',
+    success: function(json){
+      console.log(json);
+      $(".tooltip[player='"+id+"'] .tooltip-text").html(
+        '<h3>'+json.data.name+' <img src="http://localhost/assets/img/icons/flags/'+json.data.country+'.png" width="20px"><br></h3><br>'+
+        '<strong>Jogando por </strong><a href="http://localhost/club/'+json.data.club+'">'+json.data.clubname+'</a><br>'+
+        '<strong>Salário:</strong> $'+json.data.wage+'<br>'+
+        '<strong>Idade: </strong> '+json.data.age+' anos<br>'+
+        '<strong>Peso/Altura:</strong> '+json.data.weight+'kg/'+json.data.height+'cm<br>'
+      );
+    },
+    error: function(data){
+      console.log(data);
+    }
+  })
+});

@@ -11,7 +11,37 @@ class Goalkeeper extends Player{
 	public function __construct($id_player){
 		parent::__construct($id_player);
 	}
-	public function __loadskills(){,0147
+	public function __loadskills(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_attr pa inner join players_attr_gk pal using(id_player) where id_player=:id_player");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_OBJ);
+		$this->agressive=intval($data->agressive);
+		$this->professionalism=intval($data->professionalism);
+		$this->injury_prop=intval($data->injury_propensity);
+		$this->stamina=intval($data->stamina);
+		$this->speed=intval($data->speed);
+		$this->resistance=intval($data->resistance);
+		$this->jump=intval($data->jump);
+		$this->adaptability =intval( $data->adaptability);
+		$this->leadership =intval( $data->leadership);
+		$this->workrate=intval($data->workrate);
+		$this->positioning=intval($data->positioning);
+		$this->concentration=intval($data->concentration);
+		$this->decision=intval($data->decision);
+		$this->vision=intval($data->vision);
+		$this->unpredictability=intval($data->unpredictability);
+		$this->communication=intval($data->communication);
+		$this->handling=intval($data->handling);
+		$this->aerial=intval($data->aerial);
+		$this->foothability=intval($data->foothability);
+		$this->oneanone=intval($data->oneanone);
+		$this->reflexes=intval($data->reflexes);
+		$this->rushingout=intval($data->rushingout);
+		$this->kicking=intval($data->kicking);
+		$this->throwing=intval($data->throwing);
+	}
+	public function __loadskillsDecimals(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_attr pa inner join players_attr_gk pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
@@ -35,7 +65,7 @@ class Goalkeeper extends Player{
 		$this->handling=$data->handling;
 		$this->aerial=$data->aerial;
 		$this->foothability=$data->foothability;
-		$this->oneaone=$data->oneanone;
+		$this->oneanone=$data->oneanone;
 		$this->reflexes=$data->reflexes;
 		$this->rushingout=$data->rushingout;
 		$this->kicking=$data->kicking;
@@ -46,9 +76,11 @@ class Goalkeeper extends Player{
 		$query=Connection::getInstance()->connect()->prepare("SELECT side,position FROM positions inner join players_position using(id_position) where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
+		$i=0;
 		while($data = $query->fetch(PDO::FETCH_OBJ)){
-			$positions[]['side']=$data->side;
-			$positions[]['position']=$data->position;
+			$positions[$i]['side']=$data->side;
+			$positions[$i]['position']=$data->position;
+			$i++;
 		}
 		$this->position=$positions;
 		return $positions;
@@ -79,12 +111,23 @@ class Goalkeeper extends Player{
 
 		return number_format($totSkill,1);
 	}
+	public function physical(){
+		$physical=$this->stamina+$this->speed+$this->resistance+$this->jump;
+		return $physical;
+	}
+	public function psychologic(){
+		$psychologic=$this->workrate+$this->concentration+$this->decision+$this->positioning+$this->vision+$this->unpredictability+$this->communication;
+		return $psychologic;
+	}
+	public function technical(){
+		$technical=$this->handling+$this->aerial+$this->foothability+$this->oneaone+$this->reflexes+$this->rushingout+$this->kicking+$this->throwing;
+		return $technical;
+	}
 	public function skillIndex(){
 		$physical=$this->stamina+$this->speed+$this->resistance+$this->jump;
 		$psychologic=$this->workrate+$this->concentration+$this->decision+$this->positioning+$this->vision+$this->unpredictability+$this->communication;
 		$technical=$this->handling+$this->aerial+$this->foothability+$this->oneaone+$this->reflexes+$this->rushingout+$this->kicking+$this->throwing;
-		$skill_index=$physical+$technical+$psychologic;
-		$this->skill_index=$skill_index;
+		$this->skill_index=$this->physical() + $this->technical() + $this->psychologic();
 		return $this->skill_index;
 	}
 	public static function addHistory($id_player,$id_club,$season){

@@ -57,10 +57,10 @@ class PlayerFactory{
 		$player->wage();
 		$player->leg=self::$leg[rand(0,1)];
 
-		$player->body=rand(1,10);
-		$player->hair=rand(1,10);
-		$player->eyes=rand(1,10);
-		$player->bear=rand(1,10);
+		$player->body=rand(1,6);
+		$player->hair=rand(1,30);
+		$player->eyes=rand(1,6);
+		$player->bear=rand(1,15);
 
 		return $player;
 	}
@@ -97,6 +97,7 @@ class PlayerFactory{
 		$player->communication=PlayerFactory::random($indice,20.0);
 		$player->skillIndex();
 		$posI = rand(1,2);
+		$player->position=array();
 		while($posI--){
 			$pos=rand(0,4);
 			$side=rand(0,2);
@@ -112,9 +113,10 @@ class PlayerFactory{
 			$query->bindParam(':side',$a);
 			$query->bindParam(':position',$b);
 		  $query->execute();
-
 	    $data=$query->fetch(PDO::FETCH_OBJ);
-			$player->position[]=$data->id_position;
+			if(!in_array($data->id_position,$player->position)){
+				$player->position[]=$data->id_position;
+			}
 		}
 		$player->id_club=$id_club;
 		$query=Connection::getInstance()->connect()->prepare("SELECT abbreviation, id_country FROM club inner join countries using(id_country) where id_club=:id_club");
@@ -132,10 +134,10 @@ class PlayerFactory{
 		$player->wage();
 		$player->leg=self::$leg[rand(0,1)];
 
-		$player->body=rand(1,10);
-		$player->hair=rand(1,10);
-		$player->eyes=rand(1,10);
-		$player->bear=rand(1,10);
+		$player->body=rand(1,6);
+		$player->hair=rand(1,30);
+		$player->eyes=rand(1,6);
+		$player->bear=rand(1,15);
 
 		return $player;
 	}

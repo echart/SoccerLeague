@@ -3,27 +3,80 @@
 }
 .player-face{
   height: 220px;
-  background: #283044;
+  background: #34a853;
+  background: url('../img/backgrounds/player.bg.png');
+  background-size: cover;
   padding: 10px;
-  width: 20%;
+  width: 200px;
   display: inline-block;
 }
 .player-body{
   width: 151px;
   height: 200px;
   margin: 0 auto;
-  background: url('../img/players/body/1.png');
+  /*background: url('../img/players/body/0.png');*/
   background-size: cover;
 }
 .player-eyes{
-  width: 121px;
-  height: 20px;
-  background: url('../img/players/eyes/1.png');
+  width: 65px;
+  height: 6px;
+  /*background: url('../img/players/eyes/0.png');*/
   background-size: cover;
+  position: relative;
+  top: 70px;
+  left: 49px;
 }
-.player-profile{
-    display: inline-block;
-    width: 79%;
+.player-profile, .player-options{
+    display: block;
+    width: 39.5%;
     height: 200px;
-    background-color: #ccc;
+    float: right;
+}
+.player-profile h1 img{
+  position: relative;
+  top:5px;
+  margin-left: 5px;
+}
+.player-profile h1, .player-profile h2{
+  font-weight: 300;
+}
+.player-profile h2{
+  font-style: italic;
+  font-size: 16px;
+}
+.player-profile div.info{
+  padding-top: 20px;
+}
+.player-profile div.info p{
+  padding: 2.5px;
+  font-size: 13px;
+}
+.player-options{
+  border-left: 1px solid #ddd;
+  padding-left: 15px;
+}
+.player-options .btn{
+  margin-bottom: 2.5px;
+}
+.player-hair{
+  display: block;
+  max-height: 100%;
+  width: 150px;
+  height: 200px;
+  /*background: url('../img/players/hair/0.png');*/
+  background-size: cover;
+  position: relative;
+  left: 0px;
+  top: -21px;
+}
+.player-bear{
+    display: block;
+    max-height: 100%;
+    width: 150px;
+    height: 200px;
+    /*background: url('../img/players/bear/0.png');*/
+    background-size: cover;
+    position: relative;
+    left: 0px;
+    top: -220px;
 }

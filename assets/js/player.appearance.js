@@ -1,0 +1,10 @@
+$(document).ready(function(){
+  $('.player-body').css('background','url("../assets/img/players/body/'+body+'.png")');
+  $('.player-eyes').css('background','url("../assets/img/players/eyes/'+eyes+'.png")');
+  $('.player-hair').css('background','url("../assets/img/players/hair/'+hair+'.png")');
+  $('.player-bear').css('background','url("../assets/img/players/bear/'+bear+'.png")');
+  $('.player-body').css('background-size','cover');
+  $('.player-eyes').css('background-size','cover');
+  $('.player-hair').css('background-size','cover');
+  $('.player-bear').css('background-size','cover');
+})
