@@ -1,19 +1,23 @@
 
 .box-content .club{
-  width: 66%;
+  width: 100%;
   display: inline-block;
   padding: 20px;
 }
 .club-logo{
   display: inline-block;
-  float: left;
+  text-align: center;
+}
+.club-logo .logo{
+  margin: 0 auto;
+  width: 200px;
 }
 .club-logo .logo img{
   display: block;
   width: 200px;
   height: 200px;
-  border: 5px solid #f4f4f4;
-  background-color: #7dcd85;
+  border: 5px solid #4B4F52;
+  background-color: #393E41;
 }
 .club-info{
   /*float: left;
@@ -38,10 +42,11 @@
   font-size: 12px;
 }
 .club-info p, .club-info a{
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 22px;
 }
 .club-options{
-  padding: 10px;
+  padding: 0px 10px;
 }
 .club-options .btn{
   margin-bottom: 2.5px;
@@ -54,4 +59,17 @@
 .box-title{
   background-color: #fff;
   color: #393E41;
+}
+.awards{
+  text-align: center;
+  padding: 10px;
+}
+.awards div{
+  background-color: #26292B;
+  height: 180px;
+  padding: 5px;
+}
+.awards img{
+  height: 150px;
+  display: inline-block;
 }

@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/responsive.css">
 	<link rel="stylesheet" type="text/css" href="<?=$this->tree?>assets/css/tooltip.css">
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+
 	<? $this->loadCSSFiles(); ?>
 </head>
 <body>

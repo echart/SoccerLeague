@@ -31,3 +31,5 @@ switch ($this->request['subrequest']) {
     break;
 }
 $this->addCSSFile('club.css');
+$this->addCSSFile('trophies.css');
+$this->addJSFile('trophies.js');

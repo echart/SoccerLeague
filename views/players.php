@@ -75,7 +75,7 @@
                     </span>
                 </span>
               </td>
-              <td class='border gen'>
+              <td class='border gen positions'>
                 <? foreach ($player->position as $position) { ?>
                   <span class='position-<?=$position['position'];?>'><?=$position['position']." " . $position['side'];?></span>
                 <? } ?>
