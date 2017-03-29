@@ -12,6 +12,9 @@
 	RewriteRule ^([a-z0-9-]+)/([0-9-]+)$ handler.php?request=$1&id=$2 [NC,L]
 	RewriteRule ^([a-z0-9-]+)/([0-9-]+)/$ handler.php?request=$1&id=$2 [NC,L]
 
+	RewriteRule ^([a-z0-9-]+)/([0-9-]+)([a-z0-9-]+)/$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
+	RewriteRule ^([a-z0-9-]+)/([0-9-]+)/([a-z0-9-]+)$ handler.php?request=$1&id=$2&subrequest=$3 [NC,L]
+
 	RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)/$ handler.php?request=$1&method=$2 [NC,L]
 	RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)$ handler.php?request=$1&method=$2 [NC,L]
 

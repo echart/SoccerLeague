@@ -58,7 +58,7 @@
         $available=$league->nextAvailableDivAndGroup();
         if(!League::checkIfLeagueAlreadyExists(1,$club->id_country,$available[0],$available[1])){
           $id_competition=Competition::getIdCompetition(Competition::getIdCompetitionType('L'),$club->id_country, 1);
-          $league->create($id_competition,$available[0] . ' division', $available[0], $available[1], 34);
+          $league->__create($id_competition,$available[0] . ' division', $available[0], $available[1], 34);
         }
         $league = new League($club->id_country,1,$available[0],$available[1]);
         $league->__loadIDleague();

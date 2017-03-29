@@ -211,6 +211,10 @@ textarea:focus{
 /*=============================
 BUTTONS
 ==============================*/
+a.btn{
+  display: block;
+  text-align: center;
+}
 .btn,.btn-medium,.btn-small,.btn-large{
 	color: #fff;
 	background-color: #393e41;
@@ -218,7 +222,8 @@ BUTTONS
 	cursor:pointer;
   border-radius: 2.5px;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 12px;
 }
 .btn{
 	padding: 10px 20px;
@@ -263,7 +268,7 @@ BUTTONS
 }
 .btn-light{
   background-color: #ddd;
-  color: #333;
+  color: #000;
 }
 .btn-warning{
   background-color:#d5b942;

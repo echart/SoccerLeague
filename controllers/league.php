@@ -3,7 +3,7 @@ require_once('helpers/__country.php');
 $this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu    = 'league';
 
-$request = $this->get['subrequest'] ?? '';
+$subrequest = $this->get['subrequest'] ?? '';
 
 $division = $this->get['div'] ?? $_SESSION['SL_div'];
 $group = $this->get['group'] ?? $_SESSION['SL_group'];

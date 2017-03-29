@@ -4,11 +4,6 @@
   display: inline-block;
   padding: 20px;
 }
-.club-options{
-  width: 33%;
-  display: inline-block;
-}
-
 .club-logo{
   display: inline-block;
   float: left;
@@ -21,8 +16,8 @@
   background-color: #7dcd85;
 }
 .club-info{
-  float: left;
-  width: 50%;
+  /*float: left;
+  width: 50%;*/
   height: 200px;
   padding: 0px 30px;
   color: #393e41;
@@ -46,12 +41,17 @@
   font-size: 14px;
 }
 .club-options{
-  border-left: 1px solid #ddd;
-  padding-left: 15px;
-  float: right;
-  margin-top: 30px;
-  margin-right: 10px;
+  padding: 10px;
 }
 .club-options .btn{
   margin-bottom: 2.5px;
+}
+.country-icon{
+  position: relative;
+  top: 7px;
+  left: 5px;
+}
+.box-title{
+  background-color: #fff;
+  color: #393E41;
 }
