@@ -17,7 +17,7 @@
   width: 200px;
   height: 200px;
   border: 5px solid #4B4F52;
-  background-color: #393E41;
+  background-color: #26292B;
 }
 .club-info{
   /*float: left;
@@ -65,8 +65,8 @@
   padding: 10px;
 }
 .awards div{
-  background-color: #26292B;
-  height: 180px;
+  background-color: #EBEBEB;
+  /*height: 180px;*/
   padding: 5px;
 }
 .awards img{
