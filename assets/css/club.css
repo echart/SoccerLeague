@@ -1,0 +1,57 @@
+
+.box-content .club{
+  width: 66%;
+  display: inline-block;
+  padding: 20px;
+}
+.club-options{
+  width: 33%;
+  display: inline-block;
+}
+
+.club-logo{
+  display: inline-block;
+  float: left;
+}
+.club-logo .logo img{
+  display: block;
+  width: 200px;
+  height: 200px;
+  border: 5px solid #f4f4f4;
+  background-color: #7dcd85;
+}
+.club-info{
+  float: left;
+  width: 50%;
+  height: 200px;
+  padding: 0px 30px;
+  color: #393e41;
+}
+.club-info h1{
+  font-size: 32px;
+}
+.club-info .nickname{
+  font-size: 18px;
+}
+.club-info h1,h3{
+  font-weight: 300;
+}
+.club-info h3{
+  margin-bottom: 10px;
+}
+.club-info h3 a{
+  font-size: 12px;
+}
+.club-info p, .club-info a{
+  font-size: 14px;
+}
+.club-options{
+  border-left: 1px solid #ddd;
+  padding-left: 15px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+}
+.club-options .btn{
+  margin-bottom: 2.5px;
+}

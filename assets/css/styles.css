@@ -269,6 +269,10 @@ BUTTONS
   background-color:#d5b942;
   color: #fff;
 }
+.btn-blue{
+  background-color: #4392f1;
+  color: #fff;
+}
 .btn-full{
   width: 100%;
 }
