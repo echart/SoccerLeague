@@ -24,8 +24,23 @@
         <div class='box-title'>
           Visitas Recentes
         </div>
-        <div class='box-content'>
-          <p>Ultimas visitas</p>
+        <div class='box-content visits'>
+          <?
+          if($this->data['visitors']==null){
+            echo '<p>Nenhuma visita recente</p>';
+          }else{
+            echo '<ul>';
+            foreach($this->data['visitors'] as $key => $value){ ?>
+              <li><span class="tooltip tooltip-effect-1" club='<?=$this->data['visitors'][$key]['id']?>'>
+                <span class="tooltip-item"><img src="<?=$this->tree?>assets/img/icons/flags/<?=$this->data['visitors'][$key]['country']['country']?>.png" width="18px"><a href='<?=$this->tree?>club/<?=$this->data['visitors'][$key]['id']?>'><?=$this->data['visitors'][$key]['clubname']?></a></span>
+                  <span class="tooltip-content clearfix">
+                      <span class="tooltip-text">Carregando...</span>
+                  </span>
+              </span></li>
+            <?}
+            echo '</ul>';
+          }
+          ?>
         </div>
       </div>
     </div>

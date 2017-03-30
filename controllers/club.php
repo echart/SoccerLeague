@@ -31,17 +31,27 @@ switch ($this->request['subrequest']) {
     $query->execute();
 
     $i=0;
-    while($data=$query->fetch(PDO::FETCH_OBJ)){
-      $competition = new competition($data->id_competition);
-      $competition->__load();
-      $this->data['clubtrophies'][$i]['type'] = Competition::getCompetitionType($competition->id_competition_type);
-      $this->data['clubtrophies'][$i]['season'] = $competition->season;
-      if(Competition::getCompetitionType($competition->id_competition_type)=='L'){
-        // $query = Connection::getInstance()->connect()->prepare("select division, group from league inner join league_table using(id_league) where id_competition = 1 and id_club = 1");
-        $league = new League($this->)
+    // while($data=$query->fetch(PDO::FETCH_OBJ)){
+    //   $competition = new competition($data->id_competition);
+    //   $competition->__load();
+    //   $this->data['clubtrophies'][$i]['type'] = Competition::getCompetitionType($competition->id_competition_type);
+    //   $this->data['clubtrophies'][$i]['season'] = $competition->season;
+    //   if(Competition::getCompetitionType($competition->id_competition_type)=='L'){
+    //     // $query = Connection::getInstance()->connect()->prepare("select division, group from league inner join league_table using(id_league) where id_competition = 1 and id_club = 1");
+    //     $league = new League($this->)
+    //   }
+    //   var_dump($this->data['clubtrophies']);
+    //   $i++;
+    // }
+    if(Visits::howManyClubsVisitMe($this->get['id'])>0){
+      $visitors=Visits::getLastVisitors($this->get['id']);
+      foreach ($visitors as $key => $value){
+        $this->data['visitors'][$key]['id']=$value;
+        $this->data['visitors'][$key]['clubname'] =  Club::getClubNameById($value);
+        $this->data['visitors'][$key]['country'] = getCountryByID(Club::getClubCountryById($value));
       }
-      var_dump($this->data['clubtrophies']);
-      $i++;
+    }else{
+      $this->data['visitors'] = null;
     }
     // var_dump($this->data['club']);
     // var_dump($this->data['clubinfo']);

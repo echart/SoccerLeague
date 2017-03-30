@@ -86,3 +86,15 @@
   color: #fff;
   font-size: 14px;
 }
+
+.visits ul{
+  list-style: none;
+}
+.visits ul li{
+  padding: 5px 20px;
+}
+.visits ul li img{
+  position: relative;
+  top: 5px;
+  margin-right: 10px;
+}

@@ -8,12 +8,11 @@ class Visits{
     IF visit is a club = C
     IF visit is a forum topic = F
   */
-  public static function addVisit($visitor,$visited,$type):bool{
+  public static function addVisit($visitor,$visited):bool{
     try{
-      $query=Connection::getInstance()->connect()->prepare("INSERT INTO visits(id_visitor,id_visited,visit_type) values (:id_visitor,:id_visited,:visit_type)");
+      $query=Connection::getInstance()->connect()->prepare("INSERT INTO club_visits(id_club,id_club_visited, visitdate) values (:id_visitor,:id_visited,now())");
       $query->bindParam(':id_visitor',$visitor);
       $query->bindParam(':id_visited',$visited);
-      $query->bindParam(':visit_type',$type);
       $query->execute();
       return true;
     }catch(PDOException $e){
@@ -21,17 +20,16 @@ class Visits{
       return false;
     }
   }
-  public static function getLastVisitors($visited, $type){
+  public static function getLastVisitors($visited){
     try{
-      $query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_visitor FROM visits where id_visited=:visited and visit_type=:type limit 10");
+      $query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club_visits where id_club_visited=:visited group by id_club limit 10");
       $query->bindParam(':visited',$visited);
-      $query->bindParam(':type',$type);
       $query->execute();
       $i=0;
       $visitors;
       if($query->rowCount()>0){
         while($data=$query->fetch(PDO::FETCH_ASSOC)){
-          $visitors[$i]=$data['id_visitor'];
+          $visitors[$i]=$data['id_club'];
           $i++;
         }
         return $visitors;
@@ -40,11 +38,10 @@ class Visits{
       echo $e->getmessage();
     }
   }
-  public static function howManyClubsVisitMe($visited,$type){
+  public static function howManyClubsVisitMe($visited){
     try{
-      $query=Connection::getInstance()->connect()->prepare("SELECT DISTINCT id_visitor FROM visits where id_visited=:visited and visit_type=:type");
+      $query=Connection::getInstance()->connect()->prepare("SELECT id_club FROM club_visits where id_club_visited=:visited group by id_club");
       $query->bindParam(':visited',$visited);
-      $query->bindParam(':type',$type);
       $query->execute();
       return $query->rowCount();
     }catch(PDOException $e){echo $e->getmessage(); return 0;}
