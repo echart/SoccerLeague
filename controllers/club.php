@@ -21,6 +21,13 @@ switch ($this->request['subrequest']) {
     $this->data['club'] = $club;
     $this->data['club']->created = __date($this->data['club']->created);
     $this->data['club']->country = getCountryByID($this->data['club']->id_country);
+    $query = Connection::getInstance()->connect()->prepare("SELECT division, divgroup, leaguename from competition inner join league using(id_competition) inner join league_table using(id_league) where id_club = :id_club and season = 1 and official = true");
+    $query->bindParam(':id_club',$this->get['id']);
+    $query->execute();
+    $l = $query->fetch(PDO::FETCH_OBJ);
+    $this->data['club']->league['division'] = $l->division;
+    $this->data['club']->league['divgroup'] = $l->divgroup;
+    $this->data['club']->league['leaguename'] = $l->leaguename;
 
     $clubinfo = new ClubInfo($club);
     $clubinfo->__load();
@@ -31,18 +38,30 @@ switch ($this->request['subrequest']) {
     $query->execute();
 
     $i=0;
-    // while($data=$query->fetch(PDO::FETCH_OBJ)){
-    //   $competition = new competition($data->id_competition);
-    //   $competition->__load();
-    //   $this->data['clubtrophies'][$i]['type'] = Competition::getCompetitionType($competition->id_competition_type);
-    //   $this->data['clubtrophies'][$i]['season'] = $competition->season;
-    //   if(Competition::getCompetitionType($competition->id_competition_type)=='L'){
-    //     // $query = Connection::getInstance()->connect()->prepare("select division, group from league inner join league_table using(id_league) where id_competition = 1 and id_club = 1");
-    //     $league = new League($this->)
-    //   }
-    //   var_dump($this->data['clubtrophies']);
-    //   $i++;
-    // }
+    if($query->rowCount()>0){
+      while($data=$query->fetch(PDO::FETCH_OBJ)){
+        $competition = new competition($data->id_competition);
+        $competition->__load();
+        $this->data['clubtrophies'][$i]['type'] = Competition::getCompetitionType($competition->id_competition_type);
+        $this->data['clubtrophies'][$i]['season'] = $competition->season;
+        if(Competition::getCompetitionType($competition->id_competition_type)=='L'){
+          $query = Connection::getInstance()->connect()->prepare("SELECT division, divgroup from league inner join league_table using(id_league) where id_competition =:id_competition and id_club = :id_club");
+          $query->bindParam(':id_competition',$competition->id_competition);
+          $query->bindParam(':id_club',$this->get['id']);
+          $query->execute();
+          $data = $query->fetch(PDO::FETCH_OBJ);
+          $league = new League($competition->id_competition, $data->division, $data->divgroup);
+          $league->__loadIDleague();
+          $league->__load();
+          $this->data['clubtrophies'][$i]['name'] = $league->name;
+          $this->data['clubtrophies'][$i]['season'] = $competition->season;
+          $this->data['clubtrophies'][$i]['type'] = 'league';
+        }
+        $i++;
+      }
+    }else{
+      $this->data['clubtrophies'] = null;
+    }
     if(Visits::howManyClubsVisitMe($this->get['id'])>0){
       $visitors=Visits::getLastVisitors($this->get['id']);
       foreach ($visitors as $key => $value){

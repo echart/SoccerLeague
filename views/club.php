@@ -14,6 +14,7 @@
             </ul>
             <a type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'>Adicionar como amigo</a>
             <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a>
+            <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</a>
             <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
             <button type="button" class='btn btn-medium btn-full btn-warning'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</button>
             <button type="button" class='btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Banir clube</button>
@@ -52,7 +53,7 @@
               <h1><?=$this->data['club']->clubname;?> <? if($this->data['clubinfo']->nickname!='null'){?><span class='nickname'>[<?=$this->data['clubinfo']->nickname;?>]<?}?></span><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/<?=$this->data['club']->country['country']?>.png' width="30px"></h1>
               <h3><?=$this->data['clubinfo']->manager;?></h3>
               <p><strong>ID do Clube:</strong> <?=$this->data['club']->id_club;?></p>
-              <p><strong>Disputando:</strong> <a href='#'>Campeonato Brasileiro</a></p>
+              <p><strong>Disputando:</strong> <a href='<?=$this->tree?>league/<?=$this->data['club']->country['abbreviation']?>/<?=$this->data['club']->league['division']?>/<?=$this->data['club']->league['divgroup']?>'><?=$this->data['club']->league['leaguename'];?></a></p>
               <p><strong>Estádio:</strong> <a href='<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium'><? if($this->data['clubinfo']->stadium!='null'){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
               <p><strong>Torcida:</strong> <? if($this->data['clubinfo']->fansname!=null){ echo $this->data['clubinfo']->fansname;} else{echo '...';}?></p>
               <p><strong>Sócios:</strong> ...</p>
@@ -93,17 +94,26 @@
           Galeria de troféus
         </div>
         <div class='box-content'>
-          <div class='awards'>
-            <div>
-              <div class='trophy'>
-                <img src='<?=$this->tree?>assets/img/awards/league.png'>
-              </div>
-              <div class='trophy-desc'>
-                <p>Campeonato Brasileiro (Season 1)</p>
+          <?
+          if($this->data['clubtrophies']!=null){
+            foreach ($this->data['clubtrophies'] as $trophy) { ?>
+            <div class='awards'>
+              <div>
+                <div class='trophy'>
+                  <img src='<?=$this->tree?>assets/img/awards/<?=$trophy['type']?>.png'>
+                </div>
+                <div class='trophy-desc'>
+                  <p><?=$trophy['name']?> (Season <?=$trophy['season']?>)</p>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- <p>Nada conquistado :(</p> -->
+          <?
+            }
+          }else{ ?>
+            <p>Nada conquistado :(</p>
+          <?
+          }
+          ?>
         </div>
       </div>
       <div class='bit-1 box'>
