@@ -26,6 +26,23 @@ switch ($this->request['subrequest']) {
     $clubinfo->__load();
     $this->data['clubinfo'] = $clubinfo;
 
+    $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club_trophies WHERE id_club=:id_club");
+    $query->bindParam(':id_club',$this->get['id']);
+    $query->execute();
+
+    $i=0;
+    while($data=$query->fetch(PDO::FETCH_OBJ)){
+      $competition = new competition($data->id_competition);
+      $competition->__load();
+      $this->data['clubtrophies'][$i]['type'] = Competition::getCompetitionType($competition->id_competition_type);
+      $this->data['clubtrophies'][$i]['season'] = $competition->season;
+      if(Competition::getCompetitionType($competition->id_competition_type)=='L'){
+        // $query = Connection::getInstance()->connect()->prepare("select division, group from league inner join league_table using(id_league) where id_competition = 1 and id_club = 1");
+        $league = new League($this->)
+      }
+      var_dump($this->data['clubtrophies']);
+      $i++;
+    }
     // var_dump($this->data['club']);
     // var_dump($this->data['clubinfo']);
     break;

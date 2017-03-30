@@ -15,6 +15,7 @@
             <a type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'>Adicionar como amigo</a>
             <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a>
             <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
+            <button type="button" class='btn btn-medium btn-full btn-warning'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</button>
             <button type="button" class='btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Banir clube</button>
           </div>
         </div>
@@ -37,7 +38,7 @@
               <h3><?=$this->data['clubinfo']->manager;?></h3>
               <p><strong>ID do Clube:</strong> <?=$this->data['club']->id_club;?></p>
               <p><strong>Disputando:</strong> <a href='#'>Campeonato Brasileiro</a></p>
-              <p><strong>Estádio:</strong> <a href='#'><? if($this->data['clubinfo']->stadium!='null'){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
+              <p><strong>Estádio:</strong> <a href='<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium'><? if($this->data['clubinfo']->stadium!='null'){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
               <p><strong>Torcida:</strong> <? if($this->data['clubinfo']->fansname!=null){ echo $this->data['clubinfo']->fansname;} else{echo '...';}?></p>
               <p><strong>Sócios:</strong> ...</p>
               <p><strong>Fundado em:</strong> <?=$this->data['club']->created;?></p>
@@ -56,7 +57,14 @@
         </div>
         <div class='box-content'>
           <p>
-            <?=$this->data['clubinfo']->history?>
+
+            <?
+            if($this->data['clubinfo']->history=='null'){
+              echo 'Nenhuma história para contar';
+            }else{
+              echo $this->data['clubinfo']->history;
+            }
+            ?>
           </p>
         </div>
       </div>
@@ -65,20 +73,17 @@
           Galeria de troféus
         </div>
         <div class='box-content'>
-          <div class='awards'>
-            <div><img src='<?=$this->tree?>assets/img/awards/league.png'></div>
-             <div><img src='<?=$this->tree?>assets/img/awards/cup.png'></div>
-             <div><img src='<?=$this->tree?>assets/img/awards/liberty.png'></div>
-             <div><img src='<?=$this->tree?>assets/img/awards/sudamericana.png'></div>
-              <div><img src='<?=$this->tree?>assets/img/awards/world.png'></div>
-              <div><img src='<?=$this->tree?>assets/img/awards/artilhary.png'></div>
-              <!-- <p>Nada conquistado :(</p> -->
-              <!-- <img src='<?=$this->tree?>assets/img/awards/league.png'>
-              <img src='<?=$this->tree?>assets/img/awards/cup.png'> -->
-              <!--<img src='<?=$this->tree?>assets/img/awards/sudamericana.png' width="150px">
-              <img src='<?=$this->tree?>assets/img/awards/liberty.png' width="150px">
-              <img src='<?=$this->tree?>assets/img/awards/world.png' width="150px"> -->
-          </div>
+          <!-- <div class='awards'>
+            <div>
+              <div class='trophy'>
+                <img src='<?=$this->tree?>assets/img/awards/liberty.png'>
+              </div>
+              <div class='trophy-desc'>
+                <p>Libertadores da América (Season 3)</p>
+              </div>
+            </div>
+          </div> -->
+          <p>Nada conquistado :(</p>
         </div>
       </div>
       <div class='bit-1 box'>

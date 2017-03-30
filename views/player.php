@@ -1,7 +1,7 @@
 <div class='content'>
   <?
-  if(isset($this->data['nonexists'])){ ?>
-    <h1 class='page-title'>Resultado não encontrado</h1>
+  if($this->data['player']->name==''){ ?>
+    <h1 class='page-title'>Jogador não encontrado</h1>
   <?
   exit;
   }?>

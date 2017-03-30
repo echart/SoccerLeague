@@ -7,13 +7,13 @@
  */
 class Competition{
 	public $id_competition;
-	public $type;
+	public $id_competition_type;
 	public $country;
 	public $season;
 	public $totalclubs;
-	public $totalgames;
 	public $gamesplayed;
 	public $official;
+	public $games;
 
 	public function __construct($id_competition=''){
 		$this->id_competition = $id_competition;
@@ -25,10 +25,11 @@ class Competition{
 		$query->setFetchMode(PDO::FETCH_OBJ);
 		$data=$query->fetch();
 
-		$this->country=$data->country;
-		$this->type=$data->type;
+		$this->country=$data->id_country;
+		$this->id_competition_type=$data->id_competition_type;
 		$this->season=$data->season;
-		$this->totalclubs=$data->totalclubs;
+		$this->totalclubs=$data->teams;
+		$this->games = $data->games;
 		$this->gamesplayed = $data->gamesplayed;
 		$this->official = $data->official;
 	}
@@ -67,6 +68,15 @@ class Competition{
 			$data=$query->fetch();
 
 			return $data->id_competition_type;
+	}
+	public static function getCompetitionType($type){
+			$query=Connection::getInstance()->connect()->prepare("SELECT type from competition_type where id_competition_type=:type");
+			$query->bindParam(':type',$type);
+			$query->execute();
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$data=$query->fetch();
+
+			return $data->type;
 	}
 	public static function getIdCompetition($country){
 			$query=Connection::getInstance()->connect()->prepare("SELECT id_competition from competition where id_country=:id_country and official=true");
