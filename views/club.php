@@ -60,7 +60,12 @@
             </div>
             <div class='club-logo bit-40 right'>
               <div class='logo'>
-                <img src="<?=$this->tree?>assets/img/icon.png" width="200px">
+                <?
+                if($this->data['clubinfo']->logo==null){?>
+                  <img src="<?=$this->tree?>assets/img/icon.png" width="200px">
+                <?}else{?>
+                <img src="<?=$this->tree?>assets/img/club_pics/<?=$this->data['clubinfo']->logo?>" width="200px">
+                <?}?>
               </div>
             </div>
           </div>
@@ -88,17 +93,17 @@
           Galeria de troféus
         </div>
         <div class='box-content'>
-          <!-- <div class='awards'>
+          <div class='awards'>
             <div>
               <div class='trophy'>
-                <img src='<?=$this->tree?>assets/img/awards/liberty.png'>
+                <img src='<?=$this->tree?>assets/img/awards/league.png'>
               </div>
               <div class='trophy-desc'>
-                <p>Libertadores da América (Season 3)</p>
+                <p>Campeonato Brasileiro (Season 1)</p>
               </div>
             </div>
-          </div> -->
-          <p>Nada conquistado :(</p>
+          </div>
+          <!-- <p>Nada conquistado :(</p> -->
         </div>
       </div>
       <div class='bit-1 box'>
