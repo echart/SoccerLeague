@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  $('.tec,.psi,.phi').css('display','none');
   $("table").stupidtable();
+  $('.tec,.psi,.phi').css('display','none');
 });
 
 $("select[name='visible-attr']").on('change',function(){
@@ -32,6 +32,9 @@ $("input[name='pos']").on('change',function(){
         })
       break;
     case 'def':
+    $('tr').each(function(){
+      $(this).css('display','table-row');
+    })
     $('.positions').each(function(){
       x = 0;
        $(this).children().each(function(){
@@ -44,6 +47,9 @@ $("input[name='pos']").on('change',function(){
      });
       break;
     case 'mid':
+    $('tr').each(function(){
+      $(this).css('display','table-row');
+    })
     $('.positions').each(function(){
       x = 0;
        $(this).children().each(function(){
@@ -56,6 +62,9 @@ $("input[name='pos']").on('change',function(){
      });
       break;
     case 'atk':
+    $('tr').each(function(){
+      $(this).css('display','table-row');
+    })
     $('.positions').each(function(){
       x = 0;
        $(this).children().each(function(){
@@ -68,6 +77,9 @@ $("input[name='pos']").on('change',function(){
      });
       break;
       case 'gk':
+      $('tr').each(function(){
+        $(this).css('display','table-row');
+      })
       $('.positions').each(function(){
         x = 0;
          $(this).children().each(function(){

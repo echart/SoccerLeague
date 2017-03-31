@@ -1,3 +1,6 @@
+.form-field{
+  padding: 10px;
+}
 .players-list{
   max-height: 500px;
   overflow-y: scroll;

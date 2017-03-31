@@ -22,7 +22,14 @@
         Filtros
       </div>
   		<div class='box-content'>
-        filtros
+        <div class='form-field'>
+          <label for="">Posições:</label>
+          <input type="radio" name="pos" value="all" checked> <span class='position'> Todas</span>
+          <input type="radio" name="pos" value="def"> <span class='position-D'>DEF</span>
+          <input type="radio" name="pos" value="mid"> <span class='position-DM'>MEI</span>
+          <input type="radio" name="pos" value="atk"> <span class='position-F'>ATA</span>
+          <input type="radio" name="pos" value="gk"> <span class='position-GK'>GK</span>
+        </div>
   		</div>
   	</div>
     <div class='bit-2 box'>
