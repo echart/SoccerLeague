@@ -156,7 +156,7 @@
             <tr class='center'>
               <td class='left' width='10px'></td>
               <td class='padding-right left'><a href="<?=$this->tree?>players/<?=$player->id_player;?>"><?=$player->name;?></a></td>
-              <td class='border gen'>
+              <td class='border gen positions'>
                 <? foreach ($player->position as $position) { ?>
                   <span class='position-<?=$position['position'];?>'><?=$position['position'];?></span>
                 <? } ?>

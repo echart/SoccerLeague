@@ -32,56 +32,52 @@ $("input[name='pos']").on('change',function(){
         })
       break;
     case 'def':
-      $('tr').each(function(){
-       $(this).find('td span').each(function(){
-         $(this).each(function(){
-           if($(this).hasClass('position-D')){
-             $(this).parent().parent().css('display','table-row');
-           }else{
-             $(this).parent().parent().css('display','none');
-           }
-         });
+    $('.positions').each(function(){
+      x = 0;
+       $(this).children().each(function(){
+         if($(this).hasClass('position-D'))
+          x++;
        });
-      })
+       if(x==0){
+         $(this).closest('tr').toggle();
+       }
+     });
       break;
     case 'mid':
-      $('tr').each(function(){
-       $(this).find('td span').each(function(){
-         $(this).each(function(){
-           if($(this).hasClass('position-M') || $(this).hasClass('position-DM') || $(this).hasClass('position-OM') ){
-             $(this).parent().parent().css('display','table-row');
-           }else{
-             $(this).parent().parent().css('display','none');
-           }
-         });
+    $('.positions').each(function(){
+      x = 0;
+       $(this).children().each(function(){
+         if($(this).hasClass('position-DM') || $(this).hasClass('position-M') || $(this).hasClass('position-OM'))
+          x++;
        });
-      })
+       if(x==0){
+         $(this).closest('tr').toggle();
+       }
+     });
       break;
     case 'atk':
-    $('tr').each(function(){
-     $(this).find('td span').each(function(){
-       $(this).each(function(){
-         if($(this).hasClass('position-F') ){
-           $(this).parent().parent().css('display','table-row');
-         }else{
-           $(this).parent().parent().css('display','none');
-         }
+    $('.positions').each(function(){
+      x = 0;
+       $(this).children().each(function(){
+         if($(this).hasClass('position-F'))
+          x++;
        });
+       if(x==0){
+         $(this).closest('tr').toggle();
+       }
      });
-    })
       break;
       case 'gk':
-      $('tr').each(function(){
-       $(this).find('td span').each(function(){
-         $(this).each(function(){
-           if($(this).hasClass('position-GK') ){
-             $(this).parent().parent().css('display','table-row');
-           }else{
-             $(this).parent().parent().css('display','none');
-           }
+      $('.positions').each(function(){
+        x = 0;
+         $(this).children().each(function(){
+           if($(this).hasClass('position-GK'))
+            x++;
          });
+         if(x==0){
+           $(this).closest('tr').toggle();
+         }
        });
-     });
       break;
   }
 })

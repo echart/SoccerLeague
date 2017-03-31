@@ -152,18 +152,30 @@ class Lineplayer extends Player{
 
 	public function physical(){
 		$physical=$this->stamina+$this->speed+$this->resistance+$this->jump;
+		//80
 		return $physical;
 	}
 	public function psychologic(){
 		$psychologic=$this->workrate+$this->concentration+$this->decision+$this->positioning+$this->vision+$this->unpredictability+$this->communication;
+		//140
 		return $psychologic;
 	}
 	public function technical(){
 		$technical=$this->crossing+$this->pass+$this->technical+$this->ballcontrol+$this->dribble+$this->longshot+$this->finish+$this->heading+$this->freekick+$this->marking+$this->tackling;
+		//220
 		return $technical;
 	}
 	public function skillIndex(){
+		$this->__loadskillsDecimals();
 		$this->skill_index=$this->physical() + $this->technical() + $this->psychologic();
+		// $this->skill_index = $this->skill_index / 5.0;
+		$this->__loadskills();
+		// $this->skill_index = (3.3425964981757407) * pow(10,5) * pow($this->skill_index,0)
+		//  +  (-9.7675889011048748) * pow(10,3) * pow($this->skill_index,1)
+		//  +  (1.0660075345324698) * pow(10,2) * pow($this->skill_index,2)
+		//  +  (-5.2178387353065647) * pow(10,-1) * pow($this->skill_index,3)
+		//  +  (9.9362659731437207) * pow(10,-4) * pow($this->skill_index,4);
+		// $this->skill_index = round($this->skill_index,0);
 		return $this->skill_index;
 	}
 	public static function addHistory($id_player,$id_club,$season){

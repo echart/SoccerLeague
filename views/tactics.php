@@ -3,7 +3,18 @@
   <div class='byte'>
     <div class='bit-2 box tactics'>
   		<div class='box-content'>
-        <div class='field'></div>
+        <div class='field'>
+          <div class='lines f-field'>
+            <div class='line l'><div class='t-shirt'></div></div>
+            <div class='line c'></div>
+            <div class='line r'></div>
+          </div>
+          <div class='lines om-field'></div>
+          <div class='lines m-field'></div>
+          <div class='lines dm-field'></div>
+          <div class='lines d-field'></div>
+          <div class='lines gk-field'></div>
+        </div>
   		</div>
   	</div>
     <div class='bit-2 box'>
@@ -18,7 +29,7 @@
       <div class='box-title'>
         Jogadores
       </div>
-  		<div class='box-content'>
+  		<div class='box-content players-list'>
         <table class='table'>
           <thead>
             <tr>
@@ -30,17 +41,19 @@
           </thead>
           <tbody>
             <?
-            foreach ($this->data['players']['line'] as $player) { ?>
-            <tr>
-              <td><?=$player->name?></td>
-              <td>
-                <? foreach ($player->position as $position) { ?>
-                  <span class='position-<?=$position['position'];?>'><?=$position['position']." " . $position['side'];?></span>
-                <? } ?>
-              </td>
-              <td><?=$player->skill_index;?></td>
-              <td></td>
-            </tr>
+            foreach ($this->data['players']['line'] as $player) {
+              $n = explode(' ', $player->name);
+              ?>
+              <tr target-id='<?=$player->id_player?>' target-name='<?=$n[0]?>'>
+                <td><?=$player->name?></td>
+                <td>
+                  <? foreach ($player->position as $position) { ?>
+                    <span class='position-<?=$position['position'];?>'><?=$position['position']." " . $position['side'];?></span>
+                  <? } ?>
+                </td>
+                <td><?=$player->skill_index;?></td>
+                <td></td>
+              </tr>
             <?}?>
           </tbody>
         </table>

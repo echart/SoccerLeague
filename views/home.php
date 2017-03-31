@@ -51,7 +51,8 @@
   			Feed
   		</div>
   		<div class='box-content trophies'>
-  			<p>feed de noticias/amigos</p>
+  			<textarea></textarea>
+        <button class='btn'>Tweet</button>
   		</div>
   	</div>
   </div>

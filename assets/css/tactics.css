@@ -1,4 +1,7 @@
-
+.players-list{
+  max-height: 500px;
+  overflow-y: scroll;
+}
 .field{
   margin: 0 auto;
   width: 450px;
@@ -7,6 +10,78 @@
   background-size: cover;
 }
 
+.field .lines{
+  width: 100%;
+  height: 80px;
+}
+.line{
+  height: 100%;
+  display:inline-block;
+  background-color: #333;
+}
+.field .f-field{
+  position: relative;
+  top: 70px;
+  border: 2px dashed #EA4335;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.field .om-field{
+  position: relative;
+  top: 90px;
+  border: 2px dashed #FBBC05;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.field .m-field{
+  position: relative;
+  top: 125px;
+  border: 2px dashed #FBBC05;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.field .dm-field{
+  position: relative;
+  top: 160px;
+  border: 2px dashed #FBBC05;
+  background-color: rgba(0,0,0,0.3);
+}
+.field .d-field{
+  position: relative;
+  top: 169px;
+  border: 2px dashed #4285F4;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.field .gk-field{
+  position: relative;
+  top: 170px;
+  border: 2px dashed #34A853;
+  background-color: rgba(0,0,0,0.3);
+}
+.l{
+  width: 25%;
+}
+.c{
+  width: 48%;
+}
+.r{
+  width: 25%;
+}
+.t-shirt{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.c .t-shirt{
+  width: 50%;
+}
+
+.helper{
+  padding: 10px 20px;
+  background-color: rgba(255,255,255,0.7);
+}
 table{
   font-size: 11px;
 }

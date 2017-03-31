@@ -1,7 +1,7 @@
 <?
 $this->tree = __rootpath($_SERVER['REDIRECT_URL']);
 $this->menu  = "squad";
-$this->submenu = 'tatics';
+$this->submenu = 'tactics';
 $this->title = 'Táticas';
 
 
