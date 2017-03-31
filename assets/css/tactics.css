@@ -1,0 +1,12 @@
+
+.field{
+  margin: 0 auto;
+  width: 450px;
+  height: 653px;
+  background: url('../img/soccerfield.png');
+  background-size: cover;
+}
+
+table{
+  font-size: 11px;
+}

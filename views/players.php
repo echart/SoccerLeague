@@ -1,3 +1,4 @@
+<? include('../helpers/__country.php');?>
 <div class='content'>
   <h1 class='page-title'><?=$this->title?></h1>
   <div class='byte'>
@@ -69,7 +70,7 @@
               <td class='left' width='10px'></td>
               <td class='padding-right left'>
                 <span class="tooltip tooltip-effect-1" player='<?=$player->id_player;?>'>
-                  <span class="tooltip-item"><a href="<?=$this->tree?>players/<?=$player->id_player;?>"><?=$player->name;?></a></span>
+                  <span class="tooltip-item"><a href="<?=$this->tree?>players/<?=$player->id_player;?>"><?=$player->name;?> <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player->id_country); echo $c['country']?>.png'</a></span>
                     <span class="tooltip-content clearfix">
                         <span class="tooltip-text">Carregando...</span>
                     </span>
