@@ -24,11 +24,36 @@ players = [];
 players_on_field = {};
 max_players_on_field = 11;
 max_subs = 5;
-players_by_id = []; // array of player_id : i - in player[i];
 on_field = [];
 on_subs = [];
 positions = ['gk','dc','dcl','dcr','dl','dr','dmc','dmcr'];
 player_on_drag = {};
+
+function loadplayers(){
+  for (var i = 0; i < players_by_id.length; i++) {
+    $.ajax({
+      url : '../helpers/ajax/player.php',
+      method: 'GET',
+      data : {id_player : players_by_id[i]},
+      success : function(response){
+        players.push(response.data);
+      }
+    });
+  }
+}
+function makeplayerslist(){
+  var target = $('table tbody');
+
+  var positions = "<span></span>";
+  $(target).append("<tr player-id='"+players[0].playerid+"' player-name='"+players[0].name+"'>"+
+                      "<td>"+players[0].name+"</td>"+
+                      "<td class='positions'>"+
+                          positions+
+                      "</td>"+
+                      "<td>"+players[0].skill_index+"</td>"+
+                      "<td></td>"+
+                    "</tr>");
+}
 function makedraggable(){
   $( "table tbody tr, .field_player" ).draggable({
     start: function(){
@@ -102,5 +127,6 @@ function key(obj){
     return Object.keys(obj)[key];
   }
 }
+loadplayers();
 makedraggable();
 makedroppable();

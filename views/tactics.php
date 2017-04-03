@@ -184,3 +184,10 @@
     </div>
   </div>
 </div>
+<script>
+  players_by_id = [
+  <? foreach ($this->data['players']['line'] as $player) {
+       echo $player->id_player.",";
+     } ?>
+  ];
+</script>
