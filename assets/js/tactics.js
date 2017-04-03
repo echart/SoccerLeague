@@ -34,23 +34,23 @@ function makedraggable(){
     start: function(){
       if(Object.keys(players_on_field).length < max_players_on_field){
         //styles
-        $('.field_player').toggleClass('ondraging');
+        $('.field_player').addClass('ondraging');
         if(this.tagName=='TR'){
-          $(this).toggleClass('drag');
+          $(this).addClass('drag');
         }else{
-          $(this).toggleClass('ondrag1');
+          $(this).addClass('ondrag1');
         }
         //start logic
-        player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
       }
+      player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
     },
     stop: function(){
-      if(Object.keys(players_on_field).length < max_players_on_field){
-        $('.field_player').toggleClass('ondraging');
+      if(Object.keys(players_on_field).length < max_players_on_field+1){
+        $('.field_player').removeClass('ondraging');
         if(this.tagName=='TR'){
-          $(this).toggleClass('drag');
+          $(this).removeClass('drag');
         }else{
-          $(this).toggleClass('ondrag1');
+          $(this).removeClass('ondrag1');
         }
       }
     },
@@ -64,19 +64,17 @@ function makedraggable(){
 function makedroppable(){
   $( "table tbody tr, .field_player" ).droppable({
     drop: function( event, ui ) {
+      console.log(player_on_drag.id_player);
       if(this.tagName=='TR'){
         /* put it back on listtable */
         $("table").append('<tr><td colspan="5">OLARR</td></tr>');
         makedraggable();
       }else{
         /* delete from list table */
-        console.log(players_on_field);
         $("tr[player-id='"+player_on_drag.id_player+"']").remove();
         // if players already is on field in another position
         if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
           //delete player in the old position
-          console.log(key(players_on_field));
-          console.log($(".field_player[position='"+key(players_on_field)+"']"));
           $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
           $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
           $(".field_player[position='"+key(players_on_field)+"']").removeClass('visible');
@@ -99,8 +97,8 @@ function makedroppable(){
   });
 }
 function key(obj){
-  var key = $.inArray(player_on_drag.id_player,Object.values(obj));
-  if(key!=1){
+  var key = $.inArray(String(player_on_drag.id_player),Object.values(obj));
+  if(key!=-1){
     return Object.keys(obj)[key];
   }
 }
