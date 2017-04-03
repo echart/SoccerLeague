@@ -70,11 +70,20 @@ function makedroppable(){
         makedraggable();
       }else{
         /* delete from list table */
+        console.log(players_on_field);
         $("tr[player-id='"+player_on_drag.id_player+"']").remove();
-
         // if players already is on field in another position
         if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
-
+          //delete player in the old position
+          console.log(key(players_on_field));
+          console.log($(".field_player[position='"+key(players_on_field)+"']"));
+          $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
+          $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
+          $(".field_player[position='"+key(players_on_field)+"']").removeClass('visible');
+          $(".field_player[position='"+key(players_on_field)+"']").find('p.playername').html('');
+          delete players_on_field[key(players_on_field)];
+          //added player in new position
+          players_on_field[$(this).attr('position')] = player_on_drag.id_player;
         }else{
           players_on_field[$(this).attr('position')] = player_on_drag.id_player;
         }
@@ -84,10 +93,16 @@ function makedroppable(){
       $(this).attr('player-id',player_on_drag.id_player);
       $(this).attr('player-name',player_on_drag.playername);
       $(this).find('p.playername').html(player_on_drag.playername);
-
+      delete player_on_drag.id_player;
+      delete player_on_drag.playername;
     }
   });
 }
-
+function key(obj){
+  var key = $.inArray(player_on_drag.id_player,Object.values(obj));
+  if(key!=1){
+    return Object.keys(obj)[key];
+  }
+}
 makedraggable();
 makedroppable();
