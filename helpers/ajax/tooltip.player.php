@@ -34,3 +34,18 @@ $playerdata['skill_index'] = $player->skill_index;
 
 $data = array('data'=>$playerdata);
 echo JsonOutput::load($data);
+/*
+name
+playerid
+age
+clubid
+clubname
+country
+positions
+injury
+retirering
+número
+skillindex
+skills
+wage
+/*

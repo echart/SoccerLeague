@@ -1,10 +1,6 @@
 .form-field{
   padding: 10px;
 }
-.players-list{
-  max-height: 500px;
-  overflow-y: scroll;
-}
 .field{
   margin: 0 auto;
   width: 450px;
@@ -12,79 +8,128 @@
   background: url('../img/soccerfield.png');
   background-size: cover;
 }
-
-.field .lines{
-  width: 100%;
-  height: 80px;
-}
-.line{
-  height: 100%;
-  display:inline-block;
-  background-color: #333;
-}
-.field .f-field{
-  position: relative;
-  top: 70px;
-  border: 2px dashed #EA4335;
-  background-color: rgba(0,0,0,0.3);
-}
-
-.field .om-field{
-  position: relative;
-  top: 90px;
-  border: 2px dashed #FBBC05;
-  background-color: rgba(0,0,0,0.3);
-}
-
-.field .m-field{
-  position: relative;
-  top: 125px;
-  border: 2px dashed #FBBC05;
-  background-color: rgba(0,0,0,0.3);
-}
-
-.field .dm-field{
-  position: relative;
-  top: 160px;
-  border: 2px dashed #FBBC05;
-  background-color: rgba(0,0,0,0.3);
-}
-.field .d-field{
-  position: relative;
-  top: 169px;
-  border: 2px dashed #4285F4;
-  background-color: rgba(0,0,0,0.3);
-}
-
-.field .gk-field{
-  position: relative;
-  top: 170px;
-  border: 2px dashed #34A853;
-  background-color: rgba(0,0,0,0.3);
-}
-.l{
-  width: 25%;
-}
-.c{
-  width: 48%;
-}
-.r{
-  width: 25%;
-}
-.t-shirt{
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-}
-.c .t-shirt{
-  width: 50%;
-}
-
-.helper{
-  padding: 10px 20px;
-  background-color: rgba(255,255,255,0.7);
-}
 table{
+  z-index: 2;
+}
+.playershirt{
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: #26292b;
+  display: inline-block;
+  line-height: 40px;
+  font-size: 14px;
+  color: #fff;
+}
+.playername{
   font-size: 11px;
+  color: #fff;
+  font-weight: 400;
+  background-color: rgba(0,0,0,0.5);
+  padding: 2px;
+  display: none;
+}
+.forward{
+  background-color: #ea4335;
+}
+.midfielder{
+  background-color: #fbbc05;
+}
+.defender{
+  background-color: #4285f4;
+}
+.goalkeeper{
+  background-color: #34a853;
+}
+.field_line{
+      margin-top: 0;
+}
+.field_line .left_block, .field_line .center_block, .field_line .right_block {
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    float: left;
+}
+.field_line .left_block, .field_line .right_block {
+    width: 112px;
+}
+.field_line .center_block {
+    width: 225px;
+}
+.field_line.forwards{
+  position: relative;
+  top: 85px;
+}
+.field_line.off_midfielders{
+  position: relative;
+  top: 110px;
+}
+.field_line.midfielders{
+  position: relative;
+  top: 150px;
+}
+.field_line.def_midfielders{
+  position: relative;
+  top: 190px;
+}
+.field_line.defenders{
+  position: relative;
+  top: 210px;
+}
+.field_line.goalkeeper{
+  position: relative;
+  top: 220px;
+}
+.field_player{
+    z-index: 2;
+    display: none;
+    opacity: 0.6;
+    text-align: center;
+    height: 60px;
+    width: 72px;
+    _overflow: hidden;
+    line-height: 10px;
+    font-size: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+}
+.field_player.ui-droppable-hover > .playershirt{
+  border: 4px solid #7dcd85;
+}
+.field_player.visible{
+  display: inline-block;
+  opacity:1;
+}
+.field_player.visible > p.playername{
+ display: block;
+}
+table tr td:first-child{
+  cursor: pointer;
+}
+
+/** events*/
+.ondrag{
+  border: 4px solid #666e7a;
+}
+.ondrag1 > .playershirt{
+  border: 4px solid #27fb6b;
+}
+.ondraging{
+display: inline-block;
+}
+div.drag{
+  z-index: 3;
+  height: 70px;
+  width: 50px;
+  cursor: pointer;
+}
+.drag p{
+  font-size: 15px;
+  color: #fff;
+  font-weight: 400;
+  background-color: rgba(0,0,0,0.5);
+}
+table tr.drag{
+  background-color: #62de9f;
 }
