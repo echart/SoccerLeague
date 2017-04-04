@@ -57,7 +57,16 @@ function makeplayerslist(){
 function makedraggable(){
   $( "table tbody tr, .field_player" ).draggable({
     start: function(){
-      if(Object.keys(players_on_field).length < max_players_on_field){
+      //if 10 players and we dont have gk, just visible gk.
+      if((Object.values(players_on_field).length==10 || Object.values(players_on_field).length==11) && $('.field_player[position="gk"]').hasClass('visible')!=true){
+        $('.field_player[position="gk"]').addClass('ondraging');
+        if(this.tagName=='TR'){
+          $(this).addClass('drag');
+        }else{
+          $(this).addClass('ondrag1');
+        }
+      //if it's not OR players_on_field < max_players_on_field, make all visible.
+      }else if(Object.keys(players_on_field).length < max_players_on_field){
         //styles
         $('.field_player').addClass('ondraging');
         if(this.tagName=='TR'){
@@ -65,8 +74,13 @@ function makedraggable(){
         }else{
           $(this).addClass('ondrag1');
         }
-        //start logic
+      //else probaly all full
+      }else{
+        if(this.tagName!='TR'){
+          $('.field_player').addClass('ondraging');
+        }
       }
+      //players on drag
       player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
     },
     stop: function(){
@@ -89,7 +103,6 @@ function makedraggable(){
 function makedroppable(){
   $( "table tbody tr, .field_player" ).droppable({
     drop: function( event, ui ) {
-      console.log(player_on_drag.id_player);
       if(this.tagName=='TR'){
         /* put it back on listtable */
         $("table").append('<tr><td colspan="5">OLARR</td></tr>');
@@ -116,6 +129,8 @@ function makedroppable(){
       $(this).attr('player-id',player_on_drag.id_player);
       $(this).attr('player-name',player_on_drag.playername);
       $(this).find('p.playername').html(player_on_drag.playername);
+      //save tactics and delete player on the player_on_drag.
+      __SAVETACTICS();
       delete player_on_drag.id_player;
       delete player_on_drag.playername;
     }
@@ -127,6 +142,11 @@ function key(obj){
     return Object.keys(obj)[key];
   }
 }
+
+function __SAVETACTICS(){
+  $.ajax({});
+}
+
 loadplayers();
 makedraggable();
 makedroppable();
