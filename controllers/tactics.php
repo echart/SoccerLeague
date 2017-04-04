@@ -15,7 +15,8 @@ switch ($this->request['subrequest']) {
     $this->addJSFile('table.sort.js');
     $this->addJSFile('players.filters.js');
     $this->addJSFile('tactics.js');
-    $query = Connection::getInstance()->connect()->prepare("SELECT id_player FROM players inner join players_position using(id_player) where id_player_club=:id_club and id_position!=1 group by id_player order by id_player");
+    /* LINE PLAYER */
+    $query = Connection::getInstance()->connect()->prepare("SELECT id_player FROM players inner join players_position using(id_player) where id_player_club=:id_club group by id_player order by id_player");
     $query->bindParam(":id_club",$_SESSION['SL_club']);
     $query->execute();
     while($data=$query->fetch(PDO::FETCH_OBJ)){
@@ -25,7 +26,7 @@ switch ($this->request['subrequest']) {
       // $player->__loadhistory();
       $player->__loadpositions();
       $player->skillIndex();
-      $this->data['players']['line'][]=$player;
+      $this->data['players'][]=$player;
     }
     break;
 }

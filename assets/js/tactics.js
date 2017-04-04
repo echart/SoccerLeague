@@ -1,23 +1,6 @@
 /*
 FILTER BY DEFENDERS
 */
-$('.positions').each(function(){
-  x = 0;
-   $(this).children().each(function(){
-     if($(this).hasClass('position-D'))
-      x++;
-   });
-   if(x==0){
-     $(this).closest('tr').toggle();
-   }
- });
-
-/* make ctrl+click in a player open a new page*/
- $(".player-name").on('click',function(e){
-	if(e.ctrlKey){
-		window.open("/players/"+$(this).closest('tr').attr("player-id"));
-	}
-});
  /*TATICS JS*/
 containers = [document.querySelector('.field'), document.querySelector('.list-players')];
 players = [];
@@ -37,22 +20,42 @@ function loadplayers(){
       data : {id_player : players_by_id[i]},
       success : function(response){
         players.push(response.data);
+        makeplayerslist();
+        makedraggable();
+        makedroppable();
       }
     });
   }
 }
 function makeplayerslist(){
   var target = $('table tbody');
+  var html = "";
+  for(var x = 0; x < players.length; x++){
+    var positions = "";
+    $(players[x].positions).each(function(){
+      positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
+    });
+    var name = players[x].name.split(' ');
+    html += "<tr player-id='"+players[x].player_id+"' player-name='"+name[0]+"'>"+
+                        "<td class='player-name'>"+players[x].name+"</td>"+
+                        "<td class='positions'>"+
+                            positions+
+                        "</td>"+
+                        "<td>"+players[x].skill_index+"</td>"+
+                        "<td></td>"+
+                      "</tr>";
 
-  var positions = "<span></span>";
-  $(target).append("<tr player-id='"+players[0].playerid+"' player-name='"+players[0].name+"'>"+
-                      "<td>"+players[0].name+"</td>"+
-                      "<td class='positions'>"+
-                          positions+
-                      "</td>"+
-                      "<td>"+players[0].skill_index+"</td>"+
-                      "<td></td>"+
-                    "</tr>");
+  }
+  $(target).html('');
+  $(target).html(html);
+  /* make ctrl+click in a player open a new page*/
+  $(".player-name").on('click',function(e){
+  	if(e.ctrlKey){
+  		window.open("/players/"+$(this).closest('tr').attr("player-id"));
+  	}
+  });
+  /*make the filter*/
+  filter();
 }
 function makedraggable(){
   $( "table tbody tr, .field_player" ).draggable({
@@ -105,8 +108,36 @@ function makedroppable(){
     drop: function( event, ui ) {
       if(this.tagName=='TR'){
         /* put it back on listtable */
-        $("table").append('<tr><td colspan="5">OLARR</td></tr>');
+        if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
+          //delete player in the old position
+          $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
+          $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
+          $(".field_player[position='"+key(players_on_field)+"']").removeClass('visible');
+          $(".field_player[position='"+key(players_on_field)+"']").find('p.playername').html('');
+          var positions = "";
+          var target = $('table tbody');
+          var cache;
+          for(var i = 0; i < players.length; i++){
+            if(players[i].player_id == player_on_drag.id_player){
+              cache = i;
+            }
+          }
+          $(players[cache].positions).each(function(){
+            positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
+          })
+          var name = players[cache].name.split(' ');
+          $(target).append("<tr player-id='"+players[cache].player_id+"' player-name='"+name[0]+"'>"+
+                              "<td class='player-name'>"+players[cache].name+"</td>"+
+                              "<td class='positions'>"+
+                                  positions+
+                              "</td>"+
+                              "<td>"+players[cache].skill_index+"</td>"+
+                              "<td></td>"+
+                            "</tr>");
+        }
+        filter();
         makedraggable();
+        delete players_on_field[key(players_on_field)];
       }else{
         /* delete from list table */
         $("tr[player-id='"+player_on_drag.id_player+"']").remove();
@@ -144,9 +175,21 @@ function key(obj){
 }
 
 function __SAVETACTICS(){
-  $.ajax({});
+  // $.ajax({});
+  console.log('SAVING....');
 }
-
-loadplayers();
-makedraggable();
-makedroppable();
+function filter(){
+  $('.positions').each(function(){
+    x = 0;
+     $(this).children().each(function(){
+       if($(this).hasClass('position-D'))
+        x++;
+     });
+     if(x==0){
+       $(this).closest('tr').toggle();
+     }
+   });
+}
+$(document).ready(function(){
+  loadplayers();
+});

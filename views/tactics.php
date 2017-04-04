@@ -155,28 +155,14 @@
           <table class='table'>
              <thead>
                <tr>
-                 <th data-sort='string'>Nome</th>
+                 <th data-sort='string'>Nome (ctrl+<img src='<?=$this->tree?>assets/img/icons/clicker.png' width='16px'> para abrir perfil)</th>
                  <th data-sort='string'><abbr title='Posição'>Pos</abbr></th>
                  <th data-sort='float'>SI</th>
                  <th><abbr title='Condição'>C</abbr></th>
                </tr>
              </thead>
              <tbody>
-               <?
-               foreach ($this->data['players']['line'] as $player) {
-                 $n = explode(' ', $player->name);
-                 ?>
-                 <tr player-id='<?=$player->id_player?>' player-name='<?=$n[0]?>'>
-                   <td><?=$player->name?></td>
-                   <td class='positions'>
-                     <? foreach ($player->position as $position) { ?>
-                       <span class='position-<?=$position['position'];?>'><?=$position['position']." " . $position['side'];?></span>
-                     <? } ?>
-                   </td>
-                   <td><?=$player->skill_index;?></td>
-                   <td></td>
-                 </tr>
-               <?}?>
+               <tr><td colspan='4'>Carregando...</td></tr>
              </tbody>
             </table>
         </div>
@@ -186,8 +172,12 @@
 </div>
 <script>
   players_by_id = [
-  <? foreach ($this->data['players']['line'] as $player) {
+  <? foreach ($this->data['players']as $player) {
        echo $player->id_player.",";
-     } ?>
+     }
+    //  foreach ($this->data['players']['gk'] as $player) {
+    //    echo $player->id_player.",";
+    //  }
+     ?>
   ];
 </script>
