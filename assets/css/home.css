@@ -1,3 +1,58 @@
+.feed .create-content{
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+.create-content textarea{
+  border: 1px solid #eaeaea;
+}
+.feed-post{
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+
+  padding: 10px 20px;
+}
+.feed-post .feed-post-logo{
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+
+  width: 85px;
+  height: 85px;
+  background: #333;
+  border-radius: 2.5px;
+}
+.feed-post .feed-post-content{
+  flex-basis: auto;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  text-align: left;
+  margin-left: 10px;
+}
+.feed-post-content h4{
+  font-weight: 700;
+  font-size: 13px;
+  color: #393E41;
+}
+.feed-post-content h4 span{
+  font-weight: 300;
+  font-style: 13px;
+}
+.feed-post-content p{
+  font-weight: 400;
+  color: #393E41;
+}
 /*==========
 next match
 ==========*/

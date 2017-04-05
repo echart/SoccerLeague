@@ -50,9 +50,41 @@
   		<div class='box-title color'>
   			Feed
   		</div>
-  		<div class='box-content trophies'>
-  			<textarea></textarea>
-        <button class='btn'>Tweet</button>
+  		<div class='box-content feed'>
+        <div class='create-content'>
+          <textarea placeholder='O que você está pensando?'></textarea>
+          <button class='btn btn-medium btn-light'>Publicar</button>
+        </div>
+        <div class='feed-content'>
+          <div class='feed-post'>
+            <div class='feed-post-logo'></div>
+            <div class='feed-post-content'>
+              <h4>E.C Grêmio Universidad <span>2h</span></h4>
+              <p>OLAAAAAAAAAA</p>
+            </div>
+          </div>
+          <div class='feed-post'>
+            <div class='feed-post-logo'></div>
+            <div class='feed-post-content'>
+              <h4>E.C Grêmio Universidad <span>2h</span></h4>
+              <p>OLAAAAAAAAAA</p>
+            </div>
+          </div>
+          <div class='feed-post'>
+            <div class='feed-post-logo'></div>
+            <div class='feed-post-content'>
+              <h4>E.C Grêmio Universidad <span>2h</span></h4>
+              <p>OLAAAAAAAAAA</p>
+            </div>
+          </div>
+          <div class='feed-post'>
+            <div class='feed-post-logo'></div>
+            <div class='feed-post-content'>
+              <h4>E.C Grêmio Universidad <span>2h</span></h4>
+              <p>OLAAAAAAAAAA</p>
+            </div>
+          </div>
+        </div>
   		</div>
   	</div>
   </div>
