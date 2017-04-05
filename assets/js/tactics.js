@@ -134,8 +134,27 @@ function makedroppable(){
                               "<td>"+players[cache].skill_index+"</td>"+
                               "<td></td>"+
                             "</tr>");
+          // if position filter is set to another position that player doest have, the player must not be visible in the list
+          var radio = $('input[type="radio"]:checked').val();
+          var controller = 0;
+          $("tr[player-id='"+players[cache].player_id+"'] td.positions span").each(function(){
+            $(players[cache].positions).each(function(){
+              if(radio == 'def' && this.position=='D'){
+                controller++;
+              }else if((radio=='mid') && ((this.position=='DM') || (this.position=='M') || (this.position=='OM'))){
+                controller++;
+              }else if((radio=='atk') && (this.position=='FC')){
+                controller++;
+              }else if((radio=='gk') && (this.position=='GK')){
+                controller++;
+              }
+            })
+          });
+          if(controller==0){
+            $("tr[player-id='"+players[cache].player_id+"']").css('display','none');
+          }
         }
-        filter();
+
         makedraggable();
         delete players_on_field[key(players_on_field)];
       }else{
@@ -179,6 +198,9 @@ function __SAVETACTICS(){
   console.log('SAVING....');
 }
 function filter(){
+  $('tr').each(function(){
+    $(this).css('display','table-row');
+  })
   $('.positions').each(function(){
     x = 0;
      $(this).children().each(function(){
@@ -189,6 +211,7 @@ function filter(){
        $(this).closest('tr').toggle();
      }
    });
+   $("#radio").attr('checked','checked');
 }
 $(document).ready(function(){
   loadplayers();

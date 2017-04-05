@@ -2,11 +2,16 @@
   padding: 10px;
 }
 .field{
+  border: -1;
   margin: 0 auto;
   width: 450px;
   height: 653px;
   background: url('../img/soccerfield.png');
   background-size: cover;
+}
+.advanced{
+  width: 447px !important;
+  margin: 0 auto;
 }
 table{
   z-index: 2;

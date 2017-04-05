@@ -138,6 +138,20 @@
               <div class='right_block'></div>
             </div>
           </div>
+          <div class='form-field advanced'>
+            <label for="">Estilo de ataque:</label>
+            <select>
+              <option>Passes curtos</option>
+              <option>Bolas Enfiadas</option>
+            </select>
+          </div>
+          <div class='form-field advanced'>
+            <label for="">Mentalidade:</label>
+            <select>
+              <option>Muito Ofensivo</option>
+              <option>Ofensivo</option>
+            </select>
+          </div>
     		</div>
     	</div>
       <div class='bit-2 box'>
@@ -147,7 +161,7 @@
         <div class='box-content players-list'>
           <div class='form-field'>
             <label for="">Posições:</label>
-            <input type="radio" name="pos" value="def" checked> <span class='position-D'>DEF</span>
+            <input type="radio" name="pos" value="def" id='radio' checked> <span class='position-D'>DEF</span>
             <input type="radio" name="pos" value="mid"> <span class='position-DM'>MEI</span>
             <input type="radio" name="pos" value="atk"> <span class='position-F'>ATA</span>
             <input type="radio" name="pos" value="gk"> <span class='position-GK'>GK</span>
