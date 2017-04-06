@@ -19,6 +19,9 @@ class Lineplayer extends Player{
 	public function __construct($id_player){
 		parent::__construct($id_player);
 	}
+	public function calcwage(){
+		parent::calcwage();
+	}
 	public function __loadskills(){
 		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM players_attr pa inner join players_attr_line pal using(id_player) where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);

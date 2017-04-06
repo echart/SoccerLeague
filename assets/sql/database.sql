@@ -271,6 +271,12 @@ create table players(
 	weight integer not null,
 	leg varchar(1) not null
 );
+create table players_wage(
+	id_player_wage serial primary key,
+	id_player integer not null,
+		FOREIGN KEY(id_player) REFERENCES players(id_player),
+	wage numeric(17,2)
+);
 create table players_appearance(
 	id_player_appearance serial primary key,
 	id_player integer,

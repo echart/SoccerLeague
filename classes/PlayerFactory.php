@@ -1,5 +1,4 @@
 <?
-
 class PlayerFactory{
 	public static $odds=array(1=>15.1,2=>10.1,3=>8.5);
 	public static $leg=array('L','R');
@@ -39,7 +38,7 @@ class PlayerFactory{
 		$player->kicking=PlayerFactory::random($indice,20.0);
 		$player->throwing=PlayerFactory::random($indice,20.0);
 
-		$player->skillIndex();
+		// $player->skillIndex();
 		$player->position=1;
 		$player->id_club=$id_club;
 		$query=Connection::getInstance()->connect()->prepare("SELECT abbreviation, id_country FROM club inner join countries using(id_country) where id_club=:id_club");
@@ -54,7 +53,7 @@ class PlayerFactory{
 		$player->age= rand(19,32) . ".0" . rand(1,9);
 		$player->height=rand(162,202);
 		$player->weight=rand(55,95);
-		$player->wage();
+		// $player->wage();
 		$player->leg=self::$leg[rand(0,1)];
 
 		$player->body=rand(1,6);
@@ -95,7 +94,7 @@ class PlayerFactory{
     $player->marking=PlayerFactory::random($indice,20.0);
     $player->tackling=PlayerFactory::random($indice,20.0);
 		$player->communication=PlayerFactory::random($indice,20.0);
-		$player->skillIndex();
+		// $player->skillIndex();
 		$posI = rand(1,2);
 		$player->position=array();
 		while($posI--){
@@ -131,7 +130,7 @@ class PlayerFactory{
 		$player->age=rand(19,32) . ".0" . rand(1,9);
 		$player->height=rand(162,202);
 		$player->weight=rand(55,95);
-		$player->wage();
+		// $player->wage();
 		$player->leg=self::$leg[rand(0,1)];
 
 		$player->body=rand(1,6);
@@ -214,6 +213,14 @@ class PlayerFactory{
 		}catch(PDOException $e){
 			echo $e->getmessage();
 		}
+
+		$query = Connection::getInstance()->connect()->prepare("INSERT INTO players_wage (id_player,wage) values (:id_player,:wage)");
+		$query->bindParam(':id_player',$id_player);
+		$player->id_player = $id_player;
+		$player->skillIndex();
+		$w = $player->calcwage();
+		$query->bindParam(':wage',$w);
+		$query->execute();
 		try {
 			foreach ($player->position as $key => $value) {
 				$query=Connection::getInstance()->connect()->prepare("INSERT INTO players_position (id_player,id_position) values (:id_player,:id_position)");
@@ -302,6 +309,13 @@ class PlayerFactory{
 			echo $e->getmessage();
 			exit;
 		}
+		$query = Connection::getInstance()->connect()->prepare("INSERT INTO players_wage (id_player,wage) values (:id_player,:wage)");
+		$query->bindParam(':id_player',$id_player);
+		$player->id_player = $id_player;
+		$player->skillIndex();
+		$player->calcwage();
+		$query->bindParam(':wage',$player->wage);
+		$query->execute();
 
 		try {
 			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players_position (id_player,id_position) values (:id_player,:id_position)");
