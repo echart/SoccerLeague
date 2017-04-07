@@ -57,6 +57,14 @@ class Tweet{
     $data=$query->fetch(PDO::FETCH_ASSOC);
     return $data;
   }
+  public static function __getrepliesnumber($id_tweet){
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet FROM tweet where reply_to=:id_tweet");
+    $query->bindParam(':id_tweet',$id_tweet);
+    $query->execute();
+
+    $data=$query->rowCount();
+    return $data;
+  }
   /*
   TAGS SHOULD BE USED LIKE THIS
   '{{"meeting", "lunch"}, {"training", "presentation"}}'

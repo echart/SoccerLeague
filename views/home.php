@@ -56,34 +56,7 @@
           <button class='btn btn-medium btn-light'>Publicar</button>
         </div>
         <div class='feed-content'>
-          <div class='feed-post'>
-            <div class='feed-post-logo'></div>
-            <div class='feed-post-content'>
-              <h4>E.C Grêmio Universidad <span>2h</span></h4>
-              <p>OLAAAAAAAAAA</p>
-            </div>
-          </div>
-          <div class='feed-post'>
-            <div class='feed-post-logo'></div>
-            <div class='feed-post-content'>
-              <h4>E.C Grêmio Universidad <span>2h</span></h4>
-              <p>OLAAAAAAAAAA</p>
-            </div>
-          </div>
-          <div class='feed-post'>
-            <div class='feed-post-logo'></div>
-            <div class='feed-post-content'>
-              <h4>E.C Grêmio Universidad <span>2h</span></h4>
-              <p>OLAAAAAAAAAA</p>
-            </div>
-          </div>
-          <div class='feed-post'>
-            <div class='feed-post-logo'></div>
-            <div class='feed-post-content'>
-              <h4>E.C Grêmio Universidad <span>2h</span></h4>
-              <p>OLAAAAAAAAAA</p>
-            </div>
-          </div>
+          <p>Carregando...</p>
         </div>
   		</div>
   	</div>

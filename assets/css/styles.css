@@ -205,7 +205,7 @@ textarea{
 	font-size: 13px;
 }
 textarea:focus{
-	background-color: #ddd;
+	background-color: #eee;
 	color: #000;
 }
 /*=============================

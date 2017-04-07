@@ -4,6 +4,13 @@
 }
 .create-content textarea{
   border: 1px solid #eaeaea;
+  margin-bottom: 5px;
+}
+.feed-content > p{
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  padding: 10px;
 }
 .feed-post{
   -webkit-box-align: start;
@@ -40,10 +47,21 @@
   text-align: left;
   margin-left: 10px;
 }
+.feed-post-content-controllers{
+  float: right;
+  position: relative;
+  top: 2.5px;
+  width: 12px;
+  height: 12px;
+  background-image: url('../img/icons/cancel.png');
+  background-size: cover;
+  cursor: pointer;
+}
 .feed-post-content h4{
   font-weight: 700;
   font-size: 13px;
   color: #393E41;
+  padding: 0 0 10px 0;
 }
 .feed-post-content h4 span{
   font-weight: 300;
@@ -52,6 +70,34 @@
 .feed-post-content p{
   font-weight: 400;
   color: #393E41;
+}
+.feed-post-controllers{
+    display: block;
+    width: 100%;
+    padding: 10px 0px;
+}
+.feed-post-controllers span:hover{
+  cursor: pointer;
+}
+.feed-post-controllers span.reply i{
+  display: inline-block;
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  background-image: url('../img/icons/reply.png');
+  background-size: cover;
+}
+.feed-post-controllers span.like i{
+  display: inline-block;
+  float: left;
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  background-image: url('../img/icons/like.png');
+  background-size: cover;
+}
+.liked i{
+  background-image: url('../img/icons/liked.png') !important;
 }
 /*==========
 next match
