@@ -94,7 +94,7 @@
     PlayerFactory::savedGoalkeeper($player);
   }
   // Lineplayers
-  for ($i=0; $i <32 ; $i++) {
+  for ($i=0; $i <22 ; $i++) {
     $indice=1;
     $player = PlayerFactory::createPlayer($indice,$club->id_club);
     PlayerFactory::savePlayer($player);

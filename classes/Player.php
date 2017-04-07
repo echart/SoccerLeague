@@ -43,8 +43,8 @@ class Player{
 		$this->id_player=$id_player;
 	}
 	/*methods*/
-	public function wage(){
-		$this->wage=$this->skill_index*2.2;
+	public function calcwage(){
+		$this->wage=pow($this->skill_index,2)*2;
 		return $this->wage;
 	}
 
