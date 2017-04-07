@@ -58,7 +58,15 @@
         <div class='feed-content'>
           <p>Carregando...</p>
         </div>
+        <div class='feed-pages'>
+
+        </div>
   		</div>
   	</div>
   </div>
 </div>
+<script>
+  var id_club = <?=$_SESSION['SL_club']?>;
+  var method = 'all';
+  var page = 1;
+</script>

@@ -1,37 +1,47 @@
 function loadfeed(id_club,method,page){
   $.ajax({
-    url : 'http://localhost/feed/'+id_club+'/'+method+'/'+'/'+page,
+    url : 'http://localhost:8080/feed/'+id_club+'/'+method+'/'+'/'+page,
     dataType: 'json',
     success : function(feed){
-      makefeed(feed.data)
+      makefeed(feed.data, id_club)
     }
   });
 }
-
-loadfeed(1,'all',1);
-
-
-function makefeed(feed){
+function makefeed(feed, id_club){
   var target = $('.feed-content');
   $(target).html('');
   console.log(feed);
   if(feed.tweets.length>0){
     $(feed.tweets).each(function(){
       var content = "";
-      content = "<div class='feed-post'>"+
+      var spandelete = (this.id_club == id_club) ? '<span class="feed-post-content-controllers"></span>' : '';
+      content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
                   "<div class='feed-post-logo'></div>"+
                   "<div class='feed-post-content'>"+
-                    "<h4><a href=''>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                    "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span>"+
+                      spandelete+
+                    "</h4>"+
                     "<p>"+this.tweet+"</p>"+
                     "<div class='feed-post-controllers'><span class='reply'><i></i>"+this.replies+" replies</span></div>"
                   "</div>"+
                 "</div>"
       $(target).append(content);
     })
+    $('.reply').on('click',function(){
+      opentweet(this);
+    });
   }else{
     $(target).append("<p>Nada encontrado :(</p>");
   }
 }
+function feedcontent(content){
+  var keys = ['feed_idclub','feed_match','feed_transfer'];
+}
+function opentweet(span){
+  var post = $(span).parent().parent().parent();
+  var id_tweet = $(post).attr('id_tweet');
+}
+loadfeed(id_club,method,page);
   /*
   <div class='feed-post'>
     <div class='feed-post-logo'></div>
