@@ -50,7 +50,7 @@
   		<div class='box-title color'>
   			Feed
   		</div>
-  		<div class='box-content feed'>
+  		<div class='box-content feed feed-principal'>
         <div class='create-content'>
           <textarea placeholder='O que você está pensando?'></textarea>
           <button class='btn btn-medium btn-light'>Publicar</button>
@@ -64,6 +64,18 @@
   		</div>
   	</div>
   </div>
+</div>
+<input type="checkbox" id="modal_feed" />
+<div class="modal modal-feed">
+  <div class="modal-content">
+    <div class='feed feed-replies'>
+      <div class='feed-content'>
+        <p>Carregando...</p>
+      </div>
+    </div>
+    <label class="modal-close" for="modal_feed"></label>
+  </div>
+  <div class='modal-pattern'></div>
 </div>
 <script>
   var id_club = <?=$_SESSION['SL_club']?>;

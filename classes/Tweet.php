@@ -50,12 +50,11 @@ class Tweet{
     return $data;
   }
   public static function __getreplies($id_tweet){
-    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet FROM tweet where reply_to=:id_tweet");
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet FROM tweet where reply_to=:id_tweet order by tweetdate desc");
     $query->bindParam(':id_tweet',$id_tweet);
     $query->execute();
 
-    $data=$query->fetch(PDO::FETCH_ASSOC);
-    return $data;
+    return $query;
   }
   public static function __getrepliesnumber($id_tweet){
     $query=Connection::getInstance()->connect()->prepare("SELECT id_tweet FROM tweet where reply_to=:id_tweet");

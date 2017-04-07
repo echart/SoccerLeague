@@ -30,5 +30,8 @@ $this->data['next-match']['away']['name']=Club::getClubNameById($data->away);
 $this->data['next-match']['away']['id']=$data->away;
 
 $this->addCSSFile('home.css');
+$this->addCSSFile('modal.css');
 $this->addCSSFile('feed.css');
+
+$this->addJSFile('modal.js');
 $this->addJSFile('feed.js');

@@ -1,6 +1,6 @@
 function loadfeed(id_club,method,page){
   $.ajax({
-    url : 'http://localhost:8080/feed/'+id_club+'/'+method+'/'+'/'+page,
+    url : 'http://localhost/feed/'+id_club+'/'+method+'/'+'/'+page,
     dataType: 'json',
     success : function(feed){
       makefeed(feed.data, id_club)
@@ -8,9 +8,8 @@ function loadfeed(id_club,method,page){
   });
 }
 function makefeed(feed, id_club){
-  var target = $('.feed-content');
+  var target = $('.feed-principal .feed-content');
   $(target).html('');
-  console.log(feed);
   if(feed.tweets.length>0){
     $(feed.tweets).each(function(){
       var content = "";
@@ -22,7 +21,7 @@ function makefeed(feed, id_club){
                       spandelete+
                     "</h4>"+
                     "<p>"+this.tweet+"</p>"+
-                    "<div class='feed-post-controllers'><span class='reply'><i></i>"+this.replies+" replies</span></div>"
+                    "<div class='feed-post-controllers'><span class='reply'><i></i>"+this.replies+" respostas</span><span class='trash'><i></i>Excluir</span></div>"
                   "</div>"+
                 "</div>"
       $(target).append(content);
@@ -40,6 +39,47 @@ function feedcontent(content){
 function opentweet(span){
   var post = $(span).parent().parent().parent();
   var id_tweet = $(post).attr('id_tweet');
+  var modal = $('.feed-replies');
+  $(modal).html("<p>Carregando...</p>");
+  $('#modal_feed').trigger('click');
+  //load tweet
+  $.ajax({
+    url : 'http://localhost/helpers/ajax/tweet.php?id_tweet='+id_tweet+'&method=get',
+    dataType: 'json',
+    success : function(feed){
+      $(feed.data.tweet).each(function(){
+        var content = "";
+        content = "<div class='feed-post father' id_tweet='"+this.id_tweet+"'>"+
+                    "<div class='feed-post-logo'></div>"+
+                    "<div class='feed-post-content'>"+
+                      "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                      "<p>"+this.tweet+"</p>"+
+                    "</div>"+
+                  "</div>"+
+                  "<div class='box-content create-content'>"+
+                    "<form action='' method='post'>"+
+                      "<textarea required placeholder='Responder tweet'></textarea>"+
+                      "<button class='btn btn-medium btn-light'>Responder</button>"+
+                    "</form>"+
+                  "</div>";
+        $(modal).html('');
+        $(modal).append(content);
+      });
+      console.log(feed.data);
+      $(feed.data.replies).each(function(){
+        var content = "";
+        content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
+                    "<div class='feed-post-logo'></div>"+
+                    "<div class='feed-post-content'>"+
+                      "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                      "<p>"+this.tweet+"</p>"+
+                      // "<div class='feed-post-controllers'><span class='reply'><i></i>"+this.replies+" respostas</span></div>"+
+                    "</div>"+
+                  "</div>";
+        $(modal).append(content);
+      })
+    }
+  });
 }
 loadfeed(id_club,method,page);
   /*

@@ -23,6 +23,9 @@
 
   padding: 10px 20px;
 }
+.feed-post.father{
+  background-color: #eee;
+}
 .feed-post .feed-post-logo{
   -ms-flex-preferred-size: auto;
   flex-basis: auto;
@@ -34,7 +37,7 @@
 
   width: 85px;
   height: 85px;
-  background: #eee;
+  background: #333;
   border-radius: 2.5px;
 }
 .feed-post .feed-post-content{
@@ -61,7 +64,7 @@
   font-weight: 700;
   font-size: 13px;
   color: #393E41;
-  padding: 0 0 10px 0;
+  padding: 0 0 5px 0;
 }
 .feed-post-content h4 span{
   font-weight: 300;
