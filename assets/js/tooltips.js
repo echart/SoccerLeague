@@ -20,7 +20,7 @@ $('.tooltip[player]').hover(function(){
   var id = $(this).attr('player');
   $.ajax({
     data: {id_player:id},
-    url: 'http://localhost/helpers/ajax/tooltip.player.php',
+    url: 'http://localhost/helpers/ajax/player.php',
     dataType: 'json',
     success: function(json){
       console.log(json);

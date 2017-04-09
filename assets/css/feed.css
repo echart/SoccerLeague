@@ -20,11 +20,11 @@
   display: -ms-flexbox;
   display: flex;
   text-align: left;
-
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 .feed-post.father{
   background-color: #eee;
+  padding: 30px 20px;
 }
 .feed-post .feed-post-logo{
   -ms-flex-preferred-size: auto;
@@ -78,6 +78,7 @@
     display: block;
     width: 100%;
     padding: 10px 0px;
+    margin-top: 10px;
 }
 .feed-post-controllers span{
     padding: 5px;

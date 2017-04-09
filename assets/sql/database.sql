@@ -5,7 +5,7 @@ create table season(
 	endseason date not null
 );
 /**
- * TABELAS DE CONFIGURA�?ÃO
+ * TABELAS DE CONFIGURA�?ÃO
  */
 create table languages(
 	id_language SERIAL PRIMARY KEY,
@@ -100,13 +100,13 @@ create table club_info(
 	id_club integer not null,
 		CONSTRAINT clubinfo_idclub_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
   manager varchar(50) default 'The Manager',
-	nickname varchar(25) default 'null',
-	stadium varchar(25)  default 'null',
+	nickname varchar(25) default null,
+	stadium varchar(25)  default null,
   fansname varchar(50) default null,
-  logo varchar(200) default 'null',
-  primaryColor varchar(7) default 'null',
-  secondaryColor varchar(7) default 'null',
-  history varchar(300) default 'null',
+  logo varchar(200) default null,
+  primaryColor varchar(7) default null,
+  secondaryColor varchar(7) default null,
+  history text default null,
 	location json -- '{"latitude": 0, "longitude": 0 , "changes" : 0}'
 );
 create table club_supporters(

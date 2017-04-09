@@ -52,8 +52,10 @@
   		</div>
   		<div class='box-content feed feed-principal'>
         <div class='create-content'>
-          <textarea placeholder='O que você está pensando?'></textarea>
-          <button class='btn btn-medium btn-light'>Publicar</button>
+          <form action='javascript:compose()'>
+            <textarea name='compose' placeholder='O que você está pensando?' maxlength="200"></textarea>
+            <button class='publish btn btn-medium btn-light'>Publicar</button>
+          </form>
         </div>
         <div class='feed-content'>
           <p>Carregando...</p>

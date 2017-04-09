@@ -1,5 +1,5 @@
 <?
-error_reporting(E_ALL);
+error_reporting(!E_ALL);
 include('../../classes/Connection.php');
 include('../../classes/Tweet.php');
 include('../../classes/Club.php');
@@ -8,7 +8,20 @@ include('../__date.php');
 
 session_start();
 $id_tweet = $_GET['id_tweet'];
-if($_GET['method']=='get'){
+if($_GET['method']=='post'){
+  $tweet= $_POST['tweet'];
+  if($_POST['reply_to']=='' or $_POST['reply_to']==null){
+    $reply_to = null;
+  }else{
+    $reply_to = $_POST['reply_to'];
+  }
+  if(Tweet::__tweet($_SESSION['SL_club'],'M',$tweet,null,$reply_to)){
+    echo JsonOutput::success(array('success'=>'posted'));
+  }else{
+    echo JsonOutput::error('error','error');
+  }
+
+}else if($_GET['method']=='get'){
   $tweet        = Tweet::__gettweet($id_tweet);
   $tweetContent = Tweet::__gettweetcontent($id_tweet);
   $tweetReplies = Tweet::__getrepliesnumber($id_tweet);
@@ -49,4 +62,14 @@ if($_GET['method']=='get'){
 
   $data= array('data'=>$data);
   echo JsonOutput::load($data);
+}else if($_GET['method']=='delete'){
+  $id_tweet = $_GET['id_tweet'];
+  $tweet        = Tweet::__gettweet($id_tweet);
+
+  if($_SESSION['SL_club']==$tweet['id_club']){
+    Tweet::__deletetweet($id_tweet);
+    echo JsonOutput::success(array('success'=>'deleted'));
+  }else{
+    echo JsonOutput::error('error','denied');
+  }
 }

@@ -72,8 +72,10 @@ switch ($this->request['subrequest']) {
     }else{
       $this->data['visitors'] = null;
     }
-    // var_dump($this->data['club']);
-    // var_dump($this->data['clubinfo']);
+    $this->addCSSFile('modal.css');
+    $this->addCSSFile('feed.css');
+    $this->addJSFile('modal.js');
+    $this->addJSFile('feed.js');
     break;
 }
 $this->addCSSFile('club.css');

@@ -2,6 +2,10 @@
     </main>
     <!--JS-->
     <script src="<?=$this->tree?>assets/js/jquery.js"></script>
+    <script src="<?=$this->tree?>assets/js/modernizr.custom.js"></script>
+    <script src="<?=$this->tree?>assets/js/classie.js"></script>
+    <script src="<?=$this->tree?>assets/js/notificationFx.js"></script>
+    <script src="<?=$this->tree?>assets/js/notification.js"></script>
     <script src="<?=$this->tree?>assets/js/responsive.js"></script>
     <script src="<?=$this->tree?>assets/js/menu.js"></script>
     <script src="<?=$this->tree?>assets/js/table.sort.js"></script>

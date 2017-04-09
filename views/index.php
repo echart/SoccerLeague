@@ -60,9 +60,9 @@ $success = ($_SESSION['SUCCESS']!='') ? $_SESSION['SUCCESS'] : '';
 		    <h3>Acessar clube</h3>
 				<form action='/login' method='POST' autocomplete="off">
 					<label for='email'>Email:</label>
-					<input type="text" name="email" id='login' placeholder="Email">
+					<input type="text" name="email" id='login' placeholder="Email" required>
 					<label for='password'>Password:</label>
-					<input type="password" name="password" id='password' placeholder="Password">
+					<input type="password" name="password" id='password' placeholder="Password" minlength='8' required>
 					<button type="submit" name="button">Acessar</button>
 					<a href='#' class='forgot-password'>Esqueceu sua senha?</a>
 				</form>
@@ -78,13 +78,13 @@ $success = ($_SESSION['SUCCESS']!='') ? $_SESSION['SUCCESS'] : '';
 		    <h3>Criar clube:</h3>
 				<form action='/signup' method='POST' autocomplete="off">
 					<label for='email'>Email:</label>
-					<input type="text" name="email" id='login' placeholder="Email">
+					<input type="email" name="email" id='login' placeholder="Email" required>
 					<label for='password'>Password:</label>
-					<input type="password" name="password" id='password' placeholder="Password">
+					<input type="password" name="password" id='password' placeholder="Password" minlength='8' required>
 					<label for='clubname'>Nome do Clube:</label>
-					<input type="text" name="clubname" id='clubname' placeholder="Nome do Clube">
+					<input type="text" name="clubname" id='clubname' placeholder="Nome do Clube" minlength='8' required>
 					<label for="country">País:</label>
-					<select id="country" name='country'>
+					<select id="country" name='country' required>
 						<option value="1">Brasil</option>
 					</select>
 					<input type='hidden' name='refeer' value='<?=$this->get['refeer']??""?>'>

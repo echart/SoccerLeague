@@ -120,10 +120,32 @@
         <div class='box-title'>
           Feed do Clube
         </div>
-        <div class='box-content'>
-          <p>Feed de noticias</p>
-        </div>
+        <div class='box-content feed feed-principal'>
+          <div class='feed-content'>
+            <p>Carregando...</p>
+          </div>
+          <div class='feed-pages'>
+
+          </div>
+    		</div>
       </div>
     </div>
   </div>
 </div>
+<input type="checkbox" id="modal_feed" />
+<div class="modal modal-feed">
+  <div class="modal-content">
+    <div class='feed feed-replies'>
+      <div class='feed-content'>
+        <p>Carregando...</p>
+      </div>
+    </div>
+    <label class="modal-close" for="modal_feed"></label>
+  </div>
+  <div class='modal-pattern'></div>
+</div>
+<script>
+  var id_club = <?=$this->data['club']->id_club;?>;
+  var method = 'club';
+  var page = 1;
+</script>

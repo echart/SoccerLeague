@@ -25,6 +25,7 @@ if(isset($this->request['id'])){
 
   $this->requestURL='player';
   $this->addCSSFile('player.css');
+  $this->addCSSFile('tactics.css');
   $this->addJSFile('player.appearance.js');
   $this->addJSFile('player.skills.js');
   // var_dump($this->data['player']['history']);

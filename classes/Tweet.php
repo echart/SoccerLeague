@@ -68,7 +68,7 @@ class Tweet{
   TAGS SHOULD BE USED LIKE THIS
   '{{"meeting", "lunch"}, {"training", "presentation"}}'
   */
-  public static function __tweet($id_club,$type,$tweet,$tags,$reply_to='NULL'):bool{
+  public static function __tweet($id_club,$type,$tweet,$tags,$reply_to=null):bool{
     try{
       $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweet(id_club,reply_to) values (:id_club,:reply_to)");
       $query->bindParam(':id_club',$id_club);
@@ -76,11 +76,11 @@ class Tweet{
       $query->execute();
       $id_tweet=Connection::getInstance()->connect()->lastInsertID('tweet_id_tweet_seq');
       try{
-        $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetContent(id_tweet,tweet,type,tags) values (:id_tweet,:tweet,:type,:tags)");
+        $query=Connection::getInstance()->connect()->prepare("INSERT INTO tweetContent(id_tweet,tweet,type) values (:id_tweet,:tweet,:type)");
         $query->bindParam(':id_tweet',$id_tweet);
         $query->bindParam(':type',$type);
         $query->bindParam(':tweet',$tweet);
-        $query->bindParam(':tags',$tags);
+        // $query->bindParam(':tags',$tags);
         $query->execute();
       }catch(PDOException $e){
         $query=Connection::getInstance()->connect()->prepare("DELETE FROM tweet where id_tweet=:id_tweet");
