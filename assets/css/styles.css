@@ -147,6 +147,7 @@ div.form-field{
 	max-height:200px;
 	font-family: 'Open Sans';
 	font-size: 12px;
+  text-align: left;
 }
 div.form-field label{
 	color:#393e41;
@@ -211,7 +212,7 @@ textarea:focus{
 /*=============================
 BUTTONS
 ==============================*/
-a.btn{
+a.btn, label.btn{
   display: block;
   text-align: center;
 }

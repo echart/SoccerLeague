@@ -98,3 +98,6 @@
   top: 5px;
   margin-right: 10px;
 }
+.modal-search .modal-content{
+  padding: 20px 40px;
+}

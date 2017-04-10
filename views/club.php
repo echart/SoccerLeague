@@ -17,7 +17,7 @@
             <a type="button" href='#' onclick='buddy(this,"<?=$this->data['friend']['action']?>",<?=$_SESSION['SL_club']?>,<?=$this->data['club']->id_club?>)' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'><?=$this->data['friend']['text']?></a>
             <? } ?>
             <!-- <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a> -->
-            <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</a>
+            <label class="btn btn-medium btn-full btn-light" for="modal_searchclub"><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</label>
             <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
             <button type="button" class='btn btn-medium btn-full btn-warning'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</button>
             <button type="button" class='btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Banir clube</button>
@@ -135,6 +135,7 @@
     </div>
   </div>
 </div>
+<!-- FEED MODAL -->
 <input type="checkbox" id="modal_feed" />
 <div class="modal modal-feed">
   <div class="modal-content">
@@ -144,6 +145,20 @@
       </div>
     </div>
     <label class="modal-close" for="modal_feed"></label>
+  </div>
+  <div class='modal-pattern'></div>
+</div>
+<!-- SEARCH CLUB MODAL -->
+<input type="checkbox" id="modal_searchclub" />
+<div class="modal modal-search">
+  <div class="modal-content">
+    <div class='form-field'>
+      <form class="" action="index.html" method="post">
+        <label for="search-clubname">Nome do Clube:</label>
+        <input type='text' id='search-clubname' placeholder="Digite o nome do clube">
+      </form>
+    </div>
+    <label class="modal-close" for="modal_searchclub"></label>
   </div>
   <div class='modal-pattern'></div>
 </div>

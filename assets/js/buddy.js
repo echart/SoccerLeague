@@ -11,15 +11,15 @@ function buddy(button,action,buddy1,buddy2){
         if(action=='aproval'){
           $(button).html('Desfazer amizade');
           $(button).attr('onclick',"buddy(this,'unbuddy','"+buddy1+"','"+buddy2+"')");
+          notification('Você acaba de perder um amigo, oh :(','notice');
         }else if(action=='request'){
           $(button).html('Solicitaçao pendente');
-          $(button).attr('onclick',"buddy(this,'unMakeBuddy','"+buddy1+"','"+buddy2+"')");
-        }else if(action=='unMakeBuddy'){
-          $(button).html('Fazer novo amigo');
-          $(button).attr('onclick',"buddy(this,'request','"+buddy1+"','"+buddy2+"')");
+          $(button).attr('onclick',"buddy(this,'unbuddy','"+buddy1+"','"+buddy2+"')");
+          notification('Você está fazendo amiguinhos! Bom trabalho.','success','success');
         }else if(action=='unbuddy'){
           $(button).html('Fazer novo amigo');
           $(button).attr('onclick',"buddy(this,'request','"+buddy1+"','"+buddy2+"')");
+          notification('Você desfez a solicitação :(','notice');
         }
       }
     },

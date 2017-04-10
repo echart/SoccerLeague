@@ -82,7 +82,7 @@ switch ($this->request['subrequest']) {
     */
     if(Buddy::isPending($_SESSION['SL_club'],$club->id_club)){
       $this->data['friend']['text']='Solicitação Pendente';
-      $this->data['friend']['action']='unMakeBuddy';
+      $this->data['friend']['action']='unbuddy';
     }else if(Buddy::isPending($club->id_club,$_SESSION['SL_club'])){
       $this->data['friend']['text']='Aceitar amigo';
       $this->data['friend']['action']='aproval';
