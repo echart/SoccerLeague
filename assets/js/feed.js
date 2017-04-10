@@ -16,7 +16,7 @@ function makefeed(feed, id_club){
       var content = "";
       var spandelete = (this.id_club == id_club) ? "<span class='trash'><i></i>Excluir</span>" : '';
       content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
-                  "<div class='feed-post-logo'></div>"+
+                  "<div class='feed-post-logo'><img src='http://localhost/assets/img/icon.png' width='85px'></div>"+
                   "<div class='feed-post-content'>"+
                     "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
                     "<p>"+this.tweet+"</p>"+
@@ -54,9 +54,9 @@ function opentweet(span){
       $(feed.data.tweet).each(function(){
         var content = "";
         content = "<div class='feed-post father' id_tweet='"+this.id_tweet+"'>"+
-                    "<div class='feed-post-logo'></div>"+
+                    "<div class='feed-post-logo'><img src='http://localhost/assets/img/icon.png' width='85px'></div>"+
                     "<div class='feed-post-content'>"+
-                      "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                      "<h4><a href='http://localhost/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
                       "<p>"+this.tweet+"</p>"+
                     "</div>"+
                   "</div>"+
@@ -75,9 +75,9 @@ function opentweet(span){
         var content = "";
         var spandelete = (this.id_club == id_club) ? "<span class='trash'><i></i>Excluir</span>" : '';
         content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
-                    "<div class='feed-post-logo'></div>"+
+                    "<div class='feed-post-logo'><img src='http://localhost/assets/img/icon.png' width='85px'></div>"+
                     "<div class='feed-post-content'>"+
-                      "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span class='delete'>"+this.tweetdate+"</span></h4>"+
+                      "<h4><a href='http://localhost/club/"+this.id_club+"'>"+this.clubname+"</a> <span class='delete'>"+this.tweetdate+"</span></h4>"+
                       "<p>"+this.tweet+"</p>"+
                       "<div class='feed-post-controllers'>"+spandelete+"</div>"+
                     "</div>"+
