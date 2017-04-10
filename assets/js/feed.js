@@ -1,7 +1,7 @@
 cachespan = '';
 function loadfeed(id_club,method,page){
   $.ajax({
-    url : 'http://localhost/feed/'+id_club+'/'+method+'/'+'/'+page,
+    url : url+'feed/'+id_club+'/'+method+'/'+'/'+page,
     dataType: 'json',
     success : function(feed){
       makefeed(feed.data, id_club)
@@ -16,9 +16,9 @@ function makefeed(feed, id_club){
       var content = "";
       var spandelete = (this.id_club == id_club) ? "<span class='trash'><i></i>Excluir</span>" : '';
       content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
-                  "<div class='feed-post-logo'><img src='http://localhost/assets/img/icon.png' width='85px'></div>"+
+                  "<div class='feed-post-logo'><img src='"+url+"assets/img/icon.png' width='85px'></div>"+
                   "<div class='feed-post-content'>"+
-                    "<h4><a href='http://localhost:8080/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                    "<h4><a href="+url+"club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
                     "<p>"+this.tweet+"</p>"+
                     "<div class='feed-post-controllers'><span class='reply'><i></i>"+this.replies+" respostas</span>"+spandelete+"</div>"
                   "</div>"+
@@ -48,15 +48,15 @@ function opentweet(span){
   $('#modal_feed').trigger('click');
   //load tweet
   $.ajax({
-    url : 'http://localhost/helpers/ajax/tweet.php?id_tweet='+id_tweet+'&method=get',
+    url : url+'helpers/ajax/tweet.php?id_tweet='+id_tweet+'&method=get',
     dataType: 'json',
     success : function(feed){
       $(feed.data.tweet).each(function(){
         var content = "";
         content = "<div class='feed-post father' id_tweet='"+this.id_tweet+"'>"+
-                    "<div class='feed-post-logo'><img src='http://localhost/assets/img/icon.png' width='85px'></div>"+
+                    "<div class='feed-post-logo'><img src='"+url+"assets/img/icon.png' width='85px'></div>"+
                     "<div class='feed-post-content'>"+
-                      "<h4><a href='http://localhost/club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                      "<h4><a href='"+url+"club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
                       "<p>"+this.tweet+"</p>"+
                     "</div>"+
                   "</div>"+
@@ -75,9 +75,9 @@ function opentweet(span){
         var content = "";
         var spandelete = (this.id_club == id_club) ? "<span class='trash'><i></i>Excluir</span>" : '';
         content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
-                    "<div class='feed-post-logo'><img src='http://localhost/assets/img/icon.png' width='85px'></div>"+
+                    "<div class='feed-post-logo'><img src='"+url+"assets/img/icon.png' width='85px'></div>"+
                     "<div class='feed-post-content'>"+
-                      "<h4><a href='http://localhost/club/"+this.id_club+"'>"+this.clubname+"</a> <span class='delete'>"+this.tweetdate+"</span></h4>"+
+                      "<h4><a href='"+url+"club/"+this.id_club+"'>"+this.clubname+"</a> <span class='delete'>"+this.tweetdate+"</span></h4>"+
                       "<p>"+this.tweet+"</p>"+
                       "<div class='feed-post-controllers'>"+spandelete+"</div>"+
                     "</div>"+
@@ -96,7 +96,7 @@ function deletetweet(span){
     var post = $(span).parent().parent().parent();
     var id_tweet = $(post).attr('id_tweet');
     $.ajax({
-      url : 'http://localhost/helpers/ajax/tweet.php?id_tweet='+id_tweet+'&method=delete',
+      url : url+'helpers/ajax/tweet.php?id_tweet='+id_tweet+'&method=delete',
       dataType: 'json',
       success : function(feed){
         if(typeof feed.data != undefined){
@@ -111,7 +111,7 @@ function deletetweet(span){
 }
 function sendtweet(tweet,reply_to=null){
   $.ajax({
-    url : 'http://localhost/helpers/ajax/tweet.php?method=post',
+    url : url+'helpers/ajax/tweet.php?method=post',
     dataType: 'json',
     method: 'post',
     data : {reply_to:reply_to,tweet:tweet},

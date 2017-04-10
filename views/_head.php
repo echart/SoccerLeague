@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
 
 	<? $this->loadCSSFiles(); ?>
+	<script>url = '<?=App::url();?>';</script>
 </head>
 <body>
 	<main class='byte'>
