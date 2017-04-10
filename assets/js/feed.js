@@ -18,11 +18,11 @@ function makefeed(feed, id_club){
       content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
                   "<div class='feed-post-logo'><img src='"+url+"assets/img/icon.png' width='85px'></div>"+
                   "<div class='feed-post-content'>"+
-                    "<h4><a href="+url+"club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
+                    "<h4><a href='"+url+"club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
                     "<p>"+this.tweet+"</p>"+
                     "<div class='feed-post-controllers'><span class='reply'><i></i>"+this.replies+" respostas</span>"+spandelete+"</div>"
                   "</div>"+
-                "</div>"
+                "</div>";
       $(target).append(content);
     })
     $('.reply').on('click',function(){
