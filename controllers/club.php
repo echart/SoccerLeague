@@ -1,7 +1,6 @@
 <?
 include('helpers/__date.php');
 include('helpers/__country.php');
-
 $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu  = "club";
 $this->submenu = 'club';
@@ -33,6 +32,9 @@ switch ($this->request['subrequest']) {
     $clubinfo->__load();
     $this->data['clubinfo'] = $clubinfo;
 
+    /*
+    TROPHIES LOGIC
+    */
     $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club_trophies WHERE id_club=:id_club");
     $query->bindParam(':id_club',$this->get['id']);
     $query->execute();
@@ -62,6 +64,9 @@ switch ($this->request['subrequest']) {
     }else{
       $this->data['clubtrophies'] = null;
     }
+    /*
+    VISITS LOGIC
+    */
     if(Visits::howManyClubsVisitMe($this->get['id'])>0){
       $visitors=Visits::getLastVisitors($this->get['id']);
       foreach ($visitors as $key => $value){
@@ -72,12 +77,30 @@ switch ($this->request['subrequest']) {
     }else{
       $this->data['visitors'] = null;
     }
+    /*
+    FRIENDS LOGIC
+    */
+    if(Buddy::isPending($_SESSION['SL_club'],$club->id_club)){
+      $this->data['friend']['text']='Solicitação Pendente';
+      $this->data['friend']['action']='unMakeBuddy';
+    }else if(Buddy::isPending($club->id_club,$_SESSION['SL_club'])){
+      $this->data['friend']['text']='Aceitar amigo';
+      $this->data['friend']['action']='aproval';
+    }else if(Buddy::isMyFriend($_SESSION['SL_club'],$club->id_club) or Buddy::isMyFriend($club->id_club,$_SESSION['SL_club'])){
+      $this->data['friend']['text']='Desfazer amizade';
+      $this->data['friend']['action']='unbuddy';
+    }else{
+      $this->data['friend']['text']='Fazer novo amigo';
+      $this->data['friend']['action']='request';
+    }
+    /* REQUIRES */
     $this->addCSSFile('modal.css');
     $this->addCSSFile('feed.css');
     $this->addJSFile('modal.js');
     $this->addJSFile('feed.js');
+    $this->addCSSFile('club.css');
+    $this->addCSSFile('trophies.css');
+    $this->addJSFile('trophies.js');
+    $this->addJSFile('buddy.js');
     break;
 }
-$this->addCSSFile('club.css');
-$this->addCSSFile('trophies.css');
-$this->addJSFile('trophies.js');

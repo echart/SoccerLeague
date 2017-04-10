@@ -7,13 +7,16 @@
         <div class='box-content'>
           <div class='club-options'>
             <ul class='subnav'>
-              <li><a class='selected' href="<?=$this->tree?>league"><img src="<?=$this->tree?>assets/img/icons/strategy.png" width="32px"><span>Visão geral</span></a></li>
+              <li><a class='selected' href="<?=$this->tree?>league"><img src="<?=$this->tree?>assets/img/icons/home.png" width="32px"><span>Sede</span></a></li>
+              <li><a href="<?=$this->tree?>league"><img src="<?=$this->tree?>assets/img/icons/strategy.png" width="32px"><span>Visão geral</span></a></li>
               <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/team-of-the-round"><img src="<?=$this->tree?>assets/img/icons/calendar.png" width="32px"><span>Partidas</span></a></li>
               <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/calendar"><img src="<?=$this->tree?>assets/img/icons/stadium.png" width="32px"><span>Estádio</span></a></li>
-              <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/statistics"><img src="<?=$this->tree?>assets/img/icons/statistics.png" width="32px"><span>Estatísticas</span></a></li>
+              <!-- <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/statistics"><img src="<?=$this->tree?>assets/img/icons/statistics.png" width="32px"><span>Estatísticas</span></a></li> -->
             </ul>
-            <a type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'>Adicionar como amigo</a>
-            <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a>
+            <? if($_SESSION['SL_club']!=$this->data['club']->id_club){?>
+            <a type="button" href='#' onclick='buddy(this,"<?=$this->data['friend']['action']?>",<?=$_SESSION['SL_club']?>,<?=$this->data['club']->id_club?>)' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'><?=$this->data['friend']['text']?></a>
+            <? } ?>
+            <!-- <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a> -->
             <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</a>
             <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
             <button type="button" class='btn btn-medium btn-full btn-warning'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</button>
