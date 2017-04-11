@@ -2,7 +2,6 @@
 require_once('helpers/__country.php');
 $this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu    = 'squad';
-
 if(isset($this->request['id'])){
   $this->menu  = "squad";
   $this->submenu = 'players';
@@ -28,7 +27,8 @@ if(isset($this->request['id'])){
   $this->addCSSFile('tactics.css');
   $this->addJSFile('player.appearance.js');
   $this->addJSFile('player.skills.js');
-  // var_dump($this->data['player']['history']);
+  $this->addJSFile('player.positions.js');
+  // var_dump($this->data['player']);
   // exit;
 }else{
   $this->title = "Elenco";

@@ -153,11 +153,25 @@
 <div class="modal modal-search">
   <div class="modal-content">
     <div class='form-field'>
-      <form class="" action="index.html" method="post">
+      <form>
         <label for="search-clubname">Nome do Clube:</label>
         <input type='text' id='search-clubname' placeholder="Digite o nome do clube">
       </form>
     </div>
+    <table class='table is-bordered club-result'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Competição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">Nenhum resultado</td>
+        </tr>
+      </tbody>
+    </table>
     <label class="modal-close" for="modal_searchclub"></label>
   </div>
   <div class='modal-pattern'></div>

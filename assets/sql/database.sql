@@ -269,7 +269,8 @@ create table players(
 	age numeric(4,2) not null,
 	height integer not null,
 	weight integer not null,
-	leg varchar(1) not null
+	leg varchar(1) not null,
+	recomendation numeric(3,2)
 );
 create table players_wage(
 	id_player_wage serial primary key,

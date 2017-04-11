@@ -102,5 +102,6 @@ switch ($this->request['subrequest']) {
     $this->addCSSFile('trophies.css');
     $this->addJSFile('trophies.js');
     $this->addJSFile('buddy.js');
+    $this->addJSFile('club.search.js');
     break;
 }

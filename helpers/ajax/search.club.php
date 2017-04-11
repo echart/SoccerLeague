@@ -3,9 +3,9 @@ include('../../classes/Connection.php');
 include('../../classes/Club.php');
 include('../../classes/JsonOutput.php');
 
-$who = $_GET['who'];
+$who = $_POST['who'];
 
-$search = Connection::getInstance()->connect()->prepare("SELECT * FROM club where clubname ilike ?");
+$search = Connection::getInstance()->connect()->prepare("SELECT * FROM club where clubname ilike ? order by id_club limit 30");
 $params = array("%$who%");
 $search->execute($params);
 $result = array();
