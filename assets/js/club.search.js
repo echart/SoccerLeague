@@ -14,7 +14,7 @@ function searchclub(){
         $(target).append('<tr><td colspan="3">Nada encontrado :(</td><tr>');
       }else{
         $(response.data).each(function(){
-          $(target).append('<tr><td>'+this.id_club+'</td><td><a href="'+url+'club/'+this.id_club+'">'+this.clubname+'</a></td><td></td></tr>');
+          $(target).append('<tr><td>'+this.id_club+'</td><td><a href="'+url+'club/'+this.id_club+'">'+this.clubname+'</a></td><td>'+this.competition+'</td></tr>');
         })
       }
     },
