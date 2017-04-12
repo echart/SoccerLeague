@@ -142,7 +142,19 @@ class PlayerFactory{
 	}
 	public static function savePlayer(Player $player){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players(id_player_club,id_country, name, nickname, age, height, weight, leg)VALUES (:id_player_club,:id_country, :name, :nickname, :age, :height, :weight, :leg)");
+			$p = $player->position;
+			$posis = array();
+			$x = 0;
+			foreach ($player->position as $posi){
+				$a = Connection::getInstance()->connect()->prepare("SELECT position,side FROM positions where id_position = :id_position");
+				$a->bindParam(':id_position',$posi);
+				$a->execute();
+				$data = $a->fetch(PDO::FETCH_OBJ);
+				$posis[$x]['position'] = $data->position;
+				$posis[$x]['side'] = $data->side;
+			}
+			$player->position = $posis;
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players(id_player_club,id_country, name, nickname, age, height, weight, leg, recomendation)VALUES (:id_player_club,:id_country, :name, :nickname, :age, :height, :weight, :leg,:rec)");
 			$query->bindParam(":id_player_club",$player->id_club);
 			$query->bindParam(":id_country",$player->id_country);
 			$query->bindParam(":name",$player->name);
@@ -151,7 +163,10 @@ class PlayerFactory{
 			$query->bindParam(":height",$player->height);
 			$query->bindParam(":weight",$player->weight);
 			$query->bindParam(":leg",$player->leg);
+			$rec = $player->rec();
+			$query->bindParam(':rec', $rec);
 
+			$player->position = $p;
 			$query->execute();
 
 			$id_player=Connection::getInstance()->connect()->lastInsertID('players_id_player_seq');
@@ -240,7 +255,18 @@ class PlayerFactory{
 	}
 	public static function savedGoalkeeper(Goalkeeper $player){
 		try{
-			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players(id_player_club,id_country, name, nickname, age, height, weight, leg)VALUES (:id_player_club,:id_country, :name, :nickname, :age, :height, :weight, :leg)");
+			$p = $player->position;
+			$posis = array();
+			$x = 0;
+			$a = Connection::getInstance()->connect()->prepare("SELECT position,side FROM positions where id_position = :id_position");
+			$a->bindParam(':id_position',$player->position);
+			$a->execute();
+			$data = $a->fetch(PDO::FETCH_OBJ);
+			$posis[$x]['position'] = $data->position;
+			$posis[$x]['side'] = $data->side;
+
+			$player->position = $posis;
+			$query=Connection::getInstance()->connect()->prepare("INSERT INTO players(id_player_club,id_country, name, nickname, age, height, weight, leg, recomendation)VALUES (:id_player_club,:id_country, :name, :nickname, :age, :height, :weight, :leg, :rec)");
 			$query->bindParam(":id_player_club",$player->id_club);
 			$query->bindParam(":id_country",$player->id_country);
 			$query->bindParam(":name",$player->name);
@@ -249,6 +275,10 @@ class PlayerFactory{
 			$query->bindParam(":height",$player->height);
 			$query->bindParam(":weight",$player->weight);
 			$query->bindParam(":leg",$player->leg);
+			$rec = $player->rec();
+			$query->bindParam(':rec', $rec);
+			$player->position=1;
+
 
 			$query->execute();
 

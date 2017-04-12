@@ -136,21 +136,28 @@ class Lineplayer extends Player{
 		$weights['F C']  =	array(80,18,2);
 
 		$totSkill = 0;
-		for ($i=0; $i< sizeof($position[$this->position]); $i++) {
-			if ($skills[$i]>0) {
-				$count = 0;
-				for ($z=0; $z<sizeof($position[$this->position]); $z++){
-					if ($position[$this->position][$z] == $position[$this->position][$i]) {
-						$count++;
+		$ccc=0;
+		$rec=0;
+		foreach ($this->position as $posi) {
+			$pos = $posi['position'] . " " . $posi['side'];
+			for ($i=0; $i< sizeof($position[$pos]); $i++) {
+				if ($skills[$i]>0) {
+					$count = 0;
+					for ($z=0; $z<sizeof($position[$pos]); $z++){
+						if ($position[$pos][$z] == $position[$pos][$i]) {
+							$count++;
+						}
 					}
+					$totSkill += $skills[$i]*$weights[$pos][$position[$pos][$i]-1] / $count * 10;
 				}
-				$totSkill += $skills[$i]*$weights[$this->position][$position[$this->position][$i]-1] / $count * 10;
 			}
+			$totSkill = $totSkill / 200;
+			$totSkill = (round($totSkill*1000)/1000)/20;
+			$rec += $totSkill;
+			$ccc++;
 		}
-		$totSkill = $totSkill / 200;
-		$totSkill = (round($totSkill*1000)/1000)/20;
-
-		return number_format($totSkill,1);
+		$rec = $rec/$ccc;
+		return number_format($rec,2);
 	}
 
 	public function physical(){

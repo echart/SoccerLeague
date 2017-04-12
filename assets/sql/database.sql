@@ -252,7 +252,7 @@ create table club_facilities(
 		position varchar(2),
 			CHECK (position = ANY (ARRAY['GK'::bpchar,'D'::bpchar,'DM'::bpchar, 'M'::bpchar,'OM'::bpchar, 'F'::bpchar])),
 		side varchar(1),
-			CHECK (side = ANY (ARRAY['L'::bpchar,'R'::bpchar,'C'::bpchar]))
+			CHECK (side = ANY (ARRAY['L'::bpchar,'R'::bpchar,'C'::bpchar,''::bpchar]))
 		-- deffense_disposition integer,
 		-- midfielder_disposition integer,
 		-- attack_disposition integer
@@ -624,7 +624,7 @@ create table tweet(
 insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
 insert into competition_type(type) values ('L');
 insert into countries (country,abbreviation) values ('Brazil','br');
-insert into positions (position,side) values('GK','C');
+insert into positions (position,side) values('GK','');
 insert into positions (position,side) values('D','C');
 insert into positions (position,side) values('D','L');
 insert into positions (position,side) values('D','R');

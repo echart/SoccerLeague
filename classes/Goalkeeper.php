@@ -98,15 +98,15 @@ class Goalkeeper extends Player{
 		$weights['GK']  =	array(50,42,8);
 
 		$totSkill = 0;
-		for ($i=0; $i< sizeof($position[$this->position]); $i++) {
+		for ($i=0; $i< sizeof($position['GK']); $i++) {
 			if ($skills[$i]>0) {
 				$count = 0;
-				for ($z=0; $z<sizeof($position[$this->position]); $z++){
-					if ($position[$this->position][$z] == $position[$this->position][$i]) {
+				for ($z=0; $z<sizeof($position['GK']); $z++){
+					if ($position['GK'][$z] == $position['GK'][$i]) {
 						$count++;
 					}
 				}
-				$totSkill += $skills[$i]*$weights[$this->position][$position[$this->position][$i]-1] / $count * 10;
+				$totSkill += $skills[$i]*$weights['GK'][$position['GK'][$i]-1] / $count * 10;
 			}
 		}
 		$totSkill = $totSkill / 200;
