@@ -33,7 +33,7 @@
                 <td><strong>Data:</strong> Dia <?=$this->data['next-match']['day']?>, às <?=$this->data['next-match']['hour']?></td>
               </tr>
               <tr>
-                <td><strong>Estádio:</strong><?=$this->data['next-match']['location']?></td>
+                <td><strong>Estádio:</strong> <?=$this->data['next-match']['stadium']?></td>
               </tr>
               <tr>
                 <td><strong>Competição:</strong> <?=$this->data['next-match']['competition']?></td>

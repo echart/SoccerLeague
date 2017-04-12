@@ -25,10 +25,12 @@ if($data->type=='L'){
 $this->data['next-match']['day'] = __date($data->day);
 $this->data['next-match']['hour'] = $data->hour;
 $this->data['next-match']['home']['name']=Club::getClubNameById($data->home);
+$clubinfo = new ClubInfo(new Club($data->home));
+$clubinfo->__load();
+$this->data['next-match']['stadium'] = $clubinfo->stadium;
 $this->data['next-match']['home']['id']=$data->home;
 $this->data['next-match']['away']['name']=Club::getClubNameById($data->away);
 $this->data['next-match']['away']['id']=$data->away;
-
 $this->addCSSFile('home.css');
 $this->addCSSFile('modal.css');
 $this->addCSSFile('feed.css');
