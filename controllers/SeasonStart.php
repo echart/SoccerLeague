@@ -1,7 +1,7 @@
 <?
 
-  error_reporting(E_ALL);
-  ini_set('display_errors',1);
+  error_reporting(!E_ALL);
+  ini_set('display_errors',0);
   $this->tree = __rootpath($_SERVER['REDIRECT_URL']);
   /*----------
   SET COMPETITION DATA

@@ -575,7 +575,8 @@ create table league_calendar(
 
  create table tactics(
 	 id_tactics serial primary key,
-	 id_club int
+	 id_club int,
+	 players_on_field json
  )
 -- create table competition_statistics(
 -- 	id_competition_statistics serial primary key,
