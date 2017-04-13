@@ -572,6 +572,11 @@ create table league_calendar(
 	 saves integer,
 	 conceded integer
  );
+
+ create table tactics(
+	 id_tactics serial primary key,
+	 id_club int
+ )
 -- create table competition_statistics(
 -- 	id_competition_statistics serial primary key,
 -- 	id_competition integer not null,

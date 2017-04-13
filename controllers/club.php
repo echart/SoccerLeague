@@ -1,19 +1,69 @@
 <?
-include('helpers/__date.php');
-include('helpers/__country.php');
-$this->tree=__rootpath($_SERVER['REDIRECT_URL']);
-$this->menu  = "club";
-$this->submenu = 'club';
-$this->title = 'Clube';
+
 
 if(!isset($this->request['id'])) // if country isnt set at url, make the redirect to club league set in session
   header('location: '.App::url().'club/'.strtolower($_SESSION['SL_club']).'/');
 
 switch ($this->request['subrequest']) {
   case 'overview':
+    error_reporting(E_ALL);
+    include($this->tree . 'helpers/__country.php');
+    include($this->tree . 'helpers/_rec.php');
+    $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+    $this->menu  = "club";
+    $this->submenu = 'club';
+    $this->title = 'Clube';
     $this->requestURL='club_overview';
+
+    $this->data['overview']['stats']['SI']=0;
+    $this->data['overview']['stats']['REC']=0;
+    $this->data['overview']['stats']['age']=0;
+    $this->data['overview']['stats']['players']=0;
+    /*
+    Goalkeeper
+    */
+    $query = Connection::getInstance()->connect()->prepare("SELECT id_player FROM players inner join players_position using(id_player) where id_player_club=:id_club and id_position=1 group by id_player order by id_player");
+    $query->bindParam(":id_club",$this->get['id']);
+    $query->execute();
+    while($data=$query->fetch(PDO::FETCH_OBJ)){
+      $player = Player::__this($data->id_player);
+      $player->__loadinfo();
+      $player->__loadskills();
+      $player->__loadhistory();
+      $player->__loadpositions();
+      $player->skillIndex();
+      $this->data['players'][]=$player;
+      $this->data['overview']['stats']['SI']+=$player->skill_index;
+      $this->data['overview']['stats']['REC']+=$player->rec;
+      $this->data['overview']['stats']['age']+=$player->age;
+      $this->data['overview']['stats']['players']+=1;
+    }
+
+    $query = Connection::getInstance()->connect()->prepare("SELECT id_player FROM players inner join players_position using(id_player) where id_player_club=:id_club and id_position!=1 group by id_player order by id_player");
+    $query->bindParam(":id_club",$this->get['id']);
+    $query->execute();
+    while($data=$query->fetch(PDO::FETCH_OBJ)){
+      $player = Player::__this($data->id_player);
+      $player->__loadinfo();
+      // $player->__loadhistory();
+      $player->__loadpositions();
+      $player->skillIndex();
+      $this->data['players'][]=$player;
+      $this->data['overview']['stats']['SI']+=$player->skill_index;
+      $this->data['overview']['stats']['REC']+=$player->rec;
+      $this->data['overview']['stats']['age']+=$player->age;
+      $this->data['overview']['stats']['players']+=1;
+    }
+    $this->addCSSFile('responsive.table.css');
+    $this->addJSFile('responsive.table.js');
     break;
   default:
+    include($this->tree . 'helpers/__date.php');
+    include($this->tree . 'helpers/__country.php');
+    $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+    $this->menu  = "club";
+    $this->submenu = 'club';
+    $this->title = 'Clube';
     $club = new Club($this->get['id']);
     $club->__load();
     $status=$club->status;

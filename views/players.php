@@ -82,7 +82,7 @@
                 <? } ?>
               </td>
               <td class='gen border'><?=$player->age;?></td>
-              <td class='gen border'>rec[<?//=$player->REC;?>]</td>
+              <td class='gen border'><?=_rec($player->rec)?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
               <td class='phi'><?=$player->stamina;?></td>
               <td class='phi'><?=$player->speed;?></td>
@@ -162,7 +162,7 @@
                 <? } ?>
               </td>
               <td class='gen border'><?=$player->age;?></td>
-              <td class='gen border'>rec[<?//=$player->REC;?>]</td>
+              <td class='gen border'><?=_rec($player->rec)?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
               <td class='phi'><?=$player->stamina;?></td>
               <td class='phi'><?=$player->speed;?></td>

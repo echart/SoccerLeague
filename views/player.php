@@ -40,7 +40,7 @@
                     </span>
                 </span>
               </p>
-              <p><strong>Salário:</strong> $500.000</p>
+              <p><strong>Salário:</strong> $<?=$this->data['player']->wage?></p>
               <p><strong>Idade:</strong> <?=$this->data['player']->age?> anos</p>
               <p><strong>Peso/Altura:</strong>  <?=$this->data['player']->weight?>kg/<?=$this->data['player']->height?>cm</p>
               <p><strong>Índice de Habilidade:</strong> <?=$this->data['player']->skill_index?></p>

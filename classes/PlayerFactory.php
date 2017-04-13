@@ -233,8 +233,8 @@ class PlayerFactory{
 		$query->bindParam(':id_player',$id_player);
 		$player->id_player = $id_player;
 		$player->skillIndex();
-		$w = $player->calcwage();
-		$query->bindParam(':wage',$w);
+		$player->calcwage();
+		$query->bindParam(':wage',$player->wage);
 		$query->execute();
 		try {
 			foreach ($player->position as $key => $value) {

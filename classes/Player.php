@@ -47,9 +47,16 @@ class Player{
 		$this->wage=pow($this->skill_index,2)*2;
 		return $this->wage;
 	}
-
+	public function wage(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT wage FROM players_wage p where id_player=:id_player");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+		$data=$query->fetch(PDO::FETCH_OBJ);
+		$this->wage = number_format($data->wage,2,',','.');
+		return $this->wage;
+	}
 	public function __loadinfo(){
-		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg, id_player_club, id_country FROM players p where id_player=:id_player");
+		$query=Connection::getInstance()->connect()->prepare("SELECT name,nickname, age, height, weight, leg, id_player_club, id_country, recomendation FROM players p where id_player=:id_player");
 		$query->bindParam(':id_player',$this->id_player);
 
 		$query->execute();
@@ -62,6 +69,7 @@ class Player{
 		$this->weight = $data->weight;
 		$this->id_club = $data->id_player_club;
 		$this->id_country = $data->id_country;
+		$this->rec=$data->recomendation;
 	}
 
 	public function __loadappearance(){

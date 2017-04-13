@@ -27,7 +27,7 @@
   color: #393e41;
 }
 .club-info h1{
-  font-size: 32px;
+  font-size: 26px;
 }
 .club-info .nickname{
   font-size: 18px;
@@ -103,4 +103,18 @@
 }
 table.club-result{
   margin-top: 20px;
+}
+
+@media (max-width: 360px) {
+  .club-logo{
+    margin-top: 50px;
+  }
+}
+/**=====================
+MOBILE ~~MEDIUM
+=======================**/
+@media (min-width: 360px) and (max-width: 600px) {
+  .club-logo{
+    margin-top: 10px;
+  }
 }

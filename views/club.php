@@ -7,10 +7,10 @@
         <div class='box-content'>
           <div class='club-options'>
             <ul class='subnav'>
-              <li><a class='selected' href="<?=$this->tree?>league"><img src="<?=$this->tree?>assets/img/icons/home.png" width="32px"><span>Sede</span></a></li>
-              <li><a href="<?=$this->tree?>league"><img src="<?=$this->tree?>assets/img/icons/strategy.png" width="32px"><span>Visão geral</span></a></li>
-              <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/team-of-the-round"><img src="<?=$this->tree?>assets/img/icons/calendar.png" width="32px"><span>Partidas</span></a></li>
-              <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/calendar"><img src="<?=$this->tree?>assets/img/icons/stadium.png" width="32px"><span>Estádio</span></a></li>
+              <li><a class='selected' href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>"><img src="<?=$this->tree?>assets/img/icons/home.png" width="32px"><span>Sede</span></a></li>
+              <li><a href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>/overview/"><img src="<?=$this->tree?>assets/img/icons/strategy.png" width="32px"><span>Visão geral</span></a></li>
+              <li><a href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>/matches/"><img src="<?=$this->tree?>assets/img/icons/calendar.png" width="32px"><span>Partidas</span></a></li>
+              <li><a href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium/"><img src="<?=$this->tree?>assets/img/icons/stadium.png" width="32px"><span>Estádio</span></a></li>
               <!-- <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/statistics"><img src="<?=$this->tree?>assets/img/icons/statistics.png" width="32px"><span>Estatísticas</span></a></li> -->
             </ul>
             <? if($_SESSION['SL_club']!=$this->data['club']->id_club){?>
@@ -53,11 +53,11 @@
     		<div class='box-content'>
           <div class='club'>
             <div class='club-info bit-60'>
-              <h1><?=$this->data['club']->clubname;?> <? if($this->data['clubinfo']->nickname!='null'){?><span class='nickname'>[<?=$this->data['clubinfo']->nickname;?>]<?}?></span><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/<?=$this->data['club']->country['country']?>.png' width="30px"></h1>
+              <h1><?=$this->data['club']->clubname;?> <? if($this->data['clubinfo']->nickname!=null){?><span class='nickname'>[<?=$this->data['clubinfo']->nickname;?>]<?}?></span><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/<?=$this->data['club']->country['country']?>.png' width="30px"></h1>
               <h3><?=$this->data['clubinfo']->manager;?></h3>
               <p><strong>ID do Clube:</strong> <?=$this->data['club']->id_club;?></p>
               <p><strong>Disputando:</strong> <a href='<?=$this->tree?>league/<?=$this->data['club']->country['abbreviation']?>/<?=$this->data['club']->league['division']?>/<?=$this->data['club']->league['divgroup']?>'><?=$this->data['club']->league['leaguename'];?></a></p>
-              <p><strong>Estádio:</strong> <a href='<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium'><? if($this->data['clubinfo']->stadium!='null'){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
+              <p><strong>Estádio:</strong> <a href='<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium'><? if($this->data['clubinfo']->stadium!=null){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
               <p><strong>Torcida:</strong> <? if($this->data['clubinfo']->fansname!=null){ echo $this->data['clubinfo']->fansname;} else{echo '...';}?></p>
               <p><strong>Sócios:</strong> ...</p>
               <p><strong>Fundado em:</strong> <?=$this->data['club']->created;?></p>
@@ -83,7 +83,7 @@
           <p>
 
             <?
-            if($this->data['clubinfo']->history=='null'){
+            if($this->data['clubinfo']->history==null){
               echo 'Nenhuma história para contar';
             }else{
               echo $this->data['clubinfo']->history;

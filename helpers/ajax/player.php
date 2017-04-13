@@ -20,7 +20,7 @@ $player->__loadskills();
 $player->__loadpositions();
 $player->__loadappearance();
 $player->skillIndex();
-
+$player->wage();
 
 $playerdata['name'] = $player->name;
 $playerdata['player_id'] = $player->id_player;

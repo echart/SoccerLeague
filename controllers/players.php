@@ -1,5 +1,7 @@
 <?
-require_once('helpers/__country.php');
+include('helpers/__country.php');
+include($this->tree . 'helpers/_rec.php');
+
 $this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu    = 'squad';
 if(isset($this->request['id'])){
@@ -19,6 +21,7 @@ if(isset($this->request['id'])){
   $player->__loadpositions();
   $player->__loadappearance();
   $player->skillIndex();
+  $player->wage();
   $this->data['player'] = $player;
   $this->data['player']->clubname = Club::getClubNameById($player->id_club);
 
@@ -33,6 +36,7 @@ if(isset($this->request['id'])){
   // var_dump($this->data['player']);
   // exit;
 }else{
+
   $this->title = "Elenco";
   $this->menu  = "squad";
   $this->submenu = 'players';
