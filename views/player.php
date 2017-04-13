@@ -318,7 +318,7 @@
           <div class='center_block'>
             <div class='field_player' player-id='' player-name='' position='gk' >
               <div class='playershirt goalkeeper'></div>
-              
+
             </div>
           </div>
           <div class='right_block'></div>

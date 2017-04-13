@@ -18,7 +18,7 @@
           <option value="">Casa</option>
           <option value="">Fora de casa</option>
         </select> -->
-        <table id='overal'>
+        <table id='overal' class='table-responsive'>
           <!-- <caption>Campeonato Brasileiro</caption> -->
           <thead>
             <tr>

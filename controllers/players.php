@@ -28,6 +28,8 @@ if(isset($this->request['id'])){
   $this->addJSFile('player.appearance.js');
   $this->addJSFile('player.skills.js');
   $this->addJSFile('player.positions.js');
+  $this->addCSSFile('responsive.table.css');
+  $this->addJSFile('responsive.table.js');
   // var_dump($this->data['player']);
   // exit;
 }else{
@@ -67,4 +69,6 @@ if(isset($this->request['id'])){
   $this->addCSSFile('players.css');
   $this->addJSFile('players.filters.js');
   $this->addJSFile('player.skills.js');
+  $this->addCSSFile('responsive.table.css');
+  $this->addJSFile('responsive.table.js');
 }

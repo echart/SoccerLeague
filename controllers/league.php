@@ -66,6 +66,8 @@ switch ($subrequest) {
 
 
       $this->addCSSFile('league.css');
+      $this->addCSSFile('responsive.table.css');
+      $this->addJSFile('responsive.table.js');
     }
     break;
 }

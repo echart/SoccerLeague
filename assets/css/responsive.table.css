@@ -1,0 +1,58 @@
+.wm-rt-fixed-cols {
+  display: none;
+}
+
+.wm-rt-fixed-header {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .wm-rt-container {
+    position: relative;
+    z-index: 0;
+  }
+  .wm-rt-container table {
+    max-width: 100%;
+  }
+  .wm-rt-container table td {
+    background-color: white;
+  }
+  .wm-rt-container table.wm-rt-scroll-cols {
+    z-index: 1;
+    position: relative;
+    display: block;
+    overflow-x: auto;
+  }
+  .wm-rt-container table.wm-rt-fixed-cols {
+    display: block;
+    position: absolute;
+    overflow-x: hidden;
+    pointer-events: none;
+    top: 0;
+    z-index: 2;
+  }
+  .wm-rt-container table.wm-rt-fixed-cols .wm-rt-pinned-col {
+    position: relative;
+  }
+  .wm-rt-container table.wm-rt-fixed-cols .wm-rt-scroll-col {
+    visibility: hidden;
+  }
+  .wm-rt-container table.wm-rt-fixed-header {
+    z-index: 3;
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    border: none;
+    top: 0;
+  }
+  .wm-rt-container table.wm-rt-fixed-header thead {
+    background-color: white;
+  }
+  .wm-rt-container table.wm-rt-fixed-header tbody {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .wm-rt-container table.wm-rt-fixed-header.wm-rt-fixed {
+    display: block;
+  }
+}

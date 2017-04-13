@@ -31,7 +31,7 @@
   			Jogadores
   		</div>
   		<div class='box-content'>
-        <table id='overal' class='table skills'>
+        <table id='overal' class='table-responsive'>
           <thead>
             <tr>
               <th><abbr title="Camiseta">#</abbr></th>
@@ -121,7 +121,7 @@
   		<div class='box-content'>
         <div class='filters'>
         </div>
-        <table id='overal' class='table skills'>
+        <table id='overal' class='table-responsive'>
           <thead>
             <tr>
               <th><abbr title="Camiseta">#</abbr></th>

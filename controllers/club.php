@@ -11,7 +11,7 @@ if(!isset($this->request['id'])) // if country isnt set at url, make the redirec
 
 switch ($this->request['subrequest']) {
   case 'overview':
-    echo 'mdsaklmkldsa';
+    $this->requestURL='club_overview';
     break;
   default:
     $club = new Club($this->get['id']);
