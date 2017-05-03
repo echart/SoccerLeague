@@ -37,9 +37,11 @@
               <th><abbr title="Camiseta">#</abbr></th>
               <th data-sort="string"><abbr title="Nome">Nome</abbr></th>
               <th data-sort="string" class='gen'>Posição</th>
+              <th><abbr title="País">País</abbr></th>
               <th class='gen' data-sort="float">Idade</th>
               <th class='gen' width='120px'><abbr title='Recomendação'>REC</abbr></th>
               <th class='gen' data-sort="float"><abbr title='Indice de Habilidades'>SI</abbr></th>
+              <th class='gen'><abbr title='Salário'>Salário</abbr></th>
               <th class='phi' data-sort="int"><abbr title='Força'>For</abbr></th>
               <th class='phi' data-sort="int"><abbr title='Velocidade'>Vel</abbr></th>
               <th class='phi' data-sort="int"><abbr title='Resistência'>Res</abbr></th>
@@ -70,7 +72,7 @@
               <td class='left' width='10px'></td>
               <td class='padding-right left'>
                 <span class="tooltip tooltip-effect-1" player='<?=$player->id_player;?>'>
-                  <span class="tooltip-item"><a href="<?=$this->tree?>players/<?=$player->id_player;?>"><?=$player->name;?> <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player->id_country); echo $c['country']?>.png'</a></span>
+                  <span class="tooltip-item"><a href="<?=$this->tree?>players/<?=$player->id_player;?>"><?=$player->name;?></a></span>
                     <span class="tooltip-content clearfix">
                         <span class="tooltip-text">Carregando...</span>
                     </span>
@@ -79,11 +81,17 @@
               <td class='border gen positions'>
                 <? foreach ($player->position as $position) { ?>
                   <span class='position-<?=$position['position'];?>'><?=$position['position']." " . $position['side'];?></span>
-                <? } ?>
+                  <? } ?>
+              </td>
+              <td class='border gen'>
+                <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player->id_country); echo $c['country']?>.png'>
               </td>
               <td class='gen border'><?=$player->age;?></td>
               <td class='gen border'><?=_rec($player->rec)?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
+              <td class='border gen'>
+                $ <?=$player->wage()?>
+              </td>
               <td class='phi'><?=$player->stamina;?></td>
               <td class='phi'><?=$player->speed;?></td>
               <td class='phi'><?=$player->resistance;?></td>
@@ -127,9 +135,11 @@
               <th><abbr title="Camiseta">#</abbr></th>
               <th data-sort="string"><abbr title="Nome">Nome</abbr></th>
               <th class='gen'>Posição</th>
+              <th class='gen'><abbr title='País'>País</abbr></th>
                 <th class='gen' data-sort="float">Idade</th>
                 <th class='gen' width='120px'><abbr title='Recomendação'>REC</abbr></th>
                 <th class='gen' data-sort="float"><abbr title='Indice de Habilidades'>SI</abbr></th>
+                <th class='gen'><abbr title='Salário'>Salário</abbr></th>
                 <th class='phi' data-sort='int'><abbr title='Força'>For</abbr></th>
                 <th class='phi' data-sort='int'><abbr title='Velocidade'>Vel</abbr></th>
                 <th class='phi' data-sort='int'><abbr title='Resistência'>Res</abbr></th>
@@ -161,9 +171,15 @@
                   <span class='position-<?=$position['position'];?>'><?=$position['position'];?></span>
                 <? } ?>
               </td>
+              <td class='border gen'>
+                <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player->id_country); echo $c['country']?>.png'>
+              </td>
               <td class='gen border'><?=$player->age;?></td>
               <td class='gen border'><?=_rec($player->rec)?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
+              <td class='border gen'>
+                $ <?=$player->wage()?>
+              </td>
               <td class='phi'><?=$player->stamina;?></td>
               <td class='phi'><?=$player->speed;?></td>
               <td class='phi'><?=$player->resistance;?></td>
