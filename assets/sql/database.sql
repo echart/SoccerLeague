@@ -165,6 +165,7 @@ create table club_finances(
 	food numeric(17,2) not null default 0,
 	sponsor numeric(17,2) not null default 0,
 	wage numeric(17,2) not null default 0,
+	maintenance numeric(17,2) not null default 0,
 	constructions numeric(17,2) not null default 0,
 	interests numeric(17,2) not null default 0
 );
@@ -180,6 +181,7 @@ create table club_finances_weekly(
 	food numeric(17,2) not null default 0,
 	sponsor numeric(17,2) not null default 0,
 	wage numeric(17,2) not null default 0,
+	maintenance numeric(17,2) not null default 0,
 	constructions numeric(17,2) not null default 0,
 	interests numeric(17,2) not null default 0
 );
@@ -196,6 +198,7 @@ create table club_finances_season(
 	food numeric(17,2) not null default 0,
 	sponsor numeric(17,2) not null default 0,
 	wage numeric(17,2) not null default 0,
+	maintenance numeric(17,2) not null default 0,
 	constructions numeric(17,2) not null default 0,
 	interests numeric(17,2) not null default 0
 );
