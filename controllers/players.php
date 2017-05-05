@@ -23,6 +23,7 @@ if(isset($this->request['id'])){
   $player->skillIndex();
   $player->wage();
   $this->data['player'] = $player;
+  $this->data['player']->wage = number_format($player->wage,2,',','.');
   $this->data['player']->clubname = Club::getClubNameById($player->id_club);
 
   $this->requestURL='player';
@@ -53,6 +54,7 @@ if(isset($this->request['id'])){
     // $player->__loadhistory();
     $player->__loadpositions();
     $player->skillIndex();
+    $player->wage = number_format($player->wage,2,',','.');
     $this->data['players']['line'][]=$player;
   }
   /*
@@ -68,6 +70,7 @@ if(isset($this->request['id'])){
     $player->__loadhistory();
     $player->__loadpositions();
     $player->skillIndex();
+    $player->wage = number_format($player->wage,2,',','.');
     $this->data['players']['gk'][]=$player;
   }
   $this->addCSSFile('players.css');

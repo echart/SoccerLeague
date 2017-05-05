@@ -16,7 +16,12 @@
             <tbody>
               <?foreach($this->data['players'] as $player){?>
                 <tr>
-                  <td><a href='<?=$this->tree?>players/<?=$player['id_player']?>'><?=$player['name']?></a></td>
+                  <td><span class="tooltip tooltip-effect-1" player='<?=$player['id_player'];?>'>
+                    <span class="tooltip-item"><a href="<?=$this->tree?>players/<?=$player['id_player'];?>"><?=$player['name'];?></a> <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player['id_country']); echo $c['country'];?>.png'></span>
+                      <span class="tooltip-content clearfix">
+                          <span class="tooltip-text">Carregando...</span>
+                      </span>
+                  </span></td>
                   <td>$ <?=$player['wageWeek']?></td>
                   <td>$ <?=$player['wageSeason']?></td>
                 </tr>

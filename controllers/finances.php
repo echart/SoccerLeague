@@ -7,6 +7,7 @@ $id_club = $_SESSION['SL_club'];
 
 switch($this->request['method']){
   case 'wages':
+    include('helpers/__country.php');
     $this->requestURL = 'finances_wages';
     $query = Connection::getInstance()->connect()->prepare("SELECT id_player FROM players where id_player_club=:id_club group by id_player order by id_player");
     $query->bindParam(":id_club",$_SESSION['SL_club']);
@@ -19,6 +20,7 @@ switch($this->request['method']){
       $player->wage();
       $this->data['players'][$i]['id_player']=$player->id_player;
       $this->data['players'][$i]['name']=$player->name;
+      $this->data['players'][$i]['id_country'] = $player->id_country;
       $wage = $player->wage();
       $this->data['totalwageWeek'] += $wage;
       $wageseason = $wage*12;
