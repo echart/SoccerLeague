@@ -52,7 +52,7 @@ class Player{
 		$query->bindParam(':id_player',$this->id_player);
 		$query->execute();
 		$data=$query->fetch(PDO::FETCH_OBJ);
-		$this->wage = number_format($data->wage,2,',','.');
+		$this->wage = $data->wage;
 		return $this->wage;
 	}
 	public function __loadinfo(){

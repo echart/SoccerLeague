@@ -37,7 +37,7 @@
               <th><abbr title="Camiseta">#</abbr></th>
               <th data-sort="string"><abbr title="Nome">Nome</abbr></th>
               <th data-sort="string" class='gen'>Posição</th>
-              <th><abbr title="País">País</abbr></th>
+              <th class='gen'><abbr title="País">País</abbr></th>
               <th class='gen' data-sort="float">Idade</th>
               <th class='gen' width='120px'><abbr title='Recomendação'>REC</abbr></th>
               <th class='gen' data-sort="float"><abbr title='Indice de Habilidades'>SI</abbr></th>
