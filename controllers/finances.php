@@ -44,8 +44,28 @@ switch($this->request['method']){
     $this->finance['week']['food'] = number_format($finance->food,2,',','.');
     $this->finance['week']['sponsor'] = number_format($finance->sponsor,2,',','.');
     $this->finance['week']['wage'] = number_format($finance->wage,2,',','.');
+    $this->finance['week']['maintenance'] = number_format($finance->maintenance,2,',','.');
     $this->finance['week']['constructions'] = number_format($finance->constructions,2,',','.');
     $this->finance['week']['interests'] = number_format($finance->interests,2,',','.');
+
+    $this->finance['week']['income'] = $finance->tv + $finance->tickets+ $finance->merchandise+ $finance->food+ $finance->sponsor;
+    $this->finance['week']['outcome'] = $finance->constructions+ $finance->maintenance+ $finance->wage;
+
+    $finance->season();
+    $this->finance['season']['money'] = number_format($finance->money,2,',','.');
+    $this->finance['season']['tv'] = number_format($finance->tv,2,',','.');
+    $this->finance['season']['tickets'] = number_format($finance->tickets,2,',','.');
+    $this->finance['season']['merchandise'] = number_format($finance->merchandise,2,',','.');
+    $this->finance['season']['food'] = number_format($finance->food,2,',','.');
+    $this->finance['season']['sponsor'] = number_format($finance->sponsor,2,',','.');
+    $this->finance['season']['wage'] = number_format($finance->wage,2,',','.');
+    $this->finance['season']['maintenance'] = number_format($finance->maintenance,2,',','.');
+    $this->finance['season']['constructions'] = number_format($finance->constructions,2,',','.');
+    $this->finance['season']['interests'] = number_format($finance->interests,2,',','.');
+
+
+    $this->addJSFile('graphs/finances.week.js');
+    $this->addJSFile('graphs/finances.season.js');
 
   break;
 }
