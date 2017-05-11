@@ -113,8 +113,7 @@ create table club_supporters(
 	id_club_fans serial primary key,
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
-	supporters integer not null default 6000,
-	cardholder integer not null default 300
+	supporters integer not null default 6000
 );
 
 create table buddies(
@@ -207,7 +206,6 @@ create table club_stadium(
 	id_club integer not null,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
 	capacity integer not null default 6000,
-	seated integer not null default 0,
 	pitchcover integer not null default 0,
 	draining integer not null default 0,
 	sprinklers integer not null default 0,

@@ -31,8 +31,8 @@
               <tr><td>Receitas de Alimentação</td><td>$ <?=$this->finance['week']['food']?></td></tr>
               <tr><td>Patrocinadores</td><td>$ <?=$this->finance['week']['sponsor']?></td></tr>
               <tr><td>Obras</td><td>$ <?=$this->finance['week']['constructions']?></td></tr>
-              <tr><td><a href='finances/wages'>Salários</a></td><td>$ <?=$this->finance['week']['wage']?></td></tr>
-              <tr><td><a href='finances/maintenance'>Manutenções</a></td><td>$ <?=$this->finance['week']['maintenance']?></td></tr>
+              <tr><td><a href='<?=$this->tree?>finances/wages'>Salários</a></td><td>$ <?=$this->finance['week']['wage']?></td></tr>
+              <tr><td><a href='<?=$this->tree?>finances/maintenance'>Manutenções</a></td><td>$ <?=$this->finance['week']['maintenance']?></td></tr>
               <tr><td><strong>Transferências</strong></td><td>$ 300.000,00</td></tr>
               <tr><td><strong>Juros</strong></td><td>$ <?=$this->finance['week']['interests']?></td></tr>
               <tr><td><strong>Saldo</strong></td><td>$ <?=$this->finance['week']['money']?></td></tr>
@@ -51,8 +51,8 @@
               <tr><td>Receitas de Alimentação</td><td>$ <?=$this->finance['season']['food']?></td></tr>
               <tr><td>Patrocinadores</td><td>$ <?=$this->finance['season']['sponsor']?></td></tr>
               <tr><td>Obras</td><td>$ <?=$this->finance['season']['constructions']?></td></tr>
-              <tr><td><a href='finances/wages'>Salários</a></td><td>$ <?=$this->finance['season']['wage']?></td></tr>
-              <tr><td><a href='finances/maintenance'>Manutenções</a></td><td>$ <?=$this->finance['season']['maintenance']?></td></tr>
+              <tr><td><a href='<?=$this->tree?>finances/wages'>Salários</a></td><td>$ <?=$this->finance['season']['wage']?></td></tr>
+              <tr><td><a href='<?=$this->tree?>finances/maintenance'>Manutenções</a></td><td>$ <?=$this->finance['season']['maintenance']?></td></tr>
               <tr><td><strong>Transferências</strong></td><td>$ 300.000,00</td></tr>
               <tr><td><strong>Juros</strong></td><td>$ <?=$this->finance['season']['interests']?></td></tr>
               <tr><td><strong>Saldo</strong></td><td>$ <?=$this->finance['season']['money']?></td></tr>

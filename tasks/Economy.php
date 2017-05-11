@@ -5,6 +5,8 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
   require_once('../classes/Connection.php');
   require_once('../classes/Club.php');
   require_once('../classes/ClubFinances.php');
+  require_once('../classes/ClubFacilities.php');
+  require_once('../classes/ClubFans.php');
   require_once('../classes/League.php');
   require_once('../classes/Player.php');
   require_once('../classes/Goalkeeper.php');
@@ -23,20 +25,24 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
   foreach ($id_clubs as $id_club) {
     $club = new Club($id_club);
     $finance = new ClubFinances($club);
+    $facilities = new ClubFacilities($club);
+    $facilities->__load();
     $id_league = Club::getClubIDLeague($id_club);
     $league = new League();
     $league->id_league = $id_league;
     $league->__load();
-
     $money = $finance->__wallet();
-
     //TV
     $tv_base = 11000000;
     $tv = $tv_base - (1000000 * $league->division);
     echo 'calculating tv money...<br>';
     // merchandise
+    $merchandise = 0;
+    $merchandise = (($facilities->store * 25) * ClubFans::howManyFans($id_club));
     echo 'calculating merchandise...<br>';
     // patrocinador
+    //require_once('../tasks/Sponsors.php');
+    $sponsors = 0;
     echo 'calculating sponsor...<br>';
     // wage
     $query = Connection::getInstance()->connect()->prepare("SELECT id_player FROM players where id_player_club=:id_club group by id_player order by id_player");
@@ -52,27 +58,74 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     echo 'calculating wages...<br>';
     // maintenances
     $maintenances = 0;
-    $maintenances += $tg * 1250000; // training grounds
-    $maintenances += $yt * 1250000; // youth development
-    $maintenances += $medical * 475000; //medical center
-    $maintenances += $physio * 275000; //physio
-    $maintenances += $parking * 375000; //parking
-    $maintenances += $toilets * 375000; //toilets
-    $maintenances += $lights * 200000; //floodlights
-    $maintenances += $hotdog * 35000; //hotdog
-    $maintenances += $store * 150000; //club store
-    $maintenances += $restaurant * 75000; //restarant
-    $maintenances += $marketing * 200000; //marketing deparment
-    $maintenances += $draining * 100000; //pitch draining
-    $maintenances += $cover * 75000; //pitch cover
-    $maintenances += $sprinklers * 100000; //Spriklers
-    $maintenances += $heating * 350000; //heating
+    $maintenances += $facilities->tg * 1050000; // training grounds
+    $maintenances += $facilities->yd * 1050000; // youth development
+    $maintenances += $facilities->medical * 475000; //medical center
+    $maintenances += $facilities->physio * 275000; //physio
+    $maintenances += $facilities->parking * 375000; //parking
+    $maintenances += $facilities->toilets * 375000; //toilets
+    $maintenances += $facilities->lights * 200000; //floodlights
+    $maintenances += $facilities->hotdog * 35000; //hotdog
+    $maintenances += $facilities->store * 150000; //club store
+    $maintenances += $facilities->restaurant * 75000; //restarant
+    $maintenances += $facilities->marketing * 200000; //marketing deparment
+    $maintenances += $facilities->draining * 100000; //pitch draining
+    $maintenances += $facilities->cover * 75000; //pitch cover
+    $maintenances += $facilities->sprinklers * 100000; //Spriklers
+    $maintenances += $facilities->heating * 350000; //heating
     // result and interests
-    $C = $money + ($tv) - ($wages);
-    $base = ($C > 0) ? 8 : 9.5;
-    $mr = $C + (($C*$base)/100);
+    $C = $money + ($tv + $merchandise + $sponsors) - ($wages + $maintenances);
+    $interests_base = ($C > 0) ? 8 : 8.75;
+    $interests = (($C*$interests_base)/100);
+    $mr = $C + $interests;
     echo 'calculating interests...<br>';
     // INSERT RESULTS ON club_finances, club_finances_weekly and club_finances_season
+    $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club_finances where id_club=:id_club ");
+    $query->bindParam(':id_club',$id_club);
+    $query->execute();
+    $data = $query->fetch(PDO::FETCH_OBJ);
+
+    $tickets = $data->tickets;
+    $food = $data->food;
+    $constructions = $data->constructions;
+
+    $query = Connection::getInstance()->connect()->prepare("SELECT week FROM club_finances_weekly where id_club=:id_club order by week desc limit 1");
+    $query->bindParam(':id_club',$id_club);
+    $query->execute();
+    if($query->rowCount()>0){
+      $data = $query->fetch(PDO::FETCH_OBJ);
+      $week =  $data->week + 1;
+    }else{
+      $week = 1;
+    }
+
+    $query = Connection::getInstance()->connect()->prepare("INSERT INTO public.club_finances_weekly(id_club, week, money, tickets, tv, merchandise,food, sponsor, wage,maintenance, constructions, interests)
+    VALUES (:id_club, :week, :money, :tickets, :tv, :merchandise, :food, :sponsor, :wage, :maintenance, :constructions, :interests)");
+    $query->bindParam(':id_club',$id_club);
+    $query->bindParam(':week',$week);
+    $query->bindParam(':money',$mr);
+    $query->bindParam(':tickets',$tickets);
+    $query->bindParam(':tv',$tv);
+    $query->bindParam(':food',$food);
+    $query->bindParam(':merchandise',$merchandise);
+    $query->bindParam(':maintenance',$maintenances);
+    $query->bindParam(':sponsor',$sponsors);
+    $query->bindParam(':wage',$wages);
+    $query->bindParam(':constructions',$constructions);
+    $query->bindParam(':interests', $interests);
+    $query->execute();
+
+    $query = Connection::getInstance()->connect()->prepare("UPDATE public.club_finances SET money=:money, tickets=0, tv=:tv, merchandise=:merchandise,food=0, sponsor=:sponsor, wage=:wage, maintenance=:maintenance, constructions=0, interests=:interests WHERE id_club=:id_club");
+    $query->bindParam(':id_club',$id_club);
+    $query->bindParam(':money',$mr);
+    $query->bindParam(':tv',$tv);
+    $query->bindParam(':merchandise',$merchandise);
+    $query->bindParam(':maintenance',$maintenances);
+    $query->bindParam(':sponsor',$sponsors);
+    $query->bindParam(':wage',$wages);
+    $query->bindParam(':interests', $interests);
+    $query->execute();
+    echo 'updating values...<br>';
   }
 
 }else{

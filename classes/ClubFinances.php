@@ -38,6 +38,7 @@ class ClubFinances{
     $this->wage = $data->wage;
     $this->constructions = $data->constructions;
     $this->maintenance = $data->maintenance;
+    $this->interests = $data->interests;
   }
   public function season(){
     $query = Connection::getInstance()->connect()->prepare("SELECT money, tickets, tv, merchandise, food, sponsor, wage, constructions, interests, maintenance FROM club_finances_season WHERE id_club = :id_club");
@@ -53,5 +54,7 @@ class ClubFinances{
     $this->wage = $data->wage;
     $this->constructions = $data->constructions;
     $this->maintenance = $data->maintenance;
+    $this->interests = $data->interests;
+
   }
 }
