@@ -50,7 +50,23 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
       $wages += $player->wage();
     }
     echo 'calculating wages...<br>';
-    // maintenance
+    // maintenances
+    $maintenances = 0;
+    $maintenances += $tg * 1250000; // training grounds
+    $maintenances += $yt * 1250000; // youth development
+    $maintenances += $medical * 475000; //medical center
+    $maintenances += $physio * 275000; //physio
+    $maintenances += $parking * 375000; //parking
+    $maintenances += $toilets * 375000; //toilets
+    $maintenances += $lights * 200000; //floodlights
+    $maintenances += $hotdog * 35000; //hotdog
+    $maintenances += $store * 150000; //club store
+    $maintenances += $restaurant * 75000; //restarant
+    $maintenances += $marketing * 200000; //marketing deparment
+    $maintenances += $draining * 100000; //pitch draining
+    $maintenances += $cover * 75000; //pitch cover
+    $maintenances += $sprinklers * 100000; //Spriklers
+    $maintenances += $heating * 350000; //heating
     // result and interests
     $C = $money + ($tv) - ($wages);
     $base = ($C > 0) ? 8 : 9.5;
