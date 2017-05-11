@@ -21,11 +21,16 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
   }
   echo 'FOREACH CLUB<br>';
   foreach ($id_clubs as $id_club) {
-    //TV
+    $club = new Club($id_club);
+    $finance = new ClubFinances($club);
     $id_league = Club::getClubIDLeague($id_club);
     $league = new League();
     $league->id_league = $id_league;
     $league->__load();
+
+    $money = $finance->__wallet();
+
+    //TV
     $tv_base = 11000000;
     $tv = $tv_base - (1000000 * $league->division);
     echo 'calculating tv money...<br>';
@@ -46,7 +51,11 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     }
     echo 'calculating wages...<br>';
     // maintenance
-    // interests
+    // result and interests
+    $C = $money + ($tv) - ($wages);
+    $base = ($C > 0) ? 8 : 9.5;
+    $mr = $C + (($C*$base)/100);
+    echo 'calculating interests...<br>';
     // INSERT RESULTS ON club_finances, club_finances_weekly and club_finances_season
   }
 
