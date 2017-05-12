@@ -58,17 +58,17 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     echo 'calculating wages...<br>';
     // maintenances
     $maintenances = 0;
-    $maintenances += $facilities->tg * 1050000; // training grounds
-    $maintenances += $facilities->yd * 1050000; // youth development
-    $maintenances += $facilities->medical * 475000; //medical center
+    $maintenances += $facilities->tg * 1150000; // training grounds
+    $maintenances += $facilities->yd * 1150000; // youth development
+    $maintenances += $facilities->medical * 325000; //medical center
     $maintenances += $facilities->physio * 275000; //physio
-    $maintenances += $facilities->parking * 375000; //parking
-    $maintenances += $facilities->toilets * 375000; //toilets
-    $maintenances += $facilities->lights * 200000; //floodlights
+    $maintenances += $facilities->parking * 325000; //parking
+    $maintenances += $facilities->toilets * 325000; //toilets
+    $maintenances += $facilities->lights * 150000; //floodlights
     $maintenances += $facilities->hotdog * 35000; //hotdog
     $maintenances += $facilities->store * 150000; //club store
     $maintenances += $facilities->restaurant * 75000; //restarant
-    $maintenances += $facilities->marketing * 200000; //marketing deparment
+    $maintenances += $facilities->marketing * 120000; //marketing deparment
     $maintenances += $facilities->draining * 100000; //pitch draining
     $maintenances += $facilities->cover * 75000; //pitch cover
     $maintenances += $facilities->sprinklers * 100000; //Spriklers
