@@ -33,8 +33,9 @@
               <tr><td>Obras</td><td>$ <?=$this->finance['week']['constructions']?></td></tr>
               <tr><td><a href='<?=$this->tree?>finances/wages'>Salários</a></td><td>$ <?=$this->finance['week']['wage']?></td></tr>
               <tr><td><a href='<?=$this->tree?>finances/maintenance'>Manutenções</a></td><td>$ <?=$this->finance['week']['maintenance']?></td></tr>
-              <tr><td><strong>Transferências</strong></td><td>$ 300.000,00</td></tr>
+              <tr><td><strong>Transferências</strong></td><td>$ <?=$this->finance['week']['transfers']?></td></tr>
               <tr><td><strong>Juros</strong></td><td>$ <?=$this->finance['week']['interests']?></td></tr>
+              <tr><td><strong>Total</strong></td><td>$ <?=$this->finance['week']['total']?></td></tr>
               <tr><td><strong>Saldo</strong></td><td>$ <?=$this->finance['week']['money']?></td></tr>
             </table>
           </div>
@@ -53,8 +54,9 @@
               <tr><td>Obras</td><td>$ <?=$this->finance['season']['constructions']?></td></tr>
               <tr><td><a href='<?=$this->tree?>finances/wages'>Salários</a></td><td>$ <?=$this->finance['season']['wage']?></td></tr>
               <tr><td><a href='<?=$this->tree?>finances/maintenance'>Manutenções</a></td><td>$ <?=$this->finance['season']['maintenance']?></td></tr>
-              <tr><td><strong>Transferências</strong></td><td>$ 300.000,00</td></tr>
+              <tr><td><strong>Transferências</strong></td><td>$ <?=$this->finance['season']['transfers']?></td></tr>
               <tr><td><strong>Juros</strong></td><td>$ <?=$this->finance['season']['interests']?></td></tr>
+              <tr><td><strong>Total</strong></td><td>$ <?=$this->finance['season']['total']?></td></tr>
               <tr><td><strong>Saldo</strong></td><td>$ <?=$this->finance['season']['money']?></td></tr>
             </table>
           </div>

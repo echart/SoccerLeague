@@ -11,6 +11,8 @@ class ClubFinances{
   public $wage;
   public $constructions;
   public $interests;
+  public $transfers;
+  public $total;
 
   public function __construct(Club $club){
     $this->club = $club;
@@ -25,7 +27,7 @@ class ClubFinances{
     return $this->money;
   }
   public function week(){
-    $query = Connection::getInstance()->connect()->prepare("SELECT money, tickets, tv, merchandise, food, sponsor, wage, constructions, interests, maintenance FROM club_finances WHERE id_club = :id_club");
+    $query = Connection::getInstance()->connect()->prepare("SELECT money, tickets, tv, merchandise, food, sponsor, wage, constructions, interests, maintenance, transfers, total FROM club_finances WHERE id_club = :id_club");
     $query->bindParam(':id_club',$this->club->id_club);
     $query->execute();
     $data = $query->fetch(PDO::FETCH_OBJ);
@@ -39,9 +41,11 @@ class ClubFinances{
     $this->constructions = $data->constructions;
     $this->maintenance = $data->maintenance;
     $this->interests = $data->interests;
+    $this->transfers = $data->transfers;
+    $this->total = $data->total;
   }
   public function season(){
-    $query = Connection::getInstance()->connect()->prepare("SELECT money, tickets, tv, merchandise, food, sponsor, wage, constructions, interests, maintenance FROM club_finances_season WHERE id_club = :id_club");
+    $query = Connection::getInstance()->connect()->prepare("SELECT money, tickets, tv, merchandise, food, sponsor, wage, constructions, interests, maintenance, transfers, total FROM club_finances_season WHERE id_club = :id_club");
     $query->bindParam(':id_club',$this->club->id_club);
     $query->execute();
     $data = $query->fetch(PDO::FETCH_OBJ);
@@ -55,6 +59,7 @@ class ClubFinances{
     $this->constructions = $data->constructions;
     $this->maintenance = $data->maintenance;
     $this->interests = $data->interests;
-
+    $this->transfers = $data->transfers;
+    $this->total = $data->total;
   }
 }

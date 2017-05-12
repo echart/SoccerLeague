@@ -1,6 +1,8 @@
 <?
 $hash = $_GET['hash'];
 if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
+  error_reporting(E_ALL);
+  ini_set('display_errors',1);
   //requires
   require_once('../classes/Connection.php');
   require_once('../classes/Club.php');
@@ -32,6 +34,7 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     $league->id_league = $id_league;
     $league->__load();
     $money = $finance->__wallet();
+    $moneyStart = $finance->__wallet();
     //TV
     $tv_base = 11000000;
     $tv = $tv_base - (1000000 * $league->division);
@@ -78,6 +81,7 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     $interests_base = ($C > 0) ? 8 : 8.75;
     $interests = (($C*$interests_base)/100);
     $mr = $C + $interests;
+    $total = $mr - $moneyStart;
     echo 'calculating interests...<br>';
     // INSERT RESULTS ON club_finances, club_finances_weekly and club_finances_season
     $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club_finances where id_club=:id_club ");
@@ -88,6 +92,7 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     $tickets = $data->tickets;
     $food = $data->food;
     $constructions = $data->constructions;
+    $transfers = $data->transfers;
 
     $query = Connection::getInstance()->connect()->prepare("SELECT week FROM club_finances_weekly where id_club=:id_club order by week desc limit 1");
     $query->bindParam(':id_club',$id_club);
@@ -99,8 +104,8 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
       $week = 1;
     }
 
-    $query = Connection::getInstance()->connect()->prepare("INSERT INTO public.club_finances_weekly(id_club, week, money, tickets, tv, merchandise,food, sponsor, wage,maintenance, constructions, interests)
-    VALUES (:id_club, :week, :money, :tickets, :tv, :merchandise, :food, :sponsor, :wage, :maintenance, :constructions, :interests)");
+    $query = Connection::getInstance()->connect()->prepare("INSERT INTO public.club_finances_weekly(id_club, week, money, tickets, tv, merchandise,food, sponsor, wage,maintenance, constructions, interests, transfers, total)
+    VALUES (:id_club, :week, :money, :tickets, :tv, :merchandise, :food, :sponsor, :wage, :maintenance, :constructions, :interests, :transfers,:total)");
     $query->bindParam(':id_club',$id_club);
     $query->bindParam(':week',$week);
     $query->bindParam(':money',$mr);
@@ -113,9 +118,11 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     $query->bindParam(':wage',$wages);
     $query->bindParam(':constructions',$constructions);
     $query->bindParam(':interests', $interests);
+    $query->bindParam(':transfers', $transfers);
+    $query->bindParam(':total', $total);
     $query->execute();
 
-    $query = Connection::getInstance()->connect()->prepare("UPDATE public.club_finances SET money=:money, tickets=0, tv=:tv, merchandise=:merchandise,food=0, sponsor=:sponsor, wage=:wage, maintenance=:maintenance, constructions=0, interests=:interests WHERE id_club=:id_club");
+    $query = Connection::getInstance()->connect()->prepare("UPDATE public.club_finances SET money=:money, total=:total, transfers=0,tickets=0, tv=:tv, merchandise=:merchandise,food=0, sponsor=:sponsor, wage=:wage, maintenance=:maintenance, constructions=0, interests=:interests WHERE id_club=:id_club");
     $query->bindParam(':id_club',$id_club);
     $query->bindParam(':money',$mr);
     $query->bindParam(':tv',$tv);
@@ -124,6 +131,7 @@ if(isset($hash) and $hash == 'da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     $query->bindParam(':sponsor',$sponsors);
     $query->bindParam(':wage',$wages);
     $query->bindParam(':interests', $interests);
+    $query->bindParam(':total',$total);
     $query->execute();
     echo 'updating values...<br>';
   }

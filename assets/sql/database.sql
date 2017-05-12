@@ -166,7 +166,9 @@ create table club_finances(
 	wage numeric(17,2) not null default 0,
 	maintenance numeric(17,2) not null default 0,
 	constructions numeric(17,2) not null default 0,
-	interests numeric(17,2) not null default 0
+	interests numeric(17,2) not null default 0,
+	transfers numeric(17,2) not null default 0,
+	total numeric(17,2) not null default 0
 );
 create table club_finances_weekly(
 	id_club_finances_weekly serial primary key,
@@ -182,7 +184,9 @@ create table club_finances_weekly(
 	wage numeric(17,2) not null default 0,
 	maintenance numeric(17,2) not null default 0,
 	constructions numeric(17,2) not null default 0,
-	interests numeric(17,2) not null default 0
+	interests numeric(17,2) not null default 0,
+	transfers numeric(17,2) not null default 0,
+	total numeric(17,2) not null default 0
 );
 create table club_finances_season(
 	id_club_finances_season serial primary key,
@@ -199,7 +203,9 @@ create table club_finances_season(
 	wage numeric(17,2) not null default 0,
 	maintenance numeric(17,2) not null default 0,
 	constructions numeric(17,2) not null default 0,
-	interests numeric(17,2) not null default 0
+	interests numeric(17,2) not null default 0,
+	transfers numeric(17,2) not null default 0,
+	total numeric(17,2) not null default 0
 );
 create table club_stadium(
 	id_club_stadium serial primary key,

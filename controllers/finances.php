@@ -47,6 +47,8 @@ switch($this->request['method']){
     $this->finance['week']['maintenance'] = number_format($finance->maintenance,2,',','.');
     $this->finance['week']['constructions'] = number_format($finance->constructions,2,',','.');
     $this->finance['week']['interests'] = number_format($finance->interests,2,',','.');
+    $this->finance['week']['transfers'] = number_format($finance->transfers,2,',','.');
+    $this->finance['week']['total'] = number_format($finance->total,2,',','.');
 
     $this->finance['week']['income'] = $finance->tv + $finance->tickets+ $finance->merchandise+ $finance->food+ $finance->sponsor;
     $this->finance['week']['outcome'] = $finance->constructions+ $finance->maintenance+ $finance->wage;
@@ -62,6 +64,9 @@ switch($this->request['method']){
     $this->finance['season']['maintenance'] = number_format($finance->maintenance,2,',','.');
     $this->finance['season']['constructions'] = number_format($finance->constructions,2,',','.');
     $this->finance['season']['interests'] = number_format($finance->interests,2,',','.');
+    $this->finance['season']['transfers'] = number_format($finance->transfers,2,',','.');
+    $this->finance['season']['total'] = number_format($finance->total,2,',','.');
+
 
 
     $this->addJSFile('graphs/finances.week.js');
