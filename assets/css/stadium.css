@@ -1,0 +1,21 @@
+ul.facilities{
+  list-style: none;
+}
+ul.facilities li{
+  padding: 20px;
+  width: 100%;
+}
+
+ul.facilities li span.name{
+  font-size: 15px;
+}
+ul.facilities li span.help{
+  background: #393e41;
+  color: #fff;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  padding: 5px;
+  text-align: center;
+}

@@ -1,17 +1,49 @@
 .form-field{
   padding: 10px;
 }
+.tactics{
+  height: 630px;
+  background: #393e41;
+}
 .field{
   border: -1;
   margin: 0 auto;
-  width: 450px;
-  height: 653px;
+  width: 397px;
+  height: 579px;
   background: url('../img/soccerfield.png');
   background-size: cover;
 }
+.field_reserves{
+  width: 130px;
+  height: 579px;
+  background: #4b851c;
+}
 .advanced{
-  width: 447px !important;
-  margin: 0 auto;
+  background: #393e41;
+  padding: 15px;
+  color: #fff;
+  text-align: right;
+}
+.advanced a{
+  color: #a5a5a9;
+}
+.advanced a:hover{
+  color: #a5a5a9;
+}
+.lastsaved{
+  background: #393e41;
+  padding: 15px;
+  color: #62de9f;
+  text-align: left;
+}
+.players > div{
+  border: 0px !important;
+}
+.filters{
+  width: 100%;
+  background: #393e41;
+  padding: 20px;
+  color: #fff;
 }
 table{
   z-index: 2;
@@ -59,34 +91,34 @@ table{
     float: left;
 }
 .field_line .left_block, .field_line .right_block {
-    width: 112px;
+    width: 95px;
 }
 .field_line .center_block {
-    width: 225px;
+    width: 200px;
 }
 .field_line.forwards{
   position: relative;
-  top: 85px;
+  top: 65px;
 }
 .field_line.off_midfielders{
   position: relative;
-  top: 110px;
+  top: 90px;
 }
 .field_line.midfielders{
   position: relative;
-  top: 150px;
+  top: 130px;
 }
 .field_line.def_midfielders{
   position: relative;
-  top: 190px;
+  top: 170px;
 }
 .field_line.defenders{
   position: relative;
-  top: 210px;
+  top: 180px;
 }
 .field_line.goalkeeper{
   position: relative;
-  top: 220px;
+  top: 175px;
 }
 .field_player{
     z-index: 2;
@@ -94,7 +126,7 @@ table{
     opacity: 0.6;
     text-align: center;
     height: 60px;
-    width: 72px;
+    width: 60px;
     _overflow: hidden;
     line-height: 10px;
     font-size: 10px;

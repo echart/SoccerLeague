@@ -7,6 +7,7 @@ include('../../classes/Lineplayer.php');
 include('../../classes/Goalkeeper.php');
 include('../../classes/JsonOutput.php');
 include('../__date.php');
+include('../_rec.php');
 include('../__country.php');
 
 JsonOutput::jsonHeader();
@@ -38,6 +39,7 @@ $playerdata['skill_index'] = $player->skill_index;
 $playerdata['positions'] = $player->position;
 $playerdata['injury'] = 0;
 $playerdata['retirement'] = 0;
+$playerdata['recomendation'] = _rec($player->rec);
 
 $data = array('data'=>$playerdata);
 echo JsonOutput::load($data);

@@ -6,7 +6,7 @@
         <div class='box'>
           <div class='box-title'>Estádio</div>
           <div class='box-content'>
-            <table class='table is-bordered'>
+            <table class='table'>
               <tbody>
                 <tr><td>Capacidade:</td><td>6000</td></tr>
                 <tr><td>Drenagem:</td><td>6000</td></tr>
