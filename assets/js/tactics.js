@@ -2,13 +2,12 @@
 FILTER BY DEFENDERS
 */
  /*TATICS JS*/
-containers = [document.querySelector('.field'), document.querySelector('.list-players')];
 players = [];
 players_on_field = {};
+players_on_reserve = {};
+functions = {captain:'',freekick:''};
 max_players_on_field = 11;
 max_subs = 5;
-on_field = [];
-on_subs = [];
 positions = ['gk','dc','dcl','dcr','dl','dr','dmc','dmcr'];
 player_on_drag = {};
 
@@ -109,6 +108,7 @@ function draggable_playerlist(){
 function draggable_field(){
   $( ".field_player" ).draggable({
    start: function(){
+     $('table').css('border','2px dashed #62de9f');
      //if 10 players and we dont have gk, just visible gk.
      if((Object.values(players_on_field).length==10 || Object.values(players_on_field).length==11) && $('.field_player[position="gk"]').hasClass('visible')!=true){
        $('.field_player[position="gk"]').addClass('ondraging');
@@ -136,6 +136,7 @@ function draggable_field(){
      player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
    },
    stop: function(){
+     $('table').css('border','none');
      if(Object.keys(players_on_field).length < max_players_on_field+1){
        $('.field_player').removeClass('ondraging');
        if(this.tagName=='TR'){
@@ -389,9 +390,23 @@ function key(obj){
 }
 
 function __SAVETACTICS(){
-  $('.lastsaved').html('');
-  // $.ajax({});
-  $('.lastsaved').html('Salvo');
+  $.ajax({
+    url : 'tactics/save',
+    method: 'POST',
+    dataType: 'JSON',
+    data : {players_on_field:JSON.stringify(players_on_field)},
+    beforeSend: function(){
+      $('.lastsaved').html('Salvando...');
+    },
+    success : function(response){
+      console.log(response);
+      $('.lastsaved').html('Salvo');
+    },
+    error : function(response){
+      console.log('error');
+      console.log(response);
+    }
+  });
   console.log('SAVING....');
 }
 function filter(){

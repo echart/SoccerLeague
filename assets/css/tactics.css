@@ -18,6 +18,37 @@
   height: 579px;
   background: #4b851c;
 }
+.line_reserves{
+  width: 100%;
+  margin: 0 auto;
+  padding: 2px;
+  text-align: center;
+}
+.reserve_function{
+  font-size: 12px;
+  color: #fff;
+}
+p.title{
+  font-size: 13px;
+  color: #fff;
+}
+.captain{
+  border: 3px solid #fbbc05;
+}
+.reserve_player{
+  opacity: 0.9;
+  width: 35px;
+  height: 35px;
+  border-radius: 25px;
+  background-color: #7dcd85;
+  display: inline-block;
+  line-height: 40px;
+  font-size: 14px;
+  color: #fff;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
 .advanced{
   background: #393e41;
   padding: 15px;
@@ -67,7 +98,6 @@ table{
   font-weight: 400;
   background-color: rgba(0,0,0,0.5);
   padding: 2px;
-  display: none;
 }
 .forward{
   background-color: #ea4335;
