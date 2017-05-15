@@ -177,59 +177,44 @@
             </div>
             <div class='bit-25'>
               <div class='field_reserves'>
-                <p class='title'>Funções:</p>
-                <div class='line_reserves'>
-                  <p class='reserve_function'>Captain</p>
-                  <div class='reserve_player captain' id='captain'></div>
-                  <p class='playername'>Renato</p>
-                </div>
-                <div class='line_reserves'>
-                  <p class='reserve_function'>Corner</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
-
-                </div>
-                <div class='line_reserves'>
-                  <p class='reserve_function'>Freekick</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
-
-                </div>
-                <div class='line_reserves'>
-                  <p class='reserve_function'>Penalty</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
-
-                </div>
                 <p class='title'>Reservas:</p>
                 <div class='line_reserves'>
                   <p class='reserve_function'>Atacante</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
+                  <div class='reserve_player' player-id='' player-name='' position='fc' >
+                    <div class='playershirt forward'></div>
+                    <p class='playername'></p>
+                  </div>
 
                 </div>
                 <div class='line_reserves'>
                   <p class='reserve_function'>Ala</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
-
+                  <div class='reserve_player' player-id='' player-name='' position='ml' >
+                    <div class='playershirt midfielder'></div>
+                    <p class='playername'></p>
+                  </div>
                 </div>
                 <div class='line_reserves'>
                   <p class='reserve_function'>Meio Campo</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
+                  <div class='reserve_player' player-id='' player-name='' position='mc' >
+                    <div class='playershirt midfielder'></div>
+                    <p class='playername'></p>
+                  </div>
 
                 </div>
                 <div class='line_reserves'>
                   <p class='reserve_function'>Defensor</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
+                  <div class='reserve_player' player-id='' player-name='' position='dc' >
+                    <div class='playershirt defender'></div>
+                    <p class='playername'></p>
+                  </div>
 
                 </div>
                 <div class='line_reserves'>
                   <p class='reserve_function'>Goleiro</p>
-                  <div class='reserve_player' id='captain'></div>
-                  <p class='playername'>Renato</p>
+                  <div class='reserve_player' player-id='' player-name='' position='gk' >
+                    <div class='playershirt goalkeeper'></div>
+                    <p class='playername'></p>
+                  </div>
 
                 </div>
               </div>

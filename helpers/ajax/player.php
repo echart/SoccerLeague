@@ -1,6 +1,7 @@
 <?
 
 include('../../classes/Connection.php');
+include('../../classes/App.php');
 include('../../classes/Club.php');
 include('../../classes/Player.php');
 include('../../classes/Lineplayer.php');
@@ -39,7 +40,7 @@ $playerdata['skill_index'] = $player->skill_index;
 $playerdata['positions'] = $player->position;
 $playerdata['injury'] = 0;
 $playerdata['retirement'] = 0;
-$playerdata['recomendation'] = _rec($player->rec);
+$playerdata['recomendation'] = _rec($player->rec, App::url());
 
 $data = array('data'=>$playerdata);
 echo JsonOutput::load($data);

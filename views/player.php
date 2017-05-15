@@ -44,7 +44,7 @@
               <p><strong>Idade:</strong> <?=$this->data['player']->age?> anos</p>
               <p><strong>Peso/Altura:</strong>  <?=$this->data['player']->weight?>kg/<?=$this->data['player']->height?>cm</p>
               <p><strong>Índice de Habilidade:</strong> <?=$this->data['player']->skill_index?></p>
-              <p><strong>REC:</strong> <?=_rec($this->data['player']->rec)?></p>
+              <p><strong>REC:</strong> <?=_rec($this->data['player']->rec, App::url())?></p>
             </div>
 	       </div>
        </div>

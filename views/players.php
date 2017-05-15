@@ -87,7 +87,7 @@
                 <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player->id_country); echo $c['country']?>.png'>
               </td>
               <td class='gen border'><?=$player->age;?></td>
-              <td class='gen border'><?=_rec($player->rec)?></td>
+              <td class='gen border'><?=_rec($player->rec, App::url())?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
               <td class='border gen'>
                 $ <?=$player->wage()?>
@@ -175,7 +175,7 @@
                 <img width='18px' src='<?=$this->tree?>assets/img/icons/flags/<? $c = getCountryByID($player->id_country); echo $c['country']?>.png'>
               </td>
               <td class='gen border'><?=$player->age;?></td>
-              <td class='gen border'><?=_rec($player->rec)?></td>
+              <td class='gen border'><?=_rec($player->rec,App::url())?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
               <td class='border gen'>
                 $ <?=$player->wage()?>
