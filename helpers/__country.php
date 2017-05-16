@@ -18,5 +18,6 @@ function getCountryByID($country){
   $query->bindParam(':country',$country);
   $query->execute();
   $data=$query->fetch(PDO::FETCH_ASSOC);
+  $data['country'] = strtolower($data['country']);
   return $data;
 }
