@@ -583,11 +583,11 @@ create table league_calendar(
  create table tactics(
 	 id_tactics serial primary key,
 	 id_club int,
-	 	CONSTRAINT (id_club) REFERENCES club(id_club),
+	 	FOREIGN KEY (id_club) REFERENCES club(id_club),
 	 players_on_field json,
 	 players_on_reserve json,
 	 captain integer,
-	 corner,
+	 corner integer,
 	 freekick integer,
 	 penalty integer,
 	 mentality integer,
