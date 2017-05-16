@@ -2,9 +2,15 @@
   if($_GET['hash']!='da39a3ee5e6b4b0d3255bfef95601890afd80709'){
     exit;
   }
-  error_reporting(!E_ALL);
-  ini_set('display_errors',0);
-  $this->tree = __rootpath($_SERVER['REDIRECT_URL']);
+  include('../helpers/__dontgetlost.php');
+  include('../classes/Competition.php');
+  include('../classes/League.php');
+  include('../classes/Connection.php');
+  include('../classes/GenerateFixture.php');
+
+  error_reporting(E_ALL);
+  ini_set('display_errors',1);
+
   /*----------
   SET COMPETITION DATA
   -----------*/
@@ -77,7 +83,7 @@ foreach ($countries as $key => $id_country) {
       $query->bindParam(':id_country',$id_country);
       $query->execute();
       $data=$query->fetch(PDO::FETCH_OBJ);
-      $data = file_get_contents($tree.'assets/data/leaguenames/'.strtolower($data->abbreviation).'.json');
+      $data = file_get_contents('../assets/data/leaguenames/'.strtolower($data->abbreviation).'.json');
       $data = json_decode($data,true);
       //create league
       $league = new League();
