@@ -100,4 +100,12 @@ class Club{
 		$data=$query->fetch();
 		return $data['id_league'];
 	}
+  public static function getClubByAccountId($id_account){
+    $query=Connection::getInstance()->connect()->prepare("SELECT id_club from club_account where id_account=:id_account LIMIT 1");
+    $query->bindParam(':id_account', $id_account, PDO::PARAM_INT);
+    $query->execute();
+    $query->setFetchMode(PDO::FETCH_OBJ);
+    $data=$query->fetch();
+    return $data->id_club;
+  }
 }

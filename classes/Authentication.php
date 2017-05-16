@@ -43,7 +43,7 @@ class Authentication{
 	public function login():bool{
 		session_start();
 		session_regenerate_id();
-		$id_club=1;//Club::getClubByAccountId($this->id_account);
+		$id_club=Club::getClubByAccountId($this->id_account);
 		$_SESSION['SL_session']=session_id();
 		$_SESSION['SL_login']=$this->login;
 		$_SESSION['SL_account']=$this->id_account;
