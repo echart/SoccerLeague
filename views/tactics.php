@@ -47,6 +47,7 @@
                     <div class='field_player' player-id='' player-name='' position='fcl' >
                       <div class='playershirt forward'></div>
                       <p class='playername'></p>
+                      <div class='rec'></div>
                     </div>
                     <div class='field_player' player-id='' player-name='' position='fc' >
                       <div class='playershirt forward'></div>
@@ -225,14 +226,3 @@
     </div>
   </div>
 </div>
-<script>
-  players_by_id = [
-  <? foreach ($this->data['players']as $player) {
-       echo $player->id_player.",";
-     }
-    //  foreach ($this->data['players']['gk'] as $player) {
-    //    echo $player->id_player.",";
-    //  }
-     ?>
-  ];
-</script>

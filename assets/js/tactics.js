@@ -1,6 +1,3 @@
-/*
-FILTER BY DEFENDERS
-*/
  /*TATICS JS*/
 players = [];
 players_on_field = {};
@@ -12,49 +9,48 @@ positions = ['gk','dc','dcl','dcr','dl','dr','dmc','dmcr'];
 player_on_drag = {};
 
 function loadplayers(){
-  notification('Está página não dá suporte a dispositivos mobile','error','error');
-  for (var i = 0; i < players_by_id.length; i++) {
-    $.ajax({
-      url : '../helpers/ajax/player.php',
-      method: 'GET',
-      data : {id_player : players_by_id[i]},
-      success : function(response){
-        console.log(response);
-        players.push(response.data);
-        makeplayerslist();
-        draggable_playerlist();
-        droppable_playerlist();
-        draggable_field();
-        droppable_field();
-        draggable_reserves();
-        droppable_reserves();
-      },
-      error: function(response){
-        console.log(response);
-      }
-    });
-  }
+  //notification('Está página não dá suporte a dispositivos mobile','error','error');
+  $.ajax({
+    url : '../helpers/ajax/players.php',
+    method: 'GET',
+    success : function(response){
+      $.each( response.data, function( index, value ){
+          players.push(value);
+      });
+      makeplayerslist();
+      draggable_playerlist();
+      droppable_playerlist();
+      draggable_field();
+      droppable_field();
+      draggable_reserves();
+      droppable_reserves();
+    },
+    error: function(response){
+      console.log(response);
+    }
+  });
 }
 function makeplayerslist(){
   var target = $('table tbody');
   var html = "";
-  for(var x = 0; x < players.length; x++){
-    var positions = "";
-    $(players[x].positions).each(function(){
-      positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
-    });
-    var name = players[x].name.split(' ');
-    html += "<tr player-id='"+players[x].player_id+"' player-name='"+name [0]+" " + name[1]+"'>"+
-                        "<td class='player-name'>"+players[x].name+"</td>"+
-                        "<td class='positions'>"+
-                            positions+
-                        "</td>"+
-                        "<td>"+players[x].skill_index+"</td>"+
-                        "<td>"+players[x].recomendation+"</td>"+
-                        "<td></td>"+
-                      "</tr>";
+  $(players).each(function(){
+     $player = this;
+     var positions = "";
+      $(this.positions).each(function(){
+        positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
+      });
+      var name = $player.name.split(' ');
+      html += "<tr player-id='"+$player.player_id+"' player-name='"+name [0]+" " + name[1]+"'>"+
+                          "<td class='player-name'>"+$player.name+"</td>"+
+                          "<td class='positions'>"+
+                              positions+
+                          "</td>"+
+                          "<td>"+$player.skill_index+"</td>"+
+                          "<td>"+$player.recomendation+"</td>"+
+                          "<td></td>"+
+                        "</tr>";
 
-  }
+    });
   $(target).html('');
   $(target).html(html);
   /* make ctrl+click in a player open a new page*/
@@ -362,6 +358,7 @@ function droppable_field(){
       $(this).attr('player-id',player_on_drag.id_player);
       $(this).attr('player-name',player_on_drag.playername);
       $(this).find('p.playername').html(player_on_drag.playername);
+      $(this).find('.rec').html(players[player_on_drag.id_player].recomendation);
       //save tactics and delete player on the player_on_drag.
       __SAVETACTICS();
       delete player_on_drag.id_player;
