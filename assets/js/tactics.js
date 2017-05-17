@@ -90,7 +90,9 @@ function draggable_playerlist(){
         }
       }
       //players on drag
-      player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
+      player_on_drag = {
+        player:players[findIndice($(this).attr('player-id'))]
+      }
     },
     stop: function(){
       if(Object.keys(players_on_field).length < max_players_on_field+1){
@@ -138,7 +140,9 @@ function draggable_field(){
        }
      }
      //players on drag
-     player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
+     player_on_drag = {
+       player:players[findIndice($(this).attr('player-id'))]
+     }
    },
    stop: function(){
      $('table').css('border','none');
@@ -176,13 +180,13 @@ function droppable_playerlist(){
         var target = $('table tbody');
         var cache;
         for(var i = 0; i < players.length; i++){
-          if(players[i].player_id == player_on_drag.id_player){
+          if(players[i].player_id == player_on_drag.player.player_id){
             cache = i;
           }
         }
         $(players[cache].positions).each(function(){
           positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
-        })
+        });
         var name = players[cache].name.split(' ');
         var html = "<tr player-id='"+players[cache].player_id+"' player-name='"+name[0]+"'>"+
                             "<td class='player-name'>"+players[cache].name+"</td>"+
@@ -218,8 +222,7 @@ function droppable_playerlist(){
         delete players_on_field[key(players_on_field)];
       //save tactics and delete player on the player_on_drag.
       __SAVETACTICS();
-      delete player_on_drag.id_player;
-      delete player_on_drag.playername;
+      delete player_on_drag.player;
     }
     }
   });
@@ -254,7 +257,9 @@ function draggable_reserves(){
          }
        }
        //players on drag
-       player_on_drag = {id_player:$(this).attr('player-id'), playername:$(this).attr('player-name')};
+       player_on_drag = {
+         player:players[findIndice($(this).attr('player-id'))]
+       }
      },
      stop: function(){
        $('table').css('border','none');
@@ -280,9 +285,9 @@ function droppable_field(){
       /* delete from list table */
       var old = players_on_field[$(this).attr('position')];
 
-      $("tr[player-id='"+player_on_drag.id_player+"']").remove();
+      $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
       // if players already is on field in another position
-      if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
+      if($.inArray(player_on_drag.player.player_id,Object.values(players_on_field)) != -1){
         //delete player in the old position
         $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
         $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
@@ -290,8 +295,8 @@ function droppable_field(){
         $(".field_player[position='"+key(players_on_field)+"']").find('p.playername').html('');
         delete players_on_field[key(players_on_field)];
         //added player in new position
-        players_on_field[$(this).attr('position')] = player_on_drag.id_player;
-      }else if($.inArray(player_on_drag.id_player,Object.values(players_on_reserve)) != -1){
+        players_on_field[$(this).attr('position')] = player_on_drag.player.player_id;
+      }else if($.inArray(player_on_drag.player.player_id,Object.values(players_on_reserve)) != -1){
         //delete player in the old position
         $(".reserve_player[position='"+key(players_on_reserve)+"']").attr('player-id','');
         $(".reserve_player[position='"+key(players_on_reserve)+"']").attr('player-name','');
@@ -299,14 +304,14 @@ function droppable_field(){
         $(".reserve_player[position='"+key(players_on_reserve)+"']").find('p.playername').html('');
         delete players_on_reserve[key(players_on_reserve)];
         //added player in new position
-        players_on_field[$(this).attr('position')] = player_on_drag.id_player;
+        players_on_field[$(this).attr('position')] = player_on_drag.player.player_id;
       }else{
-        players_on_field[$(this).attr('position')] = player_on_drag.id_player;
+        players_on_field[$(this).attr('position')] = player_on_drag.player.player_id;
       }
       if(old!=undefined){
         delete players_on_field[key(players_on_field)];
         //added player in new position
-        players_on_field[$(this).attr('position')] = player_on_drag.id_player;
+        players_on_field[$(this).attr('position')] = player_on_drag.player.player_id;
 
         /* put it back on listtable */
         var positions = "";
@@ -319,7 +324,8 @@ function droppable_field(){
         }
         $(players[cache].positions).each(function(){
           positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
-        })
+        });
+        console.log(players[cache].name);
         var name = players[cache].name.split(' ');
         var html = "<tr player-id='"+players[cache].player_id+"' player-name='"+name[0]+"'>"+
                             "<td class='player-name'>"+players[cache].name+"</td>"+
@@ -329,7 +335,7 @@ function droppable_field(){
                             "<td>"+players[cache].skill_index+"</td>"+
                             "<td>"+players[cache].recomendation+"</td>"+
                             "<td></td>"+
-                          "</tr>"
+                          "</tr>";
         $(target).append(html);
         // if position filter is set to another position that player doest have, the player must not be visible in the list
         var radio = $('input[type="radio"]:checked').val();
@@ -355,14 +361,13 @@ function droppable_field(){
       }
       /* transfer player to field_player */
       $(this).addClass('visible');
-      $(this).attr('player-id',player_on_drag.id_player);
-      $(this).attr('player-name',player_on_drag.playername);
-      $(this).find('p.playername').html(player_on_drag.playername);
-      $(this).find('.rec').html(players[player_on_drag.id_player].recomendation);
+      $(this).attr('player-id',player_on_drag.player.player_id);
+      $(this).attr('player-name',player_on_drag.player.name);
+      $(this).find('p.playername').html(player_on_drag.player.name);
+      $(this).find('.rec').html(player_on_drag.player.recomendation);
       //save tactics and delete player on the player_on_drag.
       __SAVETACTICS();
-      delete player_on_drag.id_player;
-      delete player_on_drag.playername;
+      delete player_on_drag.player;
     }
   });
 }
@@ -371,8 +376,8 @@ function droppable_reserves(){
     drop: function( event, ui ) {
       /* delete from list table */
       var old = players_on_reserve[$(this).attr('position')];
-      $("tr[player-id='"+player_on_drag.id_player+"']").remove();
-      if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
+      $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
+      if($.inArray(player_on_drag.player.player_id,Object.values(players_on_field)) != -1){
         //delete player in the old position
         $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
         $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
@@ -381,8 +386,8 @@ function droppable_reserves(){
         delete players_on_field[key(players_on_field)];
         delete players_on_reserve[key(players_on_reserve)];
         //added player in new position
-        players_on_reserve[$(this).attr('position')] = player_on_drag.id_player;
-      }else if($.inArray(player_on_drag.id_player,Object.values(players_on_reserve)) != -1){
+        players_on_reserve[$(this).attr('position')] = player_on_drag.player.player_id;
+      }else if($.inArray(player_on_drag.player.player_id,Object.values(players_on_reserve)) != -1){
         //delete player in the old position
         $(".reserve_player[position='"+key(players_on_reserve)+"']").attr('player-id','');
         $(".reserve_player[position='"+key(players_on_reserve)+"']").attr('player-name','');
@@ -390,110 +395,35 @@ function droppable_reserves(){
         $(".reserve_player[position='"+key(players_on_reserve)+"']").find('p.playername').html('');
         delete players_on_reserve[key(players_on_reserve)];
         //added player in new position
-        players_on_reserve[$(this).attr('position')] = player_on_drag.id_player;
+        players_on_reserve[$(this).attr('position')] = player_on_drag.player.player_id;
       }else{
-        players_on_reserve[$(this).attr('position')] = player_on_drag.id_player;
+        players_on_reserve[$(this).attr('position')] = player_on_drag.player.player_id;
       }
       /* transfer player to reserve_player */
       $(this).addClass('visible');
-      $(this).attr('player-id',player_on_drag.id_player);
-      $(this).attr('player-name',player_on_drag.playername);
-      $(this).find('p.playername').html(player_on_drag.playername);
+      $(this).attr('player-id',player_on_drag.player.player_id);
+      $(this).attr('player-name',player_on_drag.player.name);
+      $(this).find('p.playername').html(player_on_drag.player.name);
       //save tactics and delete player on the player_on_drag.
       //make reserve_player with visible class draggable
       draggable_reserves();
       __SAVETACTICS();
-      delete player_on_drag.id_player;
-      delete player_on_drag.playername;
+      delete player_on_drag.player;
     }
   });
 }
-
-function makedroppable(){
-  $( "table tbody tr, .field_player" ).droppable({
-    drop: function( event, ui ) {
-      if(this.tagName=='TR'){
-        /* put it back on listtable */
-        if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
-          //delete player in the old position
-          $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
-          $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
-          $(".field_player[position='"+key(players_on_field)+"']").removeClass('visible');
-          $(".field_player[position='"+key(players_on_field)+"']").find('p.playername').html('');
-          var positions = "";
-          var target = $('table tbody');
-          var cache;
-          for(var i = 0; i < players.length; i++){
-            if(players[i].player_id == player_on_drag.id_player){
-              cache = i;
-            }
-          }
-          $(players[cache].positions).each(function(){
-            positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
-          })
-          var name = players[cache].name.split(' ');
-          $(target).append("<tr player-id='"+players[cache].player_id+"' player-name='"+name[0]+"'>"+
-                              "<td class='player-name'>"+players[cache].name+"</td>"+
-                              "<td class='positions'>"+
-                                  positions+
-                              "</td>"+
-                              "<td>"+players[cache].skill_index+"</td>"+
-                              "<td></td>"+
-                            "</tr>");
-          // if position filter is set to another position that player doest have, the player must not be visible in the list
-          var radio = $('input[type="radio"]:checked').val();
-          var controller = 0;
-          $("tr[player-id='"+players[cache].player_id+"'] td.positions span").each(function(){
-            $(players[cache].positions).each(function(){
-              if(radio == 'def' && this.position=='D'){
-                controller++;
-              }else if((radio=='mid') && ((this.position=='DM') || (this.position=='M') || (this.position=='OM'))){
-                controller++;
-              }else if((radio=='atk') && (this.position=='FC')){
-                controller++;
-              }else if((radio=='gk') && (this.position=='GK')){
-                controller++;
-              }
-            })
-          });
-          if(controller==0){
-            $("tr[player-id='"+players[cache].player_id+"']").css('display','none');
-          }
-        }
-
-        makedraggable();
-        delete players_on_field[key(players_on_field)];
-      }else{
-        /* delete from list table */
-        $("tr[player-id='"+player_on_drag.id_player+"']").remove();
-        // if players already is on field in another position
-        if($.inArray(player_on_drag.id_player,Object.values(players_on_field)) != -1){
-          //delete player in the old position
-          $(".field_player[position='"+key(players_on_field)+"']").attr('player-id','');
-          $(".field_player[position='"+key(players_on_field)+"']").attr('player-name','');
-          $(".field_player[position='"+key(players_on_field)+"']").removeClass('visible');
-          $(".field_player[position='"+key(players_on_field)+"']").find('p.playername').html('');
-          delete players_on_field[key(players_on_field)];
-          //added player in new position
-          players_on_field[$(this).attr('position')] = player_on_drag.id_player;
-        }else{
-          players_on_field[$(this).attr('position')] = player_on_drag.id_player;
-        }
-      }
-      /* transfer player to field_player */
-      $(this).addClass('visible');
-      $(this).attr('player-id',player_on_drag.id_player);
-      $(this).attr('player-name',player_on_drag.playername);
-      $(this).find('p.playername').html(player_on_drag.playername);
-      //save tactics and delete player on the player_on_drag.
-      __SAVETACTICS();
-      delete player_on_drag.id_player;
-      delete player_on_drag.playername;
+function findIndice(id_player){
+  var x;
+  $.each(players,function(index,obj){
+    if(obj.player_id == id_player){
+      x = index;
     }
   });
+  return x;
 }
+
 function key(obj){
-  var key = $.inArray(String(player_on_drag.id_player),Object.values(obj));
+  var key = $.inArray(String(player_on_drag.player.player_id),Object.values(obj));
   if(key!=-1){
     return Object.keys(obj)[key];
   }
