@@ -79,12 +79,23 @@ table{
   box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 .playername{
-  font-size: 10px;
+  font-size: 11px;
   color: #fff;
   font-weight: 300;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.3);
   padding: 2px;
   display: none;
+}
+.rec{
+  background-color: rgba(0,0,0,0.3);
+  padding: 2px;
+  display: none;
+}
+.rec img{
+  width: 10px !important;
+}
+.visible > .rec{
+  display: block;
 }
 .forward{
   background-color: #ea4335;

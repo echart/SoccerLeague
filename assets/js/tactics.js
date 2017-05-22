@@ -325,8 +325,7 @@ function droppable_field(){
         $(players[cache].positions).each(function(){
           positions += "<span class='position-"+this.position+"'>"+this.position+" " + this.side+"</span> ";
         });
-        console.log(players[cache].name);
-        var name = players[cache].name.split(' ');
+        var name = player_on_drag.player.name.split(' ');
         var html = "<tr player-id='"+players[cache].player_id+"' player-name='"+name[0]+"'>"+
                             "<td class='player-name'>"+players[cache].name+"</td>"+
                             "<td class='positions'>"+
@@ -361,9 +360,11 @@ function droppable_field(){
       }
       /* transfer player to field_player */
       $(this).addClass('visible');
+      var name = player_on_drag.player.name.split(' ');
       $(this).attr('player-id',player_on_drag.player.player_id);
+      console.log(name);
       $(this).attr('player-name',player_on_drag.player.name);
-      $(this).find('p.playername').html(player_on_drag.player.name);
+      $(this).find('p.playername').html(name[0] + " " + name[1]);
       $(this).find('.rec').html(player_on_drag.player.recomendation);
       //save tactics and delete player on the player_on_drag.
       __SAVETACTICS();

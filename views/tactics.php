@@ -46,7 +46,7 @@
                   <div class='center_block'>
                     <div class='field_player' player-id='' player-name='' position='fcl' >
                       <div class='playershirt forward'></div>
-                      <p class='playername'></p><div class='rec'></div>
+                      <p class='playername'></p>
                       <div class='rec'></div>
                     </div>
                     <div class='field_player' player-id='' player-name='' position='fc' >
