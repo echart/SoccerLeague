@@ -15,15 +15,20 @@ switch ($this->get['method']) {
 
     $club = new Club($_SESSION['SL_club']);
     $tactics = new Tactics($club);
-
     if($tactics->__save($players_on_field,$players_on_reserve,$functions,$styles, $conditional_orders)==true){
-
+      echo JsonOutput::success(array('success'));
     }else{
-
+      echo JsonOutput::error('','error');
     }
-
     exit;
     break;
+  case 'load':
+    $club = new Club($_SESSION['SL_club']);
+    $tactics = new Tactics($club);
+    $data = $tactics->__load();
+    echo JsonOutput::success($data);
+    exit;
+  break;
   default:
     $this->addCSSFile('tactics.css');
     $this->addJSFile('table.sort.js');
