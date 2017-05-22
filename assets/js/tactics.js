@@ -5,7 +5,8 @@ players_on_reserve = {};
 functions = {captain:'',freekick:''};
 max_players_on_field = 11;
 max_subs = 5;
-positions = ['gk','dc','dcl','dcr','dl','dr','dmc','dmcr'];
+positions = ['gk','dc','dcl','dcr','dl','dr','dmc','dmcr','dmcl','dmr','dml','mc','mcr','mcl','ml','mr','omc','omcl','omcr', 'oml','omr','fc','fcr','fcl'];
+positions_reserves = ['gk','dc','ml','mc','fc'];
 player_on_drag = {};
 
 function loadplayers(){
@@ -53,6 +54,7 @@ function makeplayerslist(){
     });
   $(target).html('');
   $(target).html(html);
+  __LOADTACTICS();
   /* make ctrl+click in a player open a new page*/
   $(".player-name").on('click',function(e){
   	if(e.ctrlKey){
@@ -429,26 +431,69 @@ function key(obj){
     return Object.keys(obj)[key];
   }
 }
-
+function __LOADTACTICS(){
+  console.log('LOADING....');
+  $.ajax({
+    url : 'tactics/load',
+    method: 'POST',
+    dataType: 'JSON',
+    success : function(response){
+      players_on_field = JSON.parse(response.data.players_on_field);
+      players_on_reserve = JSON.parse(response.data.players_on_reserve);
+      for(var x=0;x<positions.length;x++){
+        if(typeof players[findIndice(players_on_field[positions[x]])]!= 'undefined'){
+          var target = $('.field_player[position="'+positions[x]+'"]');
+          player_on_drag = {
+            player : players[findIndice(players_on_field[positions[x]])]
+          };
+          $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
+          /* transfer player to field_player */
+          $(target).addClass('visible');
+          var name = player_on_drag.player.name.split(' ');
+          $(target).attr('player-id',player_on_drag.player.player_id);
+          $(target).attr('player-name',player_on_drag.player.name);
+          $(target).find('p.playername').html(name[0] + " " + name[1]);
+          $(target).find('.rec').html(player_on_drag.player.recomendation);
+          delete player_on_drag.player;
+        }
+      }
+      for(var x=0;x<positions_reserves.length;x++){
+        if(typeof players[findIndice(players_on_reserve[positions_reserves[x]])]!= 'undefined'){
+          var target = $('.reserve_player[position="'+positions_reserves[x]+'"]');
+          player_on_drag = {
+            player : players[findIndice(players_on_reserve[positions_reserves[x]])]
+          };
+          console.log(player_on_drag);
+          $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
+          /* transfer player to field_player */
+          $(target).addClass('visible');
+          var name = player_on_drag.player.name.split(' ');
+          $(target).attr('player-id',player_on_drag.player.player_id);
+          $(target).attr('player-name',player_on_drag.player.name);
+          $(target).find('p.playername').html(name[0] + " " + name[1]);
+          $(target).find('.rec').html(player_on_drag.player.recomendation);
+          delete player_on_drag.player;
+        }
+      }
+    }
+  });
+}
 function __SAVETACTICS(){
   $.ajax({
     url : 'tactics/save',
     method: 'POST',
     dataType: 'JSON',
-    data : {players_on_field:JSON.stringify(players_on_field)},
+    data : {players_on_field:JSON.stringify(players_on_field), players_on_reserve:JSON.stringify(players_on_reserve)},
     beforeSend: function(){
       $('.lastsaved').html('Salvando...');
+      console.log('SAVING....');
     },
     success : function(response){
-      console.log(response);
       $('.lastsaved').html('Salvo');
     },
     error : function(response){
-      console.log('error');
-      console.log(response);
     }
   });
-  console.log('SAVING....');
 }
 function filter(){
   $('tr').each(function(){
