@@ -1,0 +1,11 @@
+.info{
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+}
+.info h1{
+  font-size: 28px;
+}
+.info{
+  padding: 35px;
+}

@@ -25,6 +25,7 @@
 				App::redirect($request['request'],'home');
 		}
 		/* parse URL and load the page*/
+		$handler->admin = new Admin($_SESSION['SL_account']);
 		$handler->parseURL($request);
 		$handler->loadController();
 		$handler->loadView();

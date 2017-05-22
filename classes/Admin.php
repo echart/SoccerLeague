@@ -7,14 +7,16 @@ class Admin{
     $this->id_account=$id_account;
   }
 
-  public function isadmin():bool{
+  public function is_admin():bool{
     try{
-      $query=Connection::getInstance()->connect()->prepare("SELECT type FROM admin where id_account=:id_account");
+      $query=Connection::getInstance()->connect()->prepare("SELECT permission FROM account_permission where id_account=:id_account");
       $query->bindParam(":id_account",$this->id_account);
       $query->execute();
       if($query->rowCount()>0){
-        $data=$query->fetch(PDO::FETCH_ASSOC);
-        $this->admin=$data['type'];
+        $this->admin = array();
+        while($data=$query->fetch(PDO::FETCH_ASSOC)){
+          $this->admin[] = $data['permission'];
+        }
         return true;
       }else{
         return false;

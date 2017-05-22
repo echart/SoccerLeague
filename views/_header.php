@@ -10,7 +10,9 @@
 			<li><a <?=($this->menu=='transfers') ? "class='selected'" : '';?> href='<?=$this->tree?>transfers'><i class='market'></i><span>Mercado</span></a></li>
 			<li><a <?=($this->menu=='forum') ? "class='selected'" : '';?> href='<?=$this->tree?>forum'><i class='world'></i><span>Comunidade</span></a></li>
 			<li><a <?=($this->menu=='buy-pro') ? "class='selected'" : '';?> href='<?=$this->tree?>buy-pro'><i class='slpro'></i><span>PRO</span></a></li>
-			<li><a <?=($this->menu=='admin') ? "class='selected'" : '';?> href='<?=$this->tree?>admin'><i class='admin'></i><span>Administrador</span></a></li>
+			<?if($this->admin->is_admin()==true){?>
+				<li><a <?=($this->menu=='admin') ? "class='selected'" : '';?> href='<?=$this->tree?>admin/statistics'><i class='admin'></i><span>Administrador</span></a></li>
+			<?}?>
 			<li><a <?=($this->menu=='logout') ? "class='selected'" : '';?> href='<?=$this->tree?>logout'><i class='exit'></i><span>Sair</span></a></li>
 		</ul>
 	</nav>
@@ -24,13 +26,13 @@
 	</div>
 	<?
 	$arraySubmenu = array();
-$arraySubmenu['home'] = array(array('Home','home')/*,array('Calendário','calendar'),array('Mensagens','messages')*/);
+	$arraySubmenu['home'] = array(array('Home','home')/*,array('Calendário','calendar'),array('Mensagens','messages')*/);
 	$arraySubmenu['club'] = array(array('Clube','club'),array('Finanças','finances'),array('Estádio','stadium'));
 	$arraySubmenu['squad'] = array(array('Jogadores','players'),array('Táticas','tactics'),array('Treinamento','training'),array('Categoria de Base','youthdevelopment'));
 	$arraySubmenu['league'] = array(array('Liga','league'),array('Liga amistosa','friendlyleague'),array('Copa','cup'));
 	$arraySubmenu['transfers'] = array(array('Transferências','tranfers'),array('Lista de Observação','watchlist'),array('Olheiros','scouts'));
 	$arraySubmenu['buy-pro'] = array(array('Compre PRO','buy-pro'),array('O que é PRO?','about-pro'));
-	$arraySubmenu['admin'] = array(array('Estatísticas do site','admin/statistics'),array('Permissões','admin/permissions'));
+	$arraySubmenu['admin'] = array(array('Estatísticas','admin/statistics'),array('Permissões','admin/permissions'),array('Usuários','admin/users'));
 	?>
 	<ul class='submenu'>
 		<?

@@ -6,6 +6,7 @@ class Handler{
 
 	//page data
 	public $data; /*the will pass the data from the Controller to view*/
+	public $admin; //admin?
 	public $tree; //virtual path
 	public $title; //page title
 	public $menu; //menu selected
