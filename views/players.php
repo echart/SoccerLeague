@@ -90,7 +90,7 @@
               <td class='gen border'><?=_rec($player->rec, App::url())?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
               <td class='border gen'>
-                $ <?=$player->wage()?>
+                $ <?=$player->wage?>
               </td>
               <td class='phi'><?=$player->stamina;?></td>
               <td class='phi'><?=$player->speed;?></td>
@@ -185,7 +185,7 @@
               <td class='gen border'><?=_rec($player->rec,App::url())?></td>
               <td class='gen border'><?=$player->skill_index;?></td>
               <td class='border gen'>
-                $ <?=$player->wage()?>
+                $ <?=$player->wage?>
               </td>
               <td class='phi'><?=$player->stamina;?></td>
               <td class='phi'><?=$player->speed;?></td>
