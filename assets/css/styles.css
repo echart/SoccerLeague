@@ -28,6 +28,9 @@ a:hover{
 .blue{
   color: #4285f4;
 }
+.center{
+  text-align: center;
+}
 /**
 POSITIONS BY COLOR
 */

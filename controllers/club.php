@@ -5,6 +5,23 @@ if(!isset($this->request['id'])) // if country isnt set at url, make the redirec
   header('location: '.App::url().'club/'.strtolower($_SESSION['SL_club']).'/');
 
 switch ($this->request['subrequest']) {
+  case 'matches':
+  $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+  $this->menu  = "club";
+  $this->submenu = 'club';
+  $club = new Club($this->get['id']);
+  $club->__load();
+  $this->title = 'Partidas de ' . $club->clubname;
+  $this->requestURL='club_matches';
+
+  $query = Connection::getInstance()->connect()->prepare("SELECT * FROM matches where home=:id_club or away=:id_club order by day asc");
+  $query->bindParam(':id_club',$this->get['id']);
+  $query->execute();
+
+  while($data = $query->fetch(PDO::FETCH_ASSOC)){
+    $this->data['matches'][]=$data;
+  }
+  break;
   case 'overview':
     error_reporting(E_ALL);
     include($this->tree . 'helpers/__country.php');
@@ -12,9 +29,12 @@ switch ($this->request['subrequest']) {
     $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
     $this->menu  = "club";
     $this->submenu = 'club';
-    $this->title = 'Clube';
+    $club = new Club($this->get['id']);
+    $club->__load();
+    $this->title = 'Visão geral - ' . $club->clubname;
     $this->requestURL='club_overview';
 
+    $this->data['club'] = $club;
     $this->data['overview']['stats']['SI']=0;
     $this->data['overview']['stats']['REC']=0;
     $this->data['overview']['stats']['age']=0;
@@ -63,11 +83,11 @@ switch ($this->request['subrequest']) {
     $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
     $this->menu  = "club";
     $this->submenu = 'club';
-    $this->title = 'Clube';
     $club = new Club($this->get['id']);
     $club->__load();
     $status=$club->status;
     $this->data['club'] = $club;
+    $this->title = $club->clubname;
     $this->data['club']->created = __date($this->data['club']->created);
     $this->data['club']->country = getCountryByID($this->data['club']->id_country);
     $query = Connection::getInstance()->connect()->prepare("SELECT division, divgroup, leaguename from competition inner join league using(id_competition) inner join league_table using(id_league) where id_club = :id_club and season = 1 and official = true");
@@ -154,5 +174,6 @@ switch ($this->request['subrequest']) {
     $this->addJSFile('buddy.js');
     $this->addJSFile('club.search.js');
     $this->addJSFile('admin.js');
+    $this->addJSFile('club.report.js');
     break;
 }

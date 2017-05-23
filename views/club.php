@@ -16,6 +16,9 @@
             <? if($_SESSION['SL_club']!=$this->data['club']->id_club){?>
             <a type="button" href='#' onclick='buddy(this,"<?=$this->data['friend']['action']?>",<?=$_SESSION['SL_club']?>,<?=$this->data['club']->id_club?>)' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'><?=$this->data['friend']['text']?></a>
             <? } ?>
+            <? if($_SESSION['SL_club']==$this->data['club']->id_club){?>
+            <a type="button" href='#' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/club.png' width='16px'>Editar clube</a>
+            <? } ?>
             <!-- <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a> -->
             <label class="btn btn-medium btn-full btn-light" for="modal_searchclub"><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</label>
             <label class="btn btn-medium btn-full btn-light" for="modal_report"><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</label>
@@ -185,8 +188,8 @@
   <div class="modal-content">
     <form>
       <div class='form-field'>
-          <label for="search-clubname">Motivo(*):</label>
-          <select name="type">
+          <label for="reason">Motivo(*):</label>
+          <select name="type" id='reason'>
             <option value="">Escolha um motivo</option>
             <option value="shield">Escudo Impróprio</option>
             <option value="forum">Conduta no Fórum/Feed</option>
@@ -195,11 +198,11 @@
           </select>
       </div>
       <div class='form-field'>
-        <label for="search-clubname">Descrição:</label>
-        <textarea name="other" placeholder="Uma breve descrição sobre o porque da denuncia"></textarea>
+        <label for="description">Descrição:</label>
+        <textarea id='description' name="other" placeholder="Uma breve descrição sobre o porque da denuncia"></textarea>
       </div>
       <div class='form-field'>
-        <button type='button' class='btn btn'>Denunciar</button>
+        <button type='button' class='btn btn report'>Denunciar</button>
       </div>
     </form>
     <label class="modal-close" for="modal_report"></label>
@@ -207,7 +210,7 @@
   <div class='modal-pattern'></div>
 </div>
 <script>
-  var id_club = <?=$this->data['club']->id_club;?>;
-  var method = 'club';
-  var page = 1;
+  id_club = <?=$this->data['club']->id_club;?>;
+  method = 'club';
+  page = 1;
 </script>

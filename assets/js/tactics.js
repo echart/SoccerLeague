@@ -438,41 +438,43 @@ function __LOADTACTICS(){
     method: 'POST',
     dataType: 'JSON',
     success : function(response){
-      players_on_field = JSON.parse(response.data.players_on_field);
-      players_on_reserve = JSON.parse(response.data.players_on_reserve);
-      for(var x=0;x<positions.length;x++){
-        if(typeof players[findIndice(players_on_field[positions[x]])]!= 'undefined'){
-          var target = $('.field_player[position="'+positions[x]+'"]');
-          player_on_drag = {
-            player : players[findIndice(players_on_field[positions[x]])]
-          };
-          $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
-          /* transfer player to field_player */
-          $(target).addClass('visible');
-          var name = player_on_drag.player.name.split(' ');
-          $(target).attr('player-id',player_on_drag.player.player_id);
-          $(target).attr('player-name',player_on_drag.player.name);
-          $(target).find('p.playername').html(name[0] + " " + name[1]);
-          $(target).find('.rec').html(player_on_drag.player.recomendation);
-          delete player_on_drag.player;
+      if(response.data!=false){
+        players_on_field = JSON.parse(response.data.players_on_field);
+        players_on_reserve = JSON.parse(response.data.players_on_reserve);
+        for(var x=0;x<positions.length;x++){
+          if(typeof players[findIndice(players_on_field[positions[x]])]!= 'undefined'){
+            var target = $('.field_player[position="'+positions[x]+'"]');
+            player_on_drag = {
+              player : players[findIndice(players_on_field[positions[x]])]
+            };
+            $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
+            /* transfer player to field_player */
+            $(target).addClass('visible');
+            var name = player_on_drag.player.name.split(' ');
+            $(target).attr('player-id',player_on_drag.player.player_id);
+            $(target).attr('player-name',player_on_drag.player.name);
+            $(target).find('p.playername').html(name[0] + " " + name[1]);
+            $(target).find('.rec').html(player_on_drag.player.recomendation);
+            delete player_on_drag.player;
+          }
         }
-      }
-      for(var x=0;x<positions_reserves.length;x++){
-        if(typeof players[findIndice(players_on_reserve[positions_reserves[x]])]!= 'undefined'){
-          var target = $('.reserve_player[position="'+positions_reserves[x]+'"]');
-          player_on_drag = {
-            player : players[findIndice(players_on_reserve[positions_reserves[x]])]
-          };
-          console.log(player_on_drag);
-          $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
-          /* transfer player to field_player */
-          $(target).addClass('visible');
-          var name = player_on_drag.player.name.split(' ');
-          $(target).attr('player-id',player_on_drag.player.player_id);
-          $(target).attr('player-name',player_on_drag.player.name);
-          $(target).find('p.playername').html(name[0] + " " + name[1]);
-          $(target).find('.rec').html(player_on_drag.player.recomendation);
-          delete player_on_drag.player;
+        for(var x=0;x<positions_reserves.length;x++){
+          if(typeof players[findIndice(players_on_reserve[positions_reserves[x]])]!= 'undefined'){
+            var target = $('.reserve_player[position="'+positions_reserves[x]+'"]');
+            player_on_drag = {
+              player : players[findIndice(players_on_reserve[positions_reserves[x]])]
+            };
+            console.log(player_on_drag);
+            $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
+            /* transfer player to field_player */
+            $(target).addClass('visible');
+            var name = player_on_drag.player.name.split(' ');
+            $(target).attr('player-id',player_on_drag.player.player_id);
+            $(target).attr('player-name',player_on_drag.player.name);
+            $(target).find('p.playername').html(name[0] + " " + name[1]);
+            $(target).find('.rec').html(player_on_drag.player.recomendation);
+            delete player_on_drag.player;
+          }
         }
       }
     }

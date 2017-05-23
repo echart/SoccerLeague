@@ -89,6 +89,18 @@ create table club(
 	status varchar(1) default 'P',
 		CHECK (status = ANY (ARRAY['P'::bpchar,'A'::bpchar,'I'::bpchar,'B'::bpchar])) -- pending, approved, inactived, banned
 );
+create table club_report(
+	id_club_report serial primary key,
+	id_club integer not null,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	id_club_reported integer not null,
+		FOREIGN KEY (id_club_reported) REFERENCES club(id_club),
+	reason varchar(100) not null,
+	description text,
+	id_responsable integer,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	status default 'P'
+);
 create table club_account(
 	id_club_account serial primary key,
 	id_account integer not null,
