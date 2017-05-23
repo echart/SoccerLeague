@@ -9,8 +9,7 @@
   			<div class='bit-1 next-game'>
           <div class='match'>
             <div class='home'>
-              <img src='<?=$this->tree?>assets/img/icon.png'>
-              <p><span class="tooltip tooltip-effect-1" club='<?=$this->data['next-match']['home']['id']?>'>
+              <img src="<?=$this->tree?>assets/img/club_pics/<?=$this->data['next-match']['home']['logo']?>" width="200px">
               <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$this->data['next-match']['home']['id']?>'><?=$this->data['next-match']['home']['name']?></a></span>
                 <span class="tooltip-content clearfix">
                     <span class="tooltip-text">Carregando...</span>
@@ -19,7 +18,7 @@
             </div>
               <span>vs</span>
             <div class='away'>
-              <img src='<?=$this->tree?>assets/img/icon.png'>
+              <img src="<?=$this->tree?>assets/img/club_pics/<?=$this->data['next-match']['away']['logo']?>" width="200px">
               <p><span class="tooltip tooltip-effect-1" club='<?=$this->data['next-match']['away']['id']?>'>
                 <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$this->data['next-match']['away']['id']?>'><?=$this->data['next-match']['away']['name']?></a></span>
                   <span class="tooltip-content clearfix">

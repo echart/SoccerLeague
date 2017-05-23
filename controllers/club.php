@@ -5,22 +5,33 @@ if(!isset($this->request['id'])) // if country isnt set at url, make the redirec
   header('location: '.App::url().'club/'.strtolower($_SESSION['SL_club']).'/');
 
 switch ($this->request['subrequest']) {
+  case 'edit':
+    $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+    $this->menu  = "club";
+    $this->submenu = 'club';
+    $club = new Club($this->get['id']);
+    $club->__load();
+    $this->title = 'Editar - ' . $club->clubname;
+    $this->requestURL='club_edit';
+  break;
   case 'matches':
-  $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
-  $this->menu  = "club";
-  $this->submenu = 'club';
-  $club = new Club($this->get['id']);
-  $club->__load();
-  $this->title = 'Partidas de ' . $club->clubname;
-  $this->requestURL='club_matches';
+    error_reporting(E_ALL);
+    ini_set('display_errors',1);
+    $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+    $this->menu  = "club";
+    $this->submenu = 'club';
+    $club = new Club($this->get['id']);
+    $club->__load();
+    $this->title = 'Partidas de ' . $club->clubname;
+    $this->requestURL='club_matches';
+    $this->data['club'] = $club;
+    $query = Connection::getInstance()->connect()->prepare("SELECT * FROM matches where home=:id_club or away=:id_club order by day asc");
+    $query->bindParam(':id_club',$this->get['id']);
+    $query->execute();
 
-  $query = Connection::getInstance()->connect()->prepare("SELECT * FROM matches where home=:id_club or away=:id_club order by day asc");
-  $query->bindParam(':id_club',$this->get['id']);
-  $query->execute();
-
-  while($data = $query->fetch(PDO::FETCH_ASSOC)){
-    $this->data['matches'][]=$data;
-  }
+    while($data = $query->fetch(PDO::FETCH_ASSOC)){
+      $this->data['matches'][]=$data;
+    }
   break;
   case 'overview':
     error_reporting(E_ALL);

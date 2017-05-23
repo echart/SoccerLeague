@@ -10,7 +10,7 @@
               <li><a class='selected' href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>"><img src="<?=$this->tree?>assets/img/icons/home.png" width="32px"><span>Sede</span></a></li>
               <li><a href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>/overview/"><img src="<?=$this->tree?>assets/img/icons/strategy.png" width="32px"><span>Visão geral</span></a></li>
               <li><a href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>/matches/"><img src="<?=$this->tree?>assets/img/icons/calendar.png" width="32px"><span>Partidas</span></a></li>
-              <li><a href="<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium/"><img src="<?=$this->tree?>assets/img/icons/stadium.png" width="32px"><span>Estádio</span></a></li>
+              <li><a href="<?=$this->tree?>stadium/<?=$this->data['club']->id_club?>"><img src="<?=$this->tree?>assets/img/icons/stadium.png" width="32px"><span>Estádio</span></a></li>
               <!-- <li><a href="<?=$this->tree?>league/<?=$this->data['league']['countryabbr']?>/<?=$this->data['league']['div']?>/<?=$this->data['league']['group']?>/statistics"><img src="<?=$this->tree?>assets/img/icons/statistics.png" width="32px"><span>Estatísticas</span></a></li> -->
             </ul>
             <? if($_SESSION['SL_club']!=$this->data['club']->id_club){?>
@@ -70,12 +70,7 @@
             </div>
             <div class='club-logo bit-40 right'>
               <div class='logo'>
-                <?
-                if($this->data['clubinfo']->logo==null){?>
-                  <img src="<?=$this->tree?>assets/img/icon.png" width="200px">
-                <?}else{?>
                 <img src="<?=$this->tree?>assets/img/club_pics/<?=$this->data['clubinfo']->logo?>" width="200px">
-                <?}?>
               </div>
             </div>
           </div>

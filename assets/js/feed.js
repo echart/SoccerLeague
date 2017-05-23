@@ -16,7 +16,7 @@ function makefeed(feed, id_club){
       var content = "";
       var spandelete = (this.id_club == id_club) ? "<span class='trash'><i></i>Excluir</span>" : '';
       content = "<div class='feed-post' id_tweet='"+this.id_tweet+"'>"+
-                  "<div class='feed-post-logo'><img src='"+url+"assets/img/icon.png' width='85px'></div>"+
+                  "<div class='feed-post-logo'><img src='"+url+"assets/img/club_pics/"+this.logo+"' width='85px'></div>"+
                   "<div class='feed-post-content'>"+
                     "<h4><a href='"+url+"club/"+this.id_club+"'>"+this.clubname+"</a> <span>"+this.tweetdate+"</span></h4>"+
                     "<p>"+this.tweet+"</p>"+

@@ -15,6 +15,8 @@ foreach ($feed->tweet as $key => $id_tweet) {
 
   $data['tweets'][$key]['id_tweet'] = $tweet['id_tweet'];
   $data['tweets'][$key]['id_club'] = $tweet['id_club'];
+  $clubinfo = new ClubInfo(new Club($tweet['id_club']));
+  $data['tweets'][$key]['logo'] = $clubinfo->__logo();
   $data['tweets'][$key]['clubname'] = Club::getClubNameById($tweet['id_club']);
   $date = new DateTime($tweet['tweetdate']);
   $data['tweets'][$key]['tweetdate'] = $date->format('d/m/Y H:i:s');

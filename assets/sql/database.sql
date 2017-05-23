@@ -99,7 +99,7 @@ create table club_report(
 	description text,
 	id_responsable integer,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
-	status default 'P'
+	status varchar(1) default 'P'
 );
 create table club_account(
 	id_club_account serial primary key,
@@ -657,6 +657,8 @@ create table tweet(
 insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
 insert into competition_type(type) values ('L');
 insert into countries (country,abbreviation) values ('Brazil','br');
+insert into languages (lang,language) values('pt-br','Português Brasil');
+insert into timezones (timezone) values()
 insert into positions (position,side) values('GK','');
 insert into positions (position,side) values('D','C');
 insert into positions (position,side) values('D','L');
