@@ -18,9 +18,12 @@
             <? } ?>
             <!-- <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a> -->
             <label class="btn btn-medium btn-full btn-light" for="modal_searchclub"><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</label>
-            <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
-            <button type="button" class='btn btn-medium btn-full btn-warning'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</button>
-            <button type="button" class='btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Banir clube</button>
+            <label class="btn btn-medium btn-full btn-light" for="modal_report"><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</label>
+            <? if($this->admin->is_GT()){?>
+              <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Gerenciar permissões</button>
+              <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
+              <button type="button" class='btn btn-medium btn-full btn-danger ban'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Banir clube</button>
+            <?}?>
           </div>
         </div>
       </div>
@@ -53,7 +56,7 @@
     		<div class='box-content'>
           <div class='club'>
             <div class='club-info bit-60'>
-              <h1><?=$this->data['club']->clubname;?> <? if($this->data['clubinfo']->nickname!=null){?><span class='nickname'>[<?=$this->data['clubinfo']->nickname;?>]<?}?></span><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/<?=$this->data['club']->country['country']?>.png' width="30px"></h1>
+              <h1><?=$this->data['club']->clubname;?> <?if($this->data['club']->status=='I'){ echo '<strong><span class="blue">(INATIVO)</span></strong>';}?><? if($this->data['club']->status=='B'){ echo '<strong><span class="red">(BANIDO)</span></strong>';}?> <? if($this->data['clubinfo']->nickname!=null and $this->data['club']->status=='A'){?><span class='nickname'>[<?=$this->data['clubinfo']->nickname;?>]<?}?></span><img class='country-icon' src='<?=$this->tree?>assets/img/icons/flags/<?=$this->data['club']->country['country']?>.png' width="30px"></h1>
               <h3><?=$this->data['clubinfo']->manager;?></h3>
               <p><strong>ID do Clube:</strong> <?=$this->data['club']->id_club;?></p>
               <p><strong>Disputando:</strong> <a href='<?=$this->tree?>league/<?=$this->data['club']->country['abbreviation']?>/<?=$this->data['club']->league['division']?>/<?=$this->data['club']->league['divgroup']?>'><?=$this->data['club']->league['leaguename'];?></a></p>
@@ -173,6 +176,33 @@
       </tbody>
     </table>
     <label class="modal-close" for="modal_searchclub"></label>
+  </div>
+  <div class='modal-pattern'></div>
+</div>
+<!-- MODAL REPORT -->
+<input type="checkbox" id="modal_report" />
+<div class="modal modal-report">
+  <div class="modal-content">
+    <form>
+      <div class='form-field'>
+          <label for="search-clubname">Motivo(*):</label>
+          <select name="type">
+            <option value="">Escolha um motivo</option>
+            <option value="shield">Escudo Impróprio</option>
+            <option value="forum">Conduta no Fórum/Feed</option>
+            <option value="cheating">Trapaças/Cheating</option>
+            <option value="other">Outros</option>
+          </select>
+      </div>
+      <div class='form-field'>
+        <label for="search-clubname">Descrição:</label>
+        <textarea name="other" placeholder="Uma breve descrição sobre o porque da denuncia"></textarea>
+      </div>
+      <div class='form-field'>
+        <button type='button' class='btn btn'>Denunciar</button>
+      </div>
+    </form>
+    <label class="modal-close" for="modal_report"></label>
   </div>
   <div class='modal-pattern'></div>
 </div>

@@ -153,5 +153,6 @@ switch ($this->request['subrequest']) {
     $this->addJSFile('trophies.js');
     $this->addJSFile('buddy.js');
     $this->addJSFile('club.search.js');
+    $this->addJSFile('admin.js');
     break;
 }

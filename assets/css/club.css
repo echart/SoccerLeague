@@ -104,7 +104,12 @@
 table.club-result{
   margin-top: 20px;
 }
-
+.modal-report .modal-content{
+  padding: 50px;
+}
+.modal-report .modal-content .form-field{
+  margin: 10px 0;
+}
 @media (max-width: 360px) {
   .club-logo{
     margin-top: 50px;

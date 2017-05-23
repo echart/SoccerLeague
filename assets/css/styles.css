@@ -22,7 +22,12 @@ a:hover{
   color: #26292B;
   transition: 0.3s all;
 }
-
+.red{
+  color:#ea4335;
+}
+.blue{
+  color: #4285f4;
+}
 /**
 POSITIONS BY COLOR
 */

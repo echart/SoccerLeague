@@ -23,5 +23,15 @@
         </div>
       </div>
     </div>
+    <div class='bit-1'>
+      <div class='box'>
+        <div class='box-title'>
+          Tasks
+        </div>
+        <div class='box-content'>
+          Nenhuma task foi realizada
+        </div>
+      </div>
+    </div>
   </div>
 </div>
