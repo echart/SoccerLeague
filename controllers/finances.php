@@ -6,6 +6,20 @@ $this->tree = __rootpath($_SERVER['REDIRECT_URL']);
 $id_club = $_SESSION['SL_club'];
 
 switch($this->request['method']){
+  case 'season':
+    JsonOutput::jsonHeader();
+    $query = Connection::getInstance()->connect()->prepare("SELECT money FROM club_finances_weekly WHERE id_club=:id_club order by week asc");
+    $query->bindParam(':id_club',$_SESSION['SL_club']);
+    $query->execute();
+    $finance = array();
+    $i = 0;
+    while($data = $query->fetch(PDO::FETCH_ASSOC)){
+      $finance[$i] = $data['money'];
+      $i++;
+    }
+    echo JsonOutput::success(array('season'=>$finance));
+    exit;
+  break;
   case 'wages':
     include('helpers/__country.php');
     $this->requestURL = 'finances_wages';

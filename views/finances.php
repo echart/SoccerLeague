@@ -4,7 +4,7 @@
     <div class='bit-1'>
       <div class='bit-2'>
         <div class='box'>
-          <div class='box-title'>Receitas e Despesas na Semana</div>
+          <div class='box-title'>Receitas e Despesas na Semana <img width='20px' src='<?=$this->tree?>assets/img/icons/coin.png'> <small class='pro'>PRO</small></div>
           <div class='box-content'>
             <div id="week" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
           </div>
@@ -12,7 +12,7 @@
       </div>
       <div class='bit-2'>
         <div class='box'>
-          <div class='box-title'>Saldo ao longo da temporada</div>
+          <div class='box-title'>Saldo ao longo da temporada <img width='20px' src='<?=$this->tree?>assets/img/icons/coin.png'> <small class='pro'>PRO</small></div>
           <div class='box-content'>
             <div id="season" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
           </div>
