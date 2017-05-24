@@ -3,6 +3,8 @@ error_reporting(!E_ALL);
 include('../../classes/Connection.php');
 include('../../classes/Tweet.php');
 include('../../classes/Club.php');
+include('../../classes/PRO.php');
+include('../../classes/ClubInfo.php');
 include('../../classes/JsonOutput.php');
 include('../__date.php');
 
@@ -28,6 +30,8 @@ if($_GET['method']=='post'){
   $key = 0;
   $data['tweet']['id_tweet'] = $tweet['id_tweet'];
   $data['tweet']['id_club'] = $tweet['id_club'];
+  $clubinfo = new ClubInfo(new Club($tweet['id_club']));
+  $data['tweet']['logo'] = $clubinfo->__logo();
   $data['tweet']['clubname'] = Club::getClubNameById($tweet['id_club']);
   $date = new DateTime($tweet['tweetdate']);
   $data['tweet']['tweetdate'] = $date->format('d/m/Y H:i:s');
@@ -48,6 +52,8 @@ if($_GET['method']=='post'){
     $key = 0;
     $data['replies'][$x]['id_tweet'] = $tweet['id_tweet'];
     $data['replies'][$x]['id_club'] = $tweet['id_club'];
+    $clubinfo = new ClubInfo(new Club($tweet['id_club']));
+    $data['replies'][$x]['logo'] = $clubinfo->__logo();
     $data['replies'][$x]['clubname'] = Club::getClubNameById($tweet['id_club']);
     $date = new DateTime($tweet['tweetdate']);
     $data['replies'][$x]['tweetdate'] = $date->format('d/m/Y H:i:s');

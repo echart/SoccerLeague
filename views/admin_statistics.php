@@ -29,7 +29,7 @@
           Tasks
         </div>
         <div class='box-content'>
-          Nenhuma task foi realizada
+          <p>Nenhuma task foi realizada</p>
         </div>
       </div>
     </div>

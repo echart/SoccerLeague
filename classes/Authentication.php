@@ -40,6 +40,13 @@ class Authentication{
 			return false;
 		}
 	}
+	public function status(){
+		$query = Connection::getInstance()->connect()->prepare("SELECT status FROM club inner join club_account using(id_club) where id_account=:id_account limit 1");
+		$query->bindParam(':id_account',$_SESSION['SL_account']);
+		$query->execute();
+		$data = $query->fetch(PDO::FETCH_ASSOC);
+		return $data['status'];
+	}
 	public function login():bool{
 		session_start();
 		session_regenerate_id();

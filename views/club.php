@@ -17,15 +17,17 @@
             <a type="button" href='#' onclick='buddy(this,"<?=$this->data['friend']['action']?>",<?=$_SESSION['SL_club']?>,<?=$this->data['club']->id_club?>)' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/plus.png' width='16px'><?=$this->data['friend']['text']?></a>
             <? } ?>
             <? if($_SESSION['SL_club']==$this->data['club']->id_club){?>
-            <a type="button" href='#' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/club.png' width='16px'>Editar clube</a>
+            <a type="button" href='<?=$this->tree?>club/<?=$this->data['club']->id_club?>/edit' class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/club.png' width='16px'>Editar clube</a>
             <? } ?>
             <!-- <a class='btn btn-medium btn-full btn-light' href='sendmessage'><img src='<?=$this->tree?>assets/img/icons/letter.png' width='16px'>Mandar mensagem</a> -->
             <label class="btn btn-medium btn-full btn-light" for="modal_searchclub"><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</label>
             <label class="btn btn-medium btn-full btn-light" for="modal_report"><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</label>
             <? if($this->admin->is_GT()){?>
               <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Gerenciar permissões</button>
-              <button type="button" class='btn btn-medium btn-full btn-blue'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
-              <button type="button" class='btn btn-medium btn-full btn-danger ban'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Banir clube</button>
+              <?if($this->data['club']->status!='I'){?>
+                <button type="button" class='btn btn-medium btn-full btn-blue inactive'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
+                <?}?>
+              <button type="button" class='btn btn-medium btn-full btn-danger ban'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'><?=($this->data['club']->status!='B') ? 'Banir Clube' : 'Desbanir Clube'?></button>
             <?}?>
           </div>
         </div>

@@ -3,12 +3,87 @@ $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu='admin';
 
 switch ($this->get['method']) {
+  case 'money':
+    if($this->admin->is_GT()){
+      $id_club = $this->post['id_club'];
+      $query = Connection::getInstance()->connect()->prepare("SELECT money FROM club_finances where id_club=:id_club");
+      $query->bindParam(':id_club',$id_club);
+      $query->execute();
+      $data = $query->fetch(PDO::FETCH_ASSOC);
+      $money = $data - 10000000;
+      $query = Connection::getInstance()->connect()->prepare("UPDATE club_finances SET money=:money where id_club=:id_club");
+      $query->bindParam(':id_club',$id_club);
+      $query->bindParam(':money',$money);
+      $query->execute();
+      if(isset($this->post['id_report'])){
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club_report SET status='C', id_responsable=:id where id_club_report=:id_club_report");
+        $query->bindParam(':id_club_report',$this->post['id_report']);
+        $query->bindParam(':id',$_SESSION['SL_club']);
+        $query->execute();
+      }
+    }
+    echo JsonOutput::success(array('data'=>'successs'));
+  break;
+  case 'shield':
+    if($this->admin->is_GT()){
+      $id_club = $this->post['id_club'];
+      $query = Connection::getInstance()->connect()->prepare("UPDATE club_info SET logo='default.png' where id_club=:id_club");
+      $query->bindParam(':id_club',$id_club);
+      $query->execute();
+      if(isset($this->post['id_report'])){
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club_report SET status='C', id_responsable=:id where id_club_report=:id_club_report");
+        $query->bindParam(':id_club_report',$this->post['id_report']);
+        $query->bindParam(':id',$_SESSION['SL_club']);
+        $query->execute();
+      }
+    }
+    echo JsonOutput::success(array('data'=>'successs'));
+  break;
+  case 'inactive':
+    if($this->admin->is_GT()){
+      $id_club = $this->post['id_club'];
+      $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club where id_club=:id_club");
+      $query->bindParam(':id_club',$id_club);
+      $query->execute();
+      $data = $query->fetch(PDO::FETCH_ASSOC);
+      if($data['status']=='I'){
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club SET status='A' where id_club=:id_club");
+        $query->bindParam(':id_club',$id_club);
+        $query->execute();
+      }else{
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club SET status='I' where id_club=:id_club");
+        $query->bindParam(':id_club',$id_club);
+        $query->execute();
+      }
+
+      echo JsonOutput::success(array('data'=>'successs'));
+    }
+    exit;
+  break;
   case 'ban':
     if($this->admin->is_GT()){
       $id_club = $this->post['id_club'];
-      $query = Connection::getInstance()->connect()->prepare("UPDATE club SET status='B' where id_club=:id_club");
+      $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club where id_club=:id_club");
       $query->bindParam(':id_club',$id_club);
       $query->execute();
+      $data = $query->fetch(PDO::FETCH_ASSOC);
+      if($data['status']=='B'){
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club SET status='A' where id_club=:id_club");
+        $query->bindParam(':id_club',$id_club);
+        $query->execute();
+      }else{
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club SET status='B' where id_club=:id_club");
+        $query->bindParam(':id_club',$id_club);
+        $query->execute();
+      }
+
+      if(isset($this->post['id_report'])){
+        $query = Connection::getInstance()->connect()->prepare("UPDATE club_report SET status='C', id_responsable=:id where id_club_report=:id_club_report");
+        $query->bindParam(':id_club_report',$this->post['id_report']);
+        $query->bindParam(':id',$_SESSION['SL_club']);
+        $query->execute();
+      }
+
       echo JsonOutput::success(array('data'=>'successs'));
     }
     exit;
@@ -58,6 +133,23 @@ switch ($this->get['method']) {
       $this->leagues = $query->rowCount();
     }
     break;
+  case 'reports':
+    if(!$this->admin->is_GT()){
+      $this->requestURL='403';
+    }else{
+      $this->title='Denúncias';
+      $this->submenu='admin/reports';
+      $this->requestURL='admin_reports';
+
+      $query = Connection::getInstance()->connect()->prepare("SELECT * FROM club_report where status = 'P'");
+      $query->execute();
+      while($data=$query->fetch(PDO::FETCH_ASSOC)){
+        $this->data['reports'][] = $data;
+      }
+    }
+    $this->addCSSFile('modal.css');
+    $this->addJSFile('admin.reports.js');
+  break;
   case 'users':
 
   break;

@@ -32,7 +32,7 @@
 	$arraySubmenu['league'] = array(array('Liga','league'),array('Liga amistosa','friendlyleague'),array('Copa','cup'));
 	$arraySubmenu['transfers'] = array(array('Transferências','tranfers'),array('Lista de Observação','watchlist'),array('Olheiros','scouts'));
 	$arraySubmenu['buy-pro'] = array(array('Compre PRO','buy-pro'),array('O que é PRO?','about-pro'));
-	$arraySubmenu['admin'] = array(array('Estatísticas','admin/statistics'));
+	$arraySubmenu['admin'] = array(array('Estatísticas','admin/statistics'),array('Denúncias','admin/reports'));
 	?>
 	<ul class='submenu'>
 		<?

@@ -26,6 +26,11 @@
 		}
 		/* parse URL and load the page*/
 		$handler->admin = new Admin($_SESSION['SL_account']);
+		if($user->status()=='B'){
+			App::redirect($request['request'],'banned');
+		}else if($user->status()=='I'){
+			App::redirect($request['request'],'inactive');
+		}
 		$handler->parseURL($request);
 		$handler->loadController();
 		$handler->loadView();
