@@ -41,7 +41,7 @@
               <td><?=$i+1?></td>
               <td></a>
                 <span class="tooltip tooltip-effect-1" club='<?=$leaguerow['id_club']?>'>
-                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$leaguerow['id_club']?>'><?=$leaguerow['clubname']?></a></span>
+                  <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$leaguerow['id_club']?>'><?=$leaguerow['clubname']?></a><?if(PRO::is_pro($leaguerow['id_club'])){?><img width='18px' src='<?=$this->tree;?>assets/img/icons/coin.png'> <small class='pro'>PRO</small><?}?></span>
                     <span class="tooltip-content clearfix">
                         <span class="tooltip-text">Carregando...</span>
                     </span>

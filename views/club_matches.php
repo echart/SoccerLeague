@@ -1,5 +1,5 @@
 <div class='content'>
-  <h1 class='page-title'><?=$this->title?></h1>
+  <h1 class='page-title'><?=$this->title?> <?if(PRO::is_pro($this->data['club']->id_club)){?><img width='20px' src='<?=$this->tree?>assets/img/icons/coin.png'> <small class='pro'>PRO</small><?}?></h1>
   <div class='byte'>
     <div class='bit-30'>
       <div class='box bit-1'>

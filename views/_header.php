@@ -9,7 +9,7 @@
 			<li><a <?=($this->menu=='league') ? "class='selected'" : '';?> href='<?=$this->tree?>league'><i class='league'></i><span>Competições</span></a></li>
 			<li><a <?=($this->menu=='transfers') ? "class='selected'" : '';?> href='<?=$this->tree?>transfers'><i class='market'></i><span>Mercado</span></a></li>
 			<li><a <?=($this->menu=='forum') ? "class='selected'" : '';?> href='<?=$this->tree?>forum'><i class='world'></i><span>Comunidade</span></a></li>
-			<li><a <?=($this->menu=='buy-pro') ? "class='selected'" : '';?> href='<?=$this->tree?>buy-pro'><i class='slpro'></i><span>PRO</span></a></li>
+			<li><a <?=($this->menu=='buy-pro') ? "class='selected'" : '';?> href='<?=$this->tree?>PRO'><i class='slpro'></i><span>PRO</span></a></li>
 			<?if($this->admin->is_GT()==true){?>
 				<li><a <?=($this->menu=='admin') ? "class='selected'" : '';?> href='<?=$this->tree?>admin/statistics'><i class='admin'></i><span>Administrador</span></a></li>
 			<?}?>
@@ -29,9 +29,9 @@
 	$arraySubmenu['home'] = array(array('Home','home')/*,array('Calendário','calendar'),array('Mensagens','messages')*/);
 	$arraySubmenu['club'] = array(array('Clube','club'),array('Finanças','finances'),array('Estádio','stadium'));
 	$arraySubmenu['squad'] = array(array('Jogadores','players'),array('Táticas','tactics'),array('Treinamento','training'),array('Categoria de Base','youthdevelopment'));
-	$arraySubmenu['league'] = array(array('Liga','league'),array('Liga amistosa','friendlyleague'),array('Copa','cup'));
+$arraySubmenu['league'] = array(array('Liga','league')/*,array('Liga amistosa','friendlyleague'),array('Copa','cup')*/);
 	$arraySubmenu['transfers'] = array(array('Transferências','tranfers'),array('Lista de Observação','watchlist'),array('Olheiros','scouts'));
-	$arraySubmenu['buy-pro'] = array(array('Compre PRO','buy-pro'),array('O que é PRO?','about-pro'));
+$arraySubmenu['buy-pro'] = array(array('Sobre PRO','PRO')/*,array('O que é PRO?','about-pro')*/);
 	$arraySubmenu['admin'] = array(array('Estatísticas','admin/statistics'),array('Denúncias','admin/reports'));
 	?>
 	<ul class='submenu'>

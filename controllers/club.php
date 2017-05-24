@@ -13,6 +13,13 @@ switch ($this->request['subrequest']) {
     $club->__load();
     $this->title = 'Editar - ' . $club->clubname;
     $this->requestURL='club_edit';
+    $info = new ClubInfo($club);
+    $info->__load();
+    $this->data['clubinfo'] = $info;
+    if(isset($this->post['save'])){
+      echo 'ERRROO';
+      exit;
+    }
   break;
   case 'matches':
     error_reporting(E_ALL);

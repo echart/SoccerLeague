@@ -10,7 +10,7 @@ switch ($this->get['method']) {
       $query->bindParam(':id_club',$id_club);
       $query->execute();
       $data = $query->fetch(PDO::FETCH_ASSOC);
-      $money = $data - 10000000;
+      $money = $data['money'] - 10000000;
       $query = Connection::getInstance()->connect()->prepare("UPDATE club_finances SET money=:money where id_club=:id_club");
       $query->bindParam(':id_club',$id_club);
       $query->bindParam(':money',$money);
@@ -23,6 +23,7 @@ switch ($this->get['method']) {
       }
     }
     echo JsonOutput::success(array('data'=>'successs'));
+    exit;
   break;
   case 'shield':
     if($this->admin->is_GT()){
@@ -38,6 +39,7 @@ switch ($this->get['method']) {
       }
     }
     echo JsonOutput::success(array('data'=>'successs'));
+    exit;
   break;
   case 'inactive':
     if($this->admin->is_GT()){
