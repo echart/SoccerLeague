@@ -17,7 +17,7 @@ switch ($this->request['subrequest']) {
     $info->__load();
     $this->data['clubinfo'] = $info;
     if(isset($this->post['save'])){
-      echo 'ERRROO';
+      print_r($this->post);
       exit;
     }
   break;

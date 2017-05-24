@@ -7,7 +7,7 @@
 				<form action='' method='POST'>
 					<input type="hidden" name="save">
 					<div class='form-field'>
-						<label>Nome do clube: <img width='18px' src='<?=$this->tree?>assets/img/icons/coin.png'><small class='pro'>PRO</small></label>
+						<label>Nome do clube <small>(Serão descontados 15 PRO da sua conta por mudança)</small><img width='18px' src='<?=$this->tree?>assets/img/icons/coin.png'><small class='pro'>PRO</small></label>
 						<input type="text" name="clubname" value='<?=$this->data['clubinfo']->club->clubname?>' placeholder="Nome do Clube">
 					</div>
 					<div class='form-field'>
@@ -28,7 +28,7 @@
 					</div>
 					<div class='form-field'>
 						<label>Cor principal:</label>
-						<input type="color" name="clubcolor" value='<?=$this->data['clubinfo']->clubcolor?>'>
+						<input type="color" name="clubcolor">
 					</div>
 					<div class='form-field'>
 						<label>História do clube:</label>
@@ -46,12 +46,6 @@
 		</div>
   </div>
 </main>
-<?
-if(isset($this->request['action'])){
-	echo "<script>
-	window.addEventListener('load', function(){
-		newAlert('success','Dados salvos',6000,'top');
-	}, false );
-	</script>";
-}
-?>
+<script type="text/javascript">
+	document.querySelector('input[type="color"]').value = '<?=$this->data['clubinfo']->primaryColor?>';
+</script>

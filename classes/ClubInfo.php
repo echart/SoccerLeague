@@ -23,6 +23,8 @@ class ClubInfo{
     $this->stadium = $data['stadium'];
     $this->fansname = $data['fansname'];
     $this->history = $data['history'];
+    $this->primaryColor = $data['primarycolor'];
+    $this->secondaryColor = $data['secondarycolor'];
     $this->logo = $this->__logo();
   }
   public function __update(){
