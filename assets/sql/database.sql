@@ -652,13 +652,49 @@ create table tweet(
   foreign key(id_club) references club(id_club)
  );
 
-
+create table forum_type(
+	id_topic_type serial primary key,
+	type varchar(100)
+);
+create table forum_topic(
+	id_topic serial primary key,
+	id_topic_type integer,
+		FOREIGN KEY (id_topic_type) REFERENCES forum_type(id_topic_type),
+	id_club integer,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	country varchar(3) not null,
+	title varchar(100) not null,
+	topic text not null,
+	topic_date date with timestamp not null default now(),
+	likes integer default 0,
+	dislikes integer default 0,
+	edited integer default 0,
+	edited_date date
+);
+create table forum_topic_replys(
+		id_reply serial primary key,
+		id_topic integer,
+			FOREIGN KEY (id_topic) REFERENCES forum_topic(id_topic),
+		id_club integer,
+		topic text not null,
+		reply_date date with timestamp not null default now(),
+		likes integer default 0,
+		dislikes integer default 0,
+		edited integer default 0,
+		edited_date date
+);
 
 insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
 insert into competition_type(type) values ('L');
 insert into countries (country,abbreviation) values ('Brazil','br');
 insert into languages (lang,language) values('pt-br','Português Brasil');
-insert into timezones (timezone) values()
+insert into timezones (timezone) values('America/Sao_Paulo');
+insert into forum_type (type) values ('general');
+insert into forum_type (type) values ('help');
+insert into forum_type (type) values ('announcements');
+insert into forum_type (type) values ('general');
+insert into forum_type (type) values ('bugs');
+insert into forum_type (type) values ('development');
 insert into positions (position,side) values('GK','');
 insert into positions (position,side) values('D','C');
 insert into positions (position,side) values('D','L');

@@ -24,6 +24,18 @@
 	RewriteRule ^feed/([0-9-]+)/([a-z0-9-]+)/([0-9-]+)/$ handler.php?request=feed&id=$1&method=$2&page=$3 [NC,L]
 	RewriteRule ^feed/([0-9-]+)/([a-z0-9-]+)/([0-9-]+)$ handler.php?request=feed&id=$1&method=$2&page=$3 [NC,L]
 
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/([0-9-]+)/$ handler.php?request=forum&country=$1&type=$2&page=$3 [NC,L]
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/([0-9-]+)$ handler.php?request=forum&country=$1&type=$2&page=$3 [NC,L]
+
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/$ handler.php?request=forum&country=$1&type=$2 [NC,L]
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)$ handler.php?request=forum&country=$1&type=$2 [NC,L]
+
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)/([0-9-]+)/$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=$4 [NC,L]
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)/([0-9-]+)$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=$4 [NC,L]
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)/$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=1 [NC,L]
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=1 [NC,L]
+
+
  </IfModule>
  <IfModule mod_speling.c>
  CheckSpelling On

@@ -1,0 +1,55 @@
+.forum_topic{
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  display: block;
+  cursor: pointer;
+}
+
+.forum_topic:hover{
+  background: #eee;
+  transition: 0.3s all;
+}
+
+.topic_title{
+  display: inline-block;
+  width: 69%;
+  padding-left: 20px;
+}
+.topic_title a{
+  font-size: 16px;
+  font-weight: 300;
+}
+.topic_title small{
+  font-size: 10px;
+  padding-left: 10px;
+}
+.topic_club{
+  font-size: 13px;
+  font-weight: 300;
+  display: inline-block;
+  width: 15%;
+}
+.topic_last{
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+  font-size: 10px;
+}
+.likes{
+  padding: 7px;
+  border-radius: 2.5px;
+  font-size: 14px;
+  color: #333;
+  max-width: 5%;
+  text-align: center;
+  display: inline-block;
+}
+
+.green{
+  background-color: #7dcd85;
+}
+.red{
+  background-color: #b44230;
+  color: #fff;
+}

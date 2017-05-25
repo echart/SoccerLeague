@@ -49,7 +49,8 @@
       $club = new Club();
       $club->id_account  = $account->id_account;
       $club->id_country  = $this->post['country'];
-      $club->clubname    = $this->post['clubname'];
+      $clubname = new Filters($this->post['clubname']);
+      $club->clubname    = $clubname->filter();
 
       if($club->checkAvailableClub()==0){
         /* Create new league with new available clubs */
