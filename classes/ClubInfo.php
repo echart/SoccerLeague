@@ -11,6 +11,7 @@ class ClubInfo{
   public $history;
   public function __construct(Club $club){
     $this->club=$club;
+    return $this;
   }
   public function __load(){
     $query=Connection::getInstance()->connect()->prepare("SELECT * FROM club_info where id_club=:id_club");

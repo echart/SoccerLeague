@@ -2,6 +2,7 @@
 error_reporting(!E_ALL);
 include('../../classes/Connection.php');
 include('../../classes/Tweet.php');
+include('../../classes/Filters.php');
 include('../../classes/Club.php');
 include('../../classes/PRO.php');
 include('../../classes/ClubInfo.php');
@@ -17,7 +18,8 @@ if($_GET['method']=='post'){
   }else{
     $reply_to = $_POST['reply_to'];
   }
-  if(Tweet::__tweet($_SESSION['SL_club'],'M',$tweet,null,$reply_to)){
+  $tweet = new Filters($tweet);
+  if(Tweet::__tweet($_SESSION['SL_club'],'M',$tweet->filter(),null,$reply_to)){
     echo JsonOutput::success(array('success'=>'posted'));
   }else{
     echo JsonOutput::error('error','error');

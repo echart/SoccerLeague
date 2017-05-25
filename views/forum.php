@@ -30,39 +30,57 @@
               $date=new DateTime($topic->topic_date);
               $likes=$topic->likes-$topic->dislikes;
               if($likes>=0){$class='green';}else{$class='red';}
+              if($topic->fixed==true){$fixed='<span>*</span>';}else{$fixed='';};
               ?>
 
               <div class='forum_topic' id-topic='<?=$topic->id_topic?>'>
-                <div class='topic_title'><a href='<?=$this->tree;?>forum/<?=$this->country?>/<?=$this->type?>/topic/<?=$topic->id_topic?>'><?=$topic->title?></a> <small>7 respostas</small></div>
+                <div class='topic_fixed'><?=$fixed?></div>
+                <div class='topic_title'><a href='<?=$this->tree;?>forum/<?=$this->country?>/<?=$this->type?>/topic/<?=$topic->id_topic?>'><?=$topic->title?></a> <small><?=$topic->countReplies();?> respostas</small></div>
                 <div class='topic_club'><a href='<?=$this->tree?>club/<?=$topic->id_club?>'><?=Club::getClubnameById($topic->id_club)?></a></div>
                 <div class='topic_last'><?=$date->format('d/m/Y');?></div>
                 <div class='likes <?=$class?>'><?=$likes?></div>
-                <div class='replies'><?=$topic->countReplies();?></div>
               </div>
             <?
             }
-            ?>
-          </div>
-        </div>
-      </div>
-      <div class='bit-1'>
-        <div class='box'>
-          <div class='box-title'>Criar tópico</div>
-          <div class='box-content'>
-            <div class="form-field">
-              <label for="">Titulo:</label>
-              <input type="text" name="" value="">
-            </div>
-            <div class="form-field">
-              <label for="">Texto:</label>
-              <textarea name="name" rows="8" cols="80"></textarea>
-            </div>
-            <div class="form-field">
-              <button class='btn btn-light' type="reset" name="button">Limpar</button>
-              <button class='btn btn-success' type="button" name="button">Criar tópico</button>
+            if(count($this->forum['topics'])!=0 and $this->data['total']>10){
+              $page = $this->request['page'];
+              $x = $this->data['total']/10;
+              if($x>$this->request['page']) $flag = true; else $flag = false;
+              ?>
+              <ul class='pages'>
+                <? if($this->request['page']!=1){?><li><a href='<?=$this->tree?>forum/<?=$this->request['country']?>/<?=$this->request['type']?>/<?=$this->request['page']-1?>'><</a></li><?}?>
+                <? if($this->data['total']>10 and $flag==true){?><li><a href='<?=$this->tree?>forum/<?=$this->request['country']?>/<?=$this->request['type']?>/<?=$this->request['page']+1?>'>></a></li><?}?>
+              </ul>
+              <?
+              }?>
             </div>
           </div>
         </div>
+      <?
+      if($this->request['type']!='announcements' OR($this->request['type']=='announcements' and $this->admin->is_GT())){
+        ?>
+        <div class='bit-1'>
+          <div class='box'>
+            <div class='box-title'>Criar tópico</div>
+            <div class='box-content'>
+            <form action='<?=$this->tree?>forum/<?=$this->country?>/<?=$this->type?>/post' method='POST'>
+              <div class="form-field">
+                <label for="">Titulo:</label>
+                <input type="text" name="title" value="" placeholder='Título do tópico'>
+              </div>
+              <div class="form-field">
+                <label for="">Texto:</label>
+                <textarea name="text" rows="8" cols="80" placeholder='Texto do tópico'></textarea>
+              </div>
+              <div class="form-field">
+                <button class='btn btn-light' type="reset" name="button">Limpar</button>
+                <button class='btn btn-success' type="submit" name="button">Criar tópico</button>
+              </div>
+            </form>
+            </div>
+          </div>
+          <?
+        }?>
       </div>
 
     </div>

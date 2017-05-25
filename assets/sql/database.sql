@@ -663,15 +663,16 @@ create table forum_topic(
 	id_club integer,
 		FOREIGN KEY (id_club) REFERENCES club(id_club),
 	country varchar(3) not null,
+	fixed boolean not null default FALSE,
 	title varchar(100) not null,
 	topic text not null,
-	topic_date date with timestamp not null default now(),
+	topic_date timestamp not null default now(),
 	likes integer default 0,
 	dislikes integer default 0,
 	edited integer default 0,
 	edited_date date
 );
-create table forum_topic_replys(
+create table forum_topic_reply(
 		id_reply serial primary key,
 		id_topic integer,
 			FOREIGN KEY (id_topic) REFERENCES forum_topic(id_topic),

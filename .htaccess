@@ -30,8 +30,12 @@
 	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/$ handler.php?request=forum&country=$1&type=$2 [NC,L]
 	RewriteRule ^forum/([a-z-]+)/([a-z-]+)$ handler.php?request=forum&country=$1&type=$2 [NC,L]
 
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/([a-z-]+)/$ handler.php?request=forum&country=$1&type=$2&subrequest=$3 [NC,L]
+	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/([a-z-]+)$ handler.php?request=forum&country=$1&type=$2&subrequest=$3 [NC,L]
+
 	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)/([0-9-]+)/$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=$4 [NC,L]
 	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)/([0-9-]+)$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=$4 [NC,L]
+
 	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)/$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=1 [NC,L]
 	RewriteRule ^forum/([a-z-]+)/([a-z-]+)/topic/([0-9-]+)$ handler.php?request=forum&country=$1&type=$2&topic=$3&page=1 [NC,L]
 

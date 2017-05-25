@@ -36,4 +36,14 @@ class Admin{
       return false;
     }
   }
+  public function is_FT():bool{
+    $query=Connection::getInstance()->connect()->prepare("SELECT permission FROM account_permission where id_account=:id_account and permission='FT'");
+    $query->bindParam(":id_account",$this->id_account);
+    $query->execute();
+    if($query->rowCount()>0){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

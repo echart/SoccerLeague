@@ -10,11 +10,13 @@
           <div class='match'>
             <div class='home'>
               <img src="<?=$this->tree?>assets/img/club_pics/<?=$this->data['next-match']['home']['logo']?>" width="200px">
-              <p><span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$this->data['next-match']['home']['id']?>'><?=$this->data['next-match']['home']['name']?></a></span>
-                <span class="tooltip-content clearfix">
-                    <span class="tooltip-text">Carregando...</span>
+              <p><span class="tooltip tooltip-effect-1" club='<?=$this->data['next-match']['home']['id']?>'>
+                <span class="tooltip-item"><a href='<?=$this->tree?>club/<?=$this->data['next-match']['home']['id']?>'><?=$this->data['next-match']['home']['name']?></a></span>
+                  <span class="tooltip-content clearfix">
+                      <span class="tooltip-text">Carregando...</span>
+                  </span>
                 </span>
-              </span></p>
+              </p>
             </div>
               <span>vs</span>
             <div class='away'>

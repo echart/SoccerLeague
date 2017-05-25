@@ -11,9 +11,18 @@
   transition: 0.3s all;
 }
 
+.topic_fixed{
+  width: 5%;
+  display: inline-block;
+}
+.topic_fixed span{
+  background: #eee;
+  border-radius: 2.5px;
+  padding: 5px;
+}
 .topic_title{
   display: inline-block;
-  width: 69%;
+  width: 64%;
   padding-left: 20px;
 }
 .topic_title a{
@@ -51,5 +60,22 @@
 }
 .red{
   background-color: #b44230;
+  color: #fff;
+}
+
+.pages{
+  list-style: none;
+  text-align: right;
+  padding: 10px;
+}
+.pages li{
+  display: inline-block;
+  margin: 1px;
+}
+.pages li a{
+  font-size: 14px;
+  padding: 5px;
+  background-color: #393e41;
+  border-radius: 2px;
   color: #fff;
 }
