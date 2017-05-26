@@ -48,7 +48,7 @@
                     <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small' name="button">Fixar</button><?}?>
                     <button type="button" class='btn btn-small' name="button">Editar</button>
                     <button type="button" class='btn btn-small' name="button">Excluir</button>
-                    <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small btn-danger' name="button">Banir</button><?}?>
+                    <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small btn-danger' name="button">Banir do Fórum</button><?}?>
 
                   </div>
                 <?}?>

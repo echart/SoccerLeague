@@ -220,6 +220,38 @@
                 </div>
               </div>
             </div>
+            <div class='bit-1'>
+              <div class='field_functions'>
+                <div class='line_function'>
+                  <p class='player_function'>Capitão</p>
+                  <div class='function' player-id='' player-name='' position='captain' >
+                    <div class='playershirt'></div>
+                    <p class='playername'></p><div class='rec'></div>
+                  </div>
+                </div>
+                <div class='line_function'>
+                  <p class='player_function'>Faltas</p>
+                  <div class='function' player-id='' player-name='' position='freekick' >
+                    <div class='playershirt'></div>
+                    <p class='playername'></p><div class='rec'></div>
+                  </div>
+                </div>
+                <div class='line_function'>
+                  <p class='player_function'>Escanteios</p>
+                  <div class='function' player-id='' player-name='' position='corner' >
+                    <div class='playershirt'></div>
+                    <p class='playername'></p><div class='rec'></div>
+                  </div>
+                </div>
+                <div class='line_function'>
+                  <p class='player_function'>Penalti</p>
+                  <div class='function' player-id='' player-name='' position='penalty' >
+                    <div class='playershirt'></div>
+                    <p class='playername'></p><div class='rec'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

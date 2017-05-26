@@ -162,14 +162,14 @@ table{
     cursor: pointer;
     position: relative;
 }
-.field_player.ui-droppable-hover > .playershirt, .reserve_player.ui-droppable-hover > .playershirt{
+.field_player.ui-droppable-hover > .playershirt, .reserve_player.ui-droppable-hover > .playershirt,.function.ui-droppable-hover > .playershirt{
   border: 4px solid #7dcd85;
 }
-.field_player.visible, .reserve_player.visible{
+.field_player.visible, .reserve_player.visible, .function.visible{
   display: inline-block;
   opacity:1;
 }
-.field_player.visible > p.playername, .reserve_player.visible > p.playername{
+.field_player.visible > p.playername, .reserve_player.visible > p.playername, .function.visible > p.playername{
  display: block;
 }
 table tr td:first-child{
@@ -200,4 +200,25 @@ div.drag{
 }
 table tr.drag{
   background-color: #62de9f;
+}
+
+.field_functions{
+  padding: 10px;
+}
+.line_function{
+  display: inline-block;
+  width: 15%;
+}
+.player_function{
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 2px;
+}
+.function{
+  margin: 0 auto;
+  text-align: center;
+}
+.field_functions .playershirt{
+  background: #eee;
 }

@@ -10,7 +10,7 @@ create table season(
 create table languages(
 	id_language SERIAL PRIMARY KEY,
 	lang varchar(5),
-	laguage varchar(100)
+	language varchar(100)
 );
 create table countries(
 	id_country serial primary key,
@@ -598,12 +598,8 @@ create table league_calendar(
 	 	FOREIGN KEY (id_club) REFERENCES club(id_club),
 	 players_on_field json,
 	 players_on_reserve json,
-	 captain integer,
-	 corner integer,
-	 freekick integer,
-	 penalty integer,
-	 mentality integer,
-	 attackstyle integer
+	 players_functions json,
+	 tactical_data json
  );
 -- create table competition_statistics(
 -- 	id_competition_statistics serial primary key,
@@ -677,14 +673,22 @@ create table forum_topic_reply(
 		id_topic integer,
 			FOREIGN KEY (id_topic) REFERENCES forum_topic(id_topic),
 		id_club integer,
+			FOREIGN KEY (id_club) REFERENCES club(id_club),
 		topic text not null,
-		reply_date date with timestamp not null default now(),
+		reply_date timestamp not null default now(),
 		likes integer default 0,
 		dislikes integer default 0,
 		edited integer default 0,
 		edited_date date
 );
-
+create table forum_bans(
+	id_forum_ban serial primary key,
+	id_club integer,
+		FOREIGN KEY (id_club) REFERENCES club(id_club),
+	start date not null default now(),
+	ended date not null,
+	reason text
+);
 insert into season (startseason, endseason) values('2017-03-19', '2017-06-06');
 insert into competition_type(type) values ('L');
 insert into countries (country,abbreviation) values ('Brazil','br');

@@ -2,11 +2,13 @@
 players = [];
 players_on_field = {};
 players_on_reserve = {};
+players_on_function = {};
 functions = {captain:'',freekick:''};
 max_players_on_field = 11;
 max_subs = 5;
 positions = ['gk','dc','dcl','dcr','dl','dr','dmc','dmcr','dmcl','dmr','dml','mc','mcr','mcl','ml','mr','omc','omcl','omcr', 'oml','omr','fc','fcr','fcl'];
 positions_reserves = ['gk','dc','ml','mc','fc'];
+positions_functions = ['captain','freekick','corner','penalty'];
 player_on_drag = {};
 
 function loadplayers(){
@@ -25,6 +27,7 @@ function loadplayers(){
       droppable_field();
       draggable_reserves();
       droppable_reserves();
+      droppable_functions();
     },
     error: function(response){
       console.log(response);
@@ -415,6 +418,21 @@ function droppable_reserves(){
     }
   });
 }
+function droppable_functions(){
+  $( ".function" ).droppable({
+    drop: function( event, ui ) {
+      players_on_function[$(this).attr('position')] = player_on_drag.player.player_id;
+      /* transfer player to player_function */
+      $(this).addClass('visible');
+      $(this).attr('player-id',player_on_drag.player.player_id);
+      $(this).attr('player-name',player_on_drag.player.name);
+      $(this).find('p.playername').html(player_on_drag.player.name);
+      //save tactics and delete player on the player_on_drag.
+      __SAVETACTICS();
+      delete player_on_drag.player;
+    }
+  });
+}
 function findIndice(id_player){
   var x;
   $.each(players,function(index,obj){
@@ -439,8 +457,10 @@ function __LOADTACTICS(){
     dataType: 'JSON',
     success : function(response){
       if(response.data!=false){
+        console.log(response.data);
         players_on_field = JSON.parse(response.data.players_on_field);
         players_on_reserve = JSON.parse(response.data.players_on_reserve);
+        players_on_function = JSON.parse(response.data.players_functions);
         for(var x=0;x<positions.length;x++){
           if(typeof players[findIndice(players_on_field[positions[x]])]!= 'undefined'){
             var target = $('.field_player[position="'+positions[x]+'"]');
@@ -464,7 +484,6 @@ function __LOADTACTICS(){
             player_on_drag = {
               player : players[findIndice(players_on_reserve[positions_reserves[x]])]
             };
-            console.log(player_on_drag);
             $("tr[player-id='"+player_on_drag.player.player_id+"']").remove();
             /* transfer player to field_player */
             $(target).addClass('visible');
@@ -473,6 +492,23 @@ function __LOADTACTICS(){
             $(target).attr('player-name',player_on_drag.player.name);
             $(target).find('p.playername').html(name[0] + " " + name[1]);
             $(target).find('.rec').html(player_on_drag.player.recomendation);
+            delete player_on_drag.player;
+          }
+        }
+        for(var x=0;x<positions_functions.length;x++){
+          if(typeof players[findIndice(players_on_function[positions_functions[x]])]!= 'undefined'){
+            var target = $('.function[position="'+positions_functions[x]+'"]');
+            player_on_drag = {
+              player : players[findIndice(players_on_function[positions_functions[x]])]
+            };
+            console.log(player_on_drag);
+            /* transfer player to field_player */
+            $(target).addClass('visible');
+            var name = player_on_drag.player.name.split(' ');
+            $(target).attr('player-id',player_on_drag.player.player_id);
+            $(target).attr('player-name',player_on_drag.player.name);
+            $(target).find('p.playername').html(name[0] + " " + name[1]);
+            // $(target).find('.rec').html(player_on_drag.player.recomendation);
             delete player_on_drag.player;
           }
         }
@@ -485,15 +521,17 @@ function __SAVETACTICS(){
     url : 'tactics/save',
     method: 'POST',
     dataType: 'JSON',
-    data : {players_on_field:JSON.stringify(players_on_field), players_on_reserve:JSON.stringify(players_on_reserve)},
+    data : {players_on_field:JSON.stringify(players_on_field), players_on_reserve:JSON.stringify(players_on_reserve), players_on_function:JSON.stringify(players_on_function)},
     beforeSend: function(){
       $('.lastsaved').html('Salvando...');
       console.log('SAVING....');
     },
     success : function(response){
+      console.log(response);
       $('.lastsaved').html('Salvo');
     },
     error : function(response){
+      console.log(response);
     }
   });
 }

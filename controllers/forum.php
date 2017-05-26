@@ -7,8 +7,11 @@ if(!isset($this->request['country'])) // if country isnt set at url, make the re
 
 $this->menu = 'forum';
 switch ($this->get['subrequest']) {
+  case 'ban':
+    
+  break;
   case 'post':
-    if($this->request['type']!='announcements' OR($this->request['type']=='announcements' and $this->admin()->is_GT())){
+    if($this->request['type']!='announcements' OR($this->request['type']=='announcements' and $this->admin->is_GT())){
       $topic = new Forum();
 
       $title = new Filters($this->post['title']);

@@ -28,8 +28,8 @@
 	$arraySubmenu = array();
 	$arraySubmenu['home'] = array(array('Home','home')/*,array('Calendário','calendar'),array('Mensagens','messages')*/);
 	$arraySubmenu['club'] = array(array('Clube','club'),array('Finanças','finances'),array('Estádio','stadium'),array('Patrocinadores','sponsor'));
-	$arraySubmenu['squad'] = array(array('Jogadores','players'),array('Táticas','tactics'),array('Treinamento','training'),array('Categoria de Base','youthdevelopment'));
-$arraySubmenu['league'] = array(array('Liga','league')/*,array('Liga amistosa','friendlyleague'),array('Copa','cup')*/);
+	$arraySubmenu['squad'] = array(array('Jogadores','players'),array('Táticas','tactics')/*,array('Treinamento','training'),array('Categoria de Base','youthdevelopment')*/);
+	$arraySubmenu['league'] = array(array('Liga','league')/*,array('Liga amistosa','friendlyleague'),array('Copa','cup')*/);
 	$arraySubmenu['transfers'] = array(array('Transferências','tranfers'),array('Lista de Observação','watchlist'),array('Olheiros','scouts'));
 $arraySubmenu['buy-pro'] = array(array('Sobre PRO','PRO')/*,array('O que é PRO?','about-pro')*/);
 	$arraySubmenu['forum'] = array(array('Fórum','forum'), array('Manual do jogo','guide'),array('Sobre o SL','about'));

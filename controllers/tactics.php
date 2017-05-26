@@ -9,7 +9,7 @@ switch ($this->get['method']) {
   case 'save':
     $players_on_field = $this->post['players_on_field'];
     $players_on_reserve = $this->post['players_on_reserve'];
-    $functions = $this->post['functions'];
+    $functions = $this->post['players_on_function'];
     $styles = $this->post['styles'];
     $conditional_orders = $this->post['conditional_orders'];
 
