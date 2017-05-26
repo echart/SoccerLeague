@@ -25,7 +25,7 @@
             <button type="button" class='btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Demitir jogador</button>
           </div>
           <div class='player-profile'>
-            <h1><?=$this->data['player']->name?><img src='<?=$this->tree?>assets/img/icons/flags/Brazil.png' width="24px"></h1>
+            <h1><?=$this->data['player']->name?><img src='<?=$this->tree?>assets/img/icons/flags/brazil.png' width="24px"></h1>
             <?
             if($this->data['player']->nickname!=''){ ?>
             <h2>'<?=$this->data['player']->nickname?>' <a href='#'>Mudar apelido</a></h2>
