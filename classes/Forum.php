@@ -42,7 +42,7 @@ class Forum{
     return $query->rowCount();
   }
   public function __loadreplies($page){
-    $query = Connection::getInstance()->connect()->prepare("SELECT * FROM forum_topic_reply where id_topic = :id_topic order by reply_date desc limit 6 offset :page");
+    $query = Connection::getInstance()->connect()->prepare("SELECT * FROM forum_topic_reply where id_topic = :id_topic order by reply_date asc limit 6 offset :page");
     $query->bindParam(':id_topic',$this->id_topic);
     $query->bindParam(':page',$page);
     $query->execute();
@@ -70,7 +70,16 @@ class Forum{
     $query->execute();
 
   }
-
+  public function __deletetopic(){
+    $query = Connection::getInstance()->connect()->prepare("DELETE FROM forum_topic where id_topic = :id_topic");
+    $query->bindParam(':id_topic',$this->id_topic);
+    $query->execute();
+  }
+  public function __deletereply(){
+    $query = Connection::getInstance()->connect()->prepare("DELETE FROM forum_topic_reply where id_reply = :id_topic");
+    $query->bindParam(':id_topic',$this->id_topic);
+    $query->execute();
+  }
   public static function _IDType($type){
     $query = Connection::getInstance()->connect()->prepare("SELECT * FROM forum_type where type=:type");
     $query->bindParam(':type',$type);

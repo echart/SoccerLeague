@@ -29,6 +29,22 @@ class ClubInfo{
     $this->logo = $this->__logo();
   }
   public function __update(){
+    $query=Connection::getInstance()->connect()->prepare("UPDATE club_info SET nickname=:nickname,manager=:manager,stadium=:stadium,fansname=:fansname,history=:history,primaryColor=:primaryColor,logo=:logo where id_club=:id_club");
+    $query->bindParam(':id_club', $this->club->id_club);
+    $query->bindParam(':nickname', $this->nickname);
+    $query->bindParam(':manager', $this->manager);
+    $query->bindParam(':stadium', $this->stadium);
+    $query->bindParam(':fansname', $this->fansname);
+    $query->bindParam(':history', $this->history);
+    $query->bindParam(':primaryColor', $this->primaryColor);
+    $query->bindParam(':logo', $this->logo);
+    $query->execute();
+  }
+  public function __updateClubName(){
+    $query=Connection::getInstance()->connect()->prepare("UPDATE club SET clubname=:clubname where id_club=:id_club");
+    $query->bindParam(':id_club', $this->club->id_club);
+    $query->bindParam(':clubname', $this->club->clubname);
+    $query->execute();
   }
   public function __logo(){
     if(PRO::is_pro($this->club->id_club)==true){

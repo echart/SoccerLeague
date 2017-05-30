@@ -1,6 +1,4 @@
 <?
-
-
 if(!isset($this->request['id'])) // if country isnt set at url, make the redirect to club league set in session
   header('location: '.App::url().'club/'.strtolower($_SESSION['SL_club']).'/');
 
@@ -17,13 +15,65 @@ switch ($this->request['subrequest']) {
     $info->__load();
     $this->data['clubinfo'] = $info;
     if(isset($this->post['save'])){
-      print_r($this->post);
-      exit;
+      // var_dump($_FILES);exit;
+      if($_FILES['logo']['name']!=''){
+        $imagePath= 'assets/img/club_pics/';
+        $allowedExts = array("jpeg", "jpg", "png","JPEG", "JPG", "PNG");
+        $temp = explode(".", $_FILES['logo']["name"]);
+        $extension = end($temp);
+        $output_filename = date('YmdHis').".".$extension;
+        if(in_array($extension, $allowedExts)){
+         if ($_FILES["logo"]["error"] > 0){
+        	}else{
+              $filename = $_FILES["logo"]["tmp_name"];
+        		  list($width, $height) = getimagesize( $filename );
+              if($width==$height){
+          		  move_uploaded_file($filename,  $imagePath . $output_filename);
+                $_SESSION['logo_updated']=true;
+              }
+        	}
+        }else{
+          $_SESSION['logo_updated']=false;
+        }
+      }else{
+        $output_filename = $info->logo;
+      }
+      if($_POST['clubname']!=$club->clubname){
+        if(PRO::amountPRO($_SESSION['SL_account'])>=15){
+          $qtd = PRO::amountPRO($_SESSION['SL_account'])-15;
+          PRO::updatePRO($_SESSION['SL_account'],$qtd);
+          $info->club->clubname = $_POST['clubname'];
+          $info->__updateClubName();
+        }
+      }
+      $nickname =  new Filters($_POST['nickname']);
+      $info->nickname = $nickname->filter();
+
+      $fansname =  new Filters($_POST['fansname']);
+      $info->fansname = $fansname->filter();
+
+      $manager =  new Filters($_POST['manager']);
+      $info->manager = $manager->filter();
+
+      $stadium =  new Filters($_POST['stadium']);
+      $info->stadium = $stadium->filter();
+
+      $history =  new Filters($_POST['history']);
+      $info->history = $history->filter();
+
+      $primaryColor =  new Filters($_POST['primaryColor']);
+      $info->primaryColor = $primaryColor->filter();
+
+      $logo =  new Filters($output_filename);
+      $info->logo = $logo->filter();
+
+      $info->__update();
+      $info->__load();
+      $this->data['clubinfo'] = $info;
+
     }
   break;
   case 'matches':
-    error_reporting(E_ALL);
-    ini_set('display_errors',1);
     $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
     $this->menu  = "club";
     $this->submenu = 'club';

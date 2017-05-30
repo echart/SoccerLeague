@@ -16,13 +16,39 @@
             </div>
           </div>
           <div class='player-options'>
-            <!-- <button type="button" class='btn btn-large btn-full btn-success'>Fazer oferta</button> -->
-            <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/money.png' width='16px'>Vender jogador</button>
-            <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/sell.png' width='16px'>Definir preço</button>
-            <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/scout.png' width='16px'>Mandar olheiro</button>
-            <!-- <button type="button" class='btn btn-medium btn-full btn-light'>+ Lista de observação</button> -->
-            <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/cancel.png' width='16px'>Rejeitar ofertas</button>
-            <button type="button" class='btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Demitir jogador</button>
+            <?
+            if(!$this->data['player']->__listed()){
+              if($_SESSION['SL_club']==$this->data['player']->id_club){?>
+                <button id-player='<?=$this->data['player']->id_player?>' type="button" class='sell-player btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/money.png' width='16px'>Vender jogador</button>
+                <!-- <button id-player='<?=$this->data['player']->id_player?>' type="button" class='reject-offers btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/cancel.png' width='16px'>Rejeitar todas ofertas</button> -->
+                <button id-player='<?=$this->data['player']->id_player?>' type="button" class='fire-player btn btn-medium btn-full btn-danger'><img src='<?=$this->tree?>assets/img/icons/trash.png' width='16px'>Demitir jogador</button>
+                <!-- <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/sell.png' width='16px'>Definir preço</button> -->
+              <?}else{?>
+                <!-- <button type="button" class='btn btn-large btn-full btn-success'>Fazer oferta</button> -->
+                <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'> Lista de observação</button>
+              <?}
+            }else{
+              $transfer = $this->data['player']->__listed();
+              $startdate = new DateTime($transfer['startdate']);
+              $enddate = DateTime::createFromFormat("Y-m-d H:i:s", $transfer['enddate']);
+              ?>
+              <div class='transferlist'>
+                <p><strong>Começou em: <?=$startdate->format('d/m/Y H:i:s');?></strong></p>
+                <p><strong>Expira em: <?=$enddate->format('d/m/Y H:i:s');?></strong></p>
+                <?echo($transfer['id_bid_club']!=NULL) ? "<p><strong>Comprador:</strong> <span class='tooltip tooltip-effect-1' club='".$transfer['id_bid_club']."'>
+                  <span class='tooltip-item'><a href='".$this->treeclub."/".$transfer['id_bid_club']."'>".Club::getClubNameById($transfer['id_bid_club'])."</a></span>
+                    <span class='tooltip-content clearfix'>
+                        <span class='tooltip-text'>Carregando...</span>
+                    </span>
+                  </span></p>":'<p><strong>Nenhum Comprador</strong></p>';?>
+                <p><strong>Valor:</strong></p>
+                <h3>$ <?=number_format($transfer['value'],2,',','.')?></h3>
+              </div>
+              <h4></h4>
+              <button type="button" class='buy btn btn-large btn-full btn-success'>Fazer oferta</button>
+
+            <?}?>
+            <!-- <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/scout.png' width='16px'>Mandar olheiro</button> -->
           </div>
           <div class='player-profile'>
             <h1><?=$this->data['player']->name?><img src='<?=$this->tree?>assets/img/icons/flags/brazil.png' width="24px"></h1>
@@ -30,7 +56,7 @@
             if($this->data['player']->nickname!=''){ ?>
             <h2>'<?=$this->data['player']->nickname?>' <a href='#'>Mudar apelido</a></h2>
             <? }else{ ?>
-              <h2> <a href='#'>Definir apelido</a></h2>
+              <!-- <h2> <a href='#'>Definir apelido</a></h2> -->
             <? } ?>
             <div class='info'>
               <p><strong>Clube:</strong> <span class="tooltip tooltip-effect-1" club='<?=$this->data['player']->id_club?>'>
@@ -45,6 +71,7 @@
               <p><strong>Peso/Altura:</strong>  <?=$this->data['player']->weight?>kg/<?=$this->data['player']->height?>cm</p>
               <p><strong>Índice de Habilidade:</strong> <?=$this->data['player']->skill_index?></p>
               <p><strong>REC:</strong> <?=_rec($this->data['player']->rec, App::url())?></p>
+              <p><strong>Status:</strong> <?if($this->data['player']->__injuried()){echo 'Lesionado';}else if($this->data['player']->__suspended()){echo 'Suspenso';}else{echo 'Disponível';}?></p>
             </div>
 	       </div>
        </div>
@@ -326,6 +353,81 @@
       </div>
     </div>
   </div>
+</div>
+<!-- MODAL SELL -->
+<input type="checkbox" id="modal_sell" />
+<div class="modal modal-sell">
+  <div class="modal-content">
+    <div class='form-field'>
+      <h2>Vender Jogador</h2>
+    </div>
+    <form method='post'>
+      <div class='form-field'>
+        <p><strong class='red'>Um jogador colocado a leilão, não pode ser retirado! Você tem certeza?</strong></p>
+      </div>
+      <div class='form-field'>
+        <label for="description">Nome:</label>
+        <input type='hidden' name='sellplayer'>
+        <input type="text" name="name" readonly value="<?=$this->data['player']->name?>">
+      </div>
+      <div class='form-field'>
+        <label for="description">Começo do Leilão:</label>
+        <input type="text" name="startDate" readonly value="<?=date('d/m/Y H:i:s')?>">
+      </div>
+      <div class='form-field'>
+        <label for="description">Fim do Leilão:</label>
+        <input type="text" class='date_time' readonly name="endDate" value="<?$date = new DateTime(); $date->add((new DateInterval('P5D')));echo $date->format('d/m/Y H:i:s')?>">
+      </div>
+      <div class='form-field'>
+        <label for="description">Valor Inicial:</label>
+        <input type="text" class='money' name="value" value="<?=($this->data['player']->skill_index*1.5)*10000000?>">
+      </div>
+      <div class='form-field'>
+        <button class='btn btn-success'>Vender</button>
+      </div>
+    </form>
+    <label class="modal-close" for="modal_sell"></label>
+  </div>
+  <div class='modal-pattern'></div>
+</div>
+<!-- MODAL buy -->
+<?
+$transfer = $this->data['player']->__listed();
+?>
+<input type="checkbox" id="modal_buy" />
+<div class="modal modal-buy">
+  <div class="modal-content">
+    <div class='form-field'>
+      <h2>Comprar Jogador</h2>
+    </div>
+    <form method='post'>
+      <div class='form-field'>
+        <label for="description">Nome:</label>
+        <input type='hidden' name='buyplayer'>
+        <input type="text" name="name" disabled value="<?=$this->data['player']->name?>">
+      </div>
+      <div class='form-field'>
+        <label for="description">Fim do Leilão:</label>
+        <input type="text" class='date_time' disabled name="endDate" value="<?$date = new DateTime(); $date->add(new DateInterval('P1D'));echo $date->format('d/m/Y H:i:s')?>">
+      </div>
+      <div class='form-field'>
+        <label for="description">Comprador:</label>
+        <input type="text" name="comprador" disabled value="<?if($transfer['id_bid_club']==null){echo 'Nenhum Comprador';}else{echo Club::getClubNameById($transfer['id_bid_club']);}?>">
+      </div>
+      <div class='form-field'>
+        <label for="description">Valor Inicial:</label>
+        <input type="text" class='money bid' name="value" value="<?=($this->data['player']->skill_index*1.5)*10000000?>">
+      </div>
+      <div class='form-field'>
+        <button type='button' onclick='buy()'class='btn btn-success'>Vender</button>
+      </div>
+      <div class='form-field'>
+        <h3 class='buy-response'>MDSKALMDSK</h3>
+      </div>
+    </form>
+    <label class="modal-close" for="modal_buy"></label>
+  </div>
+  <div class='modal-pattern'></div>
 </div>
 <script type="text/javascript">
   bear = <?=$this->data['player']->bear;?>;

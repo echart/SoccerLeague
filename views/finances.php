@@ -2,6 +2,14 @@
   <h1 class='page-title'><?=$this->title?></h1>
   <div class='byte'>
     <div class='bit-1'>
+      <div class='box bit-1'>
+        <div class='box-title'>Ajuda</div>
+        <div class='box-content'>
+          <p>
+            Toda segunda-feira é realizada a atualização da economia onde valores como a cota de televisionamento são atualizadas. Tenha cuidado ao manter suas despesas maiores que suas receitas e boa sorte!
+          </p>
+        </div>
+      </div>
       <div class='bit-2'>
         <div class='box'>
           <div class='box-title'>Receitas e Despesas na Semana <img width='20px' src='<?=$this->tree?>assets/img/icons/coin.png'> <small class='pro'>PRO</small></div>

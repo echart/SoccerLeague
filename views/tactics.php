@@ -2,6 +2,20 @@
   <h1 class='page-title'><?=$this->title?></h1>
   <div class='byte'>
     <div class='bit-1'>
+      <div class='box bit-1'>
+        <!-- <div class='box-title'>Ajuda</div> -->
+        <div class='box-content'>
+          <p>
+            Devido a testes com o motor de jogo, algumas funcionalidades como o Assistente Técnico ainda não estão disponiveis. Isso quer dizer que você não pode ter nenhum jogador faltando, suspenso ou lesionado na escalação do seu time titular, pois isso poderá ocasionar perda da partida.
+
+            Posteriormente, com a implantação definitiva do Asssistente Técnico virtual, ele automaticamente substituirá os jogadores indisponíveis para você.
+          </p>
+          <p>
+            Para escalar seu time para a partida é simples, basta arrastar e soltar os jogadores na posição escolhida! Se você necessita de mais informações sobre o jogador, acesse rapidamente a página dele utilizando ctrl+clique no nome do jogador.
+          </p>
+          <p><strong>As partidas pela liga nacional são jogadas Domingo, Quartas e Sextas as 17h. Sendo assim, em dia de jogo, bloqueamos as suas táticas das 16h até o fim da partida.</strong></p>
+        </div>
+      </div>
       <div class='bit-2 box players'>
         <div class='box-title'>
           Jogadores

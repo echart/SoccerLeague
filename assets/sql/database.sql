@@ -113,8 +113,8 @@ create table club_info(
 		CONSTRAINT clubinfo_idclub_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
   manager varchar(50) default 'The Manager',
 	nickname varchar(25) default null,
-	stadium varchar(25)  default null,
-  fansname varchar(50) default null,
+	stadium varchar(25)  default 'Soccer League Stadium',
+  fansname varchar(50) default 'The Fans',
   logo varchar(200) default null,
   primaryColor varchar(7) default null,
   secondaryColor varchar(7) default null,
@@ -294,13 +294,13 @@ create table players(
 create table players_wage(
 	id_player_wage serial primary key,
 	id_player integer not null,
-		FOREIGN KEY(id_player) REFERENCES players(id_player),
+		FOREIGN KEY(id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	wage numeric(17,2)
 );
 create table players_appearance(
 	id_player_appearance serial primary key,
 	id_player integer,
-		FOREIGN KEY (id_player) REFERENCES players(id_player),
+		FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 		UNIQUE(id_player),
 	body integer,
 	eyes integer,
@@ -310,14 +310,14 @@ create table players_appearance(
 create table players_position(
 	id_player_position serial primary key not null,
 	id_player integer not null,
-		CONSTRAINT playersposition_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player),
+		CONSTRAINT playersposition_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	id_position integer not null,
 		CONSTRAINT playersposition_idposition_fkey FOREIGN KEY(id_position) REFERENCES positions(id_position)
 );
 create table players_attr(
 	id_player_attr serial primary key,
 	id_player integer not null,
-		CONSTRAINT playerattr_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+		CONSTRAINT playerattr_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	stamina numeric (5,3),
 	speed numeric (5,3),
 	resistance numeric (5,3),
@@ -338,7 +338,7 @@ create table players_attr(
 create table players_attr_gk(
 	id_player_gk_attr serial primary key,
 	id_player integer not null,
-		CONSTRAINT playerattrgk_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+		CONSTRAINT playerattrgk_idplayer_fkey FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	handling numeric (5,3),
 	aerial numeric (5,3),
 	foothability numeric (5,3),
@@ -351,7 +351,7 @@ create table players_attr_gk(
 create table players_attr_line(
 	id_player_line_attr serial primary key,
 	id_player integer not null,
-		CONSTRAINT playerattrline_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player),
+		CONSTRAINT playerattrline_idplayer_fkey FOREIGN KEY(id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	crossing numeric (5,3),
 	pass numeric (5,3),
 	technical numeric (5,3),
@@ -367,11 +367,11 @@ create table players_attr_line(
 create table players_history(
 	id_player_history serial primary key,
 	id_player integer not null,
-		CONSTRAINT playerhistory_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+		CONSTRAINT playerhistory_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	season integer not null,
 		CONSTRAINT playerhistory_season_fkey FOREIGN KEY (season) REFERENCES season(season),
 	id_club integer not null,
-		CONSTRAINT playerhistory_club_fkey FOREIGN KEY (id_club) REFERENCES club(id_club),
+		CONSTRAINT playerhistory_club_fkey FOREIGN KEY (id_club) REFERENCES club(id_club) ON DELETE CASCADE,
 	games int DEFAULT 0,
 	goals int DEFAULT 0,
 	assists int DEFAULT 0,
@@ -383,11 +383,17 @@ create table players_history(
 create table players_injury(
 	id_player_injury serial primary key,
 	id_player integer not null,
-		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
+		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
 	id_injury integer not null,
 		CONSTRAINT playerinjury_injury_fkey FOREIGN KEY (id_injury) REFERENCES injuries(id_injury),
 	games integer not null,
 	status boolean not null
+);
+create table players_cards(
+	id_player_cards serial primary key,
+	id_player integer not null,
+		CONSTRAINT playerinjury_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
+	cards integer not null default 0
 );
 /**
  * fim
@@ -405,13 +411,17 @@ create table player_attr_line_training();
 /**
  * MARKET
  */
-create table transferlist(
-	id_transferlist serial primary key,
-	id_player integer not null,
-		CONSTRAINT transferlist_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player),
-	startDate timestamp without time zone not null,
-	endDate timestamp without time zone not null
-);
+ create table transferlist(
+ 	id_transferlist serial primary key,
+ 	id_player integer not null,
+ 		CONSTRAINT transferlist_player_fkey FOREIGN KEY (id_player) REFERENCES players(id_player) ON DELETE CASCADE,
+ 	startDate timestamp without time zone not null default now(),
+ 	endDate timestamp without time zone not null,
+ 	value numeric(17,2) not null,
+ 	id_bid_club integer,
+ 		FOREIGN KEY (id_bid_club) REFERENCES club(id_club) ON DELETE CASCADE,
+ 	status boolean default TRUE
+ );
 create table watchlist(
 	id_watchlist serial primary key,
 	id_player integer not null,
@@ -526,71 +536,72 @@ create table league_calendar(
  day date,
  hour varchar(5)
 );
- create table matches_stats(
-  id_match_stats serial primary key,
-  id_match integer not null,
-    FOREIGN KEY(id_match) references matches(id_match),
-  homegoals integer not null,
-  awaygoals integer not null,
-	homepossession integer not null,
-	homefaults integer,
-	homesetpieces integer,
-	homecorners integer,
-	homeshots integer,
-	homeshotsontarget integer,
-	homeshotsonpost integer,
-	homeshotsoutbox integer,
-	homespasses integer,
-	homepassessuccess integer,
-	homeyellowcards integer,
-	homeredcards integer,
-	homepenalty integer,
-	homepenaltysuccess integer,
-	awaypossession integer not null,
-	awayfaults integer,
-	awaysetpieces integer,
-	awaycorners integer,
-	awayshots integer,
-	awayshotsontarget integer,
-	awayshotsonpost integer,
-	awayshotsoutbox integer,
-	awayyellowcards integer,
-	awayredcards integer,
-	awaypasses integer,
-	awaypassessuccess integer,
-	awaypenalty integer,
-	awaypenaltysuccess integer
- );
- create table matches_stats_players(
-	 id_match_stats_players serial primary key,
-	 id_player integer references players(id_player),
-	 goals integer,
-	 assists integer,
-	 rating numeric(4,2),
-	 mvp boolean,
-	 yellowcards integer,
-	 redcards integer,
-	 passing integer,
-	 passing_success integer,
-	 crosses integer,
-	 crosses_success integer,
-	 faults integer,
-	 shots integer,
-	 shotsontarget integer,
-	 shotsonpost integer,
-	 shotsoutbox integer,
-	 dribbles integer,
-	 dribbles_success integer,
-	 badcontrol integer,
-	 aerials integer,
-	 aerialswon integer,
-	 offsides integer,
-	 tackles integer,
-	 interceptions integer,
-	 owngoals integer,
-	 saves integer,
-	 conceded integer
- );
+create table matches_stats(
+ id_match_stats serial primary key,
+ id_match integer not null,
+	 FOREIGN KEY(id_match) references matches(id_match),
+ homegoals integer not null default 0,
+ awaygoals integer not null default 0,
+ homepossession integer default 0,
+ homefaults integer default 0,
+ homesetpieces integer default 0,
+ homecorners integer default 0,
+ homeshots integer default 0,
+ homeshotsontarget integer default 0,
+ homeshotsonpost integer default 0,
+ homeshotsoutbox integer default 0,
+ homespasses integer default 0,
+ homepassessuccess integer default 0,
+ homeyellowcards integer default 0,
+ homeredcards integer default 0,
+ homepenalty integer default 0,
+ homepenaltysuccess integer default 0,
+ awaypossession integer default 0,
+ awayfaults integer default 0,
+ awaysetpieces integer default 0,
+ awaycorners integer default 0,
+ awayshots integer default 0,
+ awayshotsontarget integer default 0,
+ awayshotsonpost integer default 0,
+ awayshotsoutbox integer default 0,
+ awayyellowcards integer default 0,
+ awayredcards integer default 0,
+ awaypasses integer default 0,
+ awaypassessuccess integer default 0,
+ awaypenalty integer default 0,
+ awaypenaltysuccess integer default 0
+);
+create table matches_stats_players(
+	id_match_stats_players serial primary key,
+	id_match_stats integer references matches_stats(id_match_stats),
+	id_player integer references players(id_player),
+	goals integer default 0,
+	assists integer default 0,
+	rating numeric(4,2) default 0,
+	mvp boolean default false,
+	yellowcards integer default 0,
+	redcards integer default 0,
+	passing integer default 0,
+	passing_success integer default 0,
+	crosses integer default 0,
+	crosses_success integer default 0,
+	faults integer default 0,
+	shots integer default 0,
+	shotsontarget integer default 0,
+	shotsonpost integer default 0,
+	shotsoutbox integer default 0,
+	dribbles integer default 0,
+	dribbles_success integer default 0,
+	badcontrol integer default 0,
+	aerials integer default 0,
+	aerialswon integer default 0,
+	offsides integer default 0,
+	tackles integer default 0,
+	interceptions integer default 0,
+	owngoals integer default 0,
+	saves integer default 0,
+	conceded integer default 0
+);
 
  create table tactics(
 	 id_tactics serial primary key,

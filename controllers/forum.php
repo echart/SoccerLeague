@@ -8,7 +8,7 @@ if(!isset($this->request['country'])) // if country isnt set at url, make the re
 $this->menu = 'forum';
 switch ($this->get['subrequest']) {
   case 'ban':
-    
+
   break;
   case 'post':
     if($this->request['type']!='announcements' OR($this->request['type']=='announcements' and $this->admin->is_GT())){
@@ -43,6 +43,20 @@ switch ($this->get['subrequest']) {
     break;
   default:
     $this->submenu='forum';
+    if(isset($this->post['delete_topic'])){
+      $topic = new Forum($this->post['id_topic']);
+      $topic->__deletetopic();
+      JsonOutput::jsonHeader();
+      echo JsonOutput::success(array('success'));
+      exit;
+    }
+    if(isset($this->post['delete_reply'])){
+      $topic = new Forum($this->post['id_reply']);
+      $topic->__deletereply();
+      JsonOutput::jsonHeader();
+      echo JsonOutput::success(array('success'));
+      exit;
+    }
     if(isset($this->request['topic'])){
       $this->requestURL='forum_viewtopic';
       $this->title = 'Forum ' . $country .' '. ucfirst($this->request['type']);
@@ -57,6 +71,7 @@ switch ($this->get['subrequest']) {
 
       $this->replies = $this->topic->__loadreplies($this->page);
       $this->addCSSFile('forum_topic.css');
+      $this->addJSFile('admin.forum.js');
 
     }else{
       $this->title = 'Forum ' . $country .' '. ucfirst($this->request['type']);

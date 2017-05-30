@@ -111,4 +111,38 @@ class Player{
 		$query->setFetchMode(PDO::FETCH_OBJ);
 		return $query;
 	}
+	public function __injuried(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT games FROM players_injury where id_player=:id_player and status=TRUE order by id_player_injury desc limit 1");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+		$data = $query->fetch();
+		if($query->rowCount()>0){
+			return $data['games'];
+		}else{
+			return false;;
+		}
+	}
+	public function __suspended(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT cards FROM players_cards where id_player=:id_player");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+		$data = $query->fetch();
+		return $data['cards'];
+	}
+	public function __fire(){
+		$query = Connection::getInstance()->connect()->prepare("DELETE FROM players where id_player=:id_player");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+	}
+	public function __listed(){
+		$query=Connection::getInstance()->connect()->prepare("SELECT * FROM transferlist where id_player=:id_player and status=true");
+		$query->bindParam(':id_player',$this->id_player);
+		$query->execute();
+		if($query->rowCount()>0){
+			$data = $query->fetch();
+			return $data;
+		}else{
+			return false;
+		}
+	}
 }

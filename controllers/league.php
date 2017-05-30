@@ -3,7 +3,7 @@ require_once('helpers/__country.php');
 $this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu    = 'league';
 
-$subrequest = $this->get['subrequest'] ?? '';
+$subrequest = $this->request['subrequest'] ?? '';
 
 $division = $this->get['div'] ?? $_SESSION['SL_div'];
 $group = $this->get['group'] ?? $_SESSION['SL_group'];
@@ -13,8 +13,30 @@ if(!isset($this->request['country'])) // if country isnt set at url, make the re
   header('location: '.App::url().'league/'.strtolower($_SESSION['SL_country']).'/'.$division.'/'.$group);
 
 switch ($subrequest) {
-  case 'value':
-    # code...
+  case 'calendar':
+    $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
+    $this->menu  = "club";
+    $this->submenu = 'club';
+    $this->requestURL='league_matches';
+
+    $competition = new Competition(Competition::getIdCompetition(getCountryID($country)));
+    $competition->__load();
+
+    $league = new League($competition->id_competition,$division,$group);
+    $league->__loadIDleague();
+    $league->__load();
+    $this->title = 'Calendário - '.$league->name;
+
+    $query = Connection::getInstance()->connect()->prepare("SELECT id_match FROM league_calendar where id_league=:id_league order by day asc");
+    $query->bindParam(':id_league',$league->id_league);
+    $query->execute();
+    while($data=$query->fetch()){
+      $query2 = Connection::getInstance()->connect()->prepare("SELECT * FROM matches where id_match=:id_match order by day asc");
+      $query2->bindParam(':id_match',$data['id_match']);
+      $query2->execute();
+      $data2 = $query2->fetch(PDO::FETCH_ASSOC);
+      $this->data['matches'][]=$data2;
+    }
     break;
 
   default:

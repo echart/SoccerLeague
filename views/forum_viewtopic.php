@@ -47,7 +47,7 @@
                   <div class='ft_controller'>
                     <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small' name="button">Fixar</button><?}?>
                     <button type="button" class='btn btn-small' name="button">Editar</button>
-                    <button type="button" class='btn btn-small' name="button">Excluir</button>
+                    <button type="button" class='topic-delete btn btn-small' id-topic='<?=$this->request['topic']?>' name="button">Excluir</button>
                     <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small btn-danger' name="button">Banir do Fórum</button><?}?>
 
                   </div>
@@ -77,8 +77,8 @@
                 <?if($_SESSION['SL_club']==$reply->id_club OR $this->admin->is_FT()){?>
                 <div class='ft_controller'>
                   <button type="button" class='btn btn-small' name="button">Editar</button>
-                  <button type="button" class='btn btn-small' name="button">Excluir</button>
-                  <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small btn-danger' name="button">Banir</button><?}?>
+                  <button type="button" class='reply-delete btn btn-small' name="button" id-reply='<?=$reply->id_reply?>'>Excluir</button>
+                  <?if($this->admin->is_FT()){?><button type="button" class='btn btn-small btn-danger' name="button">Banir do Forum</button><?}?>
                 </div>
                 <?}?>
               </div>

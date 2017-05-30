@@ -45,7 +45,7 @@
   font-size: 16px;
 }
 .player-profile div.info{
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .player-profile div.info p{
   padding: 2.5px;
@@ -79,4 +79,22 @@
     position: relative;
     left: 0px;
     top: -220px;
+}
+
+.transferlist{
+  border: 2px solid #eee;
+  padding: 10px;
+  background-color: #393e41;
+  border-radius: 5px;
+  margin: 10px;
+  color: #fff;
+}
+.transferlist p{
+  font-size: 13px;
+  padding: 5px;
+}
+.transferlist > h3{
+  font-size: 22px;
+  color: #d5b942;
+  text-align: center;
 }

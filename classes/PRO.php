@@ -9,7 +9,7 @@ class PRO{
     return $data['slvip'];
   }
   public static function updatePRO($id_account,$pro){
-    $query = Connection::getInstance()->connect()->prepare("UPDATE account_data SET slvip = ':pro' where id_account=:id_account");
+    $query = Connection::getInstance()->connect()->prepare("UPDATE account_data SET slvip = :pro where id_account=:id_account");
     $query->bindParam(':id_account',$id_account);
     $query->bindParam(':pro',$pro);
     $query->execute();

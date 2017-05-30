@@ -4,7 +4,7 @@
 		<div class='box grid-95'>
 			<div class='box-title'>Editar clube</div>
 			<div class='box-content padding-left'>
-				<form action='' method='POST'>
+				<form action='<?=$this->tree?>club/<?=$_SESSION['SL_club']?>/edit' method='POST' enctype="multipart/form-data">
 					<input type="hidden" name="save">
 					<div class='form-field'>
 						<label>Nome do clube <small>(Serão descontados 15 PRO da sua conta por mudança)</small><img width='18px' src='<?=$this->tree?>assets/img/icons/coin.png'><small class='pro'>PRO</small></label>
@@ -28,20 +28,22 @@
 					</div>
 					<div class='form-field'>
 						<label>Cor principal:</label>
-						<input type="color" name="clubcolor">
+						<input type="color" name="primaryColor">
 					</div>
 					<div class='form-field'>
 						<label>História do clube:</label>
 						<textarea name="history"><?=$this->data['clubinfo']->history?></textarea>
 					</div>
 					<div class='form-field'>
-						<label>Escudo <img width='18px' src='<?=$this->tree?>assets/img/icons/coin.png'><small class='pro'>PRO</small>: <small>(no momento, apenas imagens com tamanho 200x200 são permitidas)</small> </label>
-						<input type='file' name='logo'>
+						<label>Escudo <img width='18px' src='<?=$this->tree?>assets/img/icons/coin.png'><small class='pro'>PRO</small>: <small>(no momento, apenas imagens com proporção 200x200 são permitidas)</small> </label>
+						<input type='file' name='logo'><br>
+						<img src="<?=$this->tree?>assets/img/club_pics/<?=$this->data['clubinfo']->logo?>" width="200px" height="200px">
 					</div>
 					<div class='form-field'>
+						<BR><BR><bR>
 						<button class='btn btn-success' type='submit'>Salvar</button>
 					</div>
-				</forn>
+				</form>
 			</div>
 		</div>
   </div>

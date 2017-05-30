@@ -5,10 +5,33 @@ include($this->tree . 'helpers/_rec.php');
 $this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu    = 'squad';
 if(isset($this->request['id'])){
+  if(isset($this->post['fireplayer'])){
+    JsonOutput::jsonHeader();
+    $player = new Player($this->request['id']);
+    $player->__fire();
+    echo JsonOutput::success(array('success'));
+    exit;
+  }
   $this->menu  = "squad";
   $this->submenu = 'players';
   $player = Player::__this($this->get['id']);
   $player->__loadinfo();
+
+  if(isset($this->post['sellplayer'])){
+    $id_player = $this->request['id'];
+    if($_SESSION['SL_club']==$player->id_club){
+      $value = str_replace('.','',$this->post['value']);
+      $value = str_replace(',','.',$value);
+      $enddate = DateTime::createFromFormat("d/m/Y H:i:s", $this->post['endDate']);
+      $end = $enddate->format('Y-m-d H:i:s');
+      $query = Connection::getInstance()->connect()->prepare("INSERT INTO transferlist (id_player,endDate,value) values (:id_player,:enddate,:value)");
+      $query->bindParam(':id_player',$id_player);
+      $query->bindParam(':enddate',$end);
+      $query->bindParam(':value',$value);
+      $query->execute();
+    }
+  }
+
   $this->title = $player->name;
   $player->__loadskills();
   $history = $player->__loadhistory();
@@ -29,9 +52,12 @@ if(isset($this->request['id'])){
   $this->requestURL='player';
   $this->addCSSFile('player.css');
   $this->addCSSFile('tactics.css');
+  $this->addCSSFile('modal.css');
   $this->addJSFile('player.appearance.js');
   $this->addJSFile('player.skills.js');
   $this->addJSFile('player.positions.js');
+  $this->addJSFile('mask.js');
+  $this->addJSFile('player.options.js');
   $this->addCSSFile('responsive.table.css');
   $this->addJSFile('responsive.table.js');
   // var_dump($this->data['player']);

@@ -13,9 +13,3 @@ $BODY$
 	END;
 $BODY$
   LANGUAGE plpgsql;
-
-CREATE TRIGGER trigger_club
-  AFTER INSERT
-  ON club
-  FOR EACH ROW
-  EXECUTE PROCEDURE create_club();
