@@ -45,9 +45,10 @@
                 <h3>$ <?=number_format($transfer['value'],2,',','.')?></h3>
               </div>
               <h4></h4>
-              <button type="button" class='buy btn btn-large btn-full btn-success'>Fazer oferta</button>
-
-            <?}?>
+              <?if($SESSION['SL_club']==$this->data['player']->id_club){?>
+                <button type="button" class='buy btn btn-large btn-full btn-success'>Fazer oferta</button>
+              <?}
+            }?>
             <!-- <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/scout.png' width='16px'>Mandar olheiro</button> -->
           </div>
           <div class='player-profile'>
@@ -411,18 +412,14 @@ $transfer = $this->data['player']->__listed();
         <input type="text" class='date_time' disabled name="endDate" value="<?$date = new DateTime(); $date->add(new DateInterval('P1D'));echo $date->format('d/m/Y H:i:s')?>">
       </div>
       <div class='form-field'>
-        <label for="description">Comprador:</label>
-        <input type="text" name="comprador" disabled value="<?if($transfer['id_bid_club']==null){echo 'Nenhum Comprador';}else{echo Club::getClubNameById($transfer['id_bid_club']);}?>">
+        <label for="description">Próximo Lance:</label>
+        <input type="text" class='money bid' name="value" disabled value="<?$value=(($transfer['value']*4)/100)+$transfer['value'];echo number_format($value,2,',','.')?>">
       </div>
       <div class='form-field'>
-        <label for="description">Valor Inicial:</label>
-        <input type="text" class='money bid' name="value" value="<?=($this->data['player']->skill_index*1.5)*10000000?>">
+        <button type='submit' class='btn btn-success'>Realizar oferta</button>
       </div>
       <div class='form-field'>
-        <button type='button' onclick='buy()'class='btn btn-success'>Vender</button>
-      </div>
-      <div class='form-field'>
-        <h3 class='buy-response'>MDSKALMDSK</h3>
+        <h3 class='buy-response'></h3>
       </div>
     </form>
     <label class="modal-close" for="modal_buy"></label>

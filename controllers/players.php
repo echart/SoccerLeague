@@ -1,6 +1,6 @@
 <?
 include('helpers/__country.php');
-include($this->tree . 'helpers/_rec.php');
+include('helpers/_rec.php');
 
 $this->tree    =__rootpath($_SERVER['REDIRECT_URL']);
 $this->menu    = 'squad';
@@ -29,6 +29,17 @@ if(isset($this->request['id'])){
       $query->bindParam(':enddate',$end);
       $query->bindParam(':value',$value);
       $query->execute();
+    }
+  }else if(isset($this->post['buyplayer'])){
+    if($_SESSION['SL_club']!=$player->id_club){
+      $transfer=$player->__listed();
+      $query = Connection::getInstance()->connect()->prepare("UPDATE transferlist SET id_bid_club=:id_bid_club,value=:value where id_player=:id_player and status=TRUE");
+      $query->bindParam(':id_bid_club',$_SESSION['SL_club']);
+      $value = (($transfer['value']*4)/100)+$transfer['value'];
+      $query->bindParam(':value',$value);
+      $query->bindParam(':id_player',$this->request['id']);
+      $query->execute();
+      //exit;
     }
   }
 

@@ -1,4 +1,5 @@
 value = $('.bid').val();
+value = parseFloat(value)*2;
 $('.buy').on('click',function(){
     $('label[for="modal_buy"]').trigger('click');
 });

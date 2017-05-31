@@ -23,7 +23,7 @@
             <label class="btn btn-medium btn-full btn-light" for="modal_searchclub"><img src='<?=$this->tree?>assets/img/icons/search.png' width='16px'>Procurar outro clube</label>
             <label class="btn btn-medium btn-full btn-light" for="modal_report"><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Denunciar clube</label>
             <? if($this->admin->is_GT()){?>
-              <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Gerenciar permissões</button>
+              <!-- <button type="button" class='btn btn-medium btn-full btn-light'><img src='<?=$this->tree?>assets/img/icons/report.png' width='16px'>Gerenciar permissões</button> -->
               <?if($this->data['club']->status!='I'){?>
                 <button type="button" class='btn btn-medium btn-full btn-blue inactive'><img src='<?=$this->tree?>assets/img/icons/inactive.png' width='16px'>Inativar clube</button>
                 <?}?>

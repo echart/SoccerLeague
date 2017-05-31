@@ -9,7 +9,7 @@ $('.tooltip[club]').hover(function(){
         '<h3>'+json.data.clubname+'</h3><br>'+
         '<strong>Jogando </strong>'+json.data.leaguename+' <img src="'+url+'assets/img/icons/flags/brazil.png" width="20px"><br>'+
         '<strong>Fundado em </strong>'+json.data.created+'<br>'+
-        '<strong>Economia está </strong>'+id+'<br>'+
+        // '<strong>Economia está </strong>'+id+'<br>'+
         '<strong>Ultimo login </strong>'+json.data.lastlogin+'<br>'
       );
     },

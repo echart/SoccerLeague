@@ -37,6 +37,17 @@ header ul.submenu li a.selected{
 header ul.submenu li.mobile{
   display: none;
 }
+header ul.info{
+  float: right;
+  list-style: none;
+  position: relative;
+  top: -52px;
+  right: 10px;
+}
+header ul.info li{
+  float: left;
+  padding: 7.5px;
+}
 div.submenu-mobile{
   display: none;
   position: absolute;

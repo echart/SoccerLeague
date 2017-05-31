@@ -15,8 +15,8 @@ if(!isset($this->request['country'])) // if country isnt set at url, make the re
 switch ($subrequest) {
   case 'calendar':
     $this->tree=__rootpath($_SERVER['REDIRECT_URL']);
-    $this->menu  = "club";
-    $this->submenu = 'club';
+    $this->menu  = "league";
+    $this->submenu = 'league';
     $this->requestURL='league_matches';
 
     $competition = new Competition(Competition::getIdCompetition(getCountryID($country)));

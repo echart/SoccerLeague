@@ -27,13 +27,15 @@
 	<?
 	$arraySubmenu = array();
 	$arraySubmenu['home'] = array(array('Home','home')/*,array('Calendário','calendar'),array('Mensagens','messages')*/);
-	$arraySubmenu['club'] = array(array('Clube','club'),array('Finanças','finances'),array('Estádio','stadium'),array('Patrocinadores','sponsor'));
+	$arraySubmenu['club'] = array(array('Clube','club'),array('Finanças','finances'),array('Estádio','stadium')/*,array('Patrocinadores','sponsor')*/);
 	$arraySubmenu['squad'] = array(array('Jogadores','players'),array('Táticas','tactics')/*,array('Treinamento','training'),array('Categoria de Base','youthdevelopment')*/);
 	$arraySubmenu['league'] = array(array('Liga','league')/*,array('Liga amistosa','friendlyleague'),array('Copa','cup')*/);
-	$arraySubmenu['transfers'] = array(array('Transferências','tranfers'),array('Lista de Observação','watchlist'),array('Olheiros','scouts'));
-$arraySubmenu['buy-pro'] = array(array('Sobre PRO','PRO')/*,array('O que é PRO?','about-pro')*/);
+	$arraySubmenu['transfers'] = array(array('Mercado','transfers')/*,array('Lista de Observação','watchlist'),array('Olheiros','scouts')*/);
+	$arraySubmenu['buy-pro'] = array(array('Sobre PRO','PRO')/*,array('O que é PRO?','about-pro')*/);
 	$arraySubmenu['forum'] = array(array('Fórum','forum'), array('Manual do jogo','guide'),array('Sobre o SL','about'));
 	$arraySubmenu['admin'] = array(array('Estatísticas','admin/statistics'),array('Denúncias','admin/reports'));
+	$arraySubmenu['matches'] = array(array('Partida','matches'));
+
 	?>
 	<ul class='submenu'>
 		<?
@@ -43,7 +45,13 @@ $arraySubmenu['buy-pro'] = array(array('Sobre PRO','PRO')/*,array('O que é PRO?
 				$class="class='selected'";
 			echo "<li><a $class href='".$this->tree.$array[1]."'>".$array[0]."</a></li>";
 		}
+		$wallet = new ClubFinances(new Club($_SESSION['SL_club']));
 		?>
+	</ul>
+	<ul class='info'>
+		<li><img src='<?=$this->tree?>assets/img/icons/clock.png' width="20px"> <small class='pro'?><?=date('d/m/Y H:i:s')?></small></li>
+		<li><img src='<?=$this->tree?>assets/img/icons/money.png' width="20px"> <small class='pro'>$ <?=number_format($wallet->__wallet(),2,',','.');?></small></li>
+		<li><img src='<?=$this->tree?>assets/img/icons/coin.png' width="20px"> <small class='pro'><?=PRO::amountPRO($_SESSION['SL_account'])?> PRO</small></li>
 	</ul>
 	<div class='submenu-mobile'></div>
 </header>
