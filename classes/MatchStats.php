@@ -37,12 +37,66 @@ class MatchStats{
   public function __construct(Match $match){
     $this->match = $match;
   }
+  public function __createWO(){
+    $query = Connection::getInstance()->connect()->prepare("INSERT INTO matches_stats (id_match, homegoals, awaygoals) values
+            (:id_match, :homegoals, :awaygoals)");
+    $query->bindValue(':id_match',$this->match->id_match);
+    $query->bindValue(':homegoals',$this->homegoals);
+    $query->bindValue(':awaygoals',$this->awaygoals);
+    $query->execute();
+  }
   public function __create(){
-    
+    $query = Connection::getInstance()->connect()->prepare("INSERT INTO matches_stats (id_match, homegoals, awaygoals, homepossession,
+            homefaults, homesetpieces, homecorners, homeshots, homeshotsontarget,
+            homeshotsonpost, homeshotsoutbox, homespasses, homepassessuccess,
+            homeyellowcards, homeredcards, homepenalty, homepenaltysuccess,
+            awaypossession, awayfaults, awaysetpieces, awaycorners, awayshots,
+            awayshotsontarget, awayshotsonpost, awayshotsoutbox, awayyellowcards,
+            awayredcards, awaypasses, awaypassessuccess, awaypenalty, awaypenaltysuccess) values
+            (:id_match, :homegoals, :awaygoals, :homepossession,
+            :homefaults, :homesetpieces, :homecorners, :homeshots, :homeshotsontarget,
+            :homeshotsonpost, :homeshotsoutbox, homespasses, homepassessuccess,
+            :homeyellowcards, :homeredcards, :homepenalty, :homepenaltysuccess,
+            :awaypossession, :awayfaults, :awaysetpieces, :awaycorners, :awayshots,
+            :awayshotsontarget, :awayshotsonpost, :awayshotsoutbox, :awayyellowcards,
+            :awayredcards, :awaypasses, :awaypassessuccess, :awaypenalty, :awaypenaltysuccess)");
+    $query->bindValue(':id_match',$this->match->id_match);
+    $query->bindValue(':homegoals',$this->homegoals);
+    $query->bindValue(':awaygoals',$this->awaygoals);
+  	$query->bindValue(':homepossession',$this->homepossession);
+  	$query->bindValue(':homefaults',$this->homefaults);
+  	$query->bindValue(':homesetpieces',$this->homesetpieces);
+  	$query->bindValue(':homecorners',$this->homecorners);
+  	$query->bindValue(':homeshots',$this->homeshots);
+  	$query->bindValue(':homeshotsontarget',$this->homeshotsontarget);
+  	$query->bindValue(':homeshotsonpost',$this->homeshotsonpost);
+  	$query->bindValue(':homeshotsoutbox',$this->homeshotsoutbox);
+  	$query->bindValue(':homespasses',$this->homespasses);
+  	$query->bindValue(':homepassessuccess',$this->homepassessuccess);
+  	$query->bindValue(':homeyellowcards',$this->homeyellowcards);
+  	$query->bindValue(':homeredcards',$this->homeredcards);
+  	$query->bindValue(':homepenalty',$this->homepenalty);
+  	$query->bindValue(':homepenaltysuccess',$this->homepenaltysuccess);
+  	$query->bindValue(':awaypossession',$this->awaypossession);
+  	$query->bindValue(':awayfaults',$this->awayfaults);
+  	$query->bindValue(':awaysetpiece',$this->awaysetpiece);
+  	$query->bindValue(':awaycorners',$this->awaycorners);
+  	$query->bindValue(':awayshots',$this->awayshots);
+  	$query->bindValue(':awayshotsontarget',$this->awayshotsontarget);
+  	$query->bindValue(':awayshotsonpost',$this->awayshotsonpost);
+  	$query->bindValue(':awayshotsoutbox',$this->awayshotsoutbox);
+  	$query->bindValue(':awayyellowcards',$this->awayyellowcards);
+  	$query->bindValue(':awayredcards',$this->awayredcards);
+  	$query->bindValue(':awaypasses',$this->awaypasses);
+  	$query->bindValue(':awaypassessuccess',$this->awaypassessuccess);
+  	$query->bindValue(':awaypenalty',$this->awaypenalty);
+  	$query->bindValue(':awaypenaltysuccess',$this->awaypenaltysuccess);
+    $query->execute();
+    $query->debugDumpValues();
   }
   public function __load(){
     $query = Connection::getInstance()->connect()->prepare("SELECT * FROM matches_stats where id_match=:id_match");
-    $query->bindParam(':id_match',$this->match->id_match);
+    $query->bindValue(':id_match',$this->match->id_match);
     $query->execute();
     $data = $query->fetch();
     $this->homegoals=$data['homegoals'];

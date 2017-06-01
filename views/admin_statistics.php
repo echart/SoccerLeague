@@ -4,26 +4,26 @@
     <div class='bit-1'>
       <div class='box'>
         <div class='box-content'>
-          <div class='info'>
+          <div class='info2'>
             <h1><?=$this->country?></h1>
             <h3>País</h3>
           </div>
-          <div class='info'>
+          <div class='info2'>
             <h1><?=$this->club?></h1>
             <h3>Clubes</h3>
           </div>
-          <div class='info'>
+          <div class='info2'>
             <h1><?=$this->account?></h1>
             <h3>Usuários</h3>
           </div>
-          <div class='info'>
+          <div class='info2'>
             <h1><?=$this->leagues?></h1>
             <h3>Ligas</h3>
           </div>
         </div>
       </div>
     </div>
-    <div class='bit-1'>
+    <!-- <div class='bit-1'>
       <div class='box'>
         <div class='box-title'>
           Tasks
@@ -32,6 +32,6 @@
           <p>Nenhuma task foi realizada</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

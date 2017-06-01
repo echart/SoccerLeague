@@ -64,7 +64,7 @@ $success = ($_SESSION['SUCCESS']!='') ? $_SESSION['SUCCESS'] : '';
 					<label for='password'>Password:</label>
 					<input type="password" name="password" id='password' placeholder="Password" minlength='8' required>
 					<button type="submit" name="button">Acessar</button>
-					<a href='#' class='forgot-password'>Esqueceu sua senha?</a>
+					<!-- <a href='#' class='forgot-password'>Esqueceu sua senha?</a> -->
 				</form>
 			</div>
 			<label class="modal-close" for="modal_login"></label>

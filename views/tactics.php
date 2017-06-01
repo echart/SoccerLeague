@@ -51,7 +51,7 @@
 
             </div>
             <div class='bit-2 advanced'>
-              <a href='#'>Editar Opções avançadas</a>
+              <!-- <a href='#'>Editar Opções avançadas</a> -->
             </div>
             <div class='bit-75'>
               <div class='field'>

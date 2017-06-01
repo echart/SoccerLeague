@@ -1,0 +1,52 @@
+.results{
+  background-color: #26292b;
+  color: #fff;
+  padding-bottom: 10px;
+}
+.result{
+  position: relative;
+  top: -50px;
+  width: 20%;
+  display: inline-block;
+  height: 100px;
+  font-size: 110px;
+  text-align: center;
+}
+.club-info{
+  width: 39.7%;
+  display: inline-block;
+  height: 200px;
+}
+.club-logo.home{
+  border: 3px solid #4285f4;
+}
+.club-logo.away{
+  border: 3px solid #ea4335;
+}
+
+.club-logo{
+  width: 165px;
+  height: 165px;
+  background: #393e41;
+  margin: 0 auto;
+  margin-top: 25px;
+  border-radius: 3px;
+  text-align: center;
+}
+.club-logo img{
+  margin-top: 5px;
+}
+.club-name{
+  text-align: center;
+}
+.club-name a{
+  font-size: 24px;
+  margin: 10px;
+  color: #eee;
+}
+.report p{
+  padding: 7.5px;
+  background: #26292b;
+  color: #fff;
+  border-bottom: 1px solid #393e41;
+}

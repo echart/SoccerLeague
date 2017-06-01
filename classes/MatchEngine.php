@@ -5,6 +5,12 @@ class MatchEngine{
   public $matchStats;
   public $matchReport;
 
+  public $home;
+  public $away;
+  public $homeInfo;
+  public $awayInfo;
+  public $stadium;
+
   //tactical variables
   public $players = array();
   public $tactics = array();
@@ -17,6 +23,12 @@ class MatchEngine{
     $this->match = $match;
     $this->matchStats = new MatchStats($this->match);
     $this->matchReport = new MatchReport($this->match);
+    $this->home = new Club($this->match->home);
+    $this->away = new Club($this->match->away);
+    $this->homeInfo = new ClubInfo($this->home);
+    $this->homeInfo = new ClubInfo($this->away);
+    $this->stadium = new ClubStadium($this->home);
+
   }
   public function __loadteams(){
     //load home
@@ -33,9 +45,9 @@ class MatchEngine{
       foreach ($this->tactics['home']['players_on_field'] as $key => $value) {
         $player = Player::__this(intval($value));
         if($player->__injuried()==false or $player->__suspended()==3){
-          $players[$value] = $player;
-          $players[$value]->__loadinfo();
-          $players[$value]->__loadskillsDecimals();
+          $this->players['home'][$key][$value] = $player;
+          $this->players['home'][$key][$value]->__loadinfo();
+          $this->players['home'][$key][$value]->__loadskillsDecimals();
         }else{
           unset($this->tactics['home']['players_on_field']->$key);
         }
@@ -45,9 +57,9 @@ class MatchEngine{
       foreach ($this->tactics['home']['players_on_reserve'] as $key => $value) {
         $player = Player::__this(intval($value));
         if($player->__injuried()==false or $player->__suspended()==3){
-          $players[$value] = $player;
-          $players[$value]->__loadinfo();
-          $players[$value]->__loadskillsDecimals();
+          $this->players['home'][$key][$value] = $player;
+          $this->players['home'][$key][$value]->__loadinfo();
+          $this->players['home'][$key][$value]->__loadskillsDecimals();
         }else{
           unset($this->tactics['home']['players_on_reserve']->$key);
         }
@@ -72,9 +84,9 @@ class MatchEngine{
       foreach ($this->tactics['away']['players_on_field'] as $key => $value) {
         $player = Player::__this(intval($value));
         if($player->__injuried()==false or $player->__suspended()==3){
-          $players[$value] = $player;
-          $players[$value]->__loadinfo();
-          $players[$value]->__loadskillsDecimals();
+          $this->players['away'][$key][$value] = $player;
+          $this->players['away'][$key][$value]->__loadinfo();
+          $this->players['away'][$key][$value]->__loadskillsDecimals();
         }else{
           unset($this->tactics['away']['players_on_field']->$key);
         }
@@ -84,9 +96,9 @@ class MatchEngine{
       foreach ($this->tactics['away']['players_on_reserve'] as $key => $value) {
         $player = Player::__this(intval($value));
         if($player->__injuried()==false or $player->__suspended()==3){
-          $players[$value] = $player;
-          $players[$value]->__loadinfo();
-          $players[$value]->__loadskillsDecimals();
+          $this->players[$key][$value] = $player;
+          $this->players[$key][$value]->__loadinfo();
+          $this->players[$key][$value]->__loadskillsDecimals();
         }else{
           unset($this->tactics['away']['players_on_reserve']->$key);
         }
@@ -94,14 +106,28 @@ class MatchEngine{
     }
   }
   public function __WO(){
-    if(count((array)$this->tactics['home']['players_on_field'])!=11 AND count((array)$this->tactics['away']['players_on_field'])==11){
-      return 2;
-    }else if(count((array)$this->tactics['home']['players_on_field'])==11 AND count((array)$this->tactics['away']['players_on_field'])!=11){
+    $home=false;
+    $away=false;
+    if(count((array)$this->tactics['home']['players_on_field'])!=11 AND count((array)$this->tactics['home']['players_on_reserve'])!=5 and count((array)$this->tactics['home']['players_on_field'])!=11 AND count((array)$this->tactics['home']['players_functions'])!=4){
+      $home = true;
+    }
+    if(count((array)$this->tactics['away']['players_on_field'])!=11 AND count((array)$this->tactics['away']['players_on_reserve'])!=5 and count((array)$this->tactics['away']['players_on_field'])!=11 AND count((array)$this->tactics['home']['players_functions'])!=4){
+      $away = true;
+    }
+    if($away==$home and $home==true){
+      $this->matchStats->homegoals=0;
+      $this->matchStats->awaygoals=0;
       return 1;
-    }else if(count((array)$this->tactics['home']['players_on_field'])!=11 AND count((array)$this->tactics['away']['players_on_field'])!=11){
-      return 0;
+    }else if($away==$home and $home==false){
+      return -1;
+    }else if($away!=$home and $home=false){
+      $this->matchStats->homegoals=3;
+      $this->matchStats->awaygoals=0;
+      return 1;
     }else{
-      return false;
+      $this->matchStats->homegoals=0;
+      $this->matchStats->awaygoals=3;
+      return 1;
     }
   }
   public function attendance(){
@@ -112,6 +138,10 @@ class MatchEngine{
     $attendance[4] = array(85,100);
     $attendance[5] = array(90,100);
     $this->match->attendance = rand($attendance[$this->match->id_weather][0],$attendance[$this->match->id_weather][1]);
+    $this->match->attendance = ((ClubFans::howManyFans($this->home->id_club)*2.2)*$this->match->attendance)/100;
+    if($this->match->attendance>$this->stadium->capacity()){
+      $this->match->attendance = $this->stadium->capacity();
+    }
   }
   public function weather(){
     $this->match->id_weather = rand(1,5);
@@ -125,26 +155,14 @@ class MatchEngine{
     $pitch[5] = array(90,100);
     $this->match->pitch = rand($pitch[$this->match->id_weather][0],$pitch[$this->match->id_weather][1]);
   }
-}
-error_reporting(!E_NOTICE);
-include('Match.php');
-include('MatchReport.php');
-include('MatchStats.php');
-include('Player.php');
-include('Goalkeeper.php');
-include('LinePlayer.php');
-include('Connection.php');
-$match = new Match(1);
-$match->__load();
-$engine = new MatchEngine($match);
-$engine->__loadteams();
-$engine->weather();
-$engine->pitch_condition();
-$engine->attendance();
-if($engine->__WO()!=false){
-  $wo = $engine->__WO();
-}else{
-  $engine->match();
+  public function match(){
+    $soccer = new Soccer($this);
+    $soccer->play();
+    $this->matchReport->__save();
+    $this->matchStats->__createWO();
+    $this->match->__update();
+    var_dump($this->matchReport->report);
+  }
 }
 // function print_var_name($var) {
 //     foreach($GLOBALS as $var_name => $value) {

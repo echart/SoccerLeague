@@ -18,8 +18,8 @@
   $id_competition_type=Competition::getIdCompetitionType('L');
   $teams=18;
   $total_games=($teams*2)-2;
-  $league_startday='2017-05-28';
-  $league_startday2=3;
+  $league_startday='2017-05-31';
+  $league_startday2=2;
   /*-------
   GET SEASON AND + 1(NEXT);
   ---------*/

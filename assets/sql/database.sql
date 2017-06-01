@@ -602,7 +602,12 @@ create table matches_stats_players(
 	saves integer default 0,
 	conceded integer default 0
 );
-
+create table matches_report(
+	id_match_report serial primary key,
+	id_match integer,
+		foreign key (id_match) references matches(id_match) on delete cascade,
+	report json
+);
  create table tactics(
 	 id_tactics serial primary key,
 	 id_club int,

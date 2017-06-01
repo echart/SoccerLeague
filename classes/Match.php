@@ -36,6 +36,11 @@ class Match{
   //
   // }
   public function __update(){
-
+    $query = Connection::getInstance()->connect()->prepare("UPDATE matches SET id_weather=:id_weather,pitch=:pitch, attendance=:attendance where id_match=:id_match");
+    $query->bindParam(':id_match',$this->id_match);
+    $query->bindParam(':id_weather',$this->id_weather);
+    $query->bindParam(':pitch',$this->pitch);
+    $query->bindParam(':attendance',$this->attendance);
+    $query->execute();
   }
 }
