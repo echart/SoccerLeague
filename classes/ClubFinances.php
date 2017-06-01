@@ -62,4 +62,14 @@ class ClubFinances{
     $this->transfers = $data->transfers;
     $this->total = $data->total;
   }
+  public function addConstruction($value){
+    $wallet = $this->week();
+    $money = $this->money - $value;
+    $constructions = $this->constructions+$value;
+    $query = Connection::getInstance()->connect()->prepare("UPDATE club_finances set money=:money, constructions=:cons where id_club=:id_club");
+    $query->bindParam(':id_club',$this->club->id_club);
+    $query->bindParam(':money',$money);
+    $query->bindParam(':cons',$constructions);
+    $query->execute();
+  }
 }

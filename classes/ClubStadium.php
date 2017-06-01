@@ -27,6 +27,15 @@ class ClubStadium{
   }
 
   public function construction($new_capacity){
-    //upgrades or downgrades
+    $capacity = $this->capacity();
+    $new_capacity_value = ($new_capacity - $capacity)*250;
+    $finances = new ClubFinances($this->club);
+    if($new_capacity>0){
+      $finances->addConstruction($new_capacity_value);
+    }
+    $query = Connection::getInstance()->connect()->prepare("UPDATE club_stadium set capacity=:new_capacity where id_club=:id_club");
+    $query->bindParam(':id_club',$this->club->id_club);
+    $query->bindParam(':new_capacity',$new_capacity);
+    $query->execute();
   }
 }

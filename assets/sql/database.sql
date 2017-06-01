@@ -682,7 +682,7 @@ create table forum_topic(
 create table forum_topic_reply(
 		id_reply serial primary key,
 		id_topic integer,
-			FOREIGN KEY (id_topic) REFERENCES forum_topic(id_topic),
+			FOREIGN KEY (id_topic) REFERENCES forum_topic(id_topic) ON DELETE CASCADE,
 		id_club integer,
 			FOREIGN KEY (id_club) REFERENCES club(id_club),
 		topic text not null,

@@ -65,7 +65,7 @@
               <h3><?=$this->data['clubinfo']->manager;?></h3>
               <p><strong>ID do Clube:</strong> <?=$this->data['club']->id_club;?></p>
               <p><strong>Disputando:</strong> <a href='<?=$this->tree?>league/<?=$this->data['club']->country['abbreviation']?>/<?=$this->data['club']->league['division']?>/<?=$this->data['club']->league['divgroup']?>'><?=$this->data['club']->league['leaguename'];?></a></p>
-              <p><strong>Estádio:</strong> <a href='<?=$this->tree?>club/<?=$this->data['club']->id_club?>/stadium'><? if($this->data['clubinfo']->stadium!=null){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
+              <p><strong>Estádio:</strong> <a href='<?=$this->tree?>stadium/<?=$this->data['club']->id_club?>/'><? if($this->data['clubinfo']->stadium!=null){ echo $this->data['clubinfo']->stadium;}else{ echo 'Estádio Municipal';}?></a></p>
               <p><strong>Torcida:</strong> <? if($this->data['clubinfo']->fansname!=null){ echo $this->data['clubinfo']->fansname;} else{echo '...';}?></p>
               <p><strong>Sócios:</strong> ...</p>
               <p><strong>Fundado em:</strong> <?=$this->data['club']->created;?></p>

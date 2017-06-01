@@ -8,7 +8,8 @@ include('helpers/__country.php');
 include('helpers/_rec.php');
 
 
-$query = Connection::getInstance()->connect()->prepare("SELECT * FROM transferlist where status=TRUE order by enddate asc");
+$query = Connection::getInstance()->connect()->prepare("SELECT * FROM transferlist where status=TRUE and enddate>:enddate order by enddate asc");
+$query->bindParam(':enddate',date('Y-m-d H:i:s'));
 $query->execute();
 
 $this->transfer = array();

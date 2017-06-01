@@ -1,7 +1,7 @@
 <div class='content'>
   <h1 class='page-title'><?=$this->title?></h1>
   <div class='byte'>
-    <div class='bit-2'>
+    <div class='bit-1'>
       <div class='box'>
         <div class='box-title'>Jogadores</div>
         <div class='box-content'>
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class='bit-2'>
+    <!-- <div class='bit-2'>
       <div class='box'>
         <div class='box-title'>Comissão técnica</div>
         <div class='box-content'>
@@ -54,6 +54,6 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

@@ -29,6 +29,8 @@ if(isset($this->request['id'])){
       $query->bindParam(':enddate',$end);
       $query->bindParam(':value',$value);
       $query->execute();
+      $tweet = "Colocou o jogador <a href='".$this->tree."player/".$player->id_player."'>$player->name</a> à venda por um valor de $". number_format($value,2,',','.');
+      Tweet::__tweet($_SESSION['SL_club'],'M',$tweet,null,$reply_to);
     }
   }else if(isset($this->post['buyplayer'])){
     if($_SESSION['SL_club']!=$player->id_club){

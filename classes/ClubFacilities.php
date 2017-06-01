@@ -3,7 +3,7 @@
 class ClubFacilities{
   public $club;
   public $tg;
-  public $yt;
+  public $yd;
   public $medical;
   public $physio;
   public $parking;
@@ -49,11 +49,5 @@ class ClubFacilities{
     $this->cover = $data->pitchcover;
     $this->sprinklers = $data->sprinklers;
     $this->heating = $data->heating;
-  }
-  public function __upgrade($facilitie_name){
-
-  }
-  public function __downgrade($facilitie_name){
-
   }
 }
