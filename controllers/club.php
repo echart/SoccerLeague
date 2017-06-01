@@ -187,7 +187,7 @@ switch ($this->request['subrequest']) {
         if(Competition::getCompetitionType($competition->id_competition_type)=='L'){
           $query = Connection::getInstance()->connect()->prepare("SELECT division, divgroup from league inner join league_table using(id_league) where id_competition =:id_competition and id_club = :id_club");
           $query->bindParam(':id_competition',$competition->id_competition);
-          $query->bindParam(':id_club',$this->get['id']);
+          $query->bindParam(':id_club',$this->request['id']);
           $query->execute();
           $data = $query->fetch(PDO::FETCH_OBJ);
           $league = new League($competition->id_competition, $data->division, $data->divgroup);
