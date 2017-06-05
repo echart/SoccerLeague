@@ -4,6 +4,7 @@
 		/*start session and define paramters*/
 		/* load autoloader */
 		require_once('helpers/__autoload.php');
+		echo 'updating database...wait a sec';exit;
 		//debug
 		App::display_errors(TRUE);
 		/* start connection and authentication class*/
